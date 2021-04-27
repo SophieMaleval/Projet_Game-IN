@@ -5,15 +5,15 @@ using UnityEngine;
 public class GridDeplacement : MonoBehaviour
 {
     [Header ("Visual")]
-    public Sprite NorthSprite ;
-    public Sprite EastSprite ;
-    public Sprite SouthSprite ;
-    public Sprite WestSprite ;
+    public GameObject DosSprites ;
+    public GameObject DroiteSprites ;
+    public GameObject FaceSprites ;
+    public GameObject GaucheSprites ;
 
 
     Direction CurrentDirection ;
     Vector2 InputPlayer ;
-    bool IsMoving = false ;
+    public bool IsMoving = false ;
     Vector3 StartPos ;
     Vector3 Endpos ;
     float T ;
@@ -54,19 +54,35 @@ public class GridDeplacement : MonoBehaviour
                 {
                     case Direction.North:
                         //gameObject.GetComponent<SpriteRenderer>().sprite = NorthSprite ;
-                        gameObject.transform.localEulerAngles = new Vector3(0,0,0f);
+                        //gameObject.transform.localEulerAngles = new Vector3(0,0,0f);
+                        DosSprites.gameObject.SetActive(true);
+                        DroiteSprites.gameObject.SetActive(false);
+                        FaceSprites.gameObject.SetActive(false);
+                        GaucheSprites.gameObject.SetActive(false); 
                         break ;
                     case Direction.East:
                         //gameObject.GetComponent<SpriteRenderer>().sprite = EastSprite ;
-                        gameObject.transform.localEulerAngles = new Vector3(0,0,-90f);
+                        //gameObject.transform.localEulerAngles = new Vector3(0,0,-90f);
+                        DosSprites.gameObject.SetActive(false);
+                        DroiteSprites.gameObject.SetActive(true);
+                        FaceSprites.gameObject.SetActive(false);
+                        GaucheSprites.gameObject.SetActive(false); 
                         break ;
                     case Direction.South:
                         //gameObject.GetComponent<SpriteRenderer>().sprite = SouthSprite ;
-                        gameObject.transform.localEulerAngles = new Vector3(0,0,180f);
+                        //gameObject.transform.localEulerAngles = new Vector3(0,0,180f);
+                        DosSprites.gameObject.SetActive(false);
+                        DroiteSprites.gameObject.SetActive(false);
+                        FaceSprites.gameObject.SetActive(true);
+                        GaucheSprites.gameObject.SetActive(false);
                         break ;
                     case Direction.West:
                         //gameObject.GetComponent<SpriteRenderer>().sprite = WestSprite ;
-                        gameObject.transform.localEulerAngles = new Vector3(0,0,90f);
+                        //gameObject.transform.localEulerAngles = new Vector3(0,0,90f);
+                        DosSprites.gameObject.SetActive(false);
+                        DroiteSprites.gameObject.SetActive(false);
+                        FaceSprites.gameObject.SetActive(false);
+                        GaucheSprites.gameObject.SetActive(true);      
                         break ;
                 }
 
