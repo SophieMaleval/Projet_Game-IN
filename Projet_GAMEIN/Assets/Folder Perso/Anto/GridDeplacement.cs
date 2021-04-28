@@ -13,6 +13,7 @@ public class GridDeplacement : MonoBehaviour
 
     Direction CurrentDirection ;
     Vector2 InputPlayer ;
+    private bool CanUseInputPlayer = true;
     public bool IsMoving = false ;
     Vector3 StartPos ;
     Vector3 Endpos ;
@@ -25,7 +26,11 @@ public class GridDeplacement : MonoBehaviour
     {
         if(!IsMoving)
         {
-            InputPlayer = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+            if(CanUseInputPlayer == true)
+            {
+                InputPlayer = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+            }
+
             if(Mathf.Abs(InputPlayer.x) > Mathf.Abs(InputPlayer.y))
                 InputPlayer.y = 0 ;
             else
@@ -120,8 +125,14 @@ public class GridDeplacement : MonoBehaviour
         West
     }
 
-
-
+    public void AnimMovePlayer(Vector2 MoveAnimDirection)
+    {
+        if(MoveAnimDirection != Vector2.zero)
+            CanUseInputPlayer = false ;
+        if(MoveAnimDirection == Vector2.zero)
+            CanUseInputPlayer = true ;
+        InputPlayer = MoveAnimDirection ;
+    }
 
 
 

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerDisplayer : MonoBehaviour
 {
@@ -28,7 +29,7 @@ public class PlayerDisplayer : MonoBehaviour
     [SerializeField] private List<SpriteRenderer> ShoeRenderer ;
     
 
-   public void RecupExistSkin() 
+   public void RecupExistSkin(Slider SKinSlider) 
    {
        if(PlayerPrefs.GetInt("PlayerCustomerAsBeenVisited") == 1)
        {
@@ -36,8 +37,9 @@ public class PlayerDisplayer : MonoBehaviour
            {
                GameObject PlayerCustom = GameObject.Find("Player") ;
                SkinColorPourcentage = PlayerCustom.GetComponent<PlayerDisplayer>().SkinColorPourcentage ;
+               SKinSlider.value = SkinColorPourcentage ;
 
-               HairSprites = PlayerCustom.GetComponent<PlayerDisplayer>().HairSprites ;
+                HairSprites = PlayerCustom.GetComponent<PlayerDisplayer>().HairSprites ;
                 HairColor = PlayerCustom.GetComponent<PlayerDisplayer>().HairColor ;
 
                BodySprites = PlayerCustom.GetComponent<PlayerDisplayer>().BodySprites ;
