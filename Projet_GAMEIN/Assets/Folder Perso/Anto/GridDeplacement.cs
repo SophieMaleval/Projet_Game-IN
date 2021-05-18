@@ -21,6 +21,7 @@ public class GridDeplacement : MonoBehaviour
 
     [Header ("Walk Setting")]
     public float WalkSpeed = 3f ;
+    public bool CameraFollowPlayer ;
 
     void Update() 
     {
@@ -94,6 +95,24 @@ public class GridDeplacement : MonoBehaviour
                 StartCoroutine(Move(transform));
             }
         }
+    
+        if(GameObject.Find("Main Camera") != null)    
+        {
+            GameObject CameraMain = GameObject.Find("Main Camera") ;      
+            
+            if(CameraFollowPlayer)
+            {
+                CameraMain.transform.SetParent(this.transform);
+                if(CameraMain.transform.localPosition.x != 0 || CameraMain.transform.localPosition.y != 0)
+                {
+                    CameraMain.transform.localPosition = new Vector3(0, 0, CameraMain.transform.position.z) ;
+                }
+                //CameraMain.transform.position = new Vector3(transform.position.x, transform.position.y, CameraMain.transform.position.z) ;
+            } else {
+                CameraMain.transform.SetParent(null);
+            }
+        }
+
     }
 
     public IEnumerator Move(Transform Entity)
