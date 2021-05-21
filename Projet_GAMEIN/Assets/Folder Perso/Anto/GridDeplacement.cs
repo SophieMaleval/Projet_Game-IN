@@ -33,10 +33,15 @@ public class GridDeplacement : MonoBehaviour
             }
 
             if(Mathf.Abs(InputPlayer.x) > Mathf.Abs(InputPlayer.y))
-                InputPlayer.y = 0 ;
-            else
-                InputPlayer.x = 0;
+            {
+                    transform.position = new Vector2(transform.position.x + (InputPlayer.x * Time.deltaTime * 5f), transform.position.y + 0) ;
+                /* InputPlayer.y = 0 ; */               
+            } else
+                /* InputPlayer.x = 0; */
+                    transform.position = new Vector2(transform.position.x + 0, transform.position.y + (InputPlayer.y * Time.deltaTime * 5f)) ;
 
+
+            // Direction Sprite
             if(InputPlayer != Vector2.zero)
             {
                 if(InputPlayer.x < 0)
@@ -92,10 +97,11 @@ public class GridDeplacement : MonoBehaviour
                         break ;
                 }
 
-                StartCoroutine(Move(transform));
+                /* StartCoroutine(Move(transform)); */
             }
         }
     
+        // Camera Follow le joueur
         if(GameObject.Find("Main Camera") != null)    
         {
             GameObject CameraMain = GameObject.Find("Main Camera") ;      
