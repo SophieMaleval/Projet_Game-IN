@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu (menuName = "Item - Custome Character")]
 public class ItemCustomer : ScriptableObject
 {
+    public Sprite DisplayCustomisation ;
     public Sprite Face ;
     public Sprite Profil ;
     public Sprite Dos ;

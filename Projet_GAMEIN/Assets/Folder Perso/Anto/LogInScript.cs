@@ -9,24 +9,38 @@ public class LogInScript : MonoBehaviour
     [SerializeField] private LogInInfo Info ;
     [SerializeField] private GameObject PassWordEmpty ;
     [SerializeField] private InputField PassWordInputArea ;
+    [SerializeField] private GameObject PassWordErrorText ;
+
+
+    private void Awake() 
+    {
+        Info.SetLogList();
+        NameInputArea.GetComponentInChildren<Text>().horizontalOverflow = HorizontalWrapMode.Wrap ;
+        PassWordInputArea.GetComponentInChildren<Text>().horizontalOverflow = HorizontalWrapMode.Wrap ;
+    }
 
     public void NameChoice()
     {
-        if(Info.CheckName(NameInputArea.text))
+        if(Info.CheckID(NameInputArea.text))
         {
             PassWordEmpty.SetActive(true);
         } else {
-            Debug.Log("Name Choice : " +  NameInputArea.text);            
+            PassWordErrorText.SetActive(false);  
+            PassWordInputArea.text = "" ;
+            PassWordEmpty.SetActive(false);              
+            Debug.Log("Welcome : " + NameInputArea.text);      // Référencer dans le player      
+
         }
     }
 
     public void PassWord()
     {
-        if(Info.CheckPassWord(NameInputArea.text, PassWordInputArea.text))
+        if(Info.CheckPassWord(PassWordInputArea.text))
         {
-            Debug.Log("Access Authorized !") ;
+            PassWordErrorText.SetActive(false);            
+            Debug.Log("Welcome : " + Info.CheckName(NameInputArea.text)) ; // Référencer dans le player  
         } else {
-            Debug.Log("ERROR !!");            
+            PassWordErrorText.SetActive(true);
         }
     }
 

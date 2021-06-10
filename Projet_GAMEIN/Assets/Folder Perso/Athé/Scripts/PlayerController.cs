@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public GameObject Inventaire;
     [Header ("Visual")]
     public Sprite NorthSprite ;
     public Sprite EastSprite ;
     public Sprite SouthSprite ;
     public Sprite WestSprite ;
+
 
 
     Direction CurrentDirection ;
@@ -22,8 +24,13 @@ public class PlayerController : MonoBehaviour
     public float WalkSpeed = 3f ;
     public bool canMove;
 
+
+
     void Update() 
     {
+        
+
+
 
         if(!canMove){
 
