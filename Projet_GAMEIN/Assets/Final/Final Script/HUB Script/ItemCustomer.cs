@@ -12,5 +12,7 @@ public class ItemCustomer : ScriptableObject
     public Sprite Dos ;
 
     [Header ("Animation In Game")]
-    public AnimatorControllerParameter Idle ;
+    public RuntimeAnimatorController IdleFace ;
+    public RuntimeAnimatorController IdlePofil ;
+    public RuntimeAnimatorController IdleDos ;
 }
