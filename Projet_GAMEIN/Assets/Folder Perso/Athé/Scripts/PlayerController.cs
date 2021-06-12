@@ -24,6 +24,13 @@ public class PlayerController : MonoBehaviour
     public float WalkSpeed = 3f ;
     public bool canMove;
 
+    void Start () {
+        Cursor. visible = true;
+    }
+
+
+
+
 
 
     void Update() 
