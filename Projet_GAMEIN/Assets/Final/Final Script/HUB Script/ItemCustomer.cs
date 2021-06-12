@@ -13,6 +13,10 @@ public class ItemCustomer : ScriptableObject
 
     [Header ("Animation In Game")]
     public RuntimeAnimatorController IdleFace ;
-    public RuntimeAnimatorController IdlePofil ;
+    public RuntimeAnimatorController IdleProfil ;
     public RuntimeAnimatorController IdleDos ;
+    [Space]
+    public RuntimeAnimatorController MoveFace ;
+    public RuntimeAnimatorController MoveProfil ;
+    public RuntimeAnimatorController MoveDos ;
 }

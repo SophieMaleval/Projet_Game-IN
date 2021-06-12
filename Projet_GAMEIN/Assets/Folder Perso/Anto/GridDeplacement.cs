@@ -25,8 +25,8 @@ public class GridDeplacement : MonoBehaviour
 
     void Update() 
     {
-        if(!IsMoving)
-        {
+    /*    if(!IsMoving)
+        {*/
             if(CanUseInputPlayer == true)
             {
                 InputPlayer = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
@@ -39,18 +39,21 @@ public class GridDeplacement : MonoBehaviour
             } else
                 /* InputPlayer.x = 0; */
                     transform.position = new Vector2(transform.position.x + 0, transform.position.y + (InputPlayer.y * Time.deltaTime * 5f)) ;
-
+            if(InputPlayer.x != 0 || InputPlayer.y != 0)
+            {   IsMoving = true ;   }
+            if(InputPlayer.x == 0 && InputPlayer.y == 0)
+            {   IsMoving = false ;  }
 
             // Direction Sprite
             if(InputPlayer != Vector2.zero)
             {
                 if(InputPlayer.x < 0)
                 {
-                    CurrentDirection = Direction.West ;
+                    CurrentDirection = Direction.East ;//
                 }
                 if(InputPlayer.x > 0)
                 {
-                    CurrentDirection = Direction.East ;
+                    CurrentDirection = Direction.West ;//
                 }
                 if(InputPlayer.y < 0)
                 {
@@ -99,7 +102,7 @@ public class GridDeplacement : MonoBehaviour
 
                 /* StartCoroutine(Move(transform)); */
             }
-        }
+       // }
     
         // Camera Follow le joueur
         if(GameObject.Find("Main Camera") != null)    
@@ -123,7 +126,7 @@ public class GridDeplacement : MonoBehaviour
 
     public IEnumerator Move(Transform Entity)
     {
-        IsMoving = true ;
+        //IsMoving = true ;
         StartPos = Entity.position ;
         T = 0 ;
 
@@ -137,7 +140,7 @@ public class GridDeplacement : MonoBehaviour
         }
 
 
-        IsMoving = false ;
+        //IsMoving = false ;
         yield return 0 ;
     }
 

@@ -89,4 +89,18 @@ public class LogInInfo : ScriptableObject
         }
         return null ;
     }
+
+
+    public string GetPreniumID(string NamePlayer)
+    {
+        for (int i = 0; i < LogInfo.Count; i++)
+        {
+            if(LogInfo[i].ID == NamePlayer)
+            {
+                return LogInfo[i].IDConnexion ;
+            }  
+        }
+        return null ;
+    }
+
 }
