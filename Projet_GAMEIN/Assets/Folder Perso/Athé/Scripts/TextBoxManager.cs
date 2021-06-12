@@ -27,6 +27,8 @@ public class TextBoxManager : MonoBehaviour {
 	
 	private int j;
 
+    public bool passText;
+
     // Use this for initialization
     void Start()
     {
@@ -64,13 +66,20 @@ public class TextBoxManager : MonoBehaviour {
 
         //theText.text = textLines[currentLine];
 		
+         if (Input.GetKeyDown(KeyCode.Space) && waitendtxt == false)
+        {
+			
+            passText = true;
 
+        }
+        
         if (Input.GetKeyDown(KeyCode.Space) && waitendtxt == true)
         {
 			StartCoroutine(AnimateText());
             currentLine += 1;
 
         }
+       
 
         if(currentLine == endAtLine)
         {
@@ -121,10 +130,17 @@ public class TextBoxManager : MonoBehaviour {
 		 if (j >= (textLines[currentLine].Length)){
 			j = 0; 
 		 }
+
+         if(passText == true){
+
+            i = (textLines[currentLine].Length);
+            j = (textLines[currentLine].Length-1);
+            passText = false;
+         }
 		 
          theText.text = textLines[currentLine].Substring(0, i);
 		 
-		 if(textLines[currentLine][j] != ' '){
+		 if(textLines[currentLine][j] != ' ' && textLines[currentLine][j] != '\n'){
 			FindObjectOfType<AudioManager>().Play(theVoice);
 		 }
 		 if (i == textLines[currentLine].Length){

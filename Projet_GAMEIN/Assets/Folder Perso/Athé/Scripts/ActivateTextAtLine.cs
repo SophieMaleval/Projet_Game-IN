@@ -6,8 +6,10 @@ public class ActivateTextAtLine : MonoBehaviour {
 
     public TextAsset theText;
 
-    public int startLine;
-    public int endLine;
+    private int startLine;
+    private int endLine;
+
+    public DialogRange[] dialogR;
 
     public TextBoxManager theTextBox;
 
@@ -17,21 +19,35 @@ public class ActivateTextAtLine : MonoBehaviour {
 
     public bool destroyWhenActivated;
 	
-	public bool txtactif ;
+	public bool txtactif;
+
+    public int nbDialog, currentDialog;
 
 	
 	
 	
 	// Use this for initialization
 	void Start () {
-        theTextBox = FindObjectOfType<TextBoxManager>();	
+        theTextBox = FindObjectOfType<TextBoxManager>();
+        currentDialog = 1;	
 	}
 
 	// Update is called once per frame
 	void Update () {
 
         if (waitForPress && Input.GetKeyUp(KeyCode.Return))
-        {
+        { 
+                int i = 0;
+                foreach (DialogRange dr in dialogR)
+		        {
+                    i ++;
+                    if(i == currentDialog){
+                        startLine = dr.SLine;
+                        endLine = dr.ELine;
+                    }
+
+                }
+
             theTextBox.ReloadScript(theText);
             theTextBox.currentLine = startLine;
             theTextBox.endAtLine = endLine;
@@ -40,7 +56,18 @@ public class ActivateTextAtLine : MonoBehaviour {
             {
                 Destroy(gameObject);
             }
-			txtactif = true;	
+			txtactif = true;
+
+            if(nbDialog != 1){
+
+                currentDialog += 1;
+                if(currentDialog > nbDialog){
+
+                    currentDialog = nbDialog;
+
+                }
+            }
+
         }
 		
 
