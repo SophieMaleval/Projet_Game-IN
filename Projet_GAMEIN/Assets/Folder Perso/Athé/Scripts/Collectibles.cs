@@ -5,8 +5,7 @@ using UnityEngine;
 public class Collectibles : MonoBehaviour
 {
     inventoryController Ic;
-    public GameObject Poule;
-    public  GameObject Poule2;
+
     // Start is called before the first frame update
 
     private void Start() {

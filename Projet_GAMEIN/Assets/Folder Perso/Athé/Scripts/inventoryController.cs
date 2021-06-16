@@ -13,10 +13,6 @@ public class inventoryController : MonoBehaviour
     public Sprite collectedSprite;
     public GameObject Inventory;
 
-  
-    
-    public GameObject bulle;
-    public GameObject popupGateau;
     public bool spriteIsActivated;
     
     // Start is called before the first frame update
@@ -24,19 +20,6 @@ public class inventoryController : MonoBehaviour
     {
         
     }
-    /*public void tamere(){
-        bulle.SetActive(true);
-
-        Debug.Log("yes");
-
-    }
-
-     public void tonpere(){
-         bulle.SetActive(false);
-        Debug.Log("no");
-    }
-    */
-
     
 
     // Update is called once per frame
@@ -59,48 +42,56 @@ public class inventoryController : MonoBehaviour
 
         if(collectedObject != null){
 
-             Items.Add(collectedObject);
+            Items.Add(collectedObject);
 
             collectedSprite = collectedObject.GetComponent<SpriteRenderer>().sprite;
 
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < 8; i++)
             {
 
                 if (Slots[i].transform.GetChild (0).GetComponent<Image>().sprite == null){
 
                     Slots[i].transform.GetChild (0).GetComponent<Image>().sprite = collectedSprite;
-
+                    Slots[i].transform.GetChild (1).gameObject.SetActive(true);
                     
                     i = 8;
+
+                }
                   
             }
                     
-
-                
-
-            }
-            
-            collectedObject = null;
-            if (collectedObject == null){
-
-                bulle.SetActive(false);
-                popupGateau.SetActive(false);
-
-            }
-            
-            if(collectedSprite.name == "Poulet"){
-
-                bulle.SetActive(true);
-            }
-             if(collectedSprite.name == "gateau"){
-
-                popupGateau.SetActive(true);
-            }
-
-           
-           
+        collectedObject = null;
         } 
         
 
     }
+
+    public void PopUpActivate(int slot)
+    {
+        if(Slots[slot].transform.GetChild (0).GetComponent<Image>().sprite.name == "Poulet"){
+            Slots[slot].transform.GetChild (2).gameObject.SetActive(true);
+            Slots[slot].transform.GetChild (2).gameObject.transform.GetChild (0).gameObject.GetComponent<Text>().text = "Ratchet.";
+        }
+
+        if(Slots[slot].transform.GetChild (0).GetComponent<Image>().sprite.name == "gateau"){
+            Slots[slot].transform.GetChild (2).gameObject.SetActive(true);
+            Slots[slot].transform.GetChild (2).gameObject.transform.GetChild (0).gameObject.GetComponent<Text>().text = "super le gateau";
+        }
+         if(Slots[slot].transform.GetChild (0).GetComponent<Image>().sprite.name == "pomme"){
+            Slots[slot].transform.GetChild (2).gameObject.SetActive(true);
+            Slots[slot].transform.GetChild (2).gameObject.transform.GetChild (0).gameObject.GetComponent<Text>().text = "c'est pas une poire, c'est une pomme.";
+        }
+    }
+
+    public void PopUpClear()
+    {
+
+        for (int i = 0; i < 8; i++)
+        {
+
+            Slots[i].transform.GetChild (2).gameObject.SetActive(false);
+    
+        }
+    }
+
 }
