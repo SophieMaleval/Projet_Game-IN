@@ -5,6 +5,13 @@ using UnityEngine.UI;
 
 public class PlayerDisplayer : MonoBehaviour
 {
+    [Header ("Nom")]
+    public string NameAvatar ;
+    public bool PreniumCount ;
+
+    [Header ("Display Skin")]
+    public bool InCustom = false ;
+    [SerializeField] private ItemCustomer SkinSprites ;
     public float SkinColorPourcentage ;
 
     public ItemCustomer HairSprites ;
@@ -60,6 +67,32 @@ public class PlayerDisplayer : MonoBehaviour
     void Update()
     {
         // Skin Collor
+        if(SkinRenderer != null)
+        {
+            SkinRenderer[0].sprite = SkinSprites.Face ; 
+            SkinRenderer[1].sprite = SkinSprites.Profil ;
+            SkinRenderer[2].sprite = SkinSprites.Dos ;
+            SkinRenderer[3].sprite = SkinSprites.Profil ;
+
+            if(InCustom == false)
+            {
+                if(GetComponent<GridDeplacement>().IsMoving == false)
+                {
+                    SkinRenderer[0].GetComponent<Animator>().runtimeAnimatorController = SkinSprites.IdleFace ;
+                    SkinRenderer[1].GetComponent<Animator>().runtimeAnimatorController = SkinSprites.IdleProfil ;
+                    SkinRenderer[2].GetComponent<Animator>().runtimeAnimatorController = SkinSprites.IdleDos ;
+                    SkinRenderer[3].GetComponent<Animator>().runtimeAnimatorController = SkinSprites.IdleProfil ;
+                }
+
+                if(GetComponent<GridDeplacement>().IsMoving == true)
+                {
+                    SkinRenderer[0].GetComponent<Animator>().runtimeAnimatorController = SkinSprites.MoveFace ;
+                    SkinRenderer[1].GetComponent<Animator>().runtimeAnimatorController = SkinSprites.MoveProfil ;
+                    SkinRenderer[2].GetComponent<Animator>().runtimeAnimatorController = SkinSprites.MoveDos ;
+                    SkinRenderer[3].GetComponent<Animator>().runtimeAnimatorController = SkinSprites.MoveProfil ;
+                }                
+            }
+        }
         for (int i = 0; i < SkinRenderer.Count; i++)
         {   SkinRenderer[i].color = Color.Lerp(SkinColor0, SkinColor1, SkinColorPourcentage) ; }
 
@@ -71,7 +104,26 @@ public class PlayerDisplayer : MonoBehaviour
             HairRenderer[0].sprite = HairSprites.Face ;
             HairRenderer[1].sprite = HairSprites.Profil ;
             HairRenderer[2].sprite = HairSprites.Dos ;
-            HairRenderer[3].sprite = HairSprites.Profil ;            
+            HairRenderer[3].sprite = HairSprites.Profil ;
+
+            if(InCustom == false)
+            {
+                if(GetComponent<GridDeplacement>().IsMoving == false)
+                {
+                    HairRenderer[0].GetComponent<Animator>().runtimeAnimatorController = HairSprites.IdleFace ;
+                    HairRenderer[1].GetComponent<Animator>().runtimeAnimatorController = HairSprites.IdleProfil ;
+                    HairRenderer[2].GetComponent<Animator>().runtimeAnimatorController = HairSprites.IdleDos ;
+                    HairRenderer[3].GetComponent<Animator>().runtimeAnimatorController = HairSprites.IdleProfil ; 
+                }
+
+                if(GetComponent<GridDeplacement>().IsMoving == true)
+                {
+                    HairRenderer[0].GetComponent<Animator>().runtimeAnimatorController = HairSprites.MoveFace ;
+                    HairRenderer[1].GetComponent<Animator>().runtimeAnimatorController = HairSprites.MoveProfil ;
+                    HairRenderer[2].GetComponent<Animator>().runtimeAnimatorController = HairSprites.MoveDos ;
+                    HairRenderer[3].GetComponent<Animator>().runtimeAnimatorController = HairSprites.MoveProfil ; 
+                }                  
+            }
         }
         if(HairSprites == null)
         {
@@ -89,7 +141,26 @@ public class PlayerDisplayer : MonoBehaviour
             BodyRenderer[0].sprite = BodySprites.Face ;
             BodyRenderer[1].sprite = BodySprites.Profil ;
             BodyRenderer[2].sprite = BodySprites.Dos ;
-            BodyRenderer[3].sprite = BodySprites.Profil ;            
+            BodyRenderer[3].sprite = BodySprites.Profil ;
+
+            if(InCustom == false)
+            {
+                if(GetComponent<GridDeplacement>().IsMoving == false)
+                {
+                    BodyRenderer[0].GetComponent<Animator>().runtimeAnimatorController = BodySprites.IdleFace ;
+                    BodyRenderer[1].GetComponent<Animator>().runtimeAnimatorController = BodySprites.IdleProfil ;
+                    BodyRenderer[2].GetComponent<Animator>().runtimeAnimatorController = BodySprites.IdleDos ;    
+                    BodyRenderer[3].GetComponent<Animator>().runtimeAnimatorController = BodySprites.IdleProfil ;         
+                }
+
+                if(GetComponent<GridDeplacement>().IsMoving == true)
+                {
+                    BodyRenderer[0].GetComponent<Animator>().runtimeAnimatorController = BodySprites.MoveFace ;
+                    BodyRenderer[1].GetComponent<Animator>().runtimeAnimatorController = BodySprites.MoveProfil ;
+                    BodyRenderer[2].GetComponent<Animator>().runtimeAnimatorController = BodySprites.MoveDos ;    
+                    BodyRenderer[3].GetComponent<Animator>().runtimeAnimatorController = BodySprites.MoveProfil ;      
+                }                   
+            }     
         }
         if(BodySprites == null)
         {
@@ -107,7 +178,26 @@ public class PlayerDisplayer : MonoBehaviour
             BottomRenderer[0].sprite = BottomSprites.Face ;
             BottomRenderer[1].sprite = BottomSprites.Profil ;
             BottomRenderer[2].sprite = BottomSprites.Dos ;
-            BottomRenderer[3].sprite = BottomSprites.Profil ;            
+            BottomRenderer[3].sprite = BottomSprites.Profil ;
+
+            if(InCustom == false)
+            {
+                if(GetComponent<GridDeplacement>().IsMoving == false)
+                {
+                    BottomRenderer[0].GetComponent<Animator>().runtimeAnimatorController = BottomSprites.IdleFace ;
+                    BottomRenderer[1].GetComponent<Animator>().runtimeAnimatorController = BottomSprites.IdleProfil ;
+                    BottomRenderer[2].GetComponent<Animator>().runtimeAnimatorController = BottomSprites.IdleDos ;
+                    BottomRenderer[3].GetComponent<Animator>().runtimeAnimatorController = BottomSprites.IdleProfil ;    
+                }
+
+                if(GetComponent<GridDeplacement>().IsMoving == true)
+                {
+                    BottomRenderer[0].GetComponent<Animator>().runtimeAnimatorController = BottomSprites.MoveFace ;
+                    BottomRenderer[1].GetComponent<Animator>().runtimeAnimatorController = BottomSprites.MoveProfil ;
+                    BottomRenderer[2].GetComponent<Animator>().runtimeAnimatorController = BottomSprites.MoveDos ;
+                    BottomRenderer[3].GetComponent<Animator>().runtimeAnimatorController = BottomSprites.MoveProfil ;    
+                }                    
+            }    
         }
         if(BottomSprites == null)
         {
@@ -126,6 +216,25 @@ public class PlayerDisplayer : MonoBehaviour
             ShoeRenderer[1].sprite = ShoeSprites.Profil ;
             ShoeRenderer[2].sprite = ShoeSprites.Dos ;
             ShoeRenderer[3].sprite = ShoeSprites.Profil ;
+
+            if(InCustom == false)
+            {
+                if(GetComponent<GridDeplacement>().IsMoving == false)
+                {
+                    ShoeRenderer[0].GetComponent<Animator>().runtimeAnimatorController = ShoeSprites.IdleFace ;
+                    ShoeRenderer[1].GetComponent<Animator>().runtimeAnimatorController = ShoeSprites.IdleProfil ;
+                    ShoeRenderer[2].GetComponent<Animator>().runtimeAnimatorController = ShoeSprites.IdleDos ;
+                    ShoeRenderer[3].GetComponent<Animator>().runtimeAnimatorController = ShoeSprites.IdleProfil ;
+                }
+
+                if(GetComponent<GridDeplacement>().IsMoving == true)
+                {
+                    ShoeRenderer[0].GetComponent<Animator>().runtimeAnimatorController = ShoeSprites.MoveFace ;
+                    ShoeRenderer[1].GetComponent<Animator>().runtimeAnimatorController = ShoeSprites.MoveProfil ;
+                    ShoeRenderer[2].GetComponent<Animator>().runtimeAnimatorController = ShoeSprites.MoveDos ;
+                    ShoeRenderer[3].GetComponent<Animator>().runtimeAnimatorController = ShoeSprites.MoveProfil ;
+                }                       
+            }
         }
         if(ShoeSprites == null)
         {
@@ -135,4 +244,52 @@ public class PlayerDisplayer : MonoBehaviour
         for (int i = 0; i < ShoeRenderer.Count; i++)
         {   ShoeRenderer[i].color = ShoeColor ; }
     }
+
+    public void SkinModify()
+    {
+        // Désactive Tout les skin Renderer pour les synchronisé
+        SwitchRenderSkin(false);
+        SwitchRenderHair(false);
+        SwitchRenderBody(false);
+        SwitchRenderBottom(false);
+        SwitchRenderShoe(false);
+
+        StartCoroutine(EnableAnilator());
+    }
+    void SwitchRenderSkin(bool Enable) 
+    {
+        for (int i = 0; i < SkinRenderer.Count; i++)
+        {   SkinRenderer[i].GetComponent<Animator>().enabled = Enable ;  }
+    }
+    void SwitchRenderHair(bool Enable) 
+    {
+        for (int i = 0; i < HairRenderer.Count; i++)
+        {   HairRenderer[i].GetComponent<Animator>().enabled = Enable ;  }
+    }
+    void SwitchRenderBody(bool Enable) 
+    {
+        for (int i = 0; i < BodyRenderer.Count; i++)
+        {   BodyRenderer[i].GetComponent<Animator>().enabled = Enable ;  }
+    }
+    void SwitchRenderBottom(bool Enable) 
+    {
+        for (int i = 0; i < BottomRenderer.Count; i++)
+        {   BottomRenderer[i].GetComponent<Animator>().enabled = Enable ;  }
+    }
+    void SwitchRenderShoe(bool Enable) 
+    {
+        for (int i = 0; i < ShoeRenderer.Count; i++)
+        {   ShoeRenderer[i].GetComponent<Animator>().enabled = Enable ;  }
+    }
+    IEnumerator EnableAnilator()
+    {
+        yield return new WaitForSeconds(0.01f);
+        // Réactive Tout les skin Renderer pour les synchronisé
+        SwitchRenderSkin(true);
+        SwitchRenderHair(true);
+        SwitchRenderBody(true);
+        SwitchRenderBottom(true);
+        SwitchRenderShoe(true);
+    }
+
 }
