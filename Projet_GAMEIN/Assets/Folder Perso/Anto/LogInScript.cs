@@ -12,6 +12,14 @@ public class LogInScript : MonoBehaviour
     [SerializeField] private GameObject PassWordErrorText ;
 
     [SerializeField] private PlayerDisplayer Player ;
+    [SerializeField] private SpriteRenderer PreniumSkinCheat ;
+    [SerializeField] private CharacterCreater CustomerScript ;
+
+
+    public GameObject NameGroup ;
+    public GameObject PasswordGroup ;
+
+
 
 
     private void Awake() 
@@ -24,7 +32,6 @@ public class LogInScript : MonoBehaviour
         {    NameInputArea.text = Player.NameAvatar ; }
         if(Player.PreniumCount == true)
         {   NameInputArea.text = Info.GetPreniumID(Player.NameAvatar); }
-
     }
 
     public void NameChoice()
@@ -50,6 +57,12 @@ public class LogInScript : MonoBehaviour
             // Debug.Log("Welcome : " + Info.CheckName(NameInputArea.text)) ; // Référencer dans le player  
             Player.NameAvatar = Info.CheckName(NameInputArea.text) ;
             Player.PreniumCount = true ;
+            CustomerScript.PreniumCountValidate(Player.NameAvatar);
+            PreniumSkinCheat.sprite = Info.ReturnSKin(NameInputArea.text);
+
+            NameGroup.SetActive(false);
+            PasswordGroup.SetActive(false);
+
         } else {
             PassWordErrorText.SetActive(true);
             Player.PreniumCount = false ;
