@@ -11,12 +11,17 @@ public class CharacterCreater : MonoBehaviour
 {
     [Header ("Custom Avatar")]
     [SerializeField] private PlayerDisplayer DisplayAvatar ;
-
+    [SerializeField] private Button RandomButton ;
+    [SerializeField] private Button SubmitButton ;
 
     [Header ("Rotate Avatar")]
     [SerializeField] private List<GameObject> DifferentPlayerView ;
     private int ActualView = 0 ;
-    
+
+    [Header ("Autre Parameter")]
+    [SerializeField] private GameObject FadeImage ;
+    [SerializeField] private Animator RideauxAnimator ;
+    [SerializeField] private GameObject PreniumSkinCheat ;
 
     [Header ("CustomerPanel")]
     [SerializeField] private RectTransform SkinGroup ;
@@ -114,7 +119,19 @@ public class CharacterCreater : MonoBehaviour
 
     }
     
-    private void Start() {}
+    private void Start() 
+    {
+        StartCoroutine(WaitBeforeOpenningRideaux());
+            FadeImage.GetComponent<Image>().DOFade(0, 1f);
+        DisplayAvatar.InCustom = true ;
+    }
+
+    IEnumerator WaitBeforeOpenningRideaux()
+    {
+        yield return new WaitForSeconds(1f);
+        FadeImage.SetActive(false);        
+        RideauxAnimator.enabled = true ;
+    }
 
     void Update()
     {
@@ -133,17 +150,17 @@ public class CharacterCreater : MonoBehaviour
 
         CheckColorUsed();
 
-        // Anti-Bug
-     /*   if(SkinPanel.sizeDelta.y >= 69.75f && SkinPanel.sizeDelta.y <= 70.25f)
-            ContainerSkinPanel.DOKill();
-        if(HairPanel.sizeDelta.y >= 69.75f && HairPanel.sizeDelta.y <= 70.25f)
-            ContainerHairPanel.DOKill();
-        if(BodyPanel.sizeDelta.y >= 69.75f && BodyPanel.sizeDelta.y <= 70.25f)
-            ContainerBodyPanel.DOKill();
-        if(BottomPanel.sizeDelta.y >= 69.75f && BottomPanel.sizeDelta.y <= 70.25f)
-            ContainerBottomPanel.DOKill();
-        if(ShoePanel.sizeDelta.y >= 69.75f && ShoePanel.sizeDelta.y <= 70.25f)
-            ContainerShoePanel.DOKill();*/
+
+
+        // SUbmit Disable Without Name
+        if(DisplayAvatar.NameAvatar == "")
+        {
+            SubmitButton.interactable =false ;
+        }
+        if(DisplayAvatar.NameAvatar != "")
+        {
+            SubmitButton.interactable = true ;
+        }
     }
 
     
@@ -180,10 +197,10 @@ public class CharacterCreater : MonoBehaviour
         {
             if(SkinPanel.sizeDelta.y > 70f)
             {
-                ChangeTitleCategories(0);   
+                ChangeTitleCategories(0, "");   
                 InterractSkinButton(0);
             } else {
-                ChangeTitleCategories(1);   
+                ChangeTitleCategories(1, "");   
                 SkinPanel.DOSizeDelta(new Vector2(PanelWidth, SkinPanelHeight), PanelAnimationSpeed);
                 FondContainerSkinPanel.DOSizeDelta(new Vector2(144f,SkinPanelFondHeight), PanelAnimationSpeed);
                 SkinGroup.DOSizeDelta(new Vector2(SkinGroup.sizeDelta.x, OpenSkinGroupHeight), PanelAnimationSpeed).OnComplete(() => {SkinGroup.transform.SetSiblingIndex(5); });
@@ -211,10 +228,10 @@ public class CharacterCreater : MonoBehaviour
         {
             if(HairPanel.sizeDelta.y > 70)
             {
-                ChangeTitleCategories(0);   
+                ChangeTitleCategories(0, "");   
                 InterractHairButton(0);
             } else {
-                ChangeTitleCategories(2);   
+                ChangeTitleCategories(2, "");   
                 HairPanel.DOSizeDelta(new Vector2(PanelWidth, ChoicePanelHeight), PanelAnimationSpeed);
                 FondContainerHairPanel.DOSizeDelta(new Vector2(144f, ChoicePanelFondHeight), PanelAnimationSpeed);
                 HairGroup.DOSizeDelta(new Vector2(HairGroup.sizeDelta.x, OpenChoiceGroupHeight), PanelAnimationSpeed).OnComplete(() => {HairGroup.transform.SetSiblingIndex(5); });
@@ -243,10 +260,10 @@ public class CharacterCreater : MonoBehaviour
         {
             if(BodyPanel.sizeDelta.y > 70)
             {
-                ChangeTitleCategories(0);   
+                ChangeTitleCategories(0, "");   
                 InterractBodyButton(0);
             } else {
-                ChangeTitleCategories(3);   
+                ChangeTitleCategories(3, "");   
                 BodyPanel.DOSizeDelta(new Vector2(PanelWidth, ChoicePanelHeight),PanelAnimationSpeed);
                 FondContainerBodyPanel.DOSizeDelta(new Vector2(144f, ChoicePanelFondHeight), PanelAnimationSpeed); 
                 BodyGroup.DOSizeDelta(new Vector2(BodyGroup.sizeDelta.x, OpenChoiceGroupHeight), PanelAnimationSpeed).OnComplete(() => {BodyGroup.transform.SetSiblingIndex(5); });
@@ -275,10 +292,10 @@ public class CharacterCreater : MonoBehaviour
         {
             if(BottomPanel.sizeDelta.y > 70)
             {
-                ChangeTitleCategories(0);   
+                ChangeTitleCategories(0, "");   
                 InterractBottomButton(0);
             } else {
-                ChangeTitleCategories(4);   
+                ChangeTitleCategories(4, "");   
                 BottomPanel.DOSizeDelta(new Vector2(PanelWidth, ChoicePanelHeight), PanelAnimationSpeed);
                 FondContainerBottomPanel.DOSizeDelta(new Vector2(144f, ChoicePanelFondHeight), PanelAnimationSpeed); 
                 BottomGroup.DOSizeDelta(new Vector2(BottomGroup.sizeDelta.x, OpenChoiceGroupHeight), PanelAnimationSpeed).OnComplete(() => {BottomGroup.transform.SetSiblingIndex(5); });
@@ -307,10 +324,10 @@ public class CharacterCreater : MonoBehaviour
         {
             if(ShoePanel.sizeDelta.y > 70)
             {
-                ChangeTitleCategories(0);                
+                ChangeTitleCategories(0, "");                
                 InterractShoeButton(0);
             } else {
-                ChangeTitleCategories(5);   
+                ChangeTitleCategories(5, "");   
                 ShoePanel.DOSizeDelta(new Vector2(PanelWidth, ChoicePanelHeight), PanelAnimationSpeed);
                 FondContainerShoePanel.DOSizeDelta(new Vector2(144f, ChoicePanelFondHeight), PanelAnimationSpeed); 
                 ShoeGroup.DOSizeDelta(new Vector2(ShoeGroup.sizeDelta.x, OpenChoiceGroupHeight), PanelAnimationSpeed).OnComplete(() => {ShoeGroup.transform.SetSiblingIndex(5); });
@@ -324,22 +341,27 @@ public class CharacterCreater : MonoBehaviour
             InterractBottomButton(0);
         }
     }
-    void ChangeTitleCategories(int NextCat)
+    public void ChangeTitleCategories(int NextCat, string NameCat7)
     {
         TitleCategories.GetComponent<RectTransform>().DOScaleY(0, PanelAnimationSpeed/4)
             .OnComplete(() => {
                 if(NextCat == 0)
-                    {TitleCategories.text = "" ;}
+                    {TitleCategories.text = "Choissisez une section" ;}
                 if(NextCat == 1)
                     {TitleCategories.text = "Couleur de peau" ;}
                 if(NextCat == 2)
                     {TitleCategories.text = "Cheveux" ;}
                 if(NextCat == 3)
-                    {TitleCategories.text = "Tee-Shirts" ;}
+                    {TitleCategories.text = "Hauts" ;}
                 if(NextCat == 4)
-                    {TitleCategories.text = "Pantalons" ;}
+                    {TitleCategories.text = "Bas" ;}
                 if(NextCat == 5)
                     {TitleCategories.text = "Chaussures" ;}
+                if(NextCat == 6)
+                    {TitleCategories.text = "Aurevoir" ;}
+
+                if(NextCat == 7)
+                    {TitleCategories.text = "Bienvenue " + NameCat7 ;}
 
                 TitleCategories.GetComponent<RectTransform>().DOScaleY(0.75f, PanelAnimationSpeed/4);
             });
@@ -401,12 +423,14 @@ public class CharacterCreater : MonoBehaviour
         CurrentHairChoiceDisplay ++ ;
         if(CurrentHairChoiceDisplay >= HairChoice.Count)
         CurrentHairChoiceDisplay = 0 ;
+        DisplayAvatar.SkinModify();
     }
     public void PreviousHair()
     {
         CurrentHairChoiceDisplay -- ;
         if(CurrentHairChoiceDisplay < 0)
         CurrentHairChoiceDisplay = HairChoice.Count - 1 ;
+        DisplayAvatar.SkinModify();
     }
 
 
@@ -440,12 +464,14 @@ public class CharacterCreater : MonoBehaviour
         CurrentBodyChoiceDisplay ++ ;
         if(CurrentBodyChoiceDisplay >= BodyChoice.Count)
         CurrentBodyChoiceDisplay = 0 ;
+        DisplayAvatar.SkinModify();
     }
     public void PreviousBody()
     {
         CurrentBodyChoiceDisplay -- ;
         if(CurrentBodyChoiceDisplay < 0)
         CurrentBodyChoiceDisplay = BodyChoice.Count - 1 ;
+        DisplayAvatar.SkinModify();
     }
 
 
@@ -479,12 +505,14 @@ public class CharacterCreater : MonoBehaviour
         CurrentBottomChoiceDisplay ++ ;
         if(CurrentBottomChoiceDisplay >= BottomChoice.Count)
         CurrentBottomChoiceDisplay = 0 ;
+        DisplayAvatar.SkinModify();
     }
     public void PreviousBottom()
     {
         CurrentBottomChoiceDisplay -- ;
         if(CurrentBottomChoiceDisplay < 0)
         CurrentBottomChoiceDisplay = BottomChoice.Count - 1 ;
+        DisplayAvatar.SkinModify();
     }
 
 
@@ -518,12 +546,14 @@ public class CharacterCreater : MonoBehaviour
         CurrentShoeChoiceDisplay ++ ;
         if(CurrentShoeChoiceDisplay >= ShoeChoice.Count)
         CurrentShoeChoiceDisplay = 0 ;
+        DisplayAvatar.SkinModify();
     }
     public void PreviousShoe()
     {
         CurrentShoeChoiceDisplay -- ;
         if(CurrentShoeChoiceDisplay < 0)
         CurrentShoeChoiceDisplay = ShoeChoice.Count - 1 ;
+        DisplayAvatar.SkinModify();
     }
 
 
@@ -680,13 +710,17 @@ public class CharacterCreater : MonoBehaviour
 
 
         CheckColorUsed();
+        DisplayAvatar.SkinModify();
     }
 
     public void SubmitCharacter()
     {
+        CloseAllPanel() ;
+        FadeImage.SetActive(true);
+        ChangeTitleCategories(6, "");
+
         DisplayAvatar.gameObject.name = "Player" ;
         PrefabUtility.SaveAsPrefabAsset(DisplayAvatar.gameObject, "Assets/Final/Prefab/Player.prefab") ;
-        DisplayAvatar.GetComponent<GridDeplacement>().enabled = true ;
         DontDestroyOnLoad(DisplayAvatar.gameObject);
 
         if(PlayerPrefs.GetInt("PlayerCustomerAsBeenVisited") == 0)
@@ -700,7 +734,37 @@ public class CharacterCreater : MonoBehaviour
 
     IEnumerator WaitBeforeChangeScene()
     {
-        yield return new WaitForSeconds(7f);
-        SceneManager.LoadScene("SandBox 1");
+        FadeImage.SetActive(true);
+        RideauxAnimator.SetBool("Quit Custom ?", true) ;
+            yield return new WaitForSeconds(1.75f);
+            FadeImage.GetComponent<Image>().DOFade(1, 1f);
+        yield return new WaitForSeconds(1.75f);
+        DisplayAvatar.InCustom = false ;
+        DisplayAvatar.GetComponent<GridDeplacement>().enabled = true ;
+        SceneManager.LoadScene("Main");
+    }
+
+    public void PreniumCountValidate(string PreniumLog)
+    {
+        StartCoroutine(WaitChangeForPreniumValidation(PreniumLog));
+    }
+
+    IEnumerator WaitChangeForPreniumValidation(string PreniumLog)
+    {
+        SubmitButton.gameObject.SetActive(false);
+        RandomButton.gameObject.SetActive(false);
+        FadeImage.SetActive(true);
+        CloseAllPanel();
+        RideauxAnimator.SetBool("Quit Custom ?", true) ;
+        yield return new WaitForSeconds(2.25f);
+        PreniumSkinCheat.SetActive(true);
+        yield return new WaitForSeconds(0.25f);
+        RideauxAnimator.SetBool("Quit Custom ?", false) ;
+        ChangeTitleCategories(7, PreniumLog);       
+        yield return new WaitForSeconds(2f); 
+        RideauxAnimator.SetBool("Quit Custom ?", true) ;
+        yield return new WaitForSeconds(1.75f);
+        FadeImage.GetComponent<Image>().DOFade(1, 1f);
+
     }
 }

@@ -29,6 +29,8 @@ public class TextBoxManager : MonoBehaviour {
 
     public bool passText;
 
+    public bool oneDialogue;
+
     // Use this for initialization
     void Start()
     {
@@ -106,7 +108,7 @@ public class TextBoxManager : MonoBehaviour {
     {
         textBox.SetActive(false);
         isActive = false;
-
+        oneDialogue = false;
         player.canMove = true;
 
     }

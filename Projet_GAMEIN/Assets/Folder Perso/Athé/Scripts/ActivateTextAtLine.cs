@@ -16,6 +16,8 @@ public class ActivateTextAtLine : MonoBehaviour {
     public bool requireButtonPress;
     public bool waitForPress;
 
+    
+
 
     public bool destroyWhenActivated;
 	
@@ -35,8 +37,9 @@ public class ActivateTextAtLine : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        if (waitForPress && Input.GetKeyUp(KeyCode.Return))
+        if (waitForPress && Input.GetKeyUp(KeyCode.Return) && !theTextBox.oneDialogue)
         { 
+            theTextBox.oneDialogue = true;
                 int i = 0;
                 foreach (DialogRange dr in dialogR)
 		        {
@@ -64,12 +67,10 @@ public class ActivateTextAtLine : MonoBehaviour {
                 if(currentDialog > nbDialog){
 
                     currentDialog = nbDialog;
-
                 }
             }
 
-        }
-		
+        }	
 
 	}
 

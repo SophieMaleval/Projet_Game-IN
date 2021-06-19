@@ -8,12 +8,14 @@ public class Log
     public string ID ;
     public string IDConnexion ;
     public string PassWord ;
+    public Sprite PreniumSkin ;
 
-    public Log(string NewID, string NewIDConnexion, string NewPassWord)
+    public Log(string NewID, string NewIDConnexion, string NewPassWord, Sprite NewPreniumApparence)
     {
         ID = NewID ;
         IDConnexion = NewIDConnexion ;
         PassWord = NewPassWord ;
+        PreniumSkin = NewPreniumApparence ;
     }  
 }
 
@@ -22,7 +24,10 @@ public class LogInInfo : ScriptableObject
 {
     private List<Log> LogInfo = new List<Log>();    
 
-    [Header ("Log Name")]   
+    [Header ("Log Name")]  
+    // Big Boss
+    private string GMLaurent = "BigBoss_LaurentGame.In" ;
+
     // Dev E-Art
     private string AtGreg = "DevCount_EArt_AthGreg" ;    
     private string Azphalt = "DevCount_EArt_Azphalt" ;
@@ -33,6 +38,9 @@ public class LogInInfo : ScriptableObject
 
 
     [Header ("Log PassWord")]
+    // Big Boss
+    public string GMLaurentPassWord = "LoveMyJob" ;
+
     // Dev E-Art
     private string AtGregPassWord = "xX-GB_576284-Xx" ;
     private string AzphaltPassWord = "xX-CM_269001-Xx" ;
@@ -42,15 +50,33 @@ public class LogInInfo : ScriptableObject
     private string NioZebraPassWord = "xX-CM_269001-Xx" ;
 
 
+    [Header ("Apparence")]
+    // Big Boss
+    public Sprite GMLaurentSkin ;
+
+    [Space]
+
+    // Dev E-Art
+    public Sprite AtGregSkin ;
+    public Sprite AzphaltSkin ;
+    public Sprite GmcbinhoSkin ;
+    public Sprite HelyriaSkin ;
+    public Sprite KihouSkin ;
+    public Sprite NioZebraSkin ;
+
+
     public void SetLogList() 
     {
+        // BigBoss
+        LogInfo.Add(new Log("Laurent", GMLaurent, GMLaurentPassWord, GMLaurentSkin));
+
         // Dev E-Art SetUp
-        LogInfo.Add(new Log("AtGreg", AtGreg, AtGregPassWord));
-        LogInfo.Add(new Log("Azphalt", Azphalt, AzphaltPassWord));
-        LogInfo.Add(new Log("Gmcbinho", Gmcbinho, GmcbinhoPassWord));
-        LogInfo.Add(new Log("Helyria", Helyria, HelyriaPassWord));
-        LogInfo.Add(new Log("Kihou", Kihou, KihouPassWord));
-        LogInfo.Add(new Log("NioZebra", NioZebra, NioZebraPassWord));
+        LogInfo.Add(new Log("AtGreg", AtGreg, AtGregPassWord, AtGregSkin));
+        LogInfo.Add(new Log("Azphalt", Azphalt, AzphaltPassWord, AzphaltSkin));
+        LogInfo.Add(new Log("Gmcbinho", Gmcbinho, GmcbinhoPassWord, GmcbinhoSkin));
+        LogInfo.Add(new Log("Helyria", Helyria, HelyriaPassWord, HelyriaSkin));
+        LogInfo.Add(new Log("Kihou", Kihou, KihouPassWord, KihouSkin));
+        LogInfo.Add(new Log("NioZebra", NioZebra, NioZebraPassWord, NioZebraSkin));
 
     }
 
@@ -89,4 +115,32 @@ public class LogInInfo : ScriptableObject
         }
         return null ;
     }
+
+
+    public string GetPreniumID(string NamePlayer)
+    {
+        for (int i = 0; i < LogInfo.Count; i++)
+        {
+            if(LogInfo[i].ID == NamePlayer)
+            {
+                return LogInfo[i].IDConnexion ;
+            }  
+        }
+        return null ;
+    }
+
+
+
+    public Sprite ReturnSKin(string NameEnter)
+    {
+        for (int i = 0; i < LogInfo.Count; i++)
+        {
+            if(LogInfo[i].IDConnexion == NameEnter)
+            {
+                return LogInfo[i].PreniumSkin ;
+            }     
+        }
+        return null ;
+    }
+
 }
