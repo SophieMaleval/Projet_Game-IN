@@ -741,6 +741,7 @@ public class CharacterCreater : MonoBehaviour
         yield return new WaitForSeconds(1.75f);
         DisplayAvatar.InCustom = false ;
         DisplayAvatar.GetComponent<GridDeplacement>().enabled = true ;
+        DisplayAvatar.GetComponent<Radio>().enabled = true;
         SceneManager.LoadScene("Main");
     }
 
