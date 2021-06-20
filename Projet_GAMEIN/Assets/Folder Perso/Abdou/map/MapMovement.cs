@@ -31,7 +31,12 @@ public class MapMovement : MonoBehaviour
 
     private void Move()
     {
-        transform.Translate(x * Time.deltaTime * moveSpeed, y * Time.deltaTime * moveSpeed, 0);
+        if (Mathf.Abs(x) > Mathf.Abs(y))
+        {
+            transform.position = new Vector2(transform.position.x + (x * Time.deltaTime * 5f), transform.position.y + 0);
+        }
+        else
+            transform.position = new Vector2(transform.position.x + 0, transform.position.y + (y * Time.deltaTime * 5f));
     }
 
 

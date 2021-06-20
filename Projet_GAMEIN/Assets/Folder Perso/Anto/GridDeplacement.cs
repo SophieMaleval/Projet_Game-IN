@@ -13,7 +13,7 @@ public class GridDeplacement : MonoBehaviour
 
     Direction CurrentDirection ;
     Vector2 InputPlayer ;
-    private bool CanUseInputPlayer = true;
+    public bool CanUseInputPlayer = true;
     public bool IsMoving = false ;
     Vector3 StartPos ;
     Vector3 Endpos ;

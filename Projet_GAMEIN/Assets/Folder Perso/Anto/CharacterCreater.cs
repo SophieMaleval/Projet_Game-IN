@@ -741,7 +741,10 @@ public class CharacterCreater : MonoBehaviour
         yield return new WaitForSeconds(1.75f);
         DisplayAvatar.InCustom = false ;
         DisplayAvatar.GetComponent<GridDeplacement>().enabled = true ;
-        SceneManager.LoadScene("Main");
+        DisplayAvatar.GetComponent<Radio>().enabled = true;
+            DisplayAvatar.GetComponent<PlayerProvenance>().enabled = true;
+            DisplayAvatar.GetComponent<PlayerProvenance>().SetAllBoolToFalse();     DisplayAvatar.GetComponent<PlayerProvenance>().ProviensCharacterCustomer = true;
+        SceneManager.LoadScene("GAME IN");
     }
 
     public void PreniumCountValidate(string PreniumLog)

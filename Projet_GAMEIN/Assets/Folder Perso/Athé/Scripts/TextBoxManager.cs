@@ -19,7 +19,8 @@ public class TextBoxManager : MonoBehaviour {
 
     public bool stopPlayerMovement;
 
-    public PlayerController player;
+    public GridDeplacement player;
+    public PlayerDisplayer display;
 	public string theVoice;
 	public float speedtalk;
 	
@@ -35,7 +36,8 @@ public class TextBoxManager : MonoBehaviour {
     void Start()
     {
 
-        player = FindObjectOfType<PlayerController>();
+        player = FindObjectOfType<GridDeplacement>();
+        display = FindObjectOfType<PlayerDisplayer>();
 
         if (thetext != null)
         {
@@ -98,7 +100,8 @@ public class TextBoxManager : MonoBehaviour {
 
         if (stopPlayerMovement)
         {
-            player.canMove = false;
+            player.enabled = false;
+            display.InCustom = true;
         }
 
     }
@@ -109,7 +112,8 @@ public class TextBoxManager : MonoBehaviour {
         textBox.SetActive(false);
         isActive = false;
         oneDialogue = false;
-        player.canMove = true;
+        player.enabled = true;
+        display.InCustom = false;
 
     }
 
