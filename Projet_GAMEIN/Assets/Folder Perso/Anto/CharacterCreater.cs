@@ -742,7 +742,9 @@ public class CharacterCreater : MonoBehaviour
         DisplayAvatar.InCustom = false ;
         DisplayAvatar.GetComponent<GridDeplacement>().enabled = true ;
         DisplayAvatar.GetComponent<Radio>().enabled = true;
-        SceneManager.LoadScene("Main");
+            DisplayAvatar.GetComponent<PlayerProvenance>().enabled = true;
+            DisplayAvatar.GetComponent<PlayerProvenance>().SetAllBoolToFalse();     DisplayAvatar.GetComponent<PlayerProvenance>().ProviensCharacterCustomer = true;
+        SceneManager.LoadScene("GAME IN");
     }
 
     public void PreniumCountValidate(string PreniumLog)
