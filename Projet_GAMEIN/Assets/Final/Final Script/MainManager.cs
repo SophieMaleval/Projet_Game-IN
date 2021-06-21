@@ -10,7 +10,7 @@ public class MainManager : MonoBehaviour
     [SerializeField] private GameObject Player ;
     [SerializeField] private Image Fade ;
 
-    private bool PlayerQuitGameIn ;
+    private bool ZoomMax = true ;
 
 
     
@@ -49,16 +49,55 @@ public class MainManager : MonoBehaviour
 
     private void Update() 
     {
-        if(PlayerQuitGameIn == false)
+        // Zoom
+        /* Zoom Game In */
+        if((Player.transform.position.x > -35f && Player.transform.position.x < 58f) && (Player.transform.position.y > -33.5f && Player.transform.position.y < 25.5f) && ZoomMax == true)
         {
-            PlayerQuitGameIn = true ;
-            //StartCoroutine(FadeAnimtion(true, "Main"));
+            ZoomMax = false ;
+            Zooming(false);
         }
+        /* Zoom Ville */
+        if((Player.transform.position.x > -65f && Player.transform.position.x < 47.5f) && (Player.transform.position.y > 67.5f && Player.transform.position.y < 170f) && ZoomMax == true)
+        {
+            ZoomMax = false ;
+            Zooming(false);
+        }
+        /* Zoom AQ */
+        if((Player.transform.position.x > 147.5f && Player.transform.position.x < 210f) && (Player.transform.position.y > 140f && Player.transform.position.y < 197.5f) && ZoomMax == true)
+        {
+            ZoomMax = false ;
+            Zooming(false);
+        }
+        /* Zoom CGC */
+        if((Player.transform.position.x > -20.5f && Player.transform.position.x < 51f) && (Player.transform.position.y > 250f && Player.transform.position.y < 280f) && ZoomMax == true)
+        {
+            ZoomMax = false ;
+            Zooming(false);
+        }
+        /* Zoom BPF */
+        if((Player.transform.position.x > -200f && Player.transform.position.x < -137.75f) && (Player.transform.position.y > 307.5f && Player.transform.position.y < 272.5f) && ZoomMax == true)
+        {
+            ZoomMax = false ;
+            Zooming(false);
+        } 
+        
+        else {
+            ZoomMax = true ;
+            Zooming(true);
+        }
+
+
+
     }
 
 
 
 
+
+    public void GoToNewScene(string NameScene)
+    {
+        StartCoroutine(FadeAnimtion(true, NameScene));
+    }
 
     IEnumerator FadeAnimtion(bool QuitScene, string NextScene)
     {
@@ -74,6 +113,23 @@ public class MainManager : MonoBehaviour
             yield return new WaitForSeconds(1.5f);
             Player.GetComponent<PlayerProvenance>().SetAllBoolToFalse() ;             Player.GetComponent<PlayerProvenance>().ProviensGameIn = true ; 
             SceneManager.LoadScene(NextScene) ;
+        }
+    }
+
+
+    void Zooming(bool Zoom)
+    {
+        float ZoomMax = 7.5f ;
+        float ZoomMin = 15f ;
+
+        if(Zoom == true)
+        {
+            DOTween.To(x => Camera.main.fieldOfView = x, Camera.main.fieldOfView, ZoomMax, 2.5f);
+        }
+
+        if(Zoom == false)
+        {
+            DOTween.To(x => Camera.main.fieldOfView = x, Camera.main.fieldOfView, ZoomMin, 2.5f);
         }
     }
 }
