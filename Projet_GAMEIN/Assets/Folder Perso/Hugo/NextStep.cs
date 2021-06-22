@@ -6,28 +6,24 @@ public class NextStep : MonoBehaviour
 {
     QuestSystem qS;
     public int NewStepInt;
-    GameObject thisG;
+    public GameObject thisG;
+    public GameObject player;
  
 
     void Start() 
     {
-        qS = GameObject.Find("Player").GetComponent<QuestSystem>();
-        thisG = this.gameObject;
+        qS = player.GetComponent<QuestSystem>();
     }
     void OnTriggerEnter2D(Collider2D other) 
     {
         if(other.tag == "Player")
         {
-            /*if(qS.stepCount == NewStepInt -1)
+            Debug.Log("Etape actuelle = " + qS.stepCount + " Etape Suivante = " + thisG.GetComponent<NextStep>().NewStepInt);
+            if(qS.stepCount == thisG.GetComponent<NextStep>().NewStepInt -1)
             {
+                Debug.Log("+1");
                 qS.stepCount = NewStepInt;
-            }*/
-            if(qS.stepCount < thisG.GetComponent<NextStep>().NewStepInt)
-            {
-                Debug.Log("marche et ajoute 1");
-                qS.stepCount ++;
-            } else { Debug.Log(thisG.GetComponent<NextStep>().NewStepInt);}
-            
+            }
         }
     }
 }

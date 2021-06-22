@@ -16,7 +16,7 @@ public class MainManager : MonoBehaviour
     
     void Start()
     {
-        Player = GameObject.Find("Player");
+        //Player = GameObject.Find("Godboi");
         SetPositionOnLoadScene();
         StartCoroutine(FadeAnimtion(false, ""));
     }

@@ -120,6 +120,8 @@ GameObject:
   - component: {fileID: 7500512554516687290}
   - component: {fileID: 7500512554116887087}
   - component: {fileID: 396705211524299409}
+  - component: {fileID: 2955695127717529097}
+  - component: {fileID: 3483672145455366876}
   m_Layer: 0
   m_Name: GodBoi
   m_TagString: Player
@@ -215,6 +217,7 @@ MonoBehaviour:
   DroiteSprites: {fileID: 396705211545509204}
   FaceSprites: {fileID: 396705210527827750}
   GaucheSprites: {fileID: 396705210738940387}
+  CanUseInputPlayer: 1
   IsMoving: 0
   WalkSpeed: 12
   CameraFollowPlayer: 1
@@ -300,6 +303,33 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.7064724, y: 0.61290336}
   m_EdgeRadius: 0
+--- !u!114 &2955695127717529097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 396705211524299420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ce3ad212b48b3149bc803c6aadc996b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questStep: []
+--- !u!114 &3483672145455366876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 396705211524299420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e16113ad63f3ab947b15a49d4e69c4a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textQuest: {fileID: 0}
+  stepCount: 0
 --- !u!1 &396705211545509204
 GameObject:
   m_ObjectHideFlags: 0
