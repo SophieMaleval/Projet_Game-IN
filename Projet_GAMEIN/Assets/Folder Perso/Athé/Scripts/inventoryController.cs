@@ -13,12 +13,13 @@ public class inventoryController : MonoBehaviour
     public Sprite collectedSprite;
     public GameObject Inventory;
 
+ 
+
     public bool spriteIsActivated;
     
     // Start is called before the first frame update
     void Start()
     {
-        
     }
     
 
@@ -81,7 +82,21 @@ public class inventoryController : MonoBehaviour
             Slots[slot].transform.GetChild (2).gameObject.SetActive(true);
             Slots[slot].transform.GetChild (2).gameObject.transform.GetChild (0).gameObject.GetComponent<Text>().text = "c'est pas une poire, c'est une pomme.";
         }
-    }
+         if(Slots[slot].transform.GetChild (0).GetComponent<Image>().sprite.name == "telephone"){
+            Slots[slot].transform.GetChild (2).gameObject.SetActive(true);
+            Slots[slot].transform.GetChild (2).gameObject.transform.GetChild (0).gameObject.GetComponent<Text>().text = "Ah, ça doit appartenir à quelqu'un...";
+        
+        }
+           if(Slots[slot].transform.GetChild (0).GetComponent<Image>().sprite.name == "radioaq"){
+            Slots[slot].transform.GetChild (2).gameObject.SetActive(true);
+            Slots[slot].transform.GetChild (2).gameObject.transform.GetChild (0).gameObject.GetComponent<Text>().text = "elle n'a pas l'air fonctionelle...";
+       }
+
+        if(Slots[slot].transform.GetChild (0).GetComponent<Image>().sprite.name == "banderoles"){
+            Slots[slot].transform.GetChild (2).gameObject.SetActive(true);
+            Slots[slot].transform.GetChild (2).gameObject.transform.GetChild (0).gameObject.GetComponent<Text>().text = "sisi ça tue";
+       }
+   }
 
     public void PopUpClear()
     {
@@ -95,3 +110,4 @@ public class inventoryController : MonoBehaviour
     }
 
 }
+

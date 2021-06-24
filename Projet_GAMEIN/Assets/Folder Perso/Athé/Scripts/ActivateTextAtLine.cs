@@ -4,7 +4,12 @@ using UnityEngine;
 
 public class ActivateTextAtLine : MonoBehaviour {
 
+    private inventoryController IM;
+
+
     public TextAsset theText;
+    public GameObject bandero;
+    public GameObject hifi;
 
     private int startLine;
     private int endLine;
@@ -24,12 +29,15 @@ public class ActivateTextAtLine : MonoBehaviour {
 	public bool txtactif;
 
     public int nbDialog, currentDialog;
+    QuestSystem qS;
 
 	
 	
 	
 	// Use this for initialization
 	void Start () {
+
+        qS = GameObject.FindGameObjectWithTag("Player").GetComponent<QuestSystem>();
         theTextBox = FindObjectOfType<TextBoxManager>();
         currentDialog = 1;	
 	}
@@ -39,6 +47,18 @@ public class ActivateTextAtLine : MonoBehaviour {
 
         if (waitForPress && Input.GetKeyUp(KeyCode.Return) && !theTextBox.oneDialogue)
         { 
+            if(this.gameObject.name == "triggerDialogDeco")
+            {
+                bandero.SetActive(true);
+            }
+            if(this.gameObject.name == "triggerdulaboss" && qS.stepCount == 13)
+            {
+                qS.stepCount = 14;
+            }
+            if(this.gameObject.name == "triggeralain" && qS.stepCount == 16)
+            {
+                hifi.SetActive(true);
+            }
             theTextBox.oneDialogue = true;
                 int i = 0;
                 foreach (DialogRange dr in dialogR)
@@ -81,8 +101,16 @@ public class ActivateTextAtLine : MonoBehaviour {
 
             if (requireButtonPress)
             {
+
+
+              
                 waitForPress = true;
+
+                
+    
                 return;
+
+                
             }
 
             theTextBox.ReloadScript(theText);
@@ -92,8 +120,15 @@ public class ActivateTextAtLine : MonoBehaviour {
 
             if (destroyWhenActivated)
             {
+                  if(this.gameObject.name == "triggerDialogDeco"){
+                    bandero.SetActive(true);
+
+
+                }
                 Destroy(gameObject);
             }
+
+
         }
     }
 
