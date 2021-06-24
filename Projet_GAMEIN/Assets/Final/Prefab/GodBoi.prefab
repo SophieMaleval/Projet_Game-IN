@@ -233,7 +233,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17b0affe385afe14880b9ce285f41dcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  questOn: 0
+  questOn: 1
   radioText: {fileID: 0}
   notesA: {fileID: 5673980756304955493}
   notesB: {fileID: 5673980756297722417}
@@ -264,7 +264,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 396705211524299420}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -290,7 +290,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.07824612, y: -1.169223}
+  m_Offset: {x: 0.012908936, y: -0.8917084}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -301,7 +301,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.7064724, y: 0.61290336}
+  m_Size: {x: 1.9388428, y: 1.6325989}
   m_EdgeRadius: 0
 --- !u!114 &2955695127717529097
 MonoBehaviour:
@@ -315,7 +315,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ce3ad212b48b3149bc803c6aadc996b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  questStep: []
+  questStep:
+  - "Parler \xE0 Laurent"
+  - Aller voir ce qu'il se passe devant E art Sup
+  - Rentrer dans E art, visiter
+  - "R\xE9cuperer le t\xE9l\xE9phone qui sonne"
+  - "D\xE9verouiller le t\xE9l\xE9phone pour identifier le propri\xE9taire"
+  - "Trouver le directeur de l'\xE9cole qui pourrait vous aider \xE0 trouver la propri\xE9taire
+    du t\xE9l\xE9phone"
+  - Trouver AQ
+  - "Retrouver Myriam pr\xE8s de la serre"
+  - "R\xE9cup\xE9rer sa radio dans AQ et trouver un moyen de la r\xE9parer, les crafters
+    pourraient vous aider"
+  - "Parler \xE0 Alex, le forgeron"
+  - "Trouver BPF gr\xE2ce \xE0 la musique, au nord ouest"
+  - "Parler au g\xE9rant de BPF"
+  - "Trouver des d\xE9corations pour la f\xEAte (\xE9tudiant d'e art)"
+  - "Trouver une salle, aller \xE0 Ordir\xE9tro"
+  - "Trouver le g\xE9rant dans les locaux et lui demander l'acc\xE8s aux locaux"
+  - "Retourner \xE0 BPF pour dire que vous avez les d\xE9corations et la salle"
+  - "Trouver  Nacon afin de r\xE9cup\xE9rer du mat\xE9riel"
+  - "Trouver un vendeur de chez Nacon en faisant par de la f\xEAte qui se pr\xE9pare
+    et r\xE9cup\xE9rer le mat\xE9riel"
+  - "Retourner \xE0 BPF pour dire que tout est pr\xEAt (le boss vous dit qu'il s'occupe
+    d'envoyer des mails \xE0 tout ses contacts)"
+  - "Reparler au g\xE9rant"
+  - "Retourner \xE0 Ordir\xE9tro pour assister \xE0 la f\xEAte"
+  - "Profiter de la f\xEAte"
 --- !u!114 &3483672145455366876
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10317,7 +10343,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5673980756329962263}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 50.1, y: 0.02, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children:
   - {fileID: 5673980757803559373}
