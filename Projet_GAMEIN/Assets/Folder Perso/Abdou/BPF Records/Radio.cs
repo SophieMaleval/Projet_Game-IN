@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class Radio : MonoBehaviour
 {
-    [SerializeField]
-    private bool questOn = false;
+    public bool questOn = false;
 
     bool activated = false;
     bool vPressed = false;
@@ -40,11 +40,24 @@ public class Radio : MonoBehaviour
     private GameObject riffObj;
     private GameObject subbObj;
 
+    private Scene currentScene;
+    private string sceneName;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(RecupObj());
+        /*Scene currentScene = SceneManager.GetActiveScene();
+        string sceneName = currentScene.name;
+        if (sceneName == "Main")
+        {
+            StartCoroutine(RecupObj());
+        }
+        else
+        {
+            return;
+        }
+        
        /* //finders
         bpfSounds = GameObject.FindGameObjectWithTag("BPF Sounds");
         drumsObj = GameObject.FindGameObjectWithTag("Drums");
@@ -90,6 +103,7 @@ public class Radio : MonoBehaviour
     }
     void Update()
     {
+
       if (questOn == true)
         {
             QuestStart();
@@ -105,7 +119,29 @@ public class Radio : MonoBehaviour
                 RadioOn();
             }
         }
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        bpfSounds = GameObject.FindGameObjectWithTag("BPF Sounds");
+        drumsObj = GameObject.FindGameObjectWithTag("Drums");
+        riffObj = GameObject.FindGameObjectWithTag("Riff");
+        subbObj = GameObject.FindGameObjectWithTag("Subb");
+        // --UI
+        radioText = GameObject.FindGameObjectWithTag("RadioText").GetComponent<TextMeshProUGUI>();
+        //disabler/enabler
+        bpfSounds.SetActive(false);
+        // questEffects.SetActive(false);
+        radioText.enabled = false;
+
+        //sounds
+        drums = drumsObj.GetComponent<AudioSource>();
+        riff = riffObj.GetComponent<AudioSource>();
+        subb = subbObj.GetComponent<AudioSource>();
+    }
+
+
 
     void QuestStart()
     {
