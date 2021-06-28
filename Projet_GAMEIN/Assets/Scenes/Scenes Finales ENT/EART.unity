@@ -748,7 +748,6 @@ MonoBehaviour:
   collectedObject: {fileID: 0}
   collectedSprite: {fileID: 0}
   Inventory: {fileID: 2011081605}
-  Questep: {fileID: 0}
   spriteIsActivated: 0
 --- !u!4 &182906595
 Transform:
@@ -2973,6 +2972,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GodBoi
       objectReference: {fileID: 0}
+    - target: {fileID: 396705211524299420, guid: de9b8e31f379a5d4889bab057ea24a77, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 396705211524299421, guid: de9b8e31f379a5d4889bab057ea24a77, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -4002,6 +4005,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   theText: {fileID: 4900000, guid: e1c0a074c98ac5248bd5bdab66b87259, type: 3}
+  bandero: {fileID: 0}
+  hifi: {fileID: 0}
   dialogR:
   - SLine: 27
     ELine: 28
@@ -5060,8 +5065,8 @@ Camera:
   m_GameObject: {fileID: 1540027135}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -5082,7 +5087,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 311
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -5643,7 +5648,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1973261491
 RectTransform:
   m_ObjectHideFlags: 0
