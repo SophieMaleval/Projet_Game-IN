@@ -32,6 +32,7 @@ public class Radio : MonoBehaviour
     public AudioSource subb;
     public AudioSource radioSwitchOn;
     public AudioSource radioSwitchOff;
+    public AudioSource melody;
 
     private GameObject bpfSounds;
     private GameObject questEffects;
@@ -39,6 +40,7 @@ public class Radio : MonoBehaviour
     private GameObject drumsObj;
     private GameObject riffObj;
     private GameObject subbObj;
+    private GameObject bkgMusic;
 
     private Scene currentScene;
     private string sceneName;
@@ -107,7 +109,8 @@ public class Radio : MonoBehaviour
       if (questOn == true)
         {
             QuestStart();
-            bpfSounds.SetActive(true);
+            bkgMusic.SetActive(false);
+            melody.mute = true;
             //questEffects.SetActive(true);
             //text.enabled = true;
             if (Input.GetKeyDown(KeyCode.V))
@@ -119,6 +122,10 @@ public class Radio : MonoBehaviour
                 RadioOn();
             }
         }
+      else
+        {
+            melody.mute = false;
+        }
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
@@ -128,6 +135,7 @@ public class Radio : MonoBehaviour
         drumsObj = GameObject.FindGameObjectWithTag("Drums");
         riffObj = GameObject.FindGameObjectWithTag("Riff");
         subbObj = GameObject.FindGameObjectWithTag("Subb");
+        bkgMusic = GameObject.FindGameObjectWithTag("Melody");
         // --UI
         radioText = GameObject.FindGameObjectWithTag("RadioText").GetComponent<TextMeshProUGUI>();
         //disabler/enabler
@@ -139,6 +147,7 @@ public class Radio : MonoBehaviour
         drums = drumsObj.GetComponent<AudioSource>();
         riff = riffObj.GetComponent<AudioSource>();
         subb = subbObj.GetComponent<AudioSource>();
+        melody = bkgMusic.GetComponent<AudioSource>();
     }
 
 
