@@ -12,12 +12,16 @@ public class EArtManager : MonoBehaviour
 
     private bool PlayerQuitOrdiRetro ;
 
-
+    QuestSystem qs;
     
     void Start()
+
     {
         Player = GameObject.Find("Player");
+        qs = Player.GetComponent<QuestSystem>();
+        qs.findtestQuest();
         SetPositionOnLoadScene();
+        
         StartCoroutine(FadeAnimtion(false));
     }
 

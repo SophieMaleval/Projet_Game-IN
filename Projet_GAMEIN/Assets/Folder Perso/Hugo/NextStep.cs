@@ -7,11 +7,12 @@ public class NextStep : MonoBehaviour
     QuestSystem qS;
     public int NewStepInt;
     public GameObject thisG;
-    public GameObject player;
+    GameObject player;
  
 
     void Start() 
     {
+        player = GameObject.Find("Player");
         qS = player.GetComponent<QuestSystem>();
     }
     void OnTriggerEnter2D(Collider2D other) 

@@ -12,11 +12,18 @@ public class OrdiRetroManager : MonoBehaviour
 
     private bool PlayerQuitOrdiRetro ;
 
-
+    QuestSystem qs;
     
     void Start()
     {
         Player = GameObject.Find("Player");
+        qs = Player.GetComponent<QuestSystem>();
+        qs.findtestQuest();
+        qs.findLesGens();
+        /*if(qs.stepCount >= 17)
+        {
+            qs.findLesGens();
+        }*/
         SetPositionOnLoadScene();
         StartCoroutine(FadeAnimtion(false));
     }

@@ -34,11 +34,11 @@ public class GridDeplacement : MonoBehaviour
 
             if(Mathf.Abs(InputPlayer.x) > Mathf.Abs(InputPlayer.y))
             {
-                    transform.position = new Vector2(transform.position.x + (InputPlayer.x * Time.deltaTime * 5f), transform.position.y + 0) ;
+                    transform.position = new Vector2(transform.position.x + (InputPlayer.x * Time.deltaTime * 15f), transform.position.y + 0) ;
                 /* InputPlayer.y = 0 ; */               
             } else
                 /* InputPlayer.x = 0; */
-                    transform.position = new Vector2(transform.position.x + 0, transform.position.y + (InputPlayer.y * Time.deltaTime * 5f)) ;
+                    transform.position = new Vector2(transform.position.x + 0, transform.position.y + (InputPlayer.y * Time.deltaTime * 15f)) ;
             if(InputPlayer.x != 0 || InputPlayer.y != 0)
             {   IsMoving = true ;   }
             if(InputPlayer.x == 0 && InputPlayer.y == 0)

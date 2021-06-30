@@ -16,11 +16,13 @@ public class AccidentalQueensManager : MonoBehaviour
     private bool PlayerQuitAccidental ;
     private bool PlayerIsInTop ;
 
-
+    QuestSystem qs;
     
     void Start()
     {
         Player = GameObject.Find("Player");
+        qs = Player.GetComponent<QuestSystem>();
+        qs.findtestQuest();
         SetPositionOnLoadScene();
         StartCoroutine(FadeAnimtion(false));
     }

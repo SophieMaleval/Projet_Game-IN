@@ -15,11 +15,15 @@ public class CouchGameCrafterManager : MonoBehaviour
     [SerializeField] private GameObject EtageHaut ;
     [SerializeField] private GameObject EtageBas ;
 
+    QuestSystem qs;
+
 
     
     void Start()
     {
         Player = GameObject.Find("Player");
+        qs = Player.GetComponent<QuestSystem>();
+        qs.findtestQuest();
         SetPositionOnLoadScene();
         StartCoroutine(FadeAnimtion(false));
     }

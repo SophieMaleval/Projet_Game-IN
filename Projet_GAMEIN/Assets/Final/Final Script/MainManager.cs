@@ -12,11 +12,17 @@ public class MainManager : MonoBehaviour
 
     private bool ZoomMax = true ;
 
+    QuestSystem qs;
+    Radio radio;
 
     
     void Start()
     {
         Player = GameObject.Find("Player");
+        qs = Player.GetComponent<QuestSystem>();
+        radio = Player.GetComponent<Radio>();
+        radio.GetTutoRadio();
+        qs.findtestQuest();
         SetPositionOnLoadScene();
         StartCoroutine(FadeAnimtion(false, ""));
     }

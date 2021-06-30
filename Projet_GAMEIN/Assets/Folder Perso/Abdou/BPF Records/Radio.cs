@@ -36,7 +36,7 @@ public class Radio : MonoBehaviour
 
     private GameObject bpfSounds;
     private GameObject questEffects;
-    //private GameObject radioText;
+    public GameObject tutoRadio;
     private GameObject drumsObj;
     private GameObject riffObj;
     private GameObject subbObj;
@@ -44,129 +44,137 @@ public class Radio : MonoBehaviour
 
     private Scene currentScene;
     private string sceneName;
+    private bool seekComponents = false;
+    private bool initialized = false;
+
 
 
     // Start is called before the first frame update
-    void Start()
+    void OnEnable()
     {
-        /*Scene currentScene = SceneManager.GetActiveScene();
-        string sceneName = currentScene.name;
-        if (sceneName == "Main")
-        {
-            StartCoroutine(RecupObj());
-        }
-        else
-        {
-            return;
-        }
-        
-       /* //finders
-        bpfSounds = GameObject.FindGameObjectWithTag("BPF Sounds");
-        drumsObj = GameObject.FindGameObjectWithTag("Drums");
-        riffObj = GameObject.FindGameObjectWithTag("Riff");
-        subbObj = GameObject.FindGameObjectWithTag("Subb");
-
-        //questEffects = GameObject.FindGameObjectWithTag("QuestEffects");
-
-        // --UI
-        radioText = GameObject.FindGameObjectWithTag("RadioText").GetComponent<TextMeshProUGUI>();
-
-        //disabler/enabler
-        bpfSounds.SetActive(false);
-       // questEffects.SetActive(false);
-        radioText.enabled = false;
-
-        //sounds
-        drums = drumsObj.GetComponent<AudioSource>();
-        riff = riffObj.GetComponent<AudioSource>();
-        subb = subbObj.GetComponent<AudioSource>();*/
-    }
-
-    IEnumerator RecupObj()
-    {
-        yield return new WaitForSeconds(3f);
-        //finders
-        bpfSounds = GameObject.FindGameObjectWithTag("BPF Sounds");
-        drumsObj = GameObject.FindGameObjectWithTag("Drums");
-        riffObj = GameObject.FindGameObjectWithTag("Riff");
-        subbObj = GameObject.FindGameObjectWithTag("Subb");
-        // --UI
-        radioText = GameObject.FindGameObjectWithTag("RadioText").GetComponent<TextMeshProUGUI>();
-        //disabler/enabler
-        bpfSounds.SetActive(false);
-        // questEffects.SetActive(false);
-        radioText.enabled = false;
-
-        //sounds
-        drums = drumsObj.GetComponent<AudioSource>();
-        riff = riffObj.GetComponent<AudioSource>();
-        subb = subbObj.GetComponent<AudioSource>();
-
-    }
-    void Update()
-    {
-
-      if (questOn == true)
-        {
-            QuestStart();
-            bkgMusic.SetActive(false);
-            melody.mute = true;
-            //questEffects.SetActive(true);
-            //text.enabled = true;
-            if (Input.GetKeyDown(KeyCode.V))
-            {
-                vPressed = true;
-                activated = !activated;
-                //text.enabled = false;
-                SwitchSound();
-                RadioOn();
-            }
-        }
-      else
-        {
-            melody.mute = false;
-        }
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
-    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    void OnDisable()
     {
-        bpfSounds = GameObject.FindGameObjectWithTag("BPF Sounds");
-        drumsObj = GameObject.FindGameObjectWithTag("Drums");
-        riffObj = GameObject.FindGameObjectWithTag("Riff");
-        subbObj = GameObject.FindGameObjectWithTag("Subb");
-        bkgMusic = GameObject.FindGameObjectWithTag("Melody");
-        // --UI
-        radioText = GameObject.FindGameObjectWithTag("RadioText").GetComponent<TextMeshProUGUI>();
-        //disabler/enabler
-        bpfSounds.SetActive(false);
-        // questEffects.SetActive(false);
-        radioText.enabled = false;
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
 
-        //sounds
-        drums = drumsObj.GetComponent<AudioSource>();
-        riff = riffObj.GetComponent<AudioSource>();
-        subb = subbObj.GetComponent<AudioSource>();
-        melody = bkgMusic.GetComponent<AudioSource>();
+    private void OnSceneLoaded(Scene currentScene, LoadSceneMode mode)
+    {
+        if(currentScene.name == "Main")
+        {
+            bpfSounds = GameObject.FindGameObjectWithTag("BPF Sounds");
+            drumsObj = GameObject.FindGameObjectWithTag("Drums");
+            riffObj = GameObject.FindGameObjectWithTag("Riff");
+            subbObj = GameObject.FindGameObjectWithTag("Subb");
+            bkgMusic = GameObject.FindGameObjectWithTag("Melody");
+            tutoRadio = GameObject.Find("TextRadio");
+            // --UI
+            //radioText = GameObject.FindGameObjectWithTag("RadioText").GetComponent<TextMeshProUGUI>();
+            //disabler/enabler
+
+            // questEffects.SetActive(false);
+            //radioText.enabled = false;
+            //tutoRadio.SetActive(true);
+            bpfSounds.SetActive(true);
+            //sounds
+            drums = drumsObj.GetComponent<AudioSource>();
+            riff = riffObj.GetComponent<AudioSource>();
+            subb = subbObj.GetComponent<AudioSource>();
+            melody = bkgMusic.GetComponent<AudioSource>();
+        }
+            
+    }
+    public void GetTutoRadio()
+    {
+        tutoRadio = GameObject.Find("TextRadio");
+        tutoRadio.SetActive(false);
     }
 
 
-
-    void QuestStart()
+    void GetVariables()
+    {     
+        
+            bpfSounds = GameObject.FindGameObjectWithTag("BPF Sounds");
+            drumsObj = GameObject.FindGameObjectWithTag("Drums");
+            riffObj = GameObject.FindGameObjectWithTag("Riff");
+            subbObj = GameObject.FindGameObjectWithTag("Subb");
+            bkgMusic = GameObject.FindGameObjectWithTag("Melody");
+            tutoRadio = GameObject.Find("TextRadio");
+        // --UI
+        //radioText = GameObject.FindGameObjectWithTag("RadioText").GetComponent<TextMeshProUGUI>();
+            //disabler/enabler
+            
+            // questEffects.SetActive(false);
+            //radioText.enabled = false;
+            //tutoRadio.SetActive(true);
+            bpfSounds.SetActive(true);
+            //sounds
+            drums = drumsObj.GetComponent<AudioSource>();
+            riff = riffObj.GetComponent<AudioSource>();
+            subb = subbObj.GetComponent<AudioSource>();
+            melody = bkgMusic.GetComponent<AudioSource>();        
+              
+    }
+    void Update()
     {
-        if (vPressed == false)
+        currentScene = SceneManager.GetActiveScene();
+        if(currentScene.name == "Main")
         {
-            radioText.enabled = true;
+            if (questOn == true)
+                { 
+                    QuestStart();
+                    bkgMusic.SetActive(false);
+                    melody.mute = true; 
+                    //questEffects.SetActive(true);
+                    //text.enabled = true;
+                    if (Input.GetKeyDown(KeyCode.V))
+                    {
+                        vPressed = true;
+                        activated = !activated;
+                        //text.enabled = false;
+                        SwitchSound();
+                        RadioOn();
+                    }   
+                
+                    
+                    //GetVariables();
+                      
+            }
+               
+            else if (questOn == false)
+               {
+                    bkgMusic.SetActive(true);
+                    melody.mute = false;
+                    activated = false;
+                    RadioOn();
+                    RadioOff();
+               }
         }
-        if (vPressed == true)
-        {
-            radioText.enabled = false;
-        }
+      
+    }
+    void QuestStart()
+        // Text de début de quête, tuto activation de la radio
+    {
+        
+                if (vPressed == false)
+                {
+                    tutoRadio.SetActive(true);
+                }
+                if (vPressed == true)
+                {
+                    tutoRadio.SetActive(false);
+                }
+        
+       
     }
 
     void SwitchSound()
     {
-        radioText.enabled = false;
+
+        //radioText.enabled = false;
+        tutoRadio.SetActive(false);
         if (activated == true)
         {
             radioSwitchOn.Play();
@@ -212,8 +220,8 @@ public class Radio : MonoBehaviour
 
         if (questOn == false)
         {
-            emissionA.rateOverTime = slowA;
-            emissionB.rateOverTime = slowB;
+            emissionA.rateOverTime = 0;
+            emissionB.rateOverTime = 0;
         } 
     }
 }
