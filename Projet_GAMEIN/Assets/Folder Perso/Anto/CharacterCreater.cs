@@ -720,7 +720,7 @@ public class CharacterCreater : MonoBehaviour
         ChangeTitleCategories(6, "");
 
         DisplayAvatar.gameObject.name = "Player" ;
-        //PrefabUtility.SaveAsPrefabAsset(DisplayAvatar.gameObject, "Assets/Final/Prefab/Player.prefab") ;
+        
         DontDestroyOnLoad(DisplayAvatar.gameObject);
 
         if(PlayerPrefs.GetInt("PlayerCustomerAsBeenVisited") == 0)
