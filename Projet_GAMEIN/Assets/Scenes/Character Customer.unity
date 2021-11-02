@@ -13167,6 +13167,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Marker
       objectReference: {fileID: 0}
+    - target: {fileID: 6052378618842677895, guid: 8667c227b840396429d3758a0d51ad07, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6052378618842677895, guid: 8667c227b840396429d3758a0d51ad07, type: 3}
+      propertyPath: InitialModule.startSizeY.scalar
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8667c227b840396429d3758a0d51ad07, type: 3}
 --- !u!4 &1282003368 stripped
@@ -13227,6 +13235,7 @@ GameObject:
   - component: {fileID: 1294358492}
   - component: {fileID: 1294358494}
   - component: {fileID: 1294358493}
+  - component: {fileID: 1294358495}
   m_Layer: 8
   m_Name: Player Custom
   m_TagString: Player
@@ -13453,7 +13462,7 @@ MonoBehaviour:
   - "Trouver le directeur de l'\xE9cole qui pourrait vous aider \xE0 trouver la propri\xE9taire
     du t\xE9l\xE9phone"
   - Trouver AQ
-  - "Retrouver Myriam pr\xE8s de la serre"
+  - "Retrouver Miryam pr\xE8s de la serre"
   - "R\xE9cup\xE9rer sa radio dans AQ et trouver un moyen de la r\xE9parer, les crafters
     pourraient vous aider"
   - "Parler \xE0 Alex, le forgeron"
@@ -13484,6 +13493,18 @@ MonoBehaviour:
   a: {fileID: 0}
   stepCount: 0
   lesGens: {fileID: 0}
+--- !u!114 &1294358495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1294358484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c268fdaf23322145ada5895553f0602, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1323479068
 GameObject:
   m_ObjectHideFlags: 0
