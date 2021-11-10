@@ -112,9 +112,9 @@ public class CharacterCreater : MonoBehaviour
     {
         if(GameObject.Find("Player") != null)
         {
-            GameObject.Find("Player").GetComponent<GridDeplacement>().enabled = false ;     
-            GameObject.Find("Player").GetComponent<PlayerDisplayer>().enabled = false ;     
-            DisplayAvatar.RecupExistSkin(SkinSlider);                
+            //GameObject.Find("Player").GetComponent<GridDeplacement>().enabled = false ;     
+            //GameObject.Find("Player").GetComponent<PlayerDisplayer>().enabled = false ;     
+            //DisplayAvatar.RecupExistSkin(SkinSlider);                
         }
 
     }
@@ -423,14 +423,14 @@ public class CharacterCreater : MonoBehaviour
         CurrentHairChoiceDisplay ++ ;
         if(CurrentHairChoiceDisplay >= HairChoice.Count)
         CurrentHairChoiceDisplay = 0 ;
-        DisplayAvatar.SkinModify();
+        //DisplayAvatar.SkinModify();
     }
     public void PreviousHair()
     {
         CurrentHairChoiceDisplay -- ;
         if(CurrentHairChoiceDisplay < 0)
         CurrentHairChoiceDisplay = HairChoice.Count - 1 ;
-        DisplayAvatar.SkinModify();
+        //DisplayAvatar.SkinModify();
     }
 
 
@@ -464,14 +464,14 @@ public class CharacterCreater : MonoBehaviour
         CurrentBodyChoiceDisplay ++ ;
         if(CurrentBodyChoiceDisplay >= BodyChoice.Count)
         CurrentBodyChoiceDisplay = 0 ;
-        DisplayAvatar.SkinModify();
+        //DisplayAvatar.SkinModify();
     }
     public void PreviousBody()
     {
         CurrentBodyChoiceDisplay -- ;
         if(CurrentBodyChoiceDisplay < 0)
         CurrentBodyChoiceDisplay = BodyChoice.Count - 1 ;
-        DisplayAvatar.SkinModify();
+        //DisplayAvatar.SkinModify();
     }
 
 
@@ -505,14 +505,14 @@ public class CharacterCreater : MonoBehaviour
         CurrentBottomChoiceDisplay ++ ;
         if(CurrentBottomChoiceDisplay >= BottomChoice.Count)
         CurrentBottomChoiceDisplay = 0 ;
-        DisplayAvatar.SkinModify();
+        //DisplayAvatar.SkinModify();
     }
     public void PreviousBottom()
     {
         CurrentBottomChoiceDisplay -- ;
         if(CurrentBottomChoiceDisplay < 0)
         CurrentBottomChoiceDisplay = BottomChoice.Count - 1 ;
-        DisplayAvatar.SkinModify();
+        //DisplayAvatar.SkinModify();
     }
 
 
@@ -546,14 +546,14 @@ public class CharacterCreater : MonoBehaviour
         CurrentShoeChoiceDisplay ++ ;
         if(CurrentShoeChoiceDisplay >= ShoeChoice.Count)
         CurrentShoeChoiceDisplay = 0 ;
-        DisplayAvatar.SkinModify();
+        //DisplayAvatar.SkinModify();
     }
     public void PreviousShoe()
     {
         CurrentShoeChoiceDisplay -- ;
         if(CurrentShoeChoiceDisplay < 0)
         CurrentShoeChoiceDisplay = ShoeChoice.Count - 1 ;
-        DisplayAvatar.SkinModify();
+        //DisplayAvatar.SkinModify();
     }
 
 
@@ -710,7 +710,7 @@ public class CharacterCreater : MonoBehaviour
 
 
         CheckColorUsed();
-        DisplayAvatar.SkinModify();
+        //DisplayAvatar.SkinModify();
     }
 
     public void SubmitCharacter()
