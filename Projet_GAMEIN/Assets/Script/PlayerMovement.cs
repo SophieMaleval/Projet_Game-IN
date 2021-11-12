@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     [Header ("Movement")]
     [SerializeField] private float MoveSpeed ;
 
+
     public List<SpriteRenderer> PlayerRenderers ;
     public Rigidbody2D RbPlayer ;
     public List<Animator> Animators ;
