@@ -10,23 +10,32 @@ using UnityEngine.SceneManagement;
 public class Customizer : MonoBehaviour
 {
     [Header ("Custom Avatar")]
-    [SerializeField] private PlayerMovement Player ;
-    //[SerializeField] private PlayerDisplayer DisplayAvatar ;
+    [SerializeField] private GameObject PlayerPrefab ;
+    [SerializeField] private PlayerMovement PlayerApparance ;
+    [SerializeField] private PlayerScript PlayerPersonnality ;
     [SerializeField] private Button RandomButton ;
     [SerializeField] private Button SubmitButton ;
+    [SerializeField] private GameObject FadeImage ;
+
 
     [Header ("CustomerPanel")]
     [SerializeField] private Slider SkinSlider ;
     public int CurrentCategorie ;
+    public List<int> ChoiceInCategorie ;
 
     [SerializeField] private List<Image> ChoiceDisplayer ;
     [SerializeField] private List<Button> AllChoiceColorButton ;
 
-        public List<int> CategoriesStates ;
-       /* public int CurrentHairChoiceDisplay = 0 ;
-        public int CurrentTopChoiceDisplay = 0 ;
-        public int CurrentPantsChoiceDisplay = 0 ;
-        public int CurrentShoeChoiceDisplay = 0 ;*/
+    [Header ("Player Information")]
+    public InputField NamingField ;
+    private string[] RandomNames = new string[35]  // Une ligne par genre : Homme, Femme, Non-Binaire
+    {
+    /*16*/"Olivier", "Sébastien", "Patrick", "Lucas", "Richard", "Frédéric", "Louis", "Mathieu", "Alexandre", "William", "Vincent", "Théo", "Simon", "Jules", "Romain", "Aubin",
+    /*17*/"Charlotte", "Elise", "Margot", "Justine", "Ines", "Laetitia", "Emilie", "Marine", "Marie", "Manon", "Lucie", "Lisa", "Cécile", "Julie", "Clara", "Kim", "Cassandre",
+    /*5*/ "Camille", "Dominique",
+    } ;
+    public int Gender ; // 0 -> Femme | 1 -> Homme | 2 -> Non-Binaire
+    public List<Button> GenderButton ;
  
 
     [Header ("Item Disponible")]
@@ -39,40 +48,74 @@ public class Customizer : MonoBehaviour
     [SerializeField] private Color ColorUse ;
 
     [Header("Custom Color Possible")]
+    public List<Color> SkinGradient ;
     public List<Color> ColorCustomList ;
 
 
     private void Awake() 
     {
-        if(GameObject.Find("Player") != null)
+        if(GameObject.Find("Player") == null)
         {
-            Player = GameObject.Find("Player").GetComponent<PlayerMovement>() ;                    
+            GameObject PlayerInstantiate = Instantiate(PlayerPrefab, new Vector3(-0.5f, -0.335f, 0), Quaternion.identity) ;
+            PlayerApparance = PlayerInstantiate.GetComponent<PlayerMovement>();
+            PlayerPersonnality = PlayerInstantiate.GetComponent<PlayerScript>();  
+            PlayerApparance.enabled = false ;   
+            PlayerApparance.gameObject.name = "Player" ;
+            DontDestroyOnLoad(PlayerApparance.gameObject);
+            
+        } else {
+            PlayerApparance = GameObject.Find("Player").GetComponent<PlayerMovement>() ; 
+            PlayerApparance.enabled = false ;                 
+            PlayerPersonnality = PlayerApparance.GetComponent<PlayerScript>() ;
+            RecupInfoPlayer();
+            SetAvatar();            
         }
     }
     
     private void Start() 
+    {  
+
+    }
+
+    IEnumerator DisableFade()
     {
-        
+        yield return new WaitForSeconds(1f);
+        FadeImage.SetActive(false) ;
     }
 
 
     void Update()
     {
-
-
-
-
-        // SUbmit Disable Without Name
-   /*     if(DisplayAvatar.NameAvatar == "")
+        // Valider seulement si le nom et le genre son référencé
+        if(PlayerPersonnality.PlayerName == "" || PlayerPersonnality.PlayerSexualGenre == -1)
         {
-            SubmitButton.interactable =false ;
+            SubmitButton.interactable = false ;
         }
-        if(DisplayAvatar.NameAvatar != "")
+        if(PlayerPersonnality.PlayerName != "" && PlayerPersonnality.PlayerSexualGenre != -1)
         {
             SubmitButton.interactable = true ;
-        }*/
+        }
     }
 
+    public void SetPlayerName(string NameEnter)
+    {   PlayerApparance.GetComponent<PlayerScript>().PlayerName = NameEnter ;    }
+    public void SetGender(int GenderValue)
+    {  
+        PlayerApparance.GetComponent<PlayerScript>().PlayerSexualGenre = GenderValue ;    
+        for (int G = 0; G < GenderButton.Count; G++)
+        {
+            if(G == PlayerApparance.GetComponent<PlayerScript>().PlayerSexualGenre)
+            {
+                GenderButton[G].interactable = false ;
+                GenderButton[G].gameObject.transform.Find("Contour Selection").gameObject.GetComponent<Image>().color = ColorUse ;
+                GenderButton[G].gameObject.transform.Find("Check Mark").gameObject.SetActive(true) ;
+            } else {
+                GenderButton[G].interactable = true ;
+                GenderButton[G].gameObject.transform.Find("Contour Selection").gameObject.GetComponent<Image>().color = ColorDoNotUse ;
+                GenderButton[G].gameObject.transform.Find("Check Mark").gameObject.SetActive(false) ;
+            }
+        }
+    }
 
     // Categorie Num
     // 0 - Skin
@@ -80,249 +123,240 @@ public class Customizer : MonoBehaviour
     // 2 - Top
     // 3 - Pant
     // 4 - Shoe
-    public void ChoiceDisplay(int CurrentCategorieChoiceDisplay, List<ItemCustomer> CategorieChoice, int CategorieNum)
+    public void ChangeCategorie()
     {
-        // Set sur le Player la sélection
-        ChoiceDisplayer[1].sprite = CategorieChoice[CurrentCategorieChoiceDisplay].DisplayCustomisation ;
-        Player.Animators[CategorieNum].runtimeAnimatorController = CategorieChoice[CurrentCategorieChoiceDisplay].Animator ;
+        if(CurrentCategorie == 1)
+            ChoiceDisplay(HairChoice);   
+        if(CurrentCategorie == 2)
+            ChoiceDisplay(TopChoice);
+        if(CurrentCategorie == 3)
+            ChoiceDisplay(PantsChoice);
+        if(CurrentCategorie == 4)
+            ChoiceDisplay(ShoeChoice);
+    }
 
+    public void ChoiceDisplay(List<ItemCustomer> CategorieChoice)
+    {
         // Affiche dans la liste le : dernier PREMIER second
-        if(CurrentCategorieChoiceDisplay == 0)
+        if(ChoiceInCategorie[CurrentCategorie - 1] == 0)
         {
-            ChoiceDisplayer[0].sprite = CategorieChoice[CategorieChoice.Count - 1].DisplayCustomisation ;
-            ChoiceDisplayer[2].sprite = CategorieChoice[CurrentCategorieChoiceDisplay + 1].DisplayCustomisation ;
+            ChoiceDisplayer[0].sprite = CategorieChoice[CategorieChoice.Count -1].DisplayCustomisation ;
+            ChoiceDisplayer[2].sprite = CategorieChoice[ChoiceInCategorie[CurrentCategorie - 1] + 1].DisplayCustomisation ;
         }
 
+        // Set sur le Player la sélection
+        ChoiceDisplayer[1].sprite = CategorieChoice[ChoiceInCategorie[CurrentCategorie - 1]].DisplayCustomisation ;
+
         // Affiche dans la liste le : avant-dernier DERNIER premier
-        if(CurrentCategorieChoiceDisplay == CategorieChoice.Count - 1)
+        if(ChoiceInCategorie[CurrentCategorie - 1] == CategorieChoice.Count - 1)
         {
-            ChoiceDisplayer[0].sprite = CategorieChoice[CurrentCategorieChoiceDisplay - 1].DisplayCustomisation ;
+            ChoiceDisplayer[0].sprite = CategorieChoice[ChoiceInCategorie[CurrentCategorie - 1] - 1].DisplayCustomisation ;
             ChoiceDisplayer[2].sprite = CategorieChoice[0].DisplayCustomisation ;
         }
 
         // Affiche dans la liste le : n-1 N n+1
-        if((CurrentCategorieChoiceDisplay != 0) && (CurrentCategorieChoiceDisplay != CategorieChoice.Count - 1))
+        if((ChoiceInCategorie[CurrentCategorie - 1] != 0) && (ChoiceInCategorie[CurrentCategorie - 1] != CategorieChoice.Count - 1))
         {
-            ChoiceDisplayer[0].sprite = CategorieChoice[CurrentCategorieChoiceDisplay - 1].DisplayCustomisation ;
-            ChoiceDisplayer[2].sprite = CategorieChoice[CurrentCategorieChoiceDisplay + 1].DisplayCustomisation ;
+            ChoiceDisplayer[0].sprite = CategorieChoice[ChoiceInCategorie[CurrentCategorie - 1] - 1].DisplayCustomisation ;
+            ChoiceDisplayer[2].sprite = CategorieChoice[ChoiceInCategorie[CurrentCategorie - 1] + 1].DisplayCustomisation ;
         }
+
+        PlayerApparance.SpriteDisplay[CurrentCategorie - 1] = CategorieChoice[ChoiceInCategorie[CurrentCategorie - 1]].Animator ;
+        SetAvatar() ;
     }
 
-    void ChangeChoice(int ChoiceValueAdd, int CurrentCategorieChoiceDisplay, List<ItemCustomer> CategorieChoice, int CategorieNum)
-    {
-        CurrentCategorieChoiceDisplay += ChoiceValueAdd ;
-        Debug.Log(CurrentCategorieChoiceDisplay);
-        if(CurrentCategorieChoiceDisplay >= CategorieChoice.Count)  CurrentCategorieChoiceDisplay = 0 ;
-        if(CurrentCategorieChoiceDisplay < 0)  CurrentCategorieChoiceDisplay = CategorieChoice.Count - 1 ;
-
-        ChoiceDisplay(CurrentCategorieChoiceDisplay, CategorieChoice, CategorieNum) ;
-    }
-
+    // Fonction pour l'interaction -/+ sur les changement de custom
     public void ChangeDisplay(int ValueAdd)
     {
         if(CurrentCategorie == 1)
-            ChangeChoice(ValueAdd, CurrentCategorie, HairChoice, 1);   
+            ChangeChoice(ValueAdd, HairChoice, 1);   
         if(CurrentCategorie == 2)
-            ChangeChoice(ValueAdd, CurrentCategorie, TopChoice, 2);
+            ChangeChoice(ValueAdd, TopChoice, 2);
         if(CurrentCategorie == 3)
-            ChangeChoice(ValueAdd, CurrentCategorie, PantsChoice, 3);
+            ChangeChoice(ValueAdd, PantsChoice, 3);
         if(CurrentCategorie == 4)
-            ChangeChoice(ValueAdd, CurrentCategorie, ShoeChoice, 4);
+            ChangeChoice(ValueAdd, ShoeChoice, 4);
+    }
+
+    void ChangeChoice(int ChoiceValueAdd, List<ItemCustomer> CategorieChoice, int CategorieNum)
+    {
+        // Choix Précédent --
+        if(ChoiceValueAdd < 0)
+        {
+            if(ChoiceInCategorie[CurrentCategorie - 1] == 0) 
+                ChoiceInCategorie[CurrentCategorie - 1] = CategorieChoice.Count - 1 ; 
+            else
+                ChoiceInCategorie[CurrentCategorie - 1] -- ;           
+        }
+
+        // Choix Suivant ++
+        if(ChoiceValueAdd > 0)
+        {
+            if(ChoiceInCategorie[CurrentCategorie - 1] == CategorieChoice.Count - 1)  
+                ChoiceInCategorie[CurrentCategorie - 1] = 0 ; 
+            else
+                ChoiceInCategorie[CurrentCategorie - 1] ++ ;           
+        }
+
+        ChoiceDisplay(CategorieChoice) ;
     }
 
 
 
-    // Panel Custom
-    public void SkinColor(float SliderValue)
-    {   /*DisplayAvatar.SkinColorPourcentage = SliderValue ; *   CheckColorUsed();*/ }
-
-    public void ChangeHairColor(int NumColorList)
-    {    /*DisplayAvatar.HairColor = ColorCustomList[NumColorList] ;*  CheckColorUsed();*/ }
-
-    public void ChangeBodyColor(int NumColorList)
-    {    /*DisplayAvatar.BodyColor = ColorCustomList[NumColorList] ; * CheckColorUsed(); */}
-
-    public void ChangeBottomColor(int NumColorList)
-    {   /*DisplayAvatar.BottomColor = ColorCustomList[NumColorList] ;*  CheckColorUsed(); */}
-
-    public void ChangeShoeColor(int NumColorList)
-    {   /*DisplayAvatar.ShoeColor = ColorCustomList[NumColorList] ;*  CheckColorUsed(); */}
-
-
-
-
-
-
-
-
-
-
-
- /*   // Check Color
-    void CheckColorUsed()
+    void RecupInfoPlayer()
     {
-        // Check Hair Color
-        if(DisplayAvatar.HairSprites != HairChoice[0])
+        // Récupère le nom 
+        NamingField.text = PlayerPersonnality.PlayerName ;
+
+        // Récupère le genre 
+        SetGender(PlayerPersonnality.PlayerSexualGenre);
+
+        // Recupère la couleur de peau
+        SkinSlider.value = PlayerApparance.ValueColorDisplay[0];
+
+        // Récupère les choix de Hair
+        for (int ChoiceInCategorieHair = 0; ChoiceInCategorieHair < HairChoice.Count; ChoiceInCategorieHair++)
         {
-            for (int i = 0; i < AllHairColorButton.Count; i++)
-            {
-                if(ColorCustomList[i] == DisplayAvatar.HairColor)
-                {
-                    AllHairColorButton[i].interactable = false ;
-                    AllHairColorButton[i].gameObject.GetComponentInChildren<SpriteRenderer>().GetComponent<Image>().color = ColorUse ;
-                }
-                if(ColorCustomList[i] != DisplayAvatar.HairColor)
-                {
-                    AllHairColorButton[i].interactable = true ;
-                    AllHairColorButton[i].gameObject.GetComponentInChildren<SpriteRenderer>().GetComponent<Image>().color = ColorDoNotUse ;
-                }
-            }
-        }
-        if(DisplayAvatar.HairSprites == HairChoice[0])
-        {
-            for (int i = 0; i < AllHairColorButton.Count; i++)
-            {
-                AllHairColorButton[i].interactable = true ;
-                AllHairColorButton[i].gameObject.GetComponentInChildren<SpriteRenderer>().GetComponent<Image>().color = ColorDoNotUse ;
-            }
+            if(HairChoice[ChoiceInCategorieHair].Animator == PlayerApparance.SpriteDisplay[0])
+                ChoiceInCategorie[0] = ChoiceInCategorieHair ;            
         }
 
-
-        // Check Body Color
-        if(DisplayAvatar.BodySprites != BodyChoice[0])
+        // Récupère les choix de Top
+        for (int ChoiceInCategorieTop = 0; ChoiceInCategorieTop < TopChoice.Count; ChoiceInCategorieTop++)
         {
-            for (int i = 0; i < AllBodyColorButton.Count; i++)
-            {
-                if(ColorCustomList[i] == DisplayAvatar.BodyColor)
-                {
-                    AllBodyColorButton[i].interactable = false ;
-                    AllBodyColorButton[i].gameObject.GetComponentInChildren<SpriteRenderer>().GetComponent<Image>().color = ColorUse ;
-                }
-                if(ColorCustomList[i] != DisplayAvatar.BodyColor)
-                {
-                    AllBodyColorButton[i].interactable = true ;
-                    AllBodyColorButton[i].gameObject.GetComponentInChildren<SpriteRenderer>().GetComponent<Image>().color = ColorDoNotUse ;
-                }
-            }
-        }
-        if(DisplayAvatar.BodySprites == BodyChoice[0])
-        {
-            for (int i = 0; i < AllBodyColorButton.Count; i++)
-            {
-                AllBodyColorButton[i].interactable = true ;
-                AllBodyColorButton[i].gameObject.GetComponentInChildren<SpriteRenderer>().GetComponent<Image>().color = ColorDoNotUse ;
-            }
+            if(TopChoice[ChoiceInCategorieTop].Animator == PlayerApparance.SpriteDisplay[1])
+                ChoiceInCategorie[1] = ChoiceInCategorieTop ;            
         }
 
-
-        // Check Bottom Color
-        if(DisplayAvatar.BottomSprites != BottomChoice[0])
+        // Récupère les choix de Pants
+        for (int ChoiceInCategoriePants = 0; ChoiceInCategoriePants < PantsChoice.Count; ChoiceInCategoriePants++)
         {
-            for (int i = 0; i < AllBottomColorButton.Count; i++)
-            {
-                if(ColorCustomList[i] == DisplayAvatar.BottomColor)
-                {
-                    AllBottomColorButton[i].interactable = false ;
-                    AllBottomColorButton[i].gameObject.GetComponentInChildren<SpriteRenderer>().GetComponent<Image>().color = ColorUse ;
-                }
-                if(ColorCustomList[i] != DisplayAvatar.BottomColor)
-                {
-                    AllBottomColorButton[i].interactable = true ;
-                    AllBottomColorButton[i].gameObject.GetComponentInChildren<SpriteRenderer>().GetComponent<Image>().color = ColorDoNotUse ;
-                }
-            }
-        }
-        if(DisplayAvatar.BottomSprites == BottomChoice[0])
-        {
-            for (int i = 0; i < AllBottomColorButton.Count; i++)
-            {
-                AllBottomColorButton[i].interactable = true ;
-                AllBottomColorButton[i].gameObject.GetComponentInChildren<SpriteRenderer>().GetComponent<Image>().color = ColorDoNotUse ;
-            }
+            if(PantsChoice[ChoiceInCategoriePants].Animator == PlayerApparance.SpriteDisplay[2])
+                ChoiceInCategorie[2] = ChoiceInCategoriePants ;            
         }
 
-
-        // Check Shoe Color
-        if(DisplayAvatar.ShoeSprites != ShoeChoice[0])
+        // Récupère les choix de Shoe
+        for (int ChoiceInCategorieShoe = 0; ChoiceInCategorieShoe < ShoeChoice.Count; ChoiceInCategorieShoe++)
         {
-            for (int i = 0; i < AllShoeColorButton.Count; i++)
-            {
-                if(ColorCustomList[i] == DisplayAvatar.ShoeColor)
-                {
-                    AllShoeColorButton[i].interactable = false ;
-                    AllShoeColorButton[i].gameObject.GetComponentInChildren<SpriteRenderer>().GetComponent<Image>().color = ColorUse ;
-                }
-                if(ColorCustomList[i] != DisplayAvatar.ShoeColor)
-                {
-                    AllShoeColorButton[i].interactable = true ;
-                    AllShoeColorButton[i].gameObject.GetComponentInChildren<SpriteRenderer>().GetComponent<Image>().color = ColorDoNotUse ;
-                }
-            }
-        }
-        if(DisplayAvatar.ShoeSprites == ShoeChoice[0])
-        {
-            for (int i = 0; i < AllShoeColorButton.Count; i++)
-            {
-                AllShoeColorButton[i].interactable = true ;
-                AllShoeColorButton[i].gameObject.GetComponentInChildren<SpriteRenderer>().GetComponent<Image>().color = ColorDoNotUse ;
-            }
+            if(ShoeChoice[ChoiceInCategorieShoe].Animator == PlayerApparance.SpriteDisplay[3])
+                ChoiceInCategorie[3] = ChoiceInCategorieShoe ;            
         }
     }
-*/
 
+    public void SkinColor()
+    {  
+        PlayerApparance.ValueColorDisplay[0] = SkinSlider.value ;
+        PlayerApparance.ColorsDisplay[0] = Color.Lerp(SkinGradient[0], SkinGradient[1], PlayerApparance.ValueColorDisplay[0]); 
+        SetAvatar();
+    }
 
-
-
-  /*  // Final Button
-    public void RandomCharacter()
+    public void SetChoiceColor(int ColorNumList)
     {
+        PlayerApparance.ValueColorDisplay[CurrentCategorie] = ColorNumList ;
+        PlayerApparance.ColorsDisplay[CurrentCategorie] = ColorCustomList[ColorNumList] ;
+        SetAvatar();
+    }
+
+    void DisableButtonColorChoice()
+    {
+        if(CurrentCategorie > 0 && CurrentCategorie <= 4)
+        {
+            for (int c = 0; c < AllChoiceColorButton.Count; c++)
+            {
+                if(c == PlayerApparance.ValueColorDisplay[CurrentCategorie])
+                {
+                    AllChoiceColorButton[c].interactable = false ;
+                    AllChoiceColorButton[c].gameObject.transform.Find("Contour Couleur").gameObject.GetComponentInChildren<Image>().color = ColorUse ;
+                } else {
+                    AllChoiceColorButton[c].interactable = true ;
+                    AllChoiceColorButton[c].gameObject.transform.Find("Contour Couleur").gameObject.GetComponentInChildren<Image>().color = ColorDoNotUse ;
+                } 
+            }
+        }        
+    }
+
+    public void SetAvatar()
+    {
+        // Set Color
+        for (int i = 0; i < PlayerApparance.PlayerRenderers.Count; i++)
+        {
+            PlayerApparance.PlayerRenderers[i].color = PlayerApparance.ColorsDisplay[i] ;            
+        }
+        DisableButtonColorChoice();
+
+
+        // Afficher le choix
+        for (int i = 0; i < PlayerApparance.SpriteDisplay.Count; i++)
+        {
+            PlayerApparance.Animators[i + 1].runtimeAnimatorController = PlayerApparance.SpriteDisplay[i] ;
+        }
+
+        // Reset Animator pour les coordonnées
+        for (int a = 0; a < PlayerApparance.Animators.Count; a++)   // Désactive Tout
+        {   PlayerApparance.Animators[a].enabled = false ;      // Réactive Tout
+           PlayerApparance.Animators[a].enabled = true ;   }     
+    }
+
+
+
+
+    // Final Button
+    public void RandomCustom()
+    {
+        // Random Name
+        NamingField.text = RandomNames[Random.Range(0, RandomNames.Length)];
+        
+        // Random Gender
+        SetGender(Random.Range(0, GenderButton.Count-1 )) ;
+
         // Random Skin
-        //DisplayAvatar.SkinColorPourcentage = Random.Range(0f, 1f);
-        // SkinSlider.value = DisplayAvatar.SkinColorPourcentage ;
+        PlayerApparance.ValueColorDisplay[0] = Random.Range(0f, 1f) ;
+        SkinSlider.value = PlayerApparance.ValueColorDisplay[0];
 
         // Random Hair
-        int RandHair = Random.Range(0, HairChoice.Count) ;
-        //DisplayAvatar.HairSprites = HairChoice[RandHair] ;
-        CurrentHairChoiceDisplay = RandHair ;
-        //DisplayAvatar.HairColor = ColorCustomList[Random.Range(0, ColorCustomList.Count)] ;
-
-        // Random Body
-        int RandBody = Random.Range(0, TopChoice.Count) ;
-        //DisplayAvatar.BodySprites = BodyChoice[RandBody] ;
-        CurrentTopChoiceDisplay = RandBody ;
-        //DisplayAvatar.BodyColor = ColorCustomList[Random.Range(0, ColorCustomList.Count)] ;
+        ChoiceInCategorie[0] = Random.Range(0, HairChoice.Count - 1);
+        PlayerApparance.SpriteDisplay[0] = HairChoice[ChoiceInCategorie[0]].Animator ; 
+            PlayerApparance.ValueColorDisplay[1] = Random.Range(0, AllChoiceColorButton.Count - 1);
+            PlayerApparance.ColorsDisplay[1] = ColorCustomList[(int) PlayerApparance.ValueColorDisplay[1]] ;
+        
+        // Random Top
+        ChoiceInCategorie[1] = Random.Range(0, TopChoice.Count - 1);
+        PlayerApparance.SpriteDisplay[1] = TopChoice[ChoiceInCategorie[1]].Animator ; 
+            PlayerApparance.ValueColorDisplay[2] = Random.Range(0, AllChoiceColorButton.Count - 1);
+            PlayerApparance.ColorsDisplay[2] = ColorCustomList[(int) PlayerApparance.ValueColorDisplay[2]] ;
 
         // Random Bottom
-        int RandBottom = Random.Range(0, PantsChoice.Count) ;
-        //DisplayAvatar.BottomSprites = BottomChoice[RandBottom] ;
-        CurrentPantsChoiceDisplay = RandBottom ;
-        //DisplayAvatar.BottomColor = ColorCustomList[Random.Range(0, ColorCustomList.Count)] ;
+        ChoiceInCategorie[2] = Random.Range(0, PantsChoice.Count - 1);
+        PlayerApparance.SpriteDisplay[2] = PantsChoice[ChoiceInCategorie[2]].Animator ; 
+            PlayerApparance.ValueColorDisplay[3] = Random.Range(0, AllChoiceColorButton.Count - 1);
+            PlayerApparance.ColorsDisplay[3] = ColorCustomList[(int) PlayerApparance.ValueColorDisplay[3]] ;
 
         // Random Shoe
-        int RandShoe = Random.Range(0, ShoeChoice.Count) ;
-        //DisplayAvatar.ShoeSprites =  ShoeChoice[RandShoe] ;
-        CurrentShoeChoiceDisplay = RandShoe ;
-        //DisplayAvatar.ShoeColor = ColorCustomList[Random.Range(0, ColorCustomList.Count)] ;
+        ChoiceInCategorie[3] = Random.Range(0, ShoeChoice.Count - 1);
+        PlayerApparance.SpriteDisplay[3] = ShoeChoice[ChoiceInCategorie[3]].Animator ; 
+            PlayerApparance.ValueColorDisplay[4] = Random.Range(0, AllChoiceColorButton.Count - 1);
+            PlayerApparance.ColorsDisplay[4] = ColorCustomList[(int) PlayerApparance.ValueColorDisplay[4]] ;
 
-
-        //CheckColorUsed();
-        //DisplayAvatar.SkinModify();
+        SetAvatar();
     }
-*/
-    public void SubmitCharacter()
+
+
+
+
+    public void SubmitCustom()
     {
-        /*CloseAllPanel() ;
+        GetComponent<AnimationCustomizer>().CustomizationFinish() ;
         FadeImage.SetActive(true);
-        ChangeTitleCategories(6, "");*/
+        GetComponent<AnimationCustomizer>().ChangeTitleCategories(6);
 
-       // DisplayAvatar.gameObject.name = "Player" ;
+
         
-        DontDestroyOnLoad(Player.gameObject);
+        //DontDestroyOnLoad(PlayerApparance.gameObject);
 
-        if(PlayerPrefs.GetInt("PlayerCustomerAsBeenVisited") == 0)
+     /*   if(PlayerPrefs.GetInt("PlayerCustomerAsBeenVisited") == 0)
         {
             PlayerPrefs.SetInt("PlayerCustomerAsBeenVisited", 1);
-        }
+        }*/
 
 
         StartCoroutine(WaitBeforeChangeScene());
@@ -330,17 +364,11 @@ public class Customizer : MonoBehaviour
 
     IEnumerator WaitBeforeChangeScene()
     {
-        //FadeImage.SetActive(true);
-        //RideauxAnimator.SetBool("Quit Custom ?", true) ;
-            yield return new WaitForSeconds(1.75f);
-            //FadeImage.GetComponent<Image>().DOFade(1, 1f);
         yield return new WaitForSeconds(1.75f);
-        //DisplayAvatar.InCustom = false ;
-    //    DisplayAvatar.GetComponent<GridDeplacement>().enabled = true ;
-  //      DisplayAvatar.GetComponent<Radio>().enabled = true;
-   //         DisplayAvatar.GetComponent<PlayerProvenance>().enabled = true;
-    //        DisplayAvatar.GetComponent<PlayerProvenance>().SetAllBoolToFalse();     DisplayAvatar.GetComponent<PlayerProvenance>().ProviensCharacterCustomer = true;
-        SceneManager.LoadScene("GAME IN");
+            FadeImage.GetComponent<Image>().DOFade(1, 1f);
+        yield return new WaitForSeconds(1.75f);
+        PlayerApparance.enabled = true ;
+        SceneManager.LoadScene("Antonin");
     }
 
 

@@ -16,6 +16,11 @@ public class PlayerMovement : MonoBehaviour
 
     private Vector2 LastMoveDirection ;
     private Vector2 MoveDirection ;
+
+    [Header ("Avatar Display")]
+    public List<float> ValueColorDisplay ;
+    public List<Color> ColorsDisplay ;
+    public List<RuntimeAnimatorController> SpriteDisplay ;
     
 
     private void OnEnable() {   PlayerActionControllers.Enable();   }
