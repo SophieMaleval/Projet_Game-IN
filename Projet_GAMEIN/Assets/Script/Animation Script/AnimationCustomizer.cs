@@ -61,9 +61,10 @@ public class AnimationCustomizer : MonoBehaviour
 
     IEnumerator WaitBeforeOpenningRideaux()
     {
-        FadeImage.GetComponent<Image>().DOFade(0, 1f);        
+
+        //FadeImage.GetComponent<Image>().DOFade(0, 1f);        
         yield return new WaitForSeconds(1f);
-        FadeImage.SetActive(false);        
+        //FadeImage.SetActive(false);        
         RideauxAnimator.enabled = true ;
     }
 

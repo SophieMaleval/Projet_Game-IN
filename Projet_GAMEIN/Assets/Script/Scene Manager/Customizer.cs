@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using TMPro;
 using DG.Tweening;
 using UnityEngine.SceneManagement;
+using Cinemachine;
 
 public class Customizer : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class Customizer : MonoBehaviour
     [SerializeField] private Button RandomButton ;
     [SerializeField] private Button SubmitButton ;
     [SerializeField] private GameObject FadeImage ;
+    [SerializeField] private GameObject CineMachineCam ;
 
 
     [Header ("CustomerPanel")]
@@ -61,8 +63,8 @@ public class Customizer : MonoBehaviour
             PlayerPersonnality = PlayerInstantiate.GetComponent<PlayerScript>();  
             PlayerApparance.enabled = false ;   
             PlayerApparance.gameObject.name = "Player" ;
+
             DontDestroyOnLoad(PlayerApparance.gameObject);
-            
         } else {
             PlayerApparance = GameObject.Find("Player").GetComponent<PlayerMovement>() ; 
             PlayerApparance.enabled = false ;                 
@@ -74,13 +76,16 @@ public class Customizer : MonoBehaviour
     
     private void Start() 
     {  
-
+        StartCoroutine(WaitTransitionAnim());
     }
 
-    IEnumerator DisableFade()
+    IEnumerator WaitTransitionAnim()
     {
-        yield return new WaitForSeconds(1f);
-        FadeImage.SetActive(false) ;
+        yield return new WaitForSeconds(0.25f);
+        FadeImage.GetComponent<AnimationTransitionScene>().enabled = true ;
+        yield return new WaitForSeconds(2f) ;
+        FadeImage.SetActive(false);
+
     }
 
 
@@ -365,9 +370,12 @@ public class Customizer : MonoBehaviour
     IEnumerator WaitBeforeChangeScene()
     {
         yield return new WaitForSeconds(1.75f);
-            FadeImage.GetComponent<Image>().DOFade(1, 1f);
+            //FadeImage.GetComponent<Image>().DOFade(1, 1f);
+            FadeImage.GetComponent<AnimationTransitionScene>().ShouldReveal = false ;
         yield return new WaitForSeconds(1.75f);
         PlayerApparance.enabled = true ;
+        //CineMachineCam.GetComponent<CinemachineVirtualCamera>().Follow = PlayerApparance.transform ; 
+
         SceneManager.LoadScene("Antonin");
     }
 
