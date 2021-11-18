@@ -14,6 +14,9 @@ public class Customizer : MonoBehaviour
     [SerializeField] private GameObject PlayerPrefab ;
     [SerializeField] private PlayerMovement PlayerApparance ;
     [SerializeField] private PlayerScript PlayerPersonnality ;
+    [SerializeField] private Vector3 PlayerPositionCustom = new Vector3(-0.5f, -0.335f, 0f) ;
+
+
     [SerializeField] private Button RandomButton ;
     [SerializeField] private Button SubmitButton ;
     [SerializeField] private GameObject FadeImage ;
@@ -54,11 +57,14 @@ public class Customizer : MonoBehaviour
     public List<Color> ColorCustomList ;
 
 
+
+
     private void Awake() 
     {
+        
         if(GameObject.Find("Player") == null)
         {
-            GameObject PlayerInstantiate = Instantiate(PlayerPrefab, new Vector3(-0.5f, -0.335f, 0), Quaternion.identity) ;
+            GameObject PlayerInstantiate = Instantiate(PlayerPrefab, PlayerPositionCustom, Quaternion.identity) ;
             PlayerApparance = PlayerInstantiate.GetComponent<PlayerMovement>();
             PlayerPersonnality = PlayerInstantiate.GetComponent<PlayerScript>();  
             PlayerApparance.enabled = false ;   
@@ -69,6 +75,14 @@ public class Customizer : MonoBehaviour
             PlayerApparance = GameObject.Find("Player").GetComponent<PlayerMovement>() ; 
             PlayerApparance.enabled = false ;                 
             PlayerPersonnality = PlayerApparance.GetComponent<PlayerScript>() ;
+
+            PlayerApparance.transform.position = PlayerPositionCustom ;
+            for (int A = 0; A < PlayerApparance.Animators.Count; A++)
+            {
+                // Set Up la direction du Joueur en Face
+                PlayerApparance.Animators[A].SetFloat("AnimLastMoveX", 0) ;
+                PlayerApparance.Animators[A].SetFloat("AnimLastMoveY", -1) ;
+            }
             RecupInfoPlayer();
             SetAvatar();            
         }
@@ -166,8 +180,10 @@ public class Customizer : MonoBehaviour
             ChoiceDisplayer[2].sprite = CategorieChoice[ChoiceInCategorie[CurrentCategorie - 1] + 1].DisplayCustomisation ;
         }
 
+        //if(CurrentCategorie == 1)PlayerApparance.Animators[CurrentCategorie - 1].SetFloat("HairChoice", 1);
         PlayerApparance.SpriteDisplay[CurrentCategorie - 1] = CategorieChoice[ChoiceInCategorie[CurrentCategorie - 1]].Animator ;
         SetAvatar() ;
+        
     }
 
     // Fonction pour l'interaction -/+ sur les changement de custom
@@ -296,14 +312,11 @@ public class Customizer : MonoBehaviour
             PlayerApparance.Animators[i + 1].runtimeAnimatorController = PlayerApparance.SpriteDisplay[i] ;
         }
 
+
         // Reset Animator pour les coordonnées
-        for (int a = 0; a < PlayerApparance.Animators.Count; a++)   // Désactive Tout
-        {   PlayerApparance.Animators[a].enabled = false ;      // Réactive Tout
-           PlayerApparance.Animators[a].enabled = true ;   }     
+        for (int a = 0; a < PlayerApparance.Animators.Count; a++)  
+        {   PlayerApparance.Animators[a].Rebind();   }  
     }
-
-
-
 
     // Final Button
     public void RandomCustom()
@@ -355,13 +368,7 @@ public class Customizer : MonoBehaviour
         GetComponent<AnimationCustomizer>().ChangeTitleCategories(6);
 
 
-        
-        //DontDestroyOnLoad(PlayerApparance.gameObject);
-
-     /*   if(PlayerPrefs.GetInt("PlayerCustomerAsBeenVisited") == 0)
-        {
-            PlayerPrefs.SetInt("PlayerCustomerAsBeenVisited", 1);
-        }*/
+    
 
 
         StartCoroutine(WaitBeforeChangeScene());
@@ -376,7 +383,7 @@ public class Customizer : MonoBehaviour
         PlayerApparance.enabled = true ;
         //CineMachineCam.GetComponent<CinemachineVirtualCamera>().Follow = PlayerApparance.transform ; 
 
-        SceneManager.LoadScene("Antonin");
+        SceneManager.LoadScene("HUB");
     }
 
 
