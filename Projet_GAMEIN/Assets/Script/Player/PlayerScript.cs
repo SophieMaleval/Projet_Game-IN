@@ -40,6 +40,7 @@ public class PlayerScript : MonoBehaviour
         }       
     }
 
+
     private void Update()
     {
         if (canInteract)
