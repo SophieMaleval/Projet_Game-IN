@@ -57,14 +57,18 @@ public class AnimationCustomizer : MonoBehaviour
 
     
     private void Start() 
-    {   StartCoroutine(WaitBeforeOpenningRideaux());    }
+    {   
+        StartCoroutine(WaitBeforeOpenningRideaux());
+
+        if(GameObject.Find("Player") != null)
+        {
+            AnimatorsCustom = GameObject.Find("Player").GetComponent<PlayerMovement>().Animators ;
+        }
+    }
 
     IEnumerator WaitBeforeOpenningRideaux()
-    {
-
-        //FadeImage.GetComponent<Image>().DOFade(0, 1f);        
-        yield return new WaitForSeconds(1f);
-        //FadeImage.SetActive(false);        
+    {      
+        yield return new WaitForSeconds(1f);    
         RideauxAnimator.enabled = true ;
     }
 
