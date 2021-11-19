@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ActivateTextAtLine : MonoBehaviour {
 
-    private inventoryController IM;
+
 
 
     public TextAsset theText;
