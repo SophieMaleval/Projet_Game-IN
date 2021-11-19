@@ -67,6 +67,11 @@ public class PlayerMovement : MonoBehaviour
     void Move()
     {    RbPlayer.velocity = new Vector2(MoveDirection.x * MoveSpeed, MoveDirection.y * MoveSpeed); }
 
+    public void ResetVelocity()
+    {
+        RbPlayer.velocity = Vector2.zero ;
+    }
+
     void Animate() 
     {
         // Applique la même valeur à tout les Animator
