@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class Interactible : MonoBehaviour
 {
-    public Sprite regularItem;
-    public Sprite selectableItem;
-    // Start is called before the first frame update
+    public Sprite regularItem; //sprite normal
+    public Sprite selectableItem; //sprite si sélectionnable
     private SpriteRenderer render;
-    public PlayerScript playerScript;
+    public PlayerScript playerScript; //se trouve automatiquement dans le start, mis en public pour vérif dans éditeur
 
     private void Start()
     {
@@ -22,7 +21,30 @@ public class Interactible : MonoBehaviour
         {
             render.sprite = selectableItem;
             playerScript.canInteract = true;
+        }      
+    }
+
+    private void Update()
+    {
+        if (playerScript.didFunction == true && playerScript.canInteract)
+        {
+            BeenCollected();
         }
+    }
+
+    /*private void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.tag == ("Player") && playerScript.didFunction)
+        {
+            BeenCollected();
+        }
+    }*/
+
+    void BeenCollected()
+    {
+        //playerScript.didFunction = false;
+        Debug.Log("Destroyed !!!!");
+        Destroy(this.gameObject);              
     }
 
     private void OnTriggerExit2D(Collider2D other)
@@ -31,6 +53,7 @@ public class Interactible : MonoBehaviour
         {
             render.sprite = regularItem;
             playerScript.canInteract = false;
+            //playerScript.didFunction = false;
         }
     }
 }
