@@ -14,8 +14,10 @@ public class PlayerScript : MonoBehaviour
     public int PlayerSexualGenre ;
 
     public GameObject input_VCue;
-    
+    public AudioSource selectedSound;
+
     public bool canInteract;
+    public bool didFunction = false;
 
 
     //bool canInteract = false;
@@ -32,14 +34,27 @@ public class PlayerScript : MonoBehaviour
         controls.PlayerInLand.Interact.performed += OnInteract;
     }
     // Start is called before the first frame update
-    void OnInteract(InputAction.CallbackContext ctx)
+    public void OnInteract(InputAction.CallbackContext ctx)
     {
-        if (ctx.performed)
+        if (ctx.performed && canInteract)
         {
+            didFunction = true;
             Debug.Log("youhou! " + ctx.phase);
-        }       
+            selectedSound.Play();           
+        }      
     }
 
+    /*public bool DidInteract()
+    {
+        if (didFunction)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }*/
 
     private void Update()
     {
