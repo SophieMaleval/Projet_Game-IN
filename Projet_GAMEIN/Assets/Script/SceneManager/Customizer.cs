@@ -381,9 +381,12 @@ public class Customizer : MonoBehaviour
             FadeImage.GetComponent<AnimationTransitionScene>().ShouldReveal = false ;
         yield return new WaitForSeconds(1.75f);
         PlayerApparance.enabled = true ;
+        yield return new WaitForSeconds(1.75f);
+
+        
         //CineMachineCam.GetComponent<CinemachineVirtualCamera>().Follow = PlayerApparance.transform ; 
 
-        SceneManager.LoadScene("HUB");
+        SceneManager.LoadScene("DynamicLoad");
     }
 
 

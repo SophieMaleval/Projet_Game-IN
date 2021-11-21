@@ -9,6 +9,12 @@ public class Interactible : MonoBehaviour
     private SpriteRenderer render;
     public PlayerScript playerScript; //se trouve automatiquement dans le start, mis en public pour vérif dans éditeur
 
+    private void Awake() {
+        if(GameObject.Find("Player") != null)
+        {
+            playerScript = GameObject.Find("Player").GetComponent<PlayerScript>() ;
+        }
+    }
     private void Start()
     {
         render = GetComponent<SpriteRenderer>();

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3426247479449806438}
   m_Layer: 0
   m_Name: Player Backpack
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 1242458652779531074}
   m_Layer: 0
   m_Name: pickUp_sd
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -226,7 +226,7 @@ GameObject:
   - component: {fileID: 631416780472497620}
   m_Layer: 0
   m_Name: Marqueur
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5044,6 +5044,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6194354122754073810}
   - component: {fileID: 7745996416283971752}
+  - component: {fileID: 4720933837568405490}
   m_Layer: 0
   m_Name: Collider
   m_TagString: Player
@@ -5078,7 +5079,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0053460896, y: 0.11093113}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -5091,6 +5092,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.2657181, y: 0.23199302}
   m_EdgeRadius: 0
+--- !u!50 &4720933837568405490
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5195196520832248309}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!1 &5755376588150839811
 GameObject:
   m_ObjectHideFlags: 0
@@ -5102,7 +5124,7 @@ GameObject:
   - component: {fileID: 168676253206193965}
   m_Layer: 0
   m_Name: SFX_manager
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5193,7 +5215,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 15
   m_Sprite: {fileID: 6754672607277218507, guid: 874aca4db4ff09847952c0b5cf72eddd,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -5238,7 +5260,7 @@ GameObject:
   - component: {fileID: 7705379444181384876}
   m_Layer: 0
   m_Name: Hair
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5340,7 +5362,7 @@ GameObject:
   - component: {fileID: 7705379444371205449}
   m_Layer: 0
   m_Name: Shoe
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5440,12 +5462,13 @@ GameObject:
   - component: {fileID: 7705379444423092920}
   - component: {fileID: 7705379444423092921}
   - component: {fileID: 7705379444423092922}
-  - component: {fileID: 7705379444423092870}
   - component: {fileID: 7705379444423092923}
   - component: {fileID: 6347952101657534626}
+  - component: {fileID: 7965349286853053022}
+  - component: {fileID: -6264228906340385257}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5540,27 +5563,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!50 &7705379444423092870
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7705379444423092871}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 4
 --- !u!114 &7705379444423092923
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5580,7 +5582,7 @@ MonoBehaviour:
   - {fileID: 7705379445293000593}
   - {fileID: 7705379445488120740}
   - {fileID: 7705379444371205448}
-  RbPlayer: {fileID: 7705379444423092870}
+  RbPlayer: {fileID: 7965349286853053022}
   Animators:
   - {fileID: 7705379444423092922}
   - {fileID: 7705379444181384876}
@@ -5619,9 +5621,56 @@ MonoBehaviour:
   PlayerName: 
   PlayerSexualGenre: -1
   input_VCue: {fileID: 7445391371602156354}
-  selectedSound: {fileID: 0}
+  selectedSound: {fileID: 1242458652779531074}
   canInteract: 0
   didFunction: 0
+--- !u!50 &7965349286853053022
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7705379444423092871}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
+--- !u!61 &-6264228906340385257
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7705379444423092871}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.5}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &7705379445293000604
 GameObject:
   m_ObjectHideFlags: 0
@@ -5635,7 +5684,7 @@ GameObject:
   - component: {fileID: 7705379445293000606}
   m_Layer: 0
   m_Name: Top
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5737,7 +5786,7 @@ GameObject:
   - component: {fileID: 7705379445488120741}
   m_Layer: 0
   m_Name: Bottom
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

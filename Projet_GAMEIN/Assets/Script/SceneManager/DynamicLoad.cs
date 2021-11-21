@@ -17,6 +17,16 @@ public class DynamicLoad : MonoBehaviour
     //Scene state
     bool isLoaded; //eviter de charger 2x
     bool shouldLoad; //pour la méthode en trigger
+
+
+    private void Awake() {
+        
+        if(GameObject.Find("Player") != null)
+        {
+            player = GameObject.Find("Player").transform ;
+        }
+
+    }
     void Start()
     {
         
