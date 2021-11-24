@@ -49,7 +49,7 @@ public class Interactible : MonoBehaviour
     void BeenCollected()
     {
         //playerScript.didFunction = false;
-        //Debug.Log("Destroyed !!!!");
+        Debug.Log("Destroyed !!!!");
         Destroy(this.gameObject);              
     }
 
