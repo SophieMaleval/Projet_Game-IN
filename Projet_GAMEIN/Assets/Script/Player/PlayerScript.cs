@@ -39,7 +39,7 @@ public class PlayerScript : MonoBehaviour
         if (ctx.performed && canInteract)
         {
             didFunction = true;
-            Debug.Log("youhou! " + ctx.phase);
+            //Debug.Log("youhou! " + ctx.phase);
             selectedSound.Play();           
         }      
     }
