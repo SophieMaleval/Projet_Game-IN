@@ -4,62 +4,68 @@ using UnityEngine;
 
 public class Interactible : MonoBehaviour
 {
-    public Sprite regularItem; //sprite normal
-    public Sprite selectableItem; //sprite si sélectionnable
+    public Sprite RegularSprite; //sprite normal
+    public Sprite HighlightSprite; //sprite si sélectionnable
     private SpriteRenderer render;
-    public PlayerScript playerScript; //se trouve automatiquement dans le start, mis en public pour vérif dans éditeur
+    [SerializeField] private PlayerScript PlayerScript;
 
     private void Awake() {
-        if(GameObject.Find("Player") != null)
-        {
-            playerScript = GameObject.Find("Player").GetComponent<PlayerScript>() ;
-        }
+        if(GameObject.Find("Player") != null)   // Récupère le player au lancement de la scène
+        {    PlayerScript = GameObject.Find("Player").GetComponent<PlayerScript>() ; }
     }
+
     private void Start()
     {
         render = GetComponent<SpriteRenderer>();
-        playerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>();
-        render.sprite = regularItem;
+        render.sprite = RegularSprite;
     }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == ("Player"))
         {
-            render.sprite = selectableItem;
-            playerScript.canInteract = true;
+            SwitchSprite(true);
+
+            PlayerScript.SwitchInputSprite();
         }      
     }
 
     private void Update()
     {
-        if (playerScript.didFunction == true && playerScript.canInteract)
+        if(PlayerScript.gameObject.transform.position.x < transform.position.x) PlayerScript.InputSpritePos(false);
+        if(PlayerScript.gameObject.transform.position.x > transform.position.x) PlayerScript.InputSpritePos(true);
+
+
+
+
+        if (PlayerScript.PlayerAsInterract == true)
         {
-            BeenCollected();
+            PlayerScript.PlayerAsInterract = false ;
+            Collected();
         }
     }
 
-    /*private void OnTriggerStay2D(Collider2D other)
-    {
-        if (other.tag == ("Player") && playerScript.didFunction)
-        {
-            BeenCollected();
-        }
-    }*/
 
-    void BeenCollected()
+    void Collected()
     {
-        //playerScript.didFunction = false;
-        Debug.Log("Destroyed !!!!");
-        Destroy(this.gameObject);              
+        PlayerScript.SwitchInputSprite();
+        Destroy(this.gameObject, 0.025f);              
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.tag == ("Player"))
+        if(other.tag == ("Player"))
         {
-            render.sprite = regularItem;
-            playerScript.canInteract = false;
-            //playerScript.didFunction = false;
+            SwitchSprite(false);
+            PlayerScript.SwitchInputSprite();
         }
+    }
+
+    public void SwitchSprite(bool Hihglight)
+    {
+        if(!Hihglight)
+            render.sprite = RegularSprite; 
+        else        
+            render.sprite = HighlightSprite;
     }
 }
