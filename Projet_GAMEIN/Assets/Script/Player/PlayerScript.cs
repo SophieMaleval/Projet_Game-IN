@@ -17,7 +17,10 @@ public class PlayerScript : MonoBehaviour
     public AudioSource selectedSound;
 
 
+    public bool CanCollectObject = true ;
     public bool PlayerAsInterract;
+
+    public InteractibleObject[] Inventaire ;
 
 
 
@@ -28,20 +31,39 @@ public class PlayerScript : MonoBehaviour
     {
         PlayerActionControllers = new PlayerActionControls();
         PlayerActionControllers.PlayerInLand.Interact.performed += OnInteract;
+        PlayerActionControllers.PlayerInLand.Inventory.performed += OnInventory;
     }
 
     public void OnInteract(InputAction.CallbackContext ctx)
     {
         if(GetComponent<PlayerMovement>().enabled == true) // Bloque si PlayerMovement disable
         {
-            if (ctx.performed) 
+            if(ctx.performed) 
             {
                 PlayerAsInterract = true ;
 
-                //Debug.Log("youhou! " + ctx.phase);
                 selectedSound.Play();           
             }
         }      
+    }
+
+    public void OnInventory(InputAction.CallbackContext ctx)
+    {
+        if(GetComponent<PlayerMovement>().enabled == true) // Bloque si PlayerMovement disable
+        {
+            if(ctx.performed) 
+            {
+                InventoryInteract();       
+            }
+        }      
+    }
+
+    void InventoryInteract()
+    {
+        if(GameObject.Find("Canvas") != null)
+        {
+            GameObject.Find("Canvas").GetComponent<InventoryScript>().SwitchToggleInventoryDisplay();
+        }
     }
 
     private void Update()
@@ -60,5 +82,28 @@ public class PlayerScript : MonoBehaviour
             InterractInputSprite.transform.localPosition = new Vector3(0.25f, InterractInputSprite.transform.localPosition.y, InterractInputSprite.transform.localPosition.z) ;
         else // Latouche se positionne à gauche du joueur
             InterractInputSprite.transform.localPosition = new Vector3(-0.25f, InterractInputSprite.transform.localPosition.y, InterractInputSprite.transform.localPosition.z) ;
+    }
+
+
+    public void AjoutInventaire(InteractibleObject ObjetAjouter)
+    {
+        for (int I = 0; I < Inventaire.Length; I++)
+        {
+            if(Inventaire[I] == null)
+            {
+                Inventaire[I] = ObjetAjouter ;
+                break ;
+            }
+        }
+
+        AskInventairePlein();
+    }
+
+    void AskInventairePlein()
+    {
+        if(Inventaire[Inventaire.Length-1] == null)
+            CanCollectObject = true ;
+        else
+            CanCollectObject = false ;
     }
 }

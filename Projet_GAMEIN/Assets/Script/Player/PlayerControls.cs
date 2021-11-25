@@ -33,6 +33,14 @@ public class @PlayerActionControls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": ""Press""
+                },
+                {
+                    ""name"": ""Inventory"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""a1061594-9a4e-4316-bc32-f10a15c667e1"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
                 }
             ],
             ""bindings"": [
@@ -167,6 +175,28 @@ public class @PlayerActionControls : IInputActionCollection, IDisposable
                     ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bc44e985-ab23-48c2-a580-5910509d939a"",
+                    ""path"": ""<Keyboard>/i"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Inventory"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""903b834d-bc49-40d5-8931-1b26993ef307"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Inventory"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -177,6 +207,7 @@ public class @PlayerActionControls : IInputActionCollection, IDisposable
         m_PlayerInLand = asset.FindActionMap("PlayerInLand", throwIfNotFound: true);
         m_PlayerInLand_Move = m_PlayerInLand.FindAction("Move", throwIfNotFound: true);
         m_PlayerInLand_Interact = m_PlayerInLand.FindAction("Interact", throwIfNotFound: true);
+        m_PlayerInLand_Inventory = m_PlayerInLand.FindAction("Inventory", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -228,12 +259,14 @@ public class @PlayerActionControls : IInputActionCollection, IDisposable
     private IPlayerInLandActions m_PlayerInLandActionsCallbackInterface;
     private readonly InputAction m_PlayerInLand_Move;
     private readonly InputAction m_PlayerInLand_Interact;
+    private readonly InputAction m_PlayerInLand_Inventory;
     public struct PlayerInLandActions
     {
         private @PlayerActionControls m_Wrapper;
         public PlayerInLandActions(@PlayerActionControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_PlayerInLand_Move;
         public InputAction @Interact => m_Wrapper.m_PlayerInLand_Interact;
+        public InputAction @Inventory => m_Wrapper.m_PlayerInLand_Inventory;
         public InputActionMap Get() { return m_Wrapper.m_PlayerInLand; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -249,6 +282,9 @@ public class @PlayerActionControls : IInputActionCollection, IDisposable
                 @Interact.started -= m_Wrapper.m_PlayerInLandActionsCallbackInterface.OnInteract;
                 @Interact.performed -= m_Wrapper.m_PlayerInLandActionsCallbackInterface.OnInteract;
                 @Interact.canceled -= m_Wrapper.m_PlayerInLandActionsCallbackInterface.OnInteract;
+                @Inventory.started -= m_Wrapper.m_PlayerInLandActionsCallbackInterface.OnInventory;
+                @Inventory.performed -= m_Wrapper.m_PlayerInLandActionsCallbackInterface.OnInventory;
+                @Inventory.canceled -= m_Wrapper.m_PlayerInLandActionsCallbackInterface.OnInventory;
             }
             m_Wrapper.m_PlayerInLandActionsCallbackInterface = instance;
             if (instance != null)
@@ -259,6 +295,9 @@ public class @PlayerActionControls : IInputActionCollection, IDisposable
                 @Interact.started += instance.OnInteract;
                 @Interact.performed += instance.OnInteract;
                 @Interact.canceled += instance.OnInteract;
+                @Inventory.started += instance.OnInventory;
+                @Inventory.performed += instance.OnInventory;
+                @Inventory.canceled += instance.OnInventory;
             }
         }
     }
@@ -267,5 +306,6 @@ public class @PlayerActionControls : IInputActionCollection, IDisposable
     {
         void OnMove(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
+        void OnInventory(InputAction.CallbackContext context);
     }
 }

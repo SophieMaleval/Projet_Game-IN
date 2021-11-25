@@ -7,6 +7,5 @@ public class ItemCustomer : ScriptableObject
 {
     [Header ("Customisation de Personnage")]
     public Sprite DisplayCustomisation ;
-    public RuntimeAnimatorController Animator ;
-    
+    public RuntimeAnimatorController Animator ; 
 }

@@ -4,28 +4,27 @@ using UnityEngine;
 
 public class Interactible : MonoBehaviour
 {
-    public Sprite RegularSprite; //sprite normal
-    public Sprite HighlightSprite; //sprite si sélectionnable
-    private SpriteRenderer render;
+    public InteractibleObject Object ;
+    private SpriteRenderer SpriteRend;
     [SerializeField] private PlayerScript PlayerScript;
+    private bool PlayerAround = false ;
 
     private void Awake() {
         if(GameObject.Find("Player") != null)   // Récupère le player au lancement de la scène
         {    PlayerScript = GameObject.Find("Player").GetComponent<PlayerScript>() ; }
+        SpriteRend = GetComponent<SpriteRenderer>();        
     }
 
     private void Start()
     {
-        render = GetComponent<SpriteRenderer>();
-        render.sprite = RegularSprite;
+        PlayerCanCollectThisObject(false);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == ("Player"))
         {
-            SwitchSprite(true);
-
+            PlayerCanCollectThisObject(true);
             PlayerScript.SwitchInputSprite();
         }      
     }
@@ -36,18 +35,19 @@ public class Interactible : MonoBehaviour
         if(PlayerScript.gameObject.transform.position.x > transform.position.x) PlayerScript.InputSpritePos(true);
 
 
-
-
-        if (PlayerScript.PlayerAsInterract == true)
+        if (PlayerAround && PlayerScript.CanCollectObject && PlayerScript.PlayerAsInterract)
         {
             PlayerScript.PlayerAsInterract = false ;
             Collected();
+        } else {
+            PlayerScript.PlayerAsInterract = false ;
         }
     }
 
 
     void Collected()
     {
+        PlayerScript.AjoutInventaire(Object);
         PlayerScript.SwitchInputSprite();
         Destroy(this.gameObject, 0.025f);              
     }
@@ -56,16 +56,20 @@ public class Interactible : MonoBehaviour
     {
         if(other.tag == ("Player"))
         {
-            SwitchSprite(false);
+            PlayerCanCollectThisObject(false);
             PlayerScript.SwitchInputSprite();
         }
     }
 
-    public void SwitchSprite(bool Hihglight)
+    public void PlayerCanCollectThisObject(bool Can)
     {
-        if(!Hihglight)
-            render.sprite = RegularSprite; 
-        else        
-            render.sprite = HighlightSprite;
+        if(!Can)
+        {
+            PlayerAround = false ;
+            SpriteRend.sprite = Object.NormalSprite;             
+        } else {
+            PlayerAround = true ;
+            SpriteRend.sprite = Object.HighlightSprite;            
+        }      
     }
 }
