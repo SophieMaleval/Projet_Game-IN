@@ -34,7 +34,6 @@ public class QuestSystem : MonoBehaviour
         a = textQuest.GetComponent<Text>();
         a.text = textQuest.GetComponent<Text>().text;
     }
-
     void Update() 
     {
         a.text = questStep.questStep[stepCount];
