@@ -22,13 +22,15 @@ public class PlayerMovement : MonoBehaviour
     public List<float> ValueColorDisplay ;
     public List<Color> ColorsDisplay ;
     public List<RuntimeAnimatorController> SpriteDisplay ;
+
+
     
 
     private void OnEnable() {   PlayerActionControllers.Enable();   }
     private void OnDisable() {   PlayerActionControllers.Disable();   }
 
     private void Awake() 
-    {    PlayerActionControllers = new PlayerActionControls();   }
+    {    PlayerActionControllers = new PlayerActionControls();}
 
     void Update()
     {

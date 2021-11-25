@@ -6,65 +6,59 @@ using UnityEngine.InputSystem;
 
 public class PlayerScript : MonoBehaviour
 {
-    [Header ("Input")]
-    private PlayerInput playerInput;
+    [Header ("Inputs")]
+    private PlayerActionControls PlayerActionControllers ;
 
     [Header ("Information")]
     public string PlayerName ;
     public int PlayerSexualGenre ;
 
-    public GameObject input_VCue;
+    public GameObject InterractInputSprite;
     public AudioSource selectedSound;
 
-    public bool canInteract;
-    public bool didFunction = false;
+
+    public bool PlayerAsInterract;
 
 
-    //bool canInteract = false;
 
-    //bool interactInput;
+    private void OnEnable() { PlayerActionControllers.Enable(); }
+    private void OnDisable() { PlayerActionControllers.Disable(); }
 
-    //private void OnEnable() { controls.Enable(); }
-    //private void OnDisable() { controls.Disable(); }
     private void Awake()
     {
-        playerInput = GetComponent<PlayerInput>();
-        PlayerActionControls controls = new PlayerActionControls();
-        controls.PlayerInLand.Enable();
-        controls.PlayerInLand.Interact.performed += OnInteract;
+        PlayerActionControllers = new PlayerActionControls();
+        PlayerActionControllers.PlayerInLand.Interact.performed += OnInteract;
     }
-    // Start is called before the first frame update
+
     public void OnInteract(InputAction.CallbackContext ctx)
     {
-        if (ctx.performed && canInteract)
+        if(GetComponent<PlayerMovement>().enabled == true) // Bloque si PlayerMovement disable
         {
-            didFunction = true;
-            Debug.Log("youhou! " + ctx.phase);
-            selectedSound.Play();           
+            if (ctx.performed) 
+            {
+                PlayerAsInterract = true ;
+
+                //Debug.Log("youhou! " + ctx.phase);
+                selectedSound.Play();           
+            }
         }      
     }
 
-    /*public bool DidInteract()
-    {
-        if (didFunction)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }*/
-
     private void Update()
     {
-        if (canInteract)
-        {
-            input_VCue.SetActive(true);
-        }
-        if(!canInteract)
-        {
-            input_VCue.SetActive(false);
-        }
+
+    }
+
+    public void SwitchInputSprite()
+    {
+        InterractInputSprite.SetActive(!InterractInputSprite.activeSelf);
+    }
+
+    public void InputSpritePos(bool StatePositif)
+    {
+        if(StatePositif) // La touche se positionne à droite du joueur
+            InterractInputSprite.transform.localPosition = new Vector3(0.25f, InterractInputSprite.transform.localPosition.y, InterractInputSprite.transform.localPosition.z) ;
+        else // Latouche se positionne à gauche du joueur
+            InterractInputSprite.transform.localPosition = new Vector3(-0.25f, InterractInputSprite.transform.localPosition.y, InterractInputSprite.transform.localPosition.z) ;
     }
 }
