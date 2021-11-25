@@ -32,9 +32,13 @@ public class TextBoxManager : MonoBehaviour {
 
     public bool oneDialogue;
 
+    public QuestionManager theQuestionBox;
+
     // Use this for initialization
     void Start()
     {
+
+          theQuestionBox = FindObjectOfType<QuestionManager>();
 
         //player = FindObjectOfType<GridDeplacement>();
         //display = FindObjectOfType<PlayerDisplayer>();
@@ -81,6 +85,15 @@ public class TextBoxManager : MonoBehaviour {
         {
 			StartCoroutine(AnimateText());
             currentLine += 1;
+            if (currentLine  == 3)
+            {
+
+                theQuestionBox.BoxIsActivated = true;
+                theQuestionBox.NbProp = 2;
+
+            }
+            
+
 
         }
        
