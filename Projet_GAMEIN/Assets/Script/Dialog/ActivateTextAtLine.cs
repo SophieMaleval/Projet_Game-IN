@@ -29,7 +29,7 @@ public class ActivateTextAtLine : MonoBehaviour {
 	public bool txtactif;
 
     public int nbDialog, currentDialog;
-    QuestSystem qS;
+   //QuestSystem qS;
 
 	
 	
@@ -37,7 +37,7 @@ public class ActivateTextAtLine : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-        qS = GameObject.FindGameObjectWithTag("Player").GetComponent<QuestSystem>();
+        //qS = GameObject.FindGameObjectWithTag("Player").GetComponent<QuestSystem>();
         theTextBox = FindObjectOfType<TextBoxManager>();
         currentDialog = 1;	
 	}
@@ -47,7 +47,7 @@ public class ActivateTextAtLine : MonoBehaviour {
 
         if (waitForPress && Input.GetKeyUp(KeyCode.Return) && !theTextBox.oneDialogue)
         { 
-            if(this.gameObject.name == "triggerDialogDeco")
+            /*if(this.gameObject.name == "triggerDialogDeco")
             {
                 bandero.SetActive(true);
             }
@@ -58,7 +58,7 @@ public class ActivateTextAtLine : MonoBehaviour {
             if(this.gameObject.name == "triggeralain" && qS.stepCount == 16)
             {
                 hifi.SetActive(true);
-            }
+            }*/
             theTextBox.oneDialogue = true;
                 int i = 0;
                 foreach (DialogRange dr in dialogR)
