@@ -18,6 +18,7 @@ public class ActivateTextAtLine : MonoBehaviour {
 
     public TextBoxManager theTextBox;
 
+
     public bool requireButtonPress;
     public bool waitForPress;
 
@@ -39,6 +40,7 @@ public class ActivateTextAtLine : MonoBehaviour {
 
         //qS = GameObject.FindGameObjectWithTag("Player").GetComponent<QuestSystem>();
         theTextBox = FindObjectOfType<TextBoxManager>();
+      
         currentDialog = 1;	
 	}
 
@@ -82,6 +84,8 @@ public class ActivateTextAtLine : MonoBehaviour {
 			txtactif = true;
 
             if(nbDialog != 1){
+                
+              
 
                 currentDialog += 1;
                 if(currentDialog > nbDialog){
