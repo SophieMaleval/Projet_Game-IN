@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using DG.Tweening;
 
 
 public class QuestSys : MonoBehaviour
@@ -21,8 +22,10 @@ public class QuestSys : MonoBehaviour
     int etape = 0;
     int sizeOfList;
 
-    public Animator animTitle;
-    public Animator animContent;
+    [Header("Animation")]
+    public CanvasGroup animTitle;
+    public CanvasGroup animContent;
+    public float duration;
 
 
     private void Start()
@@ -31,8 +34,9 @@ public class QuestSys : MonoBehaviour
         titleEffect = GameObject.Find("Ombre").GetComponent<TextMeshProUGUI>();
         contenu = GameObject.Find("Description").GetComponent<TextMeshProUGUI>();
         sizeOfList = quest.Count;
-        animTitle = GameObject.Find("AnimTitle").GetComponent<Animator>();
-        animContent = GameObject.Find("AnimContent").GetComponent<Animator>();
+        quest[niveau].questCode = niveau; 
+        animTitle = GameObject.Find("AnimTitle").GetComponent<CanvasGroup>();
+        animContent = GameObject.Find("AnimContent").GetComponent<CanvasGroup>();
     }
 
     private void Update()
@@ -47,23 +51,14 @@ public class QuestSys : MonoBehaviour
     {
         if (etape > quest[niveau].questGoal.Length - 2)
         {
-            animTitle.SetTrigger("Done");
-            niveau++;
-            etape = 0;        
+            StartCoroutine(FadeAllOut());
         }
+
         else
         {
-            animContent.SetTrigger("Done");
-            etape++;
-           
+            StartCoroutine(FadeContentOut());
         }
-
-        if (niveau > sizeOfList - 1)
-        {
-            Roaming();
-        }
-    }
-
+    }   
     public void Roaming()
     {
         etape = 0;
@@ -71,5 +66,60 @@ public class QuestSys : MonoBehaviour
         title.text = quest[0].questTitle;
         titleEffect.text = quest[0].questTitle;
         contenu.text = quest[0].questGoal[0];
+    }
+
+    //fadeOut
+    IEnumerator FadeAllOut()
+    {
+        animContent.DOFade(0f, 0.3f);
+        animTitle.DOFade(0f, 0.3f);
+        Debug.Log("Fade tout out");
+        yield return new WaitForSeconds(duration);
+        niveau++;
+        etape = 0;
+        if (niveau > sizeOfList - 1)
+        {
+            Roaming();
+            FadeAllIn();
+        }
+        else
+        {
+            FadeAllIn();
+        }
+        
+    }
+
+    IEnumerator FadeAllOutB()
+    {
+        animContent.DOFade(0f, 0.3f);
+        animTitle.DOFade(0f, 0.3f);
+        Roaming();
+        Debug.Log("Fade + va en balade");
+        yield return new WaitForSeconds(duration);
+        //Roaming();
+        FadeAllIn();
+    }
+
+    IEnumerator FadeContentOut()
+    {
+        animContent.DOFade(0f, 0.3f);
+        Debug.Log("Fade le contenu out");
+        yield return new WaitForSeconds(duration);
+        etape++;
+        FadeContentIn();           
+    }
+
+    //fadeIn
+    void FadeAllIn()
+    {
+        animContent.DOFade(1f, 0.3f);
+        animTitle.DOFade(1f, 0.3f);
+        //yield return new WaitForSeconds(duration);
+    }
+
+    void FadeContentIn()
+    {
+        animContent.DOFade(1f, 0.3f);
+        //yield return new WaitForSeconds(duration);
     }
 }

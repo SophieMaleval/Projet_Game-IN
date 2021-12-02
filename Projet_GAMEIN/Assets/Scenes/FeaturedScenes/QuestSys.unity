@@ -635,13 +635,19 @@ MonoBehaviour:
     questGoal:
     - "tuer des m\xE9chants"
     - mdr vilain garnement c mal de tuer
-  - questCode: 2
+  - questCode: 0
+    questTitle: "en bande organis\xE9e"
+    questGoal:
+    - nul ne peut nous contenir
+    - dans l'automobile nous consommons des susbtances illicites
+  - questCode: 0
     questTitle: "en bande organis\xE9e"
     questGoal:
     - nul ne peut nous contenir
     - dans l'automobile nous consommons des susbtances illicites
   animTitle: {fileID: 0}
   animContent: {fileID: 0}
+  duration: 0.5
 --- !u!225 &1104097457
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -664,8 +670,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1261638578}
   - component: {fileID: 1261638580}
-  - component: {fileID: 1261638579}
-  - component: {fileID: 1261638581}
   m_Layer: 5
   m_Name: AnimTitle
   m_TagString: Untagged
@@ -694,25 +698,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 130}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!95 &1261638579
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1261638577}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 2efd1270175dc254fb46ffa4d4e61c0d, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!225 &1261638580
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -725,21 +710,6 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!111 &1261638581
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1261638577}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: 53f4cec428b311340a1f706ecfaf8b1e, type: 2}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 0
-  m_AnimatePhysics: 0
-  m_CullingType: 0
 --- !u!1 &1337367407
 GameObject:
   m_ObjectHideFlags: 0
@@ -1191,8 +1161,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1837502198}
   - component: {fileID: 1837502200}
-  - component: {fileID: 1837502199}
-  - component: {fileID: 1837502201}
   m_Layer: 5
   m_Name: AnimContent
   m_TagString: Untagged
@@ -1220,25 +1188,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!95 &1837502199
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1837502197}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 2efd1270175dc254fb46ffa4d4e61c0d, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!225 &1837502200
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -1251,21 +1200,6 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!111 &1837502201
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1837502197}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: 53f4cec428b311340a1f706ecfaf8b1e, type: 2}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 0
-  m_AnimatePhysics: 0
-  m_CullingType: 0
 --- !u!1 &1877478436
 GameObject:
   m_ObjectHideFlags: 0
