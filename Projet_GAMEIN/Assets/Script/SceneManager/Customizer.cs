@@ -61,7 +61,6 @@ public class Customizer : MonoBehaviour
 
     private void Awake() 
     {
-        
         if(GameObject.Find("Player") == null)
         {
             GameObject PlayerInstantiate = Instantiate(PlayerPrefab, PlayerPositionCustom, Quaternion.identity) ;
@@ -91,6 +90,8 @@ public class Customizer : MonoBehaviour
     private void Start() 
     {  
         StartCoroutine(WaitTransitionAnim());
+
+        SetAvatar();        
     }
 
     IEnumerator WaitTransitionAnim()
@@ -99,7 +100,6 @@ public class Customizer : MonoBehaviour
         FadeImage.GetComponent<AnimationTransitionScene>().enabled = true ;
         yield return new WaitForSeconds(2f) ;
         FadeImage.SetActive(false);
-
     }
 
 
