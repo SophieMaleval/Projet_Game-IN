@@ -5576,6 +5576,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MoveSpeed: 5
+  ScooterSpeed: 0
   PlayerRenderers:
   - {fileID: 7705379444423092921}
   - {fileID: 7705379444181384879}
@@ -5603,9 +5604,10 @@ MonoBehaviour:
   - {r: 1, g: 1, b: 1, a: 1}
   SpriteDisplay:
   - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 9100000, guid: 42562577f6c3bb84eb9140b67f0fc5c1, type: 2}
+  - {fileID: 9100000, guid: 7f5860606a0eace41812041e4306f8c8, type: 2}
+  - {fileID: 9100000, guid: 658c9128e71802743ba378ce07af9519, type: 2}
+  OnScooter: 0
 --- !u!114 &6347952101657534626
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5622,8 +5624,9 @@ MonoBehaviour:
   PlayerSexualGenre: -1
   InterractInputSprite: {fileID: 7445391371602156354}
   selectedSound: {fileID: 1242458652779531074}
-  CanInteract: 0
-  didFunction: 0
+  CanCollectObject: 1
+  PlayerAsInterract: 0
+  Inventaire: []
 --- !u!50 &7965349286853053022
 Rigidbody2D:
   serializedVersion: 4
