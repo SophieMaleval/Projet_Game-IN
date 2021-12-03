@@ -21,7 +21,8 @@ public class LoadingScreenScript : MonoBehaviour
         yield return new WaitForSeconds(TimeToWait - 1.25f);
         StartCoroutine(FadeAnimtion(true));
         yield return new WaitForSeconds(1f);
-        SceneManager.LoadScene("Menu");
+        SceneManager.LoadScene("Options");
+        //SceneManager.LoadScene("Menu");
     }
 
     IEnumerator FadeAnimtion(bool GameAsLunch)

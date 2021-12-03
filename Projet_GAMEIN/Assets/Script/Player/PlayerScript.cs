@@ -42,7 +42,7 @@ public class PlayerScript : MonoBehaviour
             if(ctx.performed) 
             {
                 PlayerAsInterract = true ;
-
+                
                 selectedSound.Play();           
             }
         }      

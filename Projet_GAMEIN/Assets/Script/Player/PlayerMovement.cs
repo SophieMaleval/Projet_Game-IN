@@ -35,14 +35,14 @@ public class PlayerMovement : MonoBehaviour
     private void OnDisable() {   PlayerActionControllers.Disable();   }
 
     public void StartDialog() {   PlayerActionControllers.Disable();   }
-    private void EndDialog() {   PlayerActionControllers.Enable();   }
+    public void EndDialog() {   PlayerActionControllers.Enable();   }
 
     private void Awake() 
 
     {  
           PlayerActionControllers = new PlayerActionControls();
-          PlayerActionControllers.PlayerInLand.EnterScoot.performed+= OnEnterScoot;
-          PlayerActionControllers.PlayerInScoot.ExitScoot.performed+= OnEnterScoot;}
+          PlayerActionControllers.PlayerInLand.EnterScoot.performed += OnEnterScoot;
+          PlayerActionControllers.PlayerInScoot.ExitScoot.performed += OnEnterScoot;}
 
     void Update()
     {

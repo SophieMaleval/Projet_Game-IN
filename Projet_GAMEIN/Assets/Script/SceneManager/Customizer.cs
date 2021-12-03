@@ -387,7 +387,8 @@ public class Customizer : MonoBehaviour
         
         //CineMachineCam.GetComponent<CinemachineVirtualCamera>().Follow = PlayerApparance.transform ; 
 
-        SceneManager.LoadScene("DynamicLoad");
+        SceneManager.LoadScene("Tilemaps Test");
+        //SceneManager.LoadScene("InventoryTest");
     }
 
 
