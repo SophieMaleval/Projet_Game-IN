@@ -29,6 +29,9 @@ public class PlayerMovement : MonoBehaviour
     private void OnEnable() {   PlayerActionControllers.Enable();   }
     private void OnDisable() {   PlayerActionControllers.Disable();   }
 
+    public void StartDialog() {   PlayerActionControllers.Disable();   }
+    private void EndDialog() {   PlayerActionControllers.Enable();   }
+
     private void Awake() 
     {    PlayerActionControllers = new PlayerActionControls();}
 

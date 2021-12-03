@@ -19,6 +19,7 @@ public class PlayerScript : MonoBehaviour
 
     public bool CanCollectObject = true ;
     public bool PlayerAsInterract;
+    public bool InDiscussion = false ;
 
     public InteractibleObject[] Inventaire ;
 
