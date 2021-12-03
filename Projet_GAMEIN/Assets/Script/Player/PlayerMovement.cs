@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class PlayerMovement : MonoBehaviour
 
     [Header ("Movement")]
     [SerializeField] private float MoveSpeed ;
+        [SerializeField] private float ScooterSpeed ;
+
 
 
     public List<SpriteRenderer> PlayerRenderers ;
@@ -23,6 +26,8 @@ public class PlayerMovement : MonoBehaviour
     public List<Color> ColorsDisplay ;
     public List<RuntimeAnimatorController> SpriteDisplay ;
 
+    public bool OnScooter = false;
+
 
     
 
@@ -33,7 +38,11 @@ public class PlayerMovement : MonoBehaviour
     private void EndDialog() {   PlayerActionControllers.Enable();   }
 
     private void Awake() 
-    {    PlayerActionControllers = new PlayerActionControls();}
+
+    {  
+          PlayerActionControllers = new PlayerActionControls();
+          PlayerActionControllers.PlayerInLand.EnterScoot.performed+= OnEnterScoot;
+          PlayerActionControllers.PlayerInScoot.ExitScoot.performed+= OnEnterScoot;}
 
     void Update()
     {
@@ -41,13 +50,52 @@ public class PlayerMovement : MonoBehaviour
         Animate();
     }
 
+    public void OnEnterScoot (InputAction.CallbackContext ctx ){
+
+        if (ctx.performed)
+        {
+            switchScootState(true);
+           
+        }
+    }
+    public void OnExitScoot (InputAction.CallbackContext ctx ){
+
+        if (ctx.performed)
+        {
+            switchScootState(false);
+           
+        }
+    }
+
+    public void switchScootState(bool state){
+         OnScooter = state;
+              for (int i = 0; i < Animators.Count; i++)
+        {
+            if(Animators[i].runtimeAnimatorController != null)
+            
+               
+                Animators[i].SetBool("InScoot", state);   
+        }
+    }
+
+
+
     private void FixedUpdate() 
-    {    Move(); }
+    {    
+        Move();
+    
+     }
 
     void ProcessInputs()
+
     {
-        Vector2 Move = PlayerActionControllers.PlayerInLand.Move.ReadValue<Vector2>();
-    
+        Vector2 Move = Vector2.zero ;
+        if(!OnScooter)
+            Move = PlayerActionControllers.PlayerInLand.Move.ReadValue<Vector2>();
+        else
+            Move = PlayerActionControllers.PlayerInScoot.MoveScoot.ReadValue<Vector2>();
+
+
         if((Move.x == 0 && Move.y == 0) && MoveDirection.x != 0 || MoveDirection.y != 0)
             LastMoveDirection = MoveDirection ;      
 
@@ -70,7 +118,14 @@ public class PlayerMovement : MonoBehaviour
     }
 
     void Move()
-    {    RbPlayer.velocity = new Vector2(MoveDirection.x * MoveSpeed, MoveDirection.y * MoveSpeed); }
+    {   
+        if (!OnScooter)
+         RbPlayer.velocity = new Vector2(MoveDirection.x * MoveSpeed, MoveDirection.y * MoveSpeed); 
+        else
+        RbPlayer.velocity = new Vector2(MoveDirection.x * (MoveSpeed*ScooterSpeed), MoveDirection.y * (MoveSpeed*ScooterSpeed)); 
+
+
+    }
 
     public void ResetVelocity()
     {
@@ -91,7 +146,9 @@ public class PlayerMovement : MonoBehaviour
                 Animators[i].SetFloat("AnimLastMoveX", LastMoveDirection.x) ;
                 Animators[i].SetFloat("AnimLastMoveY", LastMoveDirection.y) ;
                 // Passe de Idle à Run
-                Animators[i].SetFloat("AnimMoveMagnitude",MoveDirection.magnitude);   
+                Animators[i].SetFloat("AnimMoveMagnitude",MoveDirection.magnitude);
+
+
             }
         }
     }
