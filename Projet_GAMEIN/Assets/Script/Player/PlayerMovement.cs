@@ -67,13 +67,12 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    public void switchScootState(bool state){
-         OnScooter = state;
-              for (int i = 0; i < Animators.Count; i++)
+    public void switchScootState(bool state)
+    {
+        OnScooter = state;
+        for (int i = 0; i < Animators.Count; i++)
         {
             if(Animators[i].runtimeAnimatorController != null)
-            
-               
                 Animators[i].SetBool("InScoot", state);   
         }
     }
@@ -87,7 +86,6 @@ public class PlayerMovement : MonoBehaviour
      }
 
     void ProcessInputs()
-
     {
         Vector2 Move = Vector2.zero ;
         if(!OnScooter)
@@ -120,9 +118,10 @@ public class PlayerMovement : MonoBehaviour
     void Move()
     {   
         if (!OnScooter)
-         RbPlayer.velocity = new Vector2(MoveDirection.x * MoveSpeed, MoveDirection.y * MoveSpeed); 
+        
+            RbPlayer.velocity = new Vector2(MoveDirection.x * MoveSpeed, MoveDirection.y * MoveSpeed); 
         else
-        RbPlayer.velocity = new Vector2(MoveDirection.x * (MoveSpeed*ScooterSpeed), MoveDirection.y * (MoveSpeed*ScooterSpeed)); 
+            RbPlayer.velocity = new Vector2(MoveDirection.x * (MoveSpeed*ScooterSpeed), MoveDirection.y * (MoveSpeed*ScooterSpeed)); 
 
 
     }

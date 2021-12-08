@@ -25,12 +25,19 @@ public class PNJDialogue : MonoBehaviour
     public List<string> QuestionDisponible ;
     public List<string> AnswerDisponible ;
 
+    public bool Question1AsRead = false ;
+    public bool Question2AsRead = false ;
+    public bool Question3AsRead = false ;
+
+
 
     [System.Serializable]    
     public class SerializableAnswer
     {
         public List<int> AnswerForQuestion ; 
     }
+
+
     [Header ("Réponse Question")]
     public List<SerializableAnswer> Answer = new List<SerializableAnswer>() ;
 
@@ -41,8 +48,6 @@ public class PNJDialogue : MonoBehaviour
             TextDialogue = GameObject.Find("Player Backpack").GetComponent<CSVReader>() ;
             
         }    
-
-
     } 
 
     public void GetDialogue()
@@ -151,7 +156,9 @@ public class PNJDialogue : MonoBehaviour
 
     public void StartDiscussion()
     {
-        //PlayerScript.gameObject.GetComponent<PlayerMovement>().InDialog(true) ;
+        Question1AsRead = false ;
+        Question2AsRead = false ;
+        Question3AsRead = false ;
 
         DialogueCanvas.transform.parent.gameObject.SetActive(true) ;     
         DialogueCanvas.text = DialoguePNJ.OpeningDialogue ;
@@ -166,11 +173,25 @@ public class PNJDialogue : MonoBehaviour
 
         if(DialogueCanvas.text == DialoguePNJ.CloseDiscussion)
         {
-            //PlayerScript.gameObject.GetComponent<PlayerMovement>().InDialog(false) ;             
+            PlayerScript.gameObject.GetComponent<PlayerMovement>().EndDialog() ;             
             DialogueCanvas.transform.parent.gameObject.SetActive(false) ;  
             PlayerScript.InDiscussion = false ;
         }
     }
+
+
+    void SetQuestion(bool QuestionAsRead, int ChildNum, string DialogueText)
+    {
+        if(!QuestionAsRead)
+        {
+            BoxQuestion.transform.GetChild(ChildNum).GetComponent<Button>().interactable = true ;
+            BoxQuestion.transform.GetChild(ChildNum).GetComponent<TextMeshProUGUI>().text = DialogueText ;            
+        } else {
+            BoxQuestion.transform.GetChild(ChildNum).GetComponent<TextMeshProUGUI>().text = " " ;                   
+            BoxQuestion.transform.GetChild(ChildNum).GetComponent<Button>().interactable = false ;
+        }
+    }
+
 
     public void ShowDialogueChoice()
     {
@@ -179,33 +200,18 @@ public class PNJDialogue : MonoBehaviour
         /* Afficher les Questions à afficher */
         BoxQuestion.SetActive(true);
 
-        BoxQuestion.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = DialoguePNJ.Question1 ;
-        BoxQuestion.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = DialoguePNJ.Question2 ;
+        SetQuestion(Question1AsRead, 0, DialoguePNJ.Question1); // Set QUestion 1
+        SetQuestion(Question2AsRead, 1, DialoguePNJ.Question2); // Set QUestion 2
 
         if(QuestionDisplay.z != 0)
         {
-            BoxQuestion.transform.GetChild(2).GetComponent<Button>().interactable = true ;
-            BoxQuestion.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = QuestionDisponible[(int) QuestionDisplay.z] ;
+            SetQuestion(Question3AsRead, 2, QuestionDisponible[(int) QuestionDisplay.z]); // Set QUestion 3
         } else {
-            BoxQuestion.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = "  " ;
-            BoxQuestion.transform.GetChild(2).GetComponent<Button>().interactable = false ;
+            SetQuestion(false, 2, QuestionDisponible[(int) QuestionDisplay.z]) ; // Set QUestion 3
         }
 
-        if(QuestionDisplay.w != 0)
-        {
-            BoxQuestion.transform.GetChild(3).GetComponent<Button>().interactable = true ;
-            BoxQuestion.transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = QuestionDisponible[(int) QuestionDisplay.w] ;
-        } else {
-            if(QuestionDisplay.z != 0)
-            {
-                BoxQuestion.transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = DialoguePNJ.Aurevoir ;
-                BoxQuestion.transform.GetChild(3).GetComponent<Button>().interactable = true ;                  
-            } else {
-                BoxQuestion.transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = "  " ;
-                BoxQuestion.transform.GetChild(3).GetComponent<Button>().interactable = false ;                
-            }
+        SetQuestion(false, 3, DialoguePNJ.Aurevoir); // Set QUestion 3
 
-        }
     }
 
     void AnswerDiscussion(int DialogueDisplay, int StateAnswer)
@@ -230,19 +236,29 @@ public class PNJDialogue : MonoBehaviour
         DialogueCanvas.text = DialoguePNJ.CloseDiscussion ;
     }
 
+
+
+
+
     public void ButtonChoix1()
     {
         AnswerDiscussion((int) QuestionDisplay.x, 0);
+
+        if(Question1AsRead == false) Question1AsRead = true ;
     }
 
     public void ButtonChoix2()
     {
         AnswerDiscussion((int) QuestionDisplay.y, 0);
+
+        if(Question2AsRead == false) Question2AsRead = true ;
     }
 
     public void ButtonChoix3()
     {
         AnswerDiscussion((int) QuestionDisplay.z, 0);
+
+        if(Question3AsRead == false) Question3AsRead = true ;
     }
 
     public void ButtonChoix4()
