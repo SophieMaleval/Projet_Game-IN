@@ -13,7 +13,6 @@ public class AnimationTransitionScene : MonoBehaviour
 
     public bool ShouldReveal;
     [SerializeField] private float CircleSize = 1.23f;
-    [SerializeField] private GameObject FadeImage ;
 
 
   

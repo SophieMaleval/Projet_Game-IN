@@ -15,7 +15,9 @@ public class InventoryScript : MonoBehaviour
     private void Awake() 
     {
         if(GameObject.Find("Player") != null)   // Récupère le player au lancement de la scène
-        {    PlayerScript = GameObject.Find("Player").GetComponent<PlayerScript>() ; }
+        {    PlayerScript = GameObject.Find("Player").GetComponent<PlayerScript>() ; 
+        
+        }
 
         SetInventoryCount();
 
@@ -38,7 +40,7 @@ public class InventoryScript : MonoBehaviour
         InventoryPanel.SetActive(!InventoryPanel.activeSelf);
     }
 
-    void SetInventoryCount()
+    public void SetInventoryCount()
     {
         InventoryDisplayer.Clear();
         for (int Id = 0; Id < DisplayerInventory.transform.childCount; Id++)

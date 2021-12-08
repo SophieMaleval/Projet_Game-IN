@@ -35,12 +35,17 @@ public class Interactible : MonoBehaviour
         if(PlayerScript.gameObject.transform.position.x > transform.position.x) PlayerScript.InputSpritePos(true);
 
 
-        if (PlayerAround && PlayerScript.CanCollectObject && PlayerScript.PlayerAsInterract)
+        if (PlayerAround)
         {
+            if(PlayerScript.CanCollectObject && PlayerScript.PlayerAsInterract)
+            {
+                PlayerScript.PlayerAsInterract = false ;
+                Collected();
+            } else {
+                
             PlayerScript.PlayerAsInterract = false ;
-            Collected();
-        } else {
-            PlayerScript.PlayerAsInterract = false ;
+        } 
+
         }
     }
 
