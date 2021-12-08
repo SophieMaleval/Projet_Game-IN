@@ -81,6 +81,7 @@ public class Customizer : MonoBehaviour
                 // Set Up la direction du Joueur en Face
                 PlayerApparance.Animators[A].SetFloat("AnimLastMoveX", 0) ;
                 PlayerApparance.Animators[A].SetFloat("AnimLastMoveY", -1) ;
+                
             }
             RecupInfoPlayer();
             SetAvatar();            
@@ -386,7 +387,8 @@ public class Customizer : MonoBehaviour
         
         //CineMachineCam.GetComponent<CinemachineVirtualCamera>().Follow = PlayerApparance.transform ; 
 
-        SceneManager.LoadScene("DynamicLoad");
+        SceneManager.LoadScene("Tilemaps Test");
+        //SceneManager.LoadScene("InventoryTest");
     }
 
 
