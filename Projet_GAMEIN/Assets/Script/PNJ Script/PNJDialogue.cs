@@ -30,6 +30,14 @@ public class PNJDialogue : MonoBehaviour
     public bool Question3AsRead = false ;
 
 
+    private bool PNJSpeak = false ;
+    private int CurrentDialogueDisplay = 0 ;
+    private int CurrentDialogueStateDisplay = 0 ;
+    
+    private int CurrentDialogueLength = 0 ;
+    private int CurrentDialogueState = 0 ;
+
+
 
     [System.Serializable]    
     public class SerializableAnswer
@@ -151,17 +159,19 @@ public class PNJDialogue : MonoBehaviour
     }
 
 
-
-
-
     public void StartDiscussion()
     {
+        PlayerScript.gameObject.GetComponent<PlayerMovement>().StartDialog() ;    
+
         Question1AsRead = false ;
         Question2AsRead = false ;
         Question3AsRead = false ;
 
         DialogueCanvas.transform.parent.gameObject.SetActive(true) ;     
         DialogueCanvas.text = DialoguePNJ.OpeningDialogue ;
+
+        CurrentDialogueDisplay = 0 ;
+        //CurrentDialogueStateDisplay = 0 ;//
     }
 
     void StateDiscussion()
@@ -177,29 +187,42 @@ public class PNJDialogue : MonoBehaviour
             DialogueCanvas.transform.parent.gameObject.SetActive(false) ;  
             PlayerScript.InDiscussion = false ;
         }
+
+       /* Debug.Log();*/
+        if(PNJSpeak)
+        {
+            Debug.Log(CurrentDialogueDisplay + " " + CurrentDialogueState + " " + Answer[CurrentDialogueDisplay].AnswerForQuestion.Count);
+            //Debug.Log(CurrentDialogueStateDisplay + " " + (int.Parse(AnswerDisponible[Answer[CurrentDialogueDisplay-1].AnswerForQuestion.Count]) -1) );
+            if(CurrentDialogueState < Answer[CurrentDialogueDisplay].AnswerForQuestion.Count )
+                TextDiscussion(false, CurrentDialogueDisplay, CurrentDialogueState + 1);
+            else
+                ShowDialogueChoice();
+        }
     }
 
+    void SwitchBoxDisplay()
+    {
+        DialogueCanvas.gameObject.SetActive(!DialogueCanvas.gameObject.activeSelf);
+        BoxQuestion.SetActive(!BoxQuestion.activeSelf); 
+    }
 
     void SetQuestion(bool QuestionAsRead, int ChildNum, string DialogueText)
     {
         if(!QuestionAsRead)
         {
-            BoxQuestion.transform.GetChild(ChildNum).GetComponent<Button>().interactable = true ;
+            BoxQuestion.transform.GetChild(ChildNum).gameObject.SetActive(true) ;
             BoxQuestion.transform.GetChild(ChildNum).GetComponent<TextMeshProUGUI>().text = DialogueText ;            
         } else {
             BoxQuestion.transform.GetChild(ChildNum).GetComponent<TextMeshProUGUI>().text = " " ;                   
-            BoxQuestion.transform.GetChild(ChildNum).GetComponent<Button>().interactable = false ;
+            BoxQuestion.transform.GetChild(ChildNum).gameObject.SetActive(false) ;
         }
     }
 
-
     public void ShowDialogueChoice()
     {
-        DialogueCanvas.gameObject.SetActive(false);
+        SwitchBoxDisplay();
 
         /* Afficher les Questions à afficher */
-        BoxQuestion.SetActive(true);
-
         SetQuestion(Question1AsRead, 0, DialoguePNJ.Question1); // Set QUestion 1
         SetQuestion(Question2AsRead, 1, DialoguePNJ.Question2); // Set QUestion 2
 
@@ -210,31 +233,35 @@ public class PNJDialogue : MonoBehaviour
             SetQuestion(false, 2, QuestionDisponible[(int) QuestionDisplay.z]) ; // Set QUestion 3
         }
 
-        SetQuestion(false, 3, DialoguePNJ.Aurevoir); // Set QUestion 3
-
+        SetQuestion(false, 3, DialoguePNJ.Aurevoir); // Set QUestion 4
     }
 
-    void AnswerDiscussion(int DialogueDisplay, int StateAnswer)
+    void ResetDialogueContinuationValue(int NumDialogueList)
     {
-        BoxQuestion.SetActive(false);
+        PNJSpeak = true ;    
+        CurrentDialogueDisplay = NumDialogueList - 1;
+        //CurrentDialogueLength = Answer[CurrentDialogueDisplay].AnswerForQuestion.Count ;
+        CurrentDialogueState = 0 ;
+    }
+
+    void TextDiscussion(bool ToggleDisplayBox , int DialogueDisplay, int StateAnswer)
+    {
+        if(ToggleDisplayBox)
+            SwitchBoxDisplay();
    
-        if(DialogueDisplay != 0)
-        {
-            Debug.Log("Blabla ") ;
-            DialogueCanvas.text = AnswerDisponible[Answer[DialogueDisplay - 1].AnswerForQuestion[StateAnswer]] ;   
-        } else {
-            CloseDiscussion() ;
-        }
-       // DialogueCanvas.text = AnswerDisponible[Answer[DialogueDisplay -1].AnswerForQuestion[StateAnswer]] ;
+        DialogueCanvas.text = AnswerDisponible[Answer[CurrentDialogueDisplay].AnswerForQuestion[CurrentDialogueState]] ; 
+        CurrentDialogueState ++ ;
     }
 
     void CloseDiscussion()
     {
-        BoxQuestion.SetActive(false);
-        DialogueCanvas.gameObject.SetActive(true);
+        SwitchBoxDisplay();
 
         DialogueCanvas.text = DialoguePNJ.CloseDiscussion ;
+        PNJSpeak = false ;
     }
+
+
 
 
 
@@ -242,28 +269,35 @@ public class PNJDialogue : MonoBehaviour
 
     public void ButtonChoix1()
     {
-        AnswerDiscussion((int) QuestionDisplay.x, 0);
+        ResetDialogueContinuationValue(1);        
+        TextDiscussion(true, /*(int) QuestionDisplay.x*/ 1, 0);
+
+
 
         if(Question1AsRead == false) Question1AsRead = true ;
     }
 
     public void ButtonChoix2()
     {
-        AnswerDiscussion((int) QuestionDisplay.y, 0);
+        ResetDialogueContinuationValue(2);
+        TextDiscussion(true, /*(int) QuestionDisplay.y*/ 2, 0);
 
         if(Question2AsRead == false) Question2AsRead = true ;
     }
 
     public void ButtonChoix3()
     {
-        AnswerDiscussion((int) QuestionDisplay.z, 0);
+        ResetDialogueContinuationValue((int) QuestionDisplay.z);
+        TextDiscussion(true, (int) QuestionDisplay.z, 0);
 
         if(Question3AsRead == false) Question3AsRead = true ;
     }
 
     public void ButtonChoix4()
     {
-        AnswerDiscussion((int) QuestionDisplay.w, 0);
+        CloseDiscussion();
+        /*ResetDialogueContinuationValue((int) QuestionDisplay.w);
+        TextDiscussion(true, (int) QuestionDisplay.w, 0);*/
     }
 
 }
