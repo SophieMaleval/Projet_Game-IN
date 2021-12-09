@@ -27,6 +27,9 @@ public class PlayerMovement : MonoBehaviour
     public List<RuntimeAnimatorController> SpriteDisplay ;
 
     public bool OnScooter = false;
+     bool OnSlope = false;
+     float ValueSlopeAdd;
+    
 
 
     
@@ -82,8 +85,23 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate() 
     {    
         Move();
+        if(OnSlope == true)
+        Slopes();
     
-     }
+    }
+    public void SlopeParameter (bool EnterSlope, float valueSlope)
+    {
+        OnSlope = EnterSlope;
+        ValueSlopeAdd =  valueSlope; 
+
+
+    }
+
+     void Slopes ()
+    {
+        if(MoveDirection.x != 0)
+            RbPlayer.velocity += new Vector2 (0,ValueSlopeAdd);
+    }
 
     void ProcessInputs()
     {
