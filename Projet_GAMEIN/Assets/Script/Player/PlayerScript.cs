@@ -28,6 +28,9 @@ public class PlayerScript : MonoBehaviour
     private void OnEnable() { PlayerActionControllers.Enable(); }
     private void OnDisable() { PlayerActionControllers.Disable(); }
 
+    public void StartDialog() {   PlayerActionControllers.Disable();   }
+    public void EndDialog() {   PlayerActionControllers.Enable();    }
+
     private void Awake()
     {
         PlayerActionControllers = new PlayerActionControls();

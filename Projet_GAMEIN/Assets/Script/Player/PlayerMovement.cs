@@ -12,6 +12,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float MoveSpeed ;
         [SerializeField] private float ScooterSpeed ;
 
+    [Header ("Player")]
+    [SerializeField] private PlayerDialogue PlayerSpeaker ;
 
 
     public List<SpriteRenderer> PlayerRenderers ;
@@ -34,15 +36,17 @@ public class PlayerMovement : MonoBehaviour
     private void OnEnable() {   PlayerActionControllers.Enable();   }
     private void OnDisable() {   PlayerActionControllers.Disable();   }
 
-    public void StartDialog() {   PlayerActionControllers.Disable();   }
-    public void EndDialog() {   PlayerActionControllers.Enable();   }
+    public void StartDialog() {   PlayerActionControllers.Disable();    PlayerSpeaker.DialogueStart();   }
+    public void EndDialog() {   PlayerActionControllers.Enable();   PlayerSpeaker.DialogueEnd();      }
 
     private void Awake() 
-
     {  
-          PlayerActionControllers = new PlayerActionControls();
-          PlayerActionControllers.PlayerInLand.EnterScoot.performed += OnEnterScoot;
-          PlayerActionControllers.PlayerInScoot.ExitScoot.performed += OnEnterScoot;}
+        PlayerActionControllers = new PlayerActionControls();
+        PlayerActionControllers.PlayerInLand.EnterScoot.performed += OnEnterScoot;
+        PlayerActionControllers.PlayerInScoot.ExitScoot.performed += OnEnterScoot;
+
+        PlayerSpeaker = GameObject.Find("Player Backpack").GetComponent<PlayerDialogue>() ;
+    }
 
     void Update()
     {
@@ -50,20 +54,19 @@ public class PlayerMovement : MonoBehaviour
         Animate();
     }
 
-    public void OnEnterScoot (InputAction.CallbackContext ctx ){
-
+    public void OnEnterScoot (InputAction.CallbackContext ctx )
+    {
         if (ctx.performed)
         {
             switchScootState(true);
            
         }
     }
-    public void OnExitScoot (InputAction.CallbackContext ctx ){
-
+    public void OnExitScoot (InputAction.CallbackContext ctx )
+    {
         if (ctx.performed)
         {
             switchScootState(false);
-           
         }
     }
 
@@ -82,8 +85,7 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate() 
     {    
         Move();
-    
-     }
+    }
 
     void ProcessInputs()
     {
@@ -118,12 +120,9 @@ public class PlayerMovement : MonoBehaviour
     void Move()
     {   
         if (!OnScooter)
-        
             RbPlayer.velocity = new Vector2(MoveDirection.x * MoveSpeed, MoveDirection.y * MoveSpeed); 
         else
-            RbPlayer.velocity = new Vector2(MoveDirection.x * (MoveSpeed*ScooterSpeed), MoveDirection.y * (MoveSpeed*ScooterSpeed)); 
-
-
+            RbPlayer.velocity = new Vector2(MoveDirection.x * (MoveSpeed * ScooterSpeed), MoveDirection.y * (MoveSpeed*ScooterSpeed)); 
     }
 
     public void ResetVelocity()

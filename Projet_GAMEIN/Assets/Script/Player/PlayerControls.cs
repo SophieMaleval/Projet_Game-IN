@@ -27,14 +27,6 @@ public class @PlayerActionControls : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""EnterScoot"",
-                    ""type"": ""PassThrough"",
-                    ""id"": ""be329a52-9498-462b-afa7-8663d4dd658a"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": ""Press""
-                },
-                {
                     ""name"": ""Interact"",
                     ""type"": ""PassThrough"",
                     ""id"": ""2062a430-8cce-47a9-8bdf-cbafe8451567"",
@@ -46,6 +38,14 @@ public class @PlayerActionControls : IInputActionCollection, IDisposable
                     ""name"": ""Inventory"",
                     ""type"": ""PassThrough"",
                     ""id"": ""a1061594-9a4e-4316-bc32-f10a15c667e1"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
+                },
+                {
+                    ""name"": ""EnterScoot"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""be329a52-9498-462b-afa7-8663d4dd658a"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": ""Press""
@@ -187,7 +187,7 @@ public class @PlayerActionControls : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""bc44e985-ab23-48c2-a580-5910509d939a"",
-                    ""path"": ""<Keyboard>/i"",
+                    ""path"": ""<Keyboard>/r"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -198,7 +198,7 @@ public class @PlayerActionControls : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""903b834d-bc49-40d5-8931-1b26993ef307"",
-                    ""path"": ""<Keyboard>/escape"",
+                    ""path"": ""<Keyboard>/rightShift"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -220,7 +220,7 @@ public class @PlayerActionControls : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""5fe7beb6-959f-4c74-8453-3a7dfe08638a"",
-                    ""path"": ""<Keyboard>/enter"",
+                    ""path"": ""<Keyboard>/m"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -263,7 +263,7 @@ public class @PlayerActionControls : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""569f1eea-738b-43af-80aa-f4744a1d8871"",
-                    ""path"": ""<Keyboard>/i"",
+                    ""path"": ""<Keyboard>/r"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -274,7 +274,7 @@ public class @PlayerActionControls : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""16a2c1a5-5104-41dc-9aa9-c895af998d7e"",
-                    ""path"": ""<Keyboard>/escape"",
+                    ""path"": ""<Keyboard>/rightShift"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -395,7 +395,7 @@ public class @PlayerActionControls : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""b908c86c-b3d7-4968-a961-1a8de596c781"",
-                    ""path"": ""<Keyboard>/space"",
+                    ""path"": ""<Keyboard>/f"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -406,11 +406,109 @@ public class @PlayerActionControls : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""469505b4-890c-482e-b47f-1303b8f3efbb"",
-                    ""path"": ""<Keyboard>/enter"",
+                    ""path"": ""<Keyboard>/m"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""ExitScoot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""PlayerInDialogue"",
+            ""id"": ""4faf5640-0082-4b47-a126-1dba7a87b5ab"",
+            ""actions"": [
+                {
+                    ""name"": ""SelectPreviousQuestion"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""6a146fd9-c00f-4c19-82bb-5858c5fbc87a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
+                },
+                {
+                    ""name"": ""SelectNextQuestion"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""14ccbef2-2643-44de-86c6-82734d46f1da"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
+                },
+                {
+                    ""name"": ""ValidateChoice"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""e11225cc-0e73-4ff5-95c2-c3c9409aa5ba"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""aec3e49c-64d0-4f1e-9d11-4a75bfb5f82c"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SelectPreviousQuestion"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3858ee51-9a54-45fa-b4e8-5a2ea80ff479"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SelectPreviousQuestion"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""08fd5c2b-a387-461d-8879-b63307cf4a77"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SelectNextQuestion"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d9cbd5ab-0ab7-4c0f-905d-0c60ca2b4637"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SelectNextQuestion"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""76106e1a-ad2d-4ee5-b105-27e322f8fa55"",
+                    ""path"": ""<Keyboard>/enter"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ValidateChoice"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""af06a12b-2d24-444b-a2f3-8144d3407bea"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ValidateChoice"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -422,14 +520,19 @@ public class @PlayerActionControls : IInputActionCollection, IDisposable
         // PlayerInLand
         m_PlayerInLand = asset.FindActionMap("PlayerInLand", throwIfNotFound: true);
         m_PlayerInLand_Move = m_PlayerInLand.FindAction("Move", throwIfNotFound: true);
-        m_PlayerInLand_EnterScoot = m_PlayerInLand.FindAction("EnterScoot", throwIfNotFound: true);
         m_PlayerInLand_Interact = m_PlayerInLand.FindAction("Interact", throwIfNotFound: true);
         m_PlayerInLand_Inventory = m_PlayerInLand.FindAction("Inventory", throwIfNotFound: true);
+        m_PlayerInLand_EnterScoot = m_PlayerInLand.FindAction("EnterScoot", throwIfNotFound: true);
         // PlayerInScoot
         m_PlayerInScoot = asset.FindActionMap("PlayerInScoot", throwIfNotFound: true);
         m_PlayerInScoot_MoveScoot = m_PlayerInScoot.FindAction("MoveScoot", throwIfNotFound: true);
         m_PlayerInScoot_Inventory = m_PlayerInScoot.FindAction("Inventory", throwIfNotFound: true);
         m_PlayerInScoot_ExitScoot = m_PlayerInScoot.FindAction("ExitScoot", throwIfNotFound: true);
+        // PlayerInDialogue
+        m_PlayerInDialogue = asset.FindActionMap("PlayerInDialogue", throwIfNotFound: true);
+        m_PlayerInDialogue_SelectPreviousQuestion = m_PlayerInDialogue.FindAction("SelectPreviousQuestion", throwIfNotFound: true);
+        m_PlayerInDialogue_SelectNextQuestion = m_PlayerInDialogue.FindAction("SelectNextQuestion", throwIfNotFound: true);
+        m_PlayerInDialogue_ValidateChoice = m_PlayerInDialogue.FindAction("ValidateChoice", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -480,17 +583,17 @@ public class @PlayerActionControls : IInputActionCollection, IDisposable
     private readonly InputActionMap m_PlayerInLand;
     private IPlayerInLandActions m_PlayerInLandActionsCallbackInterface;
     private readonly InputAction m_PlayerInLand_Move;
-    private readonly InputAction m_PlayerInLand_EnterScoot;
     private readonly InputAction m_PlayerInLand_Interact;
     private readonly InputAction m_PlayerInLand_Inventory;
+    private readonly InputAction m_PlayerInLand_EnterScoot;
     public struct PlayerInLandActions
     {
         private @PlayerActionControls m_Wrapper;
         public PlayerInLandActions(@PlayerActionControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_PlayerInLand_Move;
-        public InputAction @EnterScoot => m_Wrapper.m_PlayerInLand_EnterScoot;
         public InputAction @Interact => m_Wrapper.m_PlayerInLand_Interact;
         public InputAction @Inventory => m_Wrapper.m_PlayerInLand_Inventory;
+        public InputAction @EnterScoot => m_Wrapper.m_PlayerInLand_EnterScoot;
         public InputActionMap Get() { return m_Wrapper.m_PlayerInLand; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -503,15 +606,15 @@ public class @PlayerActionControls : IInputActionCollection, IDisposable
                 @Move.started -= m_Wrapper.m_PlayerInLandActionsCallbackInterface.OnMove;
                 @Move.performed -= m_Wrapper.m_PlayerInLandActionsCallbackInterface.OnMove;
                 @Move.canceled -= m_Wrapper.m_PlayerInLandActionsCallbackInterface.OnMove;
-                @EnterScoot.started -= m_Wrapper.m_PlayerInLandActionsCallbackInterface.OnEnterScoot;
-                @EnterScoot.performed -= m_Wrapper.m_PlayerInLandActionsCallbackInterface.OnEnterScoot;
-                @EnterScoot.canceled -= m_Wrapper.m_PlayerInLandActionsCallbackInterface.OnEnterScoot;
                 @Interact.started -= m_Wrapper.m_PlayerInLandActionsCallbackInterface.OnInteract;
                 @Interact.performed -= m_Wrapper.m_PlayerInLandActionsCallbackInterface.OnInteract;
                 @Interact.canceled -= m_Wrapper.m_PlayerInLandActionsCallbackInterface.OnInteract;
                 @Inventory.started -= m_Wrapper.m_PlayerInLandActionsCallbackInterface.OnInventory;
                 @Inventory.performed -= m_Wrapper.m_PlayerInLandActionsCallbackInterface.OnInventory;
                 @Inventory.canceled -= m_Wrapper.m_PlayerInLandActionsCallbackInterface.OnInventory;
+                @EnterScoot.started -= m_Wrapper.m_PlayerInLandActionsCallbackInterface.OnEnterScoot;
+                @EnterScoot.performed -= m_Wrapper.m_PlayerInLandActionsCallbackInterface.OnEnterScoot;
+                @EnterScoot.canceled -= m_Wrapper.m_PlayerInLandActionsCallbackInterface.OnEnterScoot;
             }
             m_Wrapper.m_PlayerInLandActionsCallbackInterface = instance;
             if (instance != null)
@@ -519,15 +622,15 @@ public class @PlayerActionControls : IInputActionCollection, IDisposable
                 @Move.started += instance.OnMove;
                 @Move.performed += instance.OnMove;
                 @Move.canceled += instance.OnMove;
-                @EnterScoot.started += instance.OnEnterScoot;
-                @EnterScoot.performed += instance.OnEnterScoot;
-                @EnterScoot.canceled += instance.OnEnterScoot;
                 @Interact.started += instance.OnInteract;
                 @Interact.performed += instance.OnInteract;
                 @Interact.canceled += instance.OnInteract;
                 @Inventory.started += instance.OnInventory;
                 @Inventory.performed += instance.OnInventory;
                 @Inventory.canceled += instance.OnInventory;
+                @EnterScoot.started += instance.OnEnterScoot;
+                @EnterScoot.performed += instance.OnEnterScoot;
+                @EnterScoot.canceled += instance.OnEnterScoot;
             }
         }
     }
@@ -581,17 +684,72 @@ public class @PlayerActionControls : IInputActionCollection, IDisposable
         }
     }
     public PlayerInScootActions @PlayerInScoot => new PlayerInScootActions(this);
+
+    // PlayerInDialogue
+    private readonly InputActionMap m_PlayerInDialogue;
+    private IPlayerInDialogueActions m_PlayerInDialogueActionsCallbackInterface;
+    private readonly InputAction m_PlayerInDialogue_SelectPreviousQuestion;
+    private readonly InputAction m_PlayerInDialogue_SelectNextQuestion;
+    private readonly InputAction m_PlayerInDialogue_ValidateChoice;
+    public struct PlayerInDialogueActions
+    {
+        private @PlayerActionControls m_Wrapper;
+        public PlayerInDialogueActions(@PlayerActionControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @SelectPreviousQuestion => m_Wrapper.m_PlayerInDialogue_SelectPreviousQuestion;
+        public InputAction @SelectNextQuestion => m_Wrapper.m_PlayerInDialogue_SelectNextQuestion;
+        public InputAction @ValidateChoice => m_Wrapper.m_PlayerInDialogue_ValidateChoice;
+        public InputActionMap Get() { return m_Wrapper.m_PlayerInDialogue; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(PlayerInDialogueActions set) { return set.Get(); }
+        public void SetCallbacks(IPlayerInDialogueActions instance)
+        {
+            if (m_Wrapper.m_PlayerInDialogueActionsCallbackInterface != null)
+            {
+                @SelectPreviousQuestion.started -= m_Wrapper.m_PlayerInDialogueActionsCallbackInterface.OnSelectPreviousQuestion;
+                @SelectPreviousQuestion.performed -= m_Wrapper.m_PlayerInDialogueActionsCallbackInterface.OnSelectPreviousQuestion;
+                @SelectPreviousQuestion.canceled -= m_Wrapper.m_PlayerInDialogueActionsCallbackInterface.OnSelectPreviousQuestion;
+                @SelectNextQuestion.started -= m_Wrapper.m_PlayerInDialogueActionsCallbackInterface.OnSelectNextQuestion;
+                @SelectNextQuestion.performed -= m_Wrapper.m_PlayerInDialogueActionsCallbackInterface.OnSelectNextQuestion;
+                @SelectNextQuestion.canceled -= m_Wrapper.m_PlayerInDialogueActionsCallbackInterface.OnSelectNextQuestion;
+                @ValidateChoice.started -= m_Wrapper.m_PlayerInDialogueActionsCallbackInterface.OnValidateChoice;
+                @ValidateChoice.performed -= m_Wrapper.m_PlayerInDialogueActionsCallbackInterface.OnValidateChoice;
+                @ValidateChoice.canceled -= m_Wrapper.m_PlayerInDialogueActionsCallbackInterface.OnValidateChoice;
+            }
+            m_Wrapper.m_PlayerInDialogueActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @SelectPreviousQuestion.started += instance.OnSelectPreviousQuestion;
+                @SelectPreviousQuestion.performed += instance.OnSelectPreviousQuestion;
+                @SelectPreviousQuestion.canceled += instance.OnSelectPreviousQuestion;
+                @SelectNextQuestion.started += instance.OnSelectNextQuestion;
+                @SelectNextQuestion.performed += instance.OnSelectNextQuestion;
+                @SelectNextQuestion.canceled += instance.OnSelectNextQuestion;
+                @ValidateChoice.started += instance.OnValidateChoice;
+                @ValidateChoice.performed += instance.OnValidateChoice;
+                @ValidateChoice.canceled += instance.OnValidateChoice;
+            }
+        }
+    }
+    public PlayerInDialogueActions @PlayerInDialogue => new PlayerInDialogueActions(this);
     public interface IPlayerInLandActions
     {
         void OnMove(InputAction.CallbackContext context);
-        void OnEnterScoot(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
         void OnInventory(InputAction.CallbackContext context);
+        void OnEnterScoot(InputAction.CallbackContext context);
     }
     public interface IPlayerInScootActions
     {
         void OnMoveScoot(InputAction.CallbackContext context);
         void OnInventory(InputAction.CallbackContext context);
         void OnExitScoot(InputAction.CallbackContext context);
+    }
+    public interface IPlayerInDialogueActions
+    {
+        void OnSelectPreviousQuestion(InputAction.CallbackContext context);
+        void OnSelectNextQuestion(InputAction.CallbackContext context);
+        void OnValidateChoice(InputAction.CallbackContext context);
     }
 }
