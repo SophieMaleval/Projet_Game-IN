@@ -6,6 +6,7 @@ public class SlopeManager : MonoBehaviour
 {
     private PlayerMovement PM;
     public  bool TopAsLeft;
+    private bool BottomAsLeft = false ;
     public float SlopeValue = 1.5f;
     private float SlopeValueNegative ;
 
@@ -22,6 +23,7 @@ public class SlopeManager : MonoBehaviour
             PM = GameObject.Find("Player").GetComponent<PlayerMovement>();
     
         SlopeValueNegative = SlopeValue * -1 ;
+        BottomAsLeft = !TopAsLeft ;
     }
 
    void OnTriggerEnter2D(Collider2D other) 
@@ -34,18 +36,18 @@ public class SlopeManager : MonoBehaviour
             {
                 if(PM.transform.position.x < (transform.position.x + 1f)) 
                 {
-                   PM.SlopeParameter(true, SlopeValueNegative); //  Descente
+                   PM.SlopeParameter(true, SlopeValueNegative, BottomAsLeft, 1); //  Descente
                 } else {
-                    PM.SlopeParameter(true, SlopeValue); // Monté
+                    PM.SlopeParameter(true, SlopeValue, BottomAsLeft, -1); // Monté
                     SwitchColliderPont(true);
                 }   
            } else {
                 if(PM.transform.position.x > (transform.position.x + 1f)) 
                 {
-                   PM.SlopeParameter(true, SlopeValueNegative); //  Monté
+                   PM.SlopeParameter(true, SlopeValueNegative, BottomAsLeft, -1); //  Monté
                    SwitchColliderPont(true);
                 } else {
-                   PM.SlopeParameter(true, SlopeValue); // Descente
+                   PM.SlopeParameter(true, SlopeValue, BottomAsLeft, 1); // Descente
                 }   
             }            
         }
@@ -57,7 +59,7 @@ public class SlopeManager : MonoBehaviour
    {
         if(other.gameObject.tag == "Player")
         {
-           PM.SlopeParameter(false, 0f);
+           PM.SlopeParameter(false, 0f, BottomAsLeft, 0);
 
             if(TopAsLeft) 
             {

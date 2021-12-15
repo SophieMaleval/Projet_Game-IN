@@ -29,12 +29,15 @@ public class PlayerMovement : MonoBehaviour
     public bool OnScooter = false;
      bool OnSlope = false;
      float ValueSlopeAdd;
+
+     bool SlopeStartLeft;
+     int ElevationValue ;
     
 
 
     
 
-    private void OnEnable() {   PlayerActionControllers.Enable();   }
+    private void OnEnable() {   PlayerActionControllers.Enable(); /*RebindAnimation();*/   }
     private void OnDisable() {   PlayerActionControllers.Disable();   }
 
     public void StartDialog() {   PlayerActionControllers.Disable();   }
@@ -43,9 +46,9 @@ public class PlayerMovement : MonoBehaviour
     private void Awake() 
 
     {  
-          PlayerActionControllers = new PlayerActionControls();
-          PlayerActionControllers.PlayerInLand.EnterScoot.performed += OnEnterScoot;
-          PlayerActionControllers.PlayerInScoot.ExitScoot.performed += OnEnterScoot;}
+        PlayerActionControllers = new PlayerActionControls();
+        PlayerActionControllers.PlayerInLand.EnterScoot.performed += OnEnterScoot;
+        PlayerActionControllers.PlayerInScoot.ExitScoot.performed += OnExitScoot;}
 
     void Update()
     {
@@ -58,26 +61,31 @@ public class PlayerMovement : MonoBehaviour
         if (ctx.performed)
         {
             switchScootState(true);
-           
         }
     }
     public void OnExitScoot (InputAction.CallbackContext ctx ){
 
         if (ctx.performed)
         {
-            switchScootState(false);
-           
+            if(OnScooter)
+                switchScootState(false);
         }
     }
 
     public void switchScootState(bool state)
     {
         OnScooter = state;
-        for (int i = 0; i < Animators.Count; i++)
-        {
-            if(Animators[i].runtimeAnimatorController != null)
-                Animators[i].SetBool("InScoot", state);   
-        }
+
+        if(Animators[0].runtimeAnimatorController != null)
+            Animators[0].SetBool("InScoot", state); 
+
+        if(!OnScooter) Animators[0].GetComponent<SpriteRenderer>().color = ColorsDisplay[0];
+        else Animators[0].GetComponent<SpriteRenderer>().color = Color.white ;
+
+        for (int i = 1; i < Animators.Count; i++)
+        {    Animators[i].gameObject.GetComponent<SpriteRenderer>().enabled = !OnScooter ;  }
+
+        //RebindAnimation();
     }
 
 
@@ -89,18 +97,35 @@ public class PlayerMovement : MonoBehaviour
         Slopes();
     
     }
-    public void SlopeParameter (bool EnterSlope, float valueSlope)
+    public void SlopeParameter (bool EnterSlope, float valueSlope, bool BottomAsLeft, int PositionElevation)
     {
         OnSlope = EnterSlope;
         ValueSlopeAdd =  valueSlope; 
-
-
+        SlopeStartLeft = BottomAsLeft;
+        ElevationValue = PositionElevation;
     }
 
      void Slopes ()
     {
-        if(MoveDirection.x != 0)
-            RbPlayer.velocity += new Vector2 (0,ValueSlopeAdd);
+        if(MoveDirection.x != 0){
+            if(!SlopeStartLeft)
+            {
+                if(MoveDirection.x < 0)
+                    RbPlayer.velocity += new Vector2 (0, (ValueSlopeAdd * -ElevationValue));
+
+                if(MoveDirection.x > 0)        
+                    RbPlayer.velocity += new Vector2 (0, (-1 * ValueSlopeAdd * -ElevationValue)); 
+            } else {
+                if(MoveDirection.x < 0)
+                    RbPlayer.velocity += new Vector2 (0, (-1 * ValueSlopeAdd * ElevationValue));
+
+                if(MoveDirection.x > 0)        
+                    RbPlayer.velocity += new Vector2 (0, (ValueSlopeAdd * ElevationValue)); 
+            }
+
+            
+        }
+            
     }
 
     void ProcessInputs()
@@ -168,5 +193,11 @@ public class PlayerMovement : MonoBehaviour
 
             }
         }
+    }
+
+    void RebindAnimation()
+    {
+        for (int i = 0; i < Animators.Count; i++)
+        {    Animators[i].Rebind();  }
     }
 }
