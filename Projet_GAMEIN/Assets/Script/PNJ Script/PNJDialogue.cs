@@ -12,15 +12,20 @@ public class PNJDialogue : MonoBehaviour
     public string Entrerpise ;
     public string NamePNJ ;
     
-    public CSVReader TextDialogue ;
+    [HideInInspector] public CSVReader TextDialogue ;
     public DialogueContainer DialoguePNJ ;
 
     public TextMeshProUGUI DialogueCanvas ;
 
-    [SerializeField] private PlayerScript PlayerScript;
+
+    public DialogueDisplayerController DialogueCanvasBox ;   
+
+    private PlayerScript PlayerScript;
+    private PlayerDialogue PlayerDialogueManager;
     private bool PlayerAround = false ;
 
     public Vector4 QuestionDisplay = new Vector4(1, 2, 3, 0);
+
     public GameObject BoxQuestion ;
     public List<string> QuestionDisponible ;
     public List<string> AnswerDisponible ;
@@ -32,12 +37,15 @@ public class PNJDialogue : MonoBehaviour
 
     private bool PNJSpeak = false ;
     private int CurrentDialogueDisplay = 0 ;
-    private int CurrentDialogueStateDisplay = 0 ;
+    //private int CurrentDialogueStateDisplay = 0 ;
     
     private int CurrentDialogueLength = 0 ;
     private int CurrentDialogueState = 0 ;
 
 
+
+    private int CurrentDialoguePlayerChoice = 0 ;
+    private bool ChoiceValidation = false ;
 
     [System.Serializable]    
     public class SerializableAnswer
@@ -49,13 +57,16 @@ public class PNJDialogue : MonoBehaviour
     [Header ("Réponse Question")]
     public List<SerializableAnswer> Answer = new List<SerializableAnswer>() ;
 
+
     private void Awake() {
         if(GameObject.Find("Player") != null)   // Récupère le player au lancement de la scène
         {    
             PlayerScript = GameObject.Find("Player").GetComponent<PlayerScript>() ; 
+            PlayerDialogueManager = GameObject.Find("Player Backpack").GetComponent<PlayerDialogue>() ; 
+
             TextDialogue = GameObject.Find("Player Backpack").GetComponent<CSVReader>() ;
-            
         }    
+        
     } 
 
     public void GetDialogue()
@@ -145,159 +156,59 @@ public class PNJDialogue : MonoBehaviour
 
     void Update()
     {
-        if(PlayerAround && PlayerScript.PlayerAsInterract)
+        if(PlayerAround)
         {
-            PlayerScript.PlayerAsInterract = false ;
-            if(!PlayerScript.InDiscussion)
+            if(PlayerScript.PlayerAsInterract && !PlayerScript.InDiscussion)
             {
+                PlayerScript.PlayerAsInterract = false ;
+
                 PlayerScript.InDiscussion = true ;
-                StartDiscussion();                   
-            } else {
-                StateDiscussion();
+                LunchDiscussion();                  
             }
+
+            if(PlayerDialogueManager.PlayerAsRead) 
+            {
+                PlayerDialogueManager.PlayerAsRead = false ;
+
+                if(!DialogueCanvasBox.WeAreInChoice)
+                    DialogueCanvasBox.StateDiscussion();
+                else
+                    DialogueCanvasBox.ValidateButton();
+            } 
         } 
+
     }
 
-
-    public void StartDiscussion()
+    private void FixedUpdate() 
     {
-        PlayerScript.gameObject.GetComponent<PlayerMovement>().StartDialog() ;    
-
-        Question1AsRead = false ;
-        Question2AsRead = false ;
-        Question3AsRead = false ;
-
-        DialogueCanvas.transform.parent.gameObject.SetActive(true) ;     
-        DialogueCanvas.text = DialoguePNJ.OpeningDialogue ;
-
-        CurrentDialogueDisplay = 0 ;
-        //CurrentDialogueStateDisplay = 0 ;//
-    }
-
-    void StateDiscussion()
-    {
-        if(DialogueCanvas.text == DialoguePNJ.OpeningDialogue)
+        if(PlayerDialogueManager != null)
         {
-            ShowDialogueChoice();
-        }
-
-        if(DialogueCanvas.text == DialoguePNJ.CloseDiscussion)
-        {
-            PlayerScript.gameObject.GetComponent<PlayerMovement>().EndDialog() ;             
-            DialogueCanvas.transform.parent.gameObject.SetActive(false) ;  
-            PlayerScript.InDiscussion = false ;
-        }
-
-       /* Debug.Log();*/
-        if(PNJSpeak)
-        {
-            Debug.Log(CurrentDialogueDisplay + " " + CurrentDialogueState + " " + Answer[CurrentDialogueDisplay].AnswerForQuestion.Count);
-            //Debug.Log(CurrentDialogueStateDisplay + " " + (int.Parse(AnswerDisponible[Answer[CurrentDialogueDisplay-1].AnswerForQuestion.Count]) -1) );
-            if(CurrentDialogueState < Answer[CurrentDialogueDisplay].AnswerForQuestion.Count )
-                TextDiscussion(false, CurrentDialogueDisplay, CurrentDialogueState + 1);
-            else
-                ShowDialogueChoice();
+            if(CurrentDialoguePlayerChoice != PlayerDialogueManager.CurrentSelectQuestion )
+            {
+                CurrentDialoguePlayerChoice = PlayerDialogueManager.CurrentSelectQuestion  ;   
+            }
         }
     }
 
-    void SwitchBoxDisplay()
+
+    public void LunchDiscussion()
     {
-        DialogueCanvas.gameObject.SetActive(!DialogueCanvas.gameObject.activeSelf);
-        BoxQuestion.SetActive(!BoxQuestion.activeSelf); 
+        PlayerScript.gameObject.GetComponent<PlayerMovement>().StartDialog() ; 
+
+        DialogueCanvasBox.gameObject.SetActive(true);
+        DialogueCanvasBox.DialoguePNJ = DialoguePNJ;
+        DialogueCanvasBox.AnswerDisponible = AnswerDisponible;
+        DialogueCanvasBox.QuestionDisponible = QuestionDisponible ;
+
+        DialogueCanvasBox.StartDiscussion();
     }
 
-    void SetQuestion(bool QuestionAsRead, int ChildNum, string DialogueText)
+    public void DiscussionIsClose()
     {
-        if(!QuestionAsRead)
-        {
-            BoxQuestion.transform.GetChild(ChildNum).gameObject.SetActive(true) ;
-            BoxQuestion.transform.GetChild(ChildNum).GetComponent<TextMeshProUGUI>().text = DialogueText ;            
-        } else {
-            BoxQuestion.transform.GetChild(ChildNum).GetComponent<TextMeshProUGUI>().text = " " ;                   
-            BoxQuestion.transform.GetChild(ChildNum).gameObject.SetActive(false) ;
-        }
-    }
-
-    public void ShowDialogueChoice()
-    {
-        SwitchBoxDisplay();
-
-        /* Afficher les Questions à afficher */
-        SetQuestion(Question1AsRead, 0, DialoguePNJ.Question1); // Set QUestion 1
-        SetQuestion(Question2AsRead, 1, DialoguePNJ.Question2); // Set QUestion 2
-
-        if(QuestionDisplay.z != 0)
-        {
-            SetQuestion(Question3AsRead, 2, QuestionDisponible[(int) QuestionDisplay.z]); // Set QUestion 3
-        } else {
-            SetQuestion(false, 2, QuestionDisponible[(int) QuestionDisplay.z]) ; // Set QUestion 3
-        }
-
-        SetQuestion(false, 3, DialoguePNJ.Aurevoir); // Set QUestion 4
-    }
-
-    void ResetDialogueContinuationValue(int NumDialogueList)
-    {
-        PNJSpeak = true ;    
-        CurrentDialogueDisplay = NumDialogueList - 1;
-        //CurrentDialogueLength = Answer[CurrentDialogueDisplay].AnswerForQuestion.Count ;
-        CurrentDialogueState = 0 ;
-    }
-
-    void TextDiscussion(bool ToggleDisplayBox , int DialogueDisplay, int StateAnswer)
-    {
-        if(ToggleDisplayBox)
-            SwitchBoxDisplay();
-   
-        DialogueCanvas.text = AnswerDisponible[Answer[CurrentDialogueDisplay].AnswerForQuestion[CurrentDialogueState]] ; 
-        CurrentDialogueState ++ ;
-    }
-
-    void CloseDiscussion()
-    {
-        SwitchBoxDisplay();
-
-        DialogueCanvas.text = DialoguePNJ.CloseDiscussion ;
-        PNJSpeak = false ;
-    }
-
-
-
-
-
-
-
-    public void ButtonChoix1()
-    {
-        ResetDialogueContinuationValue(1);        
-        TextDiscussion(true, /*(int) QuestionDisplay.x*/ 1, 0);
-
-
-
-        if(Question1AsRead == false) Question1AsRead = true ;
-    }
-
-    public void ButtonChoix2()
-    {
-        ResetDialogueContinuationValue(2);
-        TextDiscussion(true, /*(int) QuestionDisplay.y*/ 2, 0);
-
-        if(Question2AsRead == false) Question2AsRead = true ;
-    }
-
-    public void ButtonChoix3()
-    {
-        ResetDialogueContinuationValue((int) QuestionDisplay.z);
-        TextDiscussion(true, (int) QuestionDisplay.z, 0);
-
-        if(Question3AsRead == false) Question3AsRead = true ;
-    }
-
-    public void ButtonChoix4()
-    {
-        CloseDiscussion();
-        /*ResetDialogueContinuationValue((int) QuestionDisplay.w);
-        TextDiscussion(true, (int) QuestionDisplay.w, 0);*/
+        DialogueCanvasBox.gameObject.SetActive(false);         
+        PlayerScript.PlayerAsInterract = false ;        
+        PlayerScript.InDiscussion = false ;
+        PlayerScript.gameObject.GetComponent<PlayerMovement>().EndDialog() ; 
     }
 
 }
