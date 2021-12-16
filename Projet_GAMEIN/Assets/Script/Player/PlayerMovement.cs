@@ -37,14 +37,13 @@ public class PlayerMovement : MonoBehaviour
 
     
 
-    private void OnEnable() {   PlayerActionControllers.Enable(); /*RebindAnimation();*/   }
+    private void OnEnable() {   PlayerActionControllers.Enable();   }
     private void OnDisable() {   PlayerActionControllers.Disable();   }
 
     public void StartDialog() {   PlayerActionControllers.Disable();   }
     public void EndDialog() {   PlayerActionControllers.Enable();   }
 
     private void Awake() 
-
     {  
         PlayerActionControllers = new PlayerActionControls();
         PlayerActionControllers.PlayerInLand.EnterScoot.performed += OnEnterScoot;
@@ -56,26 +55,33 @@ public class PlayerMovement : MonoBehaviour
         Animate();
     }
 
-    public void OnEnterScoot (InputAction.CallbackContext ctx ){
-
-        if (ctx.performed)
+    public void OnEnterScoot (InputAction.CallbackContext ctx )
+    {      
+        if(ctx.performed && MoveDirection == Vector2.zero)
         {
-            switchScootState(true);
+            PlayerActionControllers.PlayerInLand.Disable() ;
+            PlayerActionControllers.PlayerInScoot.Enable() ;
+            switchScootState(true);                
         }
     }
-    public void OnExitScoot (InputAction.CallbackContext ctx ){
-
-        if (ctx.performed)
-        {
+    public void OnExitScoot (InputAction.CallbackContext ctx )
+    {
+        if(ctx.performed && MoveDirection == Vector2.zero)
+        {        
             if(OnScooter)
-                switchScootState(false);
+            {
+                PlayerActionControllers.PlayerInScoot.Disable() ;                
+                PlayerActionControllers.PlayerInLand.Enable() ;
+                switchScootState(false);                
+            }
         }
     }
+
 
     public void switchScootState(bool state)
     {
         OnScooter = state;
-
+    
         if(Animators[0].runtimeAnimatorController != null)
             Animators[0].SetBool("InScoot", state); 
 
@@ -84,8 +90,6 @@ public class PlayerMovement : MonoBehaviour
 
         for (int i = 1; i < Animators.Count; i++)
         {    Animators[i].gameObject.GetComponent<SpriteRenderer>().enabled = !OnScooter ;  }
-
-        //RebindAnimation();
     }
 
 
