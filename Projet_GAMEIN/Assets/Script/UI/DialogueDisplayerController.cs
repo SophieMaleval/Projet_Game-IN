@@ -10,28 +10,31 @@ using System.Text;
 
 public class DialogueDisplayerController : MonoBehaviour
 {
-    [HideInInspector]
-    public bool MouseIsHover ;
+    private bool MouseIsHover ;
     
-    public PNJDialogue CurrentPNJDIscussion ;
+    [HideInInspector] public PNJDialogue CurrentPNJDiscussion ;
     public TextMeshProUGUI DialogueCanvas ;
 
-    public DialogueContainer DialoguePNJ ;
+    [HideInInspector] public DialogueContainer DialoguePNJ ;
     [SerializeField] private PlayerDialogue PlayerDialogueManager;
 
-    public Vector4 QuestionDisplay = new Vector4(1, 2, 3, 0);
+    [HideInInspector] public int Question3IntDisplay = 3;
     public GameObject BoxQuestion ;
+
+    
+    [HideInInspector] 
     public List<string> QuestionDisponible ;
+    [HideInInspector] 
     public List<string> AnswerDisponible ;
 
-    public bool Question1AsRead = false ;
-    public bool Question2AsRead = false ;
-    public bool Question3AsRead = false ;
+
+    private bool Question1AsRead = false ;
+    private bool Question2AsRead = false ;
+    private bool Question3AsRead = false ;
 
 
     private bool PNJSpeak = false ;
     private int CurrentDialogueDisplay = 0 ;
-    //private int CurrentDialogueStateDisplay = 0 ;
     
     private int CurrentDialogueLength = 0 ;
     private int CurrentDialogueState = 0 ;
@@ -41,15 +44,18 @@ public class DialogueDisplayerController : MonoBehaviour
     private int CurrentDialoguePlayerChoice = 0 ;
     private bool ChoiceValidation = false ;
 
-    public bool WeAreInChoice = false ;
+    [HideInInspector] public bool WeAreInChoice = false ;
     private float DelayAnimationText = 0.1f ;
+
+    private bool TextAsCompletelyDisplay = true ;
+    private bool TextOppeningDisplayCompletely = false ;
+    private bool TextCloseDisplayCompletely = true ;
 
     [System.Serializable]    
     public class SerializableAnswer
     {
         public List<int> AnswerForQuestion ; 
     }
-
 
 
 
@@ -83,37 +89,46 @@ public class DialogueDisplayerController : MonoBehaviour
 
 
 
-    public void StartDiscussion()
+    public void StartDiscussion(bool TextState)
     {
         Question1AsRead = false ;
         Question2AsRead = false ;
         Question3AsRead = false ;
 
         DialogueCanvas.transform.parent.gameObject.SetActive(true) ;  
-        StopAllCoroutines(); 
-        DialogueCanvas.text = ""; //CurrentPNJDIscussion.DialoguePNJ.OpeningDialogue ;
-        StartCoroutine(WriteText(CurrentPNJDIscussion.DialoguePNJ.OpeningDialogue, DialogueCanvas, DelayAnimationText));
+        if(!TextState)
+        {
+            StopAllCoroutines(); 
+            DialogueCanvas.text = "";
+            StartCoroutine(WriteText(DialoguePNJ.OpeningDialogue, DialogueCanvas, DelayAnimationText));     
+            TextAsCompletelyDisplay = false ;       
+        } else {
+            StopAllCoroutines();
+            DialogueCanvas.text = DialoguePNJ.OpeningDialogue ;
+            TextAsCompletelyDisplay = true ;
+            TextOppeningDisplayCompletely = true ;
+        }
+
 
         CurrentDialogueDisplay = 0 ;
     }
 
     public void StateDiscussion()
     {
-        if(DialogueCanvas.text == CurrentPNJDIscussion.DialoguePNJ.OpeningDialogue)
-        {
-            ShowDialogueChoice();
-        }
+        if(DialogueCanvas.text == DialoguePNJ.OpeningDialogue) ShowDialogueChoice();
+   
+        if(CurrentDialogueDisplay == 0 && !TextAsCompletelyDisplay && !TextOppeningDisplayCompletely )    StartDiscussion(true); // Arrête l'animation et Affiche tout le texte d'Openning
 
-        if(DialogueCanvas.text == CurrentPNJDIscussion.DialoguePNJ.CloseDiscussion)
-        {
-            CurrentPNJDIscussion.DiscussionIsClose();
-        }
 
+        if(DialogueCanvas.text == DialoguePNJ.CloseDiscussion) CurrentPNJDiscussion.DiscussionIsClose();
+
+        if(CurrentDialogueDisplay == 0 && !TextAsCompletelyDisplay && !TextCloseDisplayCompletely )    CloseDiscussion(true);    // Arrête l'animation et Affiche tout le texte de Fermeture  
 
         if(PNJSpeak)
         {
-            if(CurrentDialogueState < CurrentPNJDIscussion.Answer[CurrentDialogueDisplay].AnswerForQuestion.Count )
-                TextDiscussion(false, CurrentDialogueDisplay, CurrentDialogueState + 1);
+            if(CurrentDialogueState < CurrentPNJDiscussion.Answer[CurrentDialogueDisplay].AnswerForQuestion.Count )
+                if(!TextAsCompletelyDisplay) TextDiscussion(false, CurrentDialogueDisplay, CurrentDialogueState + 1, true); // Arrête l'animation et affiche tout le texte
+                else TextDiscussion(false, CurrentDialogueDisplay, CurrentDialogueState + 1, false); // Affiche le prochain texte avec l'animation
             else
                 ShowDialogueChoice();
         }
@@ -142,20 +157,21 @@ public class DialogueDisplayerController : MonoBehaviour
         SwitchBoxDisplay();
         PlayerDialogueManager.ResetSelectQuestion();
         GetComponent<Button>().interactable = false ;
+        TextOppeningDisplayCompletely = true ;        
         WeAreInChoice = true ;
 
         /* Afficher les Questions à afficher */
-        SetQuestion(Question1AsRead, 0, CurrentPNJDIscussion.DialoguePNJ.Question1); // Set QUestion 1
-        SetQuestion(Question2AsRead, 1, CurrentPNJDIscussion.DialoguePNJ.Question2); // Set QUestion 2
+        SetQuestion(Question1AsRead, 0, DialoguePNJ.Question1); // Set QUestion 1
+        SetQuestion(Question2AsRead, 1, DialoguePNJ.Question2); // Set QUestion 2
 
-        if(QuestionDisplay.z != 0)
+        if(Question3IntDisplay != 0)
         {
-            SetQuestion(Question3AsRead, 2, QuestionDisponible[(int) QuestionDisplay.z]); // Set QUestion 3
+            SetQuestion(Question3AsRead, 2, QuestionDisponible[(int) Question3IntDisplay]); // Set QUestion 3
         } else {
-            SetQuestion(false, 2, QuestionDisponible[(int) QuestionDisplay.z]) ; // Set QUestion 3
+            SetQuestion(false, 2, QuestionDisponible[(int) Question3IntDisplay]) ; // Set QUestion 3
         }
 
-        SetQuestion(false, 3, CurrentPNJDIscussion.DialoguePNJ.Aurevoir); // Set QUestion 4
+        SetQuestion(false, 3, DialoguePNJ.Aurevoir); // Set QUestion 4
 
         SelectedButton();
     }
@@ -168,42 +184,61 @@ public class DialogueDisplayerController : MonoBehaviour
         CurrentDialogueState = 0 ;
     }
 
-    void TextDiscussion(bool ToggleDisplayBox , int DialogueDisplay, int StateAnswer)
+    void TextDiscussion(bool ToggleDisplayBox , int DialogueDisplay, int StateAnswer, bool TextState)
     {
         GetComponent<Button>().interactable = true ;
         WeAreInChoice = false ;
 
-        if(ToggleDisplayBox)
-            SwitchBoxDisplay();
-   
-        StopAllCoroutines();
-        DialogueCanvas.text = "";//AnswerDisponible[CurrentPNJDIscussion.Answer[CurrentDialogueDisplay].AnswerForQuestion[CurrentDialogueState]] ; 
-        StartCoroutine(WriteText(AnswerDisponible[CurrentPNJDIscussion.Answer[CurrentDialogueDisplay].AnswerForQuestion[CurrentDialogueState]], DialogueCanvas, DelayAnimationText));
-        CurrentDialogueState ++ ;
+        if(ToggleDisplayBox)    SwitchBoxDisplay();
+
+        if(!TextState)
+        {
+            StopAllCoroutines();
+            DialogueCanvas.text = "";
+            StartCoroutine(WriteText(AnswerDisponible[CurrentPNJDiscussion.Answer[CurrentDialogueDisplay].AnswerForQuestion[CurrentDialogueState]], DialogueCanvas, DelayAnimationText));
+            //CurrentDialogueState ++ ;
+            TextAsCompletelyDisplay = false ;
+        } else {
+            StopAllCoroutines();
+            DialogueCanvas.text = AnswerDisponible[CurrentPNJDiscussion.Answer[CurrentDialogueDisplay].AnswerForQuestion[CurrentDialogueState]];
+            CurrentDialogueState ++ ;
+            TextAsCompletelyDisplay = true ;
+        }
+
     }
 
-    void CloseDiscussion()
+    void CloseDiscussion(bool TextState)
     {
         GetComponent<Button>().interactable = true ;
         WeAreInChoice = false ;
 
-        SwitchBoxDisplay();
+        if(!TextState)
+        {
+            SwitchBoxDisplay();
 
-        StopAllCoroutines();
-        DialogueCanvas.text = ""; //CurrentPNJDIscussion.DialoguePNJ.CloseDiscussion ;
-        StartCoroutine(WriteText(CurrentPNJDIscussion.DialoguePNJ.CloseDiscussion, DialogueCanvas, DelayAnimationText));
-
+            StopAllCoroutines();
+            DialogueCanvas.text = ""; 
+            StartCoroutine(WriteText(DialoguePNJ.CloseDiscussion, DialogueCanvas, DelayAnimationText));
+            TextAsCompletelyDisplay = false ;
+        } else {
+            StopAllCoroutines();
+            DialogueCanvas.text = DialoguePNJ.CloseDiscussion; 
+            TextAsCompletelyDisplay = true ;
+        }
         PNJSpeak = false ;
     }
 
 
-    protected IEnumerator WriteText(string Input, TextMeshProUGUI TextHolder, /*Color TextColor, Font TextFont, */float Delay) 
+    protected IEnumerator WriteText(string Input, TextMeshProUGUI TextHolder, float Delay) 
     {
         for (int i = 0; i < Input.Length; i++)
         {
             TextHolder.text += Input[i] ;
             yield return new WaitForSeconds(Delay);
         }
+
+        CurrentDialogueState ++ ;
+        TextAsCompletelyDisplay = true ;
     }
 
 
@@ -212,9 +247,7 @@ public class DialogueDisplayerController : MonoBehaviour
     public void ButtonChoix1()
     {
         ResetDialogueContinuationValue(1);        
-        TextDiscussion(true, 1, 0);
-
-
+        TextDiscussion(true, 1, 0, false);
 
         if(Question1AsRead == false) Question1AsRead = true ;
     }
@@ -222,22 +255,24 @@ public class DialogueDisplayerController : MonoBehaviour
     public void ButtonChoix2()
     {
         ResetDialogueContinuationValue(2);
-        TextDiscussion(true, 2, 0);
+        TextDiscussion(true, 2, 0, false);
 
         if(Question2AsRead == false) Question2AsRead = true ;
     }
 
     public void ButtonChoix3()
     {
-        ResetDialogueContinuationValue((int) QuestionDisplay.z);
-        TextDiscussion(true, (int) QuestionDisplay.z, 0);
+        ResetDialogueContinuationValue((int) Question3IntDisplay);
+        TextDiscussion(true, (int) Question3IntDisplay, 0, false);
 
         if(Question3AsRead == false) Question3AsRead = true ;
     }
 
     public void ButtonChoix4()
     {
-        CloseDiscussion();
+        TextCloseDisplayCompletely = false ;
+        CurrentDialogueDisplay = 0 ;
+        CloseDiscussion(false);
     }
 
 
@@ -283,9 +318,6 @@ public class DialogueDisplayerController : MonoBehaviour
 
         return ActiveButton;
     }
-
-    
-
 
     public void ValidateButton()
     {

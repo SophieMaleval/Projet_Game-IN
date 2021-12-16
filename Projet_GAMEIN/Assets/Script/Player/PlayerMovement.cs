@@ -79,7 +79,8 @@ public class PlayerMovement : MonoBehaviour
         for (int i = 0; i < Animators.Count; i++)
         {
             if(Animators[i].runtimeAnimatorController != null)
-                Animators[i].SetBool("InScoot", state);   
+                Animators[i].SetBool("InScoot", state); 
+                Animators[0].GetComponent<SpriteRenderer>().color = Color.white ; 
         }
     }
 
