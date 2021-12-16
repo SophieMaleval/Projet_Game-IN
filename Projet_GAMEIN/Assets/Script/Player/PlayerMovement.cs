@@ -12,8 +12,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float MoveSpeed ;
         [SerializeField] private float ScooterSpeed ;
 
-    [Header ("Player")]
-    [SerializeField] private PlayerDialogue PlayerSpeaker ;
 
 
     public List<SpriteRenderer> PlayerRenderers ;
@@ -31,6 +29,9 @@ public class PlayerMovement : MonoBehaviour
     public bool OnScooter = false;
      bool OnSlope = false;
      float ValueSlopeAdd;
+
+     bool SlopeStartLeft;
+     int ElevationValue ;
     
 
 
@@ -39,17 +40,14 @@ public class PlayerMovement : MonoBehaviour
     private void OnEnable() {   PlayerActionControllers.Enable();   }
     private void OnDisable() {   PlayerActionControllers.Disable();   }
 
-    public void StartDialog() {   PlayerActionControllers.Disable();    PlayerSpeaker.DialogueStart();   }
-    public void EndDialog() {   PlayerActionControllers.Enable();   PlayerSpeaker.DialogueEnd();      }
+    public void StartDialog() {   PlayerActionControllers.Disable();   }
+    public void EndDialog() {   PlayerActionControllers.Enable();   }
 
     private void Awake() 
     {  
         PlayerActionControllers = new PlayerActionControls();
         PlayerActionControllers.PlayerInLand.EnterScoot.performed += OnEnterScoot;
-        PlayerActionControllers.PlayerInScoot.ExitScoot.performed += OnEnterScoot;
-
-        PlayerSpeaker = GameObject.Find("Player Backpack").GetComponent<PlayerDialogue>() ;
-    }
+        PlayerActionControllers.PlayerInScoot.ExitScoot.performed += OnExitScoot;}
 
     void Update()
     {
@@ -58,30 +56,40 @@ public class PlayerMovement : MonoBehaviour
     }
 
     public void OnEnterScoot (InputAction.CallbackContext ctx )
-    {
-        if (ctx.performed)
+    {      
+        if(ctx.performed && MoveDirection == Vector2.zero)
         {
-            switchScootState(true);
-           
+            PlayerActionControllers.PlayerInLand.Disable() ;
+            PlayerActionControllers.PlayerInScoot.Enable() ;
+            switchScootState(true);                
         }
     }
     public void OnExitScoot (InputAction.CallbackContext ctx )
     {
-        if (ctx.performed)
-        {
-            switchScootState(false);
+        if(ctx.performed && MoveDirection == Vector2.zero)
+        {        
+            if(OnScooter)
+            {
+                PlayerActionControllers.PlayerInScoot.Disable() ;                
+                PlayerActionControllers.PlayerInLand.Enable() ;
+                switchScootState(false);                
+            }
         }
     }
+
 
     public void switchScootState(bool state)
     {
         OnScooter = state;
-        for (int i = 0; i < Animators.Count; i++)
-        {
-            if(Animators[i].runtimeAnimatorController != null)
-                Animators[i].SetBool("InScoot", state); 
-                Animators[0].GetComponent<SpriteRenderer>().color = Color.white ; 
-        }
+    
+        if(Animators[0].runtimeAnimatorController != null)
+            Animators[0].SetBool("InScoot", state); 
+
+        if(!OnScooter) Animators[0].GetComponent<SpriteRenderer>().color = ColorsDisplay[0];
+        else Animators[0].GetComponent<SpriteRenderer>().color = Color.white ;
+
+        for (int i = 1; i < Animators.Count; i++)
+        {    Animators[i].gameObject.GetComponent<SpriteRenderer>().enabled = !OnScooter ;  }
     }
 
 
@@ -93,18 +101,35 @@ public class PlayerMovement : MonoBehaviour
         Slopes();
     
     }
-    public void SlopeParameter (bool EnterSlope, float valueSlope)
+    public void SlopeParameter (bool EnterSlope, float valueSlope, bool BottomAsLeft, int PositionElevation)
     {
         OnSlope = EnterSlope;
         ValueSlopeAdd =  valueSlope; 
-
-
+        SlopeStartLeft = BottomAsLeft;
+        ElevationValue = PositionElevation;
     }
 
      void Slopes ()
     {
-        if(MoveDirection.x != 0)
-            RbPlayer.velocity += new Vector2 (0,ValueSlopeAdd);
+        if(MoveDirection.x != 0){
+            if(!SlopeStartLeft)
+            {
+                if(MoveDirection.x < 0)
+                    RbPlayer.velocity += new Vector2 (0, (ValueSlopeAdd * -ElevationValue));
+
+                if(MoveDirection.x > 0)        
+                    RbPlayer.velocity += new Vector2 (0, (-1 * ValueSlopeAdd * -ElevationValue)); 
+            } else {
+                if(MoveDirection.x < 0)
+                    RbPlayer.velocity += new Vector2 (0, (-1 * ValueSlopeAdd * ElevationValue));
+
+                if(MoveDirection.x > 0)        
+                    RbPlayer.velocity += new Vector2 (0, (ValueSlopeAdd * ElevationValue)); 
+            }
+
+            
+        }
+            
     }
 
     void ProcessInputs()
@@ -140,9 +165,12 @@ public class PlayerMovement : MonoBehaviour
     void Move()
     {   
         if (!OnScooter)
+        
             RbPlayer.velocity = new Vector2(MoveDirection.x * MoveSpeed, MoveDirection.y * MoveSpeed); 
         else
-            RbPlayer.velocity = new Vector2(MoveDirection.x * (MoveSpeed * ScooterSpeed), MoveDirection.y * (MoveSpeed*ScooterSpeed)); 
+            RbPlayer.velocity = new Vector2(MoveDirection.x * (MoveSpeed*ScooterSpeed), MoveDirection.y * (MoveSpeed*ScooterSpeed)); 
+
+
     }
 
     public void ResetVelocity()
@@ -169,5 +197,11 @@ public class PlayerMovement : MonoBehaviour
 
             }
         }
+    }
+
+    void RebindAnimation()
+    {
+        for (int i = 0; i < Animators.Count; i++)
+        {    Animators[i].Rebind();  }
     }
 }
