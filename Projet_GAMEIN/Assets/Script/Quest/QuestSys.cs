@@ -13,11 +13,11 @@ public class QuestSys : MonoBehaviour
     [TextArea] public string roamingGoal;*/
 
     [Header("Quest Manager")]
-    [SerializeField] TextMeshProUGUI title;
-    [SerializeField] TextMeshProUGUI titleEffect;
-    [SerializeField] TextMeshProUGUI contenu;
+    public TextMeshProUGUI title;
+    public TextMeshProUGUI titleEffect;
+    public TextMeshProUGUI contenu;
     public List<QuestCt> quest = new List<QuestCt>();
-    int niveau = 0;
+    public int niveau = 0;
     QuestCt questCount;
     int etape = 0;
     int sizeOfList;
