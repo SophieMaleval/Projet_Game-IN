@@ -21,8 +21,6 @@ public class AnimationTransitionScene : MonoBehaviour
 
     void Awake()
     {
-
-
         //CanvasFade.GetComponent<Canvas>().sortingOrder = SortOrdering;
         ImageComponnent.material.SetFloat("_FloatResize", 0) ;
         ShouldReveal =  true;
