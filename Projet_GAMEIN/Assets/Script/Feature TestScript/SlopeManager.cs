@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class SlopeManager : MonoBehaviour
 {
@@ -11,13 +12,22 @@ public class SlopeManager : MonoBehaviour
     private float SlopeValueNegative ;
 
     public GameObject ColliderBridgelevel;
-    public GameObject ColliderFalaiselevel;
+    public GameObject ColliderPontDessouslevel;
+
+     public GameObject ColliderFalaiseLevel0;
+     public GameObject ColliderFalaiseLevel1;
+
+    public  GameObject GetSortingroup;
+    public int SortingLayerFLoor = -1;
 
    
     public SpriteRenderer spriteBridge;
  
     void Awake()
     {
+        GetSortingroup = GameObject.Find("FloorNiveau2");
+    
+        //SortingLayerFLoor = GetComponent<SortingGroup>().sortingOrder;
         spriteBridge.sortingOrder = 1;
         if(GameObject.Find("Player") != null)
             PM = GameObject.Find("Player").GetComponent<PlayerMovement>();
@@ -80,16 +90,23 @@ public class SlopeManager : MonoBehaviour
     {
         if(!Elevation )
         {
+            GetSortingroup.GetComponent<SortingGroup>().sortingOrder = 0;
             ColliderBridgelevel.SetActive(false);
-            ColliderFalaiselevel.SetActive(true);
+            ColliderPontDessouslevel.SetActive(true);
+            ColliderFalaiseLevel0.SetActive(true);
+            ColliderFalaiseLevel1.SetActive(false);
             Debug.Log("niveau0");
             spriteBridge.sortingOrder = 1;
 
         }
         else
         {
+            GetSortingroup.GetComponent<SortingGroup>().sortingOrder = -2;
             ColliderBridgelevel.SetActive(true);
-            ColliderFalaiselevel.SetActive(false);
+            ColliderPontDessouslevel.SetActive(false);
+            ColliderFalaiseLevel0.SetActive(false);
+            ColliderFalaiseLevel1.SetActive(true);
+
             Debug.Log("niveau1");
             spriteBridge.sortingOrder = -1;
 
