@@ -7,10 +7,9 @@ using UnityEngine.SceneManagement;
 
 public class SceneManagerFeature : MonoBehaviour
 {
-    [SerializeField] private GameObject FadeImage ;
     public CinemachineVirtualCamera CMVirtualCam ;
-    public PlayerMovement PM;
-
+    private PlayerMovement PM;
+    private GameObject FadeImage ;
 
     private void Awake() {
         if(GameObject.Find("Player") != null)
@@ -18,22 +17,30 @@ public class SceneManagerFeature : MonoBehaviour
             PM =  GameObject.Find("Player").GetComponent<PlayerMovement>();
             CMVirtualCam.Follow = PM.transform ;
             PM.transform.position = new Vector2 (-4f,-2f);
-
-
+            FadeImage = PM.GetComponent<PlayerScript>().CanvasIndestrucitble.gameObject.transform.Find("Fade").gameObject ;
+            PM.GetComponent<PlayerScript>().CanvasIndestrucitble.GetComponent<Canvas>().worldCamera = Camera.main;
         }
     }
 
+    private void Start() 
+    {
+        StartCoroutine(WaitTransitionAnim());
+    }
 
-    private void OnTriggerEnter2D(Collider2D other) {
+    IEnumerator WaitTransitionAnim()
+    {
+        yield return new WaitForSeconds(0.25f);
+        FadeImage.GetComponent<AnimationTransitionScene>().enabled = true ;
+        yield return new WaitForSeconds(2f) ;
+        FadeImage.SetActive(false);
+    }
+    private void OnTriggerEnter2D(Collider2D other) 
+    {
         if(other.gameObject.tag == "Player" && !PM.OnScooter)
         {
-            Debug.Log("false");
             other.gameObject.GetComponent<PlayerMovement>().enabled = false ;
             other.gameObject.GetComponent<PlayerMovement>().ResetVelocity();
             GoCustom();
-        }
-        else{
-            Debug.Log("true");
         }
     }
 

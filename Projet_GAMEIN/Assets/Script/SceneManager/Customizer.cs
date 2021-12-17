@@ -60,8 +60,9 @@ public class Customizer : MonoBehaviour
     public List<Color> SkinGradient ;
     public List<Color> ColorCustomList ;
 
-
-
+    [Header ("Canvas")]
+    [SerializeField] private GameObject CanvasPrefab ;
+    [SerializeField] private GameObject DialogueUIPrefab ;
 
     private void Awake() 
     {
@@ -73,7 +74,26 @@ public class Customizer : MonoBehaviour
             PlayerApparance.enabled = false ;   
             PlayerApparance.gameObject.name = "Player" ;
 
+
+            GameObject CanvasInstatiate = Instantiate(CanvasPrefab) ;     
+            GameObject DialogueUIInstatiate = Instantiate(DialogueUIPrefab) ;     
+
+            DialogueUIInstatiate.transform.SetParent(CanvasInstatiate.transform);
+            DialogueUIInstatiate.transform.SetSiblingIndex(0);
+            DialogueUIInstatiate.name = "Dialogue Canvas" ;
+
+
+
             DontDestroyOnLoad(PlayerApparance.gameObject);
+            DontDestroyOnLoad(CanvasInstatiate.gameObject);
+            DontDestroyOnLoad(DialogueUIInstatiate.gameObject);
+
+            PlayerPersonnality.CanvasIndestrucitble = CanvasInstatiate ;
+            PlayerPersonnality.DialogueUIIndestructible = DialogueUIInstatiate ;
+
+            CanvasInstatiate.SetActive(false) ;
+            DialogueUIInstatiate.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, 15f, 0) ;
+            DialogueUIInstatiate.GetComponent<RectTransform>().localScale = new Vector3(2f, 2f ,2f) ;
         } else {
             PlayerApparance = GameObject.Find("Player").GetComponent<PlayerMovement>() ; 
             PlayerApparance.enabled = false ;                 
@@ -89,6 +109,9 @@ public class Customizer : MonoBehaviour
             }
             RecupInfoPlayer();
             SetAvatar();            
+
+
+            PlayerPersonnality.CanvasIndestrucitble.SetActive(false);
         }
     }
     
@@ -388,7 +411,7 @@ public class Customizer : MonoBehaviour
 
         
         //CineMachineCam.GetComponent<CinemachineVirtualCamera>().Follow = PlayerApparance.transform ; 
-
+        PlayerPersonnality.CanvasIndestrucitble.SetActive(true);
         SceneManager.LoadScene("Tilemaps Test");
         //SceneManager.LoadScene("InventoryTest");
     }

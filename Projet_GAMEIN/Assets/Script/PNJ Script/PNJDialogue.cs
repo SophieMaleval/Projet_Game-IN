@@ -16,7 +16,7 @@ public class PNJDialogue : MonoBehaviour
     [HideInInspector] public CSVReader TextDialogue ;
 
     [Header ("Dialogue Canvas Reference")]
-    public DialogueDisplayerController DialogueCanvasBox ;       
+    private DialogueDisplayerController DialogueCanvasBox ;       
     private TextMeshProUGUI DialogueCanvasDisplayerText ;
 
 
@@ -53,6 +53,7 @@ public class PNJDialogue : MonoBehaviour
             PlayerScript = GameObject.Find("Player").GetComponent<PlayerScript>() ; 
             PlayerDialogueManager = GameObject.Find("Player Backpack").GetComponent<PlayerDialogue>() ; 
 
+            DialogueCanvasBox = PlayerScript.DialogueUIIndestructible.GetComponent<DialogueDisplayerController>() ;
             TextDialogue = GameObject.Find("Player Backpack").GetComponent<CSVReader>() ;
         }    
 
