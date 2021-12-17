@@ -85,10 +85,10 @@ public class MenuManager : MonoBehaviour
 
     IEnumerator WaitTransitionAnim()
     {
-        yield return new WaitForSeconds(0.25f);
+        yield return new WaitForSeconds(0.25f) ;
         FadeImage.GetComponent<AnimationTransitionScene>().enabled = true ;
         yield return new WaitForSeconds(2f) ;
-        FadeImage.SetActive(false);
+        FadeImage.SetActive(false) ;
     }
 
 
