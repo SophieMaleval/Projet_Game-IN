@@ -9,22 +9,31 @@ public class SceneManagerFeature : MonoBehaviour
 {
     [SerializeField] private GameObject FadeImage ;
     public CinemachineVirtualCamera CMVirtualCam ;
+    public PlayerMovement PM;
 
 
     private void Awake() {
         if(GameObject.Find("Player") != null)
         {
-            CMVirtualCam.Follow = GameObject.Find("Player").transform ;
+            PM =  GameObject.Find("Player").GetComponent<PlayerMovement>();
+            CMVirtualCam.Follow = PM.transform ;
+            PM.transform.position = new Vector2 (-4f,-2f);
+
+
         }
     }
 
 
     private void OnTriggerEnter2D(Collider2D other) {
-        if(other.gameObject.tag == "Player")
+        if(other.gameObject.tag == "Player" && !PM.OnScooter)
         {
+            Debug.Log("false");
             other.gameObject.GetComponent<PlayerMovement>().enabled = false ;
             other.gameObject.GetComponent<PlayerMovement>().ResetVelocity();
             GoCustom();
+        }
+        else{
+            Debug.Log("true");
         }
     }
 
