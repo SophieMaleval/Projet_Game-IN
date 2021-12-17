@@ -23,6 +23,7 @@ public class AnimationCustomizer : MonoBehaviour
 
 
     [Header ("CustomerPanel")]
+    [SerializeField] private RectTransform ContainerChoiceCatPanel ;
     //[SerializeField] private RectTransform SkinGroup ;
     //[SerializeField] private RectTransform SkinPanel ;
     [SerializeField] private RectTransform ContainerSkinPanel ;
@@ -32,10 +33,10 @@ public class AnimationCustomizer : MonoBehaviour
     
     [Space(10)]
 
-    [SerializeField] private RectTransform Group ;
+   // [SerializeField] private RectTransform Group ;
     [SerializeField] private RectTransform Panel ;
     [SerializeField] private RectTransform ContainerChoicePanel ;
-    [SerializeField] private RectTransform FondContainerPanel ;
+    /*[SerializeField] private RectTransform FondContainerPanel ;*/
 
     [Space(10)]
     
@@ -55,6 +56,7 @@ public class AnimationCustomizer : MonoBehaviour
 
     private float PanelWidth = 445f ;
 
+    int CurrentCategorie ;
     
     private void Start() 
     {   
@@ -103,7 +105,55 @@ public class AnimationCustomizer : MonoBehaviour
 
 
     // Animation Panel
-    void InterractPanelButton(int StateChoice, RectTransform ContainerCategoriePanel, float CategoriePanelHeight, float CategoriePanelFondHeight, float OpenCategorieGroupHeight, int ChangeTitleCategoriesInt)
+    IEnumerator ChangePanel(int CategorieNumber)
+    {
+        CurrentCategorie = CategorieNumber ;
+        if(CurrentCategorie != 6)
+        {
+            Panel.DOAnchorPosY(-100f, 0.25f);
+            yield return new WaitForSeconds(0.25f);
+            Panel.DOAnchorPosY(1000f, 1f);
+
+            yield return new WaitForSeconds(1.5f);
+            ChangeTitleCategories(CategorieNumber);
+            SwitchCat(CategorieNumber);
+
+            Panel.DOAnchorPosY(-100f, .75f);
+            yield return new WaitForSeconds(.75f);
+            Panel.DOAnchorPosY(-25f, 0.25f);
+            yield return new WaitForSeconds(0.25f);            
+        }
+
+    }
+
+    void SwitchCat(int CatNumber)
+    {
+        if(CatNumber == 0)
+        {
+            ContainerChoiceCatPanel.gameObject.SetActive(true) ; 
+            ContainerSkinPanel.gameObject.SetActive(false) ;
+            ContainerChoicePanel.gameObject.SetActive(false) ;            
+        }
+     
+        if(CatNumber == 1)
+        {
+            ContainerChoiceCatPanel.gameObject.SetActive(false) ; 
+            ContainerSkinPanel.gameObject.SetActive(true) ;
+            ContainerChoicePanel.gameObject.SetActive(false) ;    
+        }
+        if(CatNumber > 1 && CatNumber < 6)
+        {
+            ContainerChoiceCatPanel.gameObject.SetActive(false) ; 
+            ContainerSkinPanel.gameObject.SetActive(false) ;
+            ContainerChoicePanel.gameObject.SetActive(true) ;    
+        } 
+
+
+        CustomizerReference.CurrentCategorie = CurrentCategorie - 1 ; 
+        CustomizerReference.ChangeCategorie();
+    }
+
+   /* void InterractPanelButton(int StateChoice, RectTransform ContainerCategoriePanel, float CategoriePanelHeight, float CategoriePanelFondHeight, float OpenCategorieGroupHeight, int ChangeTitleCategoriesInt)
     {
         // Ferme le Panel
         if(StateChoice == 0)
@@ -146,9 +196,10 @@ public class AnimationCustomizer : MonoBehaviour
                 ContainerCategoriePanel.DOScale(Vector3.one, OpenPanelSpeed);   
             }
         }
-    }
+    }*/
 
-    public void InterractChoiceButton(int StateChoice, int TitleNumber, int CustomCategorieNumber, RectTransform ContainerPanel, float PanelHeight, float PanelFondHeight, float OpenGroupHeight)
+    // Action Panel
+   /* public void InterractChoiceButton(int StateChoice, int TitleNumber, int CustomCategorieNumber, RectTransform ContainerPanel, float PanelHeight, float PanelFondHeight, float OpenGroupHeight)
     {
         if(CustomizerReference.CurrentCategorie == CustomCategorieNumber)
         {
@@ -172,37 +223,66 @@ public class AnimationCustomizer : MonoBehaviour
 
         yield return new WaitForSeconds(0.75f);
             InterractPanelButton(1, ContainerCategoriePanel, CategoriePanelHeight, CategoriePanelFondHeight, OpenCategorieGroupHeight, CategorieOpenning);
+    }*/
+
+    public void PreviousCategrorie()
+    {
+        int PreviousCat ;
+        if(CurrentCategorie-1 < 0 )
+            CurrentCategorie = 5 ;
+        else CurrentCategorie -- ;
+
+        PreviousCat = CurrentCategorie ;
+        
+        StartCoroutine(ChangePanel(PreviousCat));
+    }
+    public void NextCategrorie()
+    {
+        int NextCat ;
+        if(CurrentCategorie +1 > 5 )
+            CurrentCategorie = 0 ;
+        else CurrentCategorie ++ ;
+
+        NextCat = CurrentCategorie ;
+
+        StartCoroutine(ChangePanel(NextCat));
     }
 
 
-
-
-    public void InterractSkinButton(int StateChoice)
+    public void InterractSkinButton()
     {    
-        InterractChoiceButton(StateChoice, 1, 0, ContainerSkinPanel, SkinPanelHeight, SkinPanelFondHeight, OpenSkinGroupHeight) ;
+        StartCoroutine(ChangePanel(1));
+        //InterractChoiceButton(StateChoice, 1, 0, ContainerSkinPanel, SkinPanelHeight, SkinPanelFondHeight, OpenSkinGroupHeight) ;
     }   
 
-    public void InterractHairButton(int StateChoice)
+    public void InterractHairButton()
     { 
-        InterractChoiceButton(StateChoice, 2, 1, ContainerChoicePanel, ChoicePanelHeight, ChoicePanelFondHeight, OpenChoiceGroupHeight) ;
+        StartCoroutine(ChangePanel(2));
+        //InterractChoiceButton(StateChoice, 2, 1, ContainerChoicePanel, ChoicePanelHeight, ChoicePanelFondHeight, OpenChoiceGroupHeight) ;
     }
-    public void InterractTopButton(int StateChoice)
+    public void InterractTopButton()
     { 
-        InterractChoiceButton(StateChoice, 3, 2, ContainerChoicePanel, ChoicePanelHeight, ChoicePanelFondHeight, OpenChoiceGroupHeight) ;
+        StartCoroutine(ChangePanel(3));
+       // InterractChoiceButton(StateChoice, 3, 2, ContainerChoicePanel, ChoicePanelHeight, ChoicePanelFondHeight, OpenChoiceGroupHeight) ;
     }
-    public void InterractPantsButton(int StateChoice)
+    public void InterractPantsButton()
     {   
-        InterractChoiceButton(StateChoice, 4, 3, ContainerChoicePanel, ChoicePanelHeight, ChoicePanelFondHeight, OpenChoiceGroupHeight) ;
+        StartCoroutine(ChangePanel(4));
+        //InterractChoiceButton(StateChoice, 4, 3, ContainerChoicePanel, ChoicePanelHeight, ChoicePanelFondHeight, OpenChoiceGroupHeight) ;
     }
-    public void InterractShoeButton(int StateChoice)
+    public void InterractShoeButton()
     {   
-        InterractChoiceButton(StateChoice, 5, 4, ContainerChoicePanel, ChoicePanelHeight, ChoicePanelFondHeight, OpenChoiceGroupHeight) ;
+        StartCoroutine(ChangePanel(5));
+        
+
+       // InterractChoiceButton(StateChoice, 5, 4, ContainerChoicePanel, ChoicePanelHeight, ChoicePanelFondHeight, OpenChoiceGroupHeight) ;
     }
 
 
     public void CustomizationFinish()
     {    
-        InterractPanelButton(0, ContainerSkinPanel, SkinPanelHeight, SkinPanelFondHeight, OpenSkinGroupHeight, 0);
+        //InterractPanelButton(0, ContainerSkinPanel, SkinPanelHeight, SkinPanelFondHeight, OpenSkinGroupHeight, 0);
+        StartCoroutine(ChangePanel(6));
         RideauxAnimator.SetBool("Quit Custom ?", true) ;
     }
 

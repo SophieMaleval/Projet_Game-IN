@@ -39,8 +39,11 @@ public class Customizer : MonoBehaviour
     /*17*/"Charlotte", "Elise", "Margot", "Justine", "Ines", "Laetitia", "Emilie", "Marine", "Marie", "Manon", "Lucie", "Lisa", "Cécile", "Julie", "Clara", "Kim", "Cassandre",
     /*5*/ "Camille", "Dominique",
     } ;
+    [Header ("Gender")]
     public int Gender ; // 0 -> Femme | 1 -> Homme | 2 -> Non-Binaire
     public List<Button> GenderButton ;
+    public Color GenderNotSelected ;
+    public Color GenderSelected ;
  
 
     [Header ("Item Disponible")]
@@ -51,6 +54,7 @@ public class Customizer : MonoBehaviour
     [Space]
     [SerializeField] private Color ColorDoNotUse ;
     [SerializeField] private Color ColorUse ;
+
 
     [Header("Custom Color Possible")]
     public List<Color> SkinGradient ;
@@ -127,12 +131,10 @@ public class Customizer : MonoBehaviour
             if(G == PlayerApparance.GetComponent<PlayerScript>().PlayerSexualGenre)
             {
                 GenderButton[G].interactable = false ;
-                GenderButton[G].gameObject.transform.Find("Contour Selection").gameObject.GetComponent<Image>().color = ColorUse ;
-                GenderButton[G].gameObject.transform.Find("Check Mark").gameObject.SetActive(true) ;
+                GenderButton[G].gameObject.transform.Find("Icone").GetComponent<Image>().color = GenderSelected ;
             } else {
                 GenderButton[G].interactable = true ;
-                GenderButton[G].gameObject.transform.Find("Contour Selection").gameObject.GetComponent<Image>().color = ColorDoNotUse ;
-                GenderButton[G].gameObject.transform.Find("Check Mark").gameObject.SetActive(false) ;
+                GenderButton[G].gameObject.transform.Find("Icone").GetComponent<Image>().color = GenderNotSelected ;
             }
         }
     }
