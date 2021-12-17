@@ -9,43 +9,30 @@ using System.Text;
 
 public class PNJDialogue : MonoBehaviour
 {
+    [Header ("PNJ Information")]
     public string Entrerpise ;
     public string NamePNJ ;
     
     [HideInInspector] public CSVReader TextDialogue ;
-    public DialogueContainer DialoguePNJ ;
 
+    [Header ("Dialogue Canvas Reference")]
     public TextMeshProUGUI DialogueCanvas ;
-
-
     public DialogueDisplayerController DialogueCanvasBox ;   
 
     private PlayerScript PlayerScript;
     private PlayerDialogue PlayerDialogueManager;
     private bool PlayerAround = false ;
 
-    public Vector4 QuestionDisplay = new Vector4(1, 2, 3, 0);
-
     public GameObject BoxQuestion ;
+
+    public int Question3IntDisplay = 3;  
+
+    private DialogueContainer DialoguePNJ ;
+
     public List<string> QuestionDisponible ;
-    public List<string> AnswerDisponible ;
-
-    public bool Question1AsRead = false ;
-    public bool Question2AsRead = false ;
-    public bool Question3AsRead = false ;
-
-
-    private bool PNJSpeak = false ;
-    private int CurrentDialogueDisplay = 0 ;
-    //private int CurrentDialogueStateDisplay = 0 ;
-    
-    private int CurrentDialogueLength = 0 ;
-    private int CurrentDialogueState = 0 ;
-
-
+    [HideInInspector] public List<string> AnswerDisponible ;
 
     private int CurrentDialoguePlayerChoice = 0 ;
-    private bool ChoiceValidation = false ;
 
     [System.Serializable]    
     public class SerializableAnswer
@@ -58,7 +45,8 @@ public class PNJDialogue : MonoBehaviour
     public List<SerializableAnswer> Answer = new List<SerializableAnswer>() ;
 
 
-    private void Awake() {
+    private void Awake() 
+    {
         if(GameObject.Find("Player") != null)   // Récupère le player au lancement de la scène
         {    
             PlayerScript = GameObject.Find("Player").GetComponent<PlayerScript>() ; 
@@ -66,7 +54,6 @@ public class PNJDialogue : MonoBehaviour
 
             TextDialogue = GameObject.Find("Player Backpack").GetComponent<CSVReader>() ;
         }    
-        
     } 
 
     public void GetDialogue()
@@ -79,11 +66,6 @@ public class PNJDialogue : MonoBehaviour
             }
         }
     }
-
-
-
-    private void OnEnable() {    DialogueCanvas.text = DialoguePNJ.OpeningDialogue ; }
-    private void OnDisable() {    DialogueCanvas.text = DialoguePNJ.OpeningDialogue ; }
 
     void Start()
     {
@@ -196,11 +178,12 @@ public class PNJDialogue : MonoBehaviour
         PlayerScript.gameObject.GetComponent<PlayerMovement>().StartDialog() ; 
 
         DialogueCanvasBox.gameObject.SetActive(true);
+        DialogueCanvasBox.CurrentPNJDiscussion = this ;        
         DialogueCanvasBox.DialoguePNJ = DialoguePNJ;
         DialogueCanvasBox.AnswerDisponible = AnswerDisponible;
         DialogueCanvasBox.QuestionDisponible = QuestionDisponible ;
 
-        DialogueCanvasBox.StartDiscussion();
+        DialogueCanvasBox.StartDiscussion(false);
     }
 
     public void DiscussionIsClose()
