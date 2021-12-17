@@ -19,7 +19,7 @@ public class QuestSys : MonoBehaviour
     public List<QuestCt> quest = new List<QuestCt>();
     public int niveau = 0;
     QuestCt questCount;
-    int etape = 0;
+    public int etape = 0;
     int sizeOfList;
 
     [Header("Animation")]
@@ -58,7 +58,22 @@ public class QuestSys : MonoBehaviour
         {
             StartCoroutine(FadeContentOut());
         }
-    }   
+    }
+    
+    public void NextStep()
+    {
+        etape++;
+    }
+
+    public void NextLevel()
+    {
+        niveau++;
+        etape = 0;
+        if(niveau > sizeOfList)
+        {
+            Roaming();
+        }
+    }
     public void Roaming()
     {
         etape = 0;
@@ -75,19 +90,21 @@ public class QuestSys : MonoBehaviour
         animTitle.DOFade(0f, 0.3f);
         Debug.Log("Fade tout out");
         yield return new WaitForSeconds(duration);
-        niveau++;
-        etape = 0;
+        NextLevel();
+        //niveau++;
+        //etape = 0;
         if (niveau > sizeOfList - 1)
         {
-            Roaming();
+            //Roaming();
             FadeAllIn();
         }
         else
         {
             FadeAllIn();
-        }
-        
+        }        
     }
+
+
 
     IEnumerator FadeAllOutB()
     {
@@ -105,7 +122,8 @@ public class QuestSys : MonoBehaviour
         animContent.DOFade(0f, 0.3f);
         Debug.Log("Fade le contenu out");
         yield return new WaitForSeconds(duration);
-        etape++;
+        NextStep();
+        //etape++;
         FadeContentIn();           
     }
 

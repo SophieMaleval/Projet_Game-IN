@@ -46,7 +46,7 @@ public class PlayerScript : MonoBehaviour
             {
                 PlayerAsInterract = true ;
                 
-                selectedSound.Play();           
+                //selectedSound.Play();           
             }
         }      
     }
@@ -96,6 +96,7 @@ public class PlayerScript : MonoBehaviour
             if(Inventaire[I] == null)
             {
                 Inventaire[I] = ObjetAjouter ;
+                selectedSound.Play();
                 break ;
             }
         }

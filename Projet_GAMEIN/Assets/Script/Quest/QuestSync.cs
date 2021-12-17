@@ -9,6 +9,7 @@ public class QuestSync : MonoBehaviour
     public TextMeshProUGUI[] description;
     [SerializeField] int index;
     [SerializeField] int lvlID;
+    public int currentStep;
     [SerializeField] string descName;
     //public List<string> steps = new List<string>();
     public string[] steps;
@@ -48,7 +49,8 @@ public class QuestSync : MonoBehaviour
 
     public void QuestChanged()
     {
-        questSys.niveau = lvlID;       
+        questSys.niveau = lvlID;
+        //questSys.quest[lvlID].questGoal[] = currentStep;
     }
     void Start()
     {
