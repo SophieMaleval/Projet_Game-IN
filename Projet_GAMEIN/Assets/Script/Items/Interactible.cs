@@ -5,14 +5,18 @@ using UnityEngine;
 public class Interactible : MonoBehaviour
 {
     public InteractibleObject Object ;
+    public QuestSys questSys;
     private SpriteRenderer SpriteRend;
     [SerializeField] private PlayerScript PlayerScript;
-    private bool PlayerAround = false ;
+    private bool PlayerAround = false;
+    public int code;
+    public int stepCode;
 
     private void Awake() {
         if(GameObject.Find("Player") != null)   // Récupère le player au lancement de la scène
         {    PlayerScript = GameObject.Find("Player").GetComponent<PlayerScript>() ; }
-        SpriteRend = GetComponent<SpriteRenderer>();        
+        SpriteRend = GetComponent<SpriteRenderer>();
+        questSys = GameObject.Find("QuestManager").GetComponent<QuestSys>() ;
     }
 
     private void Start()
@@ -41,11 +45,11 @@ public class Interactible : MonoBehaviour
             {
                 PlayerScript.PlayerAsInterract = false ;
                 Collected();
-            } else {
-                
-            PlayerScript.PlayerAsInterract = false ;
-        } 
-
+            }
+            else 
+            {              
+                PlayerScript.PlayerAsInterract = false ;
+            } 
         }
     }
 
@@ -54,6 +58,10 @@ public class Interactible : MonoBehaviour
     {
         PlayerScript.AjoutInventaire(Object);
         PlayerScript.SwitchInputSprite();
+        if (questSys.niveau == code && questSys.etape == stepCode)
+        {
+            questSys.Progression();
+        }
         Destroy(this.gameObject, 0.025f);              
     }
 
@@ -72,7 +80,9 @@ public class Interactible : MonoBehaviour
         {
             PlayerAround = false ;
             SpriteRend.sprite = Object.NormalSprite;             
-        } else {
+        } 
+        else 
+        {
             PlayerAround = true ;
             SpriteRend.sprite = Object.HighlightSprite;            
         }      
