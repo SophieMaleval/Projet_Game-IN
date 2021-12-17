@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3491493698501698522}
   - component: {fileID: 3491493698501698523}
   - component: {fileID: 3491493698501698521}
+  - component: {fileID: 96329082531820497}
   m_Layer: 0
   m_Name: Interactible
   m_TagString: Untagged
@@ -117,10 +118,31 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3491493698501698517}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 98d6793d4fbe9ba4f9be12197c747a0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Object: {fileID: 0}
+  questSys: {fileID: 0}
   PlayerScript: {fileID: 0}
+  code: 0
+  stepCode: 0
+--- !u!114 &96329082531820497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3491493698501698517}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d49e86bb96891b48b1d2c1f3aec8066, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questSys: {fileID: 0}
+  numeroDeQuete: 1
+  etapeDeQuete: 1
+  level: 0
+  step: 0
+  interactible: {fileID: 0}

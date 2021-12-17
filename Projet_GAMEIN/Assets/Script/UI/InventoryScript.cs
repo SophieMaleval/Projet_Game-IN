@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro ;
+using DG.Tweening;
 
 public class InventoryScript : MonoBehaviour
 {
@@ -12,11 +13,15 @@ public class InventoryScript : MonoBehaviour
     public GameObject DisplayerInventory ;
     public List<Image> InventoryDisplayer ;
 
+
+    [SerializeField] private RectTransform SettingPanel ;
+
     private void Awake() 
     {
         if(GameObject.Find("Player") != null)   // Récupère le player au lancement de la scène
-        {    PlayerScript = GameObject.Find("Player").GetComponent<PlayerScript>() ; 
-        
+        {    
+            PlayerScript = GameObject.Find("Player").GetComponent<PlayerScript>() ; 
+            //SettingPanel = GameObject.Find("Settings Panel").GetComponent<RectTransform>() ;
         }
 
         SetInventoryCount();
@@ -38,6 +43,43 @@ public class InventoryScript : MonoBehaviour
     {
         SetDisplayinventory();        
         InventoryPanel.SetActive(!InventoryPanel.activeSelf);
+        if(!InventoryPanel.activeSelf)
+        {
+            PlayerScript.GetComponent<PlayerMovement>().EndDialog() ;
+        } else {
+            PlayerScript.GetComponent<PlayerMovement>().StartDialog() ;
+        }
+    }
+
+    public void OpenSetting()
+    {
+        StartCoroutine(AnimationPanels(true));
+    }
+    public void CloseSetting()
+    {
+        StartCoroutine(AnimationPanels(false));
+    }
+
+    IEnumerator AnimationPanels(bool OpenSettings)
+    {
+        if(OpenSettings)
+        {
+            SettingPanel.DOAnchorPosY(1500, 0.01f);
+            yield return new WaitForSeconds(0.01f);
+            SettingPanel.gameObject.SetActive(true);
+            SettingPanel.GetComponent<Image>().DOFade(0.75f, 1f);
+            SettingPanel.DOAnchorPosY(0, 1f);            
+        } else {
+
+            SettingPanel.DOAnchorPosY(-50, 0.1f);
+            yield return new WaitForSeconds(0.1f);
+            SettingPanel.GetComponent<Image>().DOFade(0f, 1f);            
+            SettingPanel.DOAnchorPosY(1500, 1f);
+            yield return new WaitForSeconds(1f);
+
+
+            SettingPanel.gameObject.SetActive(false);
+        }
     }
 
     public void SetInventoryCount()

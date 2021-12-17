@@ -16,7 +16,7 @@ public class PNJDialogue : MonoBehaviour
     [HideInInspector] public CSVReader TextDialogue ;
 
     [Header ("Dialogue Canvas Reference")]
-    private DialogueDisplayerController DialogueCanvasBox ;       
+    public DialogueDisplayerController DialogueCanvasBox ;       
     private TextMeshProUGUI DialogueCanvasDisplayerText ;
 
 
@@ -55,10 +55,12 @@ public class PNJDialogue : MonoBehaviour
 
             DialogueCanvasBox = PlayerScript.DialogueUIIndestructible.GetComponent<DialogueDisplayerController>() ;
             TextDialogue = GameObject.Find("Player Backpack").GetComponent<CSVReader>() ;
+
+          /* DialogueCanvasBox.NamePNJ.text = NamePNJ;
+            DialogueCanvasBox.gameObject.SetActive(true);*/
         }    
 
-        DialogueCanvasDisplayerText = DialogueCanvasBox.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
-        BoxQuestion = DialogueCanvasBox.transform.GetChild(1).gameObject ;
+
     } 
 
     public void GetDialogue()
@@ -74,6 +76,9 @@ public class PNJDialogue : MonoBehaviour
 
     void Start()
     {
+
+
+
        StartCoroutine(CallDialogue());
     }
 
@@ -182,9 +187,14 @@ public class PNJDialogue : MonoBehaviour
     {
         PlayerScript.gameObject.GetComponent<PlayerMovement>().StartDialog() ; 
         PlayerDialogueManager.DialogueStart();
-
+           
+        DialogueCanvasBox.gameObject.SetActive(true);           
         DialogueCanvasBox.NamePNJ.text = NamePNJ;
-        DialogueCanvasBox.gameObject.SetActive(true);
+
+
+        DialogueCanvasDisplayerText = DialogueCanvasBox.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+        BoxQuestion = DialogueCanvasBox.transform.GetChild(1).gameObject ;     
+
         DialogueCanvasBox.CurrentPNJDiscussion = this ;        
         DialogueCanvasBox.DialoguePNJ = DialoguePNJ;
         DialogueCanvasBox.AnswerDisponible = AnswerDisponible;

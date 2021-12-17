@@ -19,6 +19,7 @@ public class SceneManagerFeature : MonoBehaviour
             PM.transform.position = new Vector2 (-4f,-2f);
             FadeImage = PM.GetComponent<PlayerScript>().CanvasIndestrucitble.gameObject.transform.Find("Fade").gameObject ;
             PM.GetComponent<PlayerScript>().CanvasIndestrucitble.GetComponent<Canvas>().worldCamera = Camera.main;
+
         }
     }
 
@@ -27,13 +28,7 @@ public class SceneManagerFeature : MonoBehaviour
         StartCoroutine(WaitTransitionAnim());
     }
 
-    IEnumerator WaitTransitionAnim()
-    {
-        yield return new WaitForSeconds(0.25f);
-        FadeImage.GetComponent<AnimationTransitionScene>().enabled = true ;
-        yield return new WaitForSeconds(2f) ;
-        FadeImage.SetActive(false);
-    }
+
     private void OnTriggerEnter2D(Collider2D other) 
     {
         if(other.gameObject.tag == "Player" && !PM.OnScooter)
@@ -51,8 +46,17 @@ public class SceneManagerFeature : MonoBehaviour
 
     IEnumerator WaitBeforeChangeScene()
     {
+        FadeImage.SetActive(true);
         FadeImage.GetComponent<AnimationTransitionScene>().ShouldReveal = false ;
         yield return new WaitForSeconds(1.75f);
         SceneManager.LoadScene("Character Customer");
+    }
+    
+    IEnumerator WaitTransitionAnim()
+    {
+        yield return new WaitForSeconds(0.25f);
+        FadeImage.GetComponent<AnimationTransitionScene>().enabled = true ;
+        yield return new WaitForSeconds(2f) ;
+        FadeImage.SetActive(false);
     }
 }
