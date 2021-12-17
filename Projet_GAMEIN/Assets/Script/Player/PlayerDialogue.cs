@@ -18,7 +18,7 @@ public class PlayerDialogue : MonoBehaviour
     private void OnEnable() {   PlayerActionControllers.Disable(); }
     private void OnDisable() { PlayerActionControllers.Disable(); }
 
-    public void DialogueStart() { PlayerActionControllers.Enable(); }
+    public void DialogueStart() { PlayerActionControllers.Enable(); ResetCurrentSelectQuestion(); }
     public void DialogueEnd() { PlayerActionControllers.Disable(); }
 
     private void Awake() 
@@ -30,6 +30,7 @@ public class PlayerDialogue : MonoBehaviour
         PlayerActionControllers.PlayerInDialogue.SelectPreviousQuestion.performed += OnSelectPreviousQuestion ;
         PlayerActionControllers.PlayerInDialogue.SelectNextQuestion.performed += OnSelectNextQuestion ;
     }
+
 
 
     void ResetCurrentSelectQuestion()
@@ -66,30 +67,32 @@ public class PlayerDialogue : MonoBehaviour
     public void ResetSelectQuestion()
     {
         CurrentSelectQuestion = 0 ;
-
     }
 
     private void SetQuestionSelect(bool IsAdd)
     {
-
-        DialogueDisplayerController DialogueBox = GameObject.Find("Dialogue Canvas").GetComponent<DialogueDisplayerController>() ;
-        // Choix Précédent
-        if(!IsAdd)
+        if(GameObject.Find("Dialogue Canvas") != null)
         {
-            if((CurrentSelectQuestion + 1) > DialogueBox.SetQuestionDisponible().Count - 1)
+            DialogueDisplayerController DialogueBox = GameObject.Find("Dialogue Canvas").GetComponent<DialogueDisplayerController>() ;
+            // Choix Précédent
+            if(!IsAdd)
             {
-                CurrentSelectQuestion = 0 ;
+                if((CurrentSelectQuestion + 1) > DialogueBox.SetQuestionDisponible().Count - 1)
+                {
+                    CurrentSelectQuestion = 0 ;
+                } else {
+                    CurrentSelectQuestion ++ ;
+                }
             } else {
-                CurrentSelectQuestion ++ ;
-            }
-        } else {
-            if((CurrentSelectQuestion - 1 < 0 ))
-            {
-                CurrentSelectQuestion = DialogueBox.SetQuestionDisponible().Count - 1;
-            } else {
-                CurrentSelectQuestion -- ;
-            }
+                if((CurrentSelectQuestion - 1 < 0 ))
+                {
+                    CurrentSelectQuestion = DialogueBox.SetQuestionDisponible().Count - 1;
+                } else {
+                    CurrentSelectQuestion -- ;
+                }
+            }            
         }
+
     }
 
 

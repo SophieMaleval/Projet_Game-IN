@@ -45,10 +45,18 @@ public class PlayerScript : MonoBehaviour
             if(ctx.performed) 
             {
                 PlayerAsInterract = true ;
-                
+                StopCoroutine(DisablePlayerInterract());
+                StartCoroutine(DisablePlayerInterract());
                 //selectedSound.Play();           
             }
+
         }      
+    }
+
+    IEnumerator DisablePlayerInterract()
+    {
+        yield return new WaitForSeconds(0.05f);
+        PlayerAsInterract = false ;
     }
 
     public void OnInventory(InputAction.CallbackContext ctx)

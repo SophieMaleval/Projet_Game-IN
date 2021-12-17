@@ -16,14 +16,15 @@ public class PNJDialogue : MonoBehaviour
     [HideInInspector] public CSVReader TextDialogue ;
 
     [Header ("Dialogue Canvas Reference")]
-    public TextMeshProUGUI DialogueCanvas ;
-    public DialogueDisplayerController DialogueCanvasBox ;   
+    public DialogueDisplayerController DialogueCanvasBox ;       
+    private TextMeshProUGUI DialogueCanvasDisplayerText ;
+
 
     private PlayerScript PlayerScript;
     private PlayerDialogue PlayerDialogueManager;
     private bool PlayerAround = false ;
 
-    public GameObject BoxQuestion ;
+    private GameObject BoxQuestion ;
 
     public int Question3IntDisplay = 3;  
 
@@ -54,6 +55,9 @@ public class PNJDialogue : MonoBehaviour
 
             TextDialogue = GameObject.Find("Player Backpack").GetComponent<CSVReader>() ;
         }    
+
+        DialogueCanvasDisplayerText = DialogueCanvasBox.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+        BoxQuestion = DialogueCanvasBox.transform.GetChild(1).gameObject ;
     } 
 
     public void GetDialogue()
@@ -176,7 +180,9 @@ public class PNJDialogue : MonoBehaviour
     public void LunchDiscussion()
     {
         PlayerScript.gameObject.GetComponent<PlayerMovement>().StartDialog() ; 
+        PlayerDialogueManager.DialogueStart();
 
+        DialogueCanvasBox.NamePNJ.text = NamePNJ;
         DialogueCanvasBox.gameObject.SetActive(true);
         DialogueCanvasBox.CurrentPNJDiscussion = this ;        
         DialogueCanvasBox.DialoguePNJ = DialoguePNJ;
