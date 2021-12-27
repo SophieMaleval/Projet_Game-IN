@@ -23,6 +23,10 @@ public class PlayerScript : MonoBehaviour
 
     public InteractibleObject[] Inventaire ;
 
+    [Header ("Canvas Location")]
+    public GameObject CanvasIndestrucitble ;
+    public GameObject DialogueUIIndestructible ;
+    public GameObject InventoryUIIndestructible ;
 
 
     private void OnEnable() { PlayerActionControllers.Enable(); }
@@ -45,10 +49,18 @@ public class PlayerScript : MonoBehaviour
             if(ctx.performed) 
             {
                 PlayerAsInterract = true ;
-                
+                StopCoroutine(DisablePlayerInterract());
+                StartCoroutine(DisablePlayerInterract());
                 //selectedSound.Play();           
             }
+
         }      
+    }
+
+    IEnumerator DisablePlayerInterract()
+    {
+        yield return new WaitForSeconds(0.05f);
+        PlayerAsInterract = false ;
     }
 
     public void OnInventory(InputAction.CallbackContext ctx)
@@ -64,9 +76,9 @@ public class PlayerScript : MonoBehaviour
 
     void InventoryInteract()
     {
-        if(GameObject.Find("Canvas") != null)
+        if(GameObject.Find("Inventory") != null)
         {
-            GameObject.Find("Canvas").GetComponent<InventoryScript>().SwitchToggleInventoryDisplay();
+            GameObject.Find("Inventory").GetComponent<InventoryScript>().SwitchToggleInventoryDisplay();
         }
     }
 

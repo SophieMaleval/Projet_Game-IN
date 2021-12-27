@@ -16,14 +16,15 @@ public class PNJDialogue : MonoBehaviour
     [HideInInspector] public CSVReader TextDialogue ;
 
     [Header ("Dialogue Canvas Reference")]
-    public TextMeshProUGUI DialogueCanvas ;
-    public DialogueDisplayerController DialogueCanvasBox ;   
+    public DialogueDisplayerController DialogueCanvasBox ;       
+    private TextMeshProUGUI DialogueCanvasDisplayerText ;
+
 
     private PlayerScript PlayerScript;
     private PlayerDialogue PlayerDialogueManager;
     private bool PlayerAround = false ;
 
-    public GameObject BoxQuestion ;
+    private GameObject BoxQuestion ;
 
     public int Question3IntDisplay = 3;  
 
@@ -52,8 +53,14 @@ public class PNJDialogue : MonoBehaviour
             PlayerScript = GameObject.Find("Player").GetComponent<PlayerScript>() ; 
             PlayerDialogueManager = GameObject.Find("Player Backpack").GetComponent<PlayerDialogue>() ; 
 
+            DialogueCanvasBox = PlayerScript.DialogueUIIndestructible.GetComponent<DialogueDisplayerController>() ;
             TextDialogue = GameObject.Find("Player Backpack").GetComponent<CSVReader>() ;
+
+          /* DialogueCanvasBox.NamePNJ.text = NamePNJ;
+            DialogueCanvasBox.gameObject.SetActive(true);*/
         }    
+
+
     } 
 
     public void GetDialogue()
@@ -69,6 +76,9 @@ public class PNJDialogue : MonoBehaviour
 
     void Start()
     {
+
+
+
        StartCoroutine(CallDialogue());
     }
 
@@ -176,8 +186,15 @@ public class PNJDialogue : MonoBehaviour
     public void LunchDiscussion()
     {
         PlayerScript.gameObject.GetComponent<PlayerMovement>().StartDialog() ; 
+        PlayerDialogueManager.DialogueStart();
+           
+        DialogueCanvasBox.gameObject.SetActive(true);           
+        DialogueCanvasBox.NamePNJ.text = NamePNJ;
 
-        DialogueCanvasBox.gameObject.SetActive(true);
+
+        DialogueCanvasDisplayerText = DialogueCanvasBox.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+        BoxQuestion = DialogueCanvasBox.transform.GetChild(1).gameObject ;     
+
         DialogueCanvasBox.CurrentPNJDiscussion = this ;        
         DialogueCanvasBox.DialoguePNJ = DialoguePNJ;
         DialogueCanvasBox.AnswerDisponible = AnswerDisponible;

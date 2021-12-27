@@ -57,11 +57,8 @@ public class Interactible : MonoBehaviour
     void Collected()
     {
         PlayerScript.AjoutInventaire(Object);
-        PlayerScript.SwitchInputSprite();
-        if (questSys.niveau == code && questSys.etape == stepCode)
-        {
-            questSys.Progression();
-        }
+        PlayerScript.SwitchInputSprite();       
+        questSys.Progression();        
         Destroy(this.gameObject, 0.025f);              
     }
 

@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.UI ;
 using DG.Tweening ;
 using UnityEngine.SceneManagement;
-using DG.Tweening;
 
 public class MenuManager : MonoBehaviour
 {

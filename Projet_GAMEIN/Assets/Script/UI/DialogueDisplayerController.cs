@@ -14,6 +14,7 @@ public class DialogueDisplayerController : MonoBehaviour
     
     [HideInInspector] public PNJDialogue CurrentPNJDiscussion ;
     public TextMeshProUGUI DialogueCanvas ;
+    public TextMeshProUGUI NamePNJ ;
 
     [HideInInspector] public DialogueContainer DialoguePNJ ;
     [SerializeField] private PlayerDialogue PlayerDialogueManager;
@@ -57,7 +58,24 @@ public class DialogueDisplayerController : MonoBehaviour
         public List<int> AnswerForQuestion ; 
     }
 
+    private void OnEnable() 
+    {
+        ResetAllValue();
+    }
+    void ResetAllValue()
+    {
 
+        PNJSpeak = false ;
+        CurrentDialogueDisplay = 0 ;
+        CurrentDialogueLength = 0 ; 
+        CurrentDialogueState = 0 ;
+        CurrentDialoguePlayerChoice = 0 ;
+        ChoiceValidation = false ;
+        WeAreInChoice = false ;
+        TextAsCompletelyDisplay = true ;
+        TextOppeningDisplayCompletely = false ;
+        TextCloseDisplayCompletely = true ;
+    }
 
     private void Awake() {
         if(GameObject.Find("Player") != null)   // Récupère le player au lancement de la scène
@@ -65,7 +83,7 @@ public class DialogueDisplayerController : MonoBehaviour
             PlayerDialogueManager = GameObject.Find("Player Backpack").GetComponent<PlayerDialogue>() ; 
         }    
     } 
-    
+
 
     void FixedUpdate()
     {       
@@ -322,7 +340,7 @@ public class DialogueDisplayerController : MonoBehaviour
     public void ValidateButton()
     {
         PlayerDialogueManager.PlayerAsRead = false ;
-        
+
         SetQuestionDisponible()[CurrentDialoguePlayerChoice].onClick.Invoke();     
     }
 
