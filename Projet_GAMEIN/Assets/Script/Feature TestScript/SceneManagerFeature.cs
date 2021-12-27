@@ -10,7 +10,7 @@ public class SceneManagerFeature : MonoBehaviour
     public CinemachineVirtualCamera CMVirtualCam ;
     private PlayerMovement PM;
     private GameObject FadeImage ;
-
+    public string NameScene;
     private void Awake() {
         if(GameObject.Find("Player") != null)
         {
@@ -49,7 +49,7 @@ public class SceneManagerFeature : MonoBehaviour
         FadeImage.SetActive(true);
         FadeImage.GetComponent<AnimationTransitionScene>().ShouldReveal = false ;
         yield return new WaitForSeconds(1.75f);
-        SceneManager.LoadScene("Character Customer");
+        SceneManager.LoadScene(NameScene);
     }
     
     IEnumerator WaitTransitionAnim()
