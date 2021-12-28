@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class ActiveAsProg : MonoBehaviour
 {
+    //active et desactive des objets en fonction de la progression du joueur
+    [HideInInspector]
     public QuestSys questSys;
     public int numeroDeQuete;
     public int etapeDeQuete;
-    public int level;
-    public int step;
+    //public int level; // à titre indicatif uniquement
+    //public int step; // à  titre indicatif uniquement
     public Interactible interactible;
     Collider2D detecteur;
 
@@ -17,17 +19,11 @@ public class ActiveAsProg : MonoBehaviour
         questSys = GameObject.Find("QuestManager").GetComponent<QuestSys>();
         interactible = GetComponent<Interactible>(); //la composante doit, si déterminante pour une quête, être inactive sur l'objet
         detecteur = GetComponent<Collider2D>();
-
-    }
-
-    private void OnEnable()
-    {
-        
     }
 
     void Update()
     {
-        if (questSys.niveau + 1 == numeroDeQuete && questSys.etape + 1 == etapeDeQuete)
+        if (questSys.niveau == numeroDeQuete && questSys.etape + 1 == etapeDeQuete)
         {
             interactible.enabled = true;
             detecteur.enabled = true;
@@ -36,7 +32,5 @@ public class ActiveAsProg : MonoBehaviour
         {
             detecteur.enabled = false;
         }
-        step = questSys.niveau;
-        level = questSys.etape;
     }
 }

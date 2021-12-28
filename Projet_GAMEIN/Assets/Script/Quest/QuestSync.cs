@@ -29,18 +29,6 @@ public class QuestSync : MonoBehaviour
             }
         }
     }
-    //public void SynchroniseDesc()
-    //{
-        //steps[steps.Length] = questSys.quest[index].questGoal[questSys.quest[index].questGoal.Length -1];
-        //steps[steps.Count] = questSys.quest[index].questGoal[];
-        //description = GameObject.FindGameObjectsWithTag(descName);
-        //foreach (GameObject tagged in description)
-        /*if (tagged.activeInHierarchy == true)
-        {
-            steps.AddRange(tagged.GetComponentInChildren<TextMeshProUGUI>().text);
-            //tagged.GetComponentInChildren<TextMeshProUGUI>().text = questSys.quest[index].questGoal[indexLvl];
-        }*/
-    //}
 
     private void OnEnable()
     {
@@ -50,15 +38,5 @@ public class QuestSync : MonoBehaviour
     public void QuestChanged()
     {
         questSys.niveau = lvlID;
-        //questSys.quest[lvlID].questGoal[] = currentStep;
-    }
-    void Start()
-    {
-        //steps = questSys.quest[index].questGoal.ToList();
-    }
-    
-    void Update()
-    {
-       
     }
 }

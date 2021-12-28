@@ -7,6 +7,7 @@ public class QuestCt
 {
     //[HideInInspector]
     public string intitule;
+    [HideInInspector]
     public int questCode;
     [SerializeField] [TextArea] public string questTitle;   
     [TextArea(3, 7)] public string[] questGoal;   
