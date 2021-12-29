@@ -37,8 +37,6 @@ public class Interactible : MonoBehaviour
     {
         if(PlayerScript.gameObject.transform.position.x < transform.position.x) PlayerScript.InputSpritePos(false);
         if(PlayerScript.gameObject.transform.position.x > transform.position.x) PlayerScript.InputSpritePos(true);
-
-
         if (PlayerAround)
         {
             if(PlayerScript.CanCollectObject && PlayerScript.PlayerAsInterract)
