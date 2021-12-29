@@ -5,7 +5,7 @@ using DG.Tweening;
 using UnityEngine.UI;
 
 
-public class QuestTransition : MonoBehaviour
+public class QuestInMenu : MonoBehaviour
 {
     public GameObject[] questSlot;
     public GameObject fleche;
@@ -20,18 +20,14 @@ public class QuestTransition : MonoBehaviour
     private void Start()
     {
         unclickedFleche = fleche.GetComponent<Image>().sprite;
-        //fleche = GameObject.Find(nomFleche);
         questSlot = GameObject.FindGameObjectsWithTag(steps);
-       // otherQ1 = GameObject.FindGameObjectsWithTag(list1);
-       // otherQ2 = GameObject.FindGameObjectsWithTag(list2);
-      //  otherQ3 = GameObject.FindGameObjectsWithTag(list3);
         foreach (GameObject tagged in questSlot)
         {
             tagged.SetActive(false);
         }
     }
 
-    private void OnEnable()
+    private void Awake()
     {
         otherQ1 = GameObject.FindGameObjectsWithTag(list1);
         otherQ2 = GameObject.FindGameObjectsWithTag(list2);
@@ -97,8 +93,4 @@ public class QuestTransition : MonoBehaviour
             }
         }
     }
-
-
-
-
 }

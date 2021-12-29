@@ -9,8 +9,8 @@ public class Interactible : MonoBehaviour
     private SpriteRenderer SpriteRend;
     [SerializeField] private PlayerScript PlayerScript;
     private bool PlayerAround = false;
-    public int code;
-    public int stepCode;
+    //public int code;
+    //public int stepCode;
 
     private void Awake() {
         if(GameObject.Find("Player") != null)   // Récupère le player au lancement de la scène
@@ -37,8 +37,6 @@ public class Interactible : MonoBehaviour
     {
         if(PlayerScript.gameObject.transform.position.x < transform.position.x) PlayerScript.InputSpritePos(false);
         if(PlayerScript.gameObject.transform.position.x > transform.position.x) PlayerScript.InputSpritePos(true);
-
-
         if (PlayerAround)
         {
             if(PlayerScript.CanCollectObject && PlayerScript.PlayerAsInterract)
