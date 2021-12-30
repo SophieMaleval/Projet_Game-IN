@@ -11,14 +11,21 @@ public class QuestSys : MonoBehaviour
     /*[Header("Sans Quête")]
     public string roamingTitle;
     [TextArea] public string roamingGoal;*/
-
+    int lvlTracker;
+    int firstLvlStep, secondLvlStep, thirdLvlStep, fourthLvlStep = 0;
+    
     [Header("Quest Manager")]
     public TextMeshProUGUI title;
     public TextMeshProUGUI titleEffect;
     public TextMeshProUGUI contenu;
     public List<QuestCt> quest = new List<QuestCt>();
+    
+    [HideInInspector]
     public int niveau = 0;
+    
     QuestCt questCount;
+    
+    [HideInInspector]
     public int etape = 0;
     int sizeOfList;
 
@@ -42,11 +49,29 @@ public class QuestSys : MonoBehaviour
     private void Update()
     {
         title.text = quest[niveau].questTitle;
-        titleEffect.text = quest[niveau].questTitle;
+        titleEffect.text = quest[niveau].questTitle; //fond ombre
         contenu.text = quest[niveau].questGoal[etape];
         quest[niveau].questCode = niveau;
+        if (niveau == 0)
+        {
+            etape = 0;
+        }
+        if (niveau == 1)
+        {
+            firstLvlStep = etape;
+        }
+        if (niveau == 2)
+        {
+            secondLvlStep = etape;
+        }
+        if (niveau == 3)
+        {
+            thirdLvlStep = etape;
+        }
+
     }
 
+    //gestion progression des niveaux
     public void Progression()
     {
         if (etape > quest[niveau].questGoal.Length - 2)
@@ -59,7 +84,6 @@ public class QuestSys : MonoBehaviour
             StartCoroutine(FadeContentOut());
         }
     }
-    
     public void NextStep()
     {
         etape++;
@@ -83,7 +107,42 @@ public class QuestSys : MonoBehaviour
         contenu.text = quest[0].questGoal[0];
     }
 
-    //fadeOut
+
+    
+    
+    // Tracking de la progression des niveaux
+    
+    public void LevelZero()
+    {
+        if (niveau == 0)
+        {
+            etape = 0;
+        }
+    }
+    public void LevelOne()
+    {
+        if (niveau == 1)
+        {
+            etape = firstLvlStep;
+        }
+    }
+
+    public void LevelTwo()
+    {
+        if (niveau == 2)
+        {
+             etape = secondLvlStep;
+        }
+    }
+
+    public void LevelThree()
+    {
+        if (niveau == 3)
+        {
+             etape = thirdLvlStep;
+        }
+    }
+    //animation UI
     IEnumerator FadeAllOut()
     {
         animContent.DOFade(0f, 0.3f);
@@ -91,11 +150,8 @@ public class QuestSys : MonoBehaviour
         Debug.Log("Fade tout out");
         yield return new WaitForSeconds(duration);
         NextLevel();
-        //niveau++;
-        //etape = 0;
         if (niveau > sizeOfList - 1)
         {
-            //Roaming();
             FadeAllIn();
         }
         else
@@ -103,8 +159,6 @@ public class QuestSys : MonoBehaviour
             FadeAllIn();
         }        
     }
-
-
 
     IEnumerator FadeAllOutB()
     {
