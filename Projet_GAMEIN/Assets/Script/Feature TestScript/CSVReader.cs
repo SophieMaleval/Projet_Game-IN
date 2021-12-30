@@ -3,7 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
+[System.Serializable]
+public class UITextContainer
+{
+    public List<string> MenuFR ;
+    public List<string> MenuEN ;
+    
+    public List<string> SettingFR ;
+    public List<string> SettingEN ;
+    
+    public List<string> CustomisationFR ;
+    public List<string> CustomisationEN ;
+}
 
+/*
 [System.Serializable]
 public class DialogueContainer
 {
@@ -12,7 +25,7 @@ public class DialogueContainer
     public string OpeningDialogue ;        
     public string CloseDiscussion ;        
 
-    /* Les Questions Disponnible */
+    /* Les Questions Disponnible /
     public string Question1 ;
     public string Question2 ;
     public string Question3 ;
@@ -26,7 +39,7 @@ public class DialogueContainer
     public string Aurevoir ;
 
 
-    /* Les Dialogue */
+    /* Les Dialogue *
     public string Dialogue1 ;
     public string Dialogue2 ;
     public string Dialogue3 ;
@@ -48,25 +61,60 @@ public class DialogueContainer
     public string Dialogue19 ;
     public string Dialogue20 ;
 }
-
+*/
 
 
 public class CSVReader : MonoBehaviour
 {
-    public TextAsset DialogData ;
+    [Header ("Fichier Texte")]
+    public TextAsset DialogDataFR ;
+    public TextAsset DialogDataEN ;
 
-    public List<DialogueContainer> myDialogueAdhérent = new List<DialogueContainer>();
+    public TextAsset UIDataText ;
+   // public List<DialogueContainer> myDialogueAdhérent = new List<DialogueContainer>();
 
-        string[] LineData ;
+    [Header ("Texte UI")]
+    public UITextContainer UIText = new UITextContainer();
 
     void Start()
     {
-       ReaderCSV();
+        ReadUICSV();
+
+        if(DialogDataFR != null) ReaderDialogCSV(DialogDataFR, GetComponent<PlayerDialogue>().myDialogueAdhérentFR);
+        if(DialogDataEN != null) ReaderDialogCSV(DialogDataEN, GetComponent<PlayerDialogue>().myDialogueAdhérentEN);
     }
 
-    void ReaderCSV() 
+    void ReadUICSV()
     {
-        LineData = DialogData.text.Split(new string[] { "\n" }, StringSplitOptions.None); // Data correspond à chaque Ligne
+        string[] LineData = UIDataText.text.Split(new string[] { "\n" }, StringSplitOptions.None) ; // Data correspond à chaque Ligne
+
+        for (int LD = 0; LD < LineData.Length; LD++)
+        {
+            string[] Data = LineData[LD].Split(new string[] { ";" }, StringSplitOptions.None) ; // Data correspond à chaque case
+
+            if(Data[0] != "")
+            {
+                for (int D = 1; D < Data.Length; D++)
+                {
+                    if(Data[D] != "")
+                    {
+                        if(Data[0] == "Menu FR")    UIText.MenuFR.Add(Data[D]) ;
+                        if(Data[0] == "Menu EN")    UIText.MenuEN.Add(Data[D]) ;
+
+                        if(Data[0] == "Setting FR")    UIText.SettingFR.Add(Data[D]) ;
+                        if(Data[0] == "Setting EN")    UIText.SettingEN.Add(Data[D]) ; 
+
+                        if(Data[0] == "Customisation FR")    UIText.CustomisationFR.Add(Data[D]) ;
+                        if(Data[0] == "Customisation EN")    UIText.CustomisationEN.Add(Data[D]) ; 
+                    }
+                }
+            }                
+        }
+    }
+
+    void ReaderDialogCSV(TextAsset DialogDataLanguage, List<DialogueContainer> TargetList) 
+    {
+        string[] LineData = DialogDataLanguage.text.Split(new string[] { "\n" }, StringSplitOptions.None); // Data correspond à chaque Ligne
 
         for (int LD = 0; LD < LineData.Length; LD++)
         {
@@ -118,7 +166,7 @@ public class CSVReader : MonoBehaviour
                     InfoDiag.Dialogue20 = Data[34];    
 
 
-                    myDialogueAdhérent.Add(InfoDiag);
+                    TargetList.Add(InfoDiag);
                 }
             }
         }

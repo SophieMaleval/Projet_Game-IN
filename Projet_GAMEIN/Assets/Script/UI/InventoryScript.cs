@@ -27,16 +27,13 @@ public class InventoryScript : MonoBehaviour
         SetInventoryCount();
 
     }
-    // Start is called before the first frame update
-    void Start()
+    private void OnEnable() 
     {
-        
-    }
+        //Debug.Log(transform.GetSiblingIndex());
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    }
+    private void OnDisable() {
+
     }
 
     public void SwitchToggleInventoryDisplay()
@@ -45,9 +42,13 @@ public class InventoryScript : MonoBehaviour
         InventoryPanel.SetActive(!InventoryPanel.activeSelf);
         if(!InventoryPanel.activeSelf)
         {
-            PlayerScript.GetComponent<PlayerMovement>().EndDialog() ;
+            transform.SetSiblingIndex(0);
+            if( (GameObject.Find("Dialogue Canvas") != null && GameObject.Find("Dialogue Canvas").gameObject.activeSelf == false) )
+                PlayerScript.GetComponent<PlayerMovement>().EndDialog() ;
         } else {
+            transform.SetSiblingIndex(1);            
             PlayerScript.GetComponent<PlayerMovement>().StartDialog() ;
+
         }
     }
 

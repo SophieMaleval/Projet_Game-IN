@@ -21,26 +21,42 @@ public class AnimationCustomizer : MonoBehaviour
     [SerializeField] private List<Vector2> DirectionView ;
     private int RotationState = 0 ;
 
-
     [Header ("CustomerPanel")]
     [SerializeField] private RectTransform ContainerChoiceCatPanel ;
-    //[SerializeField] private RectTransform SkinGroup ;
-    //[SerializeField] private RectTransform SkinPanel ;
     [SerializeField] private RectTransform ContainerSkinPanel ;
-    //[SerializeField] private RectTransform FondContainerSkinPanel ;
     private float SkinPanelHeight = 130f ;
     private float SkinPanelFondHeight = 80f ;
     
     [Space(10)]
 
-   // [SerializeField] private RectTransform Group ;
     [SerializeField] private RectTransform Panel ;
     [SerializeField] private RectTransform ContainerChoicePanel ;
-    /*[SerializeField] private RectTransform FondContainerPanel ;*/
 
     [Space(10)]
     
+    [Header ("Button")]
+    [SerializeField] private Button RotateAvatarLeft ;
+    [SerializeField] private Button RotateAvatarRight ;
+
+    [SerializeField] private Button PreviousCatBtn ;
+    [SerializeField] private Button NextCatBtn ;
+
+
+
+    [Header ("UI Text")]
     [SerializeField] private TextMeshProUGUI TitleCategories ;
+        [SerializeField] private TextMeshProUGUI BtnCategorieSkin ;
+        [SerializeField] private TextMeshProUGUI BtnCategorieHair ;
+        [SerializeField] private TextMeshProUGUI BtnCategorieTop ;
+        [SerializeField] private TextMeshProUGUI BtnCategorieBottom ;
+        [SerializeField] private TextMeshProUGUI BtnCategorieShoe ;
+
+    [SerializeField] private TextMeshProUGUI NamingText ;
+    [SerializeField] private TextMeshProUGUI BtnRandomText ;
+    [SerializeField] private TextMeshProUGUI BtnSubmitText ;
+    private CSVReader TextUILocation ;
+
+    
 
 
     private float OpenSkinGroupHeight = 165f ;
@@ -56,7 +72,7 @@ public class AnimationCustomizer : MonoBehaviour
 
     private float PanelWidth = 445f ;
 
-    int CurrentCategorie ;
+    private int CurrentCategorie ;
     
     private void Start() 
     {   
@@ -65,7 +81,10 @@ public class AnimationCustomizer : MonoBehaviour
         if(GameObject.Find("Player") != null)
         {
             AnimatorsCustom = GameObject.Find("Player").GetComponent<PlayerMovement>().Animators ;
+            TextUILocation = GameObject.Find("Player Backpack").GetComponent<CSVReader>() ;
         }
+
+        SetCustomTextLangue(PlayerPrefs.GetInt("Langue"));
     }
 
     IEnumerator WaitBeforeOpenningRideaux()
@@ -78,6 +97,9 @@ public class AnimationCustomizer : MonoBehaviour
     // Rotate Avatar Function
     public void RotateProfilView(int RotationValueAdd)
     {
+        CustomizerReference.ResetBtnSprite(RotateAvatarLeft);
+        CustomizerReference.ResetBtnSprite(RotateAvatarRight);
+
         RotationState += RotationValueAdd ;
         if(RotationState < 0) RotationState = DirectionView.Count - 1 ;
         if(RotationState > DirectionView.Count - 1) RotationState = 0 ;
@@ -123,7 +145,6 @@ public class AnimationCustomizer : MonoBehaviour
             Panel.DOAnchorPosY(-25f, 0.25f);
             yield return new WaitForSeconds(0.25f);            
         }
-
     }
 
     void SwitchCat(int CatNumber)
@@ -153,80 +174,10 @@ public class AnimationCustomizer : MonoBehaviour
         CustomizerReference.ChangeCategorie();
     }
 
-   /* void InterractPanelButton(int StateChoice, RectTransform ContainerCategoriePanel, float CategoriePanelHeight, float CategoriePanelFondHeight, float OpenCategorieGroupHeight, int ChangeTitleCategoriesInt)
-    {
-        // Ferme le Panel
-        if(StateChoice == 0)
-        {
-            Panel.DOSizeDelta(new Vector2(PanelWidth,0f), PanelAnimationSpeed);  
-            FondContainerPanel.DOSizeDelta(new Vector2(144f, 0f), PanelAnimationSpeed).OnComplete(() => {FondContainerPanel.sizeDelta = new Vector2(FondContainerPanel.sizeDelta.x, 20f);});
-            Group.DOSizeDelta(new Vector2(Group.sizeDelta.x, CloseGroupHeight), PanelAnimationSpeed);
-                ContainerSkinPanel.DOKill();
-                ContainerChoicePanel.DOKill();   
-            ContainerSkinPanel.DOScale(Vector3.zero, ClosePanelSpeed);
-            ContainerChoicePanel.DOScale(Vector3.zero, ClosePanelSpeed);
-        }
-
-        // Ouvre le Panel
-        if(StateChoice == 1)
-        {
-            // Referme le panel si ça taille est grande
-            if(Panel.sizeDelta.y > 70f)
-            {
-                ChangeTitleCategories(0);   
-                InterractPanelButton(0, ContainerCategoriePanel, CategoriePanelHeight, CategoriePanelFondHeight, OpenCategorieGroupHeight, 0) ;
-            } else {
-                // Active ou Désactive SkinContainer ou Container en fonction du Titre
-                if(ChangeTitleCategoriesInt <= 1)
-                {
-                    ContainerSkinPanel.gameObject.SetActive(true);
-                    ContainerChoicePanel.gameObject.SetActive(false);
-                } else {
-                    ContainerSkinPanel.gameObject.SetActive(false);
-                    ContainerChoicePanel.gameObject.SetActive(true); 
-                }
-                ChangeTitleCategories(ChangeTitleCategoriesInt);   
-
-                Panel.DOSizeDelta(new Vector2(PanelWidth, CategoriePanelHeight), PanelAnimationSpeed);
-                FondContainerPanel.DOSizeDelta(new Vector2(144f, CategoriePanelFondHeight), PanelAnimationSpeed);
-                Group.DOSizeDelta(new Vector2(Group.sizeDelta.x, OpenCategorieGroupHeight), PanelAnimationSpeed) ;
-                ContainerSkinPanel.DOKill();
-                ContainerChoicePanel.DOKill();
-
-                ContainerCategoriePanel.DOScale(Vector3.one, OpenPanelSpeed);   
-            }
-        }
-    }*/
-
-    // Action Panel
-   /* public void InterractChoiceButton(int StateChoice, int TitleNumber, int CustomCategorieNumber, RectTransform ContainerPanel, float PanelHeight, float PanelFondHeight, float OpenGroupHeight)
-    {
-        if(CustomizerReference.CurrentCategorie == CustomCategorieNumber)
-        {
-            InterractPanelButton(0, ContainerPanel, PanelHeight, PanelFondHeight, OpenGroupHeight, TitleNumber);
-            CustomizerReference.CurrentCategorie = 10;
-            ChangeTitleCategories(0);   
-        } else {
-            if(Panel.sizeDelta.y > 70)
-                StartCoroutine(WaitAndOpenPanel(ContainerPanel, PanelHeight, PanelFondHeight, OpenGroupHeight, TitleNumber)) ;  
-            else 
-                InterractPanelButton(StateChoice, ContainerPanel, PanelHeight, PanelFondHeight, OpenGroupHeight, TitleNumber); 
-
-            CustomizerReference.CurrentCategorie = CustomCategorieNumber ; 
-            CustomizerReference.ChangeCategorie();
-        }
-    }
-
-    IEnumerator WaitAndOpenPanel(RectTransform ContainerCategoriePanel, float CategoriePanelHeight, float CategoriePanelFondHeight, float OpenCategorieGroupHeight , int CategorieOpenning)
-    {
-        InterractPanelButton(0, ContainerCategoriePanel, CategoriePanelHeight, CategoriePanelFondHeight, OpenCategorieGroupHeight, 0);
-
-        yield return new WaitForSeconds(0.75f);
-            InterractPanelButton(1, ContainerCategoriePanel, CategoriePanelHeight, CategoriePanelFondHeight, OpenCategorieGroupHeight, CategorieOpenning);
-    }*/
-
     public void PreviousCategrorie()
     {
+        CustomizerReference.ResetBtnSprite(PreviousCatBtn);
+
         int PreviousCat ;
         if(CurrentCategorie-1 < 0 )
             CurrentCategorie = 5 ;
@@ -238,6 +189,8 @@ public class AnimationCustomizer : MonoBehaviour
     }
     public void NextCategrorie()
     {
+        CustomizerReference.ResetBtnSprite(NextCatBtn);
+
         int NextCat ;
         if(CurrentCategorie +1 > 5 )
             CurrentCategorie = 0 ;
@@ -252,36 +205,28 @@ public class AnimationCustomizer : MonoBehaviour
     public void InterractSkinButton()
     {    
         StartCoroutine(ChangePanel(1));
-        //InterractChoiceButton(StateChoice, 1, 0, ContainerSkinPanel, SkinPanelHeight, SkinPanelFondHeight, OpenSkinGroupHeight) ;
     }   
 
     public void InterractHairButton()
     { 
         StartCoroutine(ChangePanel(2));
-        //InterractChoiceButton(StateChoice, 2, 1, ContainerChoicePanel, ChoicePanelHeight, ChoicePanelFondHeight, OpenChoiceGroupHeight) ;
     }
     public void InterractTopButton()
     { 
         StartCoroutine(ChangePanel(3));
-       // InterractChoiceButton(StateChoice, 3, 2, ContainerChoicePanel, ChoicePanelHeight, ChoicePanelFondHeight, OpenChoiceGroupHeight) ;
     }
     public void InterractPantsButton()
     {   
         StartCoroutine(ChangePanel(4));
-        //InterractChoiceButton(StateChoice, 4, 3, ContainerChoicePanel, ChoicePanelHeight, ChoicePanelFondHeight, OpenChoiceGroupHeight) ;
     }
     public void InterractShoeButton()
     {   
         StartCoroutine(ChangePanel(5));
-        
-
-       // InterractChoiceButton(StateChoice, 5, 4, ContainerChoicePanel, ChoicePanelHeight, ChoicePanelFondHeight, OpenChoiceGroupHeight) ;
     }
 
 
     public void CustomizationFinish()
     {    
-        //InterractPanelButton(0, ContainerSkinPanel, SkinPanelHeight, SkinPanelFondHeight, OpenSkinGroupHeight, 0);
         StartCoroutine(ChangePanel(6));
         RideauxAnimator.SetBool("Quit Custom ?", true) ;
     }
@@ -291,22 +236,77 @@ public class AnimationCustomizer : MonoBehaviour
     {
         TitleCategories.GetComponent<RectTransform>().DOScaleY(0, PanelAnimationSpeed/4)
             .OnComplete(() => {
-                if(NextCat == 0)
-                    {TitleCategories.text = "Choissisez une section" ;}
-                if(NextCat == 1)
-                    {TitleCategories.text = "Couleur de peau" ;}
-                if(NextCat == 2)
-                    {TitleCategories.text = "Cheveux" ;}
-                if(NextCat == 3)
-                    {TitleCategories.text = "Hauts" ;}
-                if(NextCat == 4)
-                    {TitleCategories.text = "Bas" ;}
-                if(NextCat == 5)
-                    {TitleCategories.text = "Chaussures" ;}
-                if(NextCat == 6)
-                    {TitleCategories.text = "Aurevoir" ;}
+                if(PlayerPrefs.GetInt("Langue") == 0)
+                {
+                    if(NextCat == 0)
+                        {TitleCategories.text = TextUILocation.UIText.CustomisationFR[0] ; ;}
+                    if(NextCat == 1)
+                        {TitleCategories.text = TextUILocation.UIText.CustomisationFR[6] ; ;}
+                    if(NextCat == 2)
+                        {TitleCategories.text = TextUILocation.UIText.CustomisationFR[2] ; ;}
+                    if(NextCat == 3)
+                        {TitleCategories.text = TextUILocation.UIText.CustomisationFR[3] ; ;}
+                    if(NextCat == 4)
+                        {TitleCategories.text = TextUILocation.UIText.CustomisationFR[4] ; ;}
+                    if(NextCat == 5)
+                        {TitleCategories.text = TextUILocation.UIText.CustomisationFR[5] ; ;}
+                    if(NextCat == 6)
+                        {TitleCategories.text = TextUILocation.UIText.CustomisationFR[10] ; ;}                    
+                }
+
+                if(PlayerPrefs.GetInt("Langue") == 1)
+                {
+                    if(NextCat == 0)
+                        {TitleCategories.text = TextUILocation.UIText.CustomisationEN[0] ; ;}
+                    if(NextCat == 1)
+                        {TitleCategories.text = TextUILocation.UIText.CustomisationEN[6] ; ;}
+                    if(NextCat == 2)
+                        {TitleCategories.text = TextUILocation.UIText.CustomisationEN[2] ; ;}
+                    if(NextCat == 3)
+                        {TitleCategories.text = TextUILocation.UIText.CustomisationEN[3] ; ;}
+                    if(NextCat == 4)
+                        {TitleCategories.text = TextUILocation.UIText.CustomisationEN[4] ; ;}
+                    if(NextCat == 5)
+                        {TitleCategories.text = TextUILocation.UIText.CustomisationEN[5] ; ;}
+                    if(NextCat == 6)
+                        {TitleCategories.text = TextUILocation.UIText.CustomisationEN[10] ; ;}                    
+                }        
+
 
                 TitleCategories.GetComponent<RectTransform>().DOScaleY(0.75f, PanelAnimationSpeed/4);
             });
+    }
+
+    void SetCustomTextLangue(int Langue) // 0 - FR et 1 - EN
+    {
+        if(Langue == 0)
+        {
+            TitleCategories.text = TextUILocation.UIText.CustomisationFR[0] ;
+        
+            BtnCategorieSkin.text = TextUILocation.UIText.CustomisationFR[1] ;
+            BtnCategorieHair.text = TextUILocation.UIText.CustomisationFR[2] ;
+            BtnCategorieTop.text = TextUILocation.UIText.CustomisationFR[3] ;
+            BtnCategorieBottom.text = TextUILocation.UIText.CustomisationFR[4] ;
+            BtnCategorieShoe.text = TextUILocation.UIText.CustomisationFR[5] ;
+
+            NamingText.text = TextUILocation.UIText.CustomisationFR[7] ;
+            BtnRandomText.text = TextUILocation.UIText.CustomisationFR[8] ;
+            BtnSubmitText.text = TextUILocation.UIText.CustomisationFR[9] ;
+        }
+
+        if(Langue == 1)
+        {
+            TitleCategories.text = TextUILocation.UIText.CustomisationEN[0] ;
+        
+            BtnCategorieSkin.text = TextUILocation.UIText.CustomisationEN[1] ;
+            BtnCategorieHair.text = TextUILocation.UIText.CustomisationEN[2] ;
+            BtnCategorieTop.text = TextUILocation.UIText.CustomisationEN[3] ;
+            BtnCategorieBottom.text = TextUILocation.UIText.CustomisationEN[4] ;
+            BtnCategorieShoe.text = TextUILocation.UIText.CustomisationEN[5] ;
+
+            NamingText.text = TextUILocation.UIText.CustomisationEN[7] ;
+            BtnRandomText.text = TextUILocation.UIText.CustomisationEN[8] ;
+            BtnSubmitText.text = TextUILocation.UIText.CustomisationEN[9] ;
+        }
     }
 }

@@ -28,10 +28,13 @@ public class PNJDialogue : MonoBehaviour
 
     public int Question3IntDisplay = 3;  
 
-    private DialogueContainer DialoguePNJ ;
+    private DialogueContainer DialoguePNJ_FR ;
+    private DialogueContainer DialoguePNJ_EN ;
 
-    public List<string> QuestionDisponible ;
-    [HideInInspector] public List<string> AnswerDisponible ;
+        private List<string> QuestionDisponible_FR ;
+        private List<string> QuestionDisponible_EN ;
+        private List<string> AnswerDisponible_FR ;
+        private List<string> AnswerDisponible_EN ;
 
     private int CurrentDialoguePlayerChoice = 0 ;
 
@@ -54,31 +57,30 @@ public class PNJDialogue : MonoBehaviour
             PlayerDialogueManager = GameObject.Find("Player Backpack").GetComponent<PlayerDialogue>() ; 
 
             DialogueCanvasBox = PlayerScript.DialogueUIIndestructible.GetComponent<DialogueDisplayerController>() ;
-            TextDialogue = GameObject.Find("Player Backpack").GetComponent<CSVReader>() ;
-
-          /* DialogueCanvasBox.NamePNJ.text = NamePNJ;
-            DialogueCanvasBox.gameObject.SetActive(true);*/
         }    
-
-
     } 
 
     public void GetDialogue()
     {
-        for (int T = 0; T < TextDialogue.myDialogueAdhérent.Count; T++)
+        for (int T = 0; T < PlayerDialogueManager.myDialogueAdhérentFR.Count; T++)
         {
-            if(TextDialogue.myDialogueAdhérent[T].Entreprise == Entrerpise)
+            if(PlayerDialogueManager.myDialogueAdhérentFR[T].Entreprise == Entrerpise)
             {
-                DialoguePNJ = TextDialogue.myDialogueAdhérent[T] ;
+                DialoguePNJ_FR = PlayerDialogueManager.myDialogueAdhérentFR[T] ;
+            }
+        }
+
+        for (int T = 0; T < PlayerDialogueManager.myDialogueAdhérentEN.Count; T++)
+        {
+            if(PlayerDialogueManager.myDialogueAdhérentEN[T].Entreprise == Entrerpise)
+            {
+                DialoguePNJ_EN = PlayerDialogueManager.myDialogueAdhérentEN[T] ;
             }
         }
     }
 
     void Start()
     {
-
-
-
        StartCoroutine(CallDialogue());
     }
 
@@ -86,48 +88,61 @@ public class PNJDialogue : MonoBehaviour
 
     IEnumerator CallDialogue()
     {
+        yield return new WaitForSeconds(0.5f) ;
+        GetDialogue();        
         yield return new WaitForSeconds(1f) ;
-        GetDialogue();
-        SetQuestionList(); 
-        SetAnswerList();       
+
+
+        QuestionDisponible_FR = SetQuestionList(DialoguePNJ_FR); 
+        AnswerDisponible_FR = SetAnswerList(DialoguePNJ_FR); 
+
+        QuestionDisponible_EN = SetQuestionList(DialoguePNJ_EN); 
+        AnswerDisponible_EN = SetAnswerList(DialoguePNJ_EN); 
+
     }
 
-    public void SetQuestionList()
+    List<string> SetQuestionList(DialogueContainer DialoguePNJLangue)
     {
-        QuestionDisponible.Add(DialoguePNJ.Question1);
-        QuestionDisponible.Add(DialoguePNJ.Question2);
-        QuestionDisponible.Add(DialoguePNJ.Question3);
-        QuestionDisponible.Add(DialoguePNJ.Question4);
-        QuestionDisponible.Add(DialoguePNJ.Question5);
-        QuestionDisponible.Add(DialoguePNJ.Question6);
-        QuestionDisponible.Add(DialoguePNJ.Question7);
-        QuestionDisponible.Add(DialoguePNJ.Question8);
-        QuestionDisponible.Add(DialoguePNJ.Question9);
-        QuestionDisponible.Add(DialoguePNJ.Question10);
+        List<string> QuestionDisponibleLangue = new List<string>() ;
+        QuestionDisponibleLangue.Add(DialoguePNJLangue.Question1);
+        QuestionDisponibleLangue.Add(DialoguePNJLangue.Question2);
+        QuestionDisponibleLangue.Add(DialoguePNJLangue.Question3);
+        QuestionDisponibleLangue.Add(DialoguePNJLangue.Question4);
+        QuestionDisponibleLangue.Add(DialoguePNJLangue.Question5);
+        QuestionDisponibleLangue.Add(DialoguePNJLangue.Question6);
+        QuestionDisponibleLangue.Add(DialoguePNJLangue.Question7);
+        QuestionDisponibleLangue.Add(DialoguePNJLangue.Question8);
+        QuestionDisponibleLangue.Add(DialoguePNJLangue.Question9);
+        QuestionDisponibleLangue.Add(DialoguePNJLangue.Question10);
+
+        return QuestionDisponibleLangue ;
     }
 
-    public void SetAnswerList()
+    List<string> SetAnswerList(DialogueContainer DialoguePNJLangue)
     {
-        AnswerDisponible.Add(DialoguePNJ.Dialogue1);
-        AnswerDisponible.Add(DialoguePNJ.Dialogue2);
-        AnswerDisponible.Add(DialoguePNJ.Dialogue3);
-        AnswerDisponible.Add(DialoguePNJ.Dialogue4);
-        AnswerDisponible.Add(DialoguePNJ.Dialogue5);
-        AnswerDisponible.Add(DialoguePNJ.Dialogue6);
-        AnswerDisponible.Add(DialoguePNJ.Dialogue7);
-        AnswerDisponible.Add(DialoguePNJ.Dialogue8);
-        AnswerDisponible.Add(DialoguePNJ.Dialogue9);
-        AnswerDisponible.Add(DialoguePNJ.Dialogue10);
-        AnswerDisponible.Add(DialoguePNJ.Dialogue11);
-        AnswerDisponible.Add(DialoguePNJ.Dialogue12);
-        AnswerDisponible.Add(DialoguePNJ.Dialogue13);
-        AnswerDisponible.Add(DialoguePNJ.Dialogue14);
-        AnswerDisponible.Add(DialoguePNJ.Dialogue15);
-        AnswerDisponible.Add(DialoguePNJ.Dialogue16);
-        AnswerDisponible.Add(DialoguePNJ.Dialogue17);
-        AnswerDisponible.Add(DialoguePNJ.Dialogue18);
-        AnswerDisponible.Add(DialoguePNJ.Dialogue19);
-        AnswerDisponible.Add(DialoguePNJ.Dialogue20);
+        List<string>  AnswerDisponibleLangue = new List<string>();
+        AnswerDisponibleLangue.Add(DialoguePNJLangue.Dialogue1);
+        AnswerDisponibleLangue.Add(DialoguePNJLangue.Dialogue2);
+        AnswerDisponibleLangue.Add(DialoguePNJLangue.Dialogue3);
+        AnswerDisponibleLangue.Add(DialoguePNJLangue.Dialogue4);
+        AnswerDisponibleLangue.Add(DialoguePNJLangue.Dialogue5);
+        AnswerDisponibleLangue.Add(DialoguePNJLangue.Dialogue6);
+        AnswerDisponibleLangue.Add(DialoguePNJLangue.Dialogue7);
+        AnswerDisponibleLangue.Add(DialoguePNJLangue.Dialogue8);
+        AnswerDisponibleLangue.Add(DialoguePNJLangue.Dialogue9);
+        AnswerDisponibleLangue.Add(DialoguePNJLangue.Dialogue10);
+        AnswerDisponibleLangue.Add(DialoguePNJLangue.Dialogue11);
+        AnswerDisponibleLangue.Add(DialoguePNJLangue.Dialogue12);
+        AnswerDisponibleLangue.Add(DialoguePNJLangue.Dialogue13);
+        AnswerDisponibleLangue.Add(DialoguePNJLangue.Dialogue14);
+        AnswerDisponibleLangue.Add(DialoguePNJLangue.Dialogue15);
+        AnswerDisponibleLangue.Add(DialoguePNJLangue.Dialogue16);
+        AnswerDisponibleLangue.Add(DialoguePNJLangue.Dialogue17);
+        AnswerDisponibleLangue.Add(DialoguePNJLangue.Dialogue18);
+        AnswerDisponibleLangue.Add(DialoguePNJLangue.Dialogue19);
+        AnswerDisponibleLangue.Add(DialoguePNJLangue.Dialogue20);
+
+        return AnswerDisponibleLangue ;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -153,7 +168,7 @@ public class PNJDialogue : MonoBehaviour
             if(PlayerScript.PlayerAsInterract && !PlayerScript.InDiscussion)
             {
                 PlayerScript.PlayerAsInterract = false ;
-
+                PlayerDialogueManager.PlayerAsRead = false ;
                 PlayerScript.InDiscussion = true ;
                 LunchDiscussion();                  
             }
@@ -195,17 +210,33 @@ public class PNJDialogue : MonoBehaviour
         DialogueCanvasDisplayerText = DialogueCanvasBox.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
         BoxQuestion = DialogueCanvasBox.transform.GetChild(1).gameObject ;     
 
-        DialogueCanvasBox.CurrentPNJDiscussion = this ;        
-        DialogueCanvasBox.DialoguePNJ = DialoguePNJ;
-        DialogueCanvasBox.AnswerDisponible = AnswerDisponible;
-        DialogueCanvasBox.QuestionDisponible = QuestionDisponible ;
+        DialogueCanvasBox.CurrentPNJDiscussion = this ;   
+ 
+
+        DialogueCanvasBox.DialoguePNJ_FR = DialoguePNJ_FR;
+        DialogueCanvasBox.DialoguePNJ_EN = DialoguePNJ_EN;
+        if(PlayerPrefs.GetInt("Langue") == 0) DialogueCanvasBox.DialoguePNJ = DialoguePNJ_FR;
+        if(PlayerPrefs.GetInt("Langue") == 1) DialogueCanvasBox.DialoguePNJ = DialoguePNJ_EN;
+
+        DialogueCanvasBox.QuestionDisponible_FR = QuestionDisponible_FR;
+        DialogueCanvasBox.QuestionDisponible_EN = QuestionDisponible_EN;
+        if(PlayerPrefs.GetInt("Langue") == 0) DialogueCanvasBox.QuestionDisponible = QuestionDisponible_FR;
+        if(PlayerPrefs.GetInt("Langue") == 1) DialogueCanvasBox.QuestionDisponible = QuestionDisponible_EN;
+
+        DialogueCanvasBox.AnswerDisponible_FR = AnswerDisponible_FR;
+        DialogueCanvasBox.AnswerDisponible_EN = AnswerDisponible_EN;
+        if(PlayerPrefs.GetInt("Langue") == 0) DialogueCanvasBox.AnswerDisponible = AnswerDisponible_FR;
+        if(PlayerPrefs.GetInt("Langue") == 1) DialogueCanvasBox.AnswerDisponible = AnswerDisponible_EN;
 
         DialogueCanvasBox.StartDiscussion(false);
     }
 
+
     public void DiscussionIsClose()
     {
-        DialogueCanvasBox.gameObject.SetActive(false);         
+        DialogueCanvasBox.ResetAllValue();         
+        DialogueCanvasBox.gameObject.SetActive(false);      
+        DialogueCanvasBox.DialogueCanvas.text = "";           
         PlayerScript.PlayerAsInterract = false ;        
         PlayerScript.InDiscussion = false ;
         PlayerScript.gameObject.GetComponent<PlayerMovement>().EndDialog() ; 

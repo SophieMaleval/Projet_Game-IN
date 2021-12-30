@@ -29,6 +29,9 @@ public class Customizer : MonoBehaviour
     public List<int> ChoiceInCategorie ;
 
     [SerializeField] private List<Image> ChoiceDisplayer ;
+    [SerializeField] private Button PreviousChoiceButton ;
+    [SerializeField] private Button NextChoiceButton ;
+    
     [SerializeField] private List<Button> AllChoiceColorButton ;
 
     [Header ("Player Information")]
@@ -149,10 +152,12 @@ public class Customizer : MonoBehaviour
         // Valider seulement si le nom et le genre son référencé
         if(PlayerPersonnality.PlayerName == "" || PlayerPersonnality.PlayerSexualGenre == -1)
         {
+            SubmitButton.targetGraphic.color = new Color(0.3888f, 0.3921f, 0.3766f, 1);
             SubmitButton.interactable = false ;
         }
         if(PlayerPersonnality.PlayerName != "" && PlayerPersonnality.PlayerSexualGenre != -1)
         {
+            SubmitButton.targetGraphic.color = new Color(0.3888f, 0.8773f, 0.3766f, 1);
             SubmitButton.interactable = true ;
         }
     }
@@ -183,6 +188,9 @@ public class Customizer : MonoBehaviour
     // 4 - Shoe
     public void ChangeCategorie()
     {
+        ResetBtnSprite(PreviousChoiceButton);
+        ResetBtnSprite(NextChoiceButton);
+
         if(CurrentCategorie == 1)
             ChoiceDisplay(HairChoice);   
         if(CurrentCategorie == 2)
@@ -228,6 +236,9 @@ public class Customizer : MonoBehaviour
     // Fonction pour l'interaction -/+ sur les changement de custom
     public void ChangeDisplay(int ValueAdd)
     {
+        ResetBtnSprite(PreviousChoiceButton);
+        ResetBtnSprite(NextChoiceButton);
+
         if(CurrentCategorie == 1)
             ChangeChoice(ValueAdd, HairChoice, 1);   
         if(CurrentCategorie == 2)
@@ -357,9 +368,16 @@ public class Customizer : MonoBehaviour
         {   PlayerApparance.Animators[a].Rebind();   }  
     }
 
+    public void ResetBtnSprite(Button TargetBtn)
+    {
+        TargetBtn.interactable = false ;
+        TargetBtn.interactable = true ;
+    }
     // Final Button
     public void RandomCustom()
     {
+        ResetBtnSprite(RandomButton);
+
         // Random Name
         NamingField.text = RandomNames[Random.Range(0, RandomNames.Length)];
         
@@ -416,17 +434,15 @@ public class Customizer : MonoBehaviour
     IEnumerator WaitBeforeChangeScene()
     {
         yield return new WaitForSeconds(1.75f);
-            //FadeImage.GetComponent<Image>().DOFade(1, 1f);
             FadeImage.GetComponent<AnimationTransitionScene>().ShouldReveal = false ;
         yield return new WaitForSeconds(1.75f);
         PlayerApparance.enabled = true ;
         yield return new WaitForSeconds(1.75f);
 
         
-        //CineMachineCam.GetComponent<CinemachineVirtualCamera>().Follow = PlayerApparance.transform ; 
         PlayerPersonnality.CanvasIndestrucitble.SetActive(true);
         SceneManager.LoadScene("Tilemaps Test");
-        //SceneManager.LoadScene("InventoryTest");
+
     }
 
 
