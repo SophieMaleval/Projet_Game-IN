@@ -40,8 +40,8 @@ public class PlayerMovement : MonoBehaviour
     private void OnEnable() {   PlayerActionControllers.Enable();   }
     private void OnDisable() {   PlayerActionControllers.Disable();   }
 
-    public void StartDialog() {   PlayerActionControllers.Disable();   }
-    public void EndDialog() {   PlayerActionControllers.Enable();   }
+    public void StartActivity() {   PlayerActionControllers.Disable();   }
+    public void EndActivity() {   PlayerActionControllers.Enable();   }
 
     private void Awake() 
     {  
@@ -98,7 +98,11 @@ public class PlayerMovement : MonoBehaviour
     {    
         Move();
         if(OnSlope == true)
-        Slopes();
+        {
+            if(!OnScooter) Slopes(1f);
+            else Slopes(1.5f);            
+        }
+
     
     }
     public void SlopeParameter (bool EnterSlope, float valueSlope, bool BottomAsLeft, int PositionElevation)
@@ -109,27 +113,25 @@ public class PlayerMovement : MonoBehaviour
         ElevationValue = PositionElevation;
     }
 
-     void Slopes ()
+    void Slopes(float StateDeplacementValue)
     {
-        if(MoveDirection.x != 0){
+        if(MoveDirection.x != 0)
+        {
             if(!SlopeStartLeft)
             {
                 if(MoveDirection.x < 0)
-                    RbPlayer.velocity += new Vector2 (0, (ValueSlopeAdd * -ElevationValue));
+                    RbPlayer.velocity += new Vector2 (0, (ValueSlopeAdd * -ElevationValue * StateDeplacementValue));
 
                 if(MoveDirection.x > 0)        
-                    RbPlayer.velocity += new Vector2 (0, (-1 * ValueSlopeAdd * -ElevationValue)); 
+                    RbPlayer.velocity += new Vector2 (0, (-1 * ValueSlopeAdd * -ElevationValue * StateDeplacementValue)); 
             } else {
                 if(MoveDirection.x < 0)
-                    RbPlayer.velocity += new Vector2 (0, (-1 * ValueSlopeAdd * ElevationValue));
+                    RbPlayer.velocity += new Vector2 (0, (-1 * ValueSlopeAdd * ElevationValue * StateDeplacementValue));
 
                 if(MoveDirection.x > 0)        
-                    RbPlayer.velocity += new Vector2 (0, (ValueSlopeAdd * ElevationValue)); 
-            }
-
-            
-        }
-            
+                    RbPlayer.velocity += new Vector2 (0, (ValueSlopeAdd * ElevationValue * StateDeplacementValue)); 
+            } 
+        }   
     }
 
     void ProcessInputs()

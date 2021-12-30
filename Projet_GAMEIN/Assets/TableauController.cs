@@ -34,14 +34,14 @@ public class TableauController : MonoBehaviour
             {
                 PS.PlayerAsInterract = false;
                 Board.SetActive(true);
-                pM.StartDialog();
+                pM.StartActivity();
             }
 
             if (PS.PlayerAsInterract && Board.activeSelf == true)
             {
                 PS.PlayerAsInterract = false;
                 Board.SetActive(false);
-                pM.EndDialog();
+                pM.EndActivity();
             }
 
         }       
@@ -50,7 +50,7 @@ public class TableauController : MonoBehaviour
     public void Closed()
     {
         Board.SetActive(false);
-        pM.EndDialog();
+        pM.EndActivity();
     }
 
     private void OnTriggerStay2D(Collider2D other)

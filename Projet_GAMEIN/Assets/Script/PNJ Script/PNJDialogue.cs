@@ -200,7 +200,7 @@ public class PNJDialogue : MonoBehaviour
 
     public void LunchDiscussion()
     {
-        PlayerScript.gameObject.GetComponent<PlayerMovement>().StartDialog() ; 
+        PlayerScript.gameObject.GetComponent<PlayerMovement>().StartActivity() ; 
         PlayerDialogueManager.DialogueStart();
            
         DialogueCanvasBox.gameObject.SetActive(true);           
@@ -239,7 +239,7 @@ public class PNJDialogue : MonoBehaviour
         DialogueCanvasBox.DialogueCanvas.text = "";           
         PlayerScript.PlayerAsInterract = false ;        
         PlayerScript.InDiscussion = false ;
-        PlayerScript.gameObject.GetComponent<PlayerMovement>().EndDialog() ; 
+        PlayerScript.gameObject.GetComponent<PlayerMovement>().EndActivity() ; 
     }
 
 }

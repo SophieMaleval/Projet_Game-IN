@@ -44,10 +44,10 @@ public class InventoryScript : MonoBehaviour
         {
             transform.SetSiblingIndex(0);
             if( (GameObject.Find("Dialogue Canvas") != null && GameObject.Find("Dialogue Canvas").gameObject.activeSelf == false) )
-                PlayerScript.GetComponent<PlayerMovement>().EndDialog() ;
+                PlayerScript.GetComponent<PlayerMovement>().EndActivity() ;
         } else {
             transform.SetSiblingIndex(1);            
-            PlayerScript.GetComponent<PlayerMovement>().StartDialog() ;
+            PlayerScript.GetComponent<PlayerMovement>().StartActivity() ;
 
         }
     }
