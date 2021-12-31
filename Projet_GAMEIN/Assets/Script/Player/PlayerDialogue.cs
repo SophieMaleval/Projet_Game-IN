@@ -60,12 +60,23 @@ public class PlayerDialogue : MonoBehaviour
     public bool PlayerAsRead = false ;
     public int CurrentSelectQuestion = 0 ;
 
+    [Header ("Adaptation de texte")]
+    [SerializeField] private PlayerScript PlayerInformations ;
+    private string[] Pronoms = new string[]{"un", "une", "un.e"};
+    private string[] Terminaisons = new string[]{"un", "une", "un.e"};
+
+
+
+
 
     private void OnEnable() {   PlayerActionControllers.Disable(); }
     private void OnDisable() { PlayerActionControllers.Disable(); }
 
     public void DialogueStart() { PlayerActionControllers.Enable(); ResetCurrentSelectQuestion(); }
     public void DialogueEnd() { PlayerActionControllers.Disable(); }
+
+    public void PausedInDialogue() {   PlayerActionControllers.Disable(); }
+    public void ResumeDialogue() { PlayerActionControllers.Enable(); }
 
     private void Awake() 
     {
@@ -76,6 +87,10 @@ public class PlayerDialogue : MonoBehaviour
         PlayerActionControllers.PlayerInDialogue.SelectPreviousQuestion.performed += OnSelectPreviousQuestion ;
         PlayerActionControllers.PlayerInDialogue.SelectNextQuestion.performed += OnSelectNextQuestion ;
     }
+
+
+
+
 
 
 

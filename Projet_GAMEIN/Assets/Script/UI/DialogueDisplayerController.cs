@@ -49,6 +49,7 @@ public class DialogueDisplayerController : MonoBehaviour
     private int CurrentDialoguePlayerChoice = 0 ;
     private bool ChoiceValidation = false ;
     private string CurrentDialogue ;
+    private bool CanChangeCurrentDialogue = false ;
 
     [HideInInspector] public bool WeAreInChoice = false ;
     private float DelayAnimationText = 0.1f ;
@@ -63,7 +64,7 @@ public class DialogueDisplayerController : MonoBehaviour
         public List<int> AnswerForQuestion ; 
     }
 
-  /*  private void OnEnable() 
+    /*private void OnEnable() 
     {
         ResetAllValue();
     }*/
@@ -159,19 +160,24 @@ public class DialogueDisplayerController : MonoBehaviour
 
     public void StateDiscussion()
     {
-        if(DialogueCanvas.text == DialoguePNJ.OpeningDialogue) ShowDialogueChoice(true);
-        if(CurrentDialogueDisplay == 0 && !TextAsCompletelyDisplay && !TextOppeningDisplayCompletely )    StartDiscussion(true); // Arrête l'animation et Affiche tout le texte d'Openning
-
-        if(DialogueCanvas.text == DialoguePNJ.CloseDiscussion) CurrentPNJDiscussion.DiscussionIsClose();
-        if(CurrentDialogueDisplay == 0 && !TextAsCompletelyDisplay && !TextCloseDisplayCompletely )    CloseDiscussion(true);    // Arrête l'animation et Affiche tout le texte de Fermeture  
-
-        if(PNJSpeak)
+        if(!GameObject.Find("Inventory").GetComponent<InventoryScript>().InventoryPanel.activeSelf)
         {
-            if(CurrentDialogueState < CurrentPNJDiscussion.Answer[CurrentDialogueDisplay].AnswerForQuestion.Count )
-                if(!TextAsCompletelyDisplay) TextDiscussion(false, true); // Arrête l'animation et affiche tout le texte
-                else TextDiscussion(false, false); // Affiche le prochain texte avec l'animation
-            else
-                ShowDialogueChoice(true);
+            CanChangeCurrentDialogue = true ;
+
+            if(DialogueCanvas.text == DialoguePNJ.OpeningDialogue) ShowDialogueChoice(true);
+            if(CurrentDialogueDisplay == 0 && !TextAsCompletelyDisplay && !TextOppeningDisplayCompletely )    StartDiscussion(true); // Arrête l'animation et Affiche tout le texte d'Openning
+
+            if(DialogueCanvas.text == DialoguePNJ.CloseDiscussion) CurrentPNJDiscussion.DiscussionIsClose();
+            if(CurrentDialogueDisplay == 0 && !TextAsCompletelyDisplay && !TextCloseDisplayCompletely )    CloseDiscussion(true, true);    // Arrête l'animation et Affiche tout le texte de Fermeture  
+
+            if(PNJSpeak)
+            {
+                if(CurrentDialogueState < CurrentPNJDiscussion.Answer[CurrentDialogueDisplay].AnswerForQuestion.Count )
+                    if(!TextAsCompletelyDisplay) TextDiscussion(false, true); // Arrête l'animation et affiche tout le texte
+                    else TextDiscussion(false, false); // Affiche le prochain texte avec l'animation
+                else
+                    ShowDialogueChoice(true);            
+            }
         }
     }
 
@@ -250,7 +256,7 @@ public class DialogueDisplayerController : MonoBehaviour
         }
     }
 
-    void CloseDiscussion(bool TextState)
+    void CloseDiscussion(bool ToggleDisplayBox,bool TextState)
     {
         GetComponent<Button>().interactable = true ;
         WeAreInChoice = false ;
@@ -258,7 +264,7 @@ public class DialogueDisplayerController : MonoBehaviour
         CurrentDialogue = DialoguePNJ.CloseDiscussion ;
         if(!TextState)
         {
-            SwitchBoxDisplay();
+            if(ToggleDisplayBox)    SwitchBoxDisplay();
 
             StopAllCoroutines();
             DialogueCanvas.text = ""; 
@@ -316,27 +322,24 @@ public class DialogueDisplayerController : MonoBehaviour
     {
         TextCloseDisplayCompletely = false ;
         CurrentDialogueDisplay = 0 ;
-        CloseDiscussion(false);
+        CloseDiscussion(true, false);
     }
 
 
     // Traduction à tout moment
     void DialogueLanguageChangeDuringDialogue()
     {
-
         if(!WeAreInChoice)
         {       
             //bool IsInDialogue = true ; 
             if(CurrentDialogue == DialoguePNJ_FR.OpeningDialogue || CurrentDialogue == DialoguePNJ_EN.OpeningDialogue)
             {
-            //    IsInDialogue = false ;
                 StartDiscussion(false);
             }
 
             if(CurrentDialogue == DialoguePNJ_FR.CloseDiscussion || CurrentDialogue == DialoguePNJ_EN.CloseDiscussion)
             {
-          //      IsInDialogue = false ;
-                CloseDiscussion(false);
+                CloseDiscussion(false, false);
             }   
 
             if(PNJSpeak)
@@ -345,8 +348,12 @@ public class DialogueDisplayerController : MonoBehaviour
                 {
                     TextDiscussion(false, false) ;
                 } else {
-                    if(CurrentDialogue == AnswerDisponible[CurrentPNJDiscussion.Answer[CurrentDialogueDisplay - 1].AnswerForQuestion[CurrentDialogueState]]) 
-                        CurrentDialogueState -- ; 
+                    if(CanChangeCurrentDialogue)
+                    {
+                        CanChangeCurrentDialogue = false ;
+                        CurrentDialogueState -- ;                         
+                    }
+
                     
                     TextDiscussion(false, false) ;
                 }

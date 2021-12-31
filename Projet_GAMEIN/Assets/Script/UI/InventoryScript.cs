@@ -42,13 +42,21 @@ public class InventoryScript : MonoBehaviour
         InventoryPanel.SetActive(!InventoryPanel.activeSelf);
         if(!InventoryPanel.activeSelf)
         {
+
+
             transform.SetSiblingIndex(0);
             if( (GameObject.Find("Dialogue Canvas") != null && GameObject.Find("Dialogue Canvas").gameObject.activeSelf == false) )
-                PlayerScript.GetComponent<PlayerMovement>().EndActivity() ;
+            {
+                PlayerScript.GetComponent<PlayerMovement>().EndActivity() ;                
+            } else {
+                GameObject.Find("Player Backpack").GetComponent<PlayerDialogue>().ResumeDialogue();                   
+            }
+
         } else {
             transform.SetSiblingIndex(1);            
-            PlayerScript.GetComponent<PlayerMovement>().StartActivity() ;
 
+            PlayerScript.GetComponent<PlayerMovement>().StartActivity() ;
+            GameObject.Find("Player Backpack").GetComponent<PlayerDialogue>().PausedInDialogue();
         }
     }
 

@@ -36,7 +36,7 @@ public class Customizer : MonoBehaviour
 
     [Header ("Player Information")]
     public InputField NamingField ;
-    private string[] RandomNames = new string[35]  // Une ligne par genre : Homme, Femme, Non-Binaire
+    private string[] RandomNames = new string[]  // Une ligne par genre : Homme, Femme, Non-Binaire
     {
     /*16*/"Olivier", "Sébastien", "Patrick", "Lucas", "Richard", "Frédéric", "Louis", "Mathieu", "Alexandre", "William", "Vincent", "Théo", "Simon", "Jules", "Romain", "Aubin",
     /*17*/"Charlotte", "Elise", "Margot", "Justine", "Ines", "Laetitia", "Emilie", "Marine", "Marie", "Manon", "Lucie", "Lisa", "Cécile", "Julie", "Clara", "Kim", "Cassandre",
@@ -68,7 +68,7 @@ public class Customizer : MonoBehaviour
     [SerializeField] private GameObject DialogueUIPrefab ;
     [SerializeField] private GameObject InventoryUIPrefab ;
 
-
+private string WhoIsIt = "§ est ¤ !" ;
     private void Awake() 
     {
         if(GameObject.Find("Player") == null)
@@ -382,7 +382,7 @@ public class Customizer : MonoBehaviour
         NamingField.text = RandomNames[Random.Range(0, RandomNames.Length)];
         
         // Random Gender
-        SetGender(Random.Range(0, GenderButton.Count-1 )) ;
+        SetGender(Random.Range(0, GenderButton.Count )) ;
 
         // Random Skin
         PlayerApparance.ValueColorDisplay[0] = Random.Range(0f, 1f) ;
@@ -424,7 +424,7 @@ public class Customizer : MonoBehaviour
         FadeImage.SetActive(true);
         GetComponent<AnimationCustomizer>().ChangeTitleCategories(6);
 
-
+        GameObject.Find("Player Backpack").GetComponent<CSVReader>().SetUpDialogueAdhérent();
     
 
 
