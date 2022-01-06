@@ -23,7 +23,6 @@ public class InventoryScript : MonoBehaviour
             PlayerScript = GameObject.Find("Player").GetComponent<PlayerScript>() ; 
             //SettingPanel = GameObject.Find("Settings Panel").GetComponent<RectTransform>() ;
         }
-
         SetInventoryCount();
 
     }

@@ -6,6 +6,7 @@ public class Interactible : MonoBehaviour
 {
     public InteractibleObject Object ;
     public QuestSys questSys;
+    //public ActiveAsProg AaP;
     private SpriteRenderer SpriteRend;
     [SerializeField] private PlayerScript PlayerScript;
     private bool PlayerAround = false;
@@ -17,6 +18,7 @@ public class Interactible : MonoBehaviour
         {    PlayerScript = GameObject.Find("Player").GetComponent<PlayerScript>() ; }
         SpriteRend = GetComponent<SpriteRenderer>();
         questSys = GameObject.Find("QuestManager").GetComponent<QuestSys>() ;
+        //AaP = this.gameObject.GetComponent<ActiveAsProg>();
     }
 
     private void Start()
@@ -56,8 +58,9 @@ public class Interactible : MonoBehaviour
     {
         PlayerScript.AjoutInventaire(Object);
         PlayerScript.SwitchInputSprite();       
-        questSys.Progression();        
-        Destroy(this.gameObject, 0.025f);              
+        questSys.Progression();
+        //AaP.StrikeThrough();
+        Destroy(this.gameObject, 0.05f);              
     }
 
     private void OnTriggerExit2D(Collider2D other)
