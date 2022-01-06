@@ -155,7 +155,7 @@ public class DialogueDisplayerController : MonoBehaviour
             TextOppeningDisplayCompletely = true ;
         }
 
-        CurrentDialogueDisplay = 0 ;
+        CurrentDialogueDisplay = -1 ;
     }
 
     public void StateDiscussion()
@@ -165,10 +165,10 @@ public class DialogueDisplayerController : MonoBehaviour
             CanChangeCurrentDialogue = true ;
 
             if(DialogueCanvas.text == DialoguePNJ.OpeningDialogue) ShowDialogueChoice(true);
-            if(CurrentDialogueDisplay == 0 && !TextAsCompletelyDisplay && !TextOppeningDisplayCompletely )    StartDiscussion(true); // Arrête l'animation et Affiche tout le texte d'Openning
+            if(CurrentDialogueDisplay == -1 && !TextAsCompletelyDisplay && !TextOppeningDisplayCompletely )    StartDiscussion(true); // Arrête l'animation et Affiche tout le texte d'Openning
 
             if(DialogueCanvas.text == DialoguePNJ.CloseDiscussion) CurrentPNJDiscussion.DiscussionIsClose();
-            if(CurrentDialogueDisplay == 0 && !TextAsCompletelyDisplay && !TextCloseDisplayCompletely )    CloseDiscussion(true, true);    // Arrête l'animation et Affiche tout le texte de Fermeture  
+            if(CurrentDialogueDisplay == -1 && !TextAsCompletelyDisplay && !TextCloseDisplayCompletely )    CloseDiscussion(true, true);    // Arrête l'animation et Affiche tout le texte de Fermeture  
 
             if(PNJSpeak)
             {
@@ -321,7 +321,7 @@ public class DialogueDisplayerController : MonoBehaviour
     public void ButtonChoix4()
     {
         TextCloseDisplayCompletely = false ;
-        CurrentDialogueDisplay = 0 ;
+        CurrentDialogueDisplay = -1 ;
         CloseDiscussion(true, false);
     }
 

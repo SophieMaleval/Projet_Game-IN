@@ -92,7 +92,8 @@ private string WhoIsIt = "§ est ¤ !" ;
             InventoryUIInstatiate.transform.SetSiblingIndex(1);
             InventoryUIInstatiate.name = "Inventory" ;
 
-
+            GameObject.Find("Player Backpack").GetComponent<CSVReader>().QuestManager = InventoryUIInstatiate.GetComponentInChildren<QuestSys>() ;
+            
 
             DontDestroyOnLoad(PlayerApparance.gameObject);
             DontDestroyOnLoad(CanvasInstatiate.gameObject);
@@ -424,8 +425,7 @@ private string WhoIsIt = "§ est ¤ !" ;
         FadeImage.SetActive(true);
         GetComponent<AnimationCustomizer>().ChangeTitleCategories(6);
 
-        GameObject.Find("Player Backpack").GetComponent<CSVReader>().SetUpDialogueAdhérent();
-    
+        GameObject.Find("Player Backpack").GetComponent<CSVReader>().SetUpDialogueAdhérent(); 
 
 
         StartCoroutine(WaitBeforeChangeScene());
