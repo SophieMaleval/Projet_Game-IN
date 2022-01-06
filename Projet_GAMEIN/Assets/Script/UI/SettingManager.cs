@@ -61,12 +61,12 @@ public class SettingManager : MonoBehaviour
         CanCheckLanguage = true ;        
     }
 
-    private void FixedUpdate() 
+    private void  Update() 
     {
         if(CanCheckLanguage && TextUILocation != null)
         {
-            if(PlayerPrefs.GetInt("Langue") == 0 && SettingTitle.text != TextUILocation.UIText.MenuFR[0] )    SetSettingsTextLangue(0);
-            if(PlayerPrefs.GetInt("Langue") == 1 && SettingTitle.text != TextUILocation.UIText.MenuEN[0] )    SetSettingsTextLangue(1);
+            if(PlayerPrefs.GetInt("Langue") == 0 && SettingTitle.text != TextUILocation.UIText.SettingFR[0] )    SetSettingsTextLangue(0);
+            if(PlayerPrefs.GetInt("Langue") == 1 && SettingTitle.text != TextUILocation.UIText.SettingEN[0] )    SetSettingsTextLangue(1);
         }
     }
 
