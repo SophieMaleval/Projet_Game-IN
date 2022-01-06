@@ -164,20 +164,32 @@ public class CSVReader : MonoBehaviour
         {
             string[] Data = LineData[LD].Split(new string[] { ";" }, StringSplitOptions.None) ; //Data correspond à chaque Case 
 
+            bool QuestAdd = false ;
+
             if(Data[0] != "")
             {
                 QuestCt NewQuestCt = new QuestCt() ;
                 NewQuestCt.questCode = QuestCode ;
-                string[] QuestGoal ;
 
-                for (int i = 0; i < Data.Length; i++)
+                NewQuestCt.intitule = Data[0] ; 
+                NewQuestCt.questTitle = Data[1] ;
+
+                for (int D = 2; D < Data.Length; D++)
                 {
-                    if(i == 0) NewQuestCt.intitule = Data[0] ; 
-                    if(i == 1) NewQuestCt.questTitle = Data[1] ; 
-
-                    //if(i > 1) NewQuestCt.questGoal.
+                    if(Data[D] != "") NewQuestCt.questGoal.Add(Data[D]) ;
                 }
 
+
+                if(QuestManager.QuestFR.Count == QuestManager.QuestEN.Count && QuestAdd == false)
+                {
+                    QuestAdd = true ;
+                    QuestManager.QuestFR.Add(NewQuestCt);                   
+                }
+                if(QuestManager.QuestFR.Count == QuestManager.QuestEN.Count + 1 && QuestAdd == false)
+                {
+                    QuestAdd = true ;
+                    QuestManager.QuestEN.Add(NewQuestCt);  
+                } 
             } else {
                 QuestCode ++ ;
             } 

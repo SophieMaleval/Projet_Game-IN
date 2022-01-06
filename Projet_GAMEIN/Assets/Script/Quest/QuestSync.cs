@@ -30,7 +30,7 @@ public class QuestSync : MonoBehaviour
         if (title.activeInHierarchy == true)
         {
             title.GetComponentInChildren<TextMeshProUGUI>().text = questSys.quest[index].questTitle;
-            numberOfGoals = questSys.quest[index].questGoal.Length;           
+            numberOfGoals = questSys.quest[index].questGoal.Count;           
             for (int i = 0; i < numberOfGoals; i++)
             {
                 description[i].text = questSys.quest[index].questGoal[i];
@@ -49,7 +49,7 @@ public class QuestSync : MonoBehaviour
         if (title.activeInHierarchy == true)
         {
             title.GetComponentInChildren<TextMeshProUGUI>().text = questSys.quest[index].questTitle;
-            numberOfGoals = questSys.quest[index].questGoal.Length;
+            numberOfGoals = questSys.quest[index].questGoal.Count;
             for (int i = 0; i < numberOfGoals; i++)
             {
                 description[i].text = questSys.quest[index].questGoal[i];

@@ -18,6 +18,9 @@ public class QuestSys : MonoBehaviour
     public TextMeshProUGUI title;
     public TextMeshProUGUI titleEffect;
     public TextMeshProUGUI contenu;
+
+  /*  [HideInInspector]*/ public List<QuestCt> QuestFR = new List<QuestCt>() ;
+  /*  [HideInInspector]*/ public List<QuestCt> QuestEN = new List<QuestCt>() ;
     public List<QuestCt> quest = new List<QuestCt>();
     
     [HideInInspector]
@@ -50,6 +53,10 @@ public class QuestSys : MonoBehaviour
 
     private void Update()
     {
+        if(PlayerPrefs.GetInt("Langue") == 0 && quest != QuestFR) SetLanguage() ;
+        if(PlayerPrefs.GetInt("Langue") == 1 && quest != QuestEN) SetLanguage() ;
+
+
         title.text = quest[niveau].questTitle;
         titleEffect.text = quest[niveau].questTitle; //fond ombre
         contenu.text = quest[niveau].questGoal[etape];
@@ -73,11 +80,17 @@ public class QuestSys : MonoBehaviour
 
     }
 
+    private void SetLanguage() 
+    {
+        if(PlayerPrefs.GetInt("Langue") == 0) quest = QuestFR ;
+        if(PlayerPrefs.GetInt("Langue") == 1) quest = QuestEN ;
+    }
+
     //gestion progression des niveaux en jeu
     public void Progression()
     {
         globalSteps++;
-        if (etape > quest[niveau].questGoal.Length - 2)
+        if (etape > quest[niveau].questGoal.Count - 2)
         {
             StartCoroutine(FadeAllOut());
             lvlTracker++;

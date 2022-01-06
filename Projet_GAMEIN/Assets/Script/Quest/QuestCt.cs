@@ -10,5 +10,5 @@ public class QuestCt
     [HideInInspector]
     public int questCode;
     [SerializeField] [TextArea] public string questTitle;   
-    [TextArea(3, 7)] public string[] questGoal;   
+    [TextArea(3, 7)] public List<string> questGoal = new List<string>();   
 }
