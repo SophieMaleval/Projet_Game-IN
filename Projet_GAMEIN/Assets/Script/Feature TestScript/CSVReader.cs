@@ -175,7 +175,7 @@ public class CSVReader : MonoBehaviour
                     if(i == 0) NewQuestCt.intitule = Data[0] ; 
                     if(i == 1) NewQuestCt.questTitle = Data[1] ; 
 
-                    if(i > 1) NewQuestCt.questGoal.
+                    //if(i > 1) NewQuestCt.questGoal.
                 }
 
             } else {

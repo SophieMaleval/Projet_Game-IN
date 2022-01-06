@@ -24,6 +24,8 @@ public class QuestSync : MonoBehaviour
     }
     public void SynchroniseText()
     {
+        NielsSync();
+        return;
         title = this.gameObject;       
         if (title.activeInHierarchy == true)
         {
@@ -34,9 +36,40 @@ public class QuestSync : MonoBehaviour
                 description[i].text = questSys.quest[index].questGoal[i];
                if (index <= questSys.lvlTracker) //&& questSys.etape > 1)
                {
-                    description[i - 1].fontStyle = FontStyles.Strikethrough;
+                    //description[questSys.etape - 1].fontStyle = FontStyles.Strikethrough;
+                    description[i].fontStyle = FontStyles.Strikethrough;
                }      
+            }            
+        }
+    }
+
+    void NielsSync()
+    {
+        title = this.gameObject;
+        if (title.activeInHierarchy == true)
+        {
+            title.GetComponentInChildren<TextMeshProUGUI>().text = questSys.quest[index].questTitle;
+            numberOfGoals = questSys.quest[index].questGoal.Length;
+            for (int i = 0; i < numberOfGoals; i++)
+            {
+                description[i].text = questSys.quest[index].questGoal[i];
+
+                if(index < questSys.lvlTracker)
+                {
+                    description[i].fontStyle = FontStyles.Strikethrough;
+                }
+                else if(index == questSys.lvlTracker &&  i < questSys.etape)
+                {
+                    description[i].fontStyle = FontStyles.Strikethrough;
+                }
+                else
+                {
+                    description[i].fontStyle = FontStyles.Normal;
+                }
+
             }
+              
+            
         }
     }
 
