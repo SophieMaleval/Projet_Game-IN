@@ -29,11 +29,14 @@ public class Customizer : MonoBehaviour
     public List<int> ChoiceInCategorie ;
 
     [SerializeField] private List<Image> ChoiceDisplayer ;
+    [SerializeField] private Button PreviousChoiceButton ;
+    [SerializeField] private Button NextChoiceButton ;
+    
     [SerializeField] private List<Button> AllChoiceColorButton ;
 
     [Header ("Player Information")]
     public InputField NamingField ;
-    private string[] RandomNames = new string[35]  // Une ligne par genre : Homme, Femme, Non-Binaire
+    private string[] RandomNames = new string[]  // Une ligne par genre : Homme, Femme, Non-Binaire
     {
     /*16*/"Olivier", "Sébastien", "Patrick", "Lucas", "Richard", "Frédéric", "Louis", "Mathieu", "Alexandre", "William", "Vincent", "Théo", "Simon", "Jules", "Romain", "Aubin",
     /*17*/"Charlotte", "Elise", "Margot", "Justine", "Ines", "Laetitia", "Emilie", "Marine", "Marie", "Manon", "Lucie", "Lisa", "Cécile", "Julie", "Clara", "Kim", "Cassandre",
@@ -65,7 +68,7 @@ public class Customizer : MonoBehaviour
     [SerializeField] private GameObject DialogueUIPrefab ;
     [SerializeField] private GameObject InventoryUIPrefab ;
 
-
+private string WhoIsIt = "§ est ¤ !" ;
     private void Awake() 
     {
         if(GameObject.Find("Player") == null)
@@ -149,10 +152,12 @@ public class Customizer : MonoBehaviour
         // Valider seulement si le nom et le genre son référencé
         if(PlayerPersonnality.PlayerName == "" || PlayerPersonnality.PlayerSexualGenre == -1)
         {
+            SubmitButton.targetGraphic.color = new Color(0.3888f, 0.3921f, 0.3766f, 1);
             SubmitButton.interactable = false ;
         }
         if(PlayerPersonnality.PlayerName != "" && PlayerPersonnality.PlayerSexualGenre != -1)
         {
+            SubmitButton.targetGraphic.color = new Color(0.3888f, 0.8773f, 0.3766f, 1);
             SubmitButton.interactable = true ;
         }
     }
@@ -183,6 +188,9 @@ public class Customizer : MonoBehaviour
     // 4 - Shoe
     public void ChangeCategorie()
     {
+        ResetBtnSprite(PreviousChoiceButton);
+        ResetBtnSprite(NextChoiceButton);
+
         if(CurrentCategorie == 1)
             ChoiceDisplay(HairChoice);   
         if(CurrentCategorie == 2)
@@ -228,6 +236,9 @@ public class Customizer : MonoBehaviour
     // Fonction pour l'interaction -/+ sur les changement de custom
     public void ChangeDisplay(int ValueAdd)
     {
+        ResetBtnSprite(PreviousChoiceButton);
+        ResetBtnSprite(NextChoiceButton);
+
         if(CurrentCategorie == 1)
             ChangeChoice(ValueAdd, HairChoice, 1);   
         if(CurrentCategorie == 2)
@@ -357,14 +368,21 @@ public class Customizer : MonoBehaviour
         {   PlayerApparance.Animators[a].Rebind();   }  
     }
 
+    public void ResetBtnSprite(Button TargetBtn)
+    {
+        TargetBtn.interactable = false ;
+        TargetBtn.interactable = true ;
+    }
     // Final Button
     public void RandomCustom()
     {
+        ResetBtnSprite(RandomButton);
+
         // Random Name
         NamingField.text = RandomNames[Random.Range(0, RandomNames.Length)];
         
         // Random Gender
-        SetGender(Random.Range(0, GenderButton.Count-1 )) ;
+        SetGender(Random.Range(0, GenderButton.Count )) ;
 
         // Random Skin
         PlayerApparance.ValueColorDisplay[0] = Random.Range(0f, 1f) ;
@@ -406,7 +424,7 @@ public class Customizer : MonoBehaviour
         FadeImage.SetActive(true);
         GetComponent<AnimationCustomizer>().ChangeTitleCategories(6);
 
-
+        GameObject.Find("Player Backpack").GetComponent<CSVReader>().SetUpDialogueAdhérent();
     
 
 
@@ -416,17 +434,15 @@ public class Customizer : MonoBehaviour
     IEnumerator WaitBeforeChangeScene()
     {
         yield return new WaitForSeconds(1.75f);
-            //FadeImage.GetComponent<Image>().DOFade(1, 1f);
             FadeImage.GetComponent<AnimationTransitionScene>().ShouldReveal = false ;
         yield return new WaitForSeconds(1.75f);
         PlayerApparance.enabled = true ;
         yield return new WaitForSeconds(1.75f);
 
         
-        //CineMachineCam.GetComponent<CinemachineVirtualCamera>().Follow = PlayerApparance.transform ; 
         PlayerPersonnality.CanvasIndestrucitble.SetActive(true);
         SceneManager.LoadScene("Tilemaps Test");
-        //SceneManager.LoadScene("InventoryTest");
+
     }
 
 

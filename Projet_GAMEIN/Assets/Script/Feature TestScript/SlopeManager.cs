@@ -40,8 +40,6 @@ public class SlopeManager : MonoBehaviour
    {
        if(other.gameObject.tag == "Player")
         {
-            Debug.Log(PM.transform.position.x + " " + (transform.position.x + 1f) ); 
-
             if(TopAsLeft)   // Si le haut de la pente est à Gauche
             {
                 if(PM.transform.position.x < (transform.position.x + 1f)) 
@@ -61,8 +59,6 @@ public class SlopeManager : MonoBehaviour
                 }   
             }            
         }
-  
-
    }
 
     void OnTriggerExit2D(Collider2D other) 
@@ -95,7 +91,7 @@ public class SlopeManager : MonoBehaviour
             ColliderPontDessouslevel.SetActive(true);
             ColliderFalaiseLevel0.SetActive(true);
             ColliderFalaiseLevel1.SetActive(false);
-            Debug.Log("niveau0");
+
             spriteBridge.sortingOrder = 1;
 
         }
@@ -107,7 +103,6 @@ public class SlopeManager : MonoBehaviour
             ColliderFalaiseLevel0.SetActive(false);
             ColliderFalaiseLevel1.SetActive(true);
 
-            Debug.Log("niveau1");
             spriteBridge.sortingOrder = -1;
 
         }

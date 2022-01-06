@@ -100,8 +100,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dc0f6b06f72cdb4496fc386ddbbacbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DialogData: {fileID: 4900000, guid: f920a8082d6ae7e4b94f024848ade240, type: 3}
-  "myDialogueAdh\xE9rent": []
+  DialogDataFR: {fileID: 4900000, guid: f920a8082d6ae7e4b94f024848ade240, type: 3}
+  DialogDataEN: {fileID: 4900000, guid: 2f4e1a6f4471983439c15d2a7303074c, type: 3}
+  UIDataText: {fileID: 4900000, guid: 4e6d07e5db27ac941b9168d7c7daccda, type: 3}
+  UIText:
+    MenuFR: []
+    MenuEN: []
+    SettingFR: []
+    SettingEN: []
+    CustomisationFR: []
+    CustomisationEN: []
+  PlayerInformations: {fileID: 0}
 --- !u!114 &6101403331850239422
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -114,9 +123,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b93113804958f740af06a5176152003, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TextDialogueFR: {fileID: 0}
+  "myDialogueAdh\xE9rentFR": []
+  "myDialogueAdh\xE9rentEN": []
   PlayerAsRead: 0
   CurrentSelectQuestion: 0
+  PlayerInformations: {fileID: 6347952101657534626}
 --- !u!1 &3182747300052496586
 GameObject:
   m_ObjectHideFlags: 0
@@ -5661,6 +5672,9 @@ MonoBehaviour:
   PlayerAsInterract: 0
   InDiscussion: 0
   Inventaire: []
+  CanvasIndestrucitble: {fileID: 0}
+  DialogueUIIndestructible: {fileID: 0}
+  InventoryUIIndestructible: {fileID: 0}
 --- !u!50 &7965349286853053022
 Rigidbody2D:
   serializedVersion: 4

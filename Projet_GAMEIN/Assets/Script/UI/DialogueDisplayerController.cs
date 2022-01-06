@@ -16,17 +16,21 @@ public class DialogueDisplayerController : MonoBehaviour
     public TextMeshProUGUI DialogueCanvas ;
     public TextMeshProUGUI NamePNJ ;
 
-    [HideInInspector] public DialogueContainer DialoguePNJ ;
+   public DialogueContainer DialoguePNJ ;
+   /*[HideInInspector]*/ public DialogueContainer DialoguePNJ_FR ;
+   /*[HideInInspector]*/ public DialogueContainer DialoguePNJ_EN ;
     [SerializeField] private PlayerDialogue PlayerDialogueManager;
 
     [HideInInspector] public int Question3IntDisplay = 3;
     public GameObject BoxQuestion ;
 
     
-    [HideInInspector] 
-    public List<string> QuestionDisponible ;
-    [HideInInspector] 
-    public List<string> AnswerDisponible ;
+    public List<string> QuestionDisponible = new List<string>() ;
+        [HideInInspector]  public List<string> QuestionDisponible_FR = new List<string>() ;
+        [HideInInspector]  public List<string> QuestionDisponible_EN = new List<string>() ;
+    public List<string> AnswerDisponible = new List<string>() ;
+        [HideInInspector] public List<string> AnswerDisponible_FR = new List<string>() ;
+        [HideInInspector]  public List<string> AnswerDisponible_EN = new List<string>() ;
 
 
     private bool Question1AsRead = false ;
@@ -44,6 +48,8 @@ public class DialogueDisplayerController : MonoBehaviour
 
     private int CurrentDialoguePlayerChoice = 0 ;
     private bool ChoiceValidation = false ;
+    private string CurrentDialogue ;
+    private bool CanChangeCurrentDialogue = false ;
 
     [HideInInspector] public bool WeAreInChoice = false ;
     private float DelayAnimationText = 0.1f ;
@@ -58,11 +64,11 @@ public class DialogueDisplayerController : MonoBehaviour
         public List<int> AnswerForQuestion ; 
     }
 
-    private void OnEnable() 
+    /*private void OnEnable() 
     {
         ResetAllValue();
-    }
-    void ResetAllValue()
+    }*/
+    public void ResetAllValue()
     {
 
         PNJSpeak = false ;
@@ -103,6 +109,26 @@ public class DialogueDisplayerController : MonoBehaviour
         } else {
             MouseIsHover = false ;
         }
+
+
+
+        if(PlayerPrefs.GetInt("Langue") == 0 && DialoguePNJ != DialoguePNJ_FR)
+        {
+            DialoguePNJ = DialoguePNJ_FR ;   
+            AnswerDisponible = AnswerDisponible_FR ;
+            QuestionDisponible = QuestionDisponible_FR ;   
+
+            DialogueLanguageChangeDuringDialogue();
+        }
+        if(PlayerPrefs.GetInt("Langue") == 1 && DialoguePNJ != DialoguePNJ_EN)
+        {
+            DialoguePNJ = DialoguePNJ_EN ;        
+            AnswerDisponible = AnswerDisponible_EN ;
+            QuestionDisponible = QuestionDisponible_EN ;   
+
+            DialogueLanguageChangeDuringDialogue();    
+        }
+
     }
 
 
@@ -113,12 +139,14 @@ public class DialogueDisplayerController : MonoBehaviour
         Question2AsRead = false ;
         Question3AsRead = false ;
 
-        DialogueCanvas.transform.parent.gameObject.SetActive(true) ;  
+        DialogueCanvas.transform.parent.gameObject.SetActive(true) ;
+        
+        CurrentDialogue = DialoguePNJ.OpeningDialogue ;
         if(!TextState)
         {
             StopAllCoroutines(); 
             DialogueCanvas.text = "";
-            StartCoroutine(WriteText(DialoguePNJ.OpeningDialogue, DialogueCanvas, DelayAnimationText));     
+            StartCoroutine(WriteText(DialoguePNJ.OpeningDialogue, DelayAnimationText));     
             TextAsCompletelyDisplay = false ;       
         } else {
             StopAllCoroutines();
@@ -127,28 +155,29 @@ public class DialogueDisplayerController : MonoBehaviour
             TextOppeningDisplayCompletely = true ;
         }
 
-
         CurrentDialogueDisplay = 0 ;
     }
 
     public void StateDiscussion()
     {
-        if(DialogueCanvas.text == DialoguePNJ.OpeningDialogue) ShowDialogueChoice();
-   
-        if(CurrentDialogueDisplay == 0 && !TextAsCompletelyDisplay && !TextOppeningDisplayCompletely )    StartDiscussion(true); // Arrête l'animation et Affiche tout le texte d'Openning
-
-
-        if(DialogueCanvas.text == DialoguePNJ.CloseDiscussion) CurrentPNJDiscussion.DiscussionIsClose();
-
-        if(CurrentDialogueDisplay == 0 && !TextAsCompletelyDisplay && !TextCloseDisplayCompletely )    CloseDiscussion(true);    // Arrête l'animation et Affiche tout le texte de Fermeture  
-
-        if(PNJSpeak)
+        if(!GameObject.Find("Inventory").GetComponent<InventoryScript>().InventoryPanel.activeSelf)
         {
-            if(CurrentDialogueState < CurrentPNJDiscussion.Answer[CurrentDialogueDisplay].AnswerForQuestion.Count )
-                if(!TextAsCompletelyDisplay) TextDiscussion(false, CurrentDialogueDisplay, CurrentDialogueState + 1, true); // Arrête l'animation et affiche tout le texte
-                else TextDiscussion(false, CurrentDialogueDisplay, CurrentDialogueState + 1, false); // Affiche le prochain texte avec l'animation
-            else
-                ShowDialogueChoice();
+            CanChangeCurrentDialogue = true ;
+
+            if(DialogueCanvas.text == DialoguePNJ.OpeningDialogue) ShowDialogueChoice(true);
+            if(CurrentDialogueDisplay == 0 && !TextAsCompletelyDisplay && !TextOppeningDisplayCompletely )    StartDiscussion(true); // Arrête l'animation et Affiche tout le texte d'Openning
+
+            if(DialogueCanvas.text == DialoguePNJ.CloseDiscussion) CurrentPNJDiscussion.DiscussionIsClose();
+            if(CurrentDialogueDisplay == 0 && !TextAsCompletelyDisplay && !TextCloseDisplayCompletely )    CloseDiscussion(true, true);    // Arrête l'animation et Affiche tout le texte de Fermeture  
+
+            if(PNJSpeak)
+            {
+                if(CurrentDialogueState < CurrentPNJDiscussion.Answer[CurrentDialogueDisplay].AnswerForQuestion.Count )
+                    if(!TextAsCompletelyDisplay) TextDiscussion(false, true); // Arrête l'animation et affiche tout le texte
+                    else TextDiscussion(false, false); // Affiche le prochain texte avec l'animation
+                else
+                    ShowDialogueChoice(true);            
+            }
         }
     }
 
@@ -170,14 +199,14 @@ public class DialogueDisplayerController : MonoBehaviour
         }
     }
 
-    public void ShowDialogueChoice()
+    public void ShowDialogueChoice(bool ToggleDisplayBox)
     {
-        SwitchBoxDisplay();
+        if(ToggleDisplayBox)    SwitchBoxDisplay();
         PlayerDialogueManager.ResetSelectQuestion();
         GetComponent<Button>().interactable = false ;
         TextOppeningDisplayCompletely = true ;        
         WeAreInChoice = true ;
-
+        CurrentDialogue = "";
         /* Afficher les Questions à afficher */
         SetQuestion(Question1AsRead, 0, DialoguePNJ.Question1); // Set QUestion 1
         SetQuestion(Question2AsRead, 1, DialoguePNJ.Question2); // Set QUestion 2
@@ -202,18 +231,21 @@ public class DialogueDisplayerController : MonoBehaviour
         CurrentDialogueState = 0 ;
     }
 
-    void TextDiscussion(bool ToggleDisplayBox , int DialogueDisplay, int StateAnswer, bool TextState)
+
+
+    void TextDiscussion(bool ToggleDisplayBox, bool TextState)
     {
         GetComponent<Button>().interactable = true ;
         WeAreInChoice = false ;
 
         if(ToggleDisplayBox)    SwitchBoxDisplay();
 
+        CurrentDialogue = AnswerDisponible[CurrentPNJDiscussion.Answer[CurrentDialogueDisplay].AnswerForQuestion[CurrentDialogueState]];
         if(!TextState)
         {
             StopAllCoroutines();
             DialogueCanvas.text = "";
-            StartCoroutine(WriteText(AnswerDisponible[CurrentPNJDiscussion.Answer[CurrentDialogueDisplay].AnswerForQuestion[CurrentDialogueState]], DialogueCanvas, DelayAnimationText));
+            StartCoroutine(WriteText(AnswerDisponible[CurrentPNJDiscussion.Answer[CurrentDialogueDisplay].AnswerForQuestion[CurrentDialogueState]], DelayAnimationText));
             //CurrentDialogueState ++ ;
             TextAsCompletelyDisplay = false ;
         } else {
@@ -222,21 +254,21 @@ public class DialogueDisplayerController : MonoBehaviour
             CurrentDialogueState ++ ;
             TextAsCompletelyDisplay = true ;
         }
-
     }
 
-    void CloseDiscussion(bool TextState)
+    void CloseDiscussion(bool ToggleDisplayBox,bool TextState)
     {
         GetComponent<Button>().interactable = true ;
         WeAreInChoice = false ;
 
+        CurrentDialogue = DialoguePNJ.CloseDiscussion ;
         if(!TextState)
         {
-            SwitchBoxDisplay();
+            if(ToggleDisplayBox)    SwitchBoxDisplay();
 
             StopAllCoroutines();
             DialogueCanvas.text = ""; 
-            StartCoroutine(WriteText(DialoguePNJ.CloseDiscussion, DialogueCanvas, DelayAnimationText));
+            StartCoroutine(WriteText(DialoguePNJ.CloseDiscussion, DelayAnimationText));
             TextAsCompletelyDisplay = false ;
         } else {
             StopAllCoroutines();
@@ -247,11 +279,11 @@ public class DialogueDisplayerController : MonoBehaviour
     }
 
 
-    protected IEnumerator WriteText(string Input, TextMeshProUGUI TextHolder, float Delay) 
+    protected IEnumerator WriteText(string Input, float Delay) 
     {
         for (int i = 0; i < Input.Length; i++)
         {
-            TextHolder.text += Input[i] ;
+            DialogueCanvas.text += Input[i] ;
             yield return new WaitForSeconds(Delay);
         }
 
@@ -265,7 +297,7 @@ public class DialogueDisplayerController : MonoBehaviour
     public void ButtonChoix1()
     {
         ResetDialogueContinuationValue(1);        
-        TextDiscussion(true, 1, 0, false);
+        TextDiscussion(true, false);
 
         if(Question1AsRead == false) Question1AsRead = true ;
     }
@@ -273,7 +305,7 @@ public class DialogueDisplayerController : MonoBehaviour
     public void ButtonChoix2()
     {
         ResetDialogueContinuationValue(2);
-        TextDiscussion(true, 2, 0, false);
+        TextDiscussion(true, false);
 
         if(Question2AsRead == false) Question2AsRead = true ;
     }
@@ -281,7 +313,7 @@ public class DialogueDisplayerController : MonoBehaviour
     public void ButtonChoix3()
     {
         ResetDialogueContinuationValue((int) Question3IntDisplay);
-        TextDiscussion(true, (int) Question3IntDisplay, 0, false);
+        TextDiscussion(true, false);
 
         if(Question3AsRead == false) Question3AsRead = true ;
     }
@@ -290,12 +322,46 @@ public class DialogueDisplayerController : MonoBehaviour
     {
         TextCloseDisplayCompletely = false ;
         CurrentDialogueDisplay = 0 ;
-        CloseDiscussion(false);
+        CloseDiscussion(true, false);
     }
 
 
+    // Traduction à tout moment
+    void DialogueLanguageChangeDuringDialogue()
+    {
+        if(!WeAreInChoice)
+        {       
+            //bool IsInDialogue = true ; 
+            if(CurrentDialogue == DialoguePNJ_FR.OpeningDialogue || CurrentDialogue == DialoguePNJ_EN.OpeningDialogue)
+            {
+                StartDiscussion(false);
+            }
 
+            if(CurrentDialogue == DialoguePNJ_FR.CloseDiscussion || CurrentDialogue == DialoguePNJ_EN.CloseDiscussion)
+            {
+                CloseDiscussion(false, false);
+            }   
 
+            if(PNJSpeak)
+            {
+                if(!TextAsCompletelyDisplay)
+                {
+                    TextDiscussion(false, false) ;
+                } else {
+                    if(CanChangeCurrentDialogue)
+                    {
+                        CanChangeCurrentDialogue = false ;
+                        CurrentDialogueState -- ;                         
+                    }
+
+                    
+                    TextDiscussion(false, false) ;
+                }
+            }             
+        } else {
+            ShowDialogueChoice(false);
+        }      
+    }
 
     // Utilisation de touche pour les boutons
     void SelectedButton()

@@ -2,17 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI ;
+using TMPro ;
 using DG.Tweening ;
 using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
     public string NameScene ;
+
+
+    public TextMeshProUGUI Message ;
     public AnimationTransitionScene ATS;
-
-
-    public GameObject ToggleFrançais;
-    public GameObject ToggleAnglais;
 
     [SerializeField] private RectTransform TitlePanel ;
     [SerializeField] private Button OpenSettingBtn;
@@ -23,31 +23,42 @@ public class MenuManager : MonoBehaviour
 
     [SerializeField] public GameObject FadeImage ;
 
+    private CSVReader SettingPanelReader ;
+
     // Start is called before the first frame update
     void Start()
     {
+        //PlayerPrefs.SetInt("Langue", 0);
         StartCoroutine(WaitTransitionAnim());
+
+        if(SettingPanel.GetComponent<CSVReader>() != null) SettingPanelReader = SettingPanel.GetComponent<CSVReader>() ;
     }
 
     // Update is called once per frame
     void Update()
     {
-
-        if (!SettingOpen && Input.GetKeyDown(KeyCode.Space))
+        if (!SettingOpen && (Input.anyKeyDown && !(Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1) || Input.GetMouseButtonDown(2))) && FadeImage.activeSelf == false)
         {
             FadeImage.SetActive(true);
-            
+            StopAllCoroutines();
             StartCoroutine("Fade");
-        
-           // Debug.Log("A key or mouse click has been detected");
         }
-        
+
     }
 
-
+    IEnumerator WaitTransitionAnim()
+    {
+        yield return new WaitForSeconds(0.05f) ;
+        SettingPanel.gameObject.SetActive(false) ;
+        yield return new WaitForSeconds(0.2f) ;
+        SetMenuTextLangue(0);
+        FadeImage.GetComponent<AnimationTransitionScene>().enabled = true ;
+        yield return new WaitForSeconds(2f) ;
+        FadeImage.SetActive(false) ;
+    }
+    
     IEnumerator Fade() 
     {
-    
         ATS.ShouldReveal = false;
         yield return new WaitForSeconds(3f);
         SceneManager.LoadScene("Character Customer");
@@ -65,30 +76,15 @@ public class MenuManager : MonoBehaviour
         StartCoroutine(AnimationPanels(false));
     }
 
-    public void SetEnglishLanguage()
+    public void SetMenuTextLangue(int Langue) // 0 - FR et 1 - EN
     {
-        Debug.Log("EN");
-
-        ToggleFrançais.SetActive(false);
-        ToggleAnglais.SetActive(true);
-    }
-
-    public void SetFrenchLanguage()
-    {
-        Debug.Log("FR");
-
-        ToggleAnglais.SetActive(false);
-        ToggleFrançais.SetActive(true);
+        if(Langue == 0)
+            Message.text = SettingPanelReader.UIText.MenuFR[0] ;
+        if(Langue == 1)
+            Message.text = SettingPanelReader.UIText.MenuEN[0] ;
     }
 
 
-    IEnumerator WaitTransitionAnim()
-    {
-        yield return new WaitForSeconds(0.25f) ;
-        FadeImage.GetComponent<AnimationTransitionScene>().enabled = true ;
-        yield return new WaitForSeconds(2f) ;
-        FadeImage.SetActive(false) ;
-    }
 
 
     IEnumerator AnimationPanels(bool OpenSettings)
