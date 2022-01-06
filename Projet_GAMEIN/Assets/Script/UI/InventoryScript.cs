@@ -23,7 +23,6 @@ public class InventoryScript : MonoBehaviour
             PlayerScript = GameObject.Find("Player").GetComponent<PlayerScript>() ; 
             //SettingPanel = GameObject.Find("Settings Panel").GetComponent<RectTransform>() ;
         }
-
         SetInventoryCount();
 
     }
@@ -49,6 +48,7 @@ public class InventoryScript : MonoBehaviour
             {
                 PlayerScript.GetComponent<PlayerMovement>().EndActivity() ;                
             } else {
+                if(GameObject.Find("Dialogue Canvas") == null)    PlayerScript.GetComponent<PlayerMovement>().EndActivity() ;                
                 GameObject.Find("Player Backpack").GetComponent<PlayerDialogue>().ResumeDialogue();                   
             }
 
