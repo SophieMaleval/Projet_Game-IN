@@ -43,7 +43,6 @@ public class TableauController : MonoBehaviour
                 Board.SetActive(false);
                 pM.EndDialog();
             }
-
         }       
     }
 
@@ -60,7 +59,6 @@ public class TableauController : MonoBehaviour
             InteractingBoard = true;
             SpriteInput.SetActive(true);
         }
-
     }
 
     private void OnTriggerExit2D(Collider2D other)

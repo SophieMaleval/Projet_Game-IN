@@ -69,8 +69,7 @@ public class QuestInMenu : MonoBehaviour
         {
            if(tagged1.activeInHierarchy == true)
            {
-                tagged1.SetActive(false);
-                //ClosedArrow();
+                tagged1.SetActive(false);               
                 Debug.Log("Closed 1");
            }           
         }
@@ -79,7 +78,6 @@ public class QuestInMenu : MonoBehaviour
            if (tagged2.activeInHierarchy == true)
            {
                 tagged2.SetActive(false);
-                //ClosedArrow();
                 Debug.Log("Closed 2");
            }
         }
@@ -88,7 +86,6 @@ public class QuestInMenu : MonoBehaviour
             if (tagged3.activeInHierarchy == true)
             {
                 tagged3.SetActive(false);
-                //ClosedArrow();
                 Debug.Log("Closed 3");
             }
         }

@@ -11,7 +11,7 @@ public class QuestSys : MonoBehaviour
     /*[Header("Sans Quête")]
     public string roamingTitle;
     [TextArea] public string roamingGoal;*/
-    int lvlTracker;
+    public int lvlTracker = 0;
     int firstLvlStep, secondLvlStep, thirdLvlStep, fourthLvlStep = 0;
     
     [Header("Quest Manager")]
@@ -28,6 +28,7 @@ public class QuestSys : MonoBehaviour
     [HideInInspector]
     public int etape = 0;
     int sizeOfList;
+    public int globalSteps = 0;
 
     [Header("Animation")]
     public CanvasGroup animTitle;
@@ -44,6 +45,7 @@ public class QuestSys : MonoBehaviour
         quest[niveau].questCode = niveau; 
         animTitle = GameObject.Find("AnimTitle").GetComponent<CanvasGroup>();
         animContent = GameObject.Find("AnimContent").GetComponent<CanvasGroup>();
+        niveau = PlayerPrefs.GetInt("Niveau");
     }
 
     private void Update()
@@ -71,12 +73,14 @@ public class QuestSys : MonoBehaviour
 
     }
 
-    //gestion progression des niveaux
+    //gestion progression des niveaux en jeu
     public void Progression()
     {
+        globalSteps++;
         if (etape > quest[niveau].questGoal.Length - 2)
         {
             StartCoroutine(FadeAllOut());
+            lvlTracker++;
         }
 
         else
@@ -110,7 +114,7 @@ public class QuestSys : MonoBehaviour
 
     
     
-    // Tracking de la progression des niveaux
+    // Tracking de la progression des niveaux sur boutons
     
     public void LevelZero()
     {
@@ -167,7 +171,6 @@ public class QuestSys : MonoBehaviour
         Roaming();
         Debug.Log("Fade + va en balade");
         yield return new WaitForSeconds(duration);
-        //Roaming();
         FadeAllIn();
     }
 
@@ -177,7 +180,6 @@ public class QuestSys : MonoBehaviour
         Debug.Log("Fade le contenu out");
         yield return new WaitForSeconds(duration);
         NextStep();
-        //etape++;
         FadeContentIn();           
     }
 
@@ -186,12 +188,10 @@ public class QuestSys : MonoBehaviour
     {
         animContent.DOFade(1f, 0.3f);
         animTitle.DOFade(1f, 0.3f);
-        //yield return new WaitForSeconds(duration);
     }
 
     void FadeContentIn()
     {
         animContent.DOFade(1f, 0.3f);
-        //yield return new WaitForSeconds(duration);
     }
 }
