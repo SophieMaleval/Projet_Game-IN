@@ -90,13 +90,14 @@ public class SettingManager : MonoBehaviour
     public void SetFrenchLanguage() // PlayerPrefs("Langue") == 0 -> FR
     {
         PlayerPrefs.SetInt("Langue", 0);
+        SetSettingsTextLangue(0);
         ToggleAnglais.SetActive(false);
         ToggleFrançais.SetActive(true);
     }
     public void SetEnglishLanguage() // PlayerPrefs("Langue") == 1 -> EN
     {
         PlayerPrefs.SetInt("Langue", 1);
-
+        SetSettingsTextLangue(1);
         ToggleFrançais.SetActive(false);
         ToggleAnglais.SetActive(true);
     }

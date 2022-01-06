@@ -68,7 +68,7 @@ public class MenuManager : MonoBehaviour
     public void OpenSetting()
     {
         //OptionsPanel.SetActive(true);
-        StartCoroutine(AnimationPanels(true));
+        StartCoroutine(AnimationPanels(true)); 
     }
 
     public void CloseSetting()
