@@ -56,7 +56,7 @@ public class PlayerDialogue : MonoBehaviour
     public List<DialogueContainer> myDialogueAdhérentFR = new List<DialogueContainer>();
     public List<DialogueContainer> myDialogueAdhérentEN = new List<DialogueContainer>();
 
-
+ 
     public bool PlayerAsRead = false ;
     public int CurrentSelectQuestion = 0 ;
 

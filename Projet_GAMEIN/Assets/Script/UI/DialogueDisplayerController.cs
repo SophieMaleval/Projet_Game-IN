@@ -16,9 +16,9 @@ public class DialogueDisplayerController : MonoBehaviour
     public TextMeshProUGUI DialogueCanvas ;
     public TextMeshProUGUI NamePNJ ;
 
-   public DialogueContainer DialoguePNJ ;
-   /*[HideInInspector]*/ public DialogueContainer DialoguePNJ_FR ;
-   /*[HideInInspector]*/ public DialogueContainer DialoguePNJ_EN ;
+    [HideInInspector] public DialogueContainer DialoguePNJ ;
+    [HideInInspector] public DialogueContainer DialoguePNJ_FR ;
+    [HideInInspector] public DialogueContainer DialoguePNJ_EN ;
     [SerializeField] private PlayerDialogue PlayerDialogueManager;
 
     [HideInInspector] public int Question3IntDisplay = 3;
@@ -54,6 +54,7 @@ public class DialogueDisplayerController : MonoBehaviour
     [HideInInspector] public bool WeAreInChoice = false ;
     private float DelayAnimationText = 0.1f ;
 
+    [SerializeField] private RectTransform PassTextImg ;
     private bool TextAsCompletelyDisplay = true ;
     private bool TextOppeningDisplayCompletely = false ;
     private bool TextCloseDisplayCompletely = true ;
@@ -129,6 +130,30 @@ public class DialogueDisplayerController : MonoBehaviour
             DialogueLanguageChangeDuringDialogue();    
         }
 
+
+        if(TextAsCompletelyDisplay && PassTextImg.gameObject.activeSelf == false)
+        {
+            PassTextImg.gameObject.SetActive(true);
+            StopCoroutine(AnimationPassText());
+            StartCoroutine(AnimationPassText());
+        }
+        if(!TextAsCompletelyDisplay && PassTextImg.gameObject.activeSelf == true) 
+        {
+            PassTextImg.gameObject.SetActive(false);
+            StopCoroutine(AnimationPassText());
+            StartCoroutine(AnimationPassText());
+        }
+    }
+
+
+
+    IEnumerator AnimationPassText()
+    {
+        PassTextImg.anchoredPosition = new Vector2(PassTextImg.anchoredPosition.x, PassTextImg.anchoredPosition.y + 2.5f) ;
+        yield return new WaitForSeconds(0.5f);
+        PassTextImg.anchoredPosition =new Vector2(PassTextImg.anchoredPosition.x, PassTextImg.anchoredPosition.y - 2.5f);
+        yield return new WaitForSeconds(0.5f);
+        StartCoroutine(AnimationPassText());
     }
 
 
@@ -192,9 +217,9 @@ public class DialogueDisplayerController : MonoBehaviour
         if(!QuestionAsRead)
         {
             BoxQuestion.transform.GetChild(ChildNum).gameObject.SetActive(true) ;
-            BoxQuestion.transform.GetChild(ChildNum).GetComponent<TextMeshProUGUI>().text = DialogueText ;            
+            BoxQuestion.transform.GetChild(ChildNum).GetComponentInChildren<TextMeshProUGUI>().text = DialogueText ;            
         } else {
-            BoxQuestion.transform.GetChild(ChildNum).GetComponent<TextMeshProUGUI>().text = " " ;                   
+            BoxQuestion.transform.GetChild(ChildNum).GetComponentInChildren<TextMeshProUGUI>().text = " " ;                   
             BoxQuestion.transform.GetChild(ChildNum).gameObject.SetActive(false) ;
         }
     }
@@ -375,9 +400,9 @@ public class DialogueDisplayerController : MonoBehaviour
 
                 if(BQC == CurrentDialoguePlayerChoice)
                 {        
-                   QuestionCurrent.GetComponent<TextMeshProUGUI>().color = QuestionCurrent.colors.highlightedColor;
+                    QuestionCurrent.transform.GetChild(0).GetComponent<Image>().color = QuestionCurrent.colors.highlightedColor;
                 } else {
-                    QuestionCurrent.GetComponent<TextMeshProUGUI>().color = QuestionCurrent.colors.normalColor;    
+                    QuestionCurrent.transform.GetChild(0).GetComponent<Image>().color = QuestionCurrent.colors.normalColor;    
                 }
             }                
         } else {
@@ -385,7 +410,7 @@ public class DialogueDisplayerController : MonoBehaviour
             {
                 Button QuestionCurrent = BoxQuestion.transform.GetChild(BQC).GetComponent<Button>() ;                
                 QuestionCurrent.interactable = true ; 
-                QuestionCurrent.GetComponent<TextMeshProUGUI>().color = QuestionCurrent.colors.disabledColor;    
+                QuestionCurrent.transform.GetChild(0).GetComponent<Image>().color = QuestionCurrent.colors.disabledColor;    
             }
         }
 

@@ -30,7 +30,7 @@ public class PlayerScript : MonoBehaviour
 
 
     private void OnEnable() { PlayerActionControllers.Enable(); }
-    private void OnDisable() { PlayerActionControllers.Disable(); }
+    private void OnDisable() { PlayerActionControllers.Disable(); } 
 
     private void Awake()
     {

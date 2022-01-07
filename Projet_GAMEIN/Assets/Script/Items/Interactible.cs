@@ -71,7 +71,7 @@ public class Interactible : MonoBehaviour
             PlayerScript.SwitchInputSprite();
         }
     }
-
+ 
     public void PlayerCanCollectThisObject(bool Can)
     {
         if(!Can)
