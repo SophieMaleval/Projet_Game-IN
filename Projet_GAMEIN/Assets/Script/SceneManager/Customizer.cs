@@ -91,6 +91,7 @@ private string WhoIsIt = "§ est ¤ !" ;
             InventoryUIInstatiate.transform.SetParent(CanvasInstatiate.transform);
             InventoryUIInstatiate.transform.SetSiblingIndex(1);
             InventoryUIInstatiate.name = "Inventory" ;
+            InventoryUIInstatiate.GetComponent<InventoryScript>().PlayerScript = PlayerPersonnality ;
 
             GameObject.Find("Player Backpack").GetComponent<CSVReader>().QuestManager = InventoryUIInstatiate.GetComponentInChildren<QuestSys>() ;
             
