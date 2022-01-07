@@ -72,16 +72,16 @@ public class SettingManager : MonoBehaviour
 
 
     public void SetVolumeMusique(float sliderValue)
-    {    MyAudioMixer.SetFloat("Musique",Mathf.Log10(sliderValue) * 20 );       }
+    {    MyAudioMixer.SetFloat("Musique",Mathf.Log10(sliderValue) * 40 );       }
     
     public void SetVolumeSFX(float sliderValue)
-    {    MyAudioMixer.SetFloat("SFX",Mathf.Log10(sliderValue) * 20 );    }
+    {    MyAudioMixer.SetFloat("SFX",Mathf.Log10(sliderValue) * 40 );    }
 
     public void SetVolumeGlobal(float sliderValue)
     {
-        MyAudioMixer.SetFloat("SFX",Mathf.Log10(sliderValue) * 20 );
-        MyAudioMixer.SetFloat("Ambient_Menu",Mathf.Log10(sliderValue) * 20 );
-        MyAudioMixer.SetFloat("Musique",Mathf.Log10(sliderValue) * 20 );
+        MyAudioMixer.SetFloat("SFX",Mathf.Log10(sliderValue) * 40 );
+        MyAudioMixer.SetFloat("Ambient_Menu",Mathf.Log10(sliderValue) * 40 );
+        MyAudioMixer.SetFloat("Musique",Mathf.Log10(sliderValue) * 40 );
     }
 
 
