@@ -52,7 +52,7 @@ public class BPFManager : MonoBehaviour
         {
             Fade.DOFade(1, 1f) ;
             yield return new WaitForSeconds(1.5f);
-            Player.GetComponent<PlayerProvenance>().SetAllBoolToFalse() ;             Player.GetComponent<PlayerProvenance>().ProviensBPF = true ; 
+            Player.GetComponent<PlayerProvenance>().SetAllBoolToFalse() ;      //       Player.GetComponent<PlayerProvenance>().ProviensBPF = true ; 
             SceneManager.LoadScene("Main") ;
         }
     }

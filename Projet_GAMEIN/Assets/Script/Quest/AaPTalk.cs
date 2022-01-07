@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class ActiveAsProg : MonoBehaviour
+public class AaPTalk : MonoBehaviour
 {
     //active et desactive des objets en fonction de la progression du joueur
     [HideInInspector]
@@ -16,16 +16,15 @@ public class ActiveAsProg : MonoBehaviour
     public int etapeDeQuete;
     //public int level; // à titre indicatif uniquement
     //public int step; // à  titre indicatif uniquement
-    public Interactible interactible;
+    public TalkQuest talkQuest;
     Collider2D detecteur;
     bool gathered = false;
-    public TextMeshProUGUI ecrits;
 
     void Awake()
     {
         questSys = GameObject.Find("QuestManager").GetComponent<QuestSys>();
         checker = GameObject.Find("Inventory").GetComponent<Checker>();
-        interactible = GetComponent<Interactible>(); //la composante doit, si déterminante pour une quête, être inactive sur l'objet
+        talkQuest = GetComponent<TalkQuest>(); //la composante doit, si déterminante pour une quête, être inactive sur l'objet
         detecteur = GetComponent<Collider2D>();
 
     }
@@ -35,7 +34,7 @@ public class ActiveAsProg : MonoBehaviour
 
         if (questSys.niveau == numeroDeQuete && questSys.etape + 1 == etapeDeQuete)
         {
-            interactible.enabled = true;
+            talkQuest.enabled = true;
             detecteur.enabled = true;
             //StrikeThrough();
         }
@@ -47,8 +46,8 @@ public class ActiveAsProg : MonoBehaviour
         {
             GetTitles();
         }
-            
-        
+
+
     }
 
     public void GetTitles()
@@ -59,6 +58,6 @@ public class ActiveAsProg : MonoBehaviour
             questSync = GameObject.Find("Quest" + numeroDeQuete).GetComponent<QuestSync>();
             //ecrits.text = questSys.quest[numeroDeQuete].questGoal[etapeDeQuete - 1];
             gathered = true;
-        }     
+        }
     }
 }

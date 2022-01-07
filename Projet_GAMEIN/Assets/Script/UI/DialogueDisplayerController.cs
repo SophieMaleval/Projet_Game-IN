@@ -24,7 +24,7 @@ public class DialogueDisplayerController : MonoBehaviour
     [HideInInspector] public int Question3IntDisplay = 3;
     public GameObject BoxQuestion ;
 
-    
+
     public List<string> QuestionDisponible = new List<string>() ;
         [HideInInspector]  public List<string> QuestionDisponible_FR = new List<string>() ;
         [HideInInspector]  public List<string> QuestionDisponible_EN = new List<string>() ;
@@ -65,10 +65,6 @@ public class DialogueDisplayerController : MonoBehaviour
         public List<int> AnswerForQuestion ; 
     }
 
-    /*private void OnEnable() 
-    {
-        ResetAllValue();
-    }*/
     public void ResetAllValue()
     {
 
@@ -185,7 +181,7 @@ public class DialogueDisplayerController : MonoBehaviour
 
     public void StateDiscussion()
     {
-        if(!GameObject.Find("Inventory").GetComponent<InventoryScript>().InventoryPanel.activeSelf)
+        if(!/*GameObject.Find("Inventory").GetComponent<InventoryScript>()*/PlayerDialogueManager.transform.GetComponentInParent<PlayerScript>().InventoryUIIndestructible.GetComponent<InventoryScript>().InventoryPanel.activeSelf)
         {
             CanChangeCurrentDialogue = true ;
 

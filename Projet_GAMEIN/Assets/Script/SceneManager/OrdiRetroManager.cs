@@ -55,7 +55,7 @@ public class OrdiRetroManager : MonoBehaviour
         {
             Fade.DOFade(1, 1f) ;
             yield return new WaitForSeconds(1.5f);
-            Player.GetComponent<PlayerProvenance>().SetAllBoolToFalse() ;             Player.GetComponent<PlayerProvenance>().ProviensOrdiRetro = true ; 
+            Player.GetComponent<PlayerProvenance>().SetAllBoolToFalse() ;        //     Player.GetComponent<PlayerProvenance>().ProviensOrdiRetro = true ; 
             SceneManager.LoadScene("Main") ;
         }
     }

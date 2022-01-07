@@ -1599,12 +1599,12 @@ GameObject:
   m_Component:
   - component: {fileID: 7737863857922719343}
   m_Layer: 5
-  m_Name: Inventory Panel
+  m_Name: ---- Inventory Panel ----
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7737863857922719343
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1870,6 +1870,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7737863858010403449}
   - component: {fileID: 7737863858010403450}
+  - component: {fileID: 1903294781}
   m_Layer: 5
   m_Name: Inventory
   m_TagString: Untagged
@@ -1918,6 +1919,20 @@ MonoBehaviour:
   DisplayerInventory: {fileID: 7737863859796066874}
   InventoryDisplayer: []
   SettingPanel: {fileID: 7737863859702413702}
+--- !u!114 &1903294781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7737863858010403448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 241582f2aff368d42a37abff7ddcc678, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectToCheck: {fileID: 7737863857922719342}
+  isOn: 0
 --- !u!1 &7737863858023964258
 GameObject:
   m_ObjectHideFlags: 0
@@ -3346,8 +3361,8 @@ GameObject:
   - component: {fileID: 7737863858285073234}
   - component: {fileID: 7737863858285073233}
   m_Layer: 5
-  m_Name: Q3Step2
-  m_TagString: Quete3
+  m_Name: Q2Step2
+  m_TagString: Quete2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3367,9 +3382,9 @@ RectTransform:
   m_Father: {fileID: 7737863858216940960}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 50, y: -255}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 410, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7737863858285073234
@@ -3723,8 +3738,8 @@ GameObject:
   - component: {fileID: 7737863858361419766}
   - component: {fileID: 7737863858361419765}
   m_Layer: 5
-  m_Name: Q2Step3
-  m_TagString: Quete2
+  m_Name: Q1Step3
+  m_TagString: Quete1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3744,9 +3759,9 @@ RectTransform:
   m_Father: {fileID: 7737863858216940960}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 50, y: -165}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 410, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7737863858361419766
@@ -5041,12 +5056,12 @@ GameObject:
   - component: {fileID: 7737863858565494921}
   - component: {fileID: 7737863858565494920}
   m_Layer: 5
-  m_Name: Q4Step1
-  m_TagString: Quete4
+  m_Name: Q3Step1
+  m_TagString: Quete3
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7737863858565494927
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5062,9 +5077,9 @@ RectTransform:
   m_Father: {fileID: 7737863858216940960}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 50, y: -315}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 410, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7737863858565494921
@@ -5763,10 +5778,10 @@ RectTransform:
   m_Father: {fileID: 7737863859796066875}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 439.9, y: -100}
-  m_SizeDelta: {x: 71.4, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7737863858737079165
 CanvasRenderer:
@@ -6376,8 +6391,8 @@ GameObject:
   - component: {fileID: 7737863858909239040}
   - component: {fileID: 7737863858909239047}
   m_Layer: 5
-  m_Name: Q3Step1
-  m_TagString: Quete3
+  m_Name: Q2Step1
+  m_TagString: Quete2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6397,9 +6412,9 @@ RectTransform:
   m_Father: {fileID: 7737863858216940960}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 50, y: -225}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 410, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7737863858909239040
@@ -6475,10 +6490,10 @@ RectTransform:
   m_Father: {fileID: 7737863859796066875}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 75.7, y: -100}
-  m_SizeDelta: {x: 71.4, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 75.70001, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7737863858920132381
 CanvasRenderer:
@@ -6974,8 +6989,8 @@ RectTransform:
   m_Father: {fileID: 7737863858602569940}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -7261,7 +7276,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -7315,8 +7330,8 @@ GameObject:
   - component: {fileID: 7737863859045088810}
   - component: {fileID: 7737863859045088809}
   m_Layer: 5
-  m_Name: Q1Step1
-  m_TagString: Quete1
+  m_Name: Q0Step1
+  m_TagString: Quete0
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7336,9 +7351,9 @@ RectTransform:
   m_Father: {fileID: 7737863858216940960}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 50, y: -45}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 410, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7737863859045088810
@@ -7412,7 +7427,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -7466,12 +7481,12 @@ GameObject:
   - component: {fileID: 7737863859082591870}
   - component: {fileID: 7737863859082591869}
   m_Layer: 5
-  m_Name: Q4Step2
-  m_TagString: Quete4
+  m_Name: Q3Step2
+  m_TagString: Quete3
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7737863859082591868
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7487,9 +7502,9 @@ RectTransform:
   m_Father: {fileID: 7737863858216940960}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 50, y: -345}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 410, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7737863859082591870
@@ -7542,8 +7557,8 @@ GameObject:
   - component: {fileID: 7737863859103971409}
   - component: {fileID: 7737863859103971408}
   m_Layer: 5
-  m_Name: Q2Step1
-  m_TagString: Quete2
+  m_Name: Q1Step1
+  m_TagString: Quete1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7563,9 +7578,9 @@ RectTransform:
   m_Father: {fileID: 7737863858216940960}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 50, y: -105}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 410, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7737863859103971409
@@ -7621,12 +7636,12 @@ GameObject:
   - component: {fileID: 7737863859111588274}
   - component: {fileID: 7737863859111588275}
   m_Layer: 5
-  m_Name: Quest4
+  m_Name: Quest3
   m_TagString: QuestTitle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7737863859111588278
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7643,9 +7658,9 @@ RectTransform:
   m_Father: {fileID: 7737863858216940960}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 50, y: -285}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 430, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7737863859111588272
@@ -7702,13 +7717,13 @@ MonoBehaviour:
   fleche: {fileID: 7737863859850780371}
   unclickedFleche: {fileID: 21300000, guid: e759203807631c84f8abc65e289e88a7, type: 3}
   droppedFleche: {fileID: 21300000, guid: 6ed3580e813c2d24dbb8ac7111d53e26, type: 3}
-  steps: Quete4
+  steps: Quete3
   otherQ1: []
   otherQ2: []
   otherQ3: []
-  list1: Quete1
-  list2: Quete2
-  list3: Quete3
+  list1: Quete0
+  list2: Quete1
+  list3: Quete2
 --- !u!114 &7737863859111588274
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7812,6 +7827,30 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 7737863859111588275}
+        m_TargetAssemblyTypeName: QuestSync, Assembly-CSharp
+        m_MethodName: QuestChanged
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 7083739567918470206}
+        m_TargetAssemblyTypeName: QuestSys, Assembly-CSharp
+        m_MethodName: LevelThree
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &7737863859111588275
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7833,7 +7872,7 @@ MonoBehaviour:
   index: 3
   lvlID: 3
   currentStep: 0
-  descName: Quete4
+  descName: Quete3
   steps: []
   numberOfGoals: 0
 --- !u!1 &7737863859137287306
@@ -8005,8 +8044,8 @@ RectTransform:
   m_Father: {fileID: 7737863858051010176}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -8083,10 +8122,10 @@ RectTransform:
   m_Father: {fileID: 7737863859796066875}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 804.10004, y: -100}
-  m_SizeDelta: {x: 71.4, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7737863859150922740
 CanvasRenderer:
@@ -8289,8 +8328,8 @@ GameObject:
   - component: {fileID: 7737863859209894224}
   - component: {fileID: 7737863859209894231}
   m_Layer: 5
-  m_Name: Q2Step2
-  m_TagString: Quete2
+  m_Name: Q1Step2
+  m_TagString: Quete1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8310,9 +8349,9 @@ RectTransform:
   m_Father: {fileID: 7737863858216940960}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 50, y: -135}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 410, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7737863859209894224
@@ -8388,10 +8427,10 @@ RectTransform:
   m_Father: {fileID: 7737863859796066875}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 925.50006, y: -100}
-  m_SizeDelta: {x: 71.4, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7737863859221266907
 CanvasRenderer:
@@ -8869,7 +8908,7 @@ GameObject:
   - component: {fileID: 7737863859358611424}
   - component: {fileID: 7737863859358611425}
   m_Layer: 5
-  m_Name: Quest2
+  m_Name: Quest1
   m_TagString: QuestTitle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8891,9 +8930,9 @@ RectTransform:
   m_Father: {fileID: 7737863858216940960}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 50, y: -75}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 430, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7737863859358611430
@@ -8950,13 +8989,13 @@ MonoBehaviour:
   fleche: {fileID: 7737863858360397993}
   unclickedFleche: {fileID: 21300000, guid: e759203807631c84f8abc65e289e88a7, type: 3}
   droppedFleche: {fileID: 21300000, guid: 6ed3580e813c2d24dbb8ac7111d53e26, type: 3}
-  steps: Quete2
+  steps: Quete1
   otherQ1: []
   otherQ2: []
   otherQ3: []
-  list1: Quete1
-  list2: Quete3
-  list3: Quete4
+  list1: Quete0
+  list2: Quete2
+  list3: Quete3
 --- !u!114 &7737863859358611424
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9060,6 +9099,30 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 7737863859358611425}
+        m_TargetAssemblyTypeName: QuestSync, Assembly-CSharp
+        m_MethodName: QuestChanged
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 7083739567918470206}
+        m_TargetAssemblyTypeName: QuestSys, Assembly-CSharp
+        m_MethodName: LevelOne
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &7737863859358611425
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9072,7 +9135,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cf09c818de7faf43b5b4d07460d1275, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  questSys: {fileID: 7083739567918470206}
+  questSys: {fileID: 0}
   Aap: {fileID: 0}
   title: {fileID: 0}
   description:
@@ -9082,7 +9145,7 @@ MonoBehaviour:
   index: 1
   lvlID: 1
   currentStep: 0
-  descName: Quete2
+  descName: Quete1
   steps: []
   numberOfGoals: 0
 --- !u!1 &7737863859409018599
@@ -9312,7 +9375,7 @@ GameObject:
   - component: {fileID: 7737863859424326118}
   - component: {fileID: 7737863859424326114}
   m_Layer: 5
-  m_Name: Quest1
+  m_Name: Quest0
   m_TagString: QuestTitle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9334,9 +9397,9 @@ RectTransform:
   m_Father: {fileID: 7737863858216940960}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 50, y: -15}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 430, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7737863859424326113
@@ -9480,6 +9543,30 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 7737863859424326114}
+        m_TargetAssemblyTypeName: QuestSync, Assembly-CSharp
+        m_MethodName: QuestChanged
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 7083739567918470206}
+        m_TargetAssemblyTypeName: QuestSys, Assembly-CSharp
+        m_MethodName: LevelZero
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &7737863859424326118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9496,13 +9583,13 @@ MonoBehaviour:
   fleche: {fileID: 7737863858295771824}
   unclickedFleche: {fileID: 21300000, guid: e759203807631c84f8abc65e289e88a7, type: 3}
   droppedFleche: {fileID: 21300000, guid: 6ed3580e813c2d24dbb8ac7111d53e26, type: 3}
-  steps: Quete1
+  steps: Quete0
   otherQ1: []
   otherQ2: []
   otherQ3: []
-  list1: Quete2
-  list2: Quete3
-  list3: Quete4
+  list1: Quete1
+  list2: Quete2
+  list3: Quete3
 --- !u!114 &7737863859424326114
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9523,7 +9610,7 @@ MonoBehaviour:
   index: 0
   lvlID: 0
   currentStep: 0
-  descName: Quete1
+  descName: Quete0
   steps: []
   numberOfGoals: 0
 --- !u!1 &7737863859430841493
@@ -10394,10 +10481,10 @@ RectTransform:
   m_Father: {fileID: 7737863859796066875}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1046.9, y: -100}
-  m_SizeDelta: {x: 71.4, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7737863859523062040
 CanvasRenderer:
@@ -10472,10 +10559,10 @@ RectTransform:
   m_Father: {fileID: 7737863859796066875}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 682.7, y: -100}
-  m_SizeDelta: {x: 71.4, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7737863859558964589
 CanvasRenderer:
@@ -10548,7 +10635,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -10622,8 +10709,8 @@ RectTransform:
   m_Father: {fileID: 7737863859514104567}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -10909,10 +10996,10 @@ RectTransform:
   m_Father: {fileID: 7737863859796066875}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1168.3, y: -100}
-  m_SizeDelta: {x: 71.4, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7737863859646637134
 CanvasRenderer:
@@ -10967,7 +11054,7 @@ GameObject:
   - component: {fileID: 7737863859656559104}
   - component: {fileID: 7737863859656559105}
   m_Layer: 5
-  m_Name: Quest3
+  m_Name: Quest2
   m_TagString: QuestTitle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10989,9 +11076,9 @@ RectTransform:
   m_Father: {fileID: 7737863858216940960}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 50, y: -195}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 430, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7737863859656559110
@@ -11048,13 +11135,13 @@ MonoBehaviour:
   fleche: {fileID: 7737863857796803254}
   unclickedFleche: {fileID: 21300000, guid: e759203807631c84f8abc65e289e88a7, type: 3}
   droppedFleche: {fileID: 21300000, guid: 6ed3580e813c2d24dbb8ac7111d53e26, type: 3}
-  steps: Quete3
+  steps: Quete2
   otherQ1: []
   otherQ2: []
   otherQ3: []
-  list1: Quete1
-  list2: Quete2
-  list3: Quete4
+  list1: Quete0
+  list2: Quete1
+  list3: Quete3
 --- !u!114 &7737863859656559104
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11158,6 +11245,30 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 7737863859656559105}
+        m_TargetAssemblyTypeName: QuestSync, Assembly-CSharp
+        m_MethodName: QuestChanged
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 7083739567918470206}
+        m_TargetAssemblyTypeName: QuestSys, Assembly-CSharp
+        m_MethodName: LevelTwo
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &7737863859656559105
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11179,7 +11290,7 @@ MonoBehaviour:
   index: 2
   lvlID: 2
   currentStep: 0
-  descName: Quete3
+  descName: Quete2
   steps:
   - 
   - 
@@ -11219,10 +11330,10 @@ RectTransform:
   m_Father: {fileID: 7737863859796066875}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 318.5, y: -100}
-  m_SizeDelta: {x: 71.4, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7737863859671635624
 CanvasRenderer:
@@ -12338,10 +12449,10 @@ RectTransform:
   m_Father: {fileID: 7737863859796066875}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 197.09999, y: -100}
-  m_SizeDelta: {x: 71.4, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 197.09998, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7737863859797675325
 CanvasRenderer:
@@ -12492,10 +12603,10 @@ RectTransform:
   m_Father: {fileID: 7737863859796066875}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 561.3, y: -100}
-  m_SizeDelta: {x: 71.4, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7737863859828302736
 CanvasRenderer:
@@ -13101,8 +13212,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 660927114713811590, guid: 8bb44769ecc95d14080f606e5e3b8946,
         type: 3}
+      propertyPath: quest.Array.data[0].questGoal.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 660927114713811590, guid: 8bb44769ecc95d14080f606e5e3b8946,
+        type: 3}
       propertyPath: quest.Array.data[1].questGoal.Array.size
-      value: 3
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 660927114713811590, guid: 8bb44769ecc95d14080f606e5e3b8946,
+        type: 3}
+      propertyPath: quest.Array.data[2].questGoal.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 660927114713811590, guid: 8bb44769ecc95d14080f606e5e3b8946,
+        type: 3}
+      propertyPath: quest.Array.data[3].questGoal.Array.size
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 660927114713811590, guid: 8bb44769ecc95d14080f606e5e3b8946,
         type: 3}
