@@ -22,8 +22,9 @@ public class SceneManagerFeature : MonoBehaviour
             PM.GetComponent<PlayerScript>().CanvasIndestrucitble.GetComponent<Canvas>().worldCamera = Camera.main;
         
             PM.enabled = true ;
-            PM.GetComponent<PlayerScript>().InventoryUIIndestructible.GetComponent<InventoryScript>().SwitchToggleInventoryDisplay();
-        }
+            
+      
+        } 
     }
 
     void SetPositionOnLoad()
@@ -42,6 +43,7 @@ public class SceneManagerFeature : MonoBehaviour
     private void Start() 
     {
         StartCoroutine(WaitTransitionAnim());
+        //PM.GetComponent<PlayerScript>().InventoryUIIndestructible.GetComponent<InventoryScript>().SwitchToggleInventoryDisplay();
     }
 
 
