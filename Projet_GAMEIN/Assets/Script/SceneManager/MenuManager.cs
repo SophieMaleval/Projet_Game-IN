@@ -51,6 +51,7 @@ public class MenuManager : MonoBehaviour
         yield return new WaitForSeconds(0.05f) ;
         SettingPanel.gameObject.SetActive(false) ;
         yield return new WaitForSeconds(0.2f) ;
+        
         SetMenuTextLangue(0);
         FadeImage.GetComponent<AnimationTransitionScene>().enabled = true ;
         yield return new WaitForSeconds(2f) ;
