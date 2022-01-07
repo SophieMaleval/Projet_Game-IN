@@ -54,6 +54,7 @@ public class DialogueDisplayerController : MonoBehaviour
     [HideInInspector] public bool WeAreInChoice = false ;
     private float DelayAnimationText = 0.1f ;
 
+    [SerializeField] private RectTransform PassTextImg ;
     private bool TextAsCompletelyDisplay = true ;
     private bool TextOppeningDisplayCompletely = false ;
     private bool TextCloseDisplayCompletely = true ;
@@ -127,6 +128,14 @@ public class DialogueDisplayerController : MonoBehaviour
             QuestionDisponible = QuestionDisponible_EN ;   
 
             DialogueLanguageChangeDuringDialogue();    
+        }
+
+
+        if(TextAsCompletelyDisplay)
+        {
+            PassTextImg.gameObject.SetActive(true);
+        } else {
+            PassTextImg.gameObject.SetActive(false);
         }
 
     }

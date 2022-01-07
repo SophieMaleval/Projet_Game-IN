@@ -150,6 +150,7 @@ public class PNJDialogue : MonoBehaviour
         if (other.tag == ("Player"))
         {
             PlayerAround = true ;
+            PlayerScript.SwitchInputSprite();
         }      
     }
 
@@ -158,11 +159,15 @@ public class PNJDialogue : MonoBehaviour
         if (other.tag == ("Player"))
         {
             PlayerAround = false ;
+            PlayerScript.SwitchInputSprite();
         }      
     }
 
     void Update()
     {
+        if(PlayerScript.gameObject.transform.position.x < transform.position.x) PlayerScript.InputSpritePos(false);
+        if(PlayerScript.gameObject.transform.position.x > transform.position.x) PlayerScript.InputSpritePos(true);
+
         if(PlayerAround)
         {
             if(PlayerScript.PlayerAsInterract && !PlayerScript.InDiscussion)
