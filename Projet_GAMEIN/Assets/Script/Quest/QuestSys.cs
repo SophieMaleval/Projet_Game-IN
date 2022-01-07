@@ -19,8 +19,8 @@ public class QuestSys : MonoBehaviour
     public TextMeshProUGUI titleEffect;
     public TextMeshProUGUI contenu;
 
-  /*  [HideInInspector]*/ public List<QuestCt> QuestFR = new List<QuestCt>() ;
-  /*  [HideInInspector]*/ public List<QuestCt> QuestEN = new List<QuestCt>() ;
+    [HideInInspector] public List<QuestCt> QuestFR = new List<QuestCt>() ;
+    [HideInInspector] public List<QuestCt> QuestEN = new List<QuestCt>() ;
     public List<QuestCt> quest = new List<QuestCt>();
     
     [HideInInspector]
