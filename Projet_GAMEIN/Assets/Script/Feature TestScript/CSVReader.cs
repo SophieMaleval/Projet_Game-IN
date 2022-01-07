@@ -173,10 +173,11 @@ public class CSVReader : MonoBehaviour
 
                 NewQuestCt.intitule = Data[0] ; 
                 NewQuestCt.questTitle = Data[1] ;
+                NewQuestCt.QuestGoalLength = int.Parse(Data[2]) ; 
 
-                for (int D = 2; D < Data.Length; D++)
+                for (int D = 3; D < Data.Length; D++)
                 {
-                    if(Data[D] != "") NewQuestCt.questGoal.Add(Data[D]) ;
+                    if(D < (NewQuestCt.QuestGoalLength + 3)) NewQuestCt.questGoal.Add(Data[D]) ;
                 }
 
 
