@@ -6,7 +6,7 @@ public class TalkQuest : MonoBehaviour
 {
     public QuestSys questSys;
     [SerializeField] private PlayerScript PlayerScript;
-    bool playerAround;
+    public bool playerAround;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -23,6 +23,7 @@ public class TalkQuest : MonoBehaviour
             if (PlayerScript.CanCollectObject && PlayerScript.PlayerAsInterract)
             {
                 PlayerScript.PlayerAsInterract = false;
+                Debug.Log("tu as cliqué mon reuf");
                 TalkedTo();
             }
             else
@@ -55,6 +56,7 @@ public class TalkQuest : MonoBehaviour
         if (other.tag == ("Player"))
         {
             PlayerCanCollectThisObject(true);
+            Debug.Log("i'm in");
         }
     }
 
@@ -63,6 +65,7 @@ public class TalkQuest : MonoBehaviour
         if (other.tag == ("Player"))
         {
             PlayerCanCollectThisObject(false);
+            Debug.Log("i'm out");
         }
     }
 }

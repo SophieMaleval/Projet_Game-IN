@@ -563,10 +563,10 @@ RectTransform:
   m_Children:
   - {fileID: 1090450676}
   - {fileID: 1022225300}
+  - {fileID: 1663169770}
   - {fileID: 1690706748}
   - {fileID: 1956762061}
   - {fileID: 1804905929}
-  - {fileID: 1663169770}
   - {fileID: 722620267}
   m_Father: {fileID: 1386093852}
   m_RootOrder: 0
@@ -5636,10 +5636,11 @@ GameObject:
   m_Component:
   - component: {fileID: 1056246518}
   - component: {fileID: 1056246517}
-  - component: {fileID: 1056246519}
   - component: {fileID: 1056246520}
   - component: {fileID: 1056246522}
   - component: {fileID: 1056246521}
+  - component: {fileID: 1056246519}
+  - component: {fileID: 1056246523}
   m_Layer: 0
   m_Name: Escalier
   m_TagString: Untagged
@@ -5726,7 +5727,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.023084551, y: -0.10212523}
+  m_Offset: {x: -0.020825684, y: 0.61558723}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5433513, y: 0.7638077}
@@ -5737,7 +5738,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.5887535, y: 1.0842456}
+  m_Size: {x: 0.57685137, y: 0.33862805}
   m_EdgeRadius: 0
 --- !u!114 &1056246520
 MonoBehaviour:
@@ -5798,6 +5799,22 @@ EdgeCollider2D:
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0
+--- !u!58 &1056246523
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1056246516}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.037932172, y: -0.19059211}
+  serializedVersion: 2
+  m_Radius: 0.18047854
 --- !u!1 &1074626312
 GameObject:
   m_ObjectHideFlags: 0
@@ -9250,7 +9267,7 @@ RectTransform:
   - {fileID: 1868594480}
   - {fileID: 1720764043}
   m_Father: {fileID: 114557872}
-  m_RootOrder: 5
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 6.633}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -9410,7 +9427,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 114557872}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -1.477}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -9842,7 +9859,7 @@ RectTransform:
   - {fileID: 1426801583}
   - {fileID: 1481082596}
   m_Father: {fileID: 114557872}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0.619}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -10874,7 +10891,7 @@ RectTransform:
   - {fileID: 186838853}
   - {fileID: 1029879278}
   m_Father: {fileID: 114557872}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -2.5}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
