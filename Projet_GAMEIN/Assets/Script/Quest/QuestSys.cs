@@ -30,7 +30,7 @@ public class QuestSys : MonoBehaviour
     
     [HideInInspector]
     public int etape = 0;
-    int sizeOfList;
+    public int sizeOfList;
     public int globalSteps = 0;
 
     [Header("Animation")]
@@ -77,7 +77,6 @@ public class QuestSys : MonoBehaviour
         {
             thirdLvlStep = etape;
         }
-
     }
 
     private void SetLanguage() 

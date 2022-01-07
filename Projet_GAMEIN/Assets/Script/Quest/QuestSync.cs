@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class QuestSync : MonoBehaviour
 {
@@ -24,27 +25,6 @@ public class QuestSync : MonoBehaviour
     }
     public void SynchroniseText()
     {
-        NielsSync();
-        return;
-        title = this.gameObject;       
-        if (title.activeInHierarchy == true)
-        {
-            title.GetComponentInChildren<TextMeshProUGUI>().text = questSys.quest[index].questTitle;
-            numberOfGoals = questSys.quest[index].questGoal.Count;           
-            for (int i = 0; i < numberOfGoals; i++)
-            {
-                description[i].text = questSys.quest[index].questGoal[i];
-               if (index <= questSys.lvlTracker) //&& questSys.etape > 1)
-               {
-                    //description[questSys.etape - 1].fontStyle = FontStyles.Strikethrough;
-                    description[i].fontStyle = FontStyles.Strikethrough;
-               }      
-            }            
-        }
-    }
-
-    void NielsSync()
-    {
         title = this.gameObject;
         if (title.activeInHierarchy == true)
         {
@@ -54,11 +34,12 @@ public class QuestSync : MonoBehaviour
             {
                 description[i].text = questSys.quest[index].questGoal[i];
 
-                if(index < questSys.lvlTracker)
+                if (index < questSys.lvlTracker)
                 {
                     description[i].fontStyle = FontStyles.Strikethrough;
+                    title.GetComponent<Button>().interactable = false;
                 }
-                else if(index == questSys.lvlTracker &&  i < questSys.etape)
+                else if (index == questSys.lvlTracker && i < questSys.etape)
                 {
                     description[i].fontStyle = FontStyles.Strikethrough;
                 }
@@ -66,10 +47,7 @@ public class QuestSync : MonoBehaviour
                 {
                     description[i].fontStyle = FontStyles.Normal;
                 }
-
             }
-              
-            
         }
     }
 
@@ -82,16 +60,5 @@ public class QuestSync : MonoBehaviour
     {
         questSys.niveau = lvlID;
     }
-
-    
-    /*public void StrikeThrough()
-    {               
-               if (i >= etapeDeQuete)
-               {
-                    ecrits.fontStyle = FontStyles.Strikethrough;
-              }
-    }
-
-    }*/
     
 }
