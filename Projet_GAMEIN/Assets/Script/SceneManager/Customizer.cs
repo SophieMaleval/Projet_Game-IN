@@ -130,6 +130,9 @@ private string WhoIsIt = "§ est ¤ !" ;
 
             PlayerPersonnality.CanvasIndestrucitble.SetActive(false);
         }
+
+        PlayerPersonnality.GetComponentInChildren<PlayerProvenance>().SetAllBoolToFalse();
+        PlayerPersonnality.GetComponentInChildren<PlayerProvenance>().ProviensCharacterCustomer = true;
     }
     
     private void Start() 
@@ -441,7 +444,10 @@ private string WhoIsIt = "§ est ¤ !" ;
 
         
         PlayerPersonnality.CanvasIndestrucitble.SetActive(true);
-        PlayerPersonnality.InventoryUIIndestructible.GetComponent<InventoryScript>().SwitchToggleInventoryDisplay();
+  //      PlayerPersonnality.InventoryUIIndestructible.SetActive(false);
+        
+        //PlayerPersonnality.InventoryUIIndestructible.GetComponent<InventoryScript>().SwitchToggleInventoryDisplay();
+        yield return new WaitForSeconds(0.25f);
         SceneManager.LoadScene("Tilemaps Test");
 
     }

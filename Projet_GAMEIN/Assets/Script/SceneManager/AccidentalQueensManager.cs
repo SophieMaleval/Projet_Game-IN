@@ -69,7 +69,7 @@ public class AccidentalQueensManager : MonoBehaviour
         {
             Fade.DOFade(1, 1f) ;
             yield return new WaitForSeconds(1.5f);
-            Player.GetComponent<PlayerProvenance>().SetAllBoolToFalse() ;             Player.GetComponent<PlayerProvenance>().ProviensAccidentalQueen = true ; 
+            Player.GetComponent<PlayerProvenance>().SetAllBoolToFalse() ;       //      Player.GetComponent<PlayerProvenance>().ProviensAccidentalQueen = true ; 
             SceneManager.LoadScene("Main") ;
         }
     }
