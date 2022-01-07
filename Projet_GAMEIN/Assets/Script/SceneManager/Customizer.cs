@@ -441,6 +441,7 @@ private string WhoIsIt = "§ est ¤ !" ;
 
         
         PlayerPersonnality.CanvasIndestrucitble.SetActive(true);
+        PlayerPersonnality.InventoryUIIndestructible.GetComponent<InventoryScript>().SwitchToggleInventoryDisplay();
         SceneManager.LoadScene("Tilemaps Test");
 
     }

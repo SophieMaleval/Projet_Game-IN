@@ -11,7 +11,8 @@ public class SceneManagerFeature : MonoBehaviour
     private PlayerMovement PM;
     private GameObject FadeImage ;
     public string NameScene;
-    private void Awake() {
+    private void Awake() 
+    {
         if(GameObject.Find("Player") != null)
         {
             PM =  GameObject.Find("Player").GetComponent<PlayerMovement>();
@@ -19,7 +20,6 @@ public class SceneManagerFeature : MonoBehaviour
             PM.transform.position = new Vector2 (-4f,-2f);
             FadeImage = PM.GetComponent<PlayerScript>().CanvasIndestrucitble.gameObject.transform.Find("Fade").gameObject ;
             PM.GetComponent<PlayerScript>().CanvasIndestrucitble.GetComponent<Canvas>().worldCamera = Camera.main;
-
         }
     }
 
