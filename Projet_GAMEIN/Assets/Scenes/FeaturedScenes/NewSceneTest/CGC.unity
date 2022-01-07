@@ -1936,7 +1936,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 247659338}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.4799998, y: -1.3680799, z: -10}
+  m_LocalPosition: {x: 1.4499998, y: -1.1580799, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -4917,7 +4917,7 @@ MonoBehaviour:
   m_Priority: 10
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 0}
-  m_Follow: {fileID: 0}
+  m_Follow: {fileID: 1586334520}
   m_Lens:
     FieldOfView: 60
     OrthographicSize: 3.42
@@ -4941,7 +4941,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 887913891}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.4799998, y: -1.3680799, z: -10}
+  m_LocalPosition: {x: 1.4499998, y: -1.1580799, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 66630502}
@@ -5734,7 +5734,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.10212523}
+  m_Offset: {x: -0.023084551, y: -0.10212523}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5433513, y: 0.7638077}
@@ -5745,7 +5745,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.875, y: 1.0842456}
+  m_Size: {x: 0.5887535, y: 1.0842456}
   m_EdgeRadius: 0
 --- !u!114 &1056246520
 MonoBehaviour:
@@ -7051,6 +7051,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7705379444423092923, guid: bc08da4f0c819b548867c32e53fc97ba,
+        type: 3}
+      propertyPath: MoveSpeed
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bc08da4f0c819b548867c32e53fc97ba, type: 3}
@@ -8886,6 +8891,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0baa7706c51c6b4b8c2766dcaa5b1a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &1586334520 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7705379444423092920, guid: bc08da4f0c819b548867c32e53fc97ba,
+    type: 3}
+  m_PrefabInstance: {fileID: 1334280853}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1586334521
 MonoBehaviour:
   m_ObjectHideFlags: 0
