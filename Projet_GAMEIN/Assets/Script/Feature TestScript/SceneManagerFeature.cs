@@ -10,17 +10,33 @@ public class SceneManagerFeature : MonoBehaviour
     public CinemachineVirtualCamera CMVirtualCam ;
     private PlayerMovement PM;
     private GameObject FadeImage ;
-    public string NameScene;
+
     private void Awake() 
     {
         if(GameObject.Find("Player") != null)
         {
             PM =  GameObject.Find("Player").GetComponent<PlayerMovement>();
             CMVirtualCam.Follow = PM.transform ;
-            PM.transform.position = new Vector2 (-4f,-2f);
+            SetPositionOnLoad();
             FadeImage = PM.GetComponent<PlayerScript>().CanvasIndestrucitble.gameObject.transform.Find("Fade").gameObject ;
             PM.GetComponent<PlayerScript>().CanvasIndestrucitble.GetComponent<Canvas>().worldCamera = Camera.main;
+        
+            PM.enabled = true ;
+            PM.GetComponent<PlayerScript>().InventoryUIIndestructible.GetComponent<InventoryScript>().SwitchToggleInventoryDisplay();
         }
+    }
+
+    void SetPositionOnLoad()
+    {
+        if(PM.GetComponentInChildren<PlayerProvenance>().ProviensCharacterCustomer || PM.GetComponentInChildren<PlayerProvenance>().ProviensMain) PM.transform.position = new Vector2 (-4f,-2f);        
+
+        if(PM.GetComponentInChildren<PlayerProvenance>().ProviensCouchGameCrafter) PM.transform.position = new Vector2 (18.3f,10.25f);   
+
+
+        // Reset bool
+        PM.GetComponentInChildren<PlayerProvenance>().SetAllBoolToFalse();
+        PM.GetComponentInChildren<PlayerProvenance>().ProviensMain = true ;
+
     }
 
     private void Start() 
@@ -29,7 +45,7 @@ public class SceneManagerFeature : MonoBehaviour
     }
 
 
-    private void OnTriggerEnter2D(Collider2D other) 
+  /*  private void OnTriggerEnter2D(Collider2D other) 
     {
         if(other.gameObject.tag == "Player" && !PM.OnScooter)
         {
@@ -37,8 +53,6 @@ public class SceneManagerFeature : MonoBehaviour
             other.gameObject.GetComponent<PlayerMovement>().ResetVelocity();
             GoCustom();
         }
-
-        
     }
 
     public void GoCustom()
@@ -52,7 +66,7 @@ public class SceneManagerFeature : MonoBehaviour
         FadeImage.GetComponent<AnimationTransitionScene>().ShouldReveal = false ;
         yield return new WaitForSeconds(1.75f);
         SceneManager.LoadScene(NameScene);
-    }
+    }*/
     
     IEnumerator WaitTransitionAnim()
     {

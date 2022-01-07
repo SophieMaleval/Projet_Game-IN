@@ -23,13 +23,13 @@ public class MainManager : MonoBehaviour
         radio = Player.GetComponent<Radio>();
         radio.GetTutoRadio();
         qs.findtestQuest();
-        SetPositionOnLoadScene();
+        //SetPositionOnLoadScene();
         StartCoroutine(FadeAnimtion(false, ""));
     }
 
 
 
-    void SetPositionOnLoadScene()
+  /*  void SetPositionOnLoadScene()
     {
         if(Player.GetComponent<PlayerProvenance>().ProviensGameIn == true)
             Player.transform.position = new Vector3(0, -14.5f, 0) ;        
@@ -51,7 +51,7 @@ public class MainManager : MonoBehaviour
 
         if(Player.GetComponent<PlayerProvenance>().ProviensOrdiRetro == true)
             Player.transform.position = new Vector3(7.25f, 109f, 0) ;        
-    }
+    }*/
 
     private void Update() 
     {

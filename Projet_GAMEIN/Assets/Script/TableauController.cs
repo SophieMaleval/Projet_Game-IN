@@ -7,23 +7,31 @@ public class TableauController : MonoBehaviour
 {
 
     public GameObject Board;
-    public GameObject SpriteInput;
+    private GameObject SpriteInput;
 
     public bool InteractingBoard;
-    public PlayerScript PS;
-    PlayerMovement pM;
+    private PlayerScript PS;
+    private PlayerMovement PM;
     public bool isReading = false;
 
 
 
     void Awake()
     {
-        pM = PS.GetComponent<PlayerMovement>();
-        Board = GameObject.Find("Board");
-        InteractingBoard = false;
-        // PlayerActionControllers.PlayerInLand.Interact.performed += OnInteract;
-        SpriteInput.SetActive(false);
-        Board.SetActive(false);
+        if(GameObject.Find("Player") != null)
+        {
+            PM = GameObject.Find("Player").GetComponent<PlayerMovement>();
+            PS = PM.GetComponent<PlayerScript>();
+
+            SpriteInput = PS.InterractInputSprite ;
+
+            Board = GameObject.Find("Board");
+            InteractingBoard = false;
+            // PlayerActionControllers.PlayerInLand.Interact.performed += OnInteract;
+            SpriteInput.SetActive(false);
+            Board.SetActive(false);            
+        }
+
     }
     void Update()
     {
@@ -34,14 +42,14 @@ public class TableauController : MonoBehaviour
             {
                 PS.PlayerAsInterract = false;
                 Board.SetActive(true);
-                pM.StartActivity();
+                PM.StartActivity();
             }
 
             if (PS.PlayerAsInterract && Board.activeSelf == true)
             {
                 PS.PlayerAsInterract = false;
                 Board.SetActive(false);
-                pM.EndActivity();
+                PM.EndActivity();
             }
         }       
     }
@@ -49,7 +57,7 @@ public class TableauController : MonoBehaviour
     public void Closed()
     {
         Board.SetActive(false);
-        pM.EndActivity();
+        PM.EndActivity();
     }
 
     private void OnTriggerStay2D(Collider2D other)

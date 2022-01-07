@@ -52,7 +52,7 @@ public class EArtManager : MonoBehaviour
         {
             Fade.DOFade(1, 1f) ;
             yield return new WaitForSeconds(1.5f);
-            Player.GetComponent<PlayerProvenance>().SetAllBoolToFalse() ;             Player.GetComponent<PlayerProvenance>().ProviensEArtsup = true ; 
+            Player.GetComponent<PlayerProvenance>().SetAllBoolToFalse() ;       //      Player.GetComponent<PlayerProvenance>().ProviensEArtsup = true ; 
             SceneManager.LoadScene("Main") ;
         }
     }
