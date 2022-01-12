@@ -73,10 +73,13 @@ public class PlayerMovement : MonoBehaviour
         if(ctx.performed)
         {
             if((MoveDirection.magnitude >= -AmplitudeToSwitchScoot) && (MoveDirection.magnitude <= AmplitudeToSwitchScoot))
-            PlayerActionControllers.PlayerInLand.Disable() ;
-            PlayerActionControllers.PlayerInScoot.Enable() ;
-            switchScootState(true); 
-            ScooterStop.Play();
+            {
+                PlayerActionControllers.PlayerInLand.Disable() ;
+                PlayerActionControllers.PlayerInScoot.Enable() ;
+                switchScootState(true); 
+                ScooterStop.Play();
+            }
+            
             
               
                    

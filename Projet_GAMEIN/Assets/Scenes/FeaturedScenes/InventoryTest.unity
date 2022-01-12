@@ -343,13 +343,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d49e86bb96891b48b1d2c1f3aec8066, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  progressType: 1
   questSys: {fileID: 0}
   checker: {fileID: 0}
   questSync: {fileID: 0}
   numeroDeQuete: 1
   etapeDeQuete: 2
   interactible: {fileID: 0}
-  ecrits: {fileID: 0}
+  talkQuest: {fileID: 0}
 --- !u!1 &409839891
 GameObject:
   m_ObjectHideFlags: 0
@@ -612,13 +613,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d49e86bb96891b48b1d2c1f3aec8066, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  progressType: 1
   questSys: {fileID: 0}
   checker: {fileID: 0}
   questSync: {fileID: 0}
   numeroDeQuete: 2
   etapeDeQuete: 1
   interactible: {fileID: 0}
-  ecrits: {fileID: 0}
+  talkQuest: {fileID: 0}
 --- !u!1 &663508491
 GameObject:
   m_ObjectHideFlags: 0
@@ -720,13 +722,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d49e86bb96891b48b1d2c1f3aec8066, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  progressType: 1
   questSys: {fileID: 0}
   checker: {fileID: 0}
   questSync: {fileID: 0}
   numeroDeQuete: 1
   etapeDeQuete: 3
   interactible: {fileID: 0}
-  ecrits: {fileID: 0}
+  talkQuest: {fileID: 0}
 --- !u!1 &901970560
 GameObject:
   m_ObjectHideFlags: 0
@@ -1039,6 +1042,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 96329082531820497, guid: 928dfbd4fe1d25048a4467955e4ca058,
+        type: 3}
+      propertyPath: progressType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3491493698501698516, guid: 928dfbd4fe1d25048a4467955e4ca058,
         type: 3}
       propertyPath: m_RootOrder
@@ -1514,6 +1522,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 96329082531820497, guid: 928dfbd4fe1d25048a4467955e4ca058,
         type: 3}
+      propertyPath: progressType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 96329082531820497, guid: 928dfbd4fe1d25048a4467955e4ca058,
+        type: 3}
       propertyPath: numeroDeQuete
       value: 2
       objectReference: {fileID: 0}
@@ -1726,6 +1739,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 96329082531820497, guid: 928dfbd4fe1d25048a4467955e4ca058,
+        type: 3}
+      propertyPath: progressType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 96329082531820497, guid: 928dfbd4fe1d25048a4467955e4ca058,
         type: 3}
       propertyPath: numeroDeQuete
