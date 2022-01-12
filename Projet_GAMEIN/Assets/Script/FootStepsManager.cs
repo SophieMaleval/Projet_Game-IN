@@ -1,18 +1,27 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class FootStepsManager : MonoBehaviour
 {
     [SerializeField]
-    private AudioClip[] clips; 
+
+    public  AudioClip[] clipsInside; 
+
+    public AudioClip[] clipsOutside; 
+    Scene scene;
     private AudioSource audioSource;
 
     void Awake(){
-
+        
         audioSource =  GetComponent<AudioSource>();
 
         
+    }
+     void Update() {
+         scene = SceneManager.GetActiveScene();
+         Debug.Log(scene.name);
     }
 
     void Step(){
@@ -22,8 +31,17 @@ public class FootStepsManager : MonoBehaviour
     }
 
     AudioClip GetRandomClip (){
+        if (scene.name == "Tilemaps test")
+        {
+            
+            return clipsOutside [UnityEngine.Random.Range(0, clipsOutside.Length)];
+        }
+        else 
+        {
+             return clipsInside [UnityEngine.Random.Range(0, clipsInside.Length)];
 
-        return clips [UnityEngine.Random.Range(0, clips.Length)];
+        }
+        
     }
 
 
