@@ -73,9 +73,9 @@ public class PlayerScript : MonoBehaviour
 
     void InventoryInteract()
     {
-        if(GameObject.Find("Inventory") != null)
+        if(/*GameObject.Find("Inventory")*/InventoryUIIndestructible != null)
         {
-            GameObject.Find("Inventory").GetComponent<InventoryScript>().SwitchToggleInventoryDisplay();
+            /*GameObject.Find("Inventory")*/InventoryUIIndestructible.GetComponent<InventoryScript>().SwitchToggleInventoryDisplay();
         }
     }
 

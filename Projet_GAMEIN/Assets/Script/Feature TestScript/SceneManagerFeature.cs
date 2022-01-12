@@ -31,7 +31,7 @@ public class SceneManagerFeature : MonoBehaviour
     {
         if(PM.GetComponentInChildren<PlayerProvenance>().ProviensCharacterCustomer || PM.GetComponentInChildren<PlayerProvenance>().ProviensMain) PM.transform.position = new Vector2 (-4f,-2f);        
 
-        if(PM.GetComponentInChildren<PlayerProvenance>().ProviensCouchGameCrafter) PM.transform.position = new Vector2 (18.3f,10.25f);   
+        if(PM.GetComponentInChildren<PlayerProvenance>().ProviensCouchGameCrafter) PM.transform.position = new Vector2 (18.3f,9.25f);   
 
 
         // Reset bool

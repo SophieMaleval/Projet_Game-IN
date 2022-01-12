@@ -60,7 +60,7 @@ public class CSVReader : MonoBehaviour
     {
         string[] LineData = UIDataText.text.Split(new string[] { "\n" }, StringSplitOptions.None) ; // Data correspond à chaque Ligne
 
-        for (int LD = 1; LD < LineData.Length; LD++)
+        for (int LD = 0; LD < LineData.Length; LD++)
         {
             string[] Data = LineData[LD].Split(new string[] { ";" }, StringSplitOptions.None) ; // Data correspond à chaque case
 
