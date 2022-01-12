@@ -37,23 +37,22 @@ public class InventoryScript : MonoBehaviour
 
     public void SwitchToggleInventoryDisplay()
     {
-        SetDisplayinventory();        
+        SetDisplayInventory();        
         InventoryPanel.SetActive(!InventoryPanel.activeSelf);
         if(!InventoryPanel.activeSelf)
         {
-
-
             transform.SetSiblingIndex(0);
-            if( (GameObject.Find("Dialogue Canvas") != null && GameObject.Find("Dialogue Canvas").gameObject.activeSelf == false) )
+            if( (GameObject.Find("Dialogue Canvas") != null && GameObject.Find("Dialogue Canvas").gameObject.activeSelf == false) || (GameObject.Find("Board ENT") != null && GameObject.Find("Board ENT").gameObject.activeSelf == false) )
             {
                 PlayerScript.GetComponent<PlayerMovement>().EndActivity() ;                
             } else {
-                if(GameObject.Find("Dialogue Canvas") == null)    PlayerScript.GetComponent<PlayerMovement>().EndActivity() ;                
+                if(GameObject.Find("Dialogue Canvas") == null)    PlayerScript.GetComponent<PlayerMovement>().EndActivity() ;     
+                if(GameObject.Find("Board ENT") == null)    PlayerScript.GetComponent<PlayerMovement>().EndActivity() ;     
                 GameObject.Find("Player Backpack").GetComponent<PlayerDialogue>().ResumeDialogue();                   
             }
 
         } else {
-            transform.SetSiblingIndex(1);            
+            transform.SetSiblingIndex(2);            
 
             PlayerScript.GetComponent<PlayerMovement>().StartActivity() ;
             GameObject.Find("Player Backpack").GetComponent<PlayerDialogue>().PausedInDialogue();
@@ -106,7 +105,7 @@ public class InventoryScript : MonoBehaviour
     }
 
 
-    public void SetDisplayinventory()
+    public void SetDisplayInventory()
     {
         for (int IDO = 0; IDO < DisplayerInventory.transform.childCount; IDO++)
         {

@@ -6,12 +6,11 @@ using UnityEngine.InputSystem;
 public class TableauController : MonoBehaviour
 {
 
-    public GameObject Board;
-    private GameObject SpriteInput;
+    private PannelENTManager Board;
 
-    public bool InteractingBoard;
-    private PlayerScript PS;
-    private PlayerMovement PM;
+    public bool PlayerArroundPannel = false;
+    private PlayerScript PlayerScript;
+    private PlayerMovement PlayerMovement;
     public bool isReading = false;
 
 
@@ -20,52 +19,42 @@ public class TableauController : MonoBehaviour
     {
         if(GameObject.Find("Player") != null)
         {
-            PM = GameObject.Find("Player").GetComponent<PlayerMovement>();
-            PS = PM.GetComponent<PlayerScript>();
+            PlayerMovement = GameObject.Find("Player").GetComponent<PlayerMovement>();
+            PlayerScript = PlayerMovement.GetComponent<PlayerScript>();
 
-            SpriteInput = PS.InterractInputSprite ;
-
-            Board = GameObject.Find("Board");
-            InteractingBoard = false;
-            // PlayerActionControllers.PlayerInLand.Interact.performed += OnInteract;
-            SpriteInput.SetActive(false);
-            Board.SetActive(false);            
+            Board = GameObject.Find("Board").GetComponent<PannelENTManager>();
         }
-
     }
     void Update()
     {
+        if(PlayerScript.gameObject.transform.position.x < transform.position.x) PlayerScript.InputSpritePos(false);
+        if(PlayerScript.gameObject.transform.position.x > transform.position.x) PlayerScript.InputSpritePos(true);
         
-        if (InteractingBoard == true)
+
+        if (PlayerArroundPannel == true)
         {
-            if(PS.PlayerAsInterract && Board.activeSelf == false)
+            if(PlayerScript.PlayerAsInterract && Board.gameObject.activeSelf == false)
             {
-                PS.PlayerAsInterract = false;
-                Board.SetActive(true);
-                PM.StartActivity();
+                PlayerScript.PlayerAsInterract = false;
+                Board.SwitchTogglePannelDisplay();
+                PlayerMovement.StartActivity();
             }
 
-            if (PS.PlayerAsInterract && Board.activeSelf == true)
+            if (PlayerScript.PlayerAsInterract && Board.gameObject.activeSelf == true)
             {
-                PS.PlayerAsInterract = false;
-                Board.SetActive(false);
-                PM.EndActivity();
+                PlayerScript.PlayerAsInterract = false;
+                Board.SwitchTogglePannelDisplay();
+                PlayerMovement.EndActivity();
             }
         }       
-    }
-
-    public void Closed()
-    {
-        Board.SetActive(false);
-        PM.EndActivity();
     }
 
     private void OnTriggerStay2D(Collider2D other)
     {
         if (other.tag == ("Player"))
         {
-            InteractingBoard = true;
-            SpriteInput.SetActive(true);
+            PlayerArroundPannel = true;
+            PlayerScript.SwitchInputSprite();
         }
     }
 
@@ -73,22 +62,8 @@ public class TableauController : MonoBehaviour
     {
         if (other.tag == ("Player"))
         {
-            InteractingBoard = false;
-            SpriteInput.SetActive(false);
-        }
-
-    }
-
-    public void InteractWithBoard()
-    {
-
-        if (isReading)
-        {
-            Board.SetActive(true);
-        }
-        else if (!isReading)
-        {
-            Board.SetActive(false);
+            PlayerArroundPannel = false;
+            PlayerScript.SwitchInputSprite();
         }
     }
 }

@@ -27,6 +27,7 @@ public class PlayerScript : MonoBehaviour
     public GameObject CanvasIndestrucitble ;
     public GameObject DialogueUIIndestructible ;
     public GameObject InventoryUIIndestructible ;
+    public GameObject PannelENTUIIndestructible ;
 
 
     private void OnEnable() { PlayerActionControllers.Enable(); }

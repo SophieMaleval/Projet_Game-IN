@@ -14,6 +14,9 @@ public class UITextContainer
     
     public List<string> CustomisationFR ;
     public List<string> CustomisationEN ;
+
+    public List<string> PanelENTFR ;
+    public List<string> PanelENTEN ;
 }
 
 
@@ -78,6 +81,9 @@ public class CSVReader : MonoBehaviour
 
                         if(Data[0] == "Customisation FR")    UIText.CustomisationFR.Add(Data[D]) ;
                         if(Data[0] == "Customisation EN")    UIText.CustomisationEN.Add(Data[D]) ; 
+                    
+                        if(Data[0] == "Panneaux ENT FR")    UIText.PanelENTFR.Add(Data[D]);
+                        if(Data[0] == "Panneaux ENT EN")    UIText.PanelENTEN.Add(Data[D]);
                     }
                 }
             }                
@@ -198,7 +204,10 @@ public class CSVReader : MonoBehaviour
     }
 
 
-
+    void ReadTextPannelENT()
+    {
+        
+    }
 
 
 }
