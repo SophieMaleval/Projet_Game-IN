@@ -66,9 +66,12 @@ public class PlayerMovement : MonoBehaviour
         if(ctx.performed)
         {
             if((MoveDirection.magnitude >= -AmplitudeToSwitchScoot) && (MoveDirection.magnitude <= AmplitudeToSwitchScoot))
-            PlayerActionControllers.PlayerInLand.Disable() ;
-            PlayerActionControllers.PlayerInScoot.Enable() ;
-            switchScootState(true);                
+            {
+                PlayerActionControllers.PlayerInLand.Disable() ;
+                PlayerActionControllers.PlayerInScoot.Enable() ;
+                switchScootState(true);  
+            }
+                          
         }
     }
     public void OnExitScoot (InputAction.CallbackContext ctx )
