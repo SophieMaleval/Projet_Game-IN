@@ -26,7 +26,6 @@ public class AaPTalk : MonoBehaviour
         checker = GameObject.Find("Inventory").GetComponent<Checker>();
         talkQuest = GetComponent<TalkQuest>(); //la composante doit, si déterminante pour une quête, être inactive sur l'objet
         detecteur = GetComponent<Collider2D>();
-
     }
 
     void Update()
