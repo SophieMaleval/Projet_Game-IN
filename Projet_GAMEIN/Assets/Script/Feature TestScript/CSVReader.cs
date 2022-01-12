@@ -33,14 +33,19 @@ public class CSVReader : MonoBehaviour
     [Header ("Adaptation de texte")]
     private PlayerScript PlayerInformations ;
 
-    private string[] Pronoms = new string[]{"un", "une", "un.e"};
-    private string[] Terminaisons = new string[]{"eur", "rice", "eurice"};
+    private string[] Pronoms = new string[]{"un", "une", "un·e"};
+    private string[] Terminaisons = new string[]
+    { /*masculin*/ "eur", "el", "ier", "er","ien", 
+      /*féminin*/ "elle", "euse", "rice","ière","ère","ienne",
+      /*inclusif*/ "eur·rice", "eur·euse", "eur·e", "el·elle","ier·ière", "er·ère", "ien·ienne" 
+    };
 
     [Header ("Texte Quest")]
     public QuestSys QuestManager ;    
 
 
-    private void Awake() {
+    private void Awake() 
+    {
         PlayerInformations = transform.parent.GetComponent<PlayerScript>();
     }
     void Start()

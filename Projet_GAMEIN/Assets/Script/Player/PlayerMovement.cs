@@ -103,14 +103,12 @@ public class PlayerMovement : MonoBehaviour
         {
             if(!OnScooter) Slopes(1f);
             else Slopes(1.5f);            
-        }
-
-    
+        }   
     }
     public void SlopeParameter (bool EnterSlope, float valueSlope, bool BottomAsLeft, int PositionElevation)
     {
         OnSlope = EnterSlope;
-        ValueSlopeAdd =  valueSlope; 
+        ValueSlopeAdd = valueSlope;
         SlopeStartLeft = BottomAsLeft;
         ElevationValue = PositionElevation;
     }
