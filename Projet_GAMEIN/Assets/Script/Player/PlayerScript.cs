@@ -54,7 +54,7 @@ public class PlayerScript : MonoBehaviour
 
         }      
     }
-
+  
     IEnumerator DisablePlayerInterract()
     {
         yield return new WaitForSeconds(0.05f);

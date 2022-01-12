@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -12,10 +13,13 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float MoveSpeed ;
         [SerializeField] private float ScooterSpeed ;
 
+       
 
 
     public List<SpriteRenderer> PlayerRenderers ;
     public Rigidbody2D RbPlayer ;
+     Scene scene;
+
     public List<Animator> Animators ;
 
     private Vector2 LastMoveDirection ;
@@ -52,6 +56,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        scene = SceneManager.GetActiveScene();
         ProcessInputs();
         Animate();
     }
@@ -94,6 +99,19 @@ public class PlayerMovement : MonoBehaviour
         {    Animators[i].gameObject.GetComponent<SpriteRenderer>().enabled = !OnScooter ;  }
     }
 
+      void MoveSpeedManager()
+    {
+          if (scene.name == "Tilemaps test")
+        {
+            MoveSpeed = 5; 
+        }
+        else 
+        {
+            MoveSpeed = 2;
+        }
+
+    }
+
 
 
     private void FixedUpdate() 
@@ -103,14 +121,12 @@ public class PlayerMovement : MonoBehaviour
         {
             if(!OnScooter) Slopes(1f);
             else Slopes(1.5f);            
-        }
-
-    
+        }   
     }
     public void SlopeParameter (bool EnterSlope, float valueSlope, bool BottomAsLeft, int PositionElevation)
     {
         OnSlope = EnterSlope;
-        ValueSlopeAdd =  valueSlope; 
+        ValueSlopeAdd = valueSlope;
         SlopeStartLeft = BottomAsLeft;
         ElevationValue = PositionElevation;
     }
