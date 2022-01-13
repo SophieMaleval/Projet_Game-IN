@@ -9,6 +9,8 @@ public class ChangeScene : MonoBehaviour
     private GameObject FadeImage ;
     public string NameScene;
 
+    public AudioSource DoorOpeningSound;
+
     private void Awake() 
     {
         if(GameObject.Find("Player") != null)
@@ -25,6 +27,7 @@ public class ChangeScene : MonoBehaviour
         {
             other.gameObject.GetComponent<PlayerMovement>().enabled = false ;
             other.gameObject.GetComponent<PlayerMovement>().ResetVelocity();
+            DoorOpeningSound.Play();
             GoNewScene();
         }
     }

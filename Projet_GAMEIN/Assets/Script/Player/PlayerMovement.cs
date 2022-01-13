@@ -13,6 +13,11 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float MoveSpeed ;
         [SerializeField] private float ScooterSpeed ;
 
+        public AudioSource ScooterStop;
+        public AudioSource ScooterMoving;
+
+        public bool PlayOneShotClip = true;
+
        
 
 
@@ -37,6 +42,7 @@ public class PlayerMovement : MonoBehaviour
 
      bool SlopeStartLeft;
      int ElevationValue ;
+     
     
 
 
@@ -56,6 +62,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+
         scene = SceneManager.GetActiveScene();
         ProcessInputs();
         Animate();
@@ -66,9 +73,16 @@ public class PlayerMovement : MonoBehaviour
         if(ctx.performed)
         {
             if((MoveDirection.magnitude >= -AmplitudeToSwitchScoot) && (MoveDirection.magnitude <= AmplitudeToSwitchScoot))
-            PlayerActionControllers.PlayerInLand.Disable() ;
-            PlayerActionControllers.PlayerInScoot.Enable() ;
-            switchScootState(true);                
+            {
+                PlayerActionControllers.PlayerInLand.Disable() ;
+                PlayerActionControllers.PlayerInScoot.Enable() ;
+                switchScootState(true); 
+                ScooterStop.Play();
+            }
+            
+            
+              
+                   
         }
     }
     public void OnExitScoot (InputAction.CallbackContext ctx )
@@ -79,7 +93,9 @@ public class PlayerMovement : MonoBehaviour
             {
                 PlayerActionControllers.PlayerInScoot.Disable() ;                
                 PlayerActionControllers.PlayerInLand.Enable() ;
-                switchScootState(false);                
+                switchScootState(false);  
+                ScooterStop.Stop();
+                ScooterMoving.Stop();
             }
         }
     }
@@ -121,12 +137,14 @@ public class PlayerMovement : MonoBehaviour
         {
             if(!OnScooter) Slopes(1f);
             else Slopes(1.5f);            
-        }   
+        }
+
+    
     }
     public void SlopeParameter (bool EnterSlope, float valueSlope, bool BottomAsLeft, int PositionElevation)
     {
         OnSlope = EnterSlope;
-        ValueSlopeAdd = valueSlope;
+        ValueSlopeAdd =  valueSlope; 
         SlopeStartLeft = BottomAsLeft;
         ElevationValue = PositionElevation;
     }
@@ -162,7 +180,16 @@ public class PlayerMovement : MonoBehaviour
 
 
         if((Move.x == 0 && Move.y == 0) && MoveDirection.x != 0 || MoveDirection.y != 0)
-            LastMoveDirection = MoveDirection ;      
+            LastMoveDirection = MoveDirection ;    
+
+            if((Move.x != 0 || Move.y != 0) && OnScooter == true && PlayOneShotClip == false)
+            {
+                ScootMovingForward();
+            }  
+            if((Move.x == 0 && Move.y == 0) && OnScooter == true && PlayOneShotClip == true)
+            {
+                ScootNotMoving();
+            }
 
 
             //MoveDirection = Move.normalized ;
@@ -191,7 +218,24 @@ public class PlayerMovement : MonoBehaviour
             RbPlayer.velocity = new Vector2(MoveDirection.x * (MoveSpeed*ScooterSpeed), MoveDirection.y * (MoveSpeed*ScooterSpeed)); 
 
 
+
     }
+
+    void ScootNotMoving()
+    {
+        PlayOneShotClip = false;
+        ScooterStop.Play();
+        ScooterMoving.Stop();
+    }
+
+    void ScootMovingForward() {
+        PlayOneShotClip = true; 
+
+        ScooterMoving.Play();
+        ScooterStop.Stop();
+                
+    }
+    
 
     public void ResetVelocity()
     {
@@ -218,6 +262,10 @@ public class PlayerMovement : MonoBehaviour
             }
         }
     }
+
+  
+
+       
 
     void RebindAnimation()
     {
