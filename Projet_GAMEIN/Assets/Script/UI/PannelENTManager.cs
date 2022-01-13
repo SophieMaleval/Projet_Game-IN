@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI ;
 
 [System.Serializable]
 public class UIPanelENTContainer
@@ -19,54 +20,115 @@ public class UIPanelENTContainer
 
 public class PannelENTManager : MonoBehaviour
 {
+    [Header ("UI Text")]
     [SerializeField] private TextMeshProUGUI NomEntreprise ;
 
-    [SerializeField] private TextMeshProUGUI TitleDescriptionENT ;
+    [SerializeField] private TextMeshProUGUI TitleQuiSommesNous ;
     [SerializeField] private TextMeshProUGUI DesciptionEntreprise ;
     [SerializeField] private TextMeshProUGUI TitleValeurs ;
     [SerializeField] private TextMeshProUGUI DescriptionValeur ;
 
     [SerializeField] private TextMeshProUGUI Contact ;
-    [SerializeField] private TextMeshProUGUI NoteSiteWeb ;
+    [SerializeField] private TextMeshProUGUI NoteSiteWebTitle ;
+        [SerializeField] private TextMeshProUGUI NoteSiteWebURLDisplay ;
 
-    [SerializeField] private TextMeshProUGUI TitleProduction ;
+    [SerializeField] private TextMeshProUGUI TitleNosProduction ;
     [SerializeField] private TextMeshProUGUI TitleLastProduction ;
-    [SerializeField] private TextMeshProUGUI TitleLastDescriptionProduction ;
+    [SerializeField] private TextMeshProUGUI DescriptionLastProduction ;
     [SerializeField] private TextMeshProUGUI TitlePreLastProduction ;
-    [SerializeField] private TextMeshProUGUI TitlePreLastDescriptionProduction ;
+    [SerializeField] private TextMeshProUGUI DescriptionPreLastProduction ;
+
+    [Header ("UI Illustration")]
+    [SerializeField] private List<Image> LogoFondPage ;
+    [SerializeField] private Image IllustrationDescriptionENT ;
+    [SerializeField] private Image IllustrationValeurENT ;
+    [SerializeField] private Image IllustrationDescriptionDernierProjet ;
+    [SerializeField] private Image IllustrationDescriptionAvantDernierProjet ;
 
     [Header ("List de Données")]
-    public List<string> UIPanelENTFR ;
-    public List<string> UIPanelENTEN ;
+    [HideInInspector] public PannelENTContainer InformationENT ;
+
+    [HideInInspector] public List<string> UIPanelENTFR ;
+    [HideInInspector] public List<string> UIPanelENTEN ;
     private List<string> UIPanelENT ;
 
-    public UIPanelENTContainer InformationPannelENTFR ;
-    public UIPanelENTContainer InformationPannelENTEN ;
+  /*  [HideInInspector]*/ public UIPanelENTContainer InformationPannelENTFR ;
+   /* [HideInInspector]*/ public UIPanelENTContainer InformationPannelENTEN ;
     private UIPanelENTContainer InformationPannelENT ;
 
-    // Start is called before the first frame update
-    void Start()
+    void Start() 
     {
-        
+        SetPrincipalInformation();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        if(PlayerPrefs.GetInt("Langue") == 0 && UIPanelENT != UIPanelENTFR)
+        {
+            UIPanelENT = UIPanelENTFR ;
+            InformationPannelENT = InformationPannelENTFR ;
+
+            SetUIText();
+            ENTInformation();
+        }
+
+        if(PlayerPrefs.GetInt("Langue") == 1 && UIPanelENT != UIPanelENTEN)
+        {
+            UIPanelENT = UIPanelENTEN ;
+            InformationPannelENT = InformationPannelENTEN ;
+
+            SetUIText();
+            ENTInformation();
+        }
     }
     
     void SetUIText()
     {
-        TitleDescriptionENT.text = UIPanelENT[0] ;
+        TitleQuiSommesNous.text = UIPanelENT[0] ;
         TitleValeurs.text = UIPanelENT[1] ;
         Contact.text = UIPanelENT[2] ;
-        NoteSiteWeb.text = UIPanelENT[3] ;
-        TitleProduction.text = UIPanelENT[4] ;
+        NoteSiteWebTitle.text = UIPanelENT[3] ;
+        TitleNosProduction.text = UIPanelENT[4] ;
+    }
+
+    void ENTInformation()
+    {
+        DesciptionEntreprise.text = InformationPannelENT.DescriptionEntreprise ;
+        DescriptionValeur.text = InformationPannelENT.Valeurs ;
+
+        TitleLastProduction.text = InformationPannelENT.TitreDernièreProd ;
+        DescriptionLastProduction.text = InformationPannelENT.DescriptionDernièreProd ;
+        TitlePreLastProduction.text = InformationPannelENT.TitreAvantDernièreProd ;
+        DescriptionPreLastProduction.text = InformationPannelENT.DescriptionAvantDernièreProd ;
+    }
+
+    void SetPrincipalInformation()
+    {
+        NomEntreprise.text = InformationENT.NomEntreprise ;
+        NoteSiteWebURLDisplay.text = InformationENT.URLSiteWebDisplay ;
+
+        for (int LFP = 0; LFP < LogoFondPage.Count; LFP++)
+        {
+            LogoFondPage[LFP].sprite = InformationENT.LogoENT ;
+        }
+
+        IllustrationDescriptionENT.sprite = InformationENT.IllustrationDescriptionENT ;
+        IllustrationValeurENT.sprite = InformationENT.IllustrationValeurENT ;
+        IllustrationDescriptionDernierProjet.sprite = InformationENT.IllustrationDescriptionDernierProjet ;
+
+
+        if(TitlePreLastProduction.text != "") IllustrationDescriptionAvantDernierProjet.sprite = InformationENT.IllustrationDescriptionAvantDernierProjet ;
+
     }
 
     public void SwitchTogglePannelDisplay()
     {
         gameObject.SetActive(!gameObject.activeSelf);
+    }
+
+    public void OpenWebSite()
+    {
+        if(InformationENT.URLSiteWeb != "")
+            Application.OpenURL(InformationENT.URLSiteWeb);
     }
 }

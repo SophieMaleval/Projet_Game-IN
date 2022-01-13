@@ -91,7 +91,7 @@ private string WhoIsIt = "§ est ¤ !" ;
             DialogueUIInstatiate.name = "Dialogue Canvas" ;
 
             InventoryUIInstatiate.transform.SetParent(CanvasInstatiate.transform);
-            InventoryUIInstatiate.transform.SetSiblingIndex(2);
+            InventoryUIInstatiate.transform.SetSiblingIndex(1);
             InventoryUIInstatiate.name = "Inventory" ;
             InventoryUIInstatiate.GetComponent<InventoryScript>().PlayerScript = PlayerPersonnality ;
 
@@ -457,7 +457,7 @@ private string WhoIsIt = "§ est ¤ !" ;
 
         
         PlayerPersonnality.CanvasIndestrucitble.SetActive(true);
-  //      PlayerPersonnality.InventoryUIIndestructible.SetActive(false);
+        PlayerPersonnality.PannelENTUIIndestructible.SetActive(false);
         
         //PlayerPersonnality.InventoryUIIndestructible.GetComponent<InventoryScript>().SwitchToggleInventoryDisplay();
         yield return new WaitForSeconds(0.25f);

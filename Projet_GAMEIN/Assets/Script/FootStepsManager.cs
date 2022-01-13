@@ -21,7 +21,7 @@ public class FootStepsManager : MonoBehaviour
     }
      void Update() {
          scene = SceneManager.GetActiveScene();
-         Debug.Log(scene.name);
+//         Debug.Log(scene.name);
     }
 
     void Step(){
