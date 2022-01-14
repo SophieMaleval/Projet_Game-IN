@@ -23,6 +23,9 @@ public class DialogueDisplayerController : MonoBehaviour
 
     [HideInInspector] public int Question3IntDisplay = 3;
     public GameObject BoxQuestion ;
+    
+ 
+
 
 
     public List<string> QuestionDisponible = new List<string>() ;
@@ -50,6 +53,8 @@ public class DialogueDisplayerController : MonoBehaviour
     private bool ChoiceValidation = false ;
     private string CurrentDialogue ;
     private bool CanChangeCurrentDialogue = false ;
+    
+    public AudioSource VoicePnj;
 
     [HideInInspector] public bool WeAreInChoice = false ;
     private float DelayAnimationText = 0.1f ;
@@ -138,6 +143,7 @@ public class DialogueDisplayerController : MonoBehaviour
             PassTextImg.gameObject.SetActive(false);
             StopCoroutine(AnimationPassText());
             StartCoroutine(AnimationPassText());
+
         }
     }
 
@@ -305,6 +311,7 @@ public class DialogueDisplayerController : MonoBehaviour
         for (int i = 0; i < Input.Length; i++)
         {
             DialogueCanvas.text += Input[i] ;
+            VoicePnj.Play();
             yield return new WaitForSeconds(Delay);
         }
 
