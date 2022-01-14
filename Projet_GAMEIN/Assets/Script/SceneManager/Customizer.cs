@@ -67,6 +67,7 @@ public class Customizer : MonoBehaviour
     [SerializeField] private GameObject CanvasPrefab ;
     [SerializeField] private GameObject DialogueUIPrefab ;
     [SerializeField] private GameObject InventoryUIPrefab ;
+    [SerializeField] private GameObject PannelENTUIPrefab ;
 
 private string WhoIsIt = "§ est ¤ !" ;
     private void Awake() 
@@ -83,6 +84,7 @@ private string WhoIsIt = "§ est ¤ !" ;
             GameObject CanvasInstatiate = Instantiate(CanvasPrefab) ;     
             GameObject DialogueUIInstatiate = Instantiate(DialogueUIPrefab) ;     
             GameObject InventoryUIInstatiate = Instantiate(InventoryUIPrefab) ;     
+            GameObject PannelENTUIInstatiate = Instantiate(PannelENTUIPrefab) ;     
 
             DialogueUIInstatiate.transform.SetParent(CanvasInstatiate.transform);
             DialogueUIInstatiate.transform.SetSiblingIndex(0);
@@ -93,6 +95,10 @@ private string WhoIsIt = "§ est ¤ !" ;
             InventoryUIInstatiate.name = "Inventory" ;
             InventoryUIInstatiate.GetComponent<InventoryScript>().PlayerScript = PlayerPersonnality ;
 
+            PannelENTUIInstatiate.transform.SetParent(CanvasInstatiate.transform);
+            PannelENTUIInstatiate.transform.SetSiblingIndex(1);
+            PannelENTUIInstatiate.name = "Pannel ENT" ;
+
             GameObject.Find("Player Backpack").GetComponent<CSVReader>().QuestManager = InventoryUIInstatiate.GetComponentInChildren<QuestSys>() ;
             
 
@@ -100,10 +106,12 @@ private string WhoIsIt = "§ est ¤ !" ;
             DontDestroyOnLoad(CanvasInstatiate.gameObject);
             DontDestroyOnLoad(DialogueUIInstatiate.gameObject);
             DontDestroyOnLoad(InventoryUIInstatiate.gameObject);
+            DontDestroyOnLoad(PannelENTUIInstatiate.gameObject);
 
             PlayerPersonnality.CanvasIndestrucitble = CanvasInstatiate ;
             PlayerPersonnality.DialogueUIIndestructible = DialogueUIInstatiate ;
             PlayerPersonnality.InventoryUIIndestructible = InventoryUIInstatiate ;
+            PlayerPersonnality.PannelENTUIIndestructible = PannelENTUIInstatiate ;
 
             CanvasInstatiate.SetActive(false) ;
             DialogueUIInstatiate.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, 15f, 0) ;
@@ -112,6 +120,10 @@ private string WhoIsIt = "§ est ¤ !" ;
             InventoryUIInstatiate.GetComponent<RectTransform>().offsetMin = new Vector2(0, 0) ; // Left & Bottom
             InventoryUIInstatiate.GetComponent<RectTransform>().offsetMax = new Vector2(0, 0) ; // Right & Top
             InventoryUIInstatiate.GetComponent<RectTransform>().localScale = Vector3.one ; 
+
+            PannelENTUIInstatiate.GetComponent<RectTransform>().offsetMin = new Vector2(350f, 25f) ;
+            PannelENTUIInstatiate.GetComponent<RectTransform>().offsetMax = new Vector2(-350f, -25f) ;
+            PannelENTUIInstatiate.GetComponent<RectTransform>().localScale = Vector3.one ;
         } else {
             PlayerApparance = GameObject.Find("Player").GetComponent<PlayerMovement>() ; 
             PlayerApparance.enabled = false ;                 
@@ -438,14 +450,14 @@ private string WhoIsIt = "§ est ¤ !" ;
     IEnumerator WaitBeforeChangeScene()
     {
         yield return new WaitForSeconds(1.75f);
-            FadeImage.GetComponent<AnimationTransitionScene>().ShouldReveal = false ;
+        FadeImage.GetComponent<AnimationTransitionScene>().ShouldReveal = false ;
         yield return new WaitForSeconds(1.75f);
         PlayerApparance.enabled = true ;
         yield return new WaitForSeconds(1.75f);
 
         
         PlayerPersonnality.CanvasIndestrucitble.SetActive(true);
-  //      PlayerPersonnality.InventoryUIIndestructible.SetActive(false);
+        PlayerPersonnality.PannelENTUIIndestructible.SetActive(false);
         
         //PlayerPersonnality.InventoryUIIndestructible.GetComponent<InventoryScript>().SwitchToggleInventoryDisplay();
         yield return new WaitForSeconds(0.25f);

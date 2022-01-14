@@ -3,69 +3,92 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+
+
+
 public class TableauController : MonoBehaviour
 {
+    [Header ("Information ENT")]
+    public PannelENTContainer InformationsPrincipaleENT ;
+    [HideInInspector] public CSVReader RefTextENT ;    
+    private PannelENTManager Board;
 
-    public GameObject Board;
-    private GameObject SpriteInput;
+    private PlayerScript PlayerScript;
+    private PlayerMovement PlayerMovement;
 
-    public bool InteractingBoard;
-    private PlayerScript PS;
-    private PlayerMovement PM;
-    public bool isReading = false;
-
+    [Header ("Gestion Code")]
+    private bool PannelSetUp = false ;
+    private bool PlayerArroundPannel = false;    
 
 
     void Awake()
     {
         if(GameObject.Find("Player") != null)
         {
-            PM = GameObject.Find("Player").GetComponent<PlayerMovement>();
-            PS = PM.GetComponent<PlayerScript>();
+            PlayerMovement = GameObject.Find("Player").GetComponent<PlayerMovement>();
+            PlayerScript = PlayerMovement.GetComponent<PlayerScript>();
+            Board = PlayerScript.PannelENTUIIndestructible.GetComponent<PannelENTManager>();
+            Board.InformationENT = InformationsPrincipaleENT ;
 
-            SpriteInput = PS.InterractInputSprite ;
+            RefTextENT = GameObject.Find("Player Backpack").GetComponent<CSVReader>() ;
+            
 
-            Board = GameObject.Find("Board");
-            InteractingBoard = false;
-            // PlayerActionControllers.PlayerInLand.Interact.performed += OnInteract;
-            SpriteInput.SetActive(false);
-            Board.SetActive(false);            
+            // Récupérer les paragraphes de l'entreprise
+            for (int NumTextENT = 0; NumTextENT < RefTextENT.TextUIPanneauxENT.Count; NumTextENT++)
+            {
+                if(RefTextENT.TextUIPanneauxENT[NumTextENT].NomEntrprise.Substring(0, RefTextENT.TextUIPanneauxENT[NumTextENT].NomEntrprise.Length - 3) == InformationsPrincipaleENT.NomEntreprise)
+                {
+                    if(RefTextENT.TextUIPanneauxENT[NumTextENT].NomEntrprise.Substring(RefTextENT.TextUIPanneauxENT[NumTextENT].NomEntrprise.Length - 2) == "FR") Board.InformationPannelENTFR = RefTextENT.TextUIPanneauxENT[NumTextENT] ;
+                    if(RefTextENT.TextUIPanneauxENT[NumTextENT].NomEntrprise.Substring(RefTextENT.TextUIPanneauxENT[NumTextENT].NomEntrprise.Length - 2) == "EN") Board.InformationPannelENTEN = RefTextENT.TextUIPanneauxENT[NumTextENT] ;
+                }                
+            }
+            
+            PannelSetUp = true ;
         }
-
     }
+
+    string GetLastCharactere(string StringSource, int NumberOfChars)
+    {
+        if(NumberOfChars >= StringSource.Length)
+            return StringSource ;
+        return StringSource.Substring(StringSource.Length - NumberOfChars);
+    }
+
     void Update()
     {
-        
-        if (InteractingBoard == true)
+        if(PannelSetUp)
         {
-            if(PS.PlayerAsInterract && Board.activeSelf == false)
+            if(PlayerScript.gameObject.transform.position.x < transform.position.x) PlayerScript.InputSpritePos(false);
+            if(PlayerScript.gameObject.transform.position.x > transform.position.x) PlayerScript.InputSpritePos(true);
+                    
+            if (PlayerArroundPannel == true)
             {
-                PS.PlayerAsInterract = false;
-                Board.SetActive(true);
-                PM.StartActivity();
-            }
+                if(PlayerScript.PlayerAsInterract && Board.gameObject.activeSelf == false)
+                {
+                    PlayerScript.PlayerAsInterract = false;
+                    Board.SwitchTogglePannelDisplay();
+                    PlayerMovement.StartActivity();
+                }
 
-            if (PS.PlayerAsInterract && Board.activeSelf == true)
-            {
-                PS.PlayerAsInterract = false;
-                Board.SetActive(false);
-                PM.EndActivity();
-            }
-        }       
-    }
+                if (PlayerScript.PlayerAsInterract && Board.gameObject.activeSelf == true)
+                {
+                    PlayerScript.PlayerAsInterract = false;
+                    Board.SwitchTogglePannelDisplay();
+                    PlayerMovement.EndActivity();
+                }
+            }                 
+        }
 
-    public void Closed()
-    {
-        Board.SetActive(false);
-        PM.EndActivity();
+
+  
     }
 
     private void OnTriggerStay2D(Collider2D other)
     {
         if (other.tag == ("Player"))
         {
-            InteractingBoard = true;
-            SpriteInput.SetActive(true);
+            PlayerArroundPannel = true;
+            PlayerScript.SwitchInputSprite();
         }
     }
 
@@ -73,22 +96,8 @@ public class TableauController : MonoBehaviour
     {
         if (other.tag == ("Player"))
         {
-            InteractingBoard = false;
-            SpriteInput.SetActive(false);
-        }
-
-    }
-
-    public void InteractWithBoard()
-    {
-
-        if (isReading)
-        {
-            Board.SetActive(true);
-        }
-        else if (!isReading)
-        {
-            Board.SetActive(false);
+            PlayerArroundPannel = false;
+            PlayerScript.SwitchInputSprite();
         }
     }
 }

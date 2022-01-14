@@ -14,6 +14,9 @@ public class UITextContainer
     
     public List<string> CustomisationFR ;
     public List<string> CustomisationEN ;
+
+    public List<string> PanelENTFR ;
+    public List<string> PanelENTEN ;
 }
 
 
@@ -26,6 +29,8 @@ public class CSVReader : MonoBehaviour
     public TextAsset UIDataText ;
 
     public TextAsset QuestText ;
+
+    public TextAsset PannelENTText ;
 
     [Header ("Texte UI")]
     public UITextContainer UIText = new UITextContainer();
@@ -43,6 +48,8 @@ public class CSVReader : MonoBehaviour
     [Header ("Texte Quest")]
     public QuestSys QuestManager ;    
 
+    [Header ("PannelENT")]
+    public List<UIPanelENTContainer> TextUIPanneauxENT = new List<UIPanelENTContainer>();
 
     private void Awake() 
     {
@@ -51,7 +58,8 @@ public class CSVReader : MonoBehaviour
     void Start()
     {
         ReadUICSV();
-        if(QuestManager !=null) ReadQuestCSV();
+        if(QuestManager != null) ReadQuestCSV();
+        if(PannelENTText != null) ReadTextPannelENT();
     }
 
 
@@ -83,10 +91,18 @@ public class CSVReader : MonoBehaviour
 
                         if(Data[0] == "Customisation FR")    UIText.CustomisationFR.Add(Data[D]) ;
                         if(Data[0] == "Customisation EN")    UIText.CustomisationEN.Add(Data[D]) ; 
+                    
+                        if(Data[0] == "Panneaux ENT FR")    UIText.PanelENTFR.Add(Data[D]);
+                        if(Data[0] == "Panneaux ENT EN")    UIText.PanelENTEN.Add(Data[D]);
                     }
                 }
             }                
         }
+
+        // Add UIText du Pannel des ENT au PannelENTManager
+        PannelENTManager ManagerPannelENT = PlayerInformations.PannelENTUIIndestructible.GetComponent<PannelENTManager>() ;
+        ManagerPannelENT.UIPanelENTFR = UIText.PanelENTFR;
+        ManagerPannelENT.UIPanelENTEN = UIText.PanelENTEN;
     }
 
     void ReaderDialogCSV(TextAsset DialogDataLanguage, List<DialogueContainer> TargetList) 
@@ -203,7 +219,49 @@ public class CSVReader : MonoBehaviour
     }
 
 
+    void ReadTextPannelENT()
+    {
+        string[] LineData = PannelENTText.text.Split(new string[] { "¤" }, StringSplitOptions.None) ; // Data correspond à chaque Ligne
 
+        for (int LD = 1; LD < LineData.Length; LD++)
+        {
+            string[] Data = LineData[LD].Split(new string[] { ";" }, StringSplitOptions.None) ; // Data correspond à chaque case
+
+            if(Data[0] != "")
+            {
+                UIPanelENTContainer NewTextPannel = new UIPanelENTContainer() ;
+
+                string[] Data0Split = Data[0].Split(new string[] { "\n"}, StringSplitOptions.None);
+                NewTextPannel.NomEntrprise = Data0Split[1] ;
+                NewTextPannel.DescriptionEntreprise = Data[1] ;
+                
+                NewTextPannel.Valeurs = Data[2] ;
+                
+                NewTextPannel.TitreDernièreProd = Data[3] ;
+                NewTextPannel.DescriptionDernièreProd = Data[4] ;
+
+                if(Data[5] != null && Data[6] != null)
+                {
+                    NewTextPannel.TitreAvantDernièreProd = Data[5] ;
+                    NewTextPannel.DescriptionAvantDernièreProd = Data[6] ;                    
+                }
+
+                if(VerificationIfContainerNull(NewTextPannel))
+                    TextUIPanneauxENT.Add(NewTextPannel);
+            }                
+        }
+    }
+
+    bool VerificationIfContainerNull(UIPanelENTContainer ContainerToBeChecked)
+    {
+        bool ThiContainerState = false;
+
+        if(ContainerToBeChecked.NomEntrprise != "") ThiContainerState = true ;
+        if(ContainerToBeChecked.TitreDernièreProd != "") ThiContainerState = true ;
+        if(ContainerToBeChecked.TitreAvantDernièreProd != "") ThiContainerState = true ;
+
+        return ThiContainerState ;
+    }
 
 
 }
