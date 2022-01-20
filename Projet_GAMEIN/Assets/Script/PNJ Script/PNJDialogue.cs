@@ -25,7 +25,7 @@ public class PNJDialogue : MonoBehaviour
     private bool PlayerAround = false ;
 
     private GameObject BoxQuestion ;
-    public AudioSource DialogueSpawning;
+  
 
     public int Question3IntDisplay = 3;  
 
@@ -171,13 +171,14 @@ public class PNJDialogue : MonoBehaviour
 
         if(PlayerAround)
         {
+            
             if(PlayerScript.PlayerAsInterract && !PlayerScript.InDiscussion)
             {
                 PlayerScript.PlayerAsInterract = false ;
                 PlayerDialogueManager.PlayerAsRead = false ;
                 PlayerScript.InDiscussion = true ;
                 LunchDiscussion(); 
-                DialogueSpawning.Play();                
+                             
             }
 
             if(PlayerDialogueManager.PlayerAsRead) 

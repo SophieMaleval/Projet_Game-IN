@@ -23,6 +23,8 @@ public class DialogueDisplayerController : MonoBehaviour
 
     [HideInInspector] public int Question3IntDisplay = 3;
     public GameObject BoxQuestion ;
+
+    public AudioSource SoundDialogueSpawning;
     
  
 
@@ -134,12 +136,14 @@ public class DialogueDisplayerController : MonoBehaviour
 
         if(TextAsCompletelyDisplay && PassTextImg.gameObject.activeSelf == false)
         {
+            
             PassTextImg.gameObject.SetActive(true);
             StopCoroutine(AnimationPassText());
             StartCoroutine(AnimationPassText());
         }
         if(!TextAsCompletelyDisplay && PassTextImg.gameObject.activeSelf == true) 
         {
+            SoundDialogueSpawning.Play();
             PassTextImg.gameObject.SetActive(false);
             StopCoroutine(AnimationPassText());
             StartCoroutine(AnimationPassText());
@@ -187,9 +191,13 @@ public class DialogueDisplayerController : MonoBehaviour
 
     public void StateDiscussion()
     {
+
+        
+
         if(!/*GameObject.Find("Inventory").GetComponent<InventoryScript>()*/PlayerDialogueManager.transform.GetComponentInParent<PlayerScript>().InventoryUIIndestructible.GetComponent<InventoryScript>().InventoryPanel.activeSelf)
         {
             CanChangeCurrentDialogue = true ;
+           
 
             if(DialogueCanvas.text == DialoguePNJ.OpeningDialogue) ShowDialogueChoice(true);
             if(CurrentDialogueDisplay == -1 && !TextAsCompletelyDisplay && !TextOppeningDisplayCompletely )    StartDiscussion(true); // Arrête l'animation et Affiche tout le texte d'Openning
