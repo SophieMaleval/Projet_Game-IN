@@ -53,17 +53,13 @@ public class PlayerDialogue : MonoBehaviour
     [Header ("Inputs")]
     private PlayerActionControls PlayerActionControllers ;
 
-    public List<DialogueContainer> myDialogueAdhérentFR = new List<DialogueContainer>();
-    public List<DialogueContainer> myDialogueAdhérentEN = new List<DialogueContainer>();
+    [HideInInspector] public List<DialogueContainer> myDialogueAdhérentFR = new List<DialogueContainer>();
+    [HideInInspector] public List<DialogueContainer> myDialogueAdhérentEN = new List<DialogueContainer>();
 
  
-    public bool PlayerAsRead = false ;
-    public int CurrentSelectQuestion = 0 ;
+    [HideInInspector] public bool PlayerAsRead = false ;
+    [HideInInspector] public int CurrentSelectQuestion = 0 ;
 
-    [Header ("Adaptation de texte")]
-    [SerializeField] private PlayerScript PlayerInformations ;
-    private string[] Pronoms = new string[]{"un", "une", "un.e"};
-    private string[] Terminaisons = new string[]{"un", "une", "un.e"};
 
 
 

@@ -48,11 +48,11 @@ public class PlayerMovement : MonoBehaviour
 
     
 
-    private void OnEnable() {   PlayerActionControllers.Enable();   }
+    private void OnEnable() {   PlayerActionControllers.Enable(); }
     private void OnDisable() {   PlayerActionControllers.Disable();   }
 
     public void StartActivity() {   PlayerActionControllers.Disable();   }
-    public void EndActivity() {   PlayerActionControllers.Enable();   }
+    public void EndActivity() {   PlayerActionControllers.Enable(); }
 
     private void Awake() 
     {  
@@ -211,8 +211,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Move()
     {   
-        if (!OnScooter)
-        
+        if (!OnScooter)  
             RbPlayer.velocity = new Vector2(MoveDirection.x * MoveSpeed, MoveDirection.y * MoveSpeed); 
         else
             RbPlayer.velocity = new Vector2(MoveDirection.x * (MoveSpeed*ScooterSpeed), MoveDirection.y * (MoveSpeed*ScooterSpeed)); 

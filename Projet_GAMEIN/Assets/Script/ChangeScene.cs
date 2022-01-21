@@ -18,6 +18,11 @@ public class ChangeScene : MonoBehaviour
             PM =  GameObject.Find("Player").GetComponent<PlayerMovement>();
             FadeImage = PM.GetComponent<PlayerScript>().CanvasIndestrucitble.gameObject.transform.Find("Fade").gameObject ;
         }
+
+        if(GameObject.Find("DoorOpening") != null)
+        {
+            DoorOpeningSound = GameObject.Find("DoorOpening").GetComponent<AudioSource>() ;
+        }
     }
 
 
@@ -25,8 +30,10 @@ public class ChangeScene : MonoBehaviour
     {
         if(other.gameObject.tag == "Player" && !PM.OnScooter)
         {
-            other.gameObject.GetComponent<PlayerMovement>().enabled = false ;
-            other.gameObject.GetComponent<PlayerMovement>().ResetVelocity();
+            PM.enabled = false ;
+            PM.ResetVelocity();
+        //    other.gameObject.GetComponent<PlayerMovement>().enabled = false ;
+        //    other.gameObject.GetComponent<PlayerMovement>().ResetVelocity();
             DoorOpeningSound.Play();
             GoNewScene();
         }

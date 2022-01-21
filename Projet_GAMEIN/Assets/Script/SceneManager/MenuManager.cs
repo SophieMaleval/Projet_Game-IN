@@ -19,7 +19,9 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private Button CloseSettingBtn ;
     private bool SettingOpen = false ;
 
-    [SerializeField] private RectTransform SettingPanel;   
+    [SerializeField] private RectTransform SettingPanel;
+    [SerializeField] private RectTransform ControlsPanel;
+
 
     [SerializeField] public GameObject FadeImage ;
 
@@ -69,13 +71,23 @@ public class MenuManager : MonoBehaviour
     public void OpenSetting()
     {
         //OptionsPanel.SetActive(true);
-        StartCoroutine(AnimationPanels(true)); 
+        StartCoroutine(AnimationPanels(true, SettingPanel)); 
     }
-
     public void CloseSetting()
     {
-        StartCoroutine(AnimationPanels(false));
+        StartCoroutine(AnimationPanels(false, SettingPanel));
     }
+
+
+    public void OpenControls()
+    {
+        StartCoroutine(AnimationPanels(true, ControlsPanel));
+    }
+    public void CloseControls()
+    {
+        StartCoroutine(AnimationPanels(false, ControlsPanel));
+    }
+
 
     public void SetMenuTextLangue(int Langue) // 0 - FR et 1 - EN
     {
@@ -88,13 +100,13 @@ public class MenuManager : MonoBehaviour
 
 
 
-    IEnumerator AnimationPanels(bool OpenSettings)
+    IEnumerator AnimationPanels(bool OpenSettings, RectTransform PanelAnimate)
     {
         if(OpenSettings)
         {
             SettingOpen = true ;
 
-            SettingPanel.DOAnchorPosY(500, 1f);
+            PanelAnimate.DOAnchorPosY(500, 1f);
             OpenSettingBtn.interactable = false ;
             CloseSettingBtn.interactable = true ;
 
@@ -104,26 +116,25 @@ public class MenuManager : MonoBehaviour
             yield return new WaitForSeconds(0.75f);
 
 
-            SettingPanel.gameObject.SetActive(true);
-            SettingPanel.GetComponent<Image>().DOFade(0.75f, 1f);
-            SettingPanel.DOAnchorPosY(0, 1f);            
+            PanelAnimate.gameObject.SetActive(true);
+            PanelAnimate.GetComponent<Image>().DOFade(0.75f, 1f);
+            PanelAnimate.DOAnchorPosY(0, 1f);            
         } else {
             CloseSettingBtn.interactable = true ;
 
-            SettingPanel.DOAnchorPosY(-50, 0.1f);
+            PanelAnimate.DOAnchorPosY(-50, 0.1f);
             yield return new WaitForSeconds(0.1f);
-            SettingPanel.GetComponent<Image>().DOFade(0f, 1f);            
-            SettingPanel.DOAnchorPosY(500, 1f);
+            PanelAnimate.GetComponent<Image>().DOFade(0f, 1f);            
+            PanelAnimate.DOAnchorPosY(500, 1f);
             yield return new WaitForSeconds(1f);
 
 
-            SettingPanel.gameObject.SetActive(false);
+            PanelAnimate.gameObject.SetActive(false);
             TitlePanel.DOAnchorPosY(0, 1f);
 
             yield return new WaitForSeconds(1f);
             OpenSettingBtn.interactable = true ; 
             SettingOpen = false ;
         }
-
     }
 }

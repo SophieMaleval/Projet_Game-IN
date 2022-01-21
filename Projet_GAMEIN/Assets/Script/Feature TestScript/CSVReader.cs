@@ -17,6 +17,9 @@ public class UITextContainer
 
     public List<string> PanelENTFR ;
     public List<string> PanelENTEN ;
+
+    public List<string> ControlFR ;
+    public List<string> ControlEN ;
 }
 
 
@@ -53,7 +56,8 @@ public class CSVReader : MonoBehaviour
 
     private void Awake() 
     {
-        PlayerInformations = transform.parent.GetComponent<PlayerScript>();
+        if(PlayerInformations == null)
+            PlayerInformations = transform.parent.GetComponent<PlayerScript>();
     }
     void Start()
     {
@@ -94,15 +98,22 @@ public class CSVReader : MonoBehaviour
                     
                         if(Data[0] == "Panneaux ENT FR")    UIText.PanelENTFR.Add(Data[D]);
                         if(Data[0] == "Panneaux ENT EN")    UIText.PanelENTEN.Add(Data[D]);
+                    
+                        if(Data[0] == "Control FR")    UIText.ControlFR.Add(Data[D]);
+                        if(Data[0] == "Control EN")    UIText.ControlEN.Add(Data[D]);
                     }
                 }
             }                
         }
 
         // Add UIText du Pannel des ENT au PannelENTManager
-        PannelENTManager ManagerPannelENT = PlayerInformations.PannelENTUIIndestructible.GetComponent<PannelENTManager>() ;
-        ManagerPannelENT.UIPanelENTFR = UIText.PanelENTFR;
-        ManagerPannelENT.UIPanelENTEN = UIText.PanelENTEN;
+        if(PlayerInformations != null)
+        {
+            PannelENTManager ManagerPannelENT = PlayerInformations.PannelENTUIIndestructible.GetComponent<PannelENTManager>() ;
+            ManagerPannelENT.UIPanelENTFR = UIText.PanelENTFR;
+            ManagerPannelENT.UIPanelENTEN = UIText.PanelENTEN;            
+        }
+
     }
 
     void ReaderDialogCSV(TextAsset DialogDataLanguage, List<DialogueContainer> TargetList) 
@@ -117,8 +128,9 @@ public class CSVReader : MonoBehaviour
             if(Data[0] != "")
             {
                 DialogueContainer InfoDiag = new DialogueContainer();
-                InfoDiag.Entreprise = ReplaceCharacter(Data[0]);
-                InfoDiag.Name = ReplaceCharacter(Data[1]);
+
+                InfoDiag.Entreprise = Data[0];
+                InfoDiag.Name = Data[1];
                 InfoDiag.OpeningDialogue = ReplaceCharacter(Data[2]);
                 InfoDiag.CloseDiscussion = ReplaceCharacter(Data[3]);
                     
@@ -167,12 +179,16 @@ public class CSVReader : MonoBehaviour
     {
         string DataCorrected = "";
 
-        string WithName = CharacterAsReplaced.Replace("§", PlayerInformations.PlayerName) ;   
+        if(CharacterAsReplaced != null)
+        {
+            string WithName = CharacterAsReplaced.Replace("§", PlayerInformations.PlayerName) ;   
 
-        string WithPronom = WithName.Replace("¤", Pronoms[PlayerInformations.PlayerSexualGenre]) ;   
-        string WithTerms = WithPronom.Replace("~", Terminaisons[PlayerInformations.PlayerSexualGenre]) ;   
+            string WithPronom = WithName.Replace("¤", Pronoms[PlayerInformations.PlayerSexualGenre]) ;   
+            string WithTerms = WithPronom.Replace("~", Terminaisons[PlayerInformations.PlayerSexualGenre]) ;   
 
-        DataCorrected = WithTerms ;
+            DataCorrected = WithTerms ;
+        }
+
         return DataCorrected ;
     }
 
@@ -227,14 +243,15 @@ public class CSVReader : MonoBehaviour
         {
             string[] Data = LineData[LD].Split(new string[] { ";" }, StringSplitOptions.None) ; // Data correspond à chaque case
 
-            if(Data[0] != "")
+            if(Data[0] != "-")
             {
                 UIPanelENTContainer NewTextPannel = new UIPanelENTContainer() ;
 
                 string[] Data0Split = Data[0].Split(new string[] { "\n"}, StringSplitOptions.None);
                 NewTextPannel.NomEntrprise = Data0Split[1] ;
-                NewTextPannel.DescriptionEntreprise = Data[1] ;
-                
+               
+                NewTextPannel.DescriptionEntreprise = Data[1] ;                    
+
                 NewTextPannel.Valeurs = Data[2] ;
                 
                 NewTextPannel.TitreDernièreProd = Data[3] ;
@@ -246,7 +263,7 @@ public class CSVReader : MonoBehaviour
                     NewTextPannel.DescriptionAvantDernièreProd = Data[6] ;                    
                 }
 
-                if(VerificationIfContainerNull(NewTextPannel))
+                if(VerificationIfContainerNull(NewTextPannel) && Data0Split[1] != "-")
                     TextUIPanneauxENT.Add(NewTextPannel);
             }                
         }

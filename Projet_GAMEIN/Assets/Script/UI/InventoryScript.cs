@@ -15,6 +15,7 @@ public class InventoryScript : MonoBehaviour
 
 
     [SerializeField] private RectTransform SettingPanel ;
+    [SerializeField] private RectTransform ControlsPanel;
 
     private void Awake() 
     {
@@ -61,32 +62,40 @@ public class InventoryScript : MonoBehaviour
 
     public void OpenSetting()
     {
-        StartCoroutine(AnimationPanels(true));
+        StartCoroutine(AnimationPanels(true, SettingPanel));
     }
     public void CloseSetting()
     {
-        StartCoroutine(AnimationPanels(false));
+        StartCoroutine(AnimationPanels(false, SettingPanel));
     }
 
-    IEnumerator AnimationPanels(bool OpenSettings)
+    public void OpenControls()
+    {
+        StartCoroutine(AnimationPanels(true, ControlsPanel));
+    }
+    public void CloseControls()
+    {
+        StartCoroutine(AnimationPanels(false, ControlsPanel));
+    }
+
+
+    IEnumerator AnimationPanels(bool OpenSettings, RectTransform PanelAnimate)
     {
         if(OpenSettings)
         {
-            SettingPanel.DOAnchorPosY(1500, 0.01f);
+            PanelAnimate.DOAnchorPosY(1500, 0.01f);
             yield return new WaitForSeconds(0.01f);
-            SettingPanel.gameObject.SetActive(true);
-            SettingPanel.GetComponent<Image>().DOFade(0.75f, 1f);
-            SettingPanel.DOAnchorPosY(0, 1f);            
+            PanelAnimate.gameObject.SetActive(true);
+            PanelAnimate.GetComponent<Image>().DOFade(0.75f, 1f);
+            PanelAnimate.DOAnchorPosY(0, 1f);            
         } else {
-
-            SettingPanel.DOAnchorPosY(-50, 0.1f);
+            PanelAnimate.DOAnchorPosY(-50, 0.1f);
             yield return new WaitForSeconds(0.1f);
-            SettingPanel.GetComponent<Image>().DOFade(0f, 1f);            
-            SettingPanel.DOAnchorPosY(1500, 1f);
+            PanelAnimate.GetComponent<Image>().DOFade(0f, 1f);            
+            PanelAnimate.DOAnchorPosY(1500, 1f);
             yield return new WaitForSeconds(1f);
 
-
-            SettingPanel.gameObject.SetActive(false);
+            PanelAnimate.gameObject.SetActive(false);
         }
     }
 

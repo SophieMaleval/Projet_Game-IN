@@ -163,7 +163,6 @@ public class QuestSys : MonoBehaviour
     {
         animContent.DOFade(0f, 0.3f);
         animTitle.DOFade(0f, 0.3f);
-        Debug.Log("Fade tout out");
         yield return new WaitForSeconds(duration);
         NextLevel();
         if (niveau > sizeOfList - 1)

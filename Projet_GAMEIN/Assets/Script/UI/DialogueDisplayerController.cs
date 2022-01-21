@@ -19,16 +19,16 @@ public class DialogueDisplayerController : MonoBehaviour
     [HideInInspector] public DialogueContainer DialoguePNJ ;
     [HideInInspector] public DialogueContainer DialoguePNJ_FR ;
     [HideInInspector] public DialogueContainer DialoguePNJ_EN ;
-    [SerializeField] private PlayerDialogue PlayerDialogueManager;
+    private PlayerDialogue PlayerDialogueManager;
 
     [HideInInspector] public int Question3IntDisplay = 3;
     public GameObject BoxQuestion ;
 
 
-    public List<string> QuestionDisponible = new List<string>() ;
+    [HideInInspector] public List<string> QuestionDisponible = new List<string>() ;
         [HideInInspector]  public List<string> QuestionDisponible_FR = new List<string>() ;
         [HideInInspector]  public List<string> QuestionDisponible_EN = new List<string>() ;
-    public List<string> AnswerDisponible = new List<string>() ;
+    [HideInInspector] public List<string> AnswerDisponible = new List<string>() ;
         [HideInInspector] public List<string> AnswerDisponible_FR = new List<string>() ;
         [HideInInspector]  public List<string> AnswerDisponible_EN = new List<string>() ;
 

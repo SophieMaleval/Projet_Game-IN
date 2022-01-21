@@ -56,7 +56,7 @@ public class SettingManager : MonoBehaviour
 
     IEnumerator WaitAndSetSettingsText()
     {
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.25f);
         SetSettingsTextLangue(PlayerPrefs.GetInt("Langue"));
         CanCheckLanguage = true ;        
     }

@@ -20,6 +20,14 @@ public class UIPanelENTContainer
 
 public class PannelENTManager : MonoBehaviour
 {
+    [Header ("Gestionnaire des Pages")]
+    [SerializeField] private RectTransform FeuilleEnt ;
+    [SerializeField] private RectTransform FeuilleContact ;
+    [SerializeField] private RectTransform FeuilleProductions ;
+    [SerializeField] private List<RectTransform> FeuilleDecos ;
+    public int Disposition ;
+
+
     [Header ("UI Text")]
     [SerializeField] private TextMeshProUGUI NomEntreprise ;
 
@@ -59,6 +67,41 @@ public class PannelENTManager : MonoBehaviour
     void Start() 
     {
         SetPrincipalInformation();
+    }
+
+    void SetDispositionPage()
+    {
+        if(Disposition == 0)
+        {
+            FeuilleEnt = SetPos(-296f, 84f, -2.5f) ;
+            FeuilleContact = SetPos(29.4f, -203.1f, 6.633f) ;
+            FeuilleProductions = SetPos(292f, 79f, 2f) ;
+
+            FeuilleDecos[0] = SetPos(-300f, -127f, -1) ;
+            FeuilleDecos[1] = SetPos(-9f, 5f, -6.5f) ;
+            FeuilleDecos[2] = SetPos(320f, -108f, -1.5f) ;
+        }
+
+        if(Disposition == 1)
+        {
+            FeuilleEnt = SetPos(-253.1f, 115.5f, -2.41f) ;
+            FeuilleContact = SetPos(161f, 150f, 3.2f) ;
+            FeuilleProductions = SetPos(168.2f, -120.8f, -4.3f) ;
+
+            FeuilleDecos[0] = SetPos(-305f, -100f, 9.2f) ;
+            FeuilleDecos[1] = SetPos(-36f, -39f, -6.1f) ;
+            FeuilleDecos[2] = SetPos(270f, -144.6f, -5.7f) ;
+        }
+    }
+
+    RectTransform SetPos(float PosX, float PosY, float RotationZ)
+    {
+        RectTransform NewPos = new RectTransform() ;
+        
+        NewPos.anchoredPosition = new Vector2(PosX, PosY);
+        NewPos.eulerAngles = new Vector3(0, 0, RotationZ);
+
+        return NewPos ;
     }
 
     void Update()
