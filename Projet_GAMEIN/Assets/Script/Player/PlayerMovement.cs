@@ -58,7 +58,8 @@ public class PlayerMovement : MonoBehaviour
     {  
         PlayerActionControllers = new PlayerActionControls();
         PlayerActionControllers.PlayerInLand.EnterScoot.performed += OnEnterScoot;
-        PlayerActionControllers.PlayerInScoot.ExitScoot.performed += OnExitScoot;    }
+        PlayerActionControllers.PlayerInScoot.ExitScoot.performed += OnExitScoot;
+   }
 
     void Update()
     {
@@ -70,20 +71,14 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnEnterScoot (InputAction.CallbackContext ctx )
     {      
-        if(ctx.performed)
+        if(ctx.performed && (MoveDirection.magnitude >= -AmplitudeToSwitchScoot) && (MoveDirection.magnitude <= AmplitudeToSwitchScoot))
         {
-            if((MoveDirection.magnitude >= -AmplitudeToSwitchScoot) && (MoveDirection.magnitude <= AmplitudeToSwitchScoot))
-            {
-                PlayerActionControllers.PlayerInLand.Disable() ;
-                PlayerActionControllers.PlayerInScoot.Enable() ;
-                switchScootState(true); 
-                ScooterStop.Play();
-            }
-            
-            
-              
-                   
-        }
+            PlayerActionControllers.PlayerInLand.Disable() ;
+            PlayerActionControllers.PlayerInScoot.Enable() ;
+            switchScootState(true); 
+            ScooterStop.Play();
+        }    
+        
     }
     public void OnExitScoot (InputAction.CallbackContext ctx )
     {
@@ -115,7 +110,7 @@ public class PlayerMovement : MonoBehaviour
         {    Animators[i].gameObject.GetComponent<SpriteRenderer>().enabled = !OnScooter ;  }
     }
 
-      void MoveSpeedManager()
+    void MoveSpeedManager()
     {
           if (scene.name == "Tilemaps test")
         {

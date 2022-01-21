@@ -121,7 +121,7 @@ public class PlayerDialogue : MonoBehaviour
     {
         if(ctx.performed)
         {
-            PlayingSelectingChoices();
+            if(GameObject.Find("Dialogue Canvas") != null) PlayingSelectingChoices();
             SetQuestionSelect(true);
         }
     }
@@ -129,7 +129,7 @@ public class PlayerDialogue : MonoBehaviour
     {
         if(ctx.performed)
         {
-            PlayingSelectingChoices();
+            if(GameObject.Find("Dialogue Canvas") != null) PlayingSelectingChoices();
             SetQuestionSelect(false);
         }
     }

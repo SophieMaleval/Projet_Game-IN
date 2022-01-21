@@ -22,13 +22,13 @@ public class TalkQuest : MonoBehaviour
         {
             if (PlayerScript.CanCollectObject && PlayerScript.PlayerAsInterract)
             {
-                PlayerScript.PlayerAsInterract = false;
+                //PlayerScript.PlayerAsInterract = false;
                 TalkedTo();
             }
-            else
+           /* else
             {
                 PlayerScript.PlayerAsInterract = false;
-            }
+            }*/
         }
     }
 

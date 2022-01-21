@@ -138,6 +138,7 @@ public class DialogueDisplayerController : MonoBehaviour
         {
             
             PassTextImg.gameObject.SetActive(true);
+            PassTextImg.anchoredPosition = new Vector2(PassTextImg.anchoredPosition.x, -2.5f);
             StopCoroutine(AnimationPassText());
             StartCoroutine(AnimationPassText());
         }

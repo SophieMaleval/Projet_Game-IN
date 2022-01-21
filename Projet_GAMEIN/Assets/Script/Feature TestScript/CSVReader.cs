@@ -41,11 +41,21 @@ public class CSVReader : MonoBehaviour
     [Header ("Adaptation de texte")]
     private PlayerScript PlayerInformations ;
 
-    private string[] Pronoms = new string[]{"un", "une", "un·e"};
+    private string[] Pronoms = new string[]{"une", "un", "un·e"};
     private string[] Terminaisons = new string[]
-    { /*masculin*/ "eur", "el", "ier", "er","ien", 
-      /*féminin*/ "elle", "euse", "rice","ière","ère","ienne",
-      /*inclusif*/ "eur·rice", "eur·euse", "eur·e", "el·elle","ier·ière", "er·ère", "ien·ienne" 
+    { 
+        /*féminin/ "elle", "euse", "rice", "eure","ière", "ère", "ienne", 
+        /*masculin/ "el", "eur", "eur", "eur", "ier", "er", "ien", 
+        /*inclusif/ "el·elle", "eur·euse", "eur·rice", "eur·e", "ier·ière", "er·ère", "ien·ienne" */
+
+        /* féminin, masculin, inclusif */
+        "elle", "el", "el·elle",    // 1-3
+        "euse", "eur", "eur·euse",  // 4-6
+        "rice", "eur", "eur·rice",  // 7-9
+        "eure", "eur", "eur·e", // 10-12
+        "ière", "ier", "ier·ière",  //13-15
+        "ère", "er", "er·ère",  // 16-18
+        "ienne", "ien", "ien·ienne" // 19-21
     };
 
     [Header ("Texte Quest")]
@@ -184,9 +194,19 @@ public class CSVReader : MonoBehaviour
             string WithName = CharacterAsReplaced.Replace("§", PlayerInformations.PlayerName) ;   
 
             string WithPronom = WithName.Replace("¤", Pronoms[PlayerInformations.PlayerSexualGenre]) ;   
-            string WithTerms = WithPronom.Replace("~", Terminaisons[PlayerInformations.PlayerSexualGenre]) ;   
 
-            DataCorrected = WithTerms ;
+
+
+            string WithTerms1 = WithPronom.Replace("00000001", Terminaisons[PlayerInformations.PlayerSexualGenre + 0]) ;     // "elle", "el", "el·elle"
+            string WithTerms2 = WithTerms1.Replace("00000010", Terminaisons[PlayerInformations.PlayerSexualGenre + 3]) ;            // "euse", "eur", "eur·euse"
+            string WithTerms3 = WithTerms2.Replace("00000100", Terminaisons[PlayerInformations.PlayerSexualGenre + 6]) ;            // "rice", "eur", "eur·rice"
+            string WithTerms4 = WithTerms3.Replace("00001000", Terminaisons[PlayerInformations.PlayerSexualGenre + 9]) ;            // "eure", "eur", "eur·e"
+            string WithTerms5 = WithTerms4.Replace("00010000", Terminaisons[PlayerInformations.PlayerSexualGenre + 12]) ;           // "ière", "ier", "ier·ière"
+            string WithTerms6 = WithTerms5.Replace("00100000", Terminaisons[PlayerInformations.PlayerSexualGenre + 15]) ;           // "ère", "er", "er·ère"
+            string WithTerms7 = WithTerms6.Replace("01000000", Terminaisons[PlayerInformations.PlayerSexualGenre + 18]) ;           // "ienne", "ien", "ien·ienne"
+           // string WithTerms8 = WithPronom.Replace("1000000", Terminaisons[PlayerInformations.PlayerSexualGenre + 21]) ;           // 
+
+            DataCorrected = WithTerms7 ;
         }
 
         return DataCorrected ;
