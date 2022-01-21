@@ -25,6 +25,7 @@ public class PNJDialogue : MonoBehaviour
     private bool PlayerAround = false ;
 
     private GameObject BoxQuestion ;
+  
 
     public int Question3IntDisplay = 3;  
 
@@ -170,22 +171,33 @@ public class PNJDialogue : MonoBehaviour
 
         if(PlayerAround)
         {
+            
             if(PlayerScript.PlayerAsInterract && !PlayerScript.InDiscussion)
             {
                 PlayerScript.PlayerAsInterract = false ;
                 PlayerDialogueManager.PlayerAsRead = false ;
                 PlayerScript.InDiscussion = true ;
-                LunchDiscussion();                  
+                LunchDiscussion(); 
+                             
             }
 
             if(PlayerDialogueManager.PlayerAsRead) 
             {
                 PlayerDialogueManager.PlayerAsRead = false ;
 
-                if(!DialogueCanvasBox.WeAreInChoice)
+                if(!DialogueCanvasBox.WeAreInChoice){
+
                     DialogueCanvasBox.StateDiscussion();
+                   
+                }
+                     
                 else
+                {
+
                     DialogueCanvasBox.ValidateButton();
+
+                }
+                    
             } 
         } 
 
@@ -213,6 +225,7 @@ public class PNJDialogue : MonoBehaviour
 
 
         DialogueCanvasDisplayerText = DialogueCanvasBox.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+        
         BoxQuestion = DialogueCanvasBox.transform.GetChild(1).gameObject ;     
 
         DialogueCanvasBox.CurrentPNJDiscussion = this ;   

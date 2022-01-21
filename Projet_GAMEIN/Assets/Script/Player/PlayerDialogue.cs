@@ -46,10 +46,15 @@ public class DialogueContainer
     public string Dialogue18 ;
     public string Dialogue19 ;
     public string Dialogue20 ;
+
+    
 }
 
 public class PlayerDialogue : MonoBehaviour
 {
+    public AudioSource SelectingQuestion;
+    
+    public AudioSource ValidatingChoiceSound;
     [Header ("Inputs")]
     private PlayerActionControls PlayerActionControllers ;
 
@@ -95,10 +100,17 @@ public class PlayerDialogue : MonoBehaviour
         CurrentSelectQuestion = 0 ;
     }
 
+    void PlayingSelectingChoices(){
+        SelectingQuestion.Play();        
+    }
+
+   
+
     public void OnValidateChoice (InputAction.CallbackContext ctx)
     {
         if(ctx.performed)
         {
+            
             PlayerAsRead = true ;
         }
     }
@@ -109,6 +121,7 @@ public class PlayerDialogue : MonoBehaviour
     {
         if(ctx.performed)
         {
+            PlayingSelectingChoices();
             SetQuestionSelect(true);
         }
     }
@@ -116,6 +129,7 @@ public class PlayerDialogue : MonoBehaviour
     {
         if(ctx.performed)
         {
+            PlayingSelectingChoices();
             SetQuestionSelect(false);
         }
     }
