@@ -30,10 +30,13 @@ public class ChangeScene : MonoBehaviour
     {
         if(other.gameObject.tag == "Player" && !PM.OnScooter)
         {
-            PM.enabled = false ;
+            PM.PlayerChangeScene = true ;
+            PM.PlayerArrivedInNewScene = false ;
+            if(other.gameObject.transform.position.y < (transform.position.y + GetComponent<BoxCollider2D>().offset.y)) PM.MakePlayerInGoodSens = true ;
+            else PM.MakePlayerInGoodSens = false ;
+
             PM.ResetVelocity();
-        //    other.gameObject.GetComponent<PlayerMovement>().enabled = false ;
-        //    other.gameObject.GetComponent<PlayerMovement>().ResetVelocity();
+
             DoorOpeningSound.Play();
             GoNewScene();
         }
@@ -47,8 +50,9 @@ public class ChangeScene : MonoBehaviour
     IEnumerator WaitBeforeChangeScene()
     {
         FadeImage.SetActive(true);
-        FadeImage.GetComponent<AnimationTransitionScene>().ShouldReveal = false ;
-        yield return new WaitForSeconds(1.75f);
+        FadeImage.GetComponent<AnimationTransitionScene>().QuitScene();
+        yield return new WaitForSeconds(2f);
         SceneManager.LoadScene(NameScene);
+
     }
 }

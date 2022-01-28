@@ -13,7 +13,6 @@ public class AnimationCustomizer : MonoBehaviour
     [SerializeField] private Customizer CustomizerReference ;
 
     [Header ("Animation Ouverture et Fermeture Scene")]
-    [SerializeField] private GameObject FadeImage ;
     [SerializeField] private Animator RideauxAnimator ;
 
     [Header ("Rotate Avatar")]

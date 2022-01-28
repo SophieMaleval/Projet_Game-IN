@@ -21,9 +21,11 @@ public class SceneManagerFeature : MonoBehaviour
             FadeImage = PM.GetComponent<PlayerScript>().CanvasIndestrucitble.gameObject.transform.Find("Fade").gameObject ;
             PM.GetComponent<PlayerScript>().CanvasIndestrucitble.GetComponent<Canvas>().worldCamera = Camera.main;
         
+     
             PM.enabled = true ;
-            
-      
+            PM.PlayerArrivedInNewScene = true ;
+            PM.MakePlayerInGoodSens = true ;     
+            PM.ChangePlayerSpeed(false);
         } 
     }
 
@@ -42,39 +44,12 @@ public class SceneManagerFeature : MonoBehaviour
 
     private void Start() 
     {
-        StartCoroutine(WaitTransitionAnim());
-        //PM.GetComponent<PlayerScript>().InventoryUIIndestructible.GetComponent<InventoryScript>().SwitchToggleInventoryDisplay();
+        FadeImage.GetComponent<AnimationTransitionScene>().OpenningScene();
     }
 
-
-  /*  private void OnTriggerEnter2D(Collider2D other) 
-    {
-        if(other.gameObject.tag == "Player" && !PM.OnScooter)
-        {
-            other.gameObject.GetComponent<PlayerMovement>().enabled = false ;
-            other.gameObject.GetComponent<PlayerMovement>().ResetVelocity();
-            GoCustom();
-        }
-    }
-
-    public void GoCustom()
-    {
-        StartCoroutine(WaitBeforeChangeScene());
-    }
-
-    IEnumerator WaitBeforeChangeScene()
-    {
-        FadeImage.SetActive(true);
-        FadeImage.GetComponent<AnimationTransitionScene>().ShouldReveal = false ;
-        yield return new WaitForSeconds(1.75f);
-        SceneManager.LoadScene(NameScene);
-    }*/
-    
-    IEnumerator WaitTransitionAnim()
+    IEnumerator WaitOppeningScene()
     {
         yield return new WaitForSeconds(0.25f);
-        FadeImage.GetComponent<AnimationTransitionScene>().enabled = true ;
-        yield return new WaitForSeconds(2f) ;
-        FadeImage.SetActive(false);
+        FadeImage.GetComponent<AnimationTransitionScene>().OpenningScene();
     }
 }

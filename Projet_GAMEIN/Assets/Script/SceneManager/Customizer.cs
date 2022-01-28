@@ -19,8 +19,7 @@ public class Customizer : MonoBehaviour
 
     [SerializeField] private Button RandomButton ;
     [SerializeField] private Button SubmitButton ;
-    [SerializeField] private GameObject FadeImage ;
-    [SerializeField] private GameObject CineMachineCam ;
+    [SerializeField] private AnimationTransitionScene FadeImage ;
 
 
     [Header ("CustomerPanel")]
@@ -158,9 +157,10 @@ private string WhoIsIt = "§ est ¤ !" ;
     IEnumerator WaitTransitionAnim()
     {
         yield return new WaitForSeconds(0.25f);
-        FadeImage.GetComponent<AnimationTransitionScene>().enabled = true ;
+        FadeImage.enabled = true ;
+        FadeImage.ShouldReveal = true ;
         yield return new WaitForSeconds(2f) ;
-        FadeImage.SetActive(false);
+        FadeImage.gameObject.SetActive(false);
     }
 
 
@@ -438,7 +438,7 @@ private string WhoIsIt = "§ est ¤ !" ;
     public void SubmitCustom()
     {
         GetComponent<AnimationCustomizer>().CustomizationFinish() ;
-        FadeImage.SetActive(true);
+        FadeImage.gameObject.SetActive(true);
         GetComponent<AnimationCustomizer>().ChangeTitleCategories(6);
 
         GameObject.Find("Player Backpack").GetComponent<CSVReader>().SetUpDialogueAdhérent(); 
@@ -459,10 +459,8 @@ private string WhoIsIt = "§ est ¤ !" ;
         PlayerPersonnality.CanvasIndestrucitble.SetActive(true);
         PlayerPersonnality.PannelENTUIIndestructible.SetActive(false);
         
-        //PlayerPersonnality.InventoryUIIndestructible.GetComponent<InventoryScript>().SwitchToggleInventoryDisplay();
-        yield return new WaitForSeconds(0.25f);
+        yield return new WaitForSeconds(0.5f);
         SceneManager.LoadScene("Tilemaps Test");
-
     }
 
 

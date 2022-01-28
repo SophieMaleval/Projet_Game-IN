@@ -5,9 +5,7 @@ using UnityEngine.UI ;
 
 public class AnimationTransitionScene : MonoBehaviour
 {
-    public Image ImageComponnent;
-    //public GameObject CanvasFade;
-    //public int SortOrdering = 1;
+    public Image ImageAnimate;
 
     [SerializeField] private float TransitionSpeed = 0.7f;
 
@@ -21,10 +19,10 @@ public class AnimationTransitionScene : MonoBehaviour
 
     void Awake()
     {
-        //CanvasFade.GetComponent<Canvas>().sortingOrder = SortOrdering;
-        ImageComponnent.material.SetFloat("_FloatResize", 0) ;
-        ShouldReveal =  true;
+        ImageAnimate.material.SetFloat("_FloatResize", 0) ;
+    //    ShouldReveal =  true;
     }
+
 
 
     void Update()
@@ -32,13 +30,29 @@ public class AnimationTransitionScene : MonoBehaviour
   
         if(ShouldReveal)
         {
-      
-            ImageComponnent.material.SetFloat("_FloatResize" , Mathf.MoveTowards(ImageComponnent.material.GetFloat("_FloatResize"), CircleSize, TransitionSpeed * Time.deltaTime));
-         
+            ImageAnimate.material.SetFloat("_FloatResize" , Mathf.MoveTowards(ImageAnimate.material.GetFloat("_FloatResize"), CircleSize, TransitionSpeed * Time.deltaTime));
         } else {
-            ImageComponnent.material.SetFloat("_FloatResize" , Mathf.MoveTowards(ImageComponnent.material.GetFloat("_FloatResize"), 0, TransitionSpeed * Time.deltaTime));
-            
+            ImageAnimate.material.SetFloat("_FloatResize" , Mathf.MoveTowards(ImageAnimate.material.GetFloat("_FloatResize"), 0, TransitionSpeed * Time.deltaTime));  
         }
+    }
+
+    public void OpenningScene()
+    {
+        ImageAnimate.material.SetFloat("_FloatResize", 0) ;
+        StartCoroutine(AnimOpeningScene()) ;
+    }
+    IEnumerator AnimOpeningScene()
+    {
+        yield return new WaitForSeconds(0.25f);
+        ShouldReveal = true ;
+        yield return new WaitForSeconds(2f) ;
+        ImageAnimate.gameObject.SetActive(false);
+    }
+
+    public void QuitScene()
+    {
+        StopAllCoroutines();
+        ShouldReveal = false ;
     }
 
  

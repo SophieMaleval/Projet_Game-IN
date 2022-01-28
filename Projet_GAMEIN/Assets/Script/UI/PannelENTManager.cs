@@ -60,8 +60,8 @@ public class PannelENTManager : MonoBehaviour
     [HideInInspector] public List<string> UIPanelENTEN ;
     private List<string> UIPanelENT ;
 
-  /*  [HideInInspector]*/ public UIPanelENTContainer InformationPannelENTFR ;
-   /* [HideInInspector]*/ public UIPanelENTContainer InformationPannelENTEN ;
+    public UIPanelENTContainer InformationPannelENTFR ;
+    public UIPanelENTContainer InformationPannelENTEN ;
     private UIPanelENTContainer InformationPannelENT ;
 
     void Start() 
@@ -166,12 +166,20 @@ public class PannelENTManager : MonoBehaviour
 
     public void SwitchTogglePannelDisplay()
     {
-        gameObject.SetActive(!gameObject.activeSelf);
+        if(gameObject.activeSelf == false)
+        {
+            gameObject.SetActive(!gameObject.activeSelf);
+            GameObject.Find("Player").GetComponent<PlayerMovement>().StartActivity();
+        } else {
+            gameObject.SetActive(!gameObject.activeSelf);
+            GameObject.Find("Player").GetComponent<PlayerMovement>().EndActivity(); 
+        }
+
     }
 
     public void OpenWebSite()
     {
         if(InformationENT.URLSiteWeb != "")
-            Application.OpenURL(InformationENT.URLSiteWeb);
+            Application.ExternalEval("window.open('" + InformationENT.URLSiteWeb + "', '_blank')");
     }
 }

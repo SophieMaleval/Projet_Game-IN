@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
 
     [Header ("Movement")]
     [SerializeField] private float MoveSpeed ;
+        private float InitialMoveSpeed ;
         [SerializeField] private float ScooterSpeed ;
 
         public AudioSource ScooterStop;
@@ -18,12 +19,16 @@ public class PlayerMovement : MonoBehaviour
 
         public bool PlayOneShotClip = true;
 
-       
+    [HideInInspector] public bool PlayerChangeScene ;
+    [HideInInspector] public bool MakePlayerInGoodSens = false ; 
+
+        [HideInInspector] public bool PlayerArrivedInNewScene = false ;
+
 
 
     public List<SpriteRenderer> PlayerRenderers ;
     public Rigidbody2D RbPlayer ;
-     Scene scene;
+    Scene scene;
 
     public List<Animator> Animators ;
 
@@ -40,8 +45,8 @@ public class PlayerMovement : MonoBehaviour
     bool OnSlope = false;
     float ValueSlopeAdd;
 
-     bool SlopeStartLeft;
-     int ElevationValue ;
+    bool SlopeStartLeft;
+    int ElevationValue ;
      
     
 
@@ -59,14 +64,22 @@ public class PlayerMovement : MonoBehaviour
         PlayerActionControllers = new PlayerActionControls();
         PlayerActionControllers.PlayerInLand.EnterScoot.performed += OnEnterScoot;
         PlayerActionControllers.PlayerInScoot.ExitScoot.performed += OnExitScoot;
-   }
+
+        InitialMoveSpeed = MoveSpeed ;
+    }
+
+    private void Start() 
+    {
+        PlayerActionControllers.PlayerInScoot.Disable() ; 
+        PlayerActionControllers.PlayerInLand.Enable() ;         
+    }
 
     void Update()
     {
-
         scene = SceneManager.GetActiveScene();
+
         ProcessInputs();
-        Animate();
+        Animate(); 
     }
 
     public void OnEnterScoot (InputAction.CallbackContext ctx )
@@ -76,7 +89,8 @@ public class PlayerMovement : MonoBehaviour
             PlayerActionControllers.PlayerInLand.Disable() ;
             PlayerActionControllers.PlayerInScoot.Enable() ;
             switchScootState(true); 
-            ScooterStop.Play();
+
+            ScooterStop.Play();          
         }    
         
     }
@@ -110,20 +124,6 @@ public class PlayerMovement : MonoBehaviour
         {    Animators[i].gameObject.GetComponent<SpriteRenderer>().enabled = !OnScooter ;  }
     }
 
-    void MoveSpeedManager()
-    {
-          if (scene.name == "Tilemaps test")
-        {
-            MoveSpeed = 5; 
-        }
-        else 
-        {
-            MoveSpeed = 2;
-        }
-
-    }
-
-
 
     private void FixedUpdate() 
     {    
@@ -132,10 +132,9 @@ public class PlayerMovement : MonoBehaviour
         {
             if(!OnScooter) Slopes(1f);
             else Slopes(1.5f);            
-        }
-
-    
+        }    
     }
+
     public void SlopeParameter (bool EnterSlope, float valueSlope, bool BottomAsLeft, int PositionElevation)
     {
         OnSlope = EnterSlope;
@@ -168,23 +167,44 @@ public class PlayerMovement : MonoBehaviour
     void ProcessInputs()
     {
         Vector2 Move = Vector2.zero ;
-        if(!OnScooter)
-            Move = PlayerActionControllers.PlayerInLand.Move.ReadValue<Vector2>();
-        else
-            Move = PlayerActionControllers.PlayerInScoot.MoveScoot.ReadValue<Vector2>();
+
+        if(!PlayerChangeScene)
+        {
+            if(!OnScooter)
+                Move = PlayerActionControllers.PlayerInLand.Move.ReadValue<Vector2>();
+            else
+                Move = PlayerActionControllers.PlayerInScoot.MoveScoot.ReadValue<Vector2>();            
+        } else {
+            if(MakePlayerInGoodSens) 
+            {
+                if(PlayerArrivedInNewScene)
+                {
+                    MakePlayerInGoodSens = false ;
+                    Move = new Vector2(0, -1f);
+
+                    PlayerChangeScene = false ;
+                } else {
+                    MakePlayerInGoodSens = false ;
+                    PlayerArrivedInNewScene = true ;
+                    Move = new Vector2(0, 1f);
+                }
+            }
+        }
+
 
 
         if((Move.x == 0 && Move.y == 0) && MoveDirection.x != 0 || MoveDirection.y != 0)
             LastMoveDirection = MoveDirection ;    
 
-            if((Move.x != 0 || Move.y != 0) && OnScooter == true && PlayOneShotClip == false)
-            {
-                ScootMovingForward();
-            }  
-            if((Move.x == 0 && Move.y == 0) && OnScooter == true && PlayOneShotClip == true)
-            {
-                ScootNotMoving();
-            }
+
+        if((Move.x != 0 || Move.y != 0) && OnScooter == true && PlayOneShotClip == false)
+        {
+            ScootMovingForward();
+        }  
+        if((Move.x == 0 && Move.y == 0) && OnScooter == true && PlayOneShotClip == true)
+        {
+            ScootNotMoving();
+        }
 
 
             //MoveDirection = Move.normalized ;
@@ -210,10 +230,15 @@ public class PlayerMovement : MonoBehaviour
             RbPlayer.velocity = new Vector2(MoveDirection.x * MoveSpeed, MoveDirection.y * MoveSpeed); 
         else
             RbPlayer.velocity = new Vector2(MoveDirection.x * (MoveSpeed*ScooterSpeed), MoveDirection.y * (MoveSpeed*ScooterSpeed)); 
-
-
-
     }
+
+    public void ChangePlayerSpeed(bool PlayerIsInside)
+    {
+        if(PlayerIsInside) MoveSpeed = InitialMoveSpeed -1f ;
+        else MoveSpeed = InitialMoveSpeed ;
+    }
+
+
 
     void ScootNotMoving()
     {
@@ -226,8 +251,7 @@ public class PlayerMovement : MonoBehaviour
         PlayOneShotClip = true; 
 
         ScooterMoving.Play();
-        ScooterStop.Stop();
-                
+        ScooterStop.Stop();     
     }
     
 
@@ -251,8 +275,6 @@ public class PlayerMovement : MonoBehaviour
                 Animators[i].SetFloat("AnimLastMoveY", LastMoveDirection.y) ;
                 // Passe de Idle à Run
                 Animators[i].SetFloat("AnimMoveMagnitude",MoveDirection.magnitude);
-
-
             }
         }
     }

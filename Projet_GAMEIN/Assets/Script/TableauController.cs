@@ -67,14 +67,12 @@ public class TableauController : MonoBehaviour
                 {
                     PlayerScript.PlayerAsInterract = false;
                     Board.SwitchTogglePannelDisplay();
-                    PlayerMovement.StartActivity();
                 }
 
                 if (PlayerScript.PlayerAsInterract && Board.gameObject.activeSelf == true)
                 {
                     PlayerScript.PlayerAsInterract = false;
                     Board.SwitchTogglePannelDisplay();
-                    PlayerMovement.EndActivity();
                 }
             }                 
         }

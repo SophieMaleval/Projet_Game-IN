@@ -7,9 +7,12 @@ using UnityEngine.SceneManagement;
 
 public class SceneEntManager : MonoBehaviour
 {
-    public CinemachineVirtualCamera CMVirtualCam ;
+
     private PlayerMovement PM;
     private GameObject FadeImage ;
+
+    [SerializeField] private List<GameObject> PartScene ;
+    [SerializeField] private CameraTriggerVolume VolumeFirstCam ;
     
     [SerializeField] private Vector2 SetPosition ;
     
@@ -20,13 +23,17 @@ public class SceneEntManager : MonoBehaviour
         if(GameObject.Find("Player") != null)
         {
             PM =  GameObject.Find("Player").GetComponent<PlayerMovement>();
-            CMVirtualCam.Follow = PM.transform ;
+
             SetPositionOnLoad();
             FadeImage = PM.GetComponent<PlayerScript>().CanvasIndestrucitble.gameObject.transform.Find("Fade").gameObject ;
             PM.GetComponent<PlayerScript>().CanvasIndestrucitble.GetComponent<Canvas>().worldCamera = Camera.main;
         
             PM.enabled = true ;
+            PM.PlayerChangeScene = false ;
+            PM.ChangePlayerSpeed(true);
         }
+
+
     }
 
     void SetPositionOnLoad()
@@ -36,19 +43,23 @@ public class SceneEntManager : MonoBehaviour
         // Reset bool
         PM.GetComponentInChildren<PlayerProvenance>().SetAllBoolToFalse();
         PM.GetComponentInChildren<PlayerProvenance>().ProviensCouchGameCrafter = true ;
-
     }
 
     private void Start() 
     {
-        StartCoroutine(WaitTransitionAnim());
+        if(FadeImage != null)    FadeImage.GetComponent<AnimationTransitionScene>().OpenningScene();
+
+        if(VolumeFirstCam != null) VolumeFirstCam.SetFirstCamera();        
     }
-    
-    IEnumerator WaitTransitionAnim()
+
+
+    public void ChangePartScene(int PartDisplay)
     {
-        yield return new WaitForSeconds(0.25f);
-        FadeImage.GetComponent<AnimationTransitionScene>().ShouldReveal = false ;
-        yield return new WaitForSeconds(2f) ;
-        FadeImage.SetActive(false);
+        for (int P = 0; P < PartScene.Count; P++)
+        {
+            PartScene[P].SetActive(false) ;
+        }
+
+        PartScene[PartDisplay].SetActive(true) ;
     }
 }
