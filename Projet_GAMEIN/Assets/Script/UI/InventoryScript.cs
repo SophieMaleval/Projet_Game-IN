@@ -9,6 +9,8 @@ public class InventoryScript : MonoBehaviour
 {
     public PlayerScript PlayerScript ;
     public GameObject InventoryPanel ;
+    public GameObject DialogueCanvas ;
+    public GameObject PannelENTCanvas ;
 
     public GameObject DisplayerInventory ;
     public List<Image> InventoryDisplayer ;
@@ -22,13 +24,15 @@ public class InventoryScript : MonoBehaviour
         if(GameObject.Find("Player") != null)   // Récupère le player au lancement de la scène
         {    
             PlayerScript = GameObject.Find("Player").GetComponent<PlayerScript>() ; 
-            //SettingPanel = GameObject.Find("Settings Panel").GetComponent<RectTransform>() ;
+
         }
         SetInventoryCount();
 
     }
     private void OnEnable() 
     {
+        //DialogueCanvas = GameObject.Find("Dialogue Canvas") ;
+        //PannelENTCanvas = GameObject.Find("Pannel ENT");        
         //Debug.Log(transform.GetSiblingIndex());
 
     }
@@ -43,14 +47,11 @@ public class InventoryScript : MonoBehaviour
         if(!InventoryPanel.activeSelf)
         {
             transform.SetSiblingIndex(0);
-            if( (GameObject.Find("Dialogue Canvas") != null && GameObject.Find("Dialogue Canvas").gameObject.activeSelf == false) || (GameObject.Find("Board ENT") != null && GameObject.Find("Board ENT").gameObject.activeSelf == false) )
-            {
-                PlayerScript.GetComponent<PlayerMovement>().EndActivity() ;                
-            } else {
-                if(GameObject.Find("Dialogue Canvas") == null)    PlayerScript.GetComponent<PlayerMovement>().EndActivity() ;     
-                if(GameObject.Find("Board ENT") == null)    PlayerScript.GetComponent<PlayerMovement>().EndActivity() ;     
-                GameObject.Find("Player Backpack").GetComponent<PlayerDialogue>().ResumeDialogue();                   
-            }
+
+            if(DialogueCanvas.activeSelf == true)    GameObject.Find("Player Backpack").GetComponent<PlayerDialogue>().ResumeDialogue();                   
+
+            if(DialogueCanvas.activeSelf == false && PannelENTCanvas.activeSelf == false )                PlayerScript.GetComponent<PlayerMovement>().EndActivity() ;   
+
 
         } else {
             transform.SetSiblingIndex(2);            

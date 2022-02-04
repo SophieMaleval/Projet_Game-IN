@@ -12,6 +12,7 @@ public class TableauController : MonoBehaviour
     public PannelENTContainer InformationsPrincipaleENT ;
     [HideInInspector] public CSVReader RefTextENT ;    
     private PannelENTManager Board;
+    private GameObject InventoryPanel ;
 
     private PlayerScript PlayerScript;
     private PlayerMovement PlayerMovement;
@@ -31,6 +32,7 @@ public class TableauController : MonoBehaviour
             Board.InformationENT = InformationsPrincipaleENT ;
 
             RefTextENT = GameObject.Find("Player Backpack").GetComponent<CSVReader>() ;
+            InventoryPanel = GameObject.Find("Inventory").GetComponent<InventoryScript>().InventoryPanel ;
             
 
             // Récupérer les paragraphes de l'entreprise
@@ -69,7 +71,7 @@ public class TableauController : MonoBehaviour
                     Board.SwitchTogglePannelDisplay();
                 }
 
-                if (PlayerScript.PlayerAsInterract && Board.gameObject.activeSelf == true)
+                if (PlayerScript.PlayerAsInterract && Board.gameObject.activeSelf == true && InventoryPanel.activeSelf == false)
                 {
                     PlayerScript.PlayerAsInterract = false;
                     Board.SwitchTogglePannelDisplay();

@@ -51,7 +51,7 @@ public class PlayerMovement : MonoBehaviour
     
 
 
-    
+    //public void LunchPlayerGame() {PlayerActionControllers.PlayerInLand.Enable() ;  }
 
     private void OnEnable() {   PlayerActionControllers.Enable(); }
     private void OnDisable() {   PlayerActionControllers.Disable();   }
@@ -71,7 +71,7 @@ public class PlayerMovement : MonoBehaviour
     private void Start() 
     {
         PlayerActionControllers.PlayerInScoot.Disable() ; 
-        PlayerActionControllers.PlayerInLand.Enable() ;         
+        //PlayerActionControllers.PlayerInLand.Disable() ;   
     }
 
     void Update()
@@ -92,7 +92,6 @@ public class PlayerMovement : MonoBehaviour
 
             ScooterStop.Play();          
         }    
-        
     }
     public void OnExitScoot (InputAction.CallbackContext ctx )
     {
@@ -122,6 +121,8 @@ public class PlayerMovement : MonoBehaviour
 
         for (int i = 1; i < Animators.Count; i++)
         {    Animators[i].gameObject.GetComponent<SpriteRenderer>().enabled = !OnScooter ;  }
+
+        if(!state) RebindAnimation();
     }
 
 
@@ -227,9 +228,9 @@ public class PlayerMovement : MonoBehaviour
     void Move()
     {   
         if (!OnScooter)  
-            RbPlayer.velocity = new Vector2(MoveDirection.x * MoveSpeed, MoveDirection.y * MoveSpeed); 
+            RbPlayer.velocity = new Vector2(MoveDirection.x * MoveSpeed * Time.deltaTime, MoveDirection.y * MoveSpeed * Time.deltaTime); 
         else
-            RbPlayer.velocity = new Vector2(MoveDirection.x * (MoveSpeed*ScooterSpeed), MoveDirection.y * (MoveSpeed*ScooterSpeed)); 
+            RbPlayer.velocity = new Vector2(MoveDirection.x * (MoveSpeed*ScooterSpeed) * Time.deltaTime, MoveDirection.y * (MoveSpeed*ScooterSpeed) * Time.deltaTime); 
     }
 
     public void ChangePlayerSpeed(bool PlayerIsInside)

@@ -68,7 +68,9 @@ public class Customizer : MonoBehaviour
     [SerializeField] private GameObject InventoryUIPrefab ;
     [SerializeField] private GameObject PannelENTUIPrefab ;
 
-private string WhoIsIt = "§ est ¤ !" ;
+    private string WhoIsIt = "§ est ¤ !" ;
+
+
     private void Awake() 
     {
         if(GameObject.Find("Player") == null)
@@ -92,7 +94,8 @@ private string WhoIsIt = "§ est ¤ !" ;
             InventoryUIInstatiate.transform.SetParent(CanvasInstatiate.transform);
             InventoryUIInstatiate.transform.SetSiblingIndex(1);
             InventoryUIInstatiate.name = "Inventory" ;
-            InventoryUIInstatiate.GetComponent<InventoryScript>().PlayerScript = PlayerPersonnality ;
+
+            
 
             PannelENTUIInstatiate.transform.SetParent(CanvasInstatiate.transform);
             PannelENTUIInstatiate.transform.SetSiblingIndex(1);
@@ -123,6 +126,11 @@ private string WhoIsIt = "§ est ¤ !" ;
             PannelENTUIInstatiate.GetComponent<RectTransform>().offsetMin = new Vector2(350f, 25f) ;
             PannelENTUIInstatiate.GetComponent<RectTransform>().offsetMax = new Vector2(-350f, -25f) ;
             PannelENTUIInstatiate.GetComponent<RectTransform>().localScale = Vector3.one ;
+
+
+            InventoryUIInstatiate.GetComponent<InventoryScript>().PlayerScript = PlayerPersonnality ;   
+            InventoryUIInstatiate.GetComponent<InventoryScript>().DialogueCanvas = DialogueUIInstatiate ;
+            InventoryUIInstatiate.GetComponent<InventoryScript>().PannelENTCanvas = PannelENTUIInstatiate ;         
         } else {
             PlayerApparance = GameObject.Find("Player").GetComponent<PlayerMovement>() ; 
             PlayerApparance.enabled = false ;                 

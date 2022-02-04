@@ -49,7 +49,7 @@ public class SceneManagerFeature : MonoBehaviour
 
     IEnumerator WaitOppeningScene()
     {
-        yield return new WaitForSeconds(0.25f);
+        yield return new WaitForSeconds(0.05f);
         FadeImage.GetComponent<AnimationTransitionScene>().OpenningScene();
     }
 }
