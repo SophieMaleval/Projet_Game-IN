@@ -1,0 +1,73 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using Cinemachine;
+using UnityEngine.Playables;
+
+public class TLManager : MonoBehaviour
+{
+    public string camera1;
+    public string camera2;
+    public GameObject camPrincipal;
+    public GameObject camCutscene;
+    public bool isActivated = false;
+    public PlayableDirector debutCS;
+    public PlayableDirector finCS;
+    void OnEnable()
+    {
+        camPrincipal = GameObject.Find(camera1);
+        camCutscene = GameObject.Find(camera2);
+        camCutscene.SetActive(false);
+        debutCS = GameObject.Find("Debut_Enquête").GetComponent<PlayableDirector>();
+        finCS = GameObject.Find("Fin_Enquête").GetComponent<PlayableDirector>();
+        debutCS.enabled = false;
+        finCS.enabled = false;
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        SwitchCam();
+        Lighting();
+    }
+
+    public void Toggle()
+    {
+        isActivated = !isActivated;
+    }
+    public void SwitchCam()
+    {
+        if (isActivated)
+        {
+            camCutscene.SetActive(true);
+            camPrincipal.SetActive(false);
+        }
+        else if (!isActivated)
+        {
+            camCutscene.SetActive(false);
+            camPrincipal.SetActive(true);
+        }
+    }
+
+    public void Lighting()
+    {
+        if (isActivated)
+        {
+            debutCS.enabled = true;
+            debutCS.Play();
+            finCS.Stop();
+            finCS.time = 0;
+            finCS.enabled = false;
+        }
+        else if (!isActivated)
+        {
+            finCS.enabled = true;
+            finCS.Play();
+            debutCS.Stop();
+            debutCS.time = 0;
+            debutCS.enabled = false;
+        }
+    }
+
+
+}
