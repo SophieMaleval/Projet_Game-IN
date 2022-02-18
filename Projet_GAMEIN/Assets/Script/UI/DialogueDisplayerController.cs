@@ -195,7 +195,7 @@ public class DialogueDisplayerController : MonoBehaviour
 
         
 
-        if(!/*GameObject.Find("Inventory").GetComponent<InventoryScript>()*/PlayerDialogueManager.transform.GetComponentInParent<PlayerScript>().InventoryUIIndestructible.GetComponent<InventoryScript>().InventoryPanel.activeSelf)
+        if(!PlayerDialogueManager.transform.GetComponentInParent<PlayerScript>().InventoryUIIndestructible.GetComponent<InventoryScript>().InventoryPanel.activeSelf)
         {
             CanChangeCurrentDialogue = true ;
            
