@@ -23,11 +23,28 @@ public class UITextContainer
 }
 
 
+[System.Serializable]
+public class QuestionQCMContainer
+{
+    public List<string> QuestionsReponse = new List<string>();
+    public int NuméroRéponse ;
+}
+
+[System.Serializable]
+public class QCMContainer
+{
+    public List<QuestionQCMContainer> QCMEnigmeFR1 = new List<QuestionQCMContainer>() ;
+    public List<QuestionQCMContainer> QCMEnigmeEN1 = new List<QuestionQCMContainer>() ;
+}
+
+
 public class CSVReader : MonoBehaviour
 {
     [Header ("Fichier Texte")]
     public TextAsset DialogDataFR ;
     public TextAsset DialogDataEN ;
+
+    public TextAsset QCMData ;
 
     public TextAsset UIDataText ;
 
@@ -38,16 +55,15 @@ public class CSVReader : MonoBehaviour
     [Header ("Texte UI")]
     public UITextContainer UIText = new UITextContainer();
 
+    [Header ("QCM")]
+    public QCMContainer QCMCont = new QCMContainer();
+
     [Header ("Adaptation de texte")]
     private PlayerScript PlayerInformations ;
 
     private string[] Pronoms = new string[]{"une", "un", "un·e"};
     private string[] Terminaisons = new string[]
     { 
-        /*féminin/ "elle", "euse", "rice", "eure","ière", "ère", "ienne", 
-        /*masculin/ "el", "eur", "eur", "eur", "ier", "er", "ien", 
-        /*inclusif/ "el·elle", "eur·euse", "eur·rice", "eur·e", "ier·ière", "er·ère", "ien·ienne" */
-
         /* féminin, masculin, inclusif */
         "elle", "el", "el·elle",    // 1-3
         "euse", "eur", "eur·euse",  // 4-6
@@ -74,6 +90,7 @@ public class CSVReader : MonoBehaviour
         ReadUICSV();
         if(QuestManager != null) ReadQuestCSV();
         if(PannelENTText != null) ReadTextPannelENT();
+        if(QCMData != null) ReadQCMCSV() ;
     }
 
 
@@ -117,14 +134,39 @@ public class CSVReader : MonoBehaviour
         }
 
         // Add UIText du Pannel des ENT au PannelENTManager
-        if(PlayerInformations != null)
+      /*  if(PlayerInformations != null)
         {
             PannelENTManager ManagerPannelENT = PlayerInformations.PannelENTUIIndestructible.GetComponent<PannelENTManager>() ;
             ManagerPannelENT.UIPanelENTFR = UIText.PanelENTFR;
             ManagerPannelENT.UIPanelENTEN = UIText.PanelENTEN;            
-        }
-
+        }*/
     }
+
+    void ReadQCMCSV()
+    {
+        string[] LineData = QCMData.text.Split(new string[] { "\n" }, StringSplitOptions.None) ; // Data correspond à chaque Ligne
+
+        for (int LD = 0; LD < LineData.Length; LD++)
+        {
+            QuestionQCMContainer QCMQR = new QuestionQCMContainer();
+
+            string[] Data = LineData[LD].Split(new string[] { ";" }, StringSplitOptions.None) ; // Data correspond à chaque case
+
+            if(Data[0] != "")
+            {
+                for (int D = 0; D < Data.Length; D++)
+                {
+                    if(Data[D] == null)Debug.Log(Data[D]);
+                    if(D == 2)    QCMQR.NuméroRéponse = int.Parse(Data[D]) ;
+
+                    if(D > 2)    QCMQR.QuestionsReponse.Add(Data[D]) ;
+                }
+
+                if(Data[0] == "QCM 1 FR")    QCMCont.QCMEnigmeFR1.Add(QCMQR);
+                if(Data[0] == "QCM 1 EN")    QCMCont.QCMEnigmeEN1.Add(QCMQR);
+            }
+        }
+    }    
 
     void ReaderDialogCSV(TextAsset DialogDataLanguage, List<DialogueContainer> TargetList) 
     {
@@ -197,14 +239,14 @@ public class CSVReader : MonoBehaviour
 
 
 
-            string WithTerms1 = WithPronom.Replace("00000001", Terminaisons[PlayerInformations.PlayerSexualGenre + 0]) ;     // "elle", "el", "el·elle"
-            string WithTerms2 = WithTerms1.Replace("00000010", Terminaisons[PlayerInformations.PlayerSexualGenre + 3]) ;            // "euse", "eur", "eur·euse"
-            string WithTerms3 = WithTerms2.Replace("00000100", Terminaisons[PlayerInformations.PlayerSexualGenre + 6]) ;            // "rice", "eur", "eur·rice"
-            string WithTerms4 = WithTerms3.Replace("00001000", Terminaisons[PlayerInformations.PlayerSexualGenre + 9]) ;            // "eure", "eur", "eur·e"
-            string WithTerms5 = WithTerms4.Replace("00010000", Terminaisons[PlayerInformations.PlayerSexualGenre + 12]) ;           // "ière", "ier", "ier·ière"
-            string WithTerms6 = WithTerms5.Replace("00100000", Terminaisons[PlayerInformations.PlayerSexualGenre + 15]) ;           // "ère", "er", "er·ère"
-            string WithTerms7 = WithTerms6.Replace("01000000", Terminaisons[PlayerInformations.PlayerSexualGenre + 18]) ;           // "ienne", "ien", "ien·ienne"
-           // string WithTerms8 = WithPronom.Replace("1000000", Terminaisons[PlayerInformations.PlayerSexualGenre + 21]) ;           // 
+            string WithTerms1 = WithPronom.Replace("000001", Terminaisons[PlayerInformations.PlayerSexualGenre + 0]) ;     // "elle", "el", "el·elle"
+            string WithTerms2 = WithTerms1.Replace("000010", Terminaisons[PlayerInformations.PlayerSexualGenre + 3]) ;            // "euse", "eur", "eur·euse"
+            string WithTerms3 = WithTerms2.Replace("000011", Terminaisons[PlayerInformations.PlayerSexualGenre + 6]) ;            // "rice", "eur", "eur·rice"
+            string WithTerms4 = WithTerms3.Replace("000100", Terminaisons[PlayerInformations.PlayerSexualGenre + 9]) ;            // "eure", "eur", "eur·e"
+            string WithTerms5 = WithTerms4.Replace("000101", Terminaisons[PlayerInformations.PlayerSexualGenre + 12]) ;           // "ière", "ier", "ier·ière"
+            string WithTerms6 = WithTerms5.Replace("000110", Terminaisons[PlayerInformations.PlayerSexualGenre + 15]) ;           // "ère", "er", "er·ère"
+            string WithTerms7 = WithTerms6.Replace("000111", Terminaisons[PlayerInformations.PlayerSexualGenre + 18]) ;           // "ienne", "ien", "ien·ienne"
+           // string WithTerms8 = WithPronom.Replace("001000", Terminaisons[PlayerInformations.PlayerSexualGenre + 21]) ;           // 
 
             DataCorrected = WithTerms7 ;
         }

@@ -142,13 +142,26 @@ public class PlayerDialogue : MonoBehaviour
 
     private void SetQuestionSelect(bool IsAdd)
     {
-        if(GameObject.Find("Dialogue Canvas") != null)
+        if(GameObject.Find("Dialogue Canvas") != null || GameObject.Find("QCM Panel") != null)
         {
-            DialogueDisplayerController DialogueBox = GameObject.Find("Dialogue Canvas").GetComponent<DialogueDisplayerController>() ;
+            int RefChildCount = 0 ;     
+
+            if(GameObject.Find("Dialogue Canvas") != null)
+            {
+                DialogueDisplayerController DialogueBox = GameObject.Find("Dialogue Canvas").GetComponent<DialogueDisplayerController>() ;
+                RefChildCount = DialogueBox.SetQuestionDisponible().Count - 1 ;            
+            }                   
+            
+            if(GameObject.Find("QCM Panel") != null)
+            {
+                QCMManager QCMManagement = GameObject.Find("QCM Panel").GetComponent<QCMManager>() ;
+                RefChildCount = QCMManagement.SetButtonDisponnible().Count - 1 ;          
+            } 
+            
             // Choix Précédent
             if(!IsAdd)
             {
-                if((CurrentSelectQuestion + 1) > DialogueBox.SetQuestionDisponible().Count - 1)
+                if((CurrentSelectQuestion + 1) > RefChildCount)
                 {
                     CurrentSelectQuestion = 0 ;
                 } else {
@@ -157,7 +170,7 @@ public class PlayerDialogue : MonoBehaviour
             } else {
                 if((CurrentSelectQuestion - 1 < 0 ))
                 {
-                    CurrentSelectQuestion = DialogueBox.SetQuestionDisponible().Count - 1;
+                    CurrentSelectQuestion = RefChildCount;
                 } else {
                     CurrentSelectQuestion -- ;
                 }
