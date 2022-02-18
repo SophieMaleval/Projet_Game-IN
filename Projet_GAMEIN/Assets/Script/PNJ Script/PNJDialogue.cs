@@ -31,7 +31,7 @@ public class PNJDialogue : MonoBehaviour
 
     public int Question3IntDisplay = 3;  
     [SerializeField] private bool ThisQuestionLunchReflexion = false ;
-    [HideInInspector] public bool PlayerAskQuestQuestion = false ;
+    public bool PlayerAskQuestQuestion = false ;
 
     private DialogueContainer DialoguePNJ_FR ;
     private DialogueContainer DialoguePNJ_EN ;
@@ -178,7 +178,7 @@ public class PNJDialogue : MonoBehaviour
         if(PlayerScript.gameObject.transform.position.x < transform.position.x) PlayerScript.InputSpritePos(false);
         if(PlayerScript.gameObject.transform.position.x > transform.position.x) PlayerScript.InputSpritePos(true);
 
-        if(PlayerAround)
+        if(PlayerAround && !PlayerScript.QCMPanelUIIndestructible.activeSelf)
         {
             if(PlayerScript.PlayerAsInterract && !PlayerScript.InDiscussion)
             {
@@ -229,7 +229,7 @@ public class PNJDialogue : MonoBehaviour
         
         BoxQuestion = DialogueCanvasBox.transform.GetChild(1).gameObject ;     
 
-        DialogueCanvasBox.CurrentPNJDiscussion = this ;   
+        DialogueCanvasBox.CurrentPNJDiscussion = gameObject.GetComponent<PNJDialogue>() ;   
  
 
         DialogueCanvasBox.DialoguePNJ_FR = DialoguePNJ_FR;
@@ -267,6 +267,13 @@ public class PNJDialogue : MonoBehaviour
     {
         PlayerScript.TimeLineManager.gameObject.SetActive(true);
         PlayerScript.TimeLineManager.Toggle();
+        StartCoroutine(WaitAppartéFinish());
+    }
+
+    IEnumerator WaitAppartéFinish()
+    {
+        yield return new WaitForSeconds(0.5f);
+        PlayerScript.QCMPanelUIIndestructible.SetActive(true);
     }
 
 }

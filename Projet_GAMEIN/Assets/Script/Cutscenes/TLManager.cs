@@ -18,6 +18,7 @@ public class TLManager : MonoBehaviour
        // camPrincipal = GameObject.Find(camera1);
       //  camCutscene = GameObject.Find(camera2);
         camCutscene.SetActive(false);
+        camCutscene.GetComponent<CinemachineVirtualCamera>().m_Lens.OrthographicSize = 3 ;
         debutCS = GameObject.Find("Debut_Enquête").GetComponent<PlayableDirector>();
         finCS = GameObject.Find("Fin_Enquête").GetComponent<PlayableDirector>();
         debutCS.enabled = false;

@@ -12,7 +12,7 @@ public class DialogueDisplayerController : MonoBehaviour
 {
     private bool MouseIsHover ;
     
-    [HideInInspector] public PNJDialogue CurrentPNJDiscussion ;
+    public PNJDialogue CurrentPNJDiscussion ;
     public TextMeshProUGUI DialogueCanvas ;
     public TextMeshProUGUI NamePNJ ;
 

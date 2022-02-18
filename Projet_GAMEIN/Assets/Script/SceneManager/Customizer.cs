@@ -478,7 +478,8 @@ public class Customizer : MonoBehaviour
         PlayerPersonnality.PannelENTUIIndestructible.SetActive(false);
         
         yield return new WaitForSeconds(0.5f);
-        SceneManager.LoadScene("Tilemaps Test");
+        SceneManager.LoadScene("Accidental Queens");
+        //SceneManager.LoadScene("Tilemaps Test");
     }
 
 
