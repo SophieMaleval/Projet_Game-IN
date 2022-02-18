@@ -131,7 +131,6 @@ public class QCMManager : MonoBehaviour
     {
         if(NumAnswer != TextQCM[CurrentQuestion].NuméroRéponse)
         {
-            Debug.Log("Wrong Answer");
             Choices[NumAnswer - 1].GetComponent<Image>().color = WrongColor ;
             Choices[NumAnswer - 1].transform.GetChild(0).GetComponent<Image>().color = WrongColor ;
             Choices[NumAnswer - 1].transform.GetChild(1).GetComponent<TextMeshProUGUI>().fontStyle = FontStyles.Strikethrough;
@@ -144,12 +143,15 @@ public class QCMManager : MonoBehaviour
 
     IEnumerator WaitAndShowNewQuestion()
     {
-        yield return new WaitForSeconds(0.25f);
+
         if(CurrentQuestion < TextQCM.Count - 1)
         {
+            yield return new WaitForSeconds(0.25f);            
             CurrentQuestion ++ ;
             SetChoiceDisp();
         } else {
+            PlayerText.GetComponentInParent<PlayerScript>().TimeLineManager.Toggle();
+            yield return new WaitForSeconds(0.5f);      
             PlayerText.GetComponentInParent<PlayerMovement>().EndActivity();
             gameObject.SetActive(false);
         }
