@@ -22,12 +22,14 @@ public class PlayerScript : MonoBehaviour
     public bool InDiscussion = false ;
 
     public InteractibleObject[] Inventaire ;
+    public TLManager TimeLineManager ;
 
     [Header ("Canvas Location")]
     public GameObject CanvasIndestrucitble ;
     public GameObject DialogueUIIndestructible ;
     public GameObject InventoryUIIndestructible ;
     public GameObject PannelENTUIIndestructible ;
+    public GameObject QCMPanelUIIndestructible ;
 
 
     private void OnEnable() { PlayerActionControllers.Enable(); }

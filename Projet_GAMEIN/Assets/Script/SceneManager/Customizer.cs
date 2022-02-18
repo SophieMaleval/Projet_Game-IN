@@ -67,6 +67,7 @@ public class Customizer : MonoBehaviour
     [SerializeField] private GameObject DialogueUIPrefab ;
     [SerializeField] private GameObject InventoryUIPrefab ;
     [SerializeField] private GameObject PannelENTUIPrefab ;
+    [SerializeField] private GameObject QCMPanelPrefab ;
 
     private string WhoIsIt = "§ est ¤ !" ;
 
@@ -85,7 +86,8 @@ public class Customizer : MonoBehaviour
             GameObject CanvasInstatiate = Instantiate(CanvasPrefab) ;     
             GameObject DialogueUIInstatiate = Instantiate(DialogueUIPrefab) ;     
             GameObject InventoryUIInstatiate = Instantiate(InventoryUIPrefab) ;     
-            GameObject PannelENTUIInstatiate = Instantiate(PannelENTUIPrefab) ;     
+            GameObject PannelENTUIInstatiate = Instantiate(PannelENTUIPrefab) ;  
+            GameObject QCMPanelInstantiate = Instantiate(QCMPanelPrefab) ;   
 
             DialogueUIInstatiate.transform.SetParent(CanvasInstatiate.transform);
             DialogueUIInstatiate.transform.SetSiblingIndex(0);
@@ -95,11 +97,13 @@ public class Customizer : MonoBehaviour
             InventoryUIInstatiate.transform.SetSiblingIndex(1);
             InventoryUIInstatiate.name = "Inventory" ;
 
-            
-
             PannelENTUIInstatiate.transform.SetParent(CanvasInstatiate.transform);
             PannelENTUIInstatiate.transform.SetSiblingIndex(1);
             PannelENTUIInstatiate.name = "Pannel ENT" ;
+
+            QCMPanelInstantiate.transform.SetParent(CanvasInstatiate.transform);
+            QCMPanelInstantiate.transform.SetSiblingIndex(3);
+            QCMPanelInstantiate.name = "QCM Panel" ;
 
             GameObject.Find("Player Backpack").GetComponent<CSVReader>().QuestManager = InventoryUIInstatiate.GetComponentInChildren<QuestSys>() ;
             
@@ -109,11 +113,13 @@ public class Customizer : MonoBehaviour
             DontDestroyOnLoad(DialogueUIInstatiate.gameObject);
             DontDestroyOnLoad(InventoryUIInstatiate.gameObject);
             DontDestroyOnLoad(PannelENTUIInstatiate.gameObject);
+            DontDestroyOnLoad(QCMPanelInstantiate.gameObject);
 
             PlayerPersonnality.CanvasIndestrucitble = CanvasInstatiate ;
             PlayerPersonnality.DialogueUIIndestructible = DialogueUIInstatiate ;
             PlayerPersonnality.InventoryUIIndestructible = InventoryUIInstatiate ;
             PlayerPersonnality.PannelENTUIIndestructible = PannelENTUIInstatiate ;
+            PlayerPersonnality.QCMPanelUIIndestructible = QCMPanelInstantiate ;
 
             CanvasInstatiate.SetActive(false) ;
             DialogueUIInstatiate.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, 15f, 0) ;
@@ -126,6 +132,10 @@ public class Customizer : MonoBehaviour
             PannelENTUIInstatiate.GetComponent<RectTransform>().offsetMin = new Vector2(350f, 25f) ;
             PannelENTUIInstatiate.GetComponent<RectTransform>().offsetMax = new Vector2(-350f, -25f) ;
             PannelENTUIInstatiate.GetComponent<RectTransform>().localScale = Vector3.one ;
+
+            QCMPanelInstantiate.GetComponent<RectTransform>().anchoredPosition = new Vector2(0f, -600f);
+            QCMPanelInstantiate.GetComponent<RectTransform>().sizeDelta = new Vector2(992f, 415f);
+            QCMPanelInstantiate.GetComponent<RectTransform>().localScale = Vector3.one;
 
 
             InventoryUIInstatiate.GetComponent<InventoryScript>().PlayerScript = PlayerPersonnality ;   
@@ -468,7 +478,8 @@ public class Customizer : MonoBehaviour
         PlayerPersonnality.PannelENTUIIndestructible.SetActive(false);
         
         yield return new WaitForSeconds(0.5f);
-        SceneManager.LoadScene("Tilemaps Test");
+        SceneManager.LoadScene("Accidental Queens");
+        //SceneManager.LoadScene("Tilemaps Test");
     }
 
 

@@ -44,9 +44,9 @@ GameObject:
   - component: {fileID: 7454713249344840314}
   - component: {fileID: 7454713249344840311}
   - component: {fileID: 7454713249344840310}
-  - component: {fileID: 8897650619861234399}
+  - component: {fileID: 7290509238435771038}
   m_Layer: 0
-  m_Name: PNJ
+  m_Name: Accidental Queens - Diane Landais
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -107,7 +107,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: d79f7483729b3224fa595eedfd1aa0c0, type: 3}
+  m_Sprite: {fileID: 5608043996381168780, guid: ab2c15329b9817942bb5ed7a3fc9b2a7,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -128,7 +129,7 @@ Animator:
   m_GameObject: {fileID: 7454713249344840315}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 0158a2e28f35e59479978bd46d39e502, type: 2}
+  m_Controller: {fileID: 9100000, guid: 1485588f2fef51240a9dc30f41ae8153, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -149,13 +150,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fe6f3ea6c3125d459b5ede804695985, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Entrerpise: Game In
-  NamePNJ: Laurent Peroy
-  MultiplePNJinENT: 0
-  PNJinENT: 0
+  Entrerpise: Accidental Queens
+  NamePNJ: Diane Landais
+  MultiplePNJinENT: 1
+  PNJinENT: 1
   TextDialogue: {fileID: 0}
   DialogueCanvasBox: {fileID: 0}
   Question3IntDisplay: 3
+  ThisQuestionLunchReflexion: 1
+  PlayerAskQuestQuestion: 0
   Answer:
   - AnswerForQuestion: 01000000020000000300000004000000
   - AnswerForQuestion: 0500000006000000
@@ -183,8 +186,8 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.38, y: 0.63}
+    pivot: {x: 0.5, y: 0}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 0.38, y: 0.63}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -193,7 +196,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.26, y: 1.26}
   m_EdgeRadius: 0
---- !u!60 &8897650619861234399
+--- !u!60 &7290509238435771038
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -206,11 +209,11 @@ PolygonCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.05, y: 0.05}
+  m_Offset: {x: -0.05, y: 0.5}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.38, y: 0.63}
+    pivot: {x: 0.5, y: 0}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 0.38, y: 0.63}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -218,15 +221,17 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.069975555, y: 0.27936816}
-      - {x: -0.09820914, y: 0.12888813}
-      - {x: -0.16754079, y: 0.07182813}
-      - {x: -0.20827961, y: -0.20758414}
-      - {x: -0.09681797, y: -0.41001344}
-      - {x: 0.12876356, y: -0.38964367}
-      - {x: 0.20827973, y: -0.27957368}
-      - {x: 0.24901879, y: 0.1919589}
-      - {x: 0.16614938, y: 0.25110602}
+    - - {x: -0.036050376, y: 0.38114357}
+      - {x: -0.19150329, y: 0.21582127}
+      - {x: -0.22266914, y: 0.050624967}
+      - {x: -0.20827962, y: -0.20758414}
+      - {x: -0.056450125, y: -0.5119953}
+      - {x: 0.1873682, y: -0.50811255}
+      - {x: 0.19887602, y: -0.37052208}
+      - {x: 0.2646914, y: -0.36402482}
+      - {x: 0.33788168, y: -0.041615903}
+      - {x: 0.31050813, y: 0.22164345}
+      - {x: 0.12586308, y: 0.3868066}
 --- !u!1 &8215071331028764595
 GameObject:
   m_ObjectHideFlags: 0

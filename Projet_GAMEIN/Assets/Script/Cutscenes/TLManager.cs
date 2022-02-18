@@ -6,18 +6,19 @@ using UnityEngine.Playables;
 
 public class TLManager : MonoBehaviour
 {
-    public string camera1;
-    public string camera2;
-    public GameObject camPrincipal;
+    //public string camera1;
+    //public string camera2;
+   // public GameObject camPrincipal;
     public GameObject camCutscene;
     public bool isActivated = false;
     public PlayableDirector debutCS;
     public PlayableDirector finCS;
     void OnEnable()
     {
-        camPrincipal = GameObject.Find(camera1);
-        camCutscene = GameObject.Find(camera2);
+       // camPrincipal = GameObject.Find(camera1);
+      //  camCutscene = GameObject.Find(camera2);
         camCutscene.SetActive(false);
+        camCutscene.GetComponent<CinemachineVirtualCamera>().m_Lens.OrthographicSize = 3 ;
         debutCS = GameObject.Find("Debut_Enquête").GetComponent<PlayableDirector>();
         finCS = GameObject.Find("Fin_Enquête").GetComponent<PlayableDirector>();
         debutCS.enabled = false;
@@ -40,12 +41,12 @@ public class TLManager : MonoBehaviour
         if (isActivated)
         {
             camCutscene.SetActive(true);
-            camPrincipal.SetActive(false);
+          //  camPrincipal.SetActive(false);
         }
         else if (!isActivated)
         {
             camCutscene.SetActive(false);
-            camPrincipal.SetActive(true);
+          //  camPrincipal.SetActive(true);
         }
     }
 
