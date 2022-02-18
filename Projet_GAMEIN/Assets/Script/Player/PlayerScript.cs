@@ -22,6 +22,7 @@ public class PlayerScript : MonoBehaviour
     public bool InDiscussion = false ;
 
     public InteractibleObject[] Inventaire ;
+    public TLManager TimeLineManager ;
 
     [Header ("Canvas Location")]
     public GameObject CanvasIndestrucitble ;

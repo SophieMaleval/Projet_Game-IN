@@ -48,7 +48,7 @@ public class QCMManager : MonoBehaviour
         PlayerText.GetComponent<PlayerDialogue>().DialogueStart();
 
         QCMContaine = PlayerText.GetComponent<CSVReader>().QCMCont ;
-        SetChoiceDisp();
+        //*SetChoiceDisp();
     }
 
 

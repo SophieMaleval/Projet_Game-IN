@@ -30,6 +30,8 @@ public class PNJDialogue : MonoBehaviour
   
 
     public int Question3IntDisplay = 3;  
+    [SerializeField] private bool ThisQuestionLunchReflexion = false ;
+    [HideInInspector] public bool PlayerAskQuestQuestion = false ;
 
     private DialogueContainer DialoguePNJ_FR ;
     private DialogueContainer DialoguePNJ_EN ;
@@ -178,31 +180,23 @@ public class PNJDialogue : MonoBehaviour
 
         if(PlayerAround)
         {
-            
             if(PlayerScript.PlayerAsInterract && !PlayerScript.InDiscussion)
             {
                 PlayerScript.PlayerAsInterract = false ;
                 PlayerDialogueManager.PlayerAsRead = false ;
                 PlayerScript.InDiscussion = true ;
-                LunchDiscussion(); 
-                             
+                LunchDiscussion();               
             }
 
             if(PlayerDialogueManager.PlayerAsRead) 
             {
                 PlayerDialogueManager.PlayerAsRead = false ;
 
-                if(!DialogueCanvasBox.WeAreInChoice){
-
-                    DialogueCanvasBox.StateDiscussion();
-                   
-                }
-                     
-                else
+                if(!DialogueCanvasBox.WeAreInChoice)
                 {
-
+                    DialogueCanvasBox.StateDiscussion(); 
+                } else {
                     DialogueCanvasBox.ValidateButton();
-
                 }
                     
             } 
@@ -264,7 +258,15 @@ public class PNJDialogue : MonoBehaviour
         DialogueCanvasBox.DialogueCanvas.text = "";           
         PlayerScript.PlayerAsInterract = false ;        
         PlayerScript.InDiscussion = false ;
-        PlayerScript.gameObject.GetComponent<PlayerMovement>().EndActivity() ; 
+
+        if(ThisQuestionLunchReflexion == true && PlayerAskQuestQuestion == true) OpenEnigme();
+        else PlayerScript.gameObject.GetComponent<PlayerMovement>().EndActivity() ; 
+    }
+
+    public void OpenEnigme()
+    {
+        PlayerScript.TimeLineManager.gameObject.SetActive(true);
+        PlayerScript.TimeLineManager.Toggle();
     }
 
 }
