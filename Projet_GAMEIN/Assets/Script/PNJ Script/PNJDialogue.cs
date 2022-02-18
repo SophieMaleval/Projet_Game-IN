@@ -12,6 +12,8 @@ public class PNJDialogue : MonoBehaviour
     [Header ("PNJ Information")]
     public string Entrerpise ;
     public string NamePNJ ;
+    [SerializeField] private bool MultiplePNJinENT ;
+    [SerializeField] private int PNJinENT;
     
     [HideInInspector] public CSVReader TextDialogue ;
 
@@ -58,7 +60,12 @@ public class PNJDialogue : MonoBehaviour
             PlayerDialogueManager = GameObject.Find("Player Backpack").GetComponent<PlayerDialogue>() ; 
 
             DialogueCanvasBox = PlayerScript.DialogueUIIndestructible.GetComponent<DialogueDisplayerController>() ;
-        }    
+        }   
+
+        if(MultiplePNJinENT == true) 
+        {
+            GetComponent<Animator>().SetInteger("PNJ Need", PNJinENT) ;
+        }
     } 
 
     public void GetDialogue()

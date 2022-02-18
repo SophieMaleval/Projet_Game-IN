@@ -28,6 +28,7 @@ public class PlayerScript : MonoBehaviour
     public GameObject DialogueUIIndestructible ;
     public GameObject InventoryUIIndestructible ;
     public GameObject PannelENTUIIndestructible ;
+    public GameObject QCMPanelUIIndestructible ;
 
 
     private void OnEnable() { PlayerActionControllers.Enable(); }
