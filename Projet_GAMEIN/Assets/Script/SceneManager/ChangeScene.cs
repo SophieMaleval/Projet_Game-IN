@@ -46,11 +46,15 @@ public class ChangeScene : MonoBehaviour
         }
     }
 
+    private void OnDrawGizmos() {
+        Gizmos.color = Color.red ;
+        Gizmos.DrawWireSphere(GiveNewPos(), 0.1f);
+    }
 
     Vector2 GiveNewPos()
     {
         BoxCollider2D BCol2D = GetComponent<BoxCollider2D>() ;
-        Vector2 PositionSpawn = new Vector2(transform.position.x + BCol2D.offset.x, transform.position.y + BCol2D.offset.y - 0.5f) ;
+        Vector2 PositionSpawn = new Vector2(transform.position.x + BCol2D.offset.x, transform.position.y + BCol2D.offset.y - 0.75f) ;
         return PositionSpawn ;
     }
 
