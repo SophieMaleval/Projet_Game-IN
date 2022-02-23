@@ -474,9 +474,10 @@ public class Customizer : MonoBehaviour
         PlayerPersonnality.CanvasIndestrucitble.SetActive(true);
         PlayerPersonnality.PannelENTUIIndestructible.SetActive(false);
         
+        PlayerPersonnality.PreviousSceneName = SceneManager.GetActiveScene().name;
         yield return new WaitForSeconds(0.5f);
         //SceneManager.LoadScene("Accidental Queens");
-        SceneManager.LoadScene("Tilemaps Test");
+        SceneManager.LoadScene("Game In");
     }
 
 
