@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
-/*
+
 [RequireComponent (typeof(BoxCollider2D))]
-[RequireComponent (typeof(Rigidbody2D))]*/
+[RequireComponent (typeof(Rigidbody2D))]
 public class CameraTriggerVolume : MonoBehaviour
 {
     [SerializeField] private CinemachineVirtualCamera Cam ;
@@ -24,7 +24,7 @@ public class CameraTriggerVolume : MonoBehaviour
         BoxCol.isTrigger = true ;
         BoxCol.size = BoxSize ;
 
-        Rb2D.isKinematic = true ;
+        Rb2D.isKinematic = true ;            
     }
 
     private void OnDrawGizmos() 

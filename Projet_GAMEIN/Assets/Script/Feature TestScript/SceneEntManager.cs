@@ -39,10 +39,6 @@ public class SceneEntManager : MonoBehaviour
     void SetPositionOnLoad()
     {
         PM.transform.position = SetPosition;   
-
-        // Reset bool
-        PM.GetComponentInChildren<PlayerProvenance>().SetAllBoolToFalse();
-        PM.GetComponentInChildren<PlayerProvenance>().ProviensCouchGameCrafter = true ;
     }
 
     private void Start() 

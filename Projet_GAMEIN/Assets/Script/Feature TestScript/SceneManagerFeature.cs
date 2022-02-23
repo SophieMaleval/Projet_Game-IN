@@ -31,14 +31,15 @@ public class SceneManagerFeature : MonoBehaviour
 
     void SetPositionOnLoad()
     {
-        if(PM.GetComponentInChildren<PlayerProvenance>().ProviensCharacterCustomer || PM.GetComponentInChildren<PlayerProvenance>().ProviensMain) PM.transform.position = new Vector2 (-4f,-2f);        
+        PM.transform.position = PM.GetComponent<PlayerScript>().MainSceneLoadPos ;
+       // if(PM.GetComponentInChildren<PlayerProvenance>().ProviensCharacterCustomer || PM.GetComponentInChildren<PlayerProvenance>().ProviensMain) PM.transform.position = new Vector2 (-4f,-2f);        
 
-        if(PM.GetComponentInChildren<PlayerProvenance>().ProviensCouchGameCrafter) PM.transform.position = new Vector2 (18.3f,9.25f);   
+        //if(PM.GetComponentInChildren<PlayerProvenance>().ProviensCouchGameCrafter) PM.transform.position = new Vector2 (18.3f,9.25f);   
 
 
         // Reset bool
-        PM.GetComponentInChildren<PlayerProvenance>().SetAllBoolToFalse();
-        PM.GetComponentInChildren<PlayerProvenance>().ProviensMain = true ;
+        //PM.GetComponentInChildren<PlayerProvenance>().SetAllBoolToFalse();
+        //PM.GetComponentInChildren<PlayerProvenance>().ProviensMain = true ;
 
     }
 

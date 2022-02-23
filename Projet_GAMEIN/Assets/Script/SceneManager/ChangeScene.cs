@@ -37,9 +37,21 @@ public class ChangeScene : MonoBehaviour
 
             PM.ResetVelocity();
 
+            if(SceneManager.GetActiveScene().name == "Tilemaps Test" || SceneManager.GetActiveScene().name == "Main") PM.GetComponent<PlayerScript>().MainSceneLoadPos = GiveNewPos();
+            if(SceneManager.GetActiveScene().name == "Character Customer" || SceneManager.GetActiveScene().name == "Game In") PM.GetComponent<PlayerScript>().MainSceneLoadPos = new Vector2(-4f, -2f);
+
+
             DoorOpeningSound.Play();
             GoNewScene();
         }
+    }
+
+
+    Vector2 GiveNewPos()
+    {
+        BoxCollider2D BCol2D = GetComponent<BoxCollider2D>() ;
+        Vector2 PositionSpawn = new Vector2(transform.position.x + BCol2D.offset.x, transform.position.y + BCol2D.offset.y - 0.5f) ;
+        return PositionSpawn ;
     }
 
     public void GoNewScene()

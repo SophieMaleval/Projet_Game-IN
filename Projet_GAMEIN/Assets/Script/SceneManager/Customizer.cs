@@ -160,9 +160,6 @@ public class Customizer : MonoBehaviour
 
             PlayerPersonnality.CanvasIndestrucitble.SetActive(false);
         }
-
-        PlayerPersonnality.GetComponentInChildren<PlayerProvenance>().SetAllBoolToFalse();
-        PlayerPersonnality.GetComponentInChildren<PlayerProvenance>().ProviensCharacterCustomer = true;
     }
     
     private void Start() 
@@ -478,8 +475,8 @@ public class Customizer : MonoBehaviour
         PlayerPersonnality.PannelENTUIIndestructible.SetActive(false);
         
         yield return new WaitForSeconds(0.5f);
-        SceneManager.LoadScene("Accidental Queens");
-        //SceneManager.LoadScene("Tilemaps Test");
+        //SceneManager.LoadScene("Accidental Queens");
+        SceneManager.LoadScene("Tilemaps Test");
     }
 
 
