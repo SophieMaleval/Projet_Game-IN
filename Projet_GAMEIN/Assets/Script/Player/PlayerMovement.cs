@@ -41,6 +41,7 @@ public class PlayerMovement : MonoBehaviour
     public List<RuntimeAnimatorController> SpriteDisplay ;
 
     public bool OnScooter = false;
+    public bool InExterior = false ;
     private float AmplitudeToSwitchScoot = 0.125f;
     bool OnSlope = false;
     float ValueSlopeAdd;
@@ -84,7 +85,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnEnterScoot (InputAction.CallbackContext ctx )
     {      
-        if(ctx.performed && (MoveDirection.magnitude >= -AmplitudeToSwitchScoot) && (MoveDirection.magnitude <= AmplitudeToSwitchScoot))
+        if(ctx.performed && (MoveDirection.magnitude >= -AmplitudeToSwitchScoot) && (MoveDirection.magnitude <= AmplitudeToSwitchScoot) && InExterior)
         {
             PlayerActionControllers.PlayerInLand.Disable() ;
             PlayerActionControllers.PlayerInScoot.Enable() ;
@@ -95,7 +96,7 @@ public class PlayerMovement : MonoBehaviour
     }
     public void OnExitScoot (InputAction.CallbackContext ctx )
     {
-        if(ctx.performed && (MoveDirection.magnitude >= -AmplitudeToSwitchScoot) && (MoveDirection.magnitude <= AmplitudeToSwitchScoot) )
+        if(ctx.performed && (MoveDirection.magnitude >= -AmplitudeToSwitchScoot) && (MoveDirection.magnitude <= AmplitudeToSwitchScoot) && InExterior)
         {        
             if(OnScooter)
             {

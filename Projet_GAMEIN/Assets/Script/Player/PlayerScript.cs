@@ -25,6 +25,7 @@ public class PlayerScript : MonoBehaviour
     public TLManager TimeLineManager ;
 
     public Vector2 MainSceneLoadPos ;
+    public string PreviousSceneName ;
 
     [Header ("Canvas Location")]
     public GameObject CanvasIndestrucitble ;
