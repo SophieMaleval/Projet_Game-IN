@@ -160,9 +160,6 @@ public class Customizer : MonoBehaviour
 
             PlayerPersonnality.CanvasIndestrucitble.SetActive(false);
         }
-
-        PlayerPersonnality.GetComponentInChildren<PlayerProvenance>().SetAllBoolToFalse();
-        PlayerPersonnality.GetComponentInChildren<PlayerProvenance>().ProviensCharacterCustomer = true;
     }
     
     private void Start() 

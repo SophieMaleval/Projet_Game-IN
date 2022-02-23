@@ -24,6 +24,8 @@ public class PlayerScript : MonoBehaviour
     public InteractibleObject[] Inventaire ;
     public TLManager TimeLineManager ;
 
+    public Vector2 MainSceneLoadPos ;
+
     [Header ("Canvas Location")]
     public GameObject CanvasIndestrucitble ;
     public GameObject DialogueUIIndestructible ;
@@ -50,8 +52,7 @@ public class PlayerScript : MonoBehaviour
             {
                 PlayerAsInterract = true ;
                 StopCoroutine(DisablePlayerInterract());
-                StartCoroutine(DisablePlayerInterract());
-                //selectedSound.Play();           
+                StartCoroutine(DisablePlayerInterract());          
             }
 
         }      
@@ -76,9 +77,9 @@ public class PlayerScript : MonoBehaviour
 
     void InventoryInteract()
     {
-        if(/*GameObject.Find("Inventory")*/InventoryUIIndestructible != null)
+        if(InventoryUIIndestructible != null)
         {
-            /*GameObject.Find("Inventory")*/InventoryUIIndestructible.GetComponent<InventoryScript>().SwitchToggleInventoryDisplay();
+            InventoryUIIndestructible.GetComponent<InventoryScript>().SwitchToggleInventoryDisplay();
         }
     }
 
