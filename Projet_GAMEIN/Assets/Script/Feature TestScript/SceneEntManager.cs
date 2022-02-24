@@ -24,6 +24,13 @@ public class SceneEntManager : MonoBehaviour
         {
             PM =  GameObject.Find("Player").GetComponent<PlayerMovement>();
 
+            if(VolumeFirstCam == null)
+            {
+                if(PM.GetComponent<PlayerScript>().PreviousSceneName == "Character Customer") VolumeFirstCam = GameObject.Find("Camera Trigger Zone Etage").GetComponent<CameraTriggerVolume>() ;
+                if(PM.GetComponent<PlayerScript>().PreviousSceneName == "Main" || PM.GetComponent<PlayerScript>().PreviousSceneName == "Tilemaps test") VolumeFirstCam = GameObject.Find("Camera Trigger Zone RDC").GetComponent<CameraTriggerVolume>() ;
+            }
+
+
             SetPositionOnLoad();
             FadeImage = PM.GetComponent<PlayerScript>().CanvasIndestrucitble.gameObject.transform.Find("Fade").gameObject ;
             PM.GetComponent<PlayerScript>().CanvasIndestrucitble.GetComponent<Canvas>().worldCamera = Camera.main;
@@ -31,6 +38,7 @@ public class SceneEntManager : MonoBehaviour
             PM.enabled = true ;
             PM.PlayerChangeScene = false ;
             PM.ChangePlayerSpeed(true);
+            PM.InExterior = false ;
         }
 
 
@@ -38,11 +46,22 @@ public class SceneEntManager : MonoBehaviour
 
     void SetPositionOnLoad()
     {
-        PM.transform.position = SetPosition;   
+        if(SceneManager.GetActiveScene().name != "Game In")
+        {
+            PM.transform.position = SetPosition;  
+        } else {
+            if(PM.GetComponent<PlayerScript>().PreviousSceneName == "Character Customer")
+            {
+                PM.transform.position = new Vector2(-5.49f, 2.5f);  
 
-        // Reset bool
-        PM.GetComponentInChildren<PlayerProvenance>().SetAllBoolToFalse();
-        PM.GetComponentInChildren<PlayerProvenance>().ProviensCouchGameCrafter = true ;
+                ChangePartScene(1);
+            } 
+            if(PM.GetComponent<PlayerScript>().PreviousSceneName == "Main" || PM.GetComponent<PlayerScript>().PreviousSceneName == "Tilemaps test")
+            {   
+               PM.transform.position = SetPosition;                
+            } 
+        }
+ 
     }
 
     private void Start() 

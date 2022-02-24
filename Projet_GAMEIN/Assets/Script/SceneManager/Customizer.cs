@@ -68,6 +68,7 @@ public class Customizer : MonoBehaviour
     [SerializeField] private GameObject InventoryUIPrefab ;
     [SerializeField] private GameObject PannelENTUIPrefab ;
     [SerializeField] private GameObject QCMPanelPrefab ;
+    [SerializeField] private GameObject EventSystemPrefab ;
 
     private string WhoIsIt = "§ est ¤ !" ;
 
@@ -88,6 +89,7 @@ public class Customizer : MonoBehaviour
             GameObject InventoryUIInstatiate = Instantiate(InventoryUIPrefab) ;     
             GameObject PannelENTUIInstatiate = Instantiate(PannelENTUIPrefab) ;  
             GameObject QCMPanelInstantiate = Instantiate(QCMPanelPrefab) ;   
+            GameObject EventSystemInstantiate = Instantiate(EventSystemPrefab) ;
 
             DialogueUIInstatiate.transform.SetParent(CanvasInstatiate.transform);
             DialogueUIInstatiate.transform.SetSiblingIndex(0);
@@ -114,6 +116,7 @@ public class Customizer : MonoBehaviour
             DontDestroyOnLoad(InventoryUIInstatiate.gameObject);
             DontDestroyOnLoad(PannelENTUIInstatiate.gameObject);
             DontDestroyOnLoad(QCMPanelInstantiate.gameObject);
+            DontDestroyOnLoad(EventSystemInstantiate);
 
             PlayerPersonnality.CanvasIndestrucitble = CanvasInstatiate ;
             PlayerPersonnality.DialogueUIIndestructible = DialogueUIInstatiate ;
@@ -160,9 +163,6 @@ public class Customizer : MonoBehaviour
 
             PlayerPersonnality.CanvasIndestrucitble.SetActive(false);
         }
-
-        PlayerPersonnality.GetComponentInChildren<PlayerProvenance>().SetAllBoolToFalse();
-        PlayerPersonnality.GetComponentInChildren<PlayerProvenance>().ProviensCharacterCustomer = true;
     }
     
     private void Start() 
@@ -477,8 +477,10 @@ public class Customizer : MonoBehaviour
         PlayerPersonnality.CanvasIndestrucitble.SetActive(true);
         PlayerPersonnality.PannelENTUIIndestructible.SetActive(false);
         
+        PlayerPersonnality.PreviousSceneName = SceneManager.GetActiveScene().name;
         yield return new WaitForSeconds(0.5f);
-        SceneManager.LoadScene("Tilemaps Test");
+        //SceneManager.LoadScene("Accidental Queens");
+        SceneManager.LoadScene("Game In");
     }
 
 

@@ -30,6 +30,8 @@ public class PNJDialogue : MonoBehaviour
   
 
     public int Question3IntDisplay = 3;  
+    [SerializeField] private bool ThisQuestionLunchReflexion = false ;
+    public bool PlayerAskQuestQuestion = false ;
 
     private DialogueContainer DialoguePNJ_FR ;
     private DialogueContainer DialoguePNJ_EN ;
@@ -176,33 +178,25 @@ public class PNJDialogue : MonoBehaviour
         if(PlayerScript.gameObject.transform.position.x < transform.position.x) PlayerScript.InputSpritePos(false);
         if(PlayerScript.gameObject.transform.position.x > transform.position.x) PlayerScript.InputSpritePos(true);
 
-        if(PlayerAround)
+        if(PlayerAround && !PlayerScript.QCMPanelUIIndestructible.activeSelf)
         {
-            
             if(PlayerScript.PlayerAsInterract && !PlayerScript.InDiscussion)
             {
                 PlayerScript.PlayerAsInterract = false ;
                 PlayerDialogueManager.PlayerAsRead = false ;
                 PlayerScript.InDiscussion = true ;
-                LunchDiscussion(); 
-                             
+                LunchDiscussion();               
             }
 
             if(PlayerDialogueManager.PlayerAsRead) 
             {
                 PlayerDialogueManager.PlayerAsRead = false ;
 
-                if(!DialogueCanvasBox.WeAreInChoice){
-
-                    DialogueCanvasBox.StateDiscussion();
-                   
-                }
-                     
-                else
+                if(!DialogueCanvasBox.WeAreInChoice)
                 {
-
+                    DialogueCanvasBox.StateDiscussion(); 
+                } else {
                     DialogueCanvasBox.ValidateButton();
-
                 }
                     
             } 
@@ -224,6 +218,8 @@ public class PNJDialogue : MonoBehaviour
 
     public void LunchDiscussion()
     {
+        GetComponent<Animator>().SetBool("Talk", true) ;
+
         PlayerScript.gameObject.GetComponent<PlayerMovement>().StartActivity() ; 
         PlayerDialogueManager.DialogueStart();
            
@@ -235,7 +231,7 @@ public class PNJDialogue : MonoBehaviour
         
         BoxQuestion = DialogueCanvasBox.transform.GetChild(1).gameObject ;     
 
-        DialogueCanvasBox.CurrentPNJDiscussion = this ;   
+        DialogueCanvasBox.CurrentPNJDiscussion = gameObject.GetComponent<PNJDialogue>() ;   
  
 
         DialogueCanvasBox.DialoguePNJ_FR = DialoguePNJ_FR;
@@ -259,12 +255,29 @@ public class PNJDialogue : MonoBehaviour
 
     public void DiscussionIsClose()
     {
+        GetComponent<Animator>().SetBool("Talk", false) ;
+
         DialogueCanvasBox.ResetAllValue();         
         DialogueCanvasBox.gameObject.SetActive(false);      
         DialogueCanvasBox.DialogueCanvas.text = "";           
         PlayerScript.PlayerAsInterract = false ;        
         PlayerScript.InDiscussion = false ;
-        PlayerScript.gameObject.GetComponent<PlayerMovement>().EndActivity() ; 
+
+        if(ThisQuestionLunchReflexion == true && PlayerAskQuestQuestion == true) OpenEnigme();
+        else PlayerScript.gameObject.GetComponent<PlayerMovement>().EndActivity() ; 
+    }
+
+    public void OpenEnigme()
+    {
+        PlayerScript.TimeLineManager.gameObject.SetActive(true);
+        PlayerScript.TimeLineManager.Toggle();
+        StartCoroutine(WaitAppartéFinish());
+    }
+
+    IEnumerator WaitAppartéFinish()
+    {
+        yield return new WaitForSeconds(0.5f);
+        PlayerScript.QCMPanelUIIndestructible.SetActive(true);
     }
 
 }

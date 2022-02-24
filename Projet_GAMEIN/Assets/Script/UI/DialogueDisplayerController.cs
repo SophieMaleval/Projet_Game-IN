@@ -12,7 +12,7 @@ public class DialogueDisplayerController : MonoBehaviour
 {
     private bool MouseIsHover ;
     
-    [HideInInspector] public PNJDialogue CurrentPNJDiscussion ;
+    public PNJDialogue CurrentPNJDiscussion ;
     public TextMeshProUGUI DialogueCanvas ;
     public TextMeshProUGUI NamePNJ ;
 
@@ -351,6 +351,8 @@ public class DialogueDisplayerController : MonoBehaviour
     {
         ResetDialogueContinuationValue((int) Question3IntDisplay);
         TextDiscussion(true, false);
+
+        CurrentPNJDiscussion.PlayerAskQuestQuestion = true ;
 
         if(Question3AsRead == false) Question3AsRead = true ;
     }

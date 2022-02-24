@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 7454713249344840314}
   - component: {fileID: 7454713249344840311}
   - component: {fileID: 7454713249344840310}
+  - component: {fileID: 3007771730474246272}
   m_Layer: 0
   m_Name: Seaven Studio - Olivier Penot
   m_TagString: Untagged
@@ -151,6 +152,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Entrerpise: Game In
   NamePNJ: Laurent Peroy
+  MultiplePNJinENT: 0
+  PNJinENT: 0
   TextDialogue: {fileID: 0}
   DialogueCanvasBox: {fileID: 0}
   Question3IntDisplay: 3
@@ -191,6 +194,42 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.26, y: 1.26}
   m_EdgeRadius: 0
+--- !u!60 &3007771730474246272
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7454713249344840315}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.05, y: 0.5}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 0.38, y: 0.63}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.052077707, y: 0.31703448}
+      - {x: -0.19150329, y: 0.21582127}
+      - {x: -0.22266914, y: 0.050624967}
+      - {x: -0.20827962, y: -0.20758414}
+      - {x: -0.056450125, y: -0.5119953}
+      - {x: 0.1873682, y: -0.50811255}
+      - {x: 0.19887602, y: -0.37052208}
+      - {x: 0.24993354, y: -0.3229211}
+      - {x: 0.34322417, y: 0.022493064}
+      - {x: 0.28913844, y: 0.198493}
+      - {x: 0.14901352, y: 0.32091677}
 --- !u!1 &8215071331028764595
 GameObject:
   m_ObjectHideFlags: 0

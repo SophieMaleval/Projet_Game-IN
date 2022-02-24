@@ -35,11 +35,17 @@ public class QCMManager : MonoBehaviour
     // Start is called before the first frame update
     void OnEnable()
     {
+        gameObject.GetComponent<RectTransform>().localScale = Vector3.zero ;
        // PlayerText.GetComponent<PlayerDialogue>().DialogueStart();
         CurrentQuestion = 0 ;
-
+        StartCoroutine(WaitAndSet());
     }
-
+    IEnumerator WaitAndSet()
+    {
+        yield return new WaitForSeconds(0.05f);
+        SetChoiceDisp();
+        gameObject.GetComponent<RectTransform>().localScale = Vector3.one ;
+    }
     private void Start() 
     {
         if(GameObject.Find("Player Backpack") != null)  PlayerText = GameObject.Find("Player Backpack");
@@ -48,7 +54,7 @@ public class QCMManager : MonoBehaviour
         PlayerText.GetComponent<PlayerDialogue>().DialogueStart();
 
         QCMContaine = PlayerText.GetComponent<CSVReader>().QCMCont ;
-        SetChoiceDisp();
+
     }
 
 
@@ -125,7 +131,6 @@ public class QCMManager : MonoBehaviour
     {
         if(NumAnswer != TextQCM[CurrentQuestion].NuméroRéponse)
         {
-            Debug.Log("Wrong Answer");
             Choices[NumAnswer - 1].GetComponent<Image>().color = WrongColor ;
             Choices[NumAnswer - 1].transform.GetChild(0).GetComponent<Image>().color = WrongColor ;
             Choices[NumAnswer - 1].transform.GetChild(1).GetComponent<TextMeshProUGUI>().fontStyle = FontStyles.Strikethrough;
@@ -138,9 +143,19 @@ public class QCMManager : MonoBehaviour
 
     IEnumerator WaitAndShowNewQuestion()
     {
-        yield return new WaitForSeconds(1f);
-        CurrentQuestion ++ ;
-        SetChoiceDisp();
+
+        if(CurrentQuestion < TextQCM.Count - 1)
+        {
+            yield return new WaitForSeconds(0.25f);            
+            CurrentQuestion ++ ;
+            SetChoiceDisp();
+        } else {
+            PlayerText.GetComponentInParent<PlayerScript>().TimeLineManager.Toggle();
+            yield return new WaitForSeconds(0.5f);      
+            PlayerText.GetComponentInParent<PlayerMovement>().EndActivity();
+            gameObject.SetActive(false);
+        }
+
     }
 
 
