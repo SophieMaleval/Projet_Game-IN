@@ -424,27 +424,27 @@ public class Customizer : MonoBehaviour
         SkinSlider.value = PlayerApparance.ValueColorDisplay[0];
 
         // Random Hair
-        ChoiceInCategorie[0] = Random.Range(0, HairChoice.Count - 1);
+        ChoiceInCategorie[0] = Random.Range(0, HairChoice.Count);
         PlayerApparance.SpriteDisplay[0] = HairChoice[ChoiceInCategorie[0]].Animator ; 
-            PlayerApparance.ValueColorDisplay[1] = Random.Range(0, AllChoiceColorButton.Count - 1);
+            PlayerApparance.ValueColorDisplay[1] = Random.Range(0, AllChoiceColorButton.Count);
             PlayerApparance.ColorsDisplay[1] = ColorCustomList[(int) PlayerApparance.ValueColorDisplay[1]] ;
         
         // Random Top
-        ChoiceInCategorie[1] = Random.Range(0, TopChoice.Count - 1);
+        ChoiceInCategorie[1] = Random.Range(0, TopChoice.Count);
         PlayerApparance.SpriteDisplay[1] = TopChoice[ChoiceInCategorie[1]].Animator ; 
-            PlayerApparance.ValueColorDisplay[2] = Random.Range(0, AllChoiceColorButton.Count - 1);
+            PlayerApparance.ValueColorDisplay[2] = Random.Range(0, AllChoiceColorButton.Count);
             PlayerApparance.ColorsDisplay[2] = ColorCustomList[(int) PlayerApparance.ValueColorDisplay[2]] ;
 
         // Random Bottom
-        ChoiceInCategorie[2] = Random.Range(0, PantsChoice.Count - 1);
+        ChoiceInCategorie[2] = Random.Range(0, PantsChoice.Count /*- 1*/);
         PlayerApparance.SpriteDisplay[2] = PantsChoice[ChoiceInCategorie[2]].Animator ; 
-            PlayerApparance.ValueColorDisplay[3] = Random.Range(0, AllChoiceColorButton.Count - 1);
+            PlayerApparance.ValueColorDisplay[3] = Random.Range(0, AllChoiceColorButton.Count);
             PlayerApparance.ColorsDisplay[3] = ColorCustomList[(int) PlayerApparance.ValueColorDisplay[3]] ;
 
         // Random Shoe
-        ChoiceInCategorie[3] = Random.Range(0, ShoeChoice.Count - 1);
+        ChoiceInCategorie[3] = Random.Range(0, ShoeChoice.Count);
         PlayerApparance.SpriteDisplay[3] = ShoeChoice[ChoiceInCategorie[3]].Animator ; 
-            PlayerApparance.ValueColorDisplay[4] = Random.Range(0, AllChoiceColorButton.Count - 1);
+            PlayerApparance.ValueColorDisplay[4] = Random.Range(0, AllChoiceColorButton.Count);
             PlayerApparance.ColorsDisplay[4] = ColorCustomList[(int) PlayerApparance.ValueColorDisplay[4]] ;
 
         SetAvatar();
