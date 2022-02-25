@@ -45,7 +45,8 @@ public class QuestSys : MonoBehaviour
         titleEffect = GameObject.Find("Ombre").GetComponent<TextMeshProUGUI>();
         contenu = GameObject.Find("Description").GetComponent<TextMeshProUGUI>();
         sizeOfList = quest.Count;
-        quest[niveau].questCode = niveau; 
+        quest[niveau].questCode = niveau;
+        lvlTracker = niveau;
         animTitle = GameObject.Find("AnimTitle").GetComponent<CanvasGroup>();
         animContent = GameObject.Find("AnimContent").GetComponent<CanvasGroup>();
         niveau = PlayerPrefs.GetInt("Niveau");
