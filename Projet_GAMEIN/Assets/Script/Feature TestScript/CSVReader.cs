@@ -237,8 +237,6 @@ public class CSVReader : MonoBehaviour
 
             string WithPronom = WithName.Replace("¤", Pronoms[PlayerInformations.PlayerSexualGenre]) ;   
 
-
-
             string WithTerms1 = WithPronom.Replace("000001", Terminaisons[PlayerInformations.PlayerSexualGenre + 0]) ;     // "elle", "el", "el·elle"
             string WithTerms2 = WithTerms1.Replace("000010", Terminaisons[PlayerInformations.PlayerSexualGenre + 3]) ;            // "euse", "eur", "eur·euse"
             string WithTerms3 = WithTerms2.Replace("000011", Terminaisons[PlayerInformations.PlayerSexualGenre + 6]) ;            // "rice", "eur", "eur·rice"

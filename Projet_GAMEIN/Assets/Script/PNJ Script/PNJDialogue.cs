@@ -12,8 +12,9 @@ public class PNJDialogue : MonoBehaviour
     [Header ("PNJ Information")]
     public string Entrerpise ;
     public string NamePNJ ;
-    [SerializeField] private bool MultiplePNJinENT ;
-    [SerializeField] private int PNJinENT;
+    public string NamePNJDisplay ;
+    [SerializeField] private bool MultiplePNJinENT = true ;
+    [SerializeField] private int PNJInENT;
     
     [HideInInspector] public CSVReader TextDialogue ;
 
@@ -51,6 +52,7 @@ public class PNJDialogue : MonoBehaviour
 
 
     [Header ("Réponse Question")]
+    public bool DiscussionWithQuestion = true ;
     public List<SerializableAnswer> Answer = new List<SerializableAnswer>() ;
 
 
@@ -66,15 +68,17 @@ public class PNJDialogue : MonoBehaviour
 
         if(MultiplePNJinENT == true) 
         {
-            GetComponent<Animator>().SetInteger("PNJ Need", PNJinENT) ;
+            GetComponent<Animator>().SetInteger("PNJ Need", PNJInENT) ;
         }
+
+        if(NamePNJDisplay == null) NamePNJDisplay = NamePNJ ;
     } 
 
     public void GetDialogue()
     {
         for (int T = 0; T < PlayerDialogueManager.myDialogueAdhérentFR.Count; T++)
         {
-            if(PlayerDialogueManager.myDialogueAdhérentFR[T].Entreprise == Entrerpise)
+            if(PlayerDialogueManager.myDialogueAdhérentFR[T].Entreprise == Entrerpise && PlayerDialogueManager.myDialogueAdhérentFR[T].Name == NamePNJ)
             {
                 DialoguePNJ_FR = PlayerDialogueManager.myDialogueAdhérentFR[T] ;
             }
@@ -82,7 +86,7 @@ public class PNJDialogue : MonoBehaviour
 
         for (int T = 0; T < PlayerDialogueManager.myDialogueAdhérentEN.Count; T++)
         {
-            if(PlayerDialogueManager.myDialogueAdhérentEN[T].Entreprise == Entrerpise)
+            if(PlayerDialogueManager.myDialogueAdhérentEN[T].Entreprise == Entrerpise && PlayerDialogueManager.myDialogueAdhérentEN[T].Name == NamePNJ)
             {
                 DialoguePNJ_EN = PlayerDialogueManager.myDialogueAdhérentEN[T] ;
             }
@@ -182,9 +186,6 @@ public class PNJDialogue : MonoBehaviour
         {
             if(PlayerScript.PlayerAsInterract && !PlayerScript.InDiscussion)
             {
-                PlayerScript.PlayerAsInterract = false ;
-                PlayerDialogueManager.PlayerAsRead = false ;
-                PlayerScript.InDiscussion = true ;
                 LunchDiscussion();               
             }
 
@@ -215,16 +216,25 @@ public class PNJDialogue : MonoBehaviour
         }
     }
 
+    public void PNJTalkAnimation(bool IsTalking)
+    {
+        GetComponent<Animator>().SetBool("Talk", IsTalking) ;        
+    }
 
     public void LunchDiscussion()
     {
-        GetComponent<Animator>().SetBool("Talk", true) ;
+        PlayerScript.PlayerAsInterract = false ;
+        PlayerDialogueManager.PlayerAsRead = false ;
+        PlayerScript.InDiscussion = true ;
+
+        PNJTalkAnimation(true) ;
+
 
         PlayerScript.gameObject.GetComponent<PlayerMovement>().StartActivity() ; 
         PlayerDialogueManager.DialogueStart();
            
         DialogueCanvasBox.gameObject.SetActive(true);           
-        DialogueCanvasBox.NamePNJ.text = NamePNJ;
+        DialogueCanvasBox.NamePNJ.text = NamePNJDisplay;
 
 
         DialogueCanvasDisplayerText = DialogueCanvasBox.transform.GetChild(0).GetComponent<TextMeshProUGUI>();

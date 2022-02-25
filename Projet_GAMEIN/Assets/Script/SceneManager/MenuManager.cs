@@ -27,16 +27,24 @@ public class MenuManager : MonoBehaviour
 
     private CSVReader SettingPanelReader ;
 
-    // Start is called before the first frame update
+
     void Start()
     {
         //PlayerPrefs.SetInt("Langue", 0);
         StartCoroutine(WaitTransitionAnim());
 
         if(SettingPanel.GetComponent<CSVReader>() != null) SettingPanelReader = SettingPanel.GetComponent<CSVReader>() ;
+    
+    
+    
+    
+    
+        /* A Supprimer */
+        PlayerPrefs.SetInt("LaurentSayHello", 0);
+    
     }
 
-    // Update is called once per frame
+
     void Update()
     {
         if (!SettingOpen && (Input.anyKeyDown && !(Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1) || Input.GetMouseButtonDown(2))) && FadeImage.activeSelf == false)
@@ -70,7 +78,6 @@ public class MenuManager : MonoBehaviour
  
     public void OpenSetting()
     {
-        //OptionsPanel.SetActive(true);
         StartCoroutine(AnimationPanels(true, SettingPanel)); 
     }
     public void CloseSetting()

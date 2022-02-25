@@ -52,7 +52,7 @@ public class SceneEntManager : MonoBehaviour
         } else {
             if(PM.GetComponent<PlayerScript>().PreviousSceneName == "Character Customer")
             {
-                PM.transform.position = new Vector2(-5.49f, 2.5f);  
+                PM.transform.position = new Vector2(-5.5f, 2.65f);  
 
                 ChangePartScene(1);
             } 
