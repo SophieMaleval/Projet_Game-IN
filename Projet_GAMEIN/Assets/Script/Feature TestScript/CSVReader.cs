@@ -146,7 +146,7 @@ public class CSVReader : MonoBehaviour
     {
         string[] LineData = QCMData.text.Split(new string[] { "\n" }, StringSplitOptions.None) ; // Data correspond à chaque Ligne
 
-        for (int LD = 0; LD < LineData.Length; LD++)
+        for (int LD = 1; LD < LineData.Length; LD++)
         {
             QuestionQCMContainer QCMQR = new QuestionQCMContainer();
 
@@ -159,7 +159,9 @@ public class CSVReader : MonoBehaviour
                     if(Data[D] == null)Debug.Log(Data[D]);
                     if(D == 2)    QCMQR.NuméroRéponse = int.Parse(Data[D]) ;
 
-                    if(D > 2)    QCMQR.QuestionsReponse.Add(Data[D]) ;
+                    int DataNombRep = int.Parse(Data[3]) ;
+
+                    if(D > 3 && (D < 4 + DataNombRep + 1))    QCMQR.QuestionsReponse.Add(Data[D]) ;
                 }
 
                 if(Data[0] == "QCM 1 FR")    QCMCont.QCMEnigmeFR1.Add(QCMQR);

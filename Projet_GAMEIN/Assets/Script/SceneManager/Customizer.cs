@@ -155,7 +155,6 @@ public class Customizer : MonoBehaviour
                 // Set Up la direction du Joueur en Face
                 PlayerApparance.Animators[A].SetFloat("AnimLastMoveX", 0) ;
                 PlayerApparance.Animators[A].SetFloat("AnimLastMoveY", -1) ;
-                
             }
             RecupInfoPlayer();
             SetAvatar();            

@@ -71,7 +71,7 @@ public class PNJDialogue : MonoBehaviour
             GetComponent<Animator>().SetInteger("PNJ Need", PNJInENT) ;
         }
 
-        if(NamePNJDisplay == null) NamePNJDisplay = NamePNJ ;
+        if(NamePNJDisplay == "") NamePNJDisplay = NamePNJ ;
     } 
 
     public void GetDialogue()
