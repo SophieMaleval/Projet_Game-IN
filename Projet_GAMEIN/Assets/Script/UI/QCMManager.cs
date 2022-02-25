@@ -35,6 +35,17 @@ public class QCMManager : MonoBehaviour
     // Start is called before the first frame update
     void OnEnable()
     {
+        PlayerMovement PlayerApparance = GameObject.Find("Player").GetComponent<PlayerMovement>() ; 
+        PlayerApparance.enabled = false ;                 
+        PlayerScript PlayerPersonnality = PlayerApparance.GetComponent<PlayerScript>() ;
+
+        for (int A = 0; A < PlayerApparance.Animators.Count; A++)
+        {
+            // Set Up la direction du Joueur en Face
+            PlayerApparance.Animators[A].SetFloat("AnimLastMoveX", 0) ;
+            PlayerApparance.Animators[A].SetFloat("AnimLastMoveY", -1) ;
+        }   
+
         gameObject.GetComponent<RectTransform>().localScale = Vector3.zero ;
        // PlayerText.GetComponent<PlayerDialogue>().DialogueStart();
         CurrentQuestion = 0 ;
@@ -75,11 +86,12 @@ public class QCMManager : MonoBehaviour
         SetEnigme();
 
         int NumOfQuestion = 0 ;
-
+        PlayerText.GetComponent<PlayerDialogue>().CurrentSelectQuestion = 0 ;
+        
         TitleQuestion.text = TextQCM[CurrentQuestion].QuestionsReponse[0];
         for (int SCD = 0; SCD < Choices.Count; SCD++)
         {
-            if(SCD < TextQCM[CurrentQuestion].QuestionsReponse.Count-1)
+            if(SCD < TextQCM[CurrentQuestion].QuestionsReponse.Count - 1)
             {
                 Choices[SCD].SetActive(true);
                 Choices[SCD].GetComponent<Image>().color = new Color(1f, 1f, 1f, 0f) ;
@@ -88,7 +100,7 @@ public class QCMManager : MonoBehaviour
                 Choices[SCD].GetComponentInChildren<TextMeshProUGUI>().fontStyle = FontStyles.Normal;
                 NumOfQuestion ++ ;
             } 
-            if(SCD >= TextQCM[CurrentQuestion].QuestionsReponse.Count-1)
+            if(SCD >= TextQCM[CurrentQuestion].QuestionsReponse.Count - 1)
             {
                 Choices[SCD].SetActive(false);
             }
@@ -152,6 +164,7 @@ public class QCMManager : MonoBehaviour
         } else {
             PlayerText.GetComponentInParent<PlayerScript>().TimeLineManager.Toggle();
             yield return new WaitForSeconds(0.5f);      
+            GameObject.Find("Player").GetComponent<PlayerMovement>().enabled = true ;
             PlayerText.GetComponentInParent<PlayerMovement>().EndActivity();
             gameObject.SetActive(false);
         }
