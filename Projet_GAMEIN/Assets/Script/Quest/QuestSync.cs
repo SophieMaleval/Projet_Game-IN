@@ -6,15 +6,15 @@ using UnityEngine.UI;
 public class QuestSync : MonoBehaviour
 {
     public QuestSys questSys;
-    public ActiveAsProg Aap;
+    //public ActiveAsProg Aap;
     public GameObject title;
     public TextMeshProUGUI[] description;
     [SerializeField] int index;
     [SerializeField] int lvlID;
-    public int currentStep;
-    [SerializeField] string descName;
+    //public int currentStep;
+    //[SerializeField] string descName;
     //public List<string> steps = new List<string>();
-    public string[] steps;    
+   // public string[] steps;    
     [HideInInspector]
     public int numberOfGoals;
 
