@@ -75,7 +75,6 @@ public class QuestSync : MonoBehaviour
                 {
                     descObj[i].SetActive(false);
                 }*/
-
             }
         }
     }
