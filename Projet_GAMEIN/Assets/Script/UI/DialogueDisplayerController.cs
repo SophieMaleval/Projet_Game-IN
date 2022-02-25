@@ -44,7 +44,7 @@ public class DialogueDisplayerController : MonoBehaviour
 
 
     private bool PNJSpeak = false ;
-    private int CurrentDialogueDisplay = 0 ;
+    public int CurrentDialogueDisplay = 0 ;
     
     private int CurrentDialogueLength = 0 ;
     private int CurrentDialogueState = 0 ;
@@ -74,7 +74,6 @@ public class DialogueDisplayerController : MonoBehaviour
 
     public void ResetAllValue()
     {
-
         PNJSpeak = false ;
         CurrentDialogueDisplay = 0 ;
         CurrentDialogueLength = 0 ; 
@@ -192,28 +191,44 @@ public class DialogueDisplayerController : MonoBehaviour
 
     public void StateDiscussion()
     {
-
         
 
         if(!PlayerDialogueManager.transform.GetComponentInParent<PlayerScript>().InventoryUIIndestructible.GetComponent<InventoryScript>().InventoryPanel.activeSelf)
         {
             CanChangeCurrentDialogue = true ;
-           
 
-            if(DialogueCanvas.text == DialoguePNJ.OpeningDialogue) ShowDialogueChoice(true);
-            if(CurrentDialogueDisplay == -1 && !TextAsCompletelyDisplay && !TextOppeningDisplayCompletely )    StartDiscussion(true); // Arrête l'animation et Affiche tout le texte d'Openning
+
 
             if(DialogueCanvas.text == DialoguePNJ.CloseDiscussion) CurrentPNJDiscussion.DiscussionIsClose();
             if(CurrentDialogueDisplay == -1 && !TextAsCompletelyDisplay && !TextCloseDisplayCompletely )    CloseDiscussion(true, true);    // Arrête l'animation et Affiche tout le texte de Fermeture  
 
             if(PNJSpeak)
             {
-                if(CurrentDialogueState < CurrentPNJDiscussion.Answer[CurrentDialogueDisplay].AnswerForQuestion.Count )
-                    if(!TextAsCompletelyDisplay) TextDiscussion(false, true); // Arrête l'animation et affiche tout le texte
-                    else TextDiscussion(false, false); // Affiche le prochain texte avec l'animation
-                else
-                    ShowDialogueChoice(true);            
+                if(CurrentPNJDiscussion.DiscussionWithQuestion)
+                {
+                    if(CurrentDialogueState < CurrentPNJDiscussion.Answer[CurrentDialogueDisplay].AnswerForQuestion.Count )
+                    {
+                        if(!TextAsCompletelyDisplay) TextDiscussion(false, true); // Arrête l'animation et affiche tout le texte
+                        else TextDiscussion(false, false); // Affiche le prochain texte avec l'animation                    
+                    }                    
+                } else {
+                    if(CurrentDialogueState < CurrentPNJDiscussion.Answer[CurrentDialogueDisplay].AnswerForQuestion.Count )
+                    {
+                        if(!TextAsCompletelyDisplay) TextDiscussion(false, true); // Arrête l'animation et affiche tout le texte
+                        else TextDiscussion(false, false); // Affiche le prochain texte avec l'animation                    
+                    } else ButtonChoix4();                           
+                }
             }
+            if(DialogueCanvas.text == DialoguePNJ.OpeningDialogue) 
+            {   
+                if(CurrentPNJDiscussion.DiscussionWithQuestion)    ShowDialogueChoice(true);
+                if(!CurrentPNJDiscussion.DiscussionWithQuestion)
+                {
+                    ResetDialogueContinuationValue(1);        
+                    TextDiscussion(true, false);
+                }  
+            }
+            if(CurrentDialogueDisplay == -1 && !TextAsCompletelyDisplay && !TextOppeningDisplayCompletely )    StartDiscussion(true); // Arrête l'animation et Affiche tout le texte d'Openning
         }
     }
 
@@ -237,7 +252,7 @@ public class DialogueDisplayerController : MonoBehaviour
 
     public void ShowDialogueChoice(bool ToggleDisplayBox)
     {
-        if(ToggleDisplayBox)    SwitchBoxDisplay();
+        if(ToggleDisplayBox && CurrentPNJDiscussion.DiscussionWithQuestion)    SwitchBoxDisplay();
         PlayerDialogueManager.ResetSelectQuestion();
         GetComponent<Button>().interactable = false ;
         TextOppeningDisplayCompletely = true ;        
@@ -274,7 +289,7 @@ public class DialogueDisplayerController : MonoBehaviour
         GetComponent<Button>().interactable = true ;
         WeAreInChoice = false ;
 
-        if(ToggleDisplayBox)    SwitchBoxDisplay();
+        if(ToggleDisplayBox && CurrentPNJDiscussion.DiscussionWithQuestion)    SwitchBoxDisplay();
 
         CurrentDialogue = AnswerDisponible[CurrentPNJDiscussion.Answer[CurrentDialogueDisplay].AnswerForQuestion[CurrentDialogueState]];
         if(!TextState)
@@ -300,7 +315,7 @@ public class DialogueDisplayerController : MonoBehaviour
         CurrentDialogue = DialoguePNJ.CloseDiscussion ;
         if(!TextState)
         {
-            if(ToggleDisplayBox)    SwitchBoxDisplay();
+            if(ToggleDisplayBox && CurrentPNJDiscussion.DiscussionWithQuestion)    SwitchBoxDisplay();
 
             StopAllCoroutines();
             DialogueCanvas.text = ""; 
@@ -393,7 +408,6 @@ public class DialogueDisplayerController : MonoBehaviour
                         CurrentDialogueState -- ;                         
                     }
 
-                    
                     TextDiscussion(false, false) ;
                 }
             }             
