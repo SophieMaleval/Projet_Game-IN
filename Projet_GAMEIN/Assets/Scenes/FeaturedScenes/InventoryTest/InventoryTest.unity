@@ -1173,13 +1173,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Entrerpise: Alambik Studio
   NamePNJ: Le Gardien
+  NamePNJDisplay: 
   MultiplePNJinENT: 0
-  PNJinENT: 0
+  PNJInENT: 0
   TextDialogue: {fileID: 0}
   DialogueCanvasBox: {fileID: 0}
   Question3IntDisplay: 3
   ThisQuestionLunchReflexion: 0
   PlayerAskQuestQuestion: 0
+  DiscussionWithQuestion: 1
   Answer:
   - AnswerForQuestion: 01000000020000000300000004000000
   - AnswerForQuestion: 0500000006000000
@@ -1301,7 +1303,7 @@ Transform:
   - {fileID: 538201362}
   - {fileID: 140433304}
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &801401936
 PrefabInstance:
@@ -1398,7 +1400,7 @@ PrefabInstance:
     - target: {fileID: 7454713249344840312, guid: a1713f1fcd6de3649b64b368caf7f4ed,
         type: 3}
       propertyPath: m_RootOrder
-      value: 13
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 7454713249344840312, guid: a1713f1fcd6de3649b64b368caf7f4ed,
         type: 3}
@@ -1706,7 +1708,7 @@ PrefabInstance:
     - target: {fileID: 3491493698501698516, guid: 928dfbd4fe1d25048a4467955e4ca058,
         type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3491493698501698516, guid: 928dfbd4fe1d25048a4467955e4ca058,
         type: 3}
@@ -1906,105 +1908,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1001 &1262567546
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 96329082531820497, guid: 928dfbd4fe1d25048a4467955e4ca058,
-        type: 3}
-      propertyPath: etapeDeQuete
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 96329082531820497, guid: 928dfbd4fe1d25048a4467955e4ca058,
-        type: 3}
-      propertyPath: progressType
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 96329082531820497, guid: 928dfbd4fe1d25048a4467955e4ca058,
-        type: 3}
-      propertyPath: numeroDeQuete
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3491493698501698516, guid: 928dfbd4fe1d25048a4467955e4ca058,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 3491493698501698516, guid: 928dfbd4fe1d25048a4467955e4ca058,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -7.27
-      objectReference: {fileID: 0}
-    - target: {fileID: 3491493698501698516, guid: 928dfbd4fe1d25048a4467955e4ca058,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.13
-      objectReference: {fileID: 0}
-    - target: {fileID: 3491493698501698516, guid: 928dfbd4fe1d25048a4467955e4ca058,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3491493698501698516, guid: 928dfbd4fe1d25048a4467955e4ca058,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3491493698501698516, guid: 928dfbd4fe1d25048a4467955e4ca058,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3491493698501698516, guid: 928dfbd4fe1d25048a4467955e4ca058,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3491493698501698516, guid: 928dfbd4fe1d25048a4467955e4ca058,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3491493698501698516, guid: 928dfbd4fe1d25048a4467955e4ca058,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3491493698501698516, guid: 928dfbd4fe1d25048a4467955e4ca058,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3491493698501698516, guid: 928dfbd4fe1d25048a4467955e4ca058,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3491493698501698517, guid: 928dfbd4fe1d25048a4467955e4ca058,
-        type: 3}
-      propertyPath: m_Name
-      value: Dialogue Alambik
-      objectReference: {fileID: 0}
-    - target: {fileID: 3491493698501698522, guid: 928dfbd4fe1d25048a4467955e4ca058,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 0.9587338
-      objectReference: {fileID: 0}
-    - target: {fileID: 3491493698501698522, guid: 928dfbd4fe1d25048a4467955e4ca058,
-        type: 3}
-      propertyPath: m_Color.g
-      value: 0.9716981
-      objectReference: {fileID: 0}
-    - target: {fileID: 3491493698501698522, guid: 928dfbd4fe1d25048a4467955e4ca058,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 0.34376112
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 928dfbd4fe1d25048a4467955e4ca058, type: 3}
 --- !u!1 &1270183021
 GameObject:
   m_ObjectHideFlags: 0
@@ -2311,7 +2214,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1491181710
 GameObject:
@@ -2354,7 +2257,7 @@ PrefabInstance:
     - target: {fileID: 3491493698501698516, guid: 928dfbd4fe1d25048a4467955e4ca058,
         type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3491493698501698516, guid: 928dfbd4fe1d25048a4467955e4ca058,
         type: 3}
@@ -2511,7 +2414,7 @@ PrefabInstance:
     - target: {fileID: 3491493698501698516, guid: 928dfbd4fe1d25048a4467955e4ca058,
         type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3491493698501698516, guid: 928dfbd4fe1d25048a4467955e4ca058,
         type: 3}
@@ -2730,7 +2633,7 @@ PrefabInstance:
     - target: {fileID: 7454713249344840312, guid: 3da6e55da357b2644867883d27cfa0ef,
         type: 3}
       propertyPath: m_RootOrder
-      value: 14
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 7454713249344840312, guid: 3da6e55da357b2644867883d27cfa0ef,
         type: 3}
@@ -3201,7 +3104,7 @@ PrefabInstance:
     - target: {fileID: 3491493698501698516, guid: 928dfbd4fe1d25048a4467955e4ca058,
         type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 3491493698501698516, guid: 928dfbd4fe1d25048a4467955e4ca058,
         type: 3}
@@ -3379,13 +3282,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Entrerpise: Game In
   NamePNJ: Manon Lesire
+  NamePNJDisplay: 
   MultiplePNJinENT: 1
-  PNJinENT: 1
+  PNJInENT: 0
   TextDialogue: {fileID: 0}
   DialogueCanvasBox: {fileID: 0}
   Question3IntDisplay: 3
   ThisQuestionLunchReflexion: 0
   PlayerAskQuestQuestion: 0
+  DiscussionWithQuestion: 1
   Answer:
   - AnswerForQuestion: 01000000020000000300000004000000
   - AnswerForQuestion: 0500000006000000
@@ -3507,7 +3412,7 @@ Transform:
   - {fileID: 1491181711}
   - {fileID: 272132685}
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1329575868427205376
 GameObject:
@@ -3616,7 +3521,7 @@ Transform:
   - {fileID: 8334247963917185932}
   - {fileID: 801401937}
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2807834196814491838
 GameObject:
@@ -3672,13 +3577,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Entrerpise: Atelier 801
   NamePNJ: "M\xE9lanie Christin"
+  NamePNJDisplay: 
   MultiplePNJinENT: 0
-  PNJinENT: 0
+  PNJInENT: 0
   TextDialogue: {fileID: 0}
   DialogueCanvasBox: {fileID: 0}
   Question3IntDisplay: 3
   ThisQuestionLunchReflexion: 0
   PlayerAskQuestQuestion: 0
+  DiscussionWithQuestion: 1
   Answer:
   - AnswerForQuestion: 01000000020000000300000004000000
   - AnswerForQuestion: 0500000006000000
