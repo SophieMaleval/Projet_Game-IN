@@ -180,6 +180,7 @@ public class DialogueDisplayerController : MonoBehaviour
             StartCoroutine(WriteText(DialoguePNJ.OpeningDialogue, DelayAnimationText));     
             TextAsCompletelyDisplay = false ;       
         } else {
+            CurrentPNJDiscussion.PNJTalkAnimation(false);
             StopAllCoroutines();
             DialogueCanvas.text = DialoguePNJ.OpeningDialogue ;
             TextAsCompletelyDisplay = true ;
@@ -210,7 +211,9 @@ public class DialogueDisplayerController : MonoBehaviour
                     {
                         if(!TextAsCompletelyDisplay) TextDiscussion(false, true); // Arrête l'animation et affiche tout le texte
                         else TextDiscussion(false, false); // Affiche le prochain texte avec l'animation                    
-                    }                    
+                    } else {
+                        ShowDialogueChoice(true);
+                    }                  
                 } else {
                     if(CurrentDialogueState < CurrentPNJDiscussion.Answer[CurrentDialogueDisplay].AnswerForQuestion.Count )
                     {
@@ -300,6 +303,7 @@ public class DialogueDisplayerController : MonoBehaviour
             //CurrentDialogueState ++ ;
             TextAsCompletelyDisplay = false ;
         } else {
+            CurrentPNJDiscussion.PNJTalkAnimation(false);
             StopAllCoroutines();
             DialogueCanvas.text = AnswerDisponible[CurrentPNJDiscussion.Answer[CurrentDialogueDisplay].AnswerForQuestion[CurrentDialogueState]];
             CurrentDialogueState ++ ;
@@ -322,6 +326,7 @@ public class DialogueDisplayerController : MonoBehaviour
             StartCoroutine(WriteText(DialoguePNJ.CloseDiscussion, DelayAnimationText));
             TextAsCompletelyDisplay = false ;
         } else {
+            CurrentPNJDiscussion.PNJTalkAnimation(false);
             StopAllCoroutines();
             DialogueCanvas.text = DialoguePNJ.CloseDiscussion; 
             TextAsCompletelyDisplay = true ;
@@ -332,6 +337,7 @@ public class DialogueDisplayerController : MonoBehaviour
 
     protected IEnumerator WriteText(string Input, float Delay) 
     {
+        CurrentPNJDiscussion.PNJTalkAnimation(true);
         for (int i = 0; i < Input.Length; i++)
         {
             DialogueCanvas.text += Input[i] ;
@@ -341,6 +347,8 @@ public class DialogueDisplayerController : MonoBehaviour
 
         CurrentDialogueState ++ ;
         TextAsCompletelyDisplay = true ;
+        CurrentPNJDiscussion.PNJTalkAnimation(false);
+
     }
 
 

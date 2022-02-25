@@ -12,6 +12,7 @@ public class PNJDialogue : MonoBehaviour
     [Header ("PNJ Information")]
     public string Entrerpise ;
     public string NamePNJ ;
+    public string NamePNJDisplay ;
     [SerializeField] private bool MultiplePNJinENT = true ;
     [SerializeField] private int PNJInENT;
     
@@ -69,6 +70,8 @@ public class PNJDialogue : MonoBehaviour
         {
             GetComponent<Animator>().SetInteger("PNJ Need", PNJInENT) ;
         }
+
+        if(NamePNJDisplay == null) NamePNJDisplay = NamePNJ ;
     } 
 
     public void GetDialogue()
@@ -183,9 +186,6 @@ public class PNJDialogue : MonoBehaviour
         {
             if(PlayerScript.PlayerAsInterract && !PlayerScript.InDiscussion)
             {
-                PlayerScript.PlayerAsInterract = false ;
-                PlayerDialogueManager.PlayerAsRead = false ;
-                PlayerScript.InDiscussion = true ;
                 LunchDiscussion();               
             }
 
@@ -216,16 +216,25 @@ public class PNJDialogue : MonoBehaviour
         }
     }
 
+    public void PNJTalkAnimation(bool IsTalking)
+    {
+        GetComponent<Animator>().SetBool("Talk", IsTalking) ;        
+    }
 
     public void LunchDiscussion()
     {
-        GetComponent<Animator>().SetBool("Talk", true) ;
+        PlayerScript.PlayerAsInterract = false ;
+        PlayerDialogueManager.PlayerAsRead = false ;
+        PlayerScript.InDiscussion = true ;
+
+        PNJTalkAnimation(true) ;
+
 
         PlayerScript.gameObject.GetComponent<PlayerMovement>().StartActivity() ; 
         PlayerDialogueManager.DialogueStart();
            
         DialogueCanvasBox.gameObject.SetActive(true);           
-        DialogueCanvasBox.NamePNJ.text = NamePNJ;
+        DialogueCanvasBox.NamePNJ.text = NamePNJDisplay;
 
 
         DialogueCanvasDisplayerText = DialogueCanvasBox.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
