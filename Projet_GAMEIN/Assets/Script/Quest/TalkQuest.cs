@@ -32,7 +32,7 @@ public class TalkQuest : MonoBehaviour
         }
     }
 
-    void TalkedTo()
+    public void TalkedTo()
     {
         questSys.Progression();
         Destroy(this.gameObject, 0.05f);

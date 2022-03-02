@@ -30,8 +30,8 @@ public class PNJDialogue : MonoBehaviour
     private GameObject BoxQuestion ;
   
 
-    public int Question3IntDisplay = 3;  
-    [SerializeField] private bool ThisQuestionLunchReflexion = false ;
+    public bool ThisQuestionLunchReflexion = false ;
+    public List<int> QuestionUseQuestAvance ;
     public bool PlayerAskQuestQuestion = false ;
 
     private DialogueContainer DialoguePNJ_FR ;
@@ -43,6 +43,10 @@ public class PNJDialogue : MonoBehaviour
         private List<string> AnswerDisponible_EN ;
 
     private int CurrentDialoguePlayerChoice = 0 ;
+
+    [Header ("Quest Gestion Question")]
+    public List<Vector3> InformationQuestEtapeQuestion ; 
+    //public int Question3IntDisplay = 0 ;  
 
     [System.Serializable]    
     public class SerializableAnswer
@@ -182,6 +186,10 @@ public class PNJDialogue : MonoBehaviour
         if(PlayerScript.gameObject.transform.position.x < transform.position.x) PlayerScript.InputSpritePos(false);
         if(PlayerScript.gameObject.transform.position.x > transform.position.x) PlayerScript.InputSpritePos(true);
 
+
+        
+
+
         if(PlayerAround && !PlayerScript.QCMPanelUIIndestructible.activeSelf)
         {
             if(PlayerScript.PlayerAsInterract && !PlayerScript.InDiscussion)
@@ -198,8 +206,7 @@ public class PNJDialogue : MonoBehaviour
                     DialogueCanvasBox.StateDiscussion(); 
                 } else {
                     DialogueCanvasBox.ValidateButton();
-                }
-                    
+                }  
             } 
         } 
 
