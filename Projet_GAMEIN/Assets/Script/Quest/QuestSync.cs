@@ -19,11 +19,13 @@ public class QuestSync : MonoBehaviour
    // public string[] steps;    
     [HideInInspector]
     public int numberOfGoals;
+    public QuestInMenu buttons;
 
     private void Awake()
     {
         questSys = GameObject.Find("QuestManager").GetComponent<QuestSys>();
         descObj = GameObject.FindGameObjectsWithTag(descName);
+        title = this.gameObject;
         //AaP = GameObject.Find(.GetComponent<ActiveAsProg>();
     }
     public void SynchroniseText()
@@ -56,13 +58,14 @@ public class QuestSync : MonoBehaviour
 
     public void HideProgress()
     {
-        title = this.gameObject;
-        //descObj = GameObject.FindGameObjectsWithTag(descName); //
-        if (title.activeInHierarchy == true)
+        buttons = this.gameObject.GetComponent<QuestInMenu>();
+        if (buttons.isOpen)
         {
-            numberOfGoals = questSys.quest[index].questGoal.Count;
-            for (int i = 0; i < numberOfGoals; i++)
+            if (title.activeInHierarchy == true)
             {
+                numberOfGoals = questSys.quest[index].questGoal.Count;
+                for (int i = 0; i < numberOfGoals; i++)
+                {
                 if (index == questSys.niveau && i <= questSys.etape)
                 {
                     descObj[i].SetActive(true);
@@ -75,6 +78,18 @@ public class QuestSync : MonoBehaviour
                 {
                     descObj[i].SetActive(false);
                 }*/
+                }
+            }
+        }
+        else if (!buttons.isOpen)
+        {
+            if (title.activeInHierarchy == false)
+            {
+                numberOfGoals = questSys.quest[index].questGoal.Count;
+                for (int i = 0; i < numberOfGoals; i++)
+                {
+                    descObj[i].SetActive(false);
+                }                    
             }
         }
     }

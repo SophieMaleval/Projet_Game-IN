@@ -2,15 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
+public enum Quantité
+{
+    Single,
+    Multiple
+}
 public class Interactible : MonoBehaviour
 {
+    public Quantité qté;
     public InteractibleObject Object ;
     public QuestSys questSys;
     //public ActiveAsProg AaP;
     private SpriteRenderer SpriteRend;
     [SerializeField] private PlayerScript PlayerScript;
     private bool PlayerAround = false;
+    private bool gathered = false;
     //public int code;
     //public int stepCode;
 
@@ -58,12 +64,33 @@ public class Interactible : MonoBehaviour
 
     void Collected()
     {
-        PlayerScript.AjoutInventaire(Object);
-        PlayerScript.SwitchInputSprite();       
-        questSys.Progression();
-        //AaP.StrikeThrough();
-        Destroy(this.gameObject, 0.05f);              
+        if(qté == Quantité.Single)
+        {
+            PlayerScript.AjoutInventaire(Object);
+            PlayerScript.SwitchInputSprite();       
+            questSys.Progression();
+            //AaP.StrikeThrough();
+            Destroy(this.gameObject, 0.05f);    
+        }
+        else if(qté == Quantité.Multiple)
+        {
+            if (!gathered)
+            {
+                PlayerScript.AjoutInventaire(Object);
+                PlayerScript.SwitchInputSprite();
+                Destroy(this.gameObject, 0.05f);
+                gathered = true;
+            }
+            else if (gathered)
+            {
+                PlayerScript.SwitchInputSprite();
+                Destroy(this.gameObject, 0.05f);               
+            }
+            
+        }
+                  
     }
+
 
     private void OnTriggerExit2D(Collider2D other)
     {

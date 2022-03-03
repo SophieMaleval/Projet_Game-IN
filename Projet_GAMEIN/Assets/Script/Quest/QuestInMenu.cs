@@ -16,6 +16,7 @@ public class QuestInMenu : MonoBehaviour
     public GameObject[] otherQ2;
     public GameObject[] otherQ3;
     public string list1, list2, list3;
+    public bool isOpen;
 
     private void Start()
     {
@@ -35,14 +36,15 @@ public class QuestInMenu : MonoBehaviour
     }
     public void Dropdown()
     {
+        isOpen =! isOpen;
         foreach (GameObject tagged in questSlot)
         {
-            if(tagged.activeInHierarchy == true)
+            if(tagged.activeInHierarchy == true && isOpen)
             {
                 tagged.SetActive(false);
                 ClosedArrow();
             }
-            else
+            else if (!isOpen)
             {
                 tagged.SetActive(true);
                 OpenArrow();

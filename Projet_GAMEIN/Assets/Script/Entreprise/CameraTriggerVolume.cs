@@ -29,7 +29,7 @@ public class CameraTriggerVolume : MonoBehaviour
 
     private void OnDrawGizmos() 
     {
-        Gizmos.color = Color.green;
+        Gizmos.color = Color.yellow;
         Gizmos.DrawWireCube(transform.position, BoxSize);
     }
 

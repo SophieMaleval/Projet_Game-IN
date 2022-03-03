@@ -12,9 +12,11 @@ public class DialogueDisplayerController : MonoBehaviour
 {
     private bool MouseIsHover ;
     
+    private RectTransform ThisRect ;
     public PNJDialogue CurrentPNJDiscussion ;
     public TextMeshProUGUI DialogueCanvas ;
     public TextMeshProUGUI NamePNJ ;
+    private QuestSys QuestSysManager ;
 
     [HideInInspector] public DialogueContainer DialoguePNJ ;
     [HideInInspector] public DialogueContainer DialoguePNJ_FR ;
@@ -23,6 +25,9 @@ public class DialogueDisplayerController : MonoBehaviour
 
     [HideInInspector] public int Question3IntDisplay = 3;
     public GameObject BoxQuestion ;
+    public Color32 QuestionClassicColor ;
+    public Color32 QuestionQuestColor ;
+
 
     public AudioSource SoundDialogueSpawning;
     
@@ -38,9 +43,8 @@ public class DialogueDisplayerController : MonoBehaviour
         [HideInInspector]  public List<string> AnswerDisponible_EN = new List<string>() ;
 
 
-    private bool Question1AsRead = false ;
-    private bool Question2AsRead = false ;
-    private bool Question3AsRead = false ;
+    private bool Question1AsRead, Question2AsRead, Question3AsRead, Question4AsRead, Question5AsRead, Question6AsRead, Question7AsRead, Question8AsRead, Question9AsRead, Question10AsRead = false ;
+    [HideInInspector] public float PNJQuestValueValidation = 0 ;
 
 
     private bool PNJSpeak = false ;
@@ -86,11 +90,15 @@ public class DialogueDisplayerController : MonoBehaviour
         TextCloseDisplayCompletely = true ;
     }
 
-    private void Awake() {
+    private void Awake() 
+    {
+        ThisRect = gameObject.GetComponent<RectTransform>() ;
         if(GameObject.Find("Player") != null)   // Récupère le player au lancement de la scène
         {    
             PlayerDialogueManager = GameObject.Find("Player Backpack").GetComponent<PlayerDialogue>() ; 
         }    
+        QuestSysManager = GameObject.Find("QuestManager").GetComponent<QuestSys>();
+
     } 
 
 
@@ -169,6 +177,14 @@ public class DialogueDisplayerController : MonoBehaviour
         Question1AsRead = false ;
         Question2AsRead = false ;
         Question3AsRead = false ;
+        Question4AsRead = false ;
+        Question5AsRead = false ;
+        Question6AsRead = false ;
+        Question7AsRead = false ;
+        Question8AsRead = false ;
+        Question9AsRead = false ;
+        Question10AsRead = false ;
+        PNJQuestValueValidation = 0 ;
 
         DialogueCanvas.transform.parent.gameObject.SetActive(true) ;
         
@@ -192,13 +208,9 @@ public class DialogueDisplayerController : MonoBehaviour
 
     public void StateDiscussion()
     {
-        
-
         if(!PlayerDialogueManager.transform.GetComponentInParent<PlayerScript>().InventoryUIIndestructible.GetComponent<InventoryScript>().InventoryPanel.activeSelf)
         {
             CanChangeCurrentDialogue = true ;
-
-
 
             if(DialogueCanvas.text == DialoguePNJ.CloseDiscussion) CurrentPNJDiscussion.DiscussionIsClose();
             if(CurrentDialogueDisplay == -1 && !TextAsCompletelyDisplay && !TextCloseDisplayCompletely )    CloseDiscussion(true, true);    // Arrête l'animation et Affiche tout le texte de Fermeture  
@@ -219,7 +231,7 @@ public class DialogueDisplayerController : MonoBehaviour
                     {
                         if(!TextAsCompletelyDisplay) TextDiscussion(false, true); // Arrête l'animation et affiche tout le texte
                         else TextDiscussion(false, false); // Affiche le prochain texte avec l'animation                    
-                    } else ButtonChoix4();                           
+                    } else ButtonClose();                           
                 }
             }
             if(DialogueCanvas.text == DialoguePNJ.OpeningDialogue) 
@@ -239,6 +251,8 @@ public class DialogueDisplayerController : MonoBehaviour
     {
         DialogueCanvas.gameObject.SetActive(!DialogueCanvas.gameObject.activeSelf);
         BoxQuestion.SetActive(!BoxQuestion.activeSelf); 
+
+        if(DialogueCanvas.gameObject.activeSelf) ThisRect.sizeDelta = new Vector2(ThisRect.sizeDelta.x, 96f) ;
     }
 
     void SetQuestion(bool QuestionAsRead, int ChildNum, string DialogueText)
@@ -262,30 +276,96 @@ public class DialogueDisplayerController : MonoBehaviour
         WeAreInChoice = true ;
         CurrentDialogue = "";
         /* Afficher les Questions à afficher */
-        SetQuestion(Question1AsRead, 0, DialoguePNJ.Question1); // Set QUestion 1
-        SetQuestion(Question2AsRead, 1, DialoguePNJ.Question2); // Set QUestion 2
+        SetQuestion(false, 10, DialoguePNJ.Aurevoir); // Set Aurevoir      
 
-        if(Question3IntDisplay != 0)
+        CheckAndSetquestion(DialoguePNJ.Question1, Question1AsRead, 0); // Set Question 1
+        CheckAndSetquestion(DialoguePNJ.Question2, Question2AsRead, 1); // Set Question 2
+        CheckAndSetquestion(DialoguePNJ.Question3, Question3AsRead, 2); // Set Question 3
+        CheckAndSetquestion(DialoguePNJ.Question4, Question4AsRead, 3); // Set Question 4
+        CheckAndSetquestion(DialoguePNJ.Question5, Question5AsRead, 4); // Set Question 5
+        CheckAndSetquestion(DialoguePNJ.Question6, Question6AsRead, 5); // Set Question 6
+        CheckAndSetquestion(DialoguePNJ.Question7, Question7AsRead, 6); // Set Question 7
+        CheckAndSetquestion(DialoguePNJ.Question8, Question8AsRead, 7); // Set Question 8
+        CheckAndSetquestion(DialoguePNJ.Question9, Question9AsRead, 8); // Set Question 9
+        CheckAndSetquestion(DialoguePNJ.Question10, Question10AsRead, 9); // Set Question 10
+
+        float HeightFinalBox = 30f ;
+        for (int HChoiceQuestion = 0; HChoiceQuestion < BoxQuestion.transform.childCount; HChoiceQuestion++)
         {
-            SetQuestion(Question3AsRead, 2, QuestionDisponible[(int) Question3IntDisplay]); // Set QUestion 3
-        } else {
-            SetQuestion(false, 2, QuestionDisponible[(int) Question3IntDisplay]) ; // Set QUestion 3
+            if(BoxQuestion.transform.GetChild(HChoiceQuestion).gameObject.activeSelf) HeightFinalBox += 16.5f ;
         }
+        ThisRect.sizeDelta = new Vector2(ThisRect.sizeDelta.x, HeightFinalBox);
 
-        SetQuestion(false, 3, DialoguePNJ.Aurevoir); // Set QUestion 4
 
         SelectedButton();
     }
 
+    void CheckAndSetquestion(string DialoguePNJQuestion, bool QuestionXRead, int ChildNum)
+    {
+        if(DialoguePNJQuestion != "")
+        {
+            if(ContainsZValue(ChildNum + 1)) // Couleur Question
+            {
+                if(CanDisplayQuestQuestion())
+                {
+                    SetQuestion(QuestionXRead, ChildNum, DialoguePNJQuestion); 
+                    BoxQuestion.transform.GetChild(ChildNum).GetComponentInChildren<TextMeshProUGUI>().color = QuestionQuestColor ;//QuestionQuestColor ;                    
+                } else {
+                    SetQuestion(true, ChildNum, DialoguePNJQuestion);  
+                }                            
+            } else {
+                SetQuestion(QuestionXRead, ChildNum, DialoguePNJQuestion); 
+                BoxQuestion.transform.GetChild(ChildNum).GetComponentInChildren<TextMeshProUGUI>().color = QuestionClassicColor ;
+            }
+        } else {
+            SetQuestion(true, ChildNum, DialoguePNJQuestion);
+        }
+    }
+
+
     void ResetDialogueContinuationValue(int NumDialogueList)
     {
         PNJSpeak = true ;    
-        CurrentDialogueDisplay = NumDialogueList - 1;
+        CurrentDialogueDisplay = NumDialogueList;
 
         CurrentDialogueState = 0 ;
     }
 
+    bool ContainsZValue(int ValueSearch)
+    {
+        bool BoolReturned = false ;
+        for (int i = 0; i < CurrentPNJDiscussion.InformationQuestEtapeQuestion.Count; i++)
+        {
+            if((int) CurrentPNJDiscussion.InformationQuestEtapeQuestion[i].z == ValueSearch) BoolReturned = true ;
+        }
 
+        return BoolReturned ;
+    }
+
+    bool CanDisplayQuestQuestion()
+    {
+        bool Result = false ;
+        for (int i = 0; i < CurrentPNJDiscussion.InformationQuestEtapeQuestion.Count; i++)
+        {
+            if(QuestSysManager.niveau == CurrentPNJDiscussion.InformationQuestEtapeQuestion[i].x && QuestSysManager.etape == CurrentPNJDiscussion.InformationQuestEtapeQuestion[i].y)
+            {
+                Result = true ;
+            }
+        }
+
+        return Result ;
+    }
+
+    float ReturnWValue(int ValueSearch)
+    {
+        float FloatReturned = 0 ;
+        for (int i = 0; i < CurrentPNJDiscussion.InformationQuestEtapeQuestion.Count; i++)
+        {
+            if((int) CurrentPNJDiscussion.InformationQuestEtapeQuestion[i].z == ValueSearch) FloatReturned = CurrentPNJDiscussion.InformationQuestEtapeQuestion[i].w ;
+        }
+
+        return FloatReturned ;
+    }
 
     void TextDiscussion(bool ToggleDisplayBox, bool TextState)
     {
@@ -352,35 +432,33 @@ public class DialogueDisplayerController : MonoBehaviour
     }
 
 
-
-
-    public void ButtonChoix1()
+    public void ButtonChoice(int Question)
     {
-        ResetDialogueContinuationValue(1);        
+        ResetDialogueContinuationValue(Question);
         TextDiscussion(true, false);
 
-        if(Question1AsRead == false) Question1AsRead = true ;
+        if(Question == 1 && !Question1AsRead) Question1AsRead = true ;
+        if(Question == 2 && !Question2AsRead) Question2AsRead = true ;
+        if(Question == 3 && !Question3AsRead) Question3AsRead = true ;
+        if(Question == 4 && !Question4AsRead) Question4AsRead = true ;
+        if(Question == 5 && !Question5AsRead) Question5AsRead = true ;
+        if(Question == 6 && !Question6AsRead) Question6AsRead = true ;
+        if(Question == 7 && !Question7AsRead) Question7AsRead = true ;
+        if(Question == 8 && !Question8AsRead) Question8AsRead = true ;
+        if(Question == 9 && !Question9AsRead) Question9AsRead = true ;
+        if(Question == 10 && !Question10AsRead) Question10AsRead = true ;
+
+        if(ContainsZValue(Question))
+        {
+            PNJQuestValueValidation += ReturnWValue(Question);
+        }
+    
+    
+        if(ContainsZValue(Question) && CurrentPNJDiscussion.ThisQuestionLunchReflexion) CurrentPNJDiscussion.PlayerAskQuestQuestion = true ; 
+    
     }
-
-    public void ButtonChoix2()
-    {
-        ResetDialogueContinuationValue(2);
-        TextDiscussion(true, false);
-
-        if(Question2AsRead == false) Question2AsRead = true ;
-    }
-
-    public void ButtonChoix3()
-    {
-        ResetDialogueContinuationValue((int) Question3IntDisplay);
-        TextDiscussion(true, false);
-
-        CurrentPNJDiscussion.PlayerAskQuestQuestion = true ;
-
-        if(Question3AsRead == false) Question3AsRead = true ;
-    }
-
-    public void ButtonChoix4()
+    
+    public void ButtonClose()
     {
         TextCloseDisplayCompletely = false ;
         CurrentDialogueDisplay = -1 ;

@@ -67,9 +67,13 @@ public class PannelENTManager : MonoBehaviour
     void Start() 
     {
         SetPrincipalInformation();
+        UIPanelENTFR = GameObject.Find("Player Backpack").GetComponent<CSVReader>().UIText.PanelENTFR ;
+        UIPanelENTEN = GameObject.Find("Player Backpack").GetComponent<CSVReader>().UIText.PanelENTEN ;
+
     }
 
-    void SetDispositionPage()
+
+    void SetDispositionPage(int Disposition)
     {
         if(Disposition == 0)
         {
@@ -132,6 +136,7 @@ public class PannelENTManager : MonoBehaviour
         Contact.text = UIPanelENT[2] ;
         NoteSiteWebTitle.text = UIPanelENT[3] ;
         TitleNosProduction.text = UIPanelENT[4] ;
+
     }
 
     void ENTInformation()

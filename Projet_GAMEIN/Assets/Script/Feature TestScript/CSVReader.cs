@@ -123,8 +123,8 @@ public class CSVReader : MonoBehaviour
                         if(Data[0] == "Customisation FR")    UIText.CustomisationFR.Add(Data[D]) ;
                         if(Data[0] == "Customisation EN")    UIText.CustomisationEN.Add(Data[D]) ; 
                     
-                        if(Data[0] == "Panneaux ENT FR")    UIText.PanelENTFR.Add(Data[D]);
-                        if(Data[0] == "Panneaux ENT EN")    UIText.PanelENTEN.Add(Data[D]);
+                        if(Data[0] == "Panneaux ENT FR" && UIText.PanelENTFR.Count < 5)    UIText.PanelENTFR.Add(Data[D]);
+                        if(Data[0] == "Panneaux ENT EN" && UIText.PanelENTEN.Count < 5)    UIText.PanelENTEN.Add(Data[D]);
                     
                         if(Data[0] == "Control FR")    UIText.ControlFR.Add(Data[D]);
                         if(Data[0] == "Control EN")    UIText.ControlEN.Add(Data[D]);
