@@ -91,7 +91,7 @@ public class QuestSync : MonoBehaviour
                 if (go.activeInHierarchy == true)
                 {
                     go.SetActive(false);
-                    Debug.Log("coucou");
+                    //Debug.Log("coucou");
                 }
 
             }

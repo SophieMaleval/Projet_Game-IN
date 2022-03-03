@@ -21,6 +21,7 @@ public class InteractibleObject : ScriptableObject
     public int valeurMax = 1;
 
     public bool multipleEntries;
+    public bool allGathered = false;
 
     public void AddEntry()
     {
@@ -29,6 +30,10 @@ public class InteractibleObject : ScriptableObject
             unité++;
             SpriteUIManager();
         }
+        if (unité == valeurMax)
+        {
+            allGathered = true;
+        }
     }
 
     public void SpriteUIManager()
@@ -36,10 +41,12 @@ public class InteractibleObject : ScriptableObject
         if (unité < valeurMax)
         {
             UISprite = unfinishedSprite;
+           // allGathered = false;
         }
         else if( unité == valeurMax)
         {
             UISprite = finalSprite;
+          //  allGathered = true;
         }
     }
 }
