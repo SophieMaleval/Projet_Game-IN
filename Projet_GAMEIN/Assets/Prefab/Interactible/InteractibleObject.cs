@@ -12,4 +12,8 @@ public class InteractibleObject : ScriptableObject
     [Header ("UI")]
     public string Name ;
     public Sprite UISprite ;
+
+    [Header("Quantity")]
+    public int unité = 1;
+    public int valeurMax = 1;
 }

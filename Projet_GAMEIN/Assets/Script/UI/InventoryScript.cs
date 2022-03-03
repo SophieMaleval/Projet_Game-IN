@@ -128,6 +128,10 @@ public class InventoryScript : MonoBehaviour
                 // Affiche le bon nom
                 DisplayerInventory.transform.GetChild(IDO).Find("Box Name Object").gameObject.SetActive(true) ;
                 DisplayerInventory.transform.GetChild(IDO).Find("Box Name Object").GetComponentInChildren<TextMeshProUGUI>().text = PlayerScript.Inventaire[IDO].Name;
+
+                //Modifie valeurs du compteurs
+                DisplayerInventory.transform.GetChild(IDO).Find("Compteur").GetComponentInChildren<TextMeshProUGUI>().text = PlayerScript.Inventaire[IDO].unité.ToString() + " / " + PlayerScript.Inventaire[IDO].valeurMax.ToString();
+
             } else {
                 // Reset toute les valeur par defaut
                 // Sprite
