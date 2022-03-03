@@ -42,54 +42,87 @@ public class QuestInMenu : MonoBehaviour
             if(tagged.activeInHierarchy == true && isOpen)
             {
                 tagged.SetActive(false);
+                Closed();
                 ClosedArrow();
             }
-            else if (!isOpen)
+            else if (tagged.activeInHierarchy == true && !isOpen)
             {
                 tagged.SetActive(true);
                 OpenArrow();
-                Closed();
             }       
         }       
     }
 
-    void OpenArrow()
+    public void OpenArrow()
     {
-        fleche.transform.rotation = Quaternion.Euler(0, 0, 0);
-        fleche.GetComponent<Image>().sprite = droppedFleche;
+        
+            fleche.transform.rotation = Quaternion.Euler(0, 0, 0);
+            fleche.GetComponent<Image>().sprite = droppedFleche;
+        //Closed();
+        isOpen = true;
     }
 
     public void ClosedArrow()
     {
-        fleche.transform.rotation = Quaternion.Euler(0, 0, 90);
-        fleche.GetComponent<Image>().sprite = unclickedFleche;
+            fleche.transform.rotation = Quaternion.Euler(0, 0, 90);
+            fleche.GetComponent<Image>().sprite = unclickedFleche;
+        //Closed();
+        isOpen = false;
+    }
+
+    public void SelfClosing()
+    {
+        /*if (isOpen)
+        {
+            foreach (GameObject tagged in questSlot)
+            {
+                tagged.SetActive(false);
+            }
+        }*/
+
+        /*else if (!isOpen)
+        {
+            foreach (GameObject tagged in questSlot)
+            {
+                tagged.SetActive(true);
+            }
+        }*/
+        
     }
 
     public void Closed()
     {
         foreach (GameObject tagged1 in otherQ1)
         {
-           if(tagged1.activeInHierarchy == true)
-           {
+            if(tagged1.activeInHierarchy == true)
+            {
+                ClosedArrow();  
                 tagged1.SetActive(false);               
                 Debug.Log("Closed 1");
-           }           
+            }           
         }
+        
         foreach (GameObject tagged2 in otherQ2)
         {
-           if (tagged2.activeInHierarchy == true)
-           {
+            if (tagged2.activeInHierarchy == true)
+            {
+                ClosedArrow();
                 tagged2.SetActive(false);
                 Debug.Log("Closed 2");
-           }
+            }
         }
+            
         foreach (GameObject tagged3 in otherQ3)
         {
             if (tagged3.activeInHierarchy == true)
             {
+                ClosedArrow();
                 tagged3.SetActive(false);
                 Debug.Log("Closed 3");
             }
         }
+
+
+        
     }
 }

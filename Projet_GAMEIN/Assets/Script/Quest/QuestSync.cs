@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class QuestSync : MonoBehaviour
 {
     public QuestSys questSys;
-    public Checker checker;
+    //public Checker checker;
     //public ActiveAsProg Aap;
     public GameObject title;
     public GameObject[] descObj;
@@ -61,35 +61,39 @@ public class QuestSync : MonoBehaviour
         buttons = this.gameObject.GetComponent<QuestInMenu>();
         if (buttons.isOpen)
         {
+            buttons.OpenArrow();
             if (title.activeInHierarchy == true)
             {
                 numberOfGoals = questSys.quest[index].questGoal.Count;
                 for (int i = 0; i < numberOfGoals; i++)
                 {
-                if (index == questSys.niveau && i <= questSys.etape)
-                {
-                    descObj[i].SetActive(true);
-                }
-                else if (index == questSys.niveau && i > questSys.etape)
-                {
-                    descObj[i].SetActive(false);
-                }
-                /*else if(index == questSys.niveau && i == questSys.etape)
-                {
-                    descObj[i].SetActive(false);
-                }*/
+                    if (index == questSys.niveau && i <= questSys.etape)
+                    {
+                        descObj[i].SetActive(true);
+                    }
+                    else if (index == questSys.niveau && i > questSys.etape)
+                    {
+                        descObj[i].SetActive(false);
+                    }
+                    /*else if(index == questSys.niveau && i == questSys.etape)
+                    {
+                        descObj[i].SetActive(false);
+                    }*/
                 }
             }
         }
         else if (!buttons.isOpen)
         {
-            if (title.activeInHierarchy == false)
+            buttons.ClosedArrow();
+
+            foreach (GameObject go in descObj)
             {
-                numberOfGoals = questSys.quest[index].questGoal.Count;
-                for (int i = 0; i < numberOfGoals; i++)
+                if (go.activeInHierarchy == true)
                 {
-                    descObj[i].SetActive(false);
-                }                    
+                    go.SetActive(false);
+                    Debug.Log("coucou");
+                }
+
             }
         }
     }

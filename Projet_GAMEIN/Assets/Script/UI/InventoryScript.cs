@@ -24,7 +24,6 @@ public class InventoryScript : MonoBehaviour
         if(GameObject.Find("Player") != null)   // Récupère le player au lancement de la scène
         {    
             PlayerScript = GameObject.Find("Player").GetComponent<PlayerScript>() ; 
-
         }
         SetInventoryCount();
 
@@ -129,8 +128,20 @@ public class InventoryScript : MonoBehaviour
                 DisplayerInventory.transform.GetChild(IDO).Find("Box Name Object").gameObject.SetActive(true) ;
                 DisplayerInventory.transform.GetChild(IDO).Find("Box Name Object").GetComponentInChildren<TextMeshProUGUI>().text = PlayerScript.Inventaire[IDO].Name;
 
-                //Modifie valeurs du compteurs
-                DisplayerInventory.transform.GetChild(IDO).Find("Compteur").GetComponentInChildren<TextMeshProUGUI>().text = PlayerScript.Inventaire[IDO].unité.ToString() + " / " + PlayerScript.Inventaire[IDO].valeurMax.ToString();
+                if (PlayerScript.Inventaire[IDO].multipleEntries)
+                {
+                    //Affiche l'image de fond du compteur
+                    DisplayerInventory.transform.GetChild(IDO).Find("Compteur").GetComponent<Image>().enabled = true;
+
+                    //Modifie valeurs du compteur
+                    DisplayerInventory.transform.GetChild(IDO).Find("Compteur").GetComponentInChildren<TextMeshProUGUI>().text = PlayerScript.Inventaire[IDO].unité.ToString() + " / " + PlayerScript.Inventaire[IDO].valeurMax.ToString();
+                    DisplayerInventory.transform.GetChild(IDO).Find("Compteur").GetComponentInChildren<TextMeshProUGUI>().enabled = true;
+                }
+                else
+                {
+                    DisplayerInventory.transform.GetChild(IDO).Find("Compteur").GetComponent<Image>().enabled = false;
+                    DisplayerInventory.transform.GetChild(IDO).Find("Compteur").GetComponentInChildren<TextMeshProUGUI>().enabled = false;
+                }
 
             } else {
                 // Reset toute les valeur par defaut
