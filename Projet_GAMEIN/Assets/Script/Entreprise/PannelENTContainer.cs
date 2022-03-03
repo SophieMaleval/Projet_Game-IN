@@ -18,4 +18,24 @@ public class PannelENTContainer : ScriptableObject
     public Sprite IllustrationDescriptionDernierProjet ;
     public Sprite IllustrationDescriptionAvantDernierProjet ;
 
+
+    [Header ("Textes")]
+    [TextArea (5,10)] public string DescriptionENTFR ;
+    [TextArea (5,10)] public string DescriptionENTEN ;
+    [Space(10)]
+    public List<ValeurENT> ValeursENT ;
+    [Space(10)]
+    [TextArea (5,10)] public string DernierProjet ;
+    [TextArea (5,10)] public string AvantDernierProjet ;
+
+}
+
+
+
+[System.Serializable]
+public class ValeurENT
+{
+    public Sprite IllustrationValeur ;
+    public string NomValeurFR ;
+    public string NomValeurEN ;
 }
