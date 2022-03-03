@@ -181,7 +181,7 @@ public class QuestSys : MonoBehaviour
         animContent.DOFade(0f, 0.3f);
         animTitle.DOFade(0f, 0.3f);
         Roaming();
-        Debug.Log("Fade + va en balade");
+        //Debug.Log("Fade + va en balade");
         yield return new WaitForSeconds(duration);
         FadeAllIn();
     }
@@ -189,7 +189,7 @@ public class QuestSys : MonoBehaviour
     IEnumerator FadeContentOut()
     {
         animContent.DOFade(0f, 0.3f);
-        Debug.Log("Fade le contenu out");
+        //Debug.Log("Fade le contenu out");
         yield return new WaitForSeconds(duration);
         NextStep();
         FadeContentIn();           

@@ -44,8 +44,7 @@ public class DialogueDisplayerController : MonoBehaviour
 
 
     private bool Question1AsRead, Question2AsRead, Question3AsRead, Question4AsRead, Question5AsRead, Question6AsRead, Question7AsRead, Question8AsRead, Question9AsRead, Question10AsRead = false ;
-   /* private bool  = false ;
-    private bool  = false ;*/
+    [HideInInspector] public float PNJQuestValueValidation = 0 ;
 
 
     private bool PNJSpeak = false ;
@@ -185,6 +184,7 @@ public class DialogueDisplayerController : MonoBehaviour
         Question8AsRead = false ;
         Question9AsRead = false ;
         Question10AsRead = false ;
+        PNJQuestValueValidation = 0 ;
 
         DialogueCanvas.transform.parent.gameObject.SetActive(true) ;
         
@@ -278,9 +278,8 @@ public class DialogueDisplayerController : MonoBehaviour
         /* Afficher les Questions à afficher */
         SetQuestion(false, 10, DialoguePNJ.Aurevoir); // Set Aurevoir      
 
-        SetQuestion(Question1AsRead, 0, DialoguePNJ.Question1); // Set Question 1
-        SetQuestion(Question2AsRead, 1, DialoguePNJ.Question2); // Set Question 2
-
+        CheckAndSetquestion(DialoguePNJ.Question1, Question1AsRead, 0); // Set Question 1
+        CheckAndSetquestion(DialoguePNJ.Question2, Question2AsRead, 1); // Set Question 2
         CheckAndSetquestion(DialoguePNJ.Question3, Question3AsRead, 2); // Set Question 3
         CheckAndSetquestion(DialoguePNJ.Question4, Question4AsRead, 3); // Set Question 4
         CheckAndSetquestion(DialoguePNJ.Question5, Question5AsRead, 4); // Set Question 5
@@ -355,6 +354,17 @@ public class DialogueDisplayerController : MonoBehaviour
         }
 
         return Result ;
+    }
+
+    float ReturnWValue(int ValueSearch)
+    {
+        float FloatReturned = 0 ;
+        for (int i = 0; i < CurrentPNJDiscussion.InformationQuestEtapeQuestion.Count; i++)
+        {
+            if((int) CurrentPNJDiscussion.InformationQuestEtapeQuestion[i].z == ValueSearch) FloatReturned = CurrentPNJDiscussion.InformationQuestEtapeQuestion[i].w ;
+        }
+
+        return FloatReturned ;
     }
 
     void TextDiscussion(bool ToggleDisplayBox, bool TextState)
@@ -438,22 +448,15 @@ public class DialogueDisplayerController : MonoBehaviour
         if(Question == 9 && !Question9AsRead) Question9AsRead = true ;
         if(Question == 10 && !Question10AsRead) Question10AsRead = true ;
 
-
-        if(CurrentPNJDiscussion.QuestionUseQuestAvance.Contains(Question) && CurrentPNJDiscussion.ThisQuestionLunchReflexion) CurrentPNJDiscussion.PlayerAskQuestQuestion = true ; 
+        if(ContainsZValue(Question))
+        {
+            PNJQuestValueValidation += ReturnWValue(Question);
+        }
+    
+    
+        if(ContainsZValue(Question) && CurrentPNJDiscussion.ThisQuestionLunchReflexion) CurrentPNJDiscussion.PlayerAskQuestQuestion = true ; 
+    
     }
-
-
-
-    public void ButtonChoix3()
-    {
-        ResetDialogueContinuationValue(3);
-        TextDiscussion(true, false);
-
-        //CurrentPNJDiscussion.PlayerAskQuestQuestion = true ;
-
-        if(Question3AsRead == false) Question3AsRead = true ;
-    }
-
     
     public void ButtonClose()
     {

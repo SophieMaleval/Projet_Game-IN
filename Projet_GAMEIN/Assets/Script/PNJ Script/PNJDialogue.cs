@@ -31,7 +31,6 @@ public class PNJDialogue : MonoBehaviour
   
 
     public bool ThisQuestionLunchReflexion = false ;
-    public List<int> QuestionUseQuestAvance ;
     public bool PlayerAskQuestQuestion = false ;
 
     private DialogueContainer DialoguePNJ_FR ;
@@ -45,8 +44,7 @@ public class PNJDialogue : MonoBehaviour
     private int CurrentDialoguePlayerChoice = 0 ;
 
     [Header ("Quest Gestion Question")]
-    public List<Vector3> InformationQuestEtapeQuestion ; 
-    //public int Question3IntDisplay = 0 ;  
+    public List<Vector4> InformationQuestEtapeQuestion ; 
 
     [System.Serializable]    
     public class SerializableAnswer
@@ -274,14 +272,26 @@ public class PNJDialogue : MonoBehaviour
     {
         GetComponent<Animator>().SetBool("Talk", false) ;
 
+
         DialogueCanvasBox.ResetAllValue();         
         DialogueCanvasBox.gameObject.SetActive(false);      
         DialogueCanvasBox.DialogueCanvas.text = "";           
         PlayerScript.PlayerAsInterract = false ;        
         PlayerScript.InDiscussion = false ;
 
-        if(ThisQuestionLunchReflexion == true && PlayerAskQuestQuestion == true) OpenEnigme();
-        else PlayerScript.gameObject.GetComponent<PlayerMovement>().EndActivity() ; 
+
+        if(DialogueCanvasBox.PNJQuestValueValidation >= 1)
+        {
+            if(ThisQuestionLunchReflexion == true && PlayerAskQuestQuestion == true)
+            {
+                OpenEnigme();
+            } else {
+                GetComponentInChildren<TalkQuest>().TalkedTo();
+                PlayerScript.gameObject.GetComponent<PlayerMovement>().EndActivity() ;   
+            }        
+        } else {
+          PlayerScript.gameObject.GetComponent<PlayerMovement>().EndActivity() ;   
+        } 
     }
 
     public void OpenEnigme()
