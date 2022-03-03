@@ -34,11 +34,12 @@ public class PannelENTManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI TitleQuiSommesNous ;
     [SerializeField] private TextMeshProUGUI DesciptionEntreprise ;
     [SerializeField] private TextMeshProUGUI TitleValeurs ;
+    [SerializeField] private List<GameObject> ListValeurs ;
     [SerializeField] private TextMeshProUGUI DescriptionValeur ;
 
     [SerializeField] private TextMeshProUGUI Contact ;
     [SerializeField] private TextMeshProUGUI NoteSiteWebTitle ;
-        [SerializeField] private TextMeshProUGUI NoteSiteWebURLDisplay ;
+    [SerializeField] private TextMeshProUGUI NoteSiteWebURLDisplay ;
 
     [SerializeField] private TextMeshProUGUI TitleNosProduction ;
     [SerializeField] private TextMeshProUGUI TitleLastProduction ;
@@ -49,7 +50,7 @@ public class PannelENTManager : MonoBehaviour
     [Header ("UI Illustration")]
     [SerializeField] private List<Image> LogoFondPage ;
     [SerializeField] private Image IllustrationDescriptionENT ;
-    [SerializeField] private Image IllustrationValeurENT ;
+
     [SerializeField] private Image IllustrationDescriptionDernierProjet ;
     [SerializeField] private Image IllustrationDescriptionAvantDernierProjet ;
 
@@ -67,9 +68,13 @@ public class PannelENTManager : MonoBehaviour
     void Start() 
     {
         SetPrincipalInformation();
+        UIPanelENTFR = GameObject.Find("Player Backpack").GetComponent<CSVReader>().UIText.PanelENTFR ;
+        UIPanelENTEN = GameObject.Find("Player Backpack").GetComponent<CSVReader>().UIText.PanelENTEN ;
+
     }
 
-    void SetDispositionPage()
+
+    void SetDispositionPage(int Disposition)
     {
         if(Disposition == 0)
         {
@@ -112,7 +117,9 @@ public class PannelENTManager : MonoBehaviour
             InformationPannelENT = InformationPannelENTFR ;
 
             SetUIText();
+
             ENTInformation();
+            SetTextPannel();            
         }
 
         if(PlayerPrefs.GetInt("Langue") == 1 && UIPanelENT != UIPanelENTEN)
@@ -121,7 +128,9 @@ public class PannelENTManager : MonoBehaviour
             InformationPannelENT = InformationPannelENTEN ;
 
             SetUIText();
+
             ENTInformation();
+            SetTextPannel();            
         }
     }
     
@@ -132,6 +141,7 @@ public class PannelENTManager : MonoBehaviour
         Contact.text = UIPanelENT[2] ;
         NoteSiteWebTitle.text = UIPanelENT[3] ;
         TitleNosProduction.text = UIPanelENT[4] ;
+
     }
 
     void ENTInformation()
@@ -156,13 +166,55 @@ public class PannelENTManager : MonoBehaviour
         }
 
         IllustrationDescriptionENT.sprite = InformationENT.IllustrationDescriptionENT ;
-        IllustrationValeurENT.sprite = InformationENT.IllustrationValeurENT ;
         IllustrationDescriptionDernierProjet.sprite = InformationENT.IllustrationDescriptionDernierProjet ;
 
 
         if(TitlePreLastProduction.text != "") IllustrationDescriptionAvantDernierProjet.sprite = InformationENT.IllustrationDescriptionAvantDernierProjet ;
-
     }
+
+    void SetTextPannel()
+    {
+        /* DESCRIPTION ENTREPRISE */
+        if(IllustrationDescriptionENT.sprite == null) 
+        {
+            IllustrationDescriptionENT.gameObject.SetActive(false) ;
+            //DesciptionEntreprise.GetComponent<RectTransform>().sizeDelta = new Vector2(325f, DesciptionEntreprise.GetComponent<RectTransform>().sizeDelta.y);
+        } else {
+            IllustrationDescriptionENT.gameObject.SetActive(true) ;
+            //DesciptionEntreprise.GetComponent<RectTransform>().sizeDelta = new Vector2(200f, DesciptionEntreprise.GetComponent<RectTransform>().sizeDelta.y);
+        }
+        if(PlayerPrefs.GetInt("Langue") == 0) DesciptionEntreprise.text = InformationENT.DescriptionENTFR ;
+        if(PlayerPrefs.GetInt("Langue") == 1) DesciptionEntreprise.text = InformationENT.DescriptionENTEN ;
+
+        /* VALEUR DE L'ENTREPRISE */
+        for (int i = 0; i < ListValeurs.Count; i++)
+        {
+            if(i < InformationENT.ValeursENT.Count)
+            {
+                ListValeurs[i].SetActive(true);
+                ListValeurs[i].GetComponentInChildren<Image>().sprite = InformationENT.ValeursENT[i].IllustrationValeur ;
+                if(PlayerPrefs.GetInt("Langue") == 0) ListValeurs[i].GetComponentInChildren<TextMeshProUGUI>().text = InformationENT.ValeursENT[i].NomValeurFR ;
+                if(PlayerPrefs.GetInt("Langue") == 1) ListValeurs[i].GetComponentInChildren<TextMeshProUGUI>().text = InformationENT.ValeursENT[i].NomValeurEN ;
+            } else {
+                ListValeurs[i].SetActive(false);
+            }
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     public void SwitchTogglePannelDisplay()
     {
@@ -174,7 +226,6 @@ public class PannelENTManager : MonoBehaviour
             gameObject.SetActive(!gameObject.activeSelf);
             GameObject.Find("Player").GetComponent<PlayerMovement>().EndActivity(); 
         }
-
     }
 
     public void OpenWebSite()

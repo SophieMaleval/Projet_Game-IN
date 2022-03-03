@@ -163,7 +163,8 @@ public class QCMManager : MonoBehaviour
             SetChoiceDisp();
         } else {
             PlayerText.GetComponentInParent<PlayerScript>().TimeLineManager.Toggle();
-            yield return new WaitForSeconds(0.5f);      
+            yield return new WaitForSeconds(0.5f);   
+            GameObject.Find("Quest Dialogue Manager").GetComponent<TalkQuest>().TalkedTo();   
             GameObject.Find("Player").GetComponent<PlayerMovement>().enabled = true ;
             PlayerText.GetComponentInParent<PlayerMovement>().EndActivity();
             gameObject.SetActive(false);
@@ -189,7 +190,6 @@ public class QCMManager : MonoBehaviour
             {
                 Button ChoiceCurrent = Choices[BQC].GetComponent<Button>();
                 ChoiceCurrent.interactable = true ;
-
             }
         }
     }
