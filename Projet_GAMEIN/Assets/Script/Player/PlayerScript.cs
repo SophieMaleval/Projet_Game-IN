@@ -118,6 +118,22 @@ public class PlayerScript : MonoBehaviour
         AskInventairePlein();
     }
 
+    public bool ItemChecker(InteractibleObject ObjectSearch)
+    {
+        bool returned = false;
+        for (int I = 0; I < Inventaire.Length; I++)
+        {
+            if (Inventaire[I] != null)
+            {
+                if(Inventaire[I].Name == ObjectSearch.Name)
+                {
+                    returned = true;
+                }
+            }
+        }
+        return returned;
+    }
+
     void AskInventairePlein()
     {
         if(Inventaire[Inventaire.Length-1] == null)

@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public enum Quantité
 {
@@ -10,6 +12,7 @@ public enum Quantité
 public class Interactible : MonoBehaviour
 {
     public Quantité qté;
+    public GameObject DisplayerInventory;
     public InteractibleObject Object ;
     public QuestSys questSys;
     //public ActiveAsProg AaP;
@@ -74,16 +77,17 @@ public class Interactible : MonoBehaviour
         }
         else if(qté == Quantité.Multiple)
         {
-            if (!gathered)
+            if (!PlayerScript.ItemChecker(Object))
             {
                 PlayerScript.AjoutInventaire(Object);
+         
                 PlayerScript.SwitchInputSprite();
                 Destroy(this.gameObject, 0.05f);
-                gathered = true;
             }
-            else if (gathered)
+            else
             {
                 PlayerScript.SwitchInputSprite();
+                Object.AddEntry();
                 Destroy(this.gameObject, 0.05f);               
             }
             
