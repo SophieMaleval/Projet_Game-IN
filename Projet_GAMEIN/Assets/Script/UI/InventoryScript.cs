@@ -134,7 +134,7 @@ public class InventoryScript : MonoBehaviour
                     DisplayerInventory.transform.GetChild(IDO).Find("Compteur").GetComponent<Image>().enabled = true;
 
                     //Modifie valeurs du compteur
-                    DisplayerInventory.transform.GetChild(IDO).Find("Compteur").GetComponentInChildren<TextMeshProUGUI>().text = PlayerScript.Inventaire[IDO].unité.ToString() + " / " + PlayerScript.Inventaire[IDO].valeurMax.ToString();
+                    DisplayerInventory.transform.GetChild(IDO).Find("Compteur").GetComponentInChildren<TextMeshProUGUI>().text = PlayerScript.Inventaire[IDO].unité - 1 + " / " + PlayerScript.Inventaire[IDO].valeurMax.ToString();
                     DisplayerInventory.transform.GetChild(IDO).Find("Compteur").GetComponentInChildren<TextMeshProUGUI>().enabled = true;
                 }
                 else

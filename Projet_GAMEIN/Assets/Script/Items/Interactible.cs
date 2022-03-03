@@ -86,16 +86,17 @@ public class Interactible : MonoBehaviour
             }
             else                                    //Si l'item existe déjà
             {
-                if(!Object.allGathered)
+                if(Object.unité < Object.valeurMax)
                 {
                     PlayerScript.SwitchInputSprite();
                     Object.AddEntry();
-                    Debug.Log("encore un effort");
+                    Debug.Log("encore un effort " + "U: " + Object.unité + "VM:" + Object.valeurMax);
                     Destroy(this.gameObject, 0.05f);
                 }
-                else if (Object.allGathered)        //mdr ça marche mais ça atteint d'abord la valeur max, puis ça progresse
+                else if (Object.unité == Object.valeurMax)        //mdr ça marche mais ça atteint d'abord la valeur max, puis ça progresse
                 {
                     PlayerScript.SwitchInputSprite();
+                    Object.AddEntry();
                     questSys.Progression();
                     Debug.Log("trop cool t'as tout");
                     Destroy(this.gameObject, 0.05f);      
