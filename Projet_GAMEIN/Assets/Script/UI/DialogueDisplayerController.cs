@@ -18,7 +18,7 @@ public class DialogueDisplayerController : MonoBehaviour
     public TextMeshProUGUI NamePNJ ;
     private QuestSys QuestSysManager ;
 
-    [HideInInspector] public DialogueContainer DialoguePNJ ;
+   /* [HideInInspector] */public DialogueContainer DialoguePNJ ;
     [HideInInspector] public DialogueContainer DialoguePNJ_FR ;
     [HideInInspector] public DialogueContainer DialoguePNJ_EN ;
     private PlayerDialogue PlayerDialogueManager;
