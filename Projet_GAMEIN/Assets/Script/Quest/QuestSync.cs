@@ -39,7 +39,7 @@ public class QuestSync : MonoBehaviour
             {
                 description[i].text = questSys.quest[index].questGoal[i];
 
-                if (index < questSys.lvlTracker)
+                if (index < questSys.lvlTracker + 1 && index != 0)
                 {
                     description[i].fontStyle = FontStyles.Strikethrough;
                     title.GetComponent<Button>().interactable = false;
@@ -91,7 +91,7 @@ public class QuestSync : MonoBehaviour
                 if (go.activeInHierarchy == true)
                 {
                     go.SetActive(false);
-                    Debug.Log("coucou");
+                    //Debug.Log("coucou");
                 }
 
             }

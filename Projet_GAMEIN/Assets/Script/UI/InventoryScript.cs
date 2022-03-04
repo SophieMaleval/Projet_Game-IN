@@ -128,13 +128,13 @@ public class InventoryScript : MonoBehaviour
                 DisplayerInventory.transform.GetChild(IDO).Find("Box Name Object").gameObject.SetActive(true) ;
                 DisplayerInventory.transform.GetChild(IDO).Find("Box Name Object").GetComponentInChildren<TextMeshProUGUI>().text = PlayerScript.Inventaire[IDO].Name;
 
-                if (PlayerScript.Inventaire[IDO].multipleEntries)
+                if (PlayerScript.Inventaire[IDO].multipleEntries && PlayerScript.Inventaire[IDO].unité <= PlayerScript.Inventaire[IDO].valeurMax)
                 {
                     //Affiche l'image de fond du compteur
                     DisplayerInventory.transform.GetChild(IDO).Find("Compteur").GetComponent<Image>().enabled = true;
 
                     //Modifie valeurs du compteur
-                    DisplayerInventory.transform.GetChild(IDO).Find("Compteur").GetComponentInChildren<TextMeshProUGUI>().text = PlayerScript.Inventaire[IDO].unité.ToString() + " / " + PlayerScript.Inventaire[IDO].valeurMax.ToString();
+                    DisplayerInventory.transform.GetChild(IDO).Find("Compteur").GetComponentInChildren<TextMeshProUGUI>().text = PlayerScript.Inventaire[IDO].unité - 1 + " / " + PlayerScript.Inventaire[IDO].valeurMax.ToString();
                     DisplayerInventory.transform.GetChild(IDO).Find("Compteur").GetComponentInChildren<TextMeshProUGUI>().enabled = true;
                 }
                 else

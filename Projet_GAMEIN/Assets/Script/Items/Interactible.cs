@@ -19,7 +19,7 @@ public class Interactible : MonoBehaviour
     private SpriteRenderer SpriteRend;
     [SerializeField] private PlayerScript PlayerScript;
     private bool PlayerAround = false;
-    private bool gathered = false;
+    //private bool gathered = false;
     //public int code;
     //public int stepCode;
 
@@ -77,18 +77,30 @@ public class Interactible : MonoBehaviour
         }
         else if(qté == Quantité.Multiple)
         {
-            if (!PlayerScript.ItemChecker(Object))
+            if (!PlayerScript.ItemChecker(Object))   //Si l'item n'existe pas dans l'inventaire
             {
                 PlayerScript.AjoutInventaire(Object);
-         
+                Object.AddEntry();
                 PlayerScript.SwitchInputSprite();
                 Destroy(this.gameObject, 0.05f);
             }
-            else
+            else                                    //Si l'item existe déjà
             {
-                PlayerScript.SwitchInputSprite();
-                Object.AddEntry();
-                Destroy(this.gameObject, 0.05f);               
+                if(Object.unité < Object.valeurMax)
+                {
+                    PlayerScript.SwitchInputSprite();
+                    Object.AddEntry();
+                    Debug.Log("encore un effort " + "U: " + Object.unité + "VM:" + Object.valeurMax);
+                    Destroy(this.gameObject, 0.05f);
+                }
+                else if (Object.unité == Object.valeurMax)        //mdr ça marche mais ça atteint d'abord la valeur max, puis ça progresse
+                {
+                    PlayerScript.SwitchInputSprite();
+                    Object.AddEntry();
+                    questSys.Progression();
+                    Debug.Log("trop cool t'as tout");
+                    Destroy(this.gameObject, 0.05f);      
+                }         
             }
             
         }

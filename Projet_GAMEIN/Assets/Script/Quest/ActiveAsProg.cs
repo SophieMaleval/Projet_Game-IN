@@ -30,7 +30,15 @@ public class ActiveAsProg : MonoBehaviour
     //différent selon la méthode utilisée
     void Awake()
     {
-        questSys = GameObject.Find("QuestManager").GetComponent<QuestSys>();
+
+        if(questSys == null)
+        {
+            questSys = GameObject.Find("QuestManager").GetComponent<QuestSys>();
+            if(numeroDeQuete == 1 &&  questSys.firstLvlStep >= etapeDeQuete) {DestroyThis();  } 
+            if(numeroDeQuete == 2 &&  questSys.secondLvlStep >= etapeDeQuete) {DestroyThis(); } 
+            if(numeroDeQuete == 3 &&  questSys.thirdLvlStep >= etapeDeQuete) {DestroyThis(); }
+            if(numeroDeQuete == 4 &&  questSys.fourthLvlStep >= etapeDeQuete) {DestroyThis(); }
+        }
         checker = GameObject.Find("Inventory").GetComponent<Checker>();
         if (progressType == ObjType.Item)
         {
@@ -42,6 +50,11 @@ public class ActiveAsProg : MonoBehaviour
         }
         detecteur = GetComponent<Collider2D>();
 
+    }
+
+    void DestroyThis()
+    {
+        Destroy(this.gameObject);
     }
 
     void Update()
