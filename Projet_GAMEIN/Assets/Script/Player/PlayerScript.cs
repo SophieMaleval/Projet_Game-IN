@@ -21,7 +21,7 @@ public class PlayerScript : MonoBehaviour
     public bool PlayerAsInterract;
     public bool InDiscussion = false ;
 
-    public InteractibleObject[] Inventaire ;
+    public InteractibleObject[] Inventaire = new InteractibleObject[] {} ;
     public TLManager TimeLineManager ;
 
     public Vector2 MainSceneLoadPos ;
@@ -132,6 +132,20 @@ public class PlayerScript : MonoBehaviour
             }
         }
         return returned;
+    }
+
+    public void RemoveObject(InteractibleObject ObjectRemove)
+    {
+        for (int I = 0; I < Inventaire.Length; I++)
+        {
+            if (Inventaire[I] != null)
+            {
+                if(Inventaire[I] == ObjectRemove)
+                {
+                    Inventaire[I] = null ;
+                }
+            }
+        }   
     }
 
     void AskInventairePlein()

@@ -17,36 +17,27 @@ public class InteractibleObject : ScriptableObject
     public Sprite finalSprite;
 
     [Header("Quantity")]
-    public int unité = 1;
+    [HideInInspector] public int unité = 0;
     public int valeurMax = 1;
 
     public bool multipleEntries;
-    public bool allGathered = false;
 
     public void AddEntry()
     {
-        if(unité < valeurMax)
+        if(unité <= valeurMax)
         {
             unité++;
             SpriteUIManager();
-        }
-        if (unité == valeurMax)
-        {
-            allGathered = true;
         }
     }
 
     public void SpriteUIManager()
     {
-        if (unité < valeurMax)
+        if (unité <= valeurMax)
         {
             UISprite = unfinishedSprite;
-           // allGathered = false;
-        }
-        else if( unité == valeurMax)
-        {
+        } else {
             UISprite = finalSprite;
-          //  allGathered = true;
         }
     }
 }

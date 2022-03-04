@@ -174,6 +174,7 @@ public class DialogueDisplayerController : MonoBehaviour
 
     public void StartDiscussion(bool TextState)
     {
+        MouseIsHover = false ;
         Question1AsRead = false ;
         Question2AsRead = false ;
         Question3AsRead = false ;
@@ -306,7 +307,7 @@ public class DialogueDisplayerController : MonoBehaviour
         {
             if(ContainsZValue(ChildNum + 1)) // Couleur Question
             {
-                if(CanDisplayQuestQuestion())
+                if(CanDisplayQuestQuestion(ChildNum + 1))
                 {
                     SetQuestion(QuestionXRead, ChildNum, DialoguePNJQuestion); 
                     BoxQuestion.transform.GetChild(ChildNum).GetComponentInChildren<TextMeshProUGUI>().color = QuestionQuestColor ;//QuestionQuestColor ;                    
@@ -336,18 +337,19 @@ public class DialogueDisplayerController : MonoBehaviour
         bool BoolReturned = false ;
         for (int i = 0; i < CurrentPNJDiscussion.InformationQuestEtapeQuestion.Count; i++)
         {
-            if((int) CurrentPNJDiscussion.InformationQuestEtapeQuestion[i].z == ValueSearch) BoolReturned = true ;
+            if(((int) CurrentPNJDiscussion.InformationQuestEtapeQuestion[i].z == ValueSearch) ) BoolReturned = true ;
+
         }
 
         return BoolReturned ;
     }
 
-    bool CanDisplayQuestQuestion()
+    bool CanDisplayQuestQuestion(int ValueSearch)
     {
         bool Result = false ;
         for (int i = 0; i < CurrentPNJDiscussion.InformationQuestEtapeQuestion.Count; i++)
         {
-            if(QuestSysManager.niveau == CurrentPNJDiscussion.InformationQuestEtapeQuestion[i].x && QuestSysManager.etape == CurrentPNJDiscussion.InformationQuestEtapeQuestion[i].y)
+            if(QuestSysManager.niveau == CurrentPNJDiscussion.InformationQuestEtapeQuestion[i].x && QuestSysManager.etape == CurrentPNJDiscussion.InformationQuestEtapeQuestion[i].y && ((int) CurrentPNJDiscussion.InformationQuestEtapeQuestion[i].z == ValueSearch))
             {
                 Result = true ;
             }

@@ -12,7 +12,8 @@ public class QuestSys : MonoBehaviour
     public string roamingTitle;
     [TextArea] public string roamingGoal;*/
     public int lvlTracker = 0;
-    int firstLvlStep, secondLvlStep, thirdLvlStep, fourthLvlStep = 0;
+    public int firstLvlStep, secondLvlStep, thirdLvlStep, fourthLvlStep = 0;
+
     
     [Header("Quest Manager")]
     public TextMeshProUGUI title;
