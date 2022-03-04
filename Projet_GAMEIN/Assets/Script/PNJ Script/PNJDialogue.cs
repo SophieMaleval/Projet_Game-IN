@@ -13,7 +13,6 @@ public class PNJDialogue : MonoBehaviour
     public string Entrerpise ;
     public string NamePNJ ;
     public string NamePNJDisplay ;
-    [SerializeField] private bool MultiplePNJinENT = true ;
     [SerializeField] private int PNJInENT;
     
     [HideInInspector] public CSVReader TextDialogue ;
@@ -68,10 +67,8 @@ public class PNJDialogue : MonoBehaviour
             DialogueCanvasBox = PlayerScript.DialogueUIIndestructible.GetComponent<DialogueDisplayerController>() ;
         }   
 
-        if(MultiplePNJinENT == true) 
-        {
-            GetComponent<Animator>().SetInteger("PNJ Need", PNJInENT) ;
-        }
+        GetComponent<Animator>().SetInteger("PNJ Need", PNJInENT) ;
+
 
         if(NamePNJDisplay == "") NamePNJDisplay = NamePNJ ;
     } 
