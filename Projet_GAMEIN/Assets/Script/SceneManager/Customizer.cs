@@ -132,8 +132,8 @@ public class Customizer : MonoBehaviour
             InventoryUIInstatiate.GetComponent<RectTransform>().offsetMax = new Vector2(0, 0) ; // Right & Top
             InventoryUIInstatiate.GetComponent<RectTransform>().localScale = Vector3.one ; 
 
-            PannelENTUIInstatiate.GetComponent<RectTransform>().offsetMin = new Vector2(350f, 25f) ;
-            PannelENTUIInstatiate.GetComponent<RectTransform>().offsetMax = new Vector2(-350f, -25f) ;
+            PannelENTUIInstatiate.GetComponent<RectTransform>().offsetMin = new Vector2(250f, 25f) ;
+            PannelENTUIInstatiate.GetComponent<RectTransform>().offsetMax = new Vector2(-250f, -25f) ;
             PannelENTUIInstatiate.GetComponent<RectTransform>().localScale = Vector3.one ;
 
             QCMPanelInstantiate.GetComponent<RectTransform>().anchoredPosition = new Vector2(0f, -600f);

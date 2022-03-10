@@ -10,6 +10,15 @@ public class PannelENTContainer : ScriptableObject
     public string URLSiteWebDisplay ;
     public string URLSiteWeb ;
     public string ContactEmail ;
+    public string URLFacebook ;
+    public string URLInstagram ;
+    public string URLTwitter ;
+    public string URLLinkedIn ;
+    public string URLDiscord ;
+    public string URLSteam ;
+    public string URLTwitch ;
+    public string URLYoutube ;
+
 
     [Header ("Illustration")]
     public Sprite LogoENT ;
@@ -25,6 +34,8 @@ public class PannelENTContainer : ScriptableObject
     [Space(10)]
     public List<ValeurENT> ValeursENT ;
     [Space(10)]
+    public string Localisation ;
+    public List<string> PersonneJoignable ;
     [TextArea (5,10)] public string DernierProjet ;
     [TextArea (5,10)] public string AvantDernierProjet ;
 
