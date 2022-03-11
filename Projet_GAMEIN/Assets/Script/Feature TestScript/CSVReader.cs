@@ -315,7 +315,7 @@ public class CSVReader : MonoBehaviour
                 NewTextPannel.DescriptionEntreprise = Data[1] ;                    
 
                 NewTextPannel.Valeurs = Data[2] ;
-                
+
                 NewTextPannel.TitreDernièreProd = Data[3] ;
                 NewTextPannel.DescriptionDernièreProd = Data[4] ;
 

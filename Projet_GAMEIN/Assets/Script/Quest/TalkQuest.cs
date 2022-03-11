@@ -2,13 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum ModifInventaire{
+    Ajout,
+    Retrait,
+    None
+}
 public class TalkQuest : MonoBehaviour
 {
     private QuestSys questSys;
+    public ModifInventaire mode;
 
     public Vector2 QuestEtape ;
-    public bool RemoveObjectFromInventory ;
-    public InteractibleObject ObjectAsRemove ;
+    public InteractibleObject item ;
 
 
     private void Awake()
@@ -18,9 +23,10 @@ public class TalkQuest : MonoBehaviour
 
     public void TalkedTo()
     {
-        if(RemoveObjectFromInventory && QuestEtape.x == questSys.niveau && QuestEtape.y == questSys.etape)
+        if(QuestEtape.x == questSys.niveau && QuestEtape.y == questSys.etape)
         {
-            GameObject.Find("Player").GetComponent<PlayerScript>().RemoveObject(ObjectAsRemove);
+            if(mode == ModifInventaire.Retrait) GameObject.Find("Player").GetComponent<PlayerScript>().RemoveObject(item);
+            if(mode == ModifInventaire.Ajout) GameObject.Find("Player").GetComponent<PlayerScript>().AjoutInventaire(item);
         }
 
 
