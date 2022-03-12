@@ -5,9 +5,9 @@ using UnityEngine;
 public class PannelAnnonceScript : MonoBehaviour
 {
     [Header ("Information ENT")]
-    public PannelENTContainer InformationsPrincipaleENT ;
+    public PetiteAnnonceContainer InformationsAnnonces ;
     [HideInInspector] public CSVReader RefTextENT ;    
-    private GameObject Board;
+    private PetiteAnnonceManager BoardAnnonce;
     private GameObject InventoryPanel ;
 
     private PlayerScript PlayerScript;
@@ -16,6 +16,7 @@ public class PannelAnnonceScript : MonoBehaviour
     [Header ("Gestion Code")]
     private bool PannelSetUp = false ;
     private bool PlayerArroundPannel = false;    
+    [HideInInspector] public bool CanProgress = false ;
 
 
     void Awake()
@@ -24,7 +25,7 @@ public class PannelAnnonceScript : MonoBehaviour
         {
             PlayerMovement = GameObject.Find("Player").GetComponent<PlayerMovement>();
             PlayerScript = PlayerMovement.GetComponent<PlayerScript>();
-
+            BoardAnnonce = PlayerScript.PannelAnnonceUIIndestructible.GetComponent<PetiteAnnonceManager>() ;
             InventoryPanel = GameObject.Find("Inventory").GetComponent<InventoryScript>().InventoryPanel ;
             
             
@@ -39,16 +40,19 @@ public class PannelAnnonceScript : MonoBehaviour
                     
         if (PlayerArroundPannel == true)
         {
-            if(PlayerScript.PlayerAsInterract && Board.gameObject.activeSelf == false)
+            if(PlayerScript.PlayerAsInterract && BoardAnnonce.gameObject.activeSelf == false)
             {
                 PlayerScript.PlayerAsInterract = false;
-                //Board.SwitchTogglePannelDisplay();
+                BoardAnnonce.InfoTableau = InformationsAnnonces ;
+                BoardAnnonce.SwitchTogglePannelDisplay();
+
+                if(CanProgress) GameObject.Find("QuestManager").GetComponent<QuestSys>().Progression() ;
             }
 
-            if (PlayerScript.PlayerAsInterract && Board.gameObject.activeSelf == true && InventoryPanel.activeSelf == false)
+            if (PlayerScript.PlayerAsInterract && BoardAnnonce.gameObject.activeSelf == true && InventoryPanel.activeSelf == false)
             {
                 PlayerScript.PlayerAsInterract = false;
-                //Board.SwitchTogglePannelDisplay();
+                BoardAnnonce.SwitchTogglePannelDisplay();
             }
         }                 
     }

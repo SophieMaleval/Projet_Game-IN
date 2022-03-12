@@ -32,6 +32,7 @@ public class PlayerScript : MonoBehaviour
     public GameObject DialogueUIIndestructible ;
     public GameObject InventoryUIIndestructible ;
     public GameObject PannelENTUIIndestructible ;
+    public GameObject PannelAnnonceUIIndestructible ;
     public GameObject QCMPanelUIIndestructible ;
 
 

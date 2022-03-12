@@ -217,8 +217,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8132852570197664908}
-  - component: {fileID: 6594901333276452274}
   - component: {fileID: 8132852570197664907}
+  - component: {fileID: 6594901333276452274}
+  - component: {fileID: 1587952082818942013}
   m_Layer: 0
   m_Name: Tableau Petite Annonce
   m_TagString: Untagged
@@ -241,20 +242,6 @@ Transform:
   m_Father: {fileID: 4535657887139625619}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6594901333276452274
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8132852570197664909}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 893664874e326514899d8b4106023206, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  InformationsPrincipaleENT: {fileID: 0}
-  RefTextENT: {fileID: 0}
 --- !u!61 &8132852570197664907
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -281,6 +268,43 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.15, y: 0.5}
   m_EdgeRadius: 0
+--- !u!114 &6594901333276452274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8132852570197664909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 893664874e326514899d8b4106023206, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InformationsAnnonces: {fileID: 11400000, guid: 067a3f1a41f2dad4cb1b6b8f7aad28f1,
+    type: 2}
+  RefTextENT: {fileID: 0}
+  CanProgress: 0
+--- !u!114 &1587952082818942013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8132852570197664909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d49e86bb96891b48b1d2c1f3aec8066, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  progressType: 2
+  questSys: {fileID: 0}
+  checker: {fileID: 0}
+  questSync: {fileID: 0}
+  numeroDeQuete: 2
+  etapeDeQuete: 1
+  interactible: {fileID: 0}
+  talkQuest: {fileID: 0}
+  PannelAnnonceGestion: {fileID: 0}
 --- !u!1 &8132852570327134254
 GameObject:
   m_ObjectHideFlags: 0
@@ -351,7 +375,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 0bb123bf44dfd9a459fd6181c8cdc51e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

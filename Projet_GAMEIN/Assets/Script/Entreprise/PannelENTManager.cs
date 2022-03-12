@@ -218,16 +218,21 @@ public class PannelENTManager : MonoBehaviour
 
     void SetActivityText(int ActivityInt)
     {
-        if(InformationENT.ListActivité[ActivityInt].NameActivité != "")
+        if(InformationENT.ListActivité.Count > ActivityInt)
         {
-            FeuilleActi[ActivityInt].gameObject.SetActive(true);
-            ListContenuPage[ActivityInt].TitleActivité.text = InformationENT.ListActivité[ActivityInt].NameActivité ;
-            ListContenuPage[ActivityInt].IllustrationActivité.sprite = InformationENT.ListActivité[ActivityInt].IllustrationActivité ;
+            if(InformationENT.ListActivité[ActivityInt].NameActivité != "")
+            {
+                FeuilleActi[ActivityInt].gameObject.SetActive(true);
+                ListContenuPage[ActivityInt].TitleActivité.text = InformationENT.ListActivité[ActivityInt].NameActivité ;
+                ListContenuPage[ActivityInt].IllustrationActivité.sprite = InformationENT.ListActivité[ActivityInt].IllustrationActivité ;
             
-            if(PlayerPrefs.GetInt("Langue") == 0) ListContenuPage[ActivityInt].DescriptionAtivité.text = InformationENT.ListActivité[ActivityInt].TextActivtéFR ;            
-            if(PlayerPrefs.GetInt("Langue") == 1) ListContenuPage[ActivityInt].DescriptionAtivité.text = InformationENT.ListActivité[ActivityInt].TextActivtéEN ;            
+                if(PlayerPrefs.GetInt("Langue") == 0) ListContenuPage[ActivityInt].DescriptionAtivité.text = InformationENT.ListActivité[ActivityInt].TextActivtéFR ;            
+                if(PlayerPrefs.GetInt("Langue") == 1) ListContenuPage[ActivityInt].DescriptionAtivité.text = InformationENT.ListActivité[ActivityInt].TextActivtéEN ;            
         
-            FeuilleActi[ActivityInt].sizeDelta = new Vector2(FeuilleActi[ActivityInt].sizeDelta.x,  (ListContenuPage[ActivityInt].TitleActivité.rectTransform.sizeDelta.y + ListContenuPage[ActivityInt].IllustrationActivité.rectTransform.sizeDelta.y + 90f + InformationENT.ListActivité[ActivityInt].HeightArticle));
+                FeuilleActi[ActivityInt].sizeDelta = new Vector2(FeuilleActi[ActivityInt].sizeDelta.x,  (ListContenuPage[ActivityInt].TitleActivité.rectTransform.sizeDelta.y + ListContenuPage[ActivityInt].IllustrationActivité.rectTransform.sizeDelta.y + 90f + InformationENT.ListActivité[ActivityInt].HeightArticle));                
+            } else {
+                FeuilleActi[ActivityInt].gameObject.SetActive(false);
+            }
         } else {
             FeuilleActi[ActivityInt].gameObject.SetActive(false);
         }        

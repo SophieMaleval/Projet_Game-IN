@@ -6,7 +6,8 @@ using TMPro;
 public enum ObjType
 {
     PNJ,
-    Item
+    Item,
+    PannelAnnonce
 }
 public class ActiveAsProg : MonoBehaviour
 {
@@ -26,6 +27,7 @@ public class ActiveAsProg : MonoBehaviour
     Collider2D detecteur;
     public TalkQuest talkQuest;
     bool gathered = false;
+    public PannelAnnonceScript PannelAnnonceGestion ;
 
     //différent selon la méthode utilisée
     void Awake()
@@ -39,15 +41,24 @@ public class ActiveAsProg : MonoBehaviour
             if(numeroDeQuete == 3 &&  questSys.thirdLvlStep >= etapeDeQuete) {DestroyThis(); }
             if(numeroDeQuete == 4 &&  questSys.fourthLvlStep >= etapeDeQuete) {DestroyThis(); }
         }
+
         checker = GameObject.Find("Inventory").GetComponent<Checker>();
+
         if (progressType == ObjType.Item)
         {
             interactible = GetComponent<Interactible>(); //la composante doit, si déterminante pour une quête, être inactive sur l'objet
         }
+        
         if (progressType == ObjType.PNJ)
         {
             talkQuest = GetComponent<TalkQuest>(); //la composante doit, si déterminante pour une quête, être inactive sur l'objet
         }
+
+        if(progressType == ObjType.PannelAnnonce)
+        {
+            PannelAnnonceGestion = GetComponent<PannelAnnonceScript>() ;
+        }
+
         detecteur = GetComponent<Collider2D>();
 
     }
@@ -59,16 +70,9 @@ public class ActiveAsProg : MonoBehaviour
 
     void Update()
     {
-        if (progressType == ObjType.Item)
-        {
-            InteractMethod();
-        }
-        if(progressType == ObjType.PNJ)
-        {
-            DiscussionMethod();
-        }
-            
-        
+        if(progressType == ObjType.Item)    InteractMethod();
+        if(progressType == ObjType.PNJ)    DiscussionMethod();
+        if(progressType == ObjType.PannelAnnonce) PannelViewMethod();
     }
 
     public void InteractMethod()
@@ -78,11 +82,10 @@ public class ActiveAsProg : MonoBehaviour
             interactible.enabled = true;
             detecteur.enabled = true;
             //StrikeThrough();
-        }
-        else
-        {
+        } else {
             detecteur.enabled = false;
         }
+
         if (!gathered)
         {
             GetTitles();
@@ -96,11 +99,10 @@ public class ActiveAsProg : MonoBehaviour
             talkQuest.enabled = true;
             detecteur.enabled = true;
             //StrikeThrough();
-        }
-        else
-        {
+        } else {
             detecteur.enabled = false;
         }
+
         if (!gathered)
         {
             GetTitles();
@@ -116,4 +118,16 @@ public class ActiveAsProg : MonoBehaviour
             gathered = true;
         }     
     }
+
+    void PannelViewMethod()
+    {
+        if (questSys.niveau == numeroDeQuete && questSys.etape + 1 == etapeDeQuete)
+        {
+            PannelAnnonceGestion.CanProgress = true ;
+        } else {
+            PannelAnnonceGestion.CanProgress = false ;
+        }
+    }
+
+
 }
