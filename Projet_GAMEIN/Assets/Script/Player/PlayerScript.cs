@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI ;
+using DG.Tweening;
 
 
 public class PlayerScript : MonoBehaviour
@@ -26,6 +28,9 @@ public class PlayerScript : MonoBehaviour
 
     public Vector2 MainSceneLoadPos ;
     public string PreviousSceneName ;
+    [HideInInspector] public bool InAnimationFade = false ;
+    [HideInInspector] public bool FadeMake = false ;
+    [HideInInspector] public bool AnimationBeMake = false ;
 
     [Header ("Canvas Location")]
     public GameObject CanvasIndestrucitble ;
@@ -34,6 +39,7 @@ public class PlayerScript : MonoBehaviour
     public GameObject PannelENTUIIndestructible ;
     public GameObject PannelAnnonceUIIndestructible ;
     public GameObject QCMPanelUIIndestructible ;
+    [HideInInspector] public Image FadeAnimation ;
 
 
     private void OnEnable() { PlayerActionControllers.Enable(); }
@@ -156,4 +162,42 @@ public class PlayerScript : MonoBehaviour
         else
             CanCollectObject = false ;
     }
+
+    public void LunchAnimationFadeIn()
+    {
+        StartCoroutine(FadeInIEnum());
+    }
+ 
+    IEnumerator FadeInIEnum()
+    {
+        InAnimationFade = true ;
+        FadeAnimation.raycastTarget = true ;
+        FadeAnimation.DOFade(1f, 0.5f);
+        yield return new WaitForSeconds(1f);
+        FadeMake = true ;        
+    }
+
+    public void LunchFadeOut()
+    {
+        //StartCoroutine(FadeOutIEnum());
+
+        AnimationBeMake = true ;        
+        FadeMake = false ;
+        FadeAnimation.DOFade(0f, 0.5f);
+        InAnimationFade = false ;
+        FadeAnimation.raycastTarget = false ;   
+    }
+
+
+    IEnumerator FadeOutIEnum()
+    {
+        AnimationBeMake = true ;        
+        FadeMake = false ;
+        FadeAnimation.DOFade(0f, 0.5f);
+        yield return new WaitForSeconds(0.5f);
+        InAnimationFade = false ;
+        FadeAnimation.raycastTarget = false ;    
+    }
+
+
 }

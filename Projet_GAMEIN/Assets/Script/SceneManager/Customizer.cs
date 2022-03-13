@@ -157,6 +157,8 @@ public class Customizer : MonoBehaviour
             InventoryUIInstatiate.GetComponent<InventoryScript>().PlayerScript = PlayerPersonnality ;   
             InventoryUIInstatiate.GetComponent<InventoryScript>().DialogueCanvas = DialogueUIInstatiate ;
             InventoryUIInstatiate.GetComponent<InventoryScript>().PannelENTCanvas = PannelENTUIInstatiate ;         
+        
+            PlayerPersonnality.FadeAnimation = CanvasInstatiate.transform.GetChild(CanvasInstatiate.transform.childCount-1).GetComponent<Image>();
         } else {
             PlayerApparance = GameObject.Find("Player").GetComponent<PlayerMovement>() ; 
             PlayerApparance.enabled = false ;                 

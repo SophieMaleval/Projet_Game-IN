@@ -31,6 +31,10 @@ public class PNJDialogue : MonoBehaviour
 
     public bool ThisQuestionLunchReflexion = false ;
     public bool PlayerAskQuestQuestion = false ;
+    
+    public bool NextDialogueLunchAnimation = false ;
+    public Vector2 QuestionandDialogueLunchAnimation ;
+    public Vector4 NewPosPNJAndPlayer ;
 
     private DialogueContainer DialoguePNJ_FR ;
     private DialogueContainer DialoguePNJ_EN ;
@@ -181,7 +185,15 @@ public class PNJDialogue : MonoBehaviour
         if(PlayerScript.gameObject.transform.position.x < transform.position.x) PlayerScript.InputSpritePos(false);
         if(PlayerScript.gameObject.transform.position.x > transform.position.x) PlayerScript.InputSpritePos(true);
 
-
+        if(PlayerScript.InAnimationFade)
+        {
+            if(PlayerScript.FadeMake)
+            {
+                MovePNJAndPlayer(NewPosPNJAndPlayer);
+                PlayerScript.LunchFadeOut();        
+                DialogueCanvasBox.StateDiscussion();         
+            }  
+        }
         
 
 
@@ -198,13 +210,12 @@ public class PNJDialogue : MonoBehaviour
 
                 if(!DialogueCanvasBox.WeAreInChoice)
                 {
-                    DialogueCanvasBox.StateDiscussion(); 
+                    if(!PlayerScript.InAnimationFade) DialogueCanvasBox.StateDiscussion(); 
                 } else {
                     DialogueCanvasBox.ValidateButton();
                 }  
             } 
         } 
-
     }
 
     private void FixedUpdate() 
@@ -302,6 +313,13 @@ public class PNJDialogue : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5f);
         PlayerScript.QCMPanelUIIndestructible.SetActive(true);
+    }
+
+
+    void MovePNJAndPlayer(Vector4 NewPoss)
+    {
+        transform.position = new Vector2(NewPoss.x, NewPoss.y);
+        PlayerScript.transform.position = new Vector2(NewPoss.z, NewPoss.w);
     }
 
 }
