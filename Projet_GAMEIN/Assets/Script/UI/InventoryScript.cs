@@ -45,7 +45,7 @@ public class InventoryScript : MonoBehaviour
         InventoryPanel.SetActive(!InventoryPanel.activeSelf);
         if(!InventoryPanel.activeSelf)
         {
-            transform.SetSiblingIndex(0);
+            transform.SetSiblingIndex(transform.parent.childCount-1);
 
             if(DialogueCanvas.activeSelf == true)    GameObject.Find("Player Backpack").GetComponent<PlayerDialogue>().ResumeDialogue();                   
 
@@ -53,7 +53,7 @@ public class InventoryScript : MonoBehaviour
 
 
         } else {
-            transform.SetSiblingIndex(2);            
+            transform.SetSiblingIndex(transform.parent.childCount-1);            
 
             PlayerScript.GetComponent<PlayerMovement>().StartActivity() ;
             GameObject.Find("Player Backpack").GetComponent<PlayerDialogue>().PausedInDialogue();
