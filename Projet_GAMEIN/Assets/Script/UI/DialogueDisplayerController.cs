@@ -221,14 +221,13 @@ public class DialogueDisplayerController : MonoBehaviour
 
             if(PNJSpeak)
             {
-
                 if(CurrentPNJDiscussion.DiscussionWithQuestion)
                 {
                     if(CurrentDialogueState < CurrentPNJDiscussion.Answer[CurrentDialogueDisplay].AnswerForQuestion.Count )
                     {
                         if(!TextAsCompletelyDisplay) TextDiscussion(false, true); // Arrête l'animation et affiche tout le texte
                         else {
-                            if(CurrentPNJDiscussion.NextDialogueLunchAnimation && (CurrentDialogueDisplay == CurrentPNJDiscussion.QuestionandDialogueLunchAnimation.x && CurrentDialogueState == CurrentPNJDiscussion.QuestionandDialogueLunchAnimation.y) && !PlayerFadeScript.AnimationBeMake) PlayerFadeScript.LunchAnimationFadeIn();
+                            if(CheckIfNeedLunchFade()) PlayerFadeScript.LunchAnimationFadeIn();
                             else TextDiscussion(false, false); // Affiche le prochain texte avec l'animation       
                         }             
                     } else {
@@ -239,8 +238,8 @@ public class DialogueDisplayerController : MonoBehaviour
                     {
                         if(!TextAsCompletelyDisplay) TextDiscussion(false, true); // Arrête l'animation et affiche tout le texte
                         else {
-                            if(CurrentPNJDiscussion.NextDialogueLunchAnimation && (CurrentDialogueDisplay == CurrentPNJDiscussion.QuestionandDialogueLunchAnimation.x && CurrentDialogueState == CurrentPNJDiscussion.QuestionandDialogueLunchAnimation.y) && !PlayerFadeScript.AnimationBeMake) PlayerFadeScript.LunchAnimationFadeIn();
-                            else TextDiscussion(false, false); // Affiche le prochain texte avec l'animation     
+                            if(CheckIfNeedLunchFade()) PlayerFadeScript.LunchAnimationFadeIn();
+                            else TextDiscussion(false, false); // Affiche le prochain texte avec l'animation      
                         }         
                     } else ButtonClose();                           
                 }
@@ -258,6 +257,16 @@ public class DialogueDisplayerController : MonoBehaviour
 
             if(CurrentDialogueDisplay == -1 && !TextAsCompletelyDisplay && !TextOppeningDisplayCompletely )    StartDiscussion(true); // Arrête l'animation et Affiche tout le texte d'Openning
         }
+    }
+
+    bool CheckIfNeedLunchFade()
+    {
+        bool BoolReturned = false ;
+
+        if(CurrentPNJDiscussion.DialogueLunchPrez && (CurrentDialogueDisplay == CurrentPNJDiscussion.PrezInfoLunch.x && CurrentDialogueState == CurrentPNJDiscussion.PrezInfoLunch.y) && !PlayerFadeScript.AnimationBeMake) BoolReturned = true ;
+        if(CurrentPNJDiscussion.DialogueWithFadeAnimation && (CurrentDialogueDisplay == CurrentPNJDiscussion.QuestionandDialogueLunchAnimation.x && CurrentDialogueState == CurrentPNJDiscussion.QuestionandDialogueLunchAnimation.y) && !PlayerFadeScript.AnimationBeMake) BoolReturned = true ;
+
+        return BoolReturned ;
     }
 
     void SwitchBoxDisplay()
