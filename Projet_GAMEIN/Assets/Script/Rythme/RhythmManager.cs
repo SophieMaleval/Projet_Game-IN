@@ -32,6 +32,7 @@ public class RhythmManager : MonoBehaviour
 
     public GameObject resultScreen;
     public GameObject dad;
+    public GameObject player;
 
     
 
@@ -60,11 +61,13 @@ public class RhythmManager : MonoBehaviour
         finalScoreText = GameObject.Find("Final Score Value").GetComponent<TextMeshProUGUI>();
         resultScreen = GameObject.Find("Results");
         dad = GameObject.Find("RythmoGamos");
-        
+        player = GameObject.Find("Player");
+
     }
 
     void DestroyGame()
     {
+        player.GetComponent<PlayerMovement>().EndActivity();
         Destroy(dad);
     }
     // Update is called once per frame
