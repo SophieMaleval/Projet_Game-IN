@@ -87,11 +87,10 @@ public class PlayerMovement : MonoBehaviour
     {      
         if(ctx.performed && (MoveDirection.magnitude >= -AmplitudeToSwitchScoot) && (MoveDirection.magnitude <= AmplitudeToSwitchScoot) && InExterior)
         {
-            PlayerActionControllers.PlayerInLand.Disable() ;
-            PlayerActionControllers.PlayerInScoot.Enable() ;
-            switchScootState(true); 
-
-            ScooterStop.Play();          
+            PlayerActionControllers.PlayerInLand.Disable();
+            PlayerActionControllers.PlayerInScoot.Enable();
+            switchScootState(true);
+            ScooterStop.Play();
         }    
     }
     public void OnExitScoot (InputAction.CallbackContext ctx )
@@ -112,13 +111,12 @@ public class PlayerMovement : MonoBehaviour
 
     public void switchScootState(bool state)
     {
-        OnScooter = state;
-    
+        OnScooter = state;    
         if(Animators[0].runtimeAnimatorController != null)
             Animators[0].SetBool("InScoot", state); 
 
         if(!OnScooter) Animators[0].GetComponent<SpriteRenderer>().color = ColorsDisplay[0];
-        else Animators[0].GetComponent<SpriteRenderer>().color = Color.white ;
+        else Animators[0].GetComponent<SpriteRenderer>().color = Color.white;
 
         for (int i = 1; i < Animators.Count; i++)
         {    Animators[i].gameObject.GetComponent<SpriteRenderer>().enabled = !OnScooter ;  }
