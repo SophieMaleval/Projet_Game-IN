@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8801535310837258250}
   - component: {fileID: 8801535310837258249}
+  - component: {fileID: 6962131725655282395}
   m_Layer: 0
   m_Name: Atelier801 Batiment
   m_TagString: Untagged
@@ -82,6 +83,50 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!60 &6962131725655282395
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8801535310837258248}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -1.95}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.4235453, y: 0.46462458}
+    oldSize: {x: 6.625, y: 7}
+    newSize: {x: 4.24, y: 4.48}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 1.5615425, y: -0.40824795}
+      - {x: 2.373438, y: -0.39094162}
+      - {x: 2.4189625, y: 0.6150286}
+      - {x: 2.1167755, y: 1.7963803}
+      - {x: 2.0817547, y: 2.3618956}
+      - {x: 2.1036415, y: 2.9231799}
+      - {x: -1.9296856, y: 2.722309}
+      - {x: -1.626543, y: 2.224632}
+      - {x: -1.3779354, y: 2.4289682}
+      - {x: -1.6013012, y: 1.30796}
+      - {x: -2.2643948, y: 1.20064}
+      - {x: -2.7511082, y: 0.6769028}
+      - {x: -2.6406708, y: -0.29768085}
+      - {x: -2.1930542, y: -0.6131358}
+      - {x: -1.3205547, y: -0.74725485}
+      - {x: -1.1445951, y: -0.17992088}
+      - {x: -0.5062956, y: -0.4728726}
+      - {x: 0.7100197, y: -0.47287202}
+      - {x: 1.7455797, y: 0.5840449}
 --- !u!1 &8801535312003448731
 GameObject:
   m_ObjectHideFlags: 0
@@ -92,7 +137,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8801535312003448735}
   - component: {fileID: 8801535312003448734}
-  - component: {fileID: 8801535312003448733}
   - component: {fileID: 8801535312003448732}
   m_Layer: 0
   m_Name: Atelier 801
@@ -131,50 +175,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NameScene: Atelier 801
   DoorOpeningSound: {fileID: 0}
---- !u!60 &8801535312003448733
-PolygonCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8801535312003448731}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 1.5615425, y: -0.40824795}
-      - {x: 2.373438, y: -0.39094162}
-      - {x: 2.4189625, y: 0.6150286}
-      - {x: 2.1167755, y: 1.7963803}
-      - {x: 2.0817547, y: 2.3618956}
-      - {x: 2.1036415, y: 2.9231799}
-      - {x: -1.9296856, y: 2.722309}
-      - {x: -1.626543, y: 2.224632}
-      - {x: -1.3779354, y: 2.4289682}
-      - {x: -1.6013012, y: 1.30796}
-      - {x: -2.2643948, y: 1.20064}
-      - {x: -2.7511082, y: 0.6769028}
-      - {x: -2.6406708, y: -0.29768085}
-      - {x: -2.1930542, y: -0.6131358}
-      - {x: -1.3205547, y: -0.74725485}
-      - {x: -1.1445951, y: -0.17992088}
-      - {x: -0.5062956, y: -0.4728726}
-      - {x: 0.7100197, y: -0.47287202}
-      - {x: 1.7455797, y: 0.5840449}
 --- !u!61 &8801535312003448732
 BoxCollider2D:
   m_ObjectHideFlags: 0
