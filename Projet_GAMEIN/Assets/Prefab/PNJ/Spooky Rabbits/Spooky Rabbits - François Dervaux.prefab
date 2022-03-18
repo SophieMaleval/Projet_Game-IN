@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 7454713249344840310}
   - component: {fileID: 8897650619861234399}
   m_Layer: 0
-  m_Name: 2054 - Anna
+  m_Name: "Spooky Rabbits - Fran\xE7ois Dervaux"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -64,7 +64,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3614748081788346697}
-  - {fileID: 5208119756488254344}
+  - {fileID: 5803231063438827880}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -129,7 +129,7 @@ Animator:
   m_GameObject: {fileID: 7454713249344840315}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 53b28419fb32f8c45a994ec17cd401ff, type: 2}
+  m_Controller: {fileID: 9100000, guid: 0158a2e28f35e59479978bd46d39e502, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -150,8 +150,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fe6f3ea6c3125d459b5ede804695985, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Entrerpise: 2054
-  NamePNJ: Anna
+  Entrerpise: Spooky Rabbits
+  NamePNJ: "Fran\xE7ois Dervaux"
   NamePNJDisplay: 
   PNJInENT: 0
   TextDialogue: {fileID: 0}
@@ -159,18 +159,18 @@ MonoBehaviour:
   ThisQuestionLunchReflexion: 0
   EnigmeQCM: 0
   PlayerAskQuestQuestion: 0
-  DialogueWithFadeAnimation: 1
-  QuestionandDialogueLunchAnimation: {x: 2, y: 2}
+  DialogueWithFadeAnimation: 0
+  QuestionandDialogueLunchAnimation: {x: 0, y: 0}
   DialogueLunchPrez: 0
   PrezInfoLunch: {x: 0, y: 0}
   NewPosPNJAndPlayer: {x: 0, y: 0, z: 0, w: 0}
   InformationQuestEtapeQuestion:
-  - {x: 2, y: 2, z: 2, w: 1}
+  - {x: 2, y: 4, z: 2, w: 1}
   DiscussionWithQuestion: 1
   Answer:
   - AnswerForQuestion: 
-  - AnswerForQuestion: 00000000
-  - AnswerForQuestion: 01000000020000000300000004000000
+  - AnswerForQuestion: 0000000001000000
+  - AnswerForQuestion: 0200000003000000
 --- !u!61 &7454713249344840310
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -195,7 +195,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.26, y: 1.26}
+  m_Size: {x: 2.52, y: 2.52}
   m_EdgeRadius: 0
 --- !u!60 &8897650619861234399
 PolygonCollider2D:
@@ -358,34 +358,13 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!1001 &3649882455746389583
+--- !u!1001 &3056042496700458159
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 7454713249344840312}
     m_Modifications:
-    - target: {fileID: 8854087391415928261, guid: e43991f473271d74fba607a5b13c5ff5,
-        type: 3}
-      propertyPath: item
-      value: 
-      objectReference: {fileID: 11400000, guid: bab35fb751967bc42bdb42b46e19fa76,
-        type: 2}
-    - target: {fileID: 8854087391415928261, guid: e43991f473271d74fba607a5b13c5ff5,
-        type: 3}
-      propertyPath: mode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8854087391415928261, guid: e43991f473271d74fba607a5b13c5ff5,
-        type: 3}
-      propertyPath: QuestEtape.x
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8854087391415928261, guid: e43991f473271d74fba607a5b13c5ff5,
-        type: 3}
-      propertyPath: QuestEtape.y
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 8854087391415928262, guid: e43991f473271d74fba607a5b13c5ff5,
         type: 3}
       propertyPath: m_Name
@@ -448,9 +427,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e43991f473271d74fba607a5b13c5ff5, type: 3}
---- !u!4 &5208119756488254344 stripped
+--- !u!4 &5803231063438827880 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8854087391415928263, guid: e43991f473271d74fba607a5b13c5ff5,
     type: 3}
-  m_PrefabInstance: {fileID: 3649882455746389583}
+  m_PrefabInstance: {fileID: 3056042496700458159}
   m_PrefabAsset: {fileID: 0}
