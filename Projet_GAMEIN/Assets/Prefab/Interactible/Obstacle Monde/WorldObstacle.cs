@@ -2,10 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(SpriteRenderer))]
 
 public class WorldObstacle : MonoBehaviour
 {
     private SpriteRenderer SpriteRend ;
+
+    [SerializeField] private GameObject ObstacleDisableGroup ;
+    [SerializeField] private GameObject ObstacleEnableGroup ;
 
     [SerializeField] private Sprite DisableSprite ;
     [SerializeField] private Sprite EnableSprite ;
@@ -17,17 +21,30 @@ public class WorldObstacle : MonoBehaviour
         SpriteRend = GetComponent<SpriteRenderer>();
     }
 
-    void SetPassage(bool State)
+    public void SetPassage(bool State)
     {
         if(!State)
         {
-            SpriteRend.sprite = DisableSprite ;
-            PassageDisableColl.enabled = true ;
-            PassageEnableColl.enabled = false ;
+            if(ObstacleDisableGroup != null || ObstacleEnableGroup != null)
+            {
+                if(ObstacleDisableGroup != null) ObstacleDisableGroup.SetActive(true);
+                if(ObstacleEnableGroup != null) ObstacleEnableGroup.SetActive(false);
+            } else {
+                SpriteRend.sprite = DisableSprite ;                
+            }
+            if(PassageDisableColl != null) PassageDisableColl.enabled = true ;
+            if(PassageEnableColl != null) PassageEnableColl.enabled = false ;
         } else {
-            SpriteRend.sprite = EnableSprite ;
-            PassageDisableColl.enabled = false ;
-            PassageEnableColl.enabled = true ;
+            if(ObstacleDisableGroup != null || ObstacleEnableGroup != null)
+            {
+                if(ObstacleDisableGroup != null) ObstacleDisableGroup.SetActive(false);
+                if(ObstacleEnableGroup != null) ObstacleEnableGroup.SetActive(true);
+            } else {
+                SpriteRend.sprite = EnableSprite ;                
+            }
+
+            if(PassageDisableColl != null) PassageDisableColl.enabled = false ;
+            if(PassageEnableColl != null) PassageEnableColl.enabled = true ;
         }
     }
 }
