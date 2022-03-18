@@ -98,7 +98,6 @@ public class QuestInMenu : MonoBehaviour
             {
                 ClosedArrow();  
                 tagged1.SetActive(false);               
-                Debug.Log("Closed 1");
             }           
         }
         
@@ -108,7 +107,6 @@ public class QuestInMenu : MonoBehaviour
             {
                 ClosedArrow();
                 tagged2.SetActive(false);
-                Debug.Log("Closed 2");
             }
         }
             
@@ -118,7 +116,6 @@ public class QuestInMenu : MonoBehaviour
             {
                 ClosedArrow();
                 tagged3.SetActive(false);
-                Debug.Log("Closed 3");
             }
         }
 
