@@ -32,6 +32,7 @@ public class RhythmManager : MonoBehaviour
 
     public GameObject resultScreen;
     public GameObject dad;
+    public GameObject player;
 
     
 
@@ -42,7 +43,7 @@ public class RhythmManager : MonoBehaviour
         scoreText.text = "Score: 0";
         currentMultiplier = 1;
         totalNotes = GameObject.Find("NoteHolder").GetComponent<NotesSpawner>().notesCounter;
-        Invoke("LoadScene", 25f);
+        Invoke("DestroyGame", 22f);
         resultScreen.SetActive(false);      
     }
 
@@ -59,11 +60,14 @@ public class RhythmManager : MonoBehaviour
         rankText = GameObject.Find("Rank Value").GetComponent<TextMeshProUGUI>();
         finalScoreText = GameObject.Find("Final Score Value").GetComponent<TextMeshProUGUI>();
         resultScreen = GameObject.Find("Results");
-        
+        dad = GameObject.Find("RythmoGamos");
+        player = GameObject.Find("Player");
+
     }
 
     void DestroyGame()
     {
+        player.GetComponent<PlayerMovement>().EndActivity();
         Destroy(dad);
     }
     // Update is called once per frame
@@ -132,8 +136,8 @@ public class RhythmManager : MonoBehaviour
             missesText.text = "" + missedHits;
 
             float totalHits = normalHits + goodHits + perfectHits;
-            Debug.Log("allez raconte");
-            Debug.Log(totalHits + " = " + normalHits + " + " + goodHits + " + " + perfectHits);
+            //Debug.Log("allez raconte");
+            //Debug.Log(totalHits + " = " + normalHits + " + " + goodHits + " + " + perfectHits);
             totalNotes = GameObject.Find("NoteHolder").GetComponent<NotesSpawner>().notesCounter;
             float percentHit = (totalHits / totalNotes) * 100f ;
 

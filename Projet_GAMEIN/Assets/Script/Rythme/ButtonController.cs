@@ -13,8 +13,6 @@ public class ButtonController : MonoBehaviour
     [SerializeField]
     private Sprite pressedImage;
 
-    [SerializeField]
-    private PlayerActionControls controls;
 
     public InputAction arrow;
 

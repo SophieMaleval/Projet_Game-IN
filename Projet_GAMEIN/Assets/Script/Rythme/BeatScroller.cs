@@ -14,7 +14,7 @@ public class BeatScroller : MonoBehaviour
         notesSpawner = GameObject.Find("NoteHolder").GetComponent<NotesSpawner>();
     }
 
-    private void Start()
+    private void OnEnable()
     {
        StartCoroutine(GuyterHiro());
        InvokeRepeating("DecreaseTime", 1.0f, 1.0f);
@@ -34,7 +34,7 @@ public class BeatScroller : MonoBehaviour
             yield return null;
         }
         
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(0.5f);
         //notesSpawner.stopProcess = true;
         RhythmManager.instance.Results();        
         Debug.Log("Finito pipo");
