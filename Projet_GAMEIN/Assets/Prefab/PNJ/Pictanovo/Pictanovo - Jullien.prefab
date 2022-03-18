@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 7454713249344840311}
   - component: {fileID: 7454713249344840310}
   - component: {fileID: 8897650619861234399}
+  - component: {fileID: 86995839939074918}
   m_Layer: 0
   m_Name: Pictanovo - Jullien
   m_TagString: Untagged
@@ -163,7 +164,7 @@ MonoBehaviour:
   QuestionandDialogueLunchAnimation: {x: 0, y: 0}
   DialogueLunchPrez: 1
   PrezInfoLunch: {x: 3, y: 2}
-  NewPosPNJAndPlayer: {x: 0, y: 0, z: 0, w: 0}
+  NewPosPNJAndPlayer: {x: 7, y: 5, z: 1.5, w: 4.5}
   InformationQuestEtapeQuestion:
   - {x: 2, y: 20, z: 9, w: 0.1}
   - {x: 2, y: 20, z: 10, w: 0.1}
@@ -193,7 +194,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.4}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
@@ -240,6 +241,32 @@ PolygonCollider2D:
       - {x: 0.20827973, y: -0.27957368}
       - {x: 0.24901879, y: 0.1919589}
       - {x: 0.16614938, y: 0.25110602}
+--- !u!61 &86995839939074918
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7454713249344840315}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -5.6, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 0.38, y: 0.63}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 2.75, y: 2.75}
+  m_EdgeRadius: 0
 --- !u!1 &8215071331028764595
 GameObject:
   m_ObjectHideFlags: 0
