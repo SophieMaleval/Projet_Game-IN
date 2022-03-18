@@ -513,6 +513,189 @@ public class @PlayerActionControls : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""PlayerInRhythm"",
+            ""id"": ""b407a9e0-05ee-4044-a1e3-1b365cdd44e5"",
+            ""actions"": [
+                {
+                    ""name"": ""Up"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""067b202b-52f2-47f4-9b0c-e83badb9e10f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Down"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""7363c206-aec3-4116-bb6c-9e1276feda66"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Left"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""39187dce-a50b-4033-ae77-4389bc766024"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Right"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""cec70e72-ef58-4735-b320-dfe84d82259c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": ""Arrow Movement"",
+                    ""id"": ""68b14686-d46f-4dff-84ec-07f4234fccca"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""Up"",
+                    ""id"": ""8582a098-62fb-4274-b528-2a1f4e76f567"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Down"",
+                    ""id"": ""f66a00da-abde-488f-9959-a251a99a18c8"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Left"",
+                    ""id"": ""9b3e580e-8828-430b-a3d3-2e856557a304"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Right"",
+                    ""id"": ""bf736002-33fd-47ea-ba00-b1d7d8531ba3"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c316d2e1-9706-4375-b802-a10e52d89643"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Up"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""96c0ca07-7a87-4fc5-8805-80f44ec53c90"",
+                    ""path"": ""<Keyboard>/z"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Up"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c54db0d8-e5d7-4670-b52d-573b4f8c1617"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Down"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""25c25a0b-fc41-48a9-bb8f-df472490b821"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Down"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""28574db4-9e07-4f2b-901b-5c96132e238a"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Left"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""268eb63a-3fd4-40c2-a0c4-ed5708aedda7"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Left"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""268e8a2d-ca31-4e77-a1eb-ee790e5e4381"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Right"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""81c33880-d3a7-4a32-a4e1-d231ee55df3d"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Right"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -533,6 +716,12 @@ public class @PlayerActionControls : IInputActionCollection, IDisposable
         m_PlayerInDialogue_SelectPreviousQuestion = m_PlayerInDialogue.FindAction("SelectPreviousQuestion", throwIfNotFound: true);
         m_PlayerInDialogue_SelectNextQuestion = m_PlayerInDialogue.FindAction("SelectNextQuestion", throwIfNotFound: true);
         m_PlayerInDialogue_ValidateChoice = m_PlayerInDialogue.FindAction("ValidateChoice", throwIfNotFound: true);
+        // PlayerInRhythm
+        m_PlayerInRhythm = asset.FindActionMap("PlayerInRhythm", throwIfNotFound: true);
+        m_PlayerInRhythm_Up = m_PlayerInRhythm.FindAction("Up", throwIfNotFound: true);
+        m_PlayerInRhythm_Down = m_PlayerInRhythm.FindAction("Down", throwIfNotFound: true);
+        m_PlayerInRhythm_Left = m_PlayerInRhythm.FindAction("Left", throwIfNotFound: true);
+        m_PlayerInRhythm_Right = m_PlayerInRhythm.FindAction("Right", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -733,6 +922,63 @@ public class @PlayerActionControls : IInputActionCollection, IDisposable
         }
     }
     public PlayerInDialogueActions @PlayerInDialogue => new PlayerInDialogueActions(this);
+
+    // PlayerInRhythm
+    private readonly InputActionMap m_PlayerInRhythm;
+    private IPlayerInRhythmActions m_PlayerInRhythmActionsCallbackInterface;
+    private readonly InputAction m_PlayerInRhythm_Up;
+    private readonly InputAction m_PlayerInRhythm_Down;
+    private readonly InputAction m_PlayerInRhythm_Left;
+    private readonly InputAction m_PlayerInRhythm_Right;
+    public struct PlayerInRhythmActions
+    {
+        private @PlayerActionControls m_Wrapper;
+        public PlayerInRhythmActions(@PlayerActionControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Up => m_Wrapper.m_PlayerInRhythm_Up;
+        public InputAction @Down => m_Wrapper.m_PlayerInRhythm_Down;
+        public InputAction @Left => m_Wrapper.m_PlayerInRhythm_Left;
+        public InputAction @Right => m_Wrapper.m_PlayerInRhythm_Right;
+        public InputActionMap Get() { return m_Wrapper.m_PlayerInRhythm; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(PlayerInRhythmActions set) { return set.Get(); }
+        public void SetCallbacks(IPlayerInRhythmActions instance)
+        {
+            if (m_Wrapper.m_PlayerInRhythmActionsCallbackInterface != null)
+            {
+                @Up.started -= m_Wrapper.m_PlayerInRhythmActionsCallbackInterface.OnUp;
+                @Up.performed -= m_Wrapper.m_PlayerInRhythmActionsCallbackInterface.OnUp;
+                @Up.canceled -= m_Wrapper.m_PlayerInRhythmActionsCallbackInterface.OnUp;
+                @Down.started -= m_Wrapper.m_PlayerInRhythmActionsCallbackInterface.OnDown;
+                @Down.performed -= m_Wrapper.m_PlayerInRhythmActionsCallbackInterface.OnDown;
+                @Down.canceled -= m_Wrapper.m_PlayerInRhythmActionsCallbackInterface.OnDown;
+                @Left.started -= m_Wrapper.m_PlayerInRhythmActionsCallbackInterface.OnLeft;
+                @Left.performed -= m_Wrapper.m_PlayerInRhythmActionsCallbackInterface.OnLeft;
+                @Left.canceled -= m_Wrapper.m_PlayerInRhythmActionsCallbackInterface.OnLeft;
+                @Right.started -= m_Wrapper.m_PlayerInRhythmActionsCallbackInterface.OnRight;
+                @Right.performed -= m_Wrapper.m_PlayerInRhythmActionsCallbackInterface.OnRight;
+                @Right.canceled -= m_Wrapper.m_PlayerInRhythmActionsCallbackInterface.OnRight;
+            }
+            m_Wrapper.m_PlayerInRhythmActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Up.started += instance.OnUp;
+                @Up.performed += instance.OnUp;
+                @Up.canceled += instance.OnUp;
+                @Down.started += instance.OnDown;
+                @Down.performed += instance.OnDown;
+                @Down.canceled += instance.OnDown;
+                @Left.started += instance.OnLeft;
+                @Left.performed += instance.OnLeft;
+                @Left.canceled += instance.OnLeft;
+                @Right.started += instance.OnRight;
+                @Right.performed += instance.OnRight;
+                @Right.canceled += instance.OnRight;
+            }
+        }
+    }
+    public PlayerInRhythmActions @PlayerInRhythm => new PlayerInRhythmActions(this);
     public interface IPlayerInLandActions
     {
         void OnMove(InputAction.CallbackContext context);
@@ -751,5 +997,12 @@ public class @PlayerActionControls : IInputActionCollection, IDisposable
         void OnSelectPreviousQuestion(InputAction.CallbackContext context);
         void OnSelectNextQuestion(InputAction.CallbackContext context);
         void OnValidateChoice(InputAction.CallbackContext context);
+    }
+    public interface IPlayerInRhythmActions
+    {
+        void OnUp(InputAction.CallbackContext context);
+        void OnDown(InputAction.CallbackContext context);
+        void OnLeft(InputAction.CallbackContext context);
+        void OnRight(InputAction.CallbackContext context);
     }
 }
