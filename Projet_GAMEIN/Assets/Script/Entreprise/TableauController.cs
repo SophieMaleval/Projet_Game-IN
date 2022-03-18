@@ -49,12 +49,6 @@ public class TableauController : MonoBehaviour
         }
     }
 
-    string GetLastCharactere(string StringSource, int NumberOfChars)
-    {
-        if(NumberOfChars >= StringSource.Length)
-            return StringSource ;
-        return StringSource.Substring(StringSource.Length - NumberOfChars);
-    }
 
     void Update()
     {

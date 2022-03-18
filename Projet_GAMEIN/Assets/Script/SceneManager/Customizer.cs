@@ -67,6 +67,7 @@ public class Customizer : MonoBehaviour
     [SerializeField] private GameObject DialogueUIPrefab ;
     [SerializeField] private GameObject InventoryUIPrefab ;
     [SerializeField] private GameObject PannelENTUIPrefab ;
+    [SerializeField] private GameObject PannelAnnonceUIPrefab ;
     [SerializeField] private GameObject QCMPanelPrefab ;
     [SerializeField] private GameObject EventSystemPrefab ;
 
@@ -87,7 +88,8 @@ public class Customizer : MonoBehaviour
             GameObject CanvasInstatiate = Instantiate(CanvasPrefab) ;     
             GameObject DialogueUIInstatiate = Instantiate(DialogueUIPrefab) ;     
             GameObject InventoryUIInstatiate = Instantiate(InventoryUIPrefab) ;     
-            GameObject PannelENTUIInstatiate = Instantiate(PannelENTUIPrefab) ;  
+            GameObject PannelENTUIInstatiate = Instantiate(PannelENTUIPrefab) ; 
+            GameObject PannelAnnonceUIInstatiate = Instantiate(PannelAnnonceUIPrefab) ;
             GameObject QCMPanelInstantiate = Instantiate(QCMPanelPrefab) ;   
             GameObject EventSystemInstantiate = Instantiate(EventSystemPrefab) ;
 
@@ -95,17 +97,22 @@ public class Customizer : MonoBehaviour
             DialogueUIInstatiate.transform.SetSiblingIndex(0);
             DialogueUIInstatiate.name = "Dialogue Canvas" ;
 
-            InventoryUIInstatiate.transform.SetParent(CanvasInstatiate.transform);
-            InventoryUIInstatiate.transform.SetSiblingIndex(1);
-            InventoryUIInstatiate.name = "Inventory" ;
-
             PannelENTUIInstatiate.transform.SetParent(CanvasInstatiate.transform);
             PannelENTUIInstatiate.transform.SetSiblingIndex(1);
             PannelENTUIInstatiate.name = "Pannel ENT" ;
 
+            PannelAnnonceUIInstatiate.transform.SetParent(CanvasInstatiate.transform);
+            PannelAnnonceUIInstatiate.transform.SetSiblingIndex(1);
+            PannelAnnonceUIInstatiate.name = "Pannel Annonce" ;
+
+
             QCMPanelInstantiate.transform.SetParent(CanvasInstatiate.transform);
             QCMPanelInstantiate.transform.SetSiblingIndex(3);
             QCMPanelInstantiate.name = "QCM Panel" ;
+
+            InventoryUIInstatiate.transform.SetParent(CanvasInstatiate.transform);
+            InventoryUIInstatiate.transform.SetSiblingIndex(4);
+            InventoryUIInstatiate.name = "Inventory" ;          
 
             GameObject.Find("Player Backpack").GetComponent<CSVReader>().QuestManager = InventoryUIInstatiate.GetComponentInChildren<QuestSys>() ;
             
@@ -115,6 +122,7 @@ public class Customizer : MonoBehaviour
             DontDestroyOnLoad(DialogueUIInstatiate.gameObject);
             DontDestroyOnLoad(InventoryUIInstatiate.gameObject);
             DontDestroyOnLoad(PannelENTUIInstatiate.gameObject);
+            DontDestroyOnLoad(PannelAnnonceUIInstatiate.gameObject);
             DontDestroyOnLoad(QCMPanelInstantiate.gameObject);
             DontDestroyOnLoad(EventSystemInstantiate);
 
@@ -122,6 +130,7 @@ public class Customizer : MonoBehaviour
             PlayerPersonnality.DialogueUIIndestructible = DialogueUIInstatiate ;
             PlayerPersonnality.InventoryUIIndestructible = InventoryUIInstatiate ;
             PlayerPersonnality.PannelENTUIIndestructible = PannelENTUIInstatiate ;
+            PlayerPersonnality.PannelAnnonceUIIndestructible = PannelAnnonceUIInstatiate ;
             PlayerPersonnality.QCMPanelUIIndestructible = QCMPanelInstantiate ;
 
             CanvasInstatiate.SetActive(false) ;
@@ -132,9 +141,13 @@ public class Customizer : MonoBehaviour
             InventoryUIInstatiate.GetComponent<RectTransform>().offsetMax = new Vector2(0, 0) ; // Right & Top
             InventoryUIInstatiate.GetComponent<RectTransform>().localScale = Vector3.one ; 
 
-            PannelENTUIInstatiate.GetComponent<RectTransform>().offsetMin = new Vector2(350f, 25f) ;
-            PannelENTUIInstatiate.GetComponent<RectTransform>().offsetMax = new Vector2(-350f, -25f) ;
+            PannelENTUIInstatiate.GetComponent<RectTransform>().offsetMin = new Vector2(250f, 25f) ;
+            PannelENTUIInstatiate.GetComponent<RectTransform>().offsetMax = new Vector2(-250f, -25f) ;
             PannelENTUIInstatiate.GetComponent<RectTransform>().localScale = Vector3.one ;
+
+            PannelAnnonceUIInstatiate.GetComponent<RectTransform>().offsetMin = new Vector2(350f, 200f) ;
+            PannelAnnonceUIInstatiate.GetComponent<RectTransform>().offsetMax = new Vector2(-350f, -200f) ;
+            PannelAnnonceUIInstatiate.GetComponent<RectTransform>().localScale = Vector3.one ;
 
             QCMPanelInstantiate.GetComponent<RectTransform>().anchoredPosition = new Vector2(0f, -600f);
             QCMPanelInstantiate.GetComponent<RectTransform>().sizeDelta = new Vector2(992f, 415f);
@@ -144,6 +157,8 @@ public class Customizer : MonoBehaviour
             InventoryUIInstatiate.GetComponent<InventoryScript>().PlayerScript = PlayerPersonnality ;   
             InventoryUIInstatiate.GetComponent<InventoryScript>().DialogueCanvas = DialogueUIInstatiate ;
             InventoryUIInstatiate.GetComponent<InventoryScript>().PannelENTCanvas = PannelENTUIInstatiate ;         
+        
+            PlayerPersonnality.FadeAnimation = CanvasInstatiate.transform.GetChild(CanvasInstatiate.transform.childCount-1).GetComponent<Image>();
         } else {
             PlayerApparance = GameObject.Find("Player").GetComponent<PlayerMovement>() ; 
             PlayerApparance.enabled = false ;                 
@@ -475,6 +490,7 @@ public class Customizer : MonoBehaviour
         
         PlayerPersonnality.CanvasIndestrucitble.SetActive(true);
         PlayerPersonnality.PannelENTUIIndestructible.SetActive(false);
+        PlayerPersonnality.PannelAnnonceUIIndestructible.SetActive(false);
         
         PlayerPersonnality.PreviousSceneName = SceneManager.GetActiveScene().name;
         yield return new WaitForSeconds(0.5f);

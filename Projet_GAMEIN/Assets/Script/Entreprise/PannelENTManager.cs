@@ -18,95 +18,135 @@ public class UIPanelENTContainer
     public string DescriptionAvantDernièreProd ;
 }
 
+[System.Serializable]
+public class ContenuArticleActivity
+{
+    public TextMeshProUGUI TitleActivité ;
+    public Image IllustrationActivité ;
+    public TextMeshProUGUI DescriptionAtivité ;
+}
+
 public class PannelENTManager : MonoBehaviour
 {
     [Header ("Gestionnaire des Pages")]
     [SerializeField] private RectTransform FeuilleEnt ;
+    [SerializeField] private RectTransform FeuilleRéseauxSociaux ;
     [SerializeField] private RectTransform FeuilleContact ;
-    [SerializeField] private RectTransform FeuilleProductions ;
+    [SerializeField] private List<RectTransform> FeuilleActi ;
     [SerializeField] private List<RectTransform> FeuilleDecos ;
-    public int Disposition ;
+    public List<Vector3> DisplayTypeV1 ;
+    public List<Vector3> DisplayTypeV2 ;
+    public List<Vector3> DisplayTypeV3 ;
 
 
-    [Header ("UI Text")]
+
+    [Header ("Information ENT")]
     [SerializeField] private TextMeshProUGUI NomEntreprise ;
-
+    [SerializeField] private List<Image> LogoFondPage ;    
     [SerializeField] private TextMeshProUGUI TitleQuiSommesNous ;
     [SerializeField] private TextMeshProUGUI DesciptionEntreprise ;
+    [SerializeField] private Image IllustrationDescriptionENT ;    
     [SerializeField] private TextMeshProUGUI TitleValeurs ;
     [SerializeField] private List<GameObject> ListValeurs ;
-    [SerializeField] private TextMeshProUGUI DescriptionValeur ;
 
-    [SerializeField] private TextMeshProUGUI Contact ;
+
+    [Header ("Information Contact")]
+    [SerializeField] private TextMeshProUGUI OuNousTrouvez ;
+    [SerializeField] private TextMeshProUGUI Localisation ;   
     [SerializeField] private TextMeshProUGUI NoteSiteWebTitle ;
-    [SerializeField] private TextMeshProUGUI NoteSiteWebURLDisplay ;
+    [SerializeField] private TextMeshProUGUI NoteSiteWebURLDisplay ;    
+    [Space]
+    [SerializeField] private GameObject ButtonFacebook ;
+    [SerializeField] private GameObject ButtonInstagram ;
+    [SerializeField] private GameObject ButtonTwitter ;
+    [SerializeField] private GameObject ButtonLinkedIn ;
+    [SerializeField] private GameObject ButtonDiscord ;
+    [SerializeField] private GameObject ButtonSteam ;
+    [SerializeField] private GameObject ButtonTwitch ;
+    [SerializeField] private GameObject ButtonYoutube ;
+    [Space]
+    [SerializeField] private TextMeshProUGUI Contact ;
+    [SerializeField] private GameObject PrefabNameCréateur ;
 
-    [SerializeField] private TextMeshProUGUI TitleNosProduction ;
-    [SerializeField] private TextMeshProUGUI TitleLastProduction ;
-    [SerializeField] private TextMeshProUGUI DescriptionLastProduction ;
-    [SerializeField] private TextMeshProUGUI TitlePreLastProduction ;
-    [SerializeField] private TextMeshProUGUI DescriptionPreLastProduction ;
 
-    [Header ("UI Illustration")]
-    [SerializeField] private List<Image> LogoFondPage ;
-    [SerializeField] private Image IllustrationDescriptionENT ;
+    [Header ("Activité Entreprise")]
+    [SerializeField] private List<ContenuArticleActivity> ListContenuPage = new List<ContenuArticleActivity>();
 
-    [SerializeField] private Image IllustrationDescriptionDernierProjet ;
-    [SerializeField] private Image IllustrationDescriptionAvantDernierProjet ;
 
-    [Header ("List de Données")]
-    [HideInInspector] public PannelENTContainer InformationENT ;
+    [Header ("List de Données")]/*
+    [HideInInspector]*/ public PannelENTContainer InformationENT ;
 
     [HideInInspector] public List<string> UIPanelENTFR ;
     [HideInInspector] public List<string> UIPanelENTEN ;
     private List<string> UIPanelENT ;
 
-    public UIPanelENTContainer InformationPannelENTFR ;
-    public UIPanelENTContainer InformationPannelENTEN ;
+    [HideInInspector] public UIPanelENTContainer InformationPannelENTFR ;
+    [HideInInspector] public UIPanelENTContainer InformationPannelENTEN ;
     private UIPanelENTContainer InformationPannelENT ;
+    private bool NewPanel = false ;
 
     void Start() 
     {
-        SetPrincipalInformation();
         UIPanelENTFR = GameObject.Find("Player Backpack").GetComponent<CSVReader>().UIText.PanelENTFR ;
         UIPanelENTEN = GameObject.Find("Player Backpack").GetComponent<CSVReader>().UIText.PanelENTEN ;
+    }
 
+    public void StartShow()
+    {     
+        SetPrincipalInformation();        
+        SetButtonURL();
+        SetListPersonneJoignable() ;
+        SetActivity();  
+
+        NewPanel = true ;  
     }
 
 
     void SetDispositionPage(int Disposition)
     {
-        if(Disposition == 0)
-        {
-            FeuilleEnt = SetPos(-296f, 84f, -2.5f) ;
-            FeuilleContact = SetPos(29.4f, -203.1f, 6.633f) ;
-            FeuilleProductions = SetPos(292f, 79f, 2f) ;
-
-            FeuilleDecos[0] = SetPos(-300f, -127f, -1) ;
-            FeuilleDecos[1] = SetPos(-9f, 5f, -6.5f) ;
-            FeuilleDecos[2] = SetPos(320f, -108f, -1.5f) ;
-        }
-
         if(Disposition == 1)
         {
-            FeuilleEnt = SetPos(-253.1f, 115.5f, -2.41f) ;
-            FeuilleContact = SetPos(161f, 150f, 3.2f) ;
-            FeuilleProductions = SetPos(168.2f, -120.8f, -4.3f) ;
+            SetPos(FeuilleEnt, DisplayTypeV1[0]) ;
+            SetPos(FeuilleRéseauxSociaux, DisplayTypeV1[1]) ;
+            SetPos(FeuilleContact, DisplayTypeV1[2]) ;
 
-            FeuilleDecos[0] = SetPos(-305f, -100f, 9.2f) ;
-            FeuilleDecos[1] = SetPos(-36f, -39f, -6.1f) ;
-            FeuilleDecos[2] = SetPos(270f, -144.6f, -5.7f) ;
+            SetPos(FeuilleActi[0], DisplayTypeV1[3]) ;
+            SetPos(FeuilleActi[1], DisplayTypeV1[4]) ;
+            SetPos(FeuilleActi[2], DisplayTypeV1[5]) ;
+        }
+
+        if(Disposition == 2)
+        {
+            SetPos(FeuilleEnt, DisplayTypeV2[0]) ;
+            SetPos(FeuilleRéseauxSociaux, DisplayTypeV2[1]) ;
+            SetPos(FeuilleContact, DisplayTypeV2[2]) ;
+
+            SetPos(FeuilleActi[0], DisplayTypeV2[3]) ;
+            SetPos(FeuilleActi[1], DisplayTypeV2[4]) ;
+            SetPos(FeuilleActi[2], DisplayTypeV2[5]) ;
+        }
+
+        if(Disposition == 3)
+        {
+            SetPos(FeuilleEnt, DisplayTypeV3[0]) ;
+            SetPos(FeuilleRéseauxSociaux, DisplayTypeV3[1]) ;
+            SetPos(FeuilleContact, DisplayTypeV3[2]) ;
+
+            SetPos(FeuilleActi[0], DisplayTypeV3[3]) ;
+            SetPos(FeuilleActi[1], DisplayTypeV3[4]) ;
+            SetPos(FeuilleActi[2], DisplayTypeV3[5]) ;
         }
     }
 
-    RectTransform SetPos(float PosX, float PosY, float RotationZ)
+    void SetPos(RectTransform RectTModify , Vector3 DataPos)
     {
-        RectTransform NewPos = new RectTransform() ;
+        float PosX = DataPos.x ;
+        float PosY = DataPos.y ;
+        float RotationZ = DataPos.z ;
         
-        NewPos.anchoredPosition = new Vector2(PosX, PosY);
-        NewPos.eulerAngles = new Vector3(0, 0, RotationZ);
+        RectTModify.anchoredPosition = new Vector2(PosX, PosY);
+        RectTModify.eulerAngles = new Vector3(0, 0, RotationZ);
 
-        return NewPos ;
     }
 
     void Update()
@@ -117,6 +157,7 @@ public class PannelENTManager : MonoBehaviour
             InformationPannelENT = InformationPannelENTFR ;
 
             SetUIText();
+            SetActivity();
 
             ENTInformation();
             SetTextPannel();            
@@ -128,9 +169,23 @@ public class PannelENTManager : MonoBehaviour
             InformationPannelENT = InformationPannelENTEN ;
 
             SetUIText();
+            SetActivity();
 
             ENTInformation();
             SetTextPannel();            
+        }
+
+        if(NewPanel)
+        {
+            NewPanel = false ;
+            SetPrincipalInformation();        
+            SetButtonURL();
+        
+            SetUIText();
+            SetActivity();
+
+            ENTInformation();
+            SetTextPannel();  
         }
     }
     
@@ -138,21 +193,49 @@ public class PannelENTManager : MonoBehaviour
     {
         TitleQuiSommesNous.text = UIPanelENT[0] ;
         TitleValeurs.text = UIPanelENT[1] ;
-        Contact.text = UIPanelENT[2] ;
+        OuNousTrouvez.text = UIPanelENT[2] ;
         NoteSiteWebTitle.text = UIPanelENT[3] ;
-        TitleNosProduction.text = UIPanelENT[4] ;
-
+        Localisation.text = UIPanelENT[4] + " " + InformationENT.Localisation ;
+        Contact.text = UIPanelENT[6] ;
     }
 
     void ENTInformation()
     {
         DesciptionEntreprise.text = InformationPannelENT.DescriptionEntreprise ;
-        DescriptionValeur.text = InformationPannelENT.Valeurs ;
 
-        TitleLastProduction.text = InformationPannelENT.TitreDernièreProd ;
-        DescriptionLastProduction.text = InformationPannelENT.DescriptionDernièreProd ;
-        TitlePreLastProduction.text = InformationPannelENT.TitreAvantDernièreProd ;
-        DescriptionPreLastProduction.text = InformationPannelENT.DescriptionAvantDernièreProd ;
+    }
+
+    void SetActivity()
+    {
+        SetActivityText(0);
+        SetActivityText(1);
+        SetActivityText(2);
+
+        if(FeuilleActi[0].gameObject.activeSelf && FeuilleActi[1].gameObject.activeSelf && FeuilleActi[2].gameObject.activeSelf) SetDispositionPage(1) ;
+        if(FeuilleActi[0].gameObject.activeSelf && FeuilleActi[1].gameObject.activeSelf && !FeuilleActi[2].gameObject.activeSelf) SetDispositionPage(2) ;
+        if(FeuilleActi[0].gameObject.activeSelf && !FeuilleActi[1].gameObject.activeSelf && !FeuilleActi[2].gameObject.activeSelf) SetDispositionPage(3) ;
+    }
+
+    void SetActivityText(int ActivityInt)
+    {
+        if(InformationENT.ListActivité.Count > ActivityInt)
+        {
+            if(InformationENT.ListActivité[ActivityInt].NameActivité != "")
+            {
+                FeuilleActi[ActivityInt].gameObject.SetActive(true);
+                ListContenuPage[ActivityInt].TitleActivité.text = InformationENT.ListActivité[ActivityInt].NameActivité ;
+                ListContenuPage[ActivityInt].IllustrationActivité.sprite = InformationENT.ListActivité[ActivityInt].IllustrationActivité ;
+            
+                if(PlayerPrefs.GetInt("Langue") == 0) ListContenuPage[ActivityInt].DescriptionAtivité.text = InformationENT.ListActivité[ActivityInt].TextActivtéFR ;            
+                if(PlayerPrefs.GetInt("Langue") == 1) ListContenuPage[ActivityInt].DescriptionAtivité.text = InformationENT.ListActivité[ActivityInt].TextActivtéEN ;            
+        
+                FeuilleActi[ActivityInt].sizeDelta = new Vector2(FeuilleActi[ActivityInt].sizeDelta.x,  (ListContenuPage[ActivityInt].TitleActivité.rectTransform.sizeDelta.y + ListContenuPage[ActivityInt].IllustrationActivité.rectTransform.sizeDelta.y + 90f + InformationENT.ListActivité[ActivityInt].HeightArticle));                
+            } else {
+                FeuilleActi[ActivityInt].gameObject.SetActive(false);
+            }
+        } else {
+            FeuilleActi[ActivityInt].gameObject.SetActive(false);
+        }        
     }
 
     void SetPrincipalInformation()
@@ -166,10 +249,6 @@ public class PannelENTManager : MonoBehaviour
         }
 
         IllustrationDescriptionENT.sprite = InformationENT.IllustrationDescriptionENT ;
-        IllustrationDescriptionDernierProjet.sprite = InformationENT.IllustrationDescriptionDernierProjet ;
-
-
-        if(TitlePreLastProduction.text != "") IllustrationDescriptionAvantDernierProjet.sprite = InformationENT.IllustrationDescriptionAvantDernierProjet ;
     }
 
     void SetTextPannel()
@@ -213,6 +292,67 @@ public class PannelENTManager : MonoBehaviour
 
 
 
+    void SetButtonURL()
+    {
+        float HeightFeuilleContact = 210f ;
+        float HeightLineIcon = 50f ;
+
+        if(InformationENT.URLSiteWeb == "")
+        {
+           NoteSiteWebURLDisplay.gameObject.SetActive(false) ; 
+           NoteSiteWebTitle.gameObject.SetActive(false);
+        } else {
+           NoteSiteWebURLDisplay.gameObject.SetActive(true) ; 
+           NoteSiteWebTitle.gameObject.SetActive(true);
+        }
+        
+        ShowOrHideButton(InformationENT.URLFacebook, ButtonFacebook.gameObject) ;
+        ShowOrHideButton(InformationENT.URLInstagram, ButtonInstagram.gameObject) ;
+        ShowOrHideButton(InformationENT.URLTwitter, ButtonTwitter.gameObject) ;
+        ShowOrHideButton(InformationENT.URLLinkedIn, ButtonLinkedIn.gameObject) ;
+        
+        ShowOrHideButton(InformationENT.URLDiscord, ButtonDiscord.gameObject) ;
+        ShowOrHideButton(InformationENT.URLSteam, ButtonSteam.gameObject) ;
+        ShowOrHideButton(InformationENT.URLTwitch, ButtonTwitch.gameObject) ;
+        ShowOrHideButton(InformationENT.URLYoutube, ButtonYoutube.gameObject) ;
+
+
+        if(!ButtonDiscord.gameObject.activeSelf && !ButtonSteam.gameObject.activeSelf && !ButtonTwitch.gameObject.activeSelf && !ButtonYoutube.gameObject.activeSelf)
+        {
+            FeuilleRéseauxSociaux.sizeDelta = new Vector2(FeuilleRéseauxSociaux.sizeDelta.x, HeightFeuilleContact - HeightLineIcon) ;
+        }
+    }
+    void ShowOrHideButton(string TextRef, GameObject ButtonGameObject)
+    {
+        if(TextRef == "")
+        {
+            ButtonGameObject.SetActive(false) ;
+        } else {
+            ButtonGameObject.SetActive(true) ;
+        }
+    }
+
+    void SetListPersonneJoignable()
+    {
+        if(FeuilleContact.GetChild(1).childCount > 0)
+        {
+            for (int CPj = 0; CPj < FeuilleContact.GetChild(1).childCount; CPj++)
+            {
+                Destroy(FeuilleContact.GetChild(1).transform.GetChild(CPj).transform.gameObject) ; 
+            }            
+        }
+
+
+        for (int Lj = 0; Lj < InformationENT.PersonneJoignable.Count; Lj++)
+        {
+            GameObject NameInstantiate = Instantiate(PrefabNameCréateur, FeuilleContact.GetChild(1).transform);
+            NameInstantiate.transform.SetParent(FeuilleContact.GetChild(1).transform);
+            NameInstantiate.GetComponent<TextMeshProUGUI>().text = InformationENT.PersonneJoignable[Lj];
+        }
+
+
+        FeuilleContact.sizeDelta = new Vector2(FeuilleContact.sizeDelta.x, (80f + 20f * InformationENT.PersonneJoignable.Count)) ;
+    }
 
 
 
@@ -220,17 +360,78 @@ public class PannelENTManager : MonoBehaviour
     {
         if(gameObject.activeSelf == false)
         {
+
             gameObject.SetActive(!gameObject.activeSelf);
             GameObject.Find("Player").GetComponent<PlayerMovement>().StartActivity();
+            StartShow();            
         } else {
             gameObject.SetActive(!gameObject.activeSelf);
             GameObject.Find("Player").GetComponent<PlayerMovement>().EndActivity(); 
+            NewPanel = false ;
         }
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     public void OpenWebSite()
     {
-        if(InformationENT.URLSiteWeb != "")
-            Application.ExternalEval("window.open('" + InformationENT.URLSiteWeb + "', '_blank')");
+        if(InformationENT.URLSiteWeb != "") OpenURLLink(InformationENT.URLSiteWeb) ;
+    }
+
+    public void OpenFacebook()
+    {
+        if(InformationENT.URLFacebook != "") OpenURLLink(InformationENT.URLFacebook) ;
+    }
+
+    public void OpenInstagram()
+    {
+        if(InformationENT.URLInstagram != "") OpenURLLink(InformationENT.URLInstagram) ;
+    }
+
+    public void OpenTwitter()
+    {
+        if(InformationENT.URLTwitter != "") OpenURLLink(InformationENT.URLTwitter) ;
+    }
+
+    public void OpenLinkedIn()
+    {
+        if(InformationENT.URLLinkedIn != "") OpenURLLink(InformationENT.URLLinkedIn) ;
+    }
+
+    public void OpenDiscord()
+    {
+        if(InformationENT.URLDiscord != "") OpenURLLink(InformationENT.URLDiscord) ;
+    }
+
+    public void OpenSteam()
+    {
+        if(InformationENT.URLSteam != "") OpenURLLink(InformationENT.URLSteam) ;
+    }
+
+    public void OpenTwitch()
+    {
+        if(InformationENT.URLTwitch != "") OpenURLLink(InformationENT.URLTwitch) ;
+    }
+
+    public void OpenYoutube()
+    {
+        if(InformationENT.URLYoutube != "") OpenURLLink(InformationENT.URLYoutube) ;
+    }
+
+    public void OpenURLLink(string URLLink)
+    {
+        Application.ExternalEval("window.open('" + URLLink + "', '_blank')");      
     }
 }

@@ -149,22 +149,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fe6f3ea6c3125d459b5ede804695985, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Entrerpise: Game In
-  NamePNJ: Laurent Peroy
+  Entrerpise: 
+  NamePNJ: 
   NamePNJDisplay: 
-  MultiplePNJinENT: 0
   PNJInENT: 0
   TextDialogue: {fileID: 0}
   DialogueCanvasBox: {fileID: 0}
   ThisQuestionLunchReflexion: 0
+  EnigmeQCM: 0
   PlayerAskQuestQuestion: 0
+  DialogueWithFadeAnimation: 0
+  QuestionandDialogueLunchAnimation: {x: 0, y: 0}
+  DialogueLunchPrez: 0
+  PrezInfoLunch: {x: 0, y: 0}
+  PrezAppreciation: {x: 0, y: 0, z: 0, w: 0}
+  NewPosPNJAndPlayer: {x: 0, y: 0, z: 0, w: 0}
   InformationQuestEtapeQuestion: []
-  Question3IntDisplay: 0
   DiscussionWithQuestion: 1
-  Answer:
-  - AnswerForQuestion: 000000000100000002000000030000000400000005000000
-  - AnswerForQuestion: 0600000007000000
-  - AnswerForQuestion: 08000000090000000a000000
+  Answer: []
 --- !u!61 &7454713249344840310
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -204,7 +206,7 @@ PolygonCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.05, y: 0.05}
+  m_Offset: {x: 0, y: 0.5}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}

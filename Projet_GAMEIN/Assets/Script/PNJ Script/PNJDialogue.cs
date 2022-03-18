@@ -30,7 +30,19 @@ public class PNJDialogue : MonoBehaviour
   
 
     public bool ThisQuestionLunchReflexion = false ;
+    public int EnigmeQCM = 0 ;
     public bool PlayerAskQuestQuestion = false ;
+    
+    [Space]
+    public bool DialogueWithFadeAnimation = false ;
+    public Vector2 QuestionandDialogueLunchAnimation ;
+    private bool QCMPannelAsBeOpen = false ;
+    [Space]
+    public bool DialogueLunchPrez = false ;
+    public Vector2 PrezInfoLunch ;
+    [Space]
+    public Vector4 NewPosPNJAndPlayer ;   
+    private Vector4 LastPosPNJAndPlayer ;
 
     private DialogueContainer DialoguePNJ_FR ;
     private DialogueContainer DialoguePNJ_EN ;
@@ -181,7 +193,28 @@ public class PNJDialogue : MonoBehaviour
         if(PlayerScript.gameObject.transform.position.x < transform.position.x) PlayerScript.InputSpritePos(false);
         if(PlayerScript.gameObject.transform.position.x > transform.position.x) PlayerScript.InputSpritePos(true);
 
+        if(PlayerScript.InAnimationFade)
+        {
+            if(PlayerScript.FadeMake)
+            {
+                if(DialogueLunchPrez)
+                {
+                    if(!QCMPannelAsBeOpen)
+                    {
+                        if(NewPosPNJAndPlayer != Vector4.zero) MovePNJAndPlayer(NewPosPNJAndPlayer);  
+                        OpenQCMPanel();                                              
+                    } else {
+                        if(NewPosPNJAndPlayer != Vector4.zero) MovePNJAndPlayer(LastPosPNJAndPlayer);                        
+                        QCMPresentationClose() ;
+                    } 
+                } else {
+                    if(NewPosPNJAndPlayer != Vector4.zero) MovePNJAndPlayer(NewPosPNJAndPlayer);
+                    DialogueCanvasBox.StateDiscussion();
+                }
 
+                PlayerScript.LunchFadeOut();        
+            }  
+        }
         
 
 
@@ -198,13 +231,28 @@ public class PNJDialogue : MonoBehaviour
 
                 if(!DialogueCanvasBox.WeAreInChoice)
                 {
-                    DialogueCanvasBox.StateDiscussion(); 
+                    if(!PlayerScript.InAnimationFade) DialogueCanvasBox.StateDiscussion(); 
                 } else {
                     DialogueCanvasBox.ValidateButton();
                 }  
             } 
         } 
+    }
 
+    public void TellPlayerLunchFade()
+    {
+        PlayerScript.LunchAnimationFadeIn() ;
+        QCMPannelAsBeOpen = true ;
+    }
+
+    public void QCMPresentationClose()
+    {
+        DialogueCanvasBox.gameObject.SetActive(true);  
+
+//        DialogueCanvasBox.StateDiscussion();
+        DialogueCanvasBox.ShowDialogueChoice(true);
+        if(PlayerScript.QCMPanelUIIndestructible.GetComponent<QCMManager>().GetSliderPrezValue() >= 0.5f) DialogueCanvasBox.ButtonChoice(10); 
+        else DialogueCanvasBox.ButtonChoice(9) ;
     }
 
     private void FixedUpdate() 
@@ -228,6 +276,7 @@ public class PNJDialogue : MonoBehaviour
         PlayerScript.PlayerAsInterract = false ;
         PlayerDialogueManager.PlayerAsRead = false ;
         PlayerScript.InDiscussion = true ;
+        QCMPannelAsBeOpen = false ;
 
         PNJTalkAnimation(true) ;
 
@@ -298,10 +347,32 @@ public class PNJDialogue : MonoBehaviour
         StartCoroutine(WaitAppartéFinish());
     }
 
+    public void OpenQCMPanel()
+    {
+        PlayerScript.TimeLineManager.gameObject.SetActive(true);
+        PlayerScript.TimeLineManager.Toggle();
+
+        PlayerScript.QCMPanelUIIndestructible.GetComponent<QCMManager>().CurrentEnigme = EnigmeQCM ; 
+        PlayerScript.QCMPanelUIIndestructible.SetActive(true) ;
+        PlayerScript.QCMPanelUIIndestructible.GetComponent<QCMManager>().QCMIsPrez(true) ;      
+        PlayerScript.QCMPanelUIIndestructible.GetComponent<QCMManager>().PNJCurrent = this ;
+        DialogueCanvasBox.gameObject.SetActive(false);  
+    }
+
     IEnumerator WaitAppartéFinish()
     {
         yield return new WaitForSeconds(0.5f);
+        PlayerScript.QCMPanelUIIndestructible.GetComponent<QCMManager>().CurrentEnigme = EnigmeQCM ; 
         PlayerScript.QCMPanelUIIndestructible.SetActive(true);
+    }
+
+
+    void MovePNJAndPlayer(Vector4 NewPoss)
+    {
+        LastPosPNJAndPlayer = new Vector4(transform.position.x, transform.position.y, PlayerScript.transform.position.x, PlayerScript.transform.position.y) ;
+
+        transform.position = new Vector2(NewPoss.x, NewPoss.y);
+        PlayerScript.transform.position = new Vector2(NewPoss.z, NewPoss.w);
     }
 
 }

@@ -8,6 +8,8 @@ using TMPro;
 
 public class QCMManager : MonoBehaviour
 {
+    [SerializeField] private QCMPresentationManager QCMPresentation ;
+
     [SerializeField] private RectTransform FondQCM ;
     [SerializeField] private RectTransform ContourQCM ;
 
@@ -21,9 +23,10 @@ public class QCMManager : MonoBehaviour
     private bool MouseIsHover ;
     public int CurrentChoice ;
     private int CurrentQuestion = 0 ;
-    private int CurrentEnigme = 1 ;
+    public int CurrentEnigme = 1 ;
 
     private GameObject PlayerText ;
+    [HideInInspector] public PNJDialogue PNJCurrent ;
 
     [Header ("QCM Text")]
     private QCMContainer QCMContaine = new QCMContainer() ;
@@ -65,7 +68,6 @@ public class QCMManager : MonoBehaviour
         PlayerText.GetComponent<PlayerDialogue>().DialogueStart();
 
         QCMContaine = PlayerText.GetComponent<CSVReader>().QCMCont ;
-
     }
 
 
@@ -76,6 +78,12 @@ public class QCMManager : MonoBehaviour
             TextQCMFR = QCMContaine.QCMEnigmeFR1 ;
             TextQCMEN = QCMContaine.QCMEnigmeEN1 ;            
         }    
+
+        if(CurrentEnigme == 2)
+        {
+            TextQCMFR = QCMContaine.QCMPresFR1 ;
+            TextQCMEN = QCMContaine.QCMPresEN1 ;            
+        }   
 
         if(PlayerPrefs.GetInt("Langue") == 0 && TextQCM != TextQCMFR)    TextQCM = TextQCMFR ;
         if(PlayerPrefs.GetInt("Langue") == 1 && TextQCM != TextQCMEN)    TextQCM = TextQCMFR ;
@@ -141,35 +149,61 @@ public class QCMManager : MonoBehaviour
 
     public void SubmitAnswer(int NumAnswer)
     {
-        if(NumAnswer != TextQCM[CurrentQuestion].NuméroRéponse)
+        if(!QCMPresentation.enabled)
         {
-            Choices[NumAnswer - 1].GetComponent<Image>().color = WrongColor ;
-            Choices[NumAnswer - 1].transform.GetChild(0).GetComponent<Image>().color = WrongColor ;
-            Choices[NumAnswer - 1].transform.GetChild(1).GetComponent<TextMeshProUGUI>().fontStyle = FontStyles.Strikethrough;
+            if(NumAnswer != TextQCM[CurrentQuestion].NuméroRéponse)
+            {
+                Choices[NumAnswer - 1].GetComponent<Image>().color = WrongColor ;
+                Choices[NumAnswer - 1].transform.GetChild(0).GetComponent<Image>().color = WrongColor ;
+                Choices[NumAnswer - 1].transform.GetChild(1).GetComponent<TextMeshProUGUI>().fontStyle = FontStyles.Strikethrough;
+            } else {
+                Choices[NumAnswer - 1].GetComponent<Image>().color = GoodColor ;
+                Choices[NumAnswer - 1].transform.GetChild(0).GetComponent<Image>().color = GoodColor ;
+                StartCoroutine(WaitAndShowNewQuestion(0.25f));
+            }            
         } else {
-            Choices[NumAnswer - 1].GetComponent<Image>().color = GoodColor ;
-            Choices[NumAnswer - 1].transform.GetChild(0).GetComponent<Image>().color = GoodColor ;
-            StartCoroutine(WaitAndShowNewQuestion());
+            if(NumAnswer != TextQCM[CurrentQuestion].NuméroRéponse)
+            {
+                QCMPresentation.AddValueSlider(false);
+            } else {
+                QCMPresentation.AddValueSlider(true);
+            }  
+            StartCoroutine(WaitAndShowNewQuestion(0));            
         }
+
     }
 
-    IEnumerator WaitAndShowNewQuestion()
+    IEnumerator WaitAndShowNewQuestion(float WaitValue)
     {
 
         if(CurrentQuestion < TextQCM.Count - 1)
         {
-            yield return new WaitForSeconds(0.25f);            
+            yield return new WaitForSeconds(WaitValue);            
             CurrentQuestion ++ ;
             SetChoiceDisp();
         } else {
             PlayerText.GetComponentInParent<PlayerScript>().TimeLineManager.Toggle();
-            yield return new WaitForSeconds(0.5f);   
+            yield return new WaitForSeconds(WaitValue * 2);   
+            CloseQCMManager();
+        }
+    }
+
+    void CloseQCMManager()
+    {
+        if(PNJCurrent == null)
+        {
             GameObject.Find("Quest Dialogue Manager").GetComponent<TalkQuest>().TalkedTo();   
             GameObject.Find("Player").GetComponent<PlayerMovement>().enabled = true ;
             PlayerText.GetComponentInParent<PlayerMovement>().EndActivity();
-            gameObject.SetActive(false);
+        } else {
+            GameObject.Find("Player").GetComponent<PlayerMovement>().enabled = true ;
+            PlayerText.GetComponentInParent<PlayerMovement>().StartActivity();
+
+            PNJCurrent.TellPlayerLunchFade();
         }
 
+        PNJCurrent = null ;        
+        gameObject.SetActive(false);        
     }
 
 
@@ -210,5 +244,15 @@ public class QCMManager : MonoBehaviour
         PlayerText.GetComponent<PlayerDialogue>().PlayerAsRead = false ;
 
         SetButtonDisponnible()[CurrentChoice].onClick.Invoke();
+    }
+
+    public void QCMIsPrez(bool State)
+    {
+        QCMPresentation.enabled = State ;
+    }
+
+    public float GetSliderPrezValue()
+    {
+        return QCMPresentation.AudienceBar.value ;
     }
 }
