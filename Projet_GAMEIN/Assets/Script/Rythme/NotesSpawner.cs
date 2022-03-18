@@ -8,6 +8,7 @@ public class NotesSpawner : MonoBehaviour
     public int notesSpawned, notesCounter;
     public Transform parent;
     public BeatScroller bS;
+    public Vector3 leftSpawn, rightSpawn, upSpawn, downSpawn;
 
     public bool stopProcess;
     // Start is called before the first frame update
@@ -22,6 +23,11 @@ public class NotesSpawner : MonoBehaviour
             Instantiate(down, down.transform.position, down.transform.rotation, parent);
         }*/
         //Random rand = new Random();
+        
+    }
+
+    private void OnEnable()
+    {
         InvokeRepeating("LeftArrow", 1f, Random.Range(1, 4));
         InvokeRepeating("RightArrow", 2f, Random.Range(1, 4));
         InvokeRepeating("UpArrow", 3f, Random.Range(1, 5));
@@ -50,35 +56,35 @@ public class NotesSpawner : MonoBehaviour
         if (stopProcess)
         {
             stopProcess = false;
-            CancelInvoke();
-            Debug.Log("Stahp");
+            CancelInvoke("LeftArrow"); CancelInvoke("RightArrow"); CancelInvoke("UpArrow"); CancelInvoke("DownArrow");
+            //Debug.Log("Stahp");
         }
         
     }
     void LeftArrow()
     {
-        Instantiate(left, left.transform.position, left.transform.rotation, parent);
+        Instantiate(left, leftSpawn, left.transform.rotation, parent);
         notesSpawned--;
         notesCounter++;
     }
 
     void RightArrow()
     {
-        Instantiate(right, right.transform.position, right.transform.rotation, parent);
+        Instantiate(right, rightSpawn, right.transform.rotation, parent);
         notesSpawned--;
         notesCounter++;
     }
 
     void UpArrow()
     {
-        Instantiate(up, up.transform.position, up.transform.rotation, parent);
+        Instantiate(up, upSpawn, up.transform.rotation, parent);
         notesSpawned--;
         notesCounter++;
     }
 
     void DownArrow()
     {
-        Instantiate(down, down.transform.position, down.transform.rotation, parent);
+        Instantiate(down, downSpawn, down.transform.rotation, parent);
         notesSpawned--;
         notesCounter++;
     }

@@ -6,10 +6,10 @@ public class TriggerGame : MonoBehaviour
 {
     public GameObject game;
 
-    private void Start()
+    private void Awake()
     {
-        game = GameObject.Find("RythmoGamos");
-        game.SetActive(false);
+       //game = GameObject.Find("RythmoGamos");
+       //game.SetActive(false);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
