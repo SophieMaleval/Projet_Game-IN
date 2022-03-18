@@ -35,6 +35,9 @@ public class QCMContainer
 {
     public List<QuestionQCMContainer> QCMEnigmeFR1 = new List<QuestionQCMContainer>() ;
     public List<QuestionQCMContainer> QCMEnigmeEN1 = new List<QuestionQCMContainer>() ;
+
+    public List<QuestionQCMContainer> QCMPresFR1 = new List<QuestionQCMContainer>() ;
+    public List<QuestionQCMContainer> QCMPresEN1 = new List<QuestionQCMContainer>() ;  
 }
 
 
@@ -166,6 +169,9 @@ public class CSVReader : MonoBehaviour
 
                 if(Data[0] == "QCM 1 FR")    QCMCont.QCMEnigmeFR1.Add(QCMQR);
                 if(Data[0] == "QCM 1 EN")    QCMCont.QCMEnigmeEN1.Add(QCMQR);
+
+                if(Data[0] == "PRES 1 FR")    QCMCont.QCMPresFR1.Add(QCMQR);
+                if(Data[0] == "PREs 1 EN")    QCMCont.QCMPresEN1.Add(QCMQR);
             }
         }
     }    

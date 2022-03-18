@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 7454713249344840310}
   - component: {fileID: 8897650619861234399}
   m_Layer: 0
-  m_Name: PNJ
+  m_Name: Pictanovo - Jullien
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -107,7 +107,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: d79f7483729b3224fa595eedfd1aa0c0, type: 3}
+  m_Sprite: {fileID: 4512481074264245551, guid: ab2c15329b9817942bb5ed7a3fc9b2a7,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -128,7 +129,7 @@ Animator:
   m_GameObject: {fileID: 7454713249344840315}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 0158a2e28f35e59479978bd46d39e502, type: 2}
+  m_Controller: {fileID: 9100000, guid: d5c842ca145a2954e9cb94d1029c1225, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -149,24 +150,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fe6f3ea6c3125d459b5ede804695985, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Entrerpise: 
-  NamePNJ: 
+  Entrerpise: Pictanovo
+  NamePNJ: "J\xE9rome Allard"
   NamePNJDisplay: 
   PNJInENT: 0
   TextDialogue: {fileID: 0}
   DialogueCanvasBox: {fileID: 0}
   ThisQuestionLunchReflexion: 0
-  EnigmeQCM: 0
+  EnigmeQCM: 2
   PlayerAskQuestQuestion: 0
   DialogueWithFadeAnimation: 0
   QuestionandDialogueLunchAnimation: {x: 0, y: 0}
-  DialogueLunchPrez: 0
-  PrezInfoLunch: {x: 0, y: 0}
-  PrezAppreciation: {x: 0, y: 0, z: 0, w: 0}
+  DialogueLunchPrez: 1
+  PrezInfoLunch: {x: 3, y: 2}
   NewPosPNJAndPlayer: {x: 0, y: 0, z: 0, w: 0}
-  InformationQuestEtapeQuestion: []
+  InformationQuestEtapeQuestion:
+  - {x: 2, y: 20, z: 9, w: 0.1}
+  - {x: 2, y: 20, z: 10, w: 0.1}
   DiscussionWithQuestion: 1
-  Answer: []
+  Answer:
+  - AnswerForQuestion: 
+  - AnswerForQuestion: 00000000
+  - AnswerForQuestion: 01000000
+  - AnswerForQuestion: 020000000300000004000000
+  - AnswerForQuestion: 
+  - AnswerForQuestion: 
+  - AnswerForQuestion: 
+  - AnswerForQuestion: 
+  - AnswerForQuestion: 
+  - AnswerForQuestion: 0500000007000000
+  - AnswerForQuestion: 0600000007000000
 --- !u!61 &7454713249344840310
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -183,8 +196,8 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.38, y: 0.63}
+    pivot: {x: 0.5, y: 0}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 0.38, y: 0.63}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -209,8 +222,8 @@ PolygonCollider2D:
   m_Offset: {x: 0, y: 0.5}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.38, y: 0.63}
+    pivot: {x: 0.5, y: 0}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 0.38, y: 0.63}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
