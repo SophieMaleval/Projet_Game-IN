@@ -59,7 +59,7 @@ public class RhythmManager : MonoBehaviour
         rankText = GameObject.Find("Rank Value").GetComponent<TextMeshProUGUI>();
         finalScoreText = GameObject.Find("Final Score Value").GetComponent<TextMeshProUGUI>();
         resultScreen = GameObject.Find("Results");
-        
+        dad = GameObject.Find("RythmoGamos");
     }
 
     void DestroyGame()
