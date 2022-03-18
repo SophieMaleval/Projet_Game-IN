@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class RhythmManager : MonoBehaviour
 {
@@ -30,6 +31,7 @@ public class RhythmManager : MonoBehaviour
     public TextMeshProUGUI percentHitText, normalsText, goodsText, perfectsText, missesText, rankText, finalScoreText;
 
     public GameObject resultScreen;
+    public GameObject dad;
 
     
 
@@ -40,7 +42,7 @@ public class RhythmManager : MonoBehaviour
         scoreText.text = "Score: 0";
         currentMultiplier = 1;
         totalNotes = GameObject.Find("NoteHolder").GetComponent<NotesSpawner>().notesCounter;
-        
+        Invoke("LoadScene", 25f);
         resultScreen.SetActive(false);      
     }
 
@@ -58,6 +60,11 @@ public class RhythmManager : MonoBehaviour
         finalScoreText = GameObject.Find("Final Score Value").GetComponent<TextMeshProUGUI>();
         resultScreen = GameObject.Find("Results");
         
+    }
+
+    void DestroyGame()
+    {
+        Destroy(dad);
     }
     // Update is called once per frame
     void Update()
