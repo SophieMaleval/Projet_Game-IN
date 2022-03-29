@@ -299,7 +299,7 @@ public class PannelENTManager : MonoBehaviour
 
 
         /* VALEUR DE L'ENTREPRISE */
-        if(ListValeurs.Count == 0)
+        if(InformationENT.ValeursENT.Count == 0)
         {
             TitleValeurs.gameObject.SetActive(false) ;
             FeuilleEnt.sizeDelta = new Vector2(FeuilleEnt.sizeDelta.x, 594f - 150f) ;
