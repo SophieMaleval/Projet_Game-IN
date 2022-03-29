@@ -16,6 +16,15 @@ public class CameraTriggerVolume : MonoBehaviour
     [Space]
     [SerializeField] private SceneEntManager ManagerENT ;
     [SerializeField] private int PartSceneValue ;
+    
+    [SerializeField] private bool ThisIsScale = false ;
+    [SerializeField] private Vector2 NewScalePos ;
+    private bool PlayerAround = false ;
+
+
+    [SerializeField] private PlayerScript ScriptPlayer ;
+    private bool PlayerMoveOnScale = false ;
+
 
     private void Awake() 
     {
@@ -24,7 +33,9 @@ public class CameraTriggerVolume : MonoBehaviour
         BoxCol.isTrigger = true ;
         BoxCol.size = BoxSize ;
 
-        Rb2D.isKinematic = true ;            
+        Rb2D.isKinematic = true ;  
+
+        if(ThisIsScale && GameObject.Find("Player") != null) ScriptPlayer = GameObject.Find("Player").GetComponent<PlayerScript>() ;           
     }
 
     private void OnDrawGizmos() 
@@ -33,19 +44,62 @@ public class CameraTriggerVolume : MonoBehaviour
         Gizmos.DrawWireCube(transform.position, BoxSize);
     }
 
+    private void Update() {
+        if(ThisIsScale && PlayerAround && !PlayerMoveOnScale)
+        {
+            if(ScriptPlayer.PlayerAsInterract)
+            {
+                ScriptPlayer.PlayerAsInterract = false ;
+                StartCoroutine(MoveOnScale());
+            }
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D other) 
     {
-        //if(other.gameObject.CompareTag("Player"))
         if(other.gameObject.tag == "Player")
         {
-            if(CameraSwitcher.ActiveCamera != Cam) CameraSwitcher.SwitchCamera(Cam) ;
+            if(!ThisIsScale)
+            {
+                if(CameraSwitcher.ActiveCamera != Cam) CameraSwitcher.SwitchCamera(Cam) ;
             
-            ManagerENT.ChangePartScene(PartSceneValue) ;
+                ManagerENT.ChangePartScene(PartSceneValue) ;  
+            } else {
+                PlayerAround = true ;          
+                ScriptPlayer.SwitchInputSprite();          
+            }
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other) 
+    {
+        if(other.gameObject.tag == "Player")
+        {
+            if(ThisIsScale)
+            {
+                PlayerAround = false ;
+                ScriptPlayer.SwitchInputSprite();
+            }
         }
     }
 
     public void SetFirstCamera()
     {
         if(CameraSwitcher.ActiveCamera != Cam) CameraSwitcher.SwitchCamera(Cam) ;
+    }
+
+
+    IEnumerator MoveOnScale()
+    {
+        PlayerMoveOnScale = true ;
+        ScriptPlayer.GetComponent<PlayerMovement>().StartActivity();
+        /* FADE */ //ScriptPlayer.LunchAnimationFadeIn();
+        yield return new WaitForSeconds(0.5f);
+        ScriptPlayer.transform.position = NewScalePos ;
+        ManagerENT.ChangePartScene(PartSceneValue) ;  
+        /* FADE */ //ScriptPlayer.LunchFadeOut();
+        yield return new WaitForSeconds(0.5f);
+        ScriptPlayer.GetComponent<PlayerMovement>().EndActivity();
+        PlayerMoveOnScale = false ;
     }
 }
