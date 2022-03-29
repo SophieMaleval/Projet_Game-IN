@@ -18,7 +18,7 @@ public class PNJDialogue : MonoBehaviour
     [HideInInspector] public CSVReader TextDialogue ;
 
     [Header ("Dialogue Canvas Reference")]
-    public DialogueDisplayerController DialogueCanvasBox ;       
+    [HideInInspector] public DialogueDisplayerController DialogueCanvasBox ;       
     private TextMeshProUGUI DialogueCanvasDisplayerText ;
 
 
@@ -27,20 +27,20 @@ public class PNJDialogue : MonoBehaviour
     private bool PlayerAround = false ;
 
     private GameObject BoxQuestion ;
-  
 
+    [Header ("Dialogue Animation")]
     public bool ThisQuestionLunchReflexion = false ;
     public int EnigmeQCM = 0 ;
-    public bool PlayerAskQuestQuestion = false ;
+    [HideInInspector] public bool PlayerAskQuestQuestion = false ;
     
-    [Space]
+    [Space(10)]
     public bool DialogueWithFadeAnimation = false ;
-    public Vector2 QuestionandDialogueLunchAnimation ;
+    public Vector2 QuestionAndDialogueLunchFade ;
     private bool QCMPannelAsBeOpen = false ;
-    [Space]
+    [Space(10)]
     public bool DialogueLunchPrez = false ;
     public Vector2 PrezInfoLunch ;
-    [Space]
+    [Space(10)]
     public Vector4 NewPosPNJAndPlayer ;   
     private Vector4 LastPosPNJAndPlayer ;
 
