@@ -32,6 +32,8 @@ public class AnimationCustomizer : MonoBehaviour
     [SerializeField] private RectTransform ContainerChoicePanel ;
 
     [Space(10)]
+
+    [SerializeField] private RectTransform FondContainer ;
     
     [Header ("Button")]
     [SerializeField] private Button RotateAvatarLeft ;
@@ -150,6 +152,8 @@ public class AnimationCustomizer : MonoBehaviour
     {
         if(CatNumber == 0)
         {
+            FondContainer.sizeDelta = new Vector2(FondContainer.sizeDelta.x, 200f) ;
+
             ContainerChoiceCatPanel.gameObject.SetActive(true) ; 
             ContainerSkinPanel.gameObject.SetActive(false) ;
             ContainerChoicePanel.gameObject.SetActive(false) ;            
@@ -157,12 +161,16 @@ public class AnimationCustomizer : MonoBehaviour
      
         if(CatNumber == 1)
         {
+            FondContainer.sizeDelta = new Vector2(FondContainer.sizeDelta.x, 175f) ;
+    
             ContainerChoiceCatPanel.gameObject.SetActive(false) ; 
             ContainerSkinPanel.gameObject.SetActive(true) ;
             ContainerChoicePanel.gameObject.SetActive(false) ;    
         }
         if(CatNumber > 1 && CatNumber < 6)
         {
+            FondContainer.sizeDelta = new Vector2(FondContainer.sizeDelta.x, 225f) ;
+    
             ContainerChoiceCatPanel.gameObject.SetActive(false) ; 
             ContainerSkinPanel.gameObject.SetActive(false) ;
             ContainerChoicePanel.gameObject.SetActive(true) ;    

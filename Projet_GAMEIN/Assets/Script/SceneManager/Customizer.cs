@@ -461,6 +461,7 @@ public class Customizer : MonoBehaviour
             PlayerApparance.ValueColorDisplay[4] = Random.Range(0, AllChoiceColorButton.Count);
             PlayerApparance.ColorsDisplay[4] = ColorCustomList[(int) PlayerApparance.ValueColorDisplay[4]] ;
 
+        ChangeDisplay(0);
         SetAvatar();
     }
 
