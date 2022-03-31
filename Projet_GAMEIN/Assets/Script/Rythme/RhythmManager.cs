@@ -42,7 +42,7 @@ public class RhythmManager : MonoBehaviour
         instance = this;
         scoreText.text = "Score: 0";
         currentMultiplier = 1;
-        totalNotes = GameObject.Find("NoteHolder").GetComponent<NotesSpawner>().notesCounter;
+        //totalNotes = GameObject.Find("NoteHolder").GetComponent<NotesSpawner>().notesCounter;
         Invoke("DestroyGame", 22f);
         resultScreen.SetActive(false);      
     }
@@ -63,6 +63,11 @@ public class RhythmManager : MonoBehaviour
         dad = GameObject.Find("RythmoGamos");
         player = GameObject.Find("Player");
 
+    }
+
+    public void Music()
+    {
+        theMusic.Play();
     }
 
     void DestroyGame()
@@ -138,7 +143,7 @@ public class RhythmManager : MonoBehaviour
             float totalHits = normalHits + goodHits + perfectHits;
             //Debug.Log("allez raconte");
             //Debug.Log(totalHits + " = " + normalHits + " + " + goodHits + " + " + perfectHits);
-            totalNotes = GameObject.Find("NoteHolder").GetComponent<NotesSpawner>().notesCounter;
+            //totalNotes = GameObject.Find("NoteHolder").GetComponent<NotesSpawner>().notesCounter;
             float percentHit = (totalHits / totalNotes) * 100f ;
 
             percentHitText.text = percentHit.ToString("F1") + "%"; //F1= 1 float après la virgule
