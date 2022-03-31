@@ -62,7 +62,6 @@ public class CameraTriggerVolume : MonoBehaviour
             if(!ThisIsScale)
             {
                 if(CameraSwitcher.ActiveCamera != Cam) CameraSwitcher.SwitchCamera(Cam) ;
-            
                 ManagerENT.ChangePartScene(PartSceneValue) ;  
             } else {
                 PlayerAround = true ;          
@@ -96,7 +95,10 @@ public class CameraTriggerVolume : MonoBehaviour
         /* FADE */ //ScriptPlayer.LunchAnimationFadeIn();
         yield return new WaitForSeconds(0.5f);
         ScriptPlayer.transform.position = NewScalePos ;
+
+        if(CameraSwitcher.ActiveCamera != Cam) CameraSwitcher.SwitchCamera(Cam) ;
         ManagerENT.ChangePartScene(PartSceneValue) ;  
+        
         /* FADE */ //ScriptPlayer.LunchFadeOut();
         yield return new WaitForSeconds(0.5f);
         ScriptPlayer.GetComponent<PlayerMovement>().EndActivity();
