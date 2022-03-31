@@ -23,12 +23,13 @@ public class ButtonController : MonoBehaviour
         arrow.canceled += WaitingForAttempt;
     }
     private void OnEnable() { arrow.Enable(); }
-    private void OnDisable() { arrow.Disable(); }
+    private void OnDisable() { arrow.Disable();}
 
     // Start is called before the first frame update
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer.sprite = defaultImage;
         //controls.PlayerInLand.Disable();
     }
     
@@ -41,7 +42,7 @@ public class ButtonController : MonoBehaviour
         if (ctx.performed)
         {
             spriteRenderer.sprite = pressedImage;
-           // Debug.Log("button pressed");
+            //Debug.Log("button pressed");
         }
     }
 
@@ -50,7 +51,7 @@ public class ButtonController : MonoBehaviour
         if (ctx.canceled)
         {
             spriteRenderer.sprite = defaultImage;
-           // Debug.Log("waiting for an attempt");
+            //Debug.Log("waiting for an attempt");
         }
     }
 }
