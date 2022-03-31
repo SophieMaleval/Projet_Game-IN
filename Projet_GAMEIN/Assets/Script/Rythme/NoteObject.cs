@@ -28,19 +28,19 @@ public class NoteObject : MonoBehaviour
                 
                 if(Mathf.Abs(transform.position.y) > 0.25)
                 {
-                    Debug.Log("Hit");
+                    //Debug.Log("Hit");
                     RhythmManager.instance.NormalHit();
                     Instantiate(hitEffect, transform.position, hitEffect.transform.rotation);
                 }
                 else if(Mathf.Abs(transform.position.y) > 0.05f)
                 {
-                    Debug.Log("Good");
+                    //Debug.Log("Good");
                     RhythmManager.instance.GoodHit();
                     Instantiate(goodEffect, transform.position, goodEffect.transform.rotation);
                 }
                 else
                 {
-                    Debug.Log("Perfect");
+                    //Debug.Log("Perfect");
                     RhythmManager.instance.PerfectHit();
                     Instantiate(perfectEffect, transform.position, perfectEffect.transform.rotation);
                 }

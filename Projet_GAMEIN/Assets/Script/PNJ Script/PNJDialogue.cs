@@ -193,7 +193,7 @@ public class PNJDialogue : MonoBehaviour
         if(PlayerScript.gameObject.transform.position.x < transform.position.x) PlayerScript.InputSpritePos(false);
         if(PlayerScript.gameObject.transform.position.x > transform.position.x) PlayerScript.InputSpritePos(true);
 
-        if(PlayerScript.InAnimationFade)
+        if(PlayerScript.InAnimationFade && (DialogueCanvasBox != null && DialogueCanvasBox.gameObject.activeSelf))
         {
             if(PlayerScript.FadeMake)
             {
