@@ -92,14 +92,12 @@ public class CameraTriggerVolume : MonoBehaviour
     {
         PlayerMoveOnScale = true ;
         ScriptPlayer.GetComponent<PlayerMovement>().StartActivity();
-        /* FADE */ //ScriptPlayer.LunchAnimationFadeIn();
+        /* FADE */ ScriptPlayer.LunchAnimationFadeIn();
         yield return new WaitForSeconds(0.5f);
         ScriptPlayer.transform.position = NewScalePos ;
-
         if(CameraSwitcher.ActiveCamera != Cam) CameraSwitcher.SwitchCamera(Cam) ;
         ManagerENT.ChangePartScene(PartSceneValue) ;  
-        
-        /* FADE */ //ScriptPlayer.LunchFadeOut();
+        /* FADE */ ScriptPlayer.LunchFadeOut();
         yield return new WaitForSeconds(0.5f);
         ScriptPlayer.GetComponent<PlayerMovement>().EndActivity();
         PlayerMoveOnScale = false ;
