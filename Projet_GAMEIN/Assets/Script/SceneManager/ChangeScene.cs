@@ -42,7 +42,7 @@ public class ChangeScene : MonoBehaviour
             if(SceneManager.GetActiveScene().name == "Game In") PM.GetComponent<PlayerScript>().MainSceneLoadPos = new Vector2(-4f, -2f);
             PM.GetComponent<PlayerScript>().PreviousSceneName = SceneManager.GetActiveScene().name;
 
-            DoorOpeningSound.Play();
+            if(DoorOpeningSound != null) DoorOpeningSound.Play();
             GoNewScene();
         }
     }
@@ -55,7 +55,7 @@ public class ChangeScene : MonoBehaviour
     Vector2 GiveNewPos()
     {
         BoxCollider2D BCol2D = GetComponent<BoxCollider2D>() ;
-        Vector2 PositionSpawn = new Vector2(transform.position.x + BCol2D.offset.x, transform.position.y + BCol2D.offset.y - 0.5f) ;
+        Vector2 PositionSpawn = new Vector2(transform.position.x + BCol2D.offset.x, transform.localPosition.y + BCol2D.offset.y - 0.5f) ;
         return PositionSpawn ;
     }
 
