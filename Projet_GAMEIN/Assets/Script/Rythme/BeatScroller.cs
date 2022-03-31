@@ -6,18 +6,19 @@ public class BeatScroller : MonoBehaviour
 {
     public float beatTempo;
     public float dureeMusique;
-    private NotesSpawner notesSpawner; 
+    //private NotesSpawner notesSpawner; 
     // Start is called before the first frame update
     void Awake()
     {
         beatTempo = beatTempo / 60f;
-        notesSpawner = GameObject.Find("NoteHolder").GetComponent<NotesSpawner>();
+        /*notesSpawner = GameObject.Find("NoteHolder").GetComponent<NotesSpawner>();*/
     }
 
     private void OnEnable()
     {
        StartCoroutine(GuyterHiro());
-       InvokeRepeating("DecreaseTime", 1.0f, 1.0f);
+       RhythmManager.instance.Music();
+       //InvokeRepeating("DecreaseTime", 1.0f, 1.0f);
     }
 
     // Update is called once per frame
@@ -40,7 +41,7 @@ public class BeatScroller : MonoBehaviour
         Debug.Log("Finito pipo");
     }
 
-    void DecreaseTime()
+    /*void DecreaseTime()
     {
         if(dureeMusique > 0)
         {
@@ -50,5 +51,5 @@ public class BeatScroller : MonoBehaviour
         {
             notesSpawner.stopProcess = true;
         }
-    }
+    }*/
 }

@@ -42,7 +42,7 @@ public class ChangeScene : MonoBehaviour
             if(SceneManager.GetActiveScene().name == "Game In") PM.GetComponent<PlayerScript>().MainSceneLoadPos = new Vector2(-4f, -2f);
             PM.GetComponent<PlayerScript>().PreviousSceneName = SceneManager.GetActiveScene().name;
 
-            DoorOpeningSound.Play();
+            if(DoorOpeningSound != null) DoorOpeningSound.Play();
             GoNewScene();
         }
     }
