@@ -15,9 +15,6 @@ public class SceneEntManager : MonoBehaviour
     [SerializeField] private CameraTriggerVolume VolumeFirstCam ;
     
     [SerializeField] private Vector2 SetPosition ;
-
-    [SerializeField] private bool SetPartScene = false ;
-    [SerializeField] private int PartSceneSet = 0 ;
     
 
 
@@ -72,15 +69,9 @@ public class SceneEntManager : MonoBehaviour
         if(FadeImage != null)    FadeImage.GetComponent<AnimationTransitionScene>().OpenningScene();
 
         if(VolumeFirstCam != null) VolumeFirstCam.SetFirstCamera();       
-
-    //    if(SetPartScene) StartCoroutine(WaitAndDisablePartScene());
     }
     
-    IEnumerator WaitAndDisablePartScene()
-    {
-        yield return new WaitForSeconds(1f);
-        ChangePartScene(PartSceneSet); 
-    }
+
 
 
     public void ChangePartScene(int PartDisplay)

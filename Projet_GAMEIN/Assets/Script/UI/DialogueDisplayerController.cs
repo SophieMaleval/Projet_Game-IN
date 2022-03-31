@@ -264,7 +264,7 @@ public class DialogueDisplayerController : MonoBehaviour
         bool BoolReturned = false ;
 
         if(CurrentPNJDiscussion.DialogueLunchPrez && (CurrentDialogueDisplay == CurrentPNJDiscussion.PrezInfoLunch.x && CurrentDialogueState == CurrentPNJDiscussion.PrezInfoLunch.y) && !PlayerFadeScript.AnimationBeMake) BoolReturned = true ;
-        if(CurrentPNJDiscussion.DialogueWithFadeAnimation && (CurrentDialogueDisplay == CurrentPNJDiscussion.QuestionandDialogueLunchAnimation.x && CurrentDialogueState == CurrentPNJDiscussion.QuestionandDialogueLunchAnimation.y) && !PlayerFadeScript.AnimationBeMake) BoolReturned = true ;
+        if(CurrentPNJDiscussion.DialogueWithFadeAnimation && (CurrentDialogueDisplay == CurrentPNJDiscussion.QuestionAndDialogueLunchFade.x && CurrentDialogueState == CurrentPNJDiscussion.QuestionAndDialogueLunchFade.y) && !PlayerFadeScript.AnimationBeMake) BoolReturned = true ;
 
         return BoolReturned ;
     }

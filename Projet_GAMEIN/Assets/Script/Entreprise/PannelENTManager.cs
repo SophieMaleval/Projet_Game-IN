@@ -66,6 +66,7 @@ public class PannelENTManager : MonoBehaviour
     [SerializeField] private GameObject ButtonYoutube ;
     [Space]
     [SerializeField] private TextMeshProUGUI Contact ;
+    [SerializeField] private TextMeshProUGUI MailButton ;
     [SerializeField] private GameObject PrefabNameCréateur ;
 
 
@@ -229,6 +230,17 @@ public class PannelENTManager : MonoBehaviour
                 if(PlayerPrefs.GetInt("Langue") == 0) ListContenuPage[ActivityInt].DescriptionAtivité.text = InformationENT.ListActivité[ActivityInt].TextActivtéFR ;            
                 if(PlayerPrefs.GetInt("Langue") == 1) ListContenuPage[ActivityInt].DescriptionAtivité.text = InformationENT.ListActivité[ActivityInt].TextActivtéEN ;            
         
+                Vector2 SizeIllustration = InformationENT.ListActivité[ActivityInt].IllustrationActivité.bounds.size ;
+                SizeIllustration *= 100f ;
+                float DivisionImage = 1 ;
+
+                while((SizeIllustration.x / DivisionImage) > (FeuilleActi[ActivityInt].sizeDelta.x -50f))
+                {
+                    DivisionImage += 0.1f ;                  
+                }
+
+                ListContenuPage[ActivityInt].IllustrationActivité.rectTransform.sizeDelta = new Vector2(SizeIllustration.x / DivisionImage, SizeIllustration.y / DivisionImage) ;
+
                 FeuilleActi[ActivityInt].sizeDelta = new Vector2(FeuilleActi[ActivityInt].sizeDelta.x,  (ListContenuPage[ActivityInt].TitleActivité.rectTransform.sizeDelta.y + ListContenuPage[ActivityInt].IllustrationActivité.rectTransform.sizeDelta.y + 90f + InformationENT.ListActivité[ActivityInt].HeightArticle));                
             } else {
                 FeuilleActi[ActivityInt].gameObject.SetActive(false);
@@ -238,17 +250,37 @@ public class PannelENTManager : MonoBehaviour
         }        
     }
 
+
     void SetPrincipalInformation()
     {
         NomEntreprise.text = InformationENT.NomEntreprise ;
         NoteSiteWebURLDisplay.text = InformationENT.URLSiteWebDisplay ;
+
 
         for (int LFP = 0; LFP < LogoFondPage.Count; LFP++)
         {
             LogoFondPage[LFP].sprite = InformationENT.LogoENT ;
         }
 
+
         IllustrationDescriptionENT.sprite = InformationENT.IllustrationDescriptionENT ;
+
+
+        // Set Size Illu ENT
+        if(IllustrationDescriptionENT.sprite != null)
+        {
+            Vector2 SizeIllustration = IllustrationDescriptionENT.sprite.bounds.size ;
+            SizeIllustration *= 100f ;
+            float DivisionImage = 1 ;
+
+            while((SizeIllustration.x / DivisionImage) > IllustrationDescriptionENT.GetComponent<RectTransform>().sizeDelta.x)
+            {
+                DivisionImage ++ ;                  
+            }
+
+            IllustrationDescriptionENT.GetComponent<RectTransform>().sizeDelta = new Vector2(SizeIllustration.x / DivisionImage, SizeIllustration.y / DivisionImage) ;            
+        }
+
     }
 
     void SetTextPannel()
@@ -265,29 +297,31 @@ public class PannelENTManager : MonoBehaviour
         if(PlayerPrefs.GetInt("Langue") == 0) DesciptionEntreprise.text = InformationENT.DescriptionENTFR ;
         if(PlayerPrefs.GetInt("Langue") == 1) DesciptionEntreprise.text = InformationENT.DescriptionENTEN ;
 
+
         /* VALEUR DE L'ENTREPRISE */
-        for (int i = 0; i < ListValeurs.Count; i++)
+        if(InformationENT.ValeursENT.Count == 0)
         {
-            if(i < InformationENT.ValeursENT.Count)
+            TitleValeurs.gameObject.SetActive(false) ;
+            FeuilleEnt.sizeDelta = new Vector2(FeuilleEnt.sizeDelta.x, 594f - 150f) ;
+        } else {
+            TitleValeurs.gameObject.SetActive(true) ;
+            FeuilleEnt.sizeDelta = new Vector2(FeuilleEnt.sizeDelta.x, 594f) ;
+
+            for (int i = 0; i < ListValeurs.Count; i++)
             {
-                ListValeurs[i].SetActive(true);
-                ListValeurs[i].GetComponentInChildren<Image>().sprite = InformationENT.ValeursENT[i].IllustrationValeur ;
-                if(PlayerPrefs.GetInt("Langue") == 0) ListValeurs[i].GetComponentInChildren<TextMeshProUGUI>().text = InformationENT.ValeursENT[i].NomValeurFR ;
-                if(PlayerPrefs.GetInt("Langue") == 1) ListValeurs[i].GetComponentInChildren<TextMeshProUGUI>().text = InformationENT.ValeursENT[i].NomValeurEN ;
-            } else {
-                ListValeurs[i].SetActive(false);
-            }
+                if(i < InformationENT.ValeursENT.Count)
+                {
+                    ListValeurs[i].SetActive(true);
+                    ListValeurs[i].GetComponentInChildren<Image>().sprite = InformationENT.ValeursENT[i].IllustrationValeur ;
+                    if(PlayerPrefs.GetInt("Langue") == 0) ListValeurs[i].GetComponentInChildren<TextMeshProUGUI>().text = InformationENT.ValeursENT[i].NomValeurFR ;
+                    if(PlayerPrefs.GetInt("Langue") == 1) ListValeurs[i].GetComponentInChildren<TextMeshProUGUI>().text = InformationENT.ValeursENT[i].NomValeurEN ;
+                } else {
+                    ListValeurs[i].SetActive(false);
+                }
+            }            
         }
+
     }
-
-
-
-
-
-
-
-
-
 
 
 
@@ -334,24 +368,37 @@ public class PannelENTManager : MonoBehaviour
 
     void SetListPersonneJoignable()
     {
-        if(FeuilleContact.GetChild(1).childCount > 0)
+        if(FeuilleContact.GetChild(2).childCount > 0)
         {
-            for (int CPj = 0; CPj < FeuilleContact.GetChild(1).childCount; CPj++)
+            for (int CPj = 0; CPj < FeuilleContact.GetChild(2).childCount; CPj++)
             {
-                Destroy(FeuilleContact.GetChild(1).transform.GetChild(CPj).transform.gameObject) ; 
+                Destroy(FeuilleContact.GetChild(2).transform.GetChild(CPj).transform.gameObject) ; 
             }            
+        }
+
+        float ContactMailHeightAdd = 0f ;
+        MailButton.text = InformationENT.ContactEmail ;        
+        if(InformationENT.ContactEmail != "")
+        {
+            MailButton.gameObject.SetActive(true);
+            ContactMailHeightAdd = 20f ;
+            FeuilleContact.GetChild(2).GetComponent<RectTransform>().anchoredPosition = new Vector2(25f, -75f);
+        } else {
+            MailButton.gameObject.SetActive(false);
+            ContactMailHeightAdd = 0f ;
+            FeuilleContact.GetChild(2).GetComponent<RectTransform>().anchoredPosition = new Vector2(25f, -50f);
         }
 
 
         for (int Lj = 0; Lj < InformationENT.PersonneJoignable.Count; Lj++)
         {
-            GameObject NameInstantiate = Instantiate(PrefabNameCréateur, FeuilleContact.GetChild(1).transform);
-            NameInstantiate.transform.SetParent(FeuilleContact.GetChild(1).transform);
+            GameObject NameInstantiate = Instantiate(PrefabNameCréateur, FeuilleContact.GetChild(2).transform);
+            NameInstantiate.transform.SetParent(FeuilleContact.GetChild(2).transform);
             NameInstantiate.GetComponent<TextMeshProUGUI>().text = InformationENT.PersonneJoignable[Lj];
         }
 
 
-        FeuilleContact.sizeDelta = new Vector2(FeuilleContact.sizeDelta.x, (80f + 20f * InformationENT.PersonneJoignable.Count)) ;
+        FeuilleContact.sizeDelta = new Vector2(FeuilleContact.sizeDelta.x, (80f + ContactMailHeightAdd + 20f * InformationENT.PersonneJoignable.Count)) ;
     }
 
 
@@ -388,6 +435,11 @@ public class PannelENTManager : MonoBehaviour
     public void OpenWebSite()
     {
         if(InformationENT.URLSiteWeb != "") OpenURLLink(InformationENT.URLSiteWeb) ;
+    }
+
+    public void OpenMailContact()
+    {
+        if(InformationENT.ContactEmail != "") OpenURLLink(InformationENT.ContactEmail) ;
     }
 
     public void OpenFacebook()
