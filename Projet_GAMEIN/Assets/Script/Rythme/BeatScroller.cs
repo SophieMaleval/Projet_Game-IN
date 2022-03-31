@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BeatScroller : MonoBehaviour
 {
+    public AudioSource music;
     public float beatTempo;
     public float dureeMusique;
     //private NotesSpawner notesSpawner; 
@@ -16,9 +17,9 @@ public class BeatScroller : MonoBehaviour
 
     private void OnEnable()
     {
-       StartCoroutine(GuyterHiro());
-       RhythmManager.instance.Music();
-       //InvokeRepeating("DecreaseTime", 1.0f, 1.0f);
+        StartCoroutine(GuyterHiro());
+        music.Play();
+        InvokeRepeating("DecreaseTime", 1.0f, 1.0f);
     }
 
     // Update is called once per frame
@@ -41,15 +42,12 @@ public class BeatScroller : MonoBehaviour
         Debug.Log("Finito pipo");
     }
 
-    /*void DecreaseTime()
+    void DecreaseTime()
     {
         if(dureeMusique > 0)
         {
             dureeMusique -= 1;
         }
-        if(notesSpawner.notesSpawned <= 0)
-        {
-            notesSpawner.stopProcess = true;
-        }
-    }*/
+
+    }
 }
