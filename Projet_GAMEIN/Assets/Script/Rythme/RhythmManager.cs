@@ -42,9 +42,10 @@ public class RhythmManager : MonoBehaviour
         instance = this;
         scoreText.text = "Score: 0";
         currentMultiplier = 1;
-        //totalNotes = GameObject.Find("NoteHolder").GetComponent<NotesSpawner>().notesCounter;
-        Invoke("DestroyGame", 22f);
-        resultScreen.SetActive(false);      
+        totalNotes = GameObject.Find("NoteHolder").transform.childCount;
+        //Invoke("DestroyGame", 52f);
+        resultScreen.SetActive(false);
+        player.GetComponent<PlayerMovement>().StartActivity();
     }
 
     private void Awake()
@@ -174,6 +175,7 @@ public class RhythmManager : MonoBehaviour
             rankText.text = rankVal;
 
             finalScoreText.text = currentScore.ToString();
+            Invoke("DestroyGame", 5f);
         }
 
     }
