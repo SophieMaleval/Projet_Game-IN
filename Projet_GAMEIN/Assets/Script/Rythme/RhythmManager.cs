@@ -73,7 +73,7 @@ public class RhythmManager : MonoBehaviour
 
     void DestroyGame()
     {
-        //player.GetComponent<PlayerMovement>().EndActivity();
+        player.GetComponent<PlayerMovement>().EndActivity();
         Destroy(dad);
     }
     // Update is called once per frame
@@ -175,6 +175,7 @@ public class RhythmManager : MonoBehaviour
             rankText.text = rankVal;
 
             finalScoreText.text = currentScore.ToString();
+            Invoke("DestroyGame", 5f);
         }
 
     }
