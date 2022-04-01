@@ -17,7 +17,7 @@ public class SlopeManager : MonoBehaviour
      public GameObject ColliderFalaiseLevel0;
      public GameObject ColliderFalaiseLevel1;
 
-    public  GameObject GetSortingroup;
+    public GameObject GetSortingroup;
     public int SortingLayerFLoor = -1;
 
    
@@ -25,7 +25,7 @@ public class SlopeManager : MonoBehaviour
  
     void Awake()
     {
-        GetSortingroup = GameObject.Find("FloorNiveau2");
+        if(GameObject.Find("FloorNiveau2") != null) GetSortingroup = GameObject.Find("FloorNiveau2");
     
         //SortingLayerFLoor = GetComponent<SortingGroup>().sortingOrder;
         spriteBridge.sortingOrder = 1;
@@ -86,22 +86,22 @@ public class SlopeManager : MonoBehaviour
     {
         if(!Elevation )
         {
-            GetSortingroup.GetComponent<SortingGroup>().sortingOrder = 0;
-            ColliderBridgelevel.SetActive(false);
-            ColliderPontDessouslevel.SetActive(true);
-            ColliderFalaiseLevel0.SetActive(true);
-            ColliderFalaiseLevel1.SetActive(false);
+            if(GetSortingroup != null) GetSortingroup.GetComponent<SortingGroup>().sortingOrder = 0;
+            if(ColliderBridgelevel != null) ColliderBridgelevel.SetActive(false);
+            if(ColliderPontDessouslevel != null) ColliderPontDessouslevel.SetActive(true);
+            if(ColliderFalaiseLevel0 != null) ColliderFalaiseLevel0.SetActive(true);
+            if(ColliderFalaiseLevel1 != null) ColliderFalaiseLevel1.SetActive(false);
 
-            spriteBridge.sortingOrder = 1;
+            spriteBridge.sortingOrder = -1;
 
         }
         else
         {
-            GetSortingroup.GetComponent<SortingGroup>().sortingOrder = -2;
-            ColliderBridgelevel.SetActive(true);
-            ColliderPontDessouslevel.SetActive(false);
-            ColliderFalaiseLevel0.SetActive(false);
-            ColliderFalaiseLevel1.SetActive(true);
+            if(GetSortingroup != null) GetSortingroup.GetComponent<SortingGroup>().sortingOrder = -2;
+            if(ColliderBridgelevel != null) ColliderBridgelevel.SetActive(true);
+            if(ColliderPontDessouslevel != null) ColliderPontDessouslevel.SetActive(false);
+            if(ColliderFalaiseLevel0 != null) ColliderFalaiseLevel0.SetActive(false);
+            if(ColliderFalaiseLevel1 != null) ColliderFalaiseLevel1.SetActive(true);
 
             spriteBridge.sortingOrder = -1;
 
