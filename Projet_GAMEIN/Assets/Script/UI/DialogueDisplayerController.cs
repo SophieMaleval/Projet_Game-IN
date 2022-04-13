@@ -10,7 +10,10 @@ using System.Text;
 
 public class DialogueDisplayerController : MonoBehaviour
 {
-    private bool MouseIsHover ;
+    [HideInInspector] public bool MouseIsHover ;
+    private bool KeyPressed = false ;
+    private Vector2 MousePos ;
+    private Vector2 OldMousePos ; 
     
     private RectTransform ThisRect ;
     public PNJDialogue CurrentPNJDiscussion ;
@@ -112,17 +115,18 @@ public class DialogueDisplayerController : MonoBehaviour
             if(CurrentDialoguePlayerChoice != PlayerDialogueManager.CurrentSelectQuestion )
             {
                 CurrentDialoguePlayerChoice = PlayerDialogueManager.CurrentSelectQuestion  ;   
+                KeyPressed = true ;                
             }
 
             SelectedButton();                  
         }
 
-        if(EventSystem.current.IsPointerOverGameObject()) // Regarde si la souris survol le champ de text
+     /*   if(EventSystem.current.IsPointerOverGameObject()) // Regarde si la souris survol le champ de text
         {
             MouseIsHover = true ;
         } else {
             MouseIsHover = false ;
-        }
+        }*/
 
 
 
@@ -528,7 +532,7 @@ public class DialogueDisplayerController : MonoBehaviour
     // Utilisation de touche pour les boutons
     void SelectedButton()
     {
-        if(MouseIsHover == false)
+        if(KeyPrioritary())
         {
             for (int BQC = 0; BQC < SetQuestionDisponible().Count; BQC++)
             {
@@ -550,8 +554,27 @@ public class DialogueDisplayerController : MonoBehaviour
                 QuestionCurrent.transform.GetChild(0).GetComponent<Image>().color = QuestionCurrent.colors.disabledColor;    
             }
         }
-
     }
+
+    bool KeyPrioritary()
+    {
+        MousePos = Input.mousePosition ;
+        if(MouseIsHover)
+        {
+            if(MousePos != OldMousePos)
+            {
+                OldMousePos = MousePos ;
+                KeyPressed = false ;
+                return false ;
+            } else {
+                if(!KeyPressed)     return false ;                        
+                else    return true ;      
+            }
+        } else {
+            return true ;
+        }
+    }
+
 
     public List<Button> SetQuestionDisponible()
     {
