@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 7454713249344840310}
   - component: {fileID: 8897650619861234399}
   m_Layer: 0
-  m_Name: "C&P - Fr\xE9d\xE9ric Pecqueur"
+  m_Name: Ludogram - Mariska
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -64,7 +64,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3614748081788346697}
-  - {fileID: 1826266947294186910}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -108,7 +107,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -5898000756269212324, guid: ac36585db1dffdc4eb37dcf49eda5646,
+  m_Sprite: {fileID: -993286426791068855, guid: b9cfe54f566819d4ca91db3a301d876d,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -130,7 +129,7 @@ Animator:
   m_GameObject: {fileID: 7454713249344840315}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 03cb6b877bca750428e363d9018d7051, type: 2}
+  m_Controller: {fileID: 9100000, guid: 8a0a30145dd05da43b03582ee71a2051, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -151,8 +150,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fe6f3ea6c3125d459b5ede804695985, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Entrerpise: C&P Studio
-  NamePNJ: "Fr\xE9d\xE9ric Pecqueur"
+  Entrerpise: Ludogram
+  NamePNJ: Mariska
   NamePNJDisplay: 
   PNJInENT: 0
   TextDialogue: {fileID: 0}
@@ -165,14 +164,9 @@ MonoBehaviour:
   DialogueLunchPrez: 0
   PrezInfoLunch: {x: 0, y: 0}
   NewPosPNJAndPlayer: {x: 0, y: 0, z: 0, w: 0}
-  InformationQuestEtapeQuestion:
-  - {x: 2, y: 5, z: 3, w: 1}
+  InformationQuestEtapeQuestion: []
   DiscussionWithQuestion: 1
-  Answer:
-  - AnswerForQuestion: 
-  - AnswerForQuestion: 00000000
-  - AnswerForQuestion: 01000000
-  - AnswerForQuestion: 02000000
+  Answer: []
 --- !u!61 &7454713249344840310
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -189,8 +183,8 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0}
-    oldSize: {x: 0.5625, y: 0.8125}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 0.38, y: 0.63}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -215,8 +209,8 @@ PolygonCollider2D:
   m_Offset: {x: 0, y: 0.5}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0}
-    oldSize: {x: 0.5625, y: 0.8125}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 0.38, y: 0.63}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -360,78 +354,3 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!1001 &7185560888200218713
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 7454713249344840312}
-    m_Modifications:
-    - target: {fileID: 8854087391415928262, guid: e43991f473271d74fba607a5b13c5ff5,
-        type: 3}
-      propertyPath: m_Name
-      value: Quest Dialogue Manager
-      objectReference: {fileID: 0}
-    - target: {fileID: 8854087391415928263, guid: e43991f473271d74fba607a5b13c5ff5,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8854087391415928263, guid: e43991f473271d74fba607a5b13c5ff5,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8854087391415928263, guid: e43991f473271d74fba607a5b13c5ff5,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8854087391415928263, guid: e43991f473271d74fba607a5b13c5ff5,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8854087391415928263, guid: e43991f473271d74fba607a5b13c5ff5,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8854087391415928263, guid: e43991f473271d74fba607a5b13c5ff5,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8854087391415928263, guid: e43991f473271d74fba607a5b13c5ff5,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8854087391415928263, guid: e43991f473271d74fba607a5b13c5ff5,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8854087391415928263, guid: e43991f473271d74fba607a5b13c5ff5,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8854087391415928263, guid: e43991f473271d74fba607a5b13c5ff5,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8854087391415928263, guid: e43991f473271d74fba607a5b13c5ff5,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: e43991f473271d74fba607a5b13c5ff5, type: 3}
---- !u!4 &1826266947294186910 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8854087391415928263, guid: e43991f473271d74fba607a5b13c5ff5,
-    type: 3}
-  m_PrefabInstance: {fileID: 7185560888200218713}
-  m_PrefabAsset: {fileID: 0}
