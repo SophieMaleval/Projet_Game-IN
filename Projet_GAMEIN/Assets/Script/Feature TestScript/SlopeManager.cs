@@ -28,7 +28,7 @@ public class SlopeManager : MonoBehaviour
         if(GameObject.Find("FloorNiveau2") != null) GetSortingroup = GameObject.Find("FloorNiveau2");
     
         //SortingLayerFLoor = GetComponent<SortingGroup>().sortingOrder;
-        spriteBridge.sortingOrder = 1;
+        if(spriteBridge != null) spriteBridge.sortingOrder = 1;
         if(GameObject.Find("Player") != null)
             PM = GameObject.Find("Player").GetComponent<PlayerMovement>();
     
@@ -92,7 +92,7 @@ public class SlopeManager : MonoBehaviour
             if(ColliderFalaiseLevel0 != null) ColliderFalaiseLevel0.SetActive(true);
             if(ColliderFalaiseLevel1 != null) ColliderFalaiseLevel1.SetActive(false);
 
-            spriteBridge.sortingOrder = -1;
+            if(spriteBridge != null) spriteBridge.sortingOrder = -1;
 
         }
         else
@@ -103,7 +103,7 @@ public class SlopeManager : MonoBehaviour
             if(ColliderFalaiseLevel0 != null) ColliderFalaiseLevel0.SetActive(false);
             if(ColliderFalaiseLevel1 != null) ColliderFalaiseLevel1.SetActive(true);
 
-            spriteBridge.sortingOrder = -1;
+            if(spriteBridge != null) spriteBridge.sortingOrder = -1;
 
         }
 
