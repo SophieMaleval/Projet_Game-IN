@@ -43,6 +43,7 @@ public class PNJDialogue : MonoBehaviour
     [Space(10)]
     public Vector4 NewPosPNJAndPlayer ;   
     private Vector4 LastPosPNJAndPlayer ;
+    private QuestSys questSys;
 
     private DialogueContainer DialoguePNJ_FR ;
     private DialogueContainer DialoguePNJ_EN ;
@@ -71,7 +72,8 @@ public class PNJDialogue : MonoBehaviour
 
     private void Awake() 
     {
-        if(GameObject.Find("Player") != null)   // Récupère le player au lancement de la scène
+        questSys = GameObject.Find("QuestManager").GetComponent<QuestSys>();
+        if (GameObject.Find("Player") != null)   // Récupère le player au lancement de la scène
         {    
             PlayerScript = GameObject.Find("Player").GetComponent<PlayerScript>() ; 
             PlayerDialogueManager = GameObject.Find("Player Backpack").GetComponent<PlayerDialogue>() ; 
@@ -335,8 +337,8 @@ public class PNJDialogue : MonoBehaviour
                 for (int TQC = 1; TQC < transform.childCount; TQC++)
                 {
                     transform.GetChild(TQC).gameObject.GetComponent<TalkQuest>().TalkedTo();  
-                }                    
-
+                }
+                questSys.Progression();
                 PlayerScript.gameObject.GetComponent<PlayerMovement>().EndActivity() ;   
             }        
         } else {

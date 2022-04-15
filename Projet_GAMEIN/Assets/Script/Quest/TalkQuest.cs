@@ -11,6 +11,7 @@ public class TalkQuest : MonoBehaviour
 {
     private QuestSys questSys;
     public ModifInventaire mode;
+    public bool multipleObj;
 
     public Vector2 QuestEtape ;
     public InteractibleObject item ;
@@ -30,7 +31,7 @@ public class TalkQuest : MonoBehaviour
         }
 
 
-        questSys.Progression();        
+        //questSys.Progression();        
         //Destroy(this.gameObject, 0.05f);
     }
 }

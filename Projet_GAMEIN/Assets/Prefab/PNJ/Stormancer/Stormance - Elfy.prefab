@@ -151,8 +151,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fe6f3ea6c3125d459b5ede804695985, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Entrerpise: 
-  NamePNJ: 
+  Entrerpise: Stormancer
+  NamePNJ: Raiteva
   NamePNJDisplay: 
   PNJInENT: 0
   TextDialogue: {fileID: 0}
@@ -165,9 +165,13 @@ MonoBehaviour:
   DialogueLunchPrez: 0
   PrezInfoLunch: {x: 0, y: 0}
   NewPosPNJAndPlayer: {x: 0, y: 0, z: 0, w: 0}
-  InformationQuestEtapeQuestion: []
+  InformationQuestEtapeQuestion:
+  - {x: 3, y: 5, z: 1, w: 1}
   DiscussionWithQuestion: 1
-  Answer: []
+  Answer:
+  - AnswerForQuestion: 
+  - AnswerForQuestion: 00000000
+  - AnswerForQuestion: 01000000
 --- !u!61 &7454713249344840310
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -362,6 +366,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7454713249344840312}
     m_Modifications:
+    - target: {fileID: 8854087391415928261, guid: e43991f473271d74fba607a5b13c5ff5,
+        type: 3}
+      propertyPath: item
+      value: 
+      objectReference: {fileID: 11400000, guid: 6f60499fd28ef5042b77f9283b11f9e8,
+        type: 2}
+    - target: {fileID: 8854087391415928261, guid: e43991f473271d74fba607a5b13c5ff5,
+        type: 3}
+      propertyPath: QuestEtape.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8854087391415928261, guid: e43991f473271d74fba607a5b13c5ff5,
+        type: 3}
+      propertyPath: QuestEtape.y
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 8854087391415928262, guid: e43991f473271d74fba607a5b13c5ff5,
         type: 3}
       propertyPath: m_Name
