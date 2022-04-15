@@ -328,7 +328,7 @@ public class PannelENTManager : MonoBehaviour
 
     void SetButtonURL()
     {
-        float HeightFeuilleContact = 210f ;
+        float MinimalHeightFeuilleReseauxSociaux = 110f ;//210f ;
         float HeightLineIcon = 50f ;
 
         if(InformationENT.URLSiteWeb == "")
@@ -350,11 +350,15 @@ public class PannelENTManager : MonoBehaviour
         ShowOrHideButton(InformationENT.URLTwitch, ButtonTwitch.gameObject) ;
         ShowOrHideButton(InformationENT.URLYoutube, ButtonYoutube.gameObject) ;
 
+        float ValueHeightFeuilleRS = MinimalHeightFeuilleReseauxSociaux ;
+        float HeightLineIcon1 = 0 ;
+        float HeightLineIcon2 = 0 ;
+        if(ButtonFacebook.gameObject.activeSelf || ButtonInstagram.gameObject.activeSelf || ButtonTwitter.gameObject.activeSelf || ButtonLinkedIn.gameObject.activeSelf)    HeightLineIcon1 = HeightLineIcon ;
 
-        if(!ButtonDiscord.gameObject.activeSelf && !ButtonSteam.gameObject.activeSelf && !ButtonTwitch.gameObject.activeSelf && !ButtonYoutube.gameObject.activeSelf)
-        {
-            FeuilleRéseauxSociaux.sizeDelta = new Vector2(FeuilleRéseauxSociaux.sizeDelta.x, HeightFeuilleContact - HeightLineIcon) ;
-        }
+        if(ButtonDiscord.gameObject.activeSelf || ButtonSteam.gameObject.activeSelf || ButtonTwitch.gameObject.activeSelf || ButtonYoutube.gameObject.activeSelf)    HeightLineIcon2 = HeightLineIcon ;
+
+        ValueHeightFeuilleRS += HeightLineIcon1 + HeightLineIcon2 ;
+        FeuilleRéseauxSociaux.sizeDelta = new Vector2(FeuilleRéseauxSociaux.sizeDelta.x, ValueHeightFeuilleRS) ;
     }
     void ShowOrHideButton(string TextRef, GameObject ButtonGameObject)
     {
