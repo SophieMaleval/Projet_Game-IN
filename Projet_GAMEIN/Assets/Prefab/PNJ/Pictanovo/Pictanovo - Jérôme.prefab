@@ -47,7 +47,7 @@ GameObject:
   - component: {fileID: 8897650619861234399}
   - component: {fileID: 86995839939074918}
   m_Layer: 0
-  m_Name: Pictanovo - Jullien
+  m_Name: "Pictanovo - J\xE9r\xF4me"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -65,6 +65,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3614748081788346697}
+  - {fileID: 2441517249183569875}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -152,7 +153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Entrerpise: Pictanovo
-  NamePNJ: "J\xE9rome Allard"
+  NamePNJ: "J\xE9r\xF4me Allard"
   NamePNJDisplay: 
   PNJInENT: 0
   TextDialogue: {fileID: 0}
@@ -166,16 +167,16 @@ MonoBehaviour:
   PrezInfoLunch: {x: 3, y: 2}
   NewPosPNJAndPlayer: {x: 7, y: 5, z: 1.5, w: 4.5}
   InformationQuestEtapeQuestion:
-  - {x: 3, y: 20, z: 9, w: 0.1}
+  - {x: 3, y: 0, z: 4, w: 1}
   - {x: 3, y: 20, z: 10, w: 0.1}
-  - {x: 3, y: 1, z: 1, w: 1}
+  - {x: 4, y: 1, z: 4, w: 1}
   DiscussionWithQuestion: 1
   Answer:
   - AnswerForQuestion: 
-  - AnswerForQuestion: 0000000001000000
+  - AnswerForQuestion: 03000000
   - AnswerForQuestion: 
   - AnswerForQuestion: 020000000300000004000000
-  - AnswerForQuestion: 
+  - AnswerForQuestion: 0000000001000000
   - AnswerForQuestion: 
   - AnswerForQuestion: 
   - AnswerForQuestion: 
@@ -395,3 +396,93 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1001 &6557815633093841428
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 7454713249344840312}
+    m_Modifications:
+    - target: {fileID: 8854087391415928261, guid: e43991f473271d74fba607a5b13c5ff5,
+        type: 3}
+      propertyPath: mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8854087391415928261, guid: e43991f473271d74fba607a5b13c5ff5,
+        type: 3}
+      propertyPath: QuestEtape.x
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8854087391415928261, guid: e43991f473271d74fba607a5b13c5ff5,
+        type: 3}
+      propertyPath: QuestEtape.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8854087391415928262, guid: e43991f473271d74fba607a5b13c5ff5,
+        type: 3}
+      propertyPath: m_Name
+      value: Quest Dialogue Manager
+      objectReference: {fileID: 0}
+    - target: {fileID: 8854087391415928263, guid: e43991f473271d74fba607a5b13c5ff5,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8854087391415928263, guid: e43991f473271d74fba607a5b13c5ff5,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8854087391415928263, guid: e43991f473271d74fba607a5b13c5ff5,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8854087391415928263, guid: e43991f473271d74fba607a5b13c5ff5,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8854087391415928263, guid: e43991f473271d74fba607a5b13c5ff5,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8854087391415928263, guid: e43991f473271d74fba607a5b13c5ff5,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8854087391415928263, guid: e43991f473271d74fba607a5b13c5ff5,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8854087391415928263, guid: e43991f473271d74fba607a5b13c5ff5,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8854087391415928263, guid: e43991f473271d74fba607a5b13c5ff5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8854087391415928263, guid: e43991f473271d74fba607a5b13c5ff5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8854087391415928263, guid: e43991f473271d74fba607a5b13c5ff5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e43991f473271d74fba607a5b13c5ff5, type: 3}
+--- !u!4 &2441517249183569875 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8854087391415928263, guid: e43991f473271d74fba607a5b13c5ff5,
+    type: 3}
+  m_PrefabInstance: {fileID: 6557815633093841428}
+  m_PrefabAsset: {fileID: 0}
