@@ -332,7 +332,11 @@ public class PNJDialogue : MonoBehaviour
             {
                 OpenEnigme();
             } else {
-                GetComponentInChildren<TalkQuest>().TalkedTo();
+                foreach (TalkQuest TQ in transform)
+                {
+                    TQ.TalkedTo();                    
+                }
+
                 PlayerScript.gameObject.GetComponent<PlayerMovement>().EndActivity() ;   
             }        
         } else {
