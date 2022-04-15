@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 7454713249344840310}
   - component: {fileID: 8897650619861234399}
   m_Layer: 0
-  m_Name: Les Crafteurs - Joris Mazelle
+  m_Name: Les Crafteurs - Joris Mazielle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -64,6 +64,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3614748081788346697}
+  - {fileID: 487837348402593145}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -107,7 +108,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -3390012485846888180, guid: ab2c15329b9817942bb5ed7a3fc9b2a7,
+  m_Sprite: {fileID: -5138494748393680214, guid: ab2c15329b9817942bb5ed7a3fc9b2a7,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -153,7 +154,7 @@ MonoBehaviour:
   Entrerpise: Les Crafteurs
   NamePNJ: Joris Mazelle
   NamePNJDisplay: 
-  PNJInENT: 2
+  PNJInENT: 1
   TextDialogue: {fileID: 0}
   DialogueCanvasBox: {fileID: 0}
   ThisQuestionLunchReflexion: 0
@@ -164,9 +165,15 @@ MonoBehaviour:
   DialogueLunchPrez: 0
   PrezInfoLunch: {x: 0, y: 0}
   NewPosPNJAndPlayer: {x: 0, y: 0, z: 0, w: 0}
-  InformationQuestEtapeQuestion: []
+  InformationQuestEtapeQuestion:
+  - {x: 3, y: 4, z: 0, w: 1}
+  - {x: 3, y: 4, z: 1, w: 1}
+  - {x: 3, y: 4, z: 2, w: 1}
+  - {x: 3, y: 4, z: 3, w: 1}
   DiscussionWithQuestion: 1
-  Answer: []
+  Answer:
+  - AnswerForQuestion: 
+  - AnswerForQuestion: 04000000
 --- !u!61 &7454713249344840310
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -354,3 +361,99 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1001 &8945605616700291262
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 7454713249344840312}
+    m_Modifications:
+    - target: {fileID: 8854087391415928261, guid: e43991f473271d74fba607a5b13c5ff5,
+        type: 3}
+      propertyPath: item
+      value: 
+      objectReference: {fileID: 11400000, guid: ca0fdf6c753fac546805fda8525ecaeb,
+        type: 2}
+    - target: {fileID: 8854087391415928261, guid: e43991f473271d74fba607a5b13c5ff5,
+        type: 3}
+      propertyPath: mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8854087391415928261, guid: e43991f473271d74fba607a5b13c5ff5,
+        type: 3}
+      propertyPath: QuestEtape.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8854087391415928261, guid: e43991f473271d74fba607a5b13c5ff5,
+        type: 3}
+      propertyPath: QuestEtape.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8854087391415928262, guid: e43991f473271d74fba607a5b13c5ff5,
+        type: 3}
+      propertyPath: m_Name
+      value: Quest Dialogue Manager
+      objectReference: {fileID: 0}
+    - target: {fileID: 8854087391415928263, guid: e43991f473271d74fba607a5b13c5ff5,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8854087391415928263, guid: e43991f473271d74fba607a5b13c5ff5,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8854087391415928263, guid: e43991f473271d74fba607a5b13c5ff5,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8854087391415928263, guid: e43991f473271d74fba607a5b13c5ff5,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8854087391415928263, guid: e43991f473271d74fba607a5b13c5ff5,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8854087391415928263, guid: e43991f473271d74fba607a5b13c5ff5,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8854087391415928263, guid: e43991f473271d74fba607a5b13c5ff5,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8854087391415928263, guid: e43991f473271d74fba607a5b13c5ff5,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8854087391415928263, guid: e43991f473271d74fba607a5b13c5ff5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8854087391415928263, guid: e43991f473271d74fba607a5b13c5ff5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8854087391415928263, guid: e43991f473271d74fba607a5b13c5ff5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e43991f473271d74fba607a5b13c5ff5, type: 3}
+--- !u!4 &487837348402593145 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8854087391415928263, guid: e43991f473271d74fba607a5b13c5ff5,
+    type: 3}
+  m_PrefabInstance: {fileID: 8945605616700291262}
+  m_PrefabAsset: {fileID: 0}
