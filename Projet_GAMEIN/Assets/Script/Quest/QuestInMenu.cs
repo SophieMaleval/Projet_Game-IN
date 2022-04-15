@@ -30,9 +30,9 @@ public class QuestInMenu : MonoBehaviour
 
     private void Awake()
     {
-        otherQ1 = GameObject.FindGameObjectsWithTag(list1);
-        otherQ2 = GameObject.FindGameObjectsWithTag(list2);
-        otherQ3 = GameObject.FindGameObjectsWithTag(list3);
+        //otherQ1 = GameObject.FindGameObjectsWithTag(list1);
+        //otherQ2 = GameObject.FindGameObjectsWithTag(list2);
+       // otherQ3 = GameObject.FindGameObjectsWithTag(list3);
     }
     public void Dropdown()
     {

@@ -29,7 +29,7 @@ public class QuestSys : MonoBehaviour
     
     QuestCt questCount;
     
-    [HideInInspector]
+    
     public int etape = 0;
     public int sizeOfList;
     public int globalSteps = 0;
