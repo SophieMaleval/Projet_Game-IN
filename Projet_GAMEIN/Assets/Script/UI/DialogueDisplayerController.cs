@@ -214,6 +214,11 @@ public class DialogueDisplayerController : MonoBehaviour
         CurrentDialogueDisplay = -1 ;
     }
 
+    public void StateDiscussionAfterFade()
+    {
+        TextDiscussion(false, false);
+    }
+
     public void StateDiscussion()
     {
         if(!PlayerDialogueManager.transform.GetComponentInParent<PlayerScript>().InventoryUIIndestructible.GetComponent<InventoryScript>().InventoryPanel.activeSelf)
