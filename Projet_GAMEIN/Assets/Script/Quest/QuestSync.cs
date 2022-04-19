@@ -61,7 +61,7 @@ public class QuestSync : MonoBehaviour
         buttons = this.gameObject.GetComponent<QuestInMenu>();
         if (buttons.isOpen)
         {
-            buttons.OpenArrow();
+            //buttons.OpenArrow();
             if (title.activeInHierarchy == true)
             {
                 numberOfGoals = questSys.quest[index].questGoal.Count;
@@ -81,10 +81,8 @@ public class QuestSync : MonoBehaviour
                     }*/
                 }
             }
-        }
-        else if (!buttons.isOpen)
-        {
-            buttons.ClosedArrow();
+        } else {
+            //buttons.ClosedArrow();
 
             foreach (GameObject go in descObj)
             {

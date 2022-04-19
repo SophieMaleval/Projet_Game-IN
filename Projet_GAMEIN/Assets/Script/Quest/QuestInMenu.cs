@@ -21,7 +21,7 @@ public class QuestInMenu : MonoBehaviour
     private void Start()
     {
         unclickedFleche = fleche.GetComponent<Image>().sprite;
-        questSlot = GameObject.FindGameObjectsWithTag(steps);
+      //  questSlot = GameObject.FindGameObjectsWithTag(steps);
         foreach (GameObject tagged in questSlot)
         {
             tagged.SetActive(false);
@@ -36,8 +36,8 @@ public class QuestInMenu : MonoBehaviour
     }
     public void Dropdown()
     {
-        isOpen =! isOpen;
-        foreach (GameObject tagged in questSlot)
+        isOpen = !isOpen;
+       /* foreach (GameObject tagged in questSlot)
         {
             if(tagged.activeInHierarchy == true && isOpen)
             {
@@ -50,24 +50,43 @@ public class QuestInMenu : MonoBehaviour
                 tagged.SetActive(true);
                 OpenArrow();
             }       
-        }       
+        } */
+        foreach (GameObject tagged in questSlot)
+        {
+            if(!isOpen)
+            {
+                tagged.SetActive(false);
+            } else {
+                tagged.SetActive(true);
+
+            }       
+        }          
+    }
+
+    public void CloseDropdown()
+    {
+        isOpen = false ;
+
+        foreach (GameObject tagged in questSlot)
+        {
+            tagged.SetActive(false);
+        } 
     }
 
     public void OpenArrow()
     {
-        
-            fleche.transform.rotation = Quaternion.Euler(0, 0, 0);
-            fleche.GetComponent<Image>().sprite = droppedFleche;
+        fleche.transform.rotation = Quaternion.Euler(0, 0, 0);
+        fleche.GetComponent<Image>().sprite = droppedFleche;
         //Closed();
-        isOpen = true;
+        ////isOpen = true;
     }
 
     public void ClosedArrow()
     {
-            fleche.transform.rotation = Quaternion.Euler(0, 0, 90);
-            fleche.GetComponent<Image>().sprite = unclickedFleche;
+        fleche.transform.rotation = Quaternion.Euler(0, 0, 90);
+        fleche.GetComponent<Image>().sprite = unclickedFleche;
         //Closed();
-        isOpen = false;
+        /////isOpen = false;
     }
 
     public void SelfClosing()
