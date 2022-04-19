@@ -17,23 +17,24 @@ public class InteractibleObject : ScriptableObject
     public Sprite finalSprite;
 
     [Header("Quantity")]
-    [HideInInspector] public int unité = 0;
+    public int unité = 1;
     public int valeurMax = 1;
 
     public bool multipleEntries;
+
 
     public void AddEntry()
     {
         if(unité <= valeurMax)
         {
-            unité++;
+            unité ++;
             SpriteUIManager();
         }
     }
 
     public void SpriteUIManager()
     {
-        if (unité <= valeurMax)
+        if (unité < valeurMax)
         {
             UISprite = unfinishedSprite;
         } else {

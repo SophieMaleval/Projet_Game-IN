@@ -10,6 +10,7 @@ public enum ModifInventaire{
 public class TalkQuest : MonoBehaviour
 {
     private QuestSys questSys;
+    private PlayerScript ScriptPlayer ;
     public ModifInventaire mode;
     public bool multipleObj;
 
@@ -17,17 +18,30 @@ public class TalkQuest : MonoBehaviour
     public InteractibleObject item ;
 
 
+
+
     private void Awake()
     {
         questSys = GameObject.Find("QuestManager").GetComponent<QuestSys>();
+        ScriptPlayer = GameObject.Find("Player").GetComponent<PlayerScript>() ;
     }
 
     public void TalkedTo()
     {
         if(QuestEtape.x == questSys.niveau && QuestEtape.y == questSys.etape)
         {
-            if(mode == ModifInventaire.Retrait) GameObject.Find("Player").GetComponent<PlayerScript>().RemoveObject(item);
-            if(mode == ModifInventaire.Ajout) GameObject.Find("Player").GetComponent<PlayerScript>().AjoutInventaire(item);
+            if(mode == ModifInventaire.Retrait) ScriptPlayer.RemoveObject(item);
+
+            if(mode == ModifInventaire.Ajout)
+            {
+                if(!ScriptPlayer.ItemChecker(item))
+                {
+                    ScriptPlayer.AjoutInventaire(item);    
+                } else {
+                    item.AddEntry();
+                }     
+            }
+
         }
 
 

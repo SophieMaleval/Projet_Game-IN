@@ -179,13 +179,13 @@ public class PlayerScript : MonoBehaviour
 
     public void LunchFadeOut()
     {
-        //StartCoroutine(FadeOutIEnum());
+        StartCoroutine(FadeOutIEnum());
 
-        AnimationBeMake = true ;        
+     /*   AnimationBeMake = true ;        
         FadeMake = false ;
         FadeAnimation.DOFade(0f, 0.5f);
         InAnimationFade = false ;
-        FadeAnimation.raycastTarget = false ;   
+        FadeAnimation.raycastTarget = false ;   */
     }
 
 
@@ -194,7 +194,7 @@ public class PlayerScript : MonoBehaviour
         AnimationBeMake = true ;        
         FadeMake = false ;
         FadeAnimation.DOFade(0f, 0.5f);
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.25f);
         InAnimationFade = false ;
         FadeAnimation.raycastTarget = false ;    
     }

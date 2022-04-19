@@ -210,7 +210,9 @@ public class PNJDialogue : MonoBehaviour
                         QCMPresentationClose() ;
                     } 
                 } else {
+                    Debug.Log("UH");
                     if(NewPosPNJAndPlayer != Vector4.zero) MovePNJAndPlayer(NewPosPNJAndPlayer);
+                    Debug.Log("OOH");
                     DialogueCanvasBox.StateDiscussion();
                 }
 
