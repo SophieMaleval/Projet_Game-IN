@@ -17,7 +17,7 @@ public class QuestSys : MonoBehaviour
     
     [Header("Quest Manager")]
     public TextMeshProUGUI title;
-    public TextMeshProUGUI titleEffect;
+    //public TextMeshProUGUI titleEffect;
     public TextMeshProUGUI contenu;
 
     [HideInInspector] public List<QuestCt> QuestFR = new List<QuestCt>() ;
@@ -43,7 +43,7 @@ public class QuestSys : MonoBehaviour
     private void Start()
     {
         title = GameObject.Find("Intitulé").GetComponent<TextMeshProUGUI>();
-        titleEffect = GameObject.Find("Ombre").GetComponent<TextMeshProUGUI>();
+        //titleEffect = GameObject.Find("Ombre").GetComponent<TextMeshProUGUI>();
         contenu = GameObject.Find("Description").GetComponent<TextMeshProUGUI>();
         sizeOfList = quest.Count;
         quest[niveau].questCode = niveau;
@@ -51,6 +51,9 @@ public class QuestSys : MonoBehaviour
         animTitle = GameObject.Find("AnimTitle").GetComponent<CanvasGroup>();
         animContent = GameObject.Find("AnimContent").GetComponent<CanvasGroup>();
         niveau = PlayerPrefs.GetInt("Niveau");
+
+
+        ShowOrHideCurrentQuestPanel(false);
     }
 
     private void Update()
@@ -60,7 +63,7 @@ public class QuestSys : MonoBehaviour
 
 
         title.text = quest[niveau].questTitle;
-        titleEffect.text = quest[niveau].questTitle; //fond ombre
+        //titleEffect.text = quest[niveau].questTitle; //fond ombre
         contenu.text = quest[niveau].questGoal[etape];
         quest[niveau].questCode = niveau;
         if (niveau == 0)
@@ -121,7 +124,7 @@ public class QuestSys : MonoBehaviour
         etape = 0;
         niveau = 0;
         title.text = quest[0].questTitle;
-        titleEffect.text = quest[0].questTitle;
+        //titleEffect.text = quest[0].questTitle;
         contenu.text = quest[0].questGoal[0];
     }
 
@@ -136,30 +139,44 @@ public class QuestSys : MonoBehaviour
         {
             etape = 0;
         }
+        ShowOrHideCurrentQuestPanel(false);
     }
     public void LevelOne()
     {
+
         if (niveau == 1)
         {
             etape = firstLvlStep;
         }
+        ShowOrHideCurrentQuestPanel(true);        
     }
 
     public void LevelTwo()
     {
+
         if (niveau == 2)
         {
-             etape = secondLvlStep;
+            etape = secondLvlStep;
         }
+        ShowOrHideCurrentQuestPanel(true);        
     }
 
     public void LevelThree()
     {
+
         if (niveau == 3)
         {
-             etape = thirdLvlStep;
+            etape = thirdLvlStep;
         }
+        ShowOrHideCurrentQuestPanel(true);        
     }
+
+    void ShowOrHideCurrentQuestPanel(bool ShowPanel)
+    {
+        transform.GetChild(0).gameObject.SetActive(ShowPanel);
+        transform.GetChild(1).gameObject.SetActive(ShowPanel);
+    }
+
     //animation UI
     IEnumerator FadeAllOut()
     {
