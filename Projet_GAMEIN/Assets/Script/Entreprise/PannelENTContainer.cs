@@ -11,6 +11,7 @@ public class PannelENTContainer : ScriptableObject
     public Sprite IllustrationDescriptionENT ;
     [TextArea (5,10)] public string DescriptionENTFR ;
     [TextArea (5,10)] public string DescriptionENTEN ;
+    public float HeightDescription ;
     public List<ValeurENT> ValeursENT ;
 
     [Header ("Lien")]

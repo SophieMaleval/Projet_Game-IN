@@ -285,27 +285,31 @@ public class PannelENTManager : MonoBehaviour
 
     void SetTextPannel()
     {
+        float HeightPanelENT = 10f + 125f + 5f + 26f + 5f + InformationENT.HeightDescription ;   
+        float HeightImgDescriptENT = 0 ;     
         /* DESCRIPTION ENTREPRISE */
         if(IllustrationDescriptionENT.sprite == null) 
         {
             IllustrationDescriptionENT.gameObject.SetActive(false) ;
-            //DesciptionEntreprise.GetComponent<RectTransform>().sizeDelta = new Vector2(325f, DesciptionEntreprise.GetComponent<RectTransform>().sizeDelta.y);
+            HeightImgDescriptENT = 0 ; 
         } else {
             IllustrationDescriptionENT.gameObject.SetActive(true) ;
-            //DesciptionEntreprise.GetComponent<RectTransform>().sizeDelta = new Vector2(200f, DesciptionEntreprise.GetComponent<RectTransform>().sizeDelta.y);
+            HeightPanelENT = IllustrationDescriptionENT.GetComponent<RectTransform>().sizeDelta.y + 5f ; 
+            Debug.Log(HeightPanelENT);
         }
         if(PlayerPrefs.GetInt("Langue") == 0) DesciptionEntreprise.text = InformationENT.DescriptionENTFR ;
         if(PlayerPrefs.GetInt("Langue") == 1) DesciptionEntreprise.text = InformationENT.DescriptionENTEN ;
 
 
+        HeightPanelENT = 10f + 125f + 5f + 26f + 5f + InformationENT.HeightDescription + HeightImgDescriptENT ;   
         /* VALEUR DE L'ENTREPRISE */
         if(InformationENT.ValeursENT.Count == 0)
         {
             TitleValeurs.gameObject.SetActive(false) ;
-            FeuilleEnt.sizeDelta = new Vector2(FeuilleEnt.sizeDelta.x, 594f - 150f) ;
+            FeuilleEnt.sizeDelta = new Vector2(FeuilleEnt.sizeDelta.x, HeightPanelENT) ;
         } else {
             TitleValeurs.gameObject.SetActive(true) ;
-            FeuilleEnt.sizeDelta = new Vector2(FeuilleEnt.sizeDelta.x, 594f) ;
+            FeuilleEnt.sizeDelta = new Vector2(FeuilleEnt.sizeDelta.x, HeightPanelENT + 150f) ;
 
             for (int i = 0; i < ListValeurs.Count; i++)
             {
