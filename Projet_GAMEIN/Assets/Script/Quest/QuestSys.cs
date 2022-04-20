@@ -12,7 +12,7 @@ public class QuestSys : MonoBehaviour
     public string roamingTitle;
     [TextArea] public string roamingGoal;*/
     public int lvlTracker = 0;
-    public int firstLvlStep, secondLvlStep, thirdLvlStep, fourthLvlStep = 0;
+    public int firstLvlStep, secondLvlStep, thirdLvlStep, fourthLvlStep, fifthLvlStep = 0;
 
     
     [Header("Quest Manager")]
@@ -81,6 +81,14 @@ public class QuestSys : MonoBehaviour
         if (niveau == 3)
         {
             thirdLvlStep = etape;
+        }
+        if(niveau == 4)
+        {
+            fourthLvlStep = etape;
+        }
+        if (niveau == 5)
+        {
+            fifthLvlStep = etape;
         }
     }
 
@@ -169,6 +177,26 @@ public class QuestSys : MonoBehaviour
             etape = thirdLvlStep;
         }
         ShowOrHideCurrentQuestPanel(true);        
+    }
+
+    public void LevelFour()
+    {
+
+        if (niveau == 4)
+        {
+            etape = fourthLvlStep;
+        }
+        ShowOrHideCurrentQuestPanel(true);
+    }
+
+    public void LevelFive()
+    {
+
+        if (niveau == 5)
+        {
+            etape = thirdLvlStep;
+        }
+        ShowOrHideCurrentQuestPanel(true);
     }
 
     void ShowOrHideCurrentQuestPanel(bool ShowPanel)
