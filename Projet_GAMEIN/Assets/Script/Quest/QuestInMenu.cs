@@ -11,11 +11,11 @@ public class QuestInMenu : MonoBehaviour
     public GameObject fleche;
     public Sprite unclickedFleche;
     public Sprite droppedFleche;
-    public string steps;
-    public GameObject[] otherQ1;
-    public GameObject[] otherQ2;
-    public GameObject[] otherQ3;
-    public string list1, list2, list3;
+    //public string steps;
+    //public GameObject[] otherQ1;
+    //public GameObject[] otherQ2;
+    //public GameObject[] otherQ3;
+    //public string list1, list2, list3;
     public bool isOpen;
 
     private void Start()
@@ -110,7 +110,7 @@ public class QuestInMenu : MonoBehaviour
     }
 
     public void Closed()
-    {
+    {  /*   
         foreach (GameObject tagged1 in otherQ1)
         {
             if(tagged1.activeInHierarchy == true)
@@ -138,7 +138,7 @@ public class QuestInMenu : MonoBehaviour
             }
         }
 
-
+*/
         
     }
 }
