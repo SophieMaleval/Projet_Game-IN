@@ -239,9 +239,9 @@ public class PannelENTManager : MonoBehaviour
                     DivisionImage += 0.1f ;                  
                 }
 
-                ListContenuPage[ActivityInt].IllustrationActivité.rectTransform.sizeDelta = new Vector2(SizeIllustration.x / DivisionImage, SizeIllustration.y / DivisionImage) ;
+                ListContenuPage[ActivityInt].IllustrationActivité.GetComponent<RectTransform>().sizeDelta = new Vector2(SizeIllustration.x / DivisionImage, SizeIllustration.y / DivisionImage) ;
 
-                FeuilleActi[ActivityInt].sizeDelta = new Vector2(FeuilleActi[ActivityInt].sizeDelta.x,  (ListContenuPage[ActivityInt].TitleActivité.rectTransform.sizeDelta.y + ListContenuPage[ActivityInt].IllustrationActivité.rectTransform.sizeDelta.y + 90f + InformationENT.ListActivité[ActivityInt].HeightArticle));                
+                FeuilleActi[ActivityInt].sizeDelta = new Vector2(FeuilleActi[ActivityInt].sizeDelta.x,  (ListContenuPage[ActivityInt].TitleActivité.GetComponent<RectTransform>().sizeDelta.y + ListContenuPage[ActivityInt].IllustrationActivité.GetComponent<RectTransform>().sizeDelta.y + 90f + InformationENT.ListActivité[ActivityInt].HeightArticle));                
             } else {
                 FeuilleActi[ActivityInt].gameObject.SetActive(false);
             }
@@ -285,7 +285,7 @@ public class PannelENTManager : MonoBehaviour
 
     void SetTextPannel()
     {
-        float HeightPanelENT = 10f + 125f + 5f + 26f + 5f + InformationENT.HeightDescription ;   
+        float HeightPanelENT = 0 ;   
         float HeightImgDescriptENT = 0 ;     
         /* DESCRIPTION ENTREPRISE */
         if(IllustrationDescriptionENT.sprite == null) 
@@ -294,12 +294,14 @@ public class PannelENTManager : MonoBehaviour
             HeightImgDescriptENT = 0 ; 
         } else {
             IllustrationDescriptionENT.gameObject.SetActive(true) ;
-            HeightPanelENT = IllustrationDescriptionENT.GetComponent<RectTransform>().sizeDelta.y + 5f ; 
-            Debug.Log(HeightPanelENT);
+            HeightImgDescriptENT = IllustrationDescriptionENT.GetComponent<RectTransform>().sizeDelta.y + 5f ; 
+
         }
+
         if(PlayerPrefs.GetInt("Langue") == 0) DesciptionEntreprise.text = InformationENT.DescriptionENTFR ;
         if(PlayerPrefs.GetInt("Langue") == 1) DesciptionEntreprise.text = InformationENT.DescriptionENTEN ;
 
+        DesciptionEntreprise.GetComponent<RectTransform>().sizeDelta = new Vector2(DesciptionEntreprise.GetComponent<RectTransform>().sizeDelta.x, InformationENT.HeightDescription);
 
         HeightPanelENT = 10f + 125f + 5f + 26f + 5f + InformationENT.HeightDescription + HeightImgDescriptENT ;   
         /* VALEUR DE L'ENTREPRISE */
