@@ -3,8 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+public enum Stade{
+    None,
+    Preparation,
+    Cuisson,
+    Dressage
+}
 public class NoteObject : MonoBehaviour
 {
+    public Stade stade;
     public bool canBePressed;
     public InputAction keyToPress;
     public GameObject hitEffect, goodEffect, perfectEffect, missEffect;
@@ -30,18 +37,21 @@ public class NoteObject : MonoBehaviour
                 {
                     //Debug.Log("Hit");
                     RhythmManager.instance.NormalHit();
+                    PlaySound();
                     Instantiate(hitEffect, transform.position, hitEffect.transform.rotation);
                 }
                 else if(Mathf.Abs(transform.position.y) > 0.05f)
                 {
                     //Debug.Log("Good");
                     RhythmManager.instance.GoodHit();
+                    PlaySound();
                     Instantiate(goodEffect, transform.position, goodEffect.transform.rotation);
                 }
                 else
                 {
                     //Debug.Log("Perfect");
                     RhythmManager.instance.PerfectHit();
+                    PlaySound();
                     Instantiate(perfectEffect, transform.position, perfectEffect.transform.rotation);
                 }
             }
@@ -67,5 +77,12 @@ public class NoteObject : MonoBehaviour
                 RhythmManager.instance.NoteMissed();
             }
         }
+    }
+
+    public void PlaySound()
+    {
+        if (stade == Stade.Preparation) RhythmManager.instance.PrepSound();
+        if (stade == Stade.Cuisson) RhythmManager.instance.FrySound();
+        if (stade == Stade.Dressage) RhythmManager.instance.DressSound();
     }
 }
