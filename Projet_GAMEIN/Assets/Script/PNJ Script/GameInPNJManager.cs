@@ -48,7 +48,9 @@ public class GameInPNJManager : MonoBehaviour
     {
         if(other.gameObject.tag == "Player")
         {
+           
             PNJLaurentHello.GetComponent<PNJDialogue>().LunchDiscussion();
+            PNJLaurentHello.GetComponent<BoxCollider2D>().enabled = true ;
             CineVCam.Follow = PNJLaurentHello.transform ;
             LaurentSayHello = true ;
         }    
