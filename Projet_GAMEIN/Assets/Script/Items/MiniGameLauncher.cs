@@ -83,7 +83,7 @@ public class MiniGameLauncher : MonoBehaviour
 
     void OnDestroy()
     {
-        questSys.Progression();
+        //questSys.Progression();
     }
 
     void StartMiniGame()

@@ -13,6 +13,7 @@ public class RhythmManager : MonoBehaviour
 
     public BeatScroller beatScroller;
     public static RhythmManager instance;
+    private QuestSys questSys;
 
 
     [Header("Score")]
@@ -63,7 +64,7 @@ public class RhythmManager : MonoBehaviour
 
     private void Awake()
     {
-        
+        questSys = GameObject.Find("QuestManager").GetComponent<QuestSys>();
         scoreText = GameObject.Find("ScoreText").GetComponent<TextMeshProUGUI>();
         multiText = GameObject.Find("MultiplierText").GetComponent<TextMeshProUGUI>();
         percentHitText = GameObject.Find("Percent Hit Value").GetComponent<TextMeshProUGUI>();
@@ -100,7 +101,8 @@ public class RhythmManager : MonoBehaviour
     {
         SwitchBackCam();
         player.GetComponent<PlayerMovement>().EndActivity();
-        Destroy(gameLauncher);
+        questSys.Progression();
+        Destroy(gameLauncher);        
         Destroy(dad);
     }
     // Update is called once per frame
