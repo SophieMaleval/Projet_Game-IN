@@ -290,6 +290,7 @@ public class PNJDialogue : MonoBehaviour
            
         DialogueCanvasBox.gameObject.SetActive(true);           
         DialogueCanvasBox.NamePNJ.text = NamePNJDisplay;
+        DialogueCanvasBox.SetPNJNameWidth(NamePNJDisplay);
 
 
         DialogueCanvasDisplayerText = DialogueCanvasBox.transform.GetChild(0).GetComponent<TextMeshProUGUI>();

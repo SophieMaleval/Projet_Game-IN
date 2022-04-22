@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class RhythmManager : MonoBehaviour
 {
-    public AudioSource theMusic;
+    //public AudioSource theMusic;
 
     public bool startPlaying;
 
@@ -24,6 +24,12 @@ public class RhythmManager : MonoBehaviour
     public int multiplierTracker;
     public int[] multiplierThresholds;
     public float totalNotes, normalHits, goodHits, perfectHits, missedHits;
+
+    [Header("SFX")]
+    public AudioSource[] prep;
+    public AudioSource[] cuisson;
+    public AudioSource[] dressage;
+
     
     [Header("UI texts")]
     public TextMeshProUGUI scoreText;
@@ -33,6 +39,7 @@ public class RhythmManager : MonoBehaviour
     public GameObject resultScreen;
     public GameObject dad;
     public GameObject player;
+
 
     
 
@@ -68,7 +75,7 @@ public class RhythmManager : MonoBehaviour
 
     public void Music()
     {
-        theMusic.Play();
+        //theMusic.Play();
     }
 
     void DestroyGame()
@@ -84,7 +91,7 @@ public class RhythmManager : MonoBehaviour
 
     public void NoteHit()
     {
-        Debug.Log("Hit On Time");
+        //Debug.Log("Hit On Time");
         if(currentMultiplier - 1 < multiplierThresholds.Length)
         {
             multiplierTracker++;
@@ -179,4 +186,23 @@ public class RhythmManager : MonoBehaviour
         }
 
     }
+
+    #region Sound effects
+
+    public void PrepSound()
+    {
+        prep[Random.Range(0, prep.Length)].Play();
+    }
+    public void FrySound()
+    {
+        cuisson[Random.Range(0, cuisson.Length)].Play();
+    }
+     public void DressSound()
+     {
+        prep[Random.Range(0, prep.Length)].Play();
+     }
+    #endregion
+
 }
+
+

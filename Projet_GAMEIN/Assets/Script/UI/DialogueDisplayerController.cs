@@ -107,6 +107,12 @@ public class DialogueDisplayerController : MonoBehaviour
 
     } 
 
+    public void SetPNJNameWidth(string Name)
+    {
+        int NumOfChar = Name.Length ;
+        Debug.Log(NumOfChar); 
+        NamePNJ.transform.parent.GetComponent<RectTransform>().sizeDelta = new Vector2( (NumOfChar*14f) + 10f, NamePNJ.transform.parent.GetComponent<RectTransform>().sizeDelta.y) ;
+    }
 
     void FixedUpdate()
     {       
