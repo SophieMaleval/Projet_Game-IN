@@ -8,6 +8,7 @@ public class GameInPNJManager : MonoBehaviour
     [Header ("Animation Talk")]
     [SerializeField] private CinemachineVirtualCamera CineVCam; 
     private Transform Player ;
+    [SerializeField] private Sprite ScooterPopUpImg ;
 
     [Header ("PNJ")]
     [SerializeField] private GameObject PNJLaurentHello ;
@@ -16,6 +17,7 @@ public class GameInPNJManager : MonoBehaviour
     [SerializeField] private GameObject PNJSophie ;
 
     private bool LaurentSayHello ;
+    private bool PopUpScoot ;
 
 
     void Awake()
@@ -24,6 +26,8 @@ public class GameInPNJManager : MonoBehaviour
 
         if(PlayerPrefs.GetInt("LaurentSayHello") == 0)    PlayerPrefs.SetInt("LaurentSayHello", 1);
         else    SwitchLaurentPNJ();
+
+        StartCoroutine(CanSwitchShowPopUpScoot());
     }
 
     void SwitchLaurentPNJ()
@@ -32,6 +36,8 @@ public class GameInPNJManager : MonoBehaviour
         PNJLaurentHello.SetActive(false);
         CineVCam.Follow = Player ;
         GetComponent<BoxCollider2D>().enabled = false ;
+
+        if(GameObject.Find("PopUp Displayer") != null && PopUpScoot) GameObject.Find("PopUp Displayer").GetComponent<PopUpManager>().CreatePopUpForScooter(ScooterPopUpImg);
     }
     void Update()
     {
@@ -46,6 +52,12 @@ public class GameInPNJManager : MonoBehaviour
             CineVCam.Follow = PNJLaurentHello.transform ;
             LaurentSayHello = true ;
         }    
+    }
+
+    IEnumerator CanSwitchShowPopUpScoot()
+    {
+        yield return new WaitForSeconds(1f);
+        PopUpScoot = true ;
     }
 
     

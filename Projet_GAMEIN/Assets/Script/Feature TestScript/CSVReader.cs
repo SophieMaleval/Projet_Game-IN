@@ -9,6 +9,9 @@ public class UITextContainer
     public List<string> MenuFR ;
     public List<string> MenuEN ;
     
+    public List<string> PauseFR ;
+    public List<string> PauseEN ;
+
     public List<string> SettingFR ;
     public List<string> SettingEN ;
     
@@ -20,6 +23,9 @@ public class UITextContainer
 
     public List<string> ControlFR ;
     public List<string> ControlEN ;
+
+    public List<string> PopUpFR ;
+    public List<string> PopUpEN ;  
 }
 
 
@@ -120,6 +126,9 @@ public class CSVReader : MonoBehaviour
                         if(Data[0] == "Menu FR")    UIText.MenuFR.Add(Data[D]) ;
                         if(Data[0] == "Menu EN")    UIText.MenuEN.Add(Data[D]) ;
 
+                        if(Data[0] == "Pause FR")    UIText.PauseFR.Add(Data[D]) ;
+                        if(Data[0] == "Pause EN")    UIText.PauseEN.Add(Data[D]) ; 
+
                         if(Data[0] == "Setting FR")    UIText.SettingFR.Add(Data[D]) ;
                         if(Data[0] == "Setting EN")    UIText.SettingEN.Add(Data[D]) ; 
 
@@ -131,6 +140,9 @@ public class CSVReader : MonoBehaviour
                     
                         if(Data[0] == "Control FR")    UIText.ControlFR.Add(Data[D]);
                         if(Data[0] == "Control EN")    UIText.ControlEN.Add(Data[D]);
+
+                        if(Data[0] == "PopUp FR")    UIText.PopUpFR.Add(Data[D]);
+                        if(Data[0] == "PopUp EN")    UIText.PopUpEN.Add(Data[D]);   
                     }
                 }
             }                
