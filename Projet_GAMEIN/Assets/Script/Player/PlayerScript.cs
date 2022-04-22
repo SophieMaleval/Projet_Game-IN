@@ -134,7 +134,7 @@ public class PlayerScript : MonoBehaviour
         {
             if (Inventaire[I] != null)
             {
-                if(Inventaire[I].Name == ObjectSearch.Name)
+                if((PlayerPrefs.GetInt("Langue") == 0 && Inventaire[I].NameFR == ObjectSearch.NameFR) || (PlayerPrefs.GetInt("Langue") == 1 && Inventaire[I].NameEN == ObjectSearch.NameEN))
                 {
                     returned = true;
                 }

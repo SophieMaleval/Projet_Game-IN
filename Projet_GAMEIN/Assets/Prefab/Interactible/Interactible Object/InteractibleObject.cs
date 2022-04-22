@@ -10,7 +10,8 @@ public class InteractibleObject : ScriptableObject
     public Sprite HighlightSprite ;
 
     [Header ("UI")]
-    public string Name ;
+    public string NameFR ;
+    public string NameEN ;
     public Sprite UISprite ;
 
     public Sprite unfinishedSprite;

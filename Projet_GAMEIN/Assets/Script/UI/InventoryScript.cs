@@ -19,37 +19,40 @@ public class InventoryScript : MonoBehaviour
     public GameObject ButtonPreviousSlot ;
     public GameObject ButtonNextSlot ;
     private int CarrousselSlotCurrentValue = 1 ;
+
+
+    [SerializeField] private TextMeshProUGUI QuestTitle ;
+    [SerializeField] private TextMeshProUGUI InventoryTitle ;
+    [SerializeField] private TextMeshProUGUI MapTitle ;
     //public List<Image> InventoryDisplayer ;
 
 
 
     [SerializeField] private RectTransform SettingPanel ;
     [SerializeField] private RectTransform ControlsPanel;
+    private CSVReader TextUILocation ;
+
 
     private void Awake() 
     {
         if(GameObject.Find("Player") != null)   // Récupère le player au lancement de la scène
         {    
             PlayerScript = GameObject.Find("Player").GetComponent<PlayerScript>() ; 
+            TextUILocation = PlayerScript.GetComponentInChildren<CSVReader>();
         }
-        //SetInventoryCount();
-
     }
-    private void OnEnable() 
+
+    void Update() 
     {
-        //DialogueCanvas = GameObject.Find("Dialogue Canvas") ;
-        //PannelENTCanvas = GameObject.Find("Pannel ENT");        
-        //Debug.Log(transform.GetSiblingIndex());
-
-    }
-    private void OnDisable() {
-
+        if(PlayerPrefs.GetInt("Langue") == 0 && QuestTitle.text != TextUILocation.UIText.PauseFR[0] ) SetUIText();
+        if(PlayerPrefs.GetInt("Langue") == 1 && QuestTitle.text != TextUILocation.UIText.PauseEN[0] ) SetUIText();
     }
 
     public void SwitchToggleInventoryDisplay()
     {
         //SetDisplayInventory();        
         SetInventoryCount();
+        SetUIText();
         InventoryPanel.SetActive(!InventoryPanel.activeSelf);
         if(!InventoryPanel.activeSelf)
         {
@@ -107,6 +110,30 @@ public class InventoryScript : MonoBehaviour
         }
     }
 
+    void SetUIText()
+    {
+        if(PlayerPrefs.GetInt("Langue") == 0)
+        {
+            QuestTitle.text = TextUILocation.UIText.PauseFR[0];
+            InventoryTitle.text = TextUILocation.UIText.PauseFR[1];
+            TextInventoryEmpty.text = TextUILocation.UIText.PauseFR[2];
+            MapTitle.text = TextUILocation.UIText.PauseFR[3];
+        }
+        if(PlayerPrefs.GetInt("Langue") == 1)
+        {
+            QuestTitle.text = TextUILocation.UIText.PauseEN[0];
+            InventoryTitle.text = TextUILocation.UIText.PauseEN[1];
+            TextInventoryEmpty.text = TextUILocation.UIText.PauseEN[2];
+            MapTitle.text = TextUILocation.UIText.PauseEN[3];
+        }
+
+        for (int ISI = 0; ISI < InventorySlotInstantiate.Count; ISI++)
+        {
+            SetNameLangueObj(InventorySlotInstantiate[ISI].transform.Find("Box Name Object").GetComponentInChildren<TextMeshProUGUI>(), PlayerScript.Inventaire[ISI]) ;
+        }
+    }
+
+
     public void SetInventoryCount()
     {
         /*InventoryDisplayer.Clear();
@@ -152,40 +179,34 @@ public class InventoryScript : MonoBehaviour
     {
         for (int ISI = 0; ISI < InventorySlotInstantiate.Count; ISI++)
         {
-         /*   if(PlayerScript.Inventaire[ISI] != null)
-            {*/
-                // Met le bon sprite
-                SetImgSlotInventaire(InventorySlotInstantiate[ISI].transform.Find("Contour").GetComponent<RectTransform>(), InventorySlotInstantiate[ISI].transform.Find("Object").GetComponent<Image>(), PlayerScript.Inventaire[ISI].UISprite) ;
+            // Met le bon sprite
+            SetImgSlotInventaire(InventorySlotInstantiate[ISI].transform.Find("Contour").GetComponent<RectTransform>(), InventorySlotInstantiate[ISI].transform.Find("Object").GetComponent<Image>(), PlayerScript.Inventaire[ISI].UISprite) ;
 
-                // Affiche le bon nom
-                InventorySlotInstantiate[ISI].transform.Find("Box Name Object").GetComponentInChildren<TextMeshProUGUI>().text = PlayerScript.Inventaire[ISI].Name;     
-                if(PlayerScript.Inventaire[ISI].Name.Length < 12) InventorySlotInstantiate[ISI].transform.Find("Box Name Object").GetComponent<RectTransform>().sizeDelta = new Vector2(InventorySlotInstantiate[ISI].transform.Find("Box Name Object").GetComponent<RectTransform>().sizeDelta.x, 36f);
-                else InventorySlotInstantiate[ISI].transform.Find("Box Name Object").GetComponent<RectTransform>().sizeDelta = new Vector2(InventorySlotInstantiate[ISI].transform.Find("Box Name Object").GetComponent<RectTransform>().sizeDelta.x, 62f);
-                InventorySlotInstantiate[ISI].transform.Find("Box Name Object").gameObject.SetActive(true) ;
+            // Affiche le bon nom
+            SetNameLangueObj(InventorySlotInstantiate[ISI].transform.Find("Box Name Object").GetComponentInChildren<TextMeshProUGUI>(), PlayerScript.Inventaire[ISI]) ;
+            if(InventorySlotInstantiate[ISI].transform.Find("Box Name Object").GetComponentInChildren<TextMeshProUGUI>().text.Length < 12) InventorySlotInstantiate[ISI].transform.Find("Box Name Object").GetComponent<RectTransform>().sizeDelta = new Vector2(InventorySlotInstantiate[ISI].transform.Find("Box Name Object").GetComponent<RectTransform>().sizeDelta.x, 36f);
+            else InventorySlotInstantiate[ISI].transform.Find("Box Name Object").GetComponent<RectTransform>().sizeDelta = new Vector2(InventorySlotInstantiate[ISI].transform.Find("Box Name Object").GetComponent<RectTransform>().sizeDelta.x, 62f);
+            InventorySlotInstantiate[ISI].transform.Find("Box Name Object").gameObject.SetActive(true) ;
 
-                if(PlayerScript.Inventaire[ISI].multipleEntries && PlayerScript.Inventaire[ISI].unité <= PlayerScript.Inventaire[ISI].valeurMax)
-                {
-                    //Affiche l'image de fond du compteur
-                    InventorySlotInstantiate[ISI].transform.Find("Compteur").GetComponent<Image>().enabled = true;
+            if(PlayerScript.Inventaire[ISI].multipleEntries && PlayerScript.Inventaire[ISI].unité <= PlayerScript.Inventaire[ISI].valeurMax)
+            {
+                //Affiche l'image de fond du compteur
+                InventorySlotInstantiate[ISI].transform.Find("Compteur").GetComponent<Image>().enabled = true;
 
-                    //Modifie valeurs du compteur
-                    InventorySlotInstantiate[ISI].transform.Find("Compteur").GetComponentInChildren<TextMeshProUGUI>().text = PlayerScript.Inventaire[ISI].unité /*- 1*/ + " / " + PlayerScript.Inventaire[ISI].valeurMax.ToString();
-                    InventorySlotInstantiate[ISI].transform.Find("Compteur").GetComponentInChildren<TextMeshProUGUI>().enabled = true;
-                } else {
-                    InventorySlotInstantiate[ISI].transform.Find("Compteur").GetComponent<Image>().enabled = false;
-                    InventorySlotInstantiate[ISI].transform.Find("Compteur").GetComponentInChildren<TextMeshProUGUI>().enabled = false;
-                }
-           /* } else {
-                // Reset toute les valeur par defaut
-                // Sprite
-                InventorySlotPannel.transform.GetChild(ISI).Find("Object").GetComponent<Image>().sprite = null;
-                InventorySlotPannel.transform.GetChild(ISI).Find("Object").GetComponent<Image>().enabled = false;
-
-                // Nom
-                InventorySlotPannel.transform.GetChild(ISI).Find("Box Name Object").GetComponentInChildren<TextMeshProUGUI>().text = "Object";                
-                InventorySlotPannel.transform.GetChild(ISI).Find("Box Name Object").gameObject.SetActive(false) ;
-            } */
+                //Modifie valeurs du compteur
+                InventorySlotInstantiate[ISI].transform.Find("Compteur").GetComponentInChildren<TextMeshProUGUI>().text = PlayerScript.Inventaire[ISI].unité /*- 1*/ + " / " + PlayerScript.Inventaire[ISI].valeurMax.ToString();
+                InventorySlotInstantiate[ISI].transform.Find("Compteur").GetComponentInChildren<TextMeshProUGUI>().enabled = true;
+            } else {
+                InventorySlotInstantiate[ISI].transform.Find("Compteur").GetComponent<Image>().enabled = false;
+                InventorySlotInstantiate[ISI].transform.Find("Compteur").GetComponentInChildren<TextMeshProUGUI>().enabled = false;
+            }
         }
+    }
+
+    void SetNameLangueObj(TextMeshProUGUI TextDisplay, InteractibleObject NameTarget)
+    {
+        if(PlayerPrefs.GetInt("Langue") == 0) TextDisplay.text = NameTarget.NameFR ;
+        if(PlayerPrefs.GetInt("Langue") == 1) TextDisplay.text = NameTarget.NameEN ;
     }
 
     void SetImgSlotInventaire(RectTransform ContourImg, Image ImgSlot, Sprite SpriteDisplay)
