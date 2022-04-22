@@ -39,6 +39,7 @@ public class RhythmManager : MonoBehaviour
     public GameObject resultScreen;
     public GameObject dad;
     public GameObject player;
+    public GameObject minigameCam;
 
 
     
@@ -55,6 +56,11 @@ public class RhythmManager : MonoBehaviour
         player.GetComponent<PlayerMovement>().StartActivity();
     }
 
+    void OnEnable()
+    {
+        SwitchCam();
+    }
+
     private void Awake()
     {
         
@@ -69,6 +75,10 @@ public class RhythmManager : MonoBehaviour
         finalScoreText = GameObject.Find("Final Score Value").GetComponent<TextMeshProUGUI>();
         resultScreen = GameObject.Find("Results");
         dad = GameObject.Find("RythmoGamos");
+        if (dad == null)
+        {
+            dad = GameObject.Find("CookBoy");
+        }
         player = GameObject.Find("Player");
 
     }
@@ -77,9 +87,18 @@ public class RhythmManager : MonoBehaviour
     {
         //theMusic.Play();
     }
+    void SwitchCam()
+    {
+        minigameCam.SetActive(true);
+    }
+    void SwitchBackCam()
+    {
+        minigameCam.SetActive(false);
+    }
 
     void DestroyGame()
     {
+        SwitchBackCam();
         player.GetComponent<PlayerMovement>().EndActivity();
         Destroy(dad);
     }
