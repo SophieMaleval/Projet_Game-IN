@@ -23,7 +23,8 @@ public class PlayerScript : MonoBehaviour
     public bool PlayerAsInterract;
     public bool InDiscussion = false ;
 
-    public InteractibleObject[] Inventaire = new InteractibleObject[] {} ;
+    //public InteractibleObject[] Inventaire = new InteractibleObject[] {} ;
+    public List<InteractibleObject> Inventaire = new List<InteractibleObject>() ;
     public TLManager TimeLineManager ;
 
     public Vector2 MainSceneLoadPos ;
@@ -112,7 +113,7 @@ public class PlayerScript : MonoBehaviour
 
     public void AjoutInventaire(InteractibleObject ObjetAjouter)
     {
-        for (int I = 0; I < Inventaire.Length; I++)
+       /* for (int I = 0; I < Inventaire.Count; I++)
         {
             if(Inventaire[I] == null)
             {
@@ -120,15 +121,16 @@ public class PlayerScript : MonoBehaviour
                 selectedSound.Play();
                 break ;
             }
-        }
-
-        AskInventairePlein();
+        }*/
+        Inventaire.Add(ObjetAjouter) ;
+        selectedSound.Play();
+        //AskInventairePlein();
     }
 
     public bool ItemChecker(InteractibleObject ObjectSearch)
     {
         bool returned = false;
-        for (int I = 0; I < Inventaire.Length; I++)
+        for (int I = 0; I < Inventaire.Count; I++)
         {
             if (Inventaire[I] != null)
             {
@@ -143,21 +145,22 @@ public class PlayerScript : MonoBehaviour
 
     public void RemoveObject(InteractibleObject ObjectRemove)
     {
-        for (int I = 0; I < Inventaire.Length; I++)
+        Inventaire.Remove(ObjectRemove) ;
+        /*for (int I = 0; I < Inventaire.Count; I++)
         {
             if (Inventaire[I] != null)
             {
                 if(Inventaire[I] == ObjectRemove)
                 {
-                    Inventaire[I] = null ;
+                    Inventaire.Remove(ObjectRemove) ;
                 }
             }
-        }   
+        }   */
     }
 
-    void AskInventairePlein()
+    void AskInventairePlein() // Pour Inventaire limité
     {
-        if(Inventaire[Inventaire.Length-1] == null)
+        if(Inventaire[Inventaire.Count - 1] == null)
             CanCollectObject = true ;
         else
             CanCollectObject = false ;
