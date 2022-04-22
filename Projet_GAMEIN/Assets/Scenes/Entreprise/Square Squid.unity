@@ -1722,7 +1722,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &635713755
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4053,7 +4053,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 4.17
+  orthographic size: 3
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -4488,7 +4488,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Cam: {fileID: 2095818033}
   BoxSize: {x: 0.6, y: 0.75, z: 0}
-  ManagerENT: {fileID: 0}
+  ManagerENT: {fileID: 1964805018}
   PartSceneValue: 0
   ThisIsScale: 0
   NewScalePos: {x: 0, y: 0}
@@ -4527,7 +4527,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 3.15}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -4809,8 +4809,8 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!61 &1848190355
-BoxCollider2D:
+--- !u!60 &1848190355
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -4819,10 +4819,10 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.02101612, y: -0.0735569}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -4832,9 +4832,12 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 15.038921, y: 5.014122}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: 7.478027, y: 3.0463223}
+      - {x: -7.34283, y: 3.066617}
+      - {x: -7.3876534, y: -3.0635192}
+      - {x: 7.476359, y: -3.050555}
 --- !u!4 &1848190356
 Transform:
   m_ObjectHideFlags: 0
@@ -5116,12 +5119,12 @@ PrefabInstance:
     - target: {fileID: 4996901833556267674, guid: 03a6ba75661f06c43b2873bfc2464d25,
         type: 3}
       propertyPath: SetPosition.x
-      value: 1.08
+      value: 1.09
       objectReference: {fileID: 0}
     - target: {fileID: 4996901833556267674, guid: 03a6ba75661f06c43b2873bfc2464d25,
         type: 3}
       propertyPath: SetPosition.y
-      value: -1.77
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 4996901833556267674, guid: 03a6ba75661f06c43b2873bfc2464d25,
         type: 3}
@@ -5146,12 +5149,12 @@ PrefabInstance:
     - target: {fileID: 4996901833556267676, guid: 03a6ba75661f06c43b2873bfc2464d25,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.08
+      value: 1.09
       objectReference: {fileID: 0}
     - target: {fileID: 4996901833556267676, guid: 03a6ba75661f06c43b2873bfc2464d25,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.362
+      value: -2.35
       objectReference: {fileID: 0}
     - target: {fileID: 4996901833556267676, guid: 03a6ba75661f06c43b2873bfc2464d25,
         type: 3}
@@ -5196,15 +5199,27 @@ PrefabInstance:
     - target: {fileID: 4996901833556267677, guid: 03a6ba75661f06c43b2873bfc2464d25,
         type: 3}
       propertyPath: m_Size.x
-      value: 1.0388231
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 4996901833556267677, guid: 03a6ba75661f06c43b2873bfc2464d25,
         type: 3}
       propertyPath: m_Offset.x
-      value: 0.015267491
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 03a6ba75661f06c43b2873bfc2464d25, type: 3}
+--- !u!114 &1964805018 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4996901833556267674, guid: 03a6ba75661f06c43b2873bfc2464d25,
+    type: 3}
+  m_PrefabInstance: {fileID: 1964805017}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fb1d1aeeb3252747bd01b0a89776b71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1990376195
 GameObject:
   m_ObjectHideFlags: 0
@@ -5659,7 +5674,7 @@ MonoBehaviour:
   m_Follow: {fileID: 0}
   m_Lens:
     FieldOfView: 60
-    OrthographicSize: 4.17
+    OrthographicSize: 3
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
