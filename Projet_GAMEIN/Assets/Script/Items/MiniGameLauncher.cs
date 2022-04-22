@@ -29,14 +29,14 @@ public class MiniGameLauncher : MonoBehaviour
 
     private void Start()
     {
-        //CanStartThisMiniGame(false);
+        CanStartThisMiniGame(false);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == ("Player"))
         {
-            //CanStartThisMiniGame(true);
+            CanStartThisMiniGame(true);
             PlayerScript.SwitchInputSprite();
         }
     }
@@ -71,12 +71,19 @@ public class MiniGameLauncher : MonoBehaviour
 
     void ZoneInteractible()
     {
-        this.gameObject.GetComponent<Collider>().enabled = true; //active collider, ajouter autres effets visuels ici si besoin
+        this.gameObject.GetComponent<Collider2D>().enabled = true; //active collider, ajouter autres effets visuels ici si besoin
+        SpriteRend.enabled = true;
     }
     
     void ZoneNonInteractible()
     {
-        this.gameObject.GetComponent<Collider>().enabled = false;
+        this.gameObject.GetComponent<Collider2D>().enabled = false;
+        SpriteRend.enabled = false;
+    }
+
+    void OnDestroy()
+    {
+        questSys.Progression();
     }
 
     void StartMiniGame()
@@ -88,7 +95,7 @@ public class MiniGameLauncher : MonoBehaviour
     {
         if (other.tag == ("Player"))
         {
-            //CanStartThisMiniGame(false);
+            CanStartThisMiniGame(false);
             PlayerScript.SwitchInputSprite();
         }
     }
@@ -98,7 +105,6 @@ public class MiniGameLauncher : MonoBehaviour
         if (!Can)
         {
             PlayerAround = false;
-            //SpriteRend.sprite = Object.NormalSprite;
         }
         else
         {

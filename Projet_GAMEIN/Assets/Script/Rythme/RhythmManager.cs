@@ -37,7 +37,7 @@ public class RhythmManager : MonoBehaviour
     public TextMeshProUGUI percentHitText, normalsText, goodsText, perfectsText, missesText, rankText, finalScoreText;
 
     public GameObject resultScreen;
-    public GameObject dad;
+    public GameObject dad, gameLauncher;
     public GameObject player;
     public GameObject minigameCam;
 
@@ -50,7 +50,7 @@ public class RhythmManager : MonoBehaviour
         instance = this;
         scoreText.text = "Score: 0";
         currentMultiplier = 1;
-        totalNotes = GameObject.Find("NoteHolder").transform.childCount;
+        //totalNotes = GameObject.Find("NoteHolder").transform.childCount;
         //Invoke("DestroyGame", 52f);
         resultScreen.SetActive(false);
         player.GetComponent<PlayerMovement>().StartActivity();
@@ -100,6 +100,7 @@ public class RhythmManager : MonoBehaviour
     {
         SwitchBackCam();
         player.GetComponent<PlayerMovement>().EndActivity();
+        Destroy(gameLauncher);
         Destroy(dad);
     }
     // Update is called once per frame
