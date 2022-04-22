@@ -8,6 +8,7 @@ public class GameInPNJManager : MonoBehaviour
     [Header ("Animation Talk")]
     [SerializeField] private CinemachineVirtualCamera CineVCam; 
     private Transform Player ;
+    [SerializeField] private Sprite ScooterPopUpImg ;
 
     [Header ("PNJ")]
     [SerializeField] private GameObject PNJLaurentHello ;
@@ -32,6 +33,8 @@ public class GameInPNJManager : MonoBehaviour
         PNJLaurentHello.SetActive(false);
         CineVCam.Follow = Player ;
         GetComponent<BoxCollider2D>().enabled = false ;
+
+        if(GameObject.Find("PopUp Displayer") != null) GameObject.Find("PopUp Displayer").GetComponent<PopUpManager>().CreatePopUpForScooter(ScooterPopUpImg);
     }
     void Update()
     {

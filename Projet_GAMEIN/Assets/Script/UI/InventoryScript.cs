@@ -246,7 +246,6 @@ public class InventoryScript : MonoBehaviour
                 return true ;
             }   
         }
-
     }
 
 

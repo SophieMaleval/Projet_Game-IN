@@ -56,6 +56,7 @@ public class Interactible : MonoBehaviour
             {
                 PlayerScript.PlayerAsInterract = false ;
                 Collected();
+                if(GameObject.Find("PopUp Displayer") != null) GameObject.Find("PopUp Displayer").GetComponent<PopUpManager>().CreatePopUpItem(Object, true);
             }
             else 
             {              

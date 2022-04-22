@@ -23,6 +23,9 @@ public class UITextContainer
 
     public List<string> ControlFR ;
     public List<string> ControlEN ;
+
+    public List<string> PopUpFR ;
+    public List<string> PopUpEN ;  
 }
 
 
@@ -137,6 +140,9 @@ public class CSVReader : MonoBehaviour
                     
                         if(Data[0] == "Control FR")    UIText.ControlFR.Add(Data[D]);
                         if(Data[0] == "Control EN")    UIText.ControlEN.Add(Data[D]);
+
+                        if(Data[0] == "PopUp FR")    UIText.PopUpFR.Add(Data[D]);
+                        if(Data[0] == "PopUp EN")    UIText.PopUpEN.Add(Data[D]);   
                     }
                 }
             }                

@@ -17,6 +17,12 @@ public class InteractibleObject : ScriptableObject
     public Sprite unfinishedSprite;
     public Sprite finalSprite;
 
+    [Header ("UI PopUP")]
+    public string DescriptionItemAddFR ;
+    public string DescriptionItemAddEN ;
+    public string DescriptionItemRemoveFR ;
+    public string DescriptionItemRemoveEN ;
+
     [Header("Quantity")]
     public int unité = 1;
     public int valeurMax = 1;
