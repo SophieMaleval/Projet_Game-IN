@@ -120,12 +120,12 @@ public class QuestSys : MonoBehaviour
 
     public void NextLevel()
     {
-        /*niveau++;
+        niveau++;
         etape = 0;
-        if(niveau > sizeOfList)
-        {*/
+        if(niveau > sizeOfList - 1)
+        {
             Roaming();
-        //}
+        }
     }
     public void Roaming()
     {

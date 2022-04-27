@@ -31,7 +31,7 @@ public class CameraTriggerVolume : MonoBehaviour
         BoxCol = GetComponent<BoxCollider2D>();
         Rb2D = GetComponent<Rigidbody2D>();
         BoxCol.isTrigger = true ;
-        BoxCol.size = BoxSize ;
+        //BoxCol.size = BoxSize ;
 
         Rb2D.isKinematic = true ;  
 
