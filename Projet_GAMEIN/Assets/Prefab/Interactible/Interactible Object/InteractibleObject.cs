@@ -10,11 +10,18 @@ public class InteractibleObject : ScriptableObject
     public Sprite HighlightSprite ;
 
     [Header ("UI")]
-    public string Name ;
+    public string NameFR ;
+    public string NameEN ;
     public Sprite UISprite ;
 
     public Sprite unfinishedSprite;
     public Sprite finalSprite;
+
+    [Header ("UI PopUP")]
+    public string DescriptionItemAddFR ;
+    public string DescriptionItemAddEN ;
+    public string DescriptionItemRemoveFR ;
+    public string DescriptionItemRemoveEN ;
 
     [Header("Quantity")]
     public int unité = 1;

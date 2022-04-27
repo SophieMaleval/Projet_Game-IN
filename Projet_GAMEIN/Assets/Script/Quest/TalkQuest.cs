@@ -30,13 +30,18 @@ public class TalkQuest : MonoBehaviour
     {
         if(QuestEtape.x == questSys.niveau && QuestEtape.y == questSys.etape)
         {
-            if(mode == ModifInventaire.Retrait) ScriptPlayer.RemoveObject(item);
+            if(mode == ModifInventaire.Retrait) 
+            {
+                ScriptPlayer.RemoveObject(item);
+                if(GameObject.Find("PopUp Displayer") != null) GameObject.Find("PopUp Displayer").GetComponent<PopUpManager>().CreatePopUpItem(item, false);
+            }
 
             if(mode == ModifInventaire.Ajout)
             {
                 if(!ScriptPlayer.ItemChecker(item))
                 {
-                    ScriptPlayer.AjoutInventaire(item);    
+                    ScriptPlayer.AjoutInventaire(item);  
+                    if(GameObject.Find("PopUp Displayer") != null) GameObject.Find("PopUp Displayer").GetComponent<PopUpManager>().CreatePopUpItem(item, true);
                 } else {
                     item.AddEntry();
                 }     

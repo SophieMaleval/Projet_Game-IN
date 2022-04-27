@@ -86,10 +86,10 @@ public class QuestSys : MonoBehaviour
         {
             fourthLvlStep = etape;
         }
-        if (niveau == 5)
+        /*if (niveau == 5)
         {
             fifthLvlStep = etape;
-        }
+        }*/
     }
 
     private void SetLanguage() 
@@ -120,12 +120,12 @@ public class QuestSys : MonoBehaviour
 
     public void NextLevel()
     {
-        niveau++;
+        /*niveau++;
         etape = 0;
         if(niveau > sizeOfList)
-        {
+        {*/
             Roaming();
-        }
+        //}
     }
     public void Roaming()
     {
