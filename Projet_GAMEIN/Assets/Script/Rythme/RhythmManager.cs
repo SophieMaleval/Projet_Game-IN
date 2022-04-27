@@ -124,10 +124,10 @@ public class RhythmManager : MonoBehaviour
             }
         }
 
-        multiText.text = "Multiplier: x" + currentMultiplier;
+        multiText.text = /*"Multiplier: x" +*/""+ currentMultiplier;
 
         currentScore += scorePerNote * currentMultiplier;
-        scoreText.text = "Score: " + currentScore; 
+        scoreText.text = /*"Score: " +*/ ""+ currentScore; 
     }
     
     public void NormalHit()
