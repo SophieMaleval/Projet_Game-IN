@@ -226,7 +226,7 @@ public class DialogueDisplayerController : MonoBehaviour
 
     public void StateDiscussion()
     {
-        if(!PlayerDialogueManager.transform.GetComponentInParent<PlayerScript>().InventoryUIIndestructible.GetComponent<InventoryScript>().InventoryPanel.activeSelf)
+        if(!PlayerDialogueManager.transform.GetComponentInParent<PlayerScript>().InventoryUIIndestructible.GetComponent<InventoryScript>().InventoryPanel.activeSelf && this.gameObject.activeSelf)
         {
             CanChangeCurrentDialogue = true ;
 
@@ -418,7 +418,6 @@ public class DialogueDisplayerController : MonoBehaviour
                 }
             }    
         }
-        
         if(!Result && !ContainsZValue(ValueSearch) && !ValueSearchNeedToBeHide) Result = true ;        
 
         return Result ;

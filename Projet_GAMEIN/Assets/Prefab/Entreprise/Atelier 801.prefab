@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8801535310837258248}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 2, z: 0}
+  m_LocalPosition: {x: 0.58, y: 1.78, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8801535312003448735}
@@ -96,10 +96,10 @@ PolygonCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.6, y: 0.2225}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.412058, y: 0.2819762}
+    pivot: {x: 0.5, y: 0.25}
     oldSize: {x: 6.625, y: 7}
     newSize: {x: 4.24, y: 4.48}
     adaptiveTilingThreshold: 0.5
@@ -108,7 +108,9 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 1.5938025, y: -0.8891406}
+    - - {x: 1.0131445, y: -1.066009}
+      - {x: 1.2939453, y: -0.92191696}
+      - {x: 1.5313215, y: -1.0330238}
       - {x: 1.9607334, y: -1.3912692}
       - {x: 2.7076159, y: -1.3488333}
       - {x: 3.1555223, y: -1.2475262}
@@ -123,12 +125,17 @@ PolygonCollider2D:
       - {x: -1.6346979, y: 0.68758905}
       - {x: -2.5970678, y: 0.2542603}
       - {x: -2.7496328, y: -0.28775835}
-      - {x: -2.6797867, y: -1.1229696}
-      - {x: -2.1673841, y: -1.4269583}
-      - {x: -1.3804302, y: -1.4989166}
-      - {x: -1.1642962, y: -0.9809711}
-      - {x: 0.14241695, y: -1.3218415}
-      - {x: 0.33492374, y: -1.2963798}
+      - {x: -2.6797867, y: -1.101512}
+      - {x: -2.7472446, y: -1.5468903}
+      - {x: -2.6483183, y: -1.7166939}
+      - {x: -2.373252, y: -1.7008438}
+      - {x: -2.154509, y: -1.3539984}
+      - {x: -1.4018879, y: -1.4560013}
+      - {x: -1.1900458, y: -0.972388}
+      - {x: -0.5233369, y: -1.2267334}
+      - {x: -0.4902625, y: -1.1836586}
+      - {x: 0.5292764, y: -1.180973}
+      - {x: 0.5751958, y: -1.2296379}
     - - {x: 2.7454329, y: 0.67242956}
       - {x: 2.2693233, y: 0.7245183}
       - {x: 1.7618256, y: 0.8519614}
@@ -182,6 +189,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NameScene: Atelier 801
   DoorOpeningSound: {fileID: 0}
+  PlayerChangeScene: 0
 --- !u!61 &8801535312003448732
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -195,7 +203,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.032855034, y: 0.7640197}
+  m_Offset: {x: 0.02, y: 0.78}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -206,7 +214,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.3511105, y: 0.14591455}
+  m_Size: {x: 1, y: 0.05}
   m_EdgeRadius: 0
 --- !u!1 &8801535312145355380
 GameObject:
@@ -218,7 +226,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8801535312145355382}
   - component: {fileID: 8801535312145355381}
-  - component: {fileID: 5390959492091009754}
   m_Layer: 0
   m_Name: Atelier 801 Exterieur Fontaine
   m_TagString: Untagged
@@ -291,29 +298,3 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 1
---- !u!61 &5390959492091009754
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8801535312145355380}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.005437851, y: -0.23015213}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.49999994, y: 0.25973037}
-    oldSize: {x: 2.1875, y: 2.640625}
-    newSize: {x: 2.1875, y: 2.640625}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 2.6116486, y: 0.911397}
-  m_EdgeRadius: 0

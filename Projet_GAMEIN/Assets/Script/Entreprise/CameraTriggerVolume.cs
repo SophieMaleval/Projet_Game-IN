@@ -3,6 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
 
+
+public enum PlayerLookAffterMove
+{
+    Initial,
+    Left,
+    Up,
+    Right
+}
+
 [RequireComponent (typeof(BoxCollider2D))]
 [RequireComponent (typeof(Rigidbody2D))]
 public class CameraTriggerVolume : MonoBehaviour
@@ -19,6 +28,7 @@ public class CameraTriggerVolume : MonoBehaviour
     
     [SerializeField] private bool ThisIsScale = false ;
     [SerializeField] private Vector2 NewScalePos ;
+    [SerializeField] private PlayerLookAffterMove PlayerOrientation ;
     private bool PlayerAround = false ;
 
 
@@ -97,9 +107,24 @@ public class CameraTriggerVolume : MonoBehaviour
         ScriptPlayer.transform.position = NewScalePos ;
         if(CameraSwitcher.ActiveCamera != Cam) CameraSwitcher.SwitchCamera(Cam) ;
         ManagerENT.ChangePartScene(PartSceneValue) ;  
+        ChangePlayerOrientation();
         /* FADE */ ScriptPlayer.LunchFadeOut();
         yield return new WaitForSeconds(0.5f);
         ScriptPlayer.GetComponent<PlayerMovement>().EndActivity();
         PlayerMoveOnScale = false ;
+    }
+
+
+    void ChangePlayerOrientation()
+    {
+        Vector2 NewAnimationPosValue ;
+        NewAnimationPosValue = Vector2.zero ;
+
+        if(PlayerOrientation == PlayerLookAffterMove.Initial) NewAnimationPosValue = new Vector2(0f, -1f);
+        if(PlayerOrientation == PlayerLookAffterMove.Left) NewAnimationPosValue = new Vector2(-1f, 0f);
+        if(PlayerOrientation == PlayerLookAffterMove.Up) NewAnimationPosValue = new Vector2(1f, 0f);
+        if(PlayerOrientation == PlayerLookAffterMove.Right) NewAnimationPosValue = new Vector2(0f, 1f);
+        
+        ScriptPlayer.GetComponent<PlayerMovement>().GiveGoodAnimation(NewAnimationPosValue);
     }
 }
