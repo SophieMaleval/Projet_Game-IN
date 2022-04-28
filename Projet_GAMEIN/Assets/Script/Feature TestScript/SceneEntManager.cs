@@ -16,6 +16,8 @@ public class SceneEntManager : MonoBehaviour
     
     [SerializeField] private Vector2 SetPosition ;
     
+    [SerializeField] private bool LightAutoGenerateInThisScene = false ;
+    private GameObject GlobalLightPlayer ;
 
 
     private void Awake() 
@@ -40,8 +42,6 @@ public class SceneEntManager : MonoBehaviour
             PM.ChangePlayerSpeed(true);
             PM.InExterior = false ;
         }
-
-
     }
 
     void SetPositionOnLoad()
@@ -68,10 +68,16 @@ public class SceneEntManager : MonoBehaviour
     {
         if(FadeImage != null)    FadeImage.GetComponent<AnimationTransitionScene>().OpenningScene();
 
-        if(VolumeFirstCam != null) VolumeFirstCam.SetFirstCamera();       
+        if(VolumeFirstCam != null) VolumeFirstCam.SetFirstCamera(); 
+
+        GlobalLightPlayer = GameObject.Find("Global Light Player");
+        if(LightAutoGenerateInThisScene) GlobalLightPlayer.SetActive(false);
     }
     
-
+    private void Update() 
+    {
+        if(GetComponent<ChangeScene>().PlayerChangeScene) GlobalLightPlayer.SetActive(true);
+    }
 
 
     public void ChangePartScene(int PartDisplay)

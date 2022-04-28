@@ -157,6 +157,7 @@ MonoBehaviour:
   PNJInENT: 0
   TextDialogue: {fileID: 0}
   DialogueCanvasBox: {fileID: 0}
+  OldLastMovePlayer: {x: 0, y: 0}
   ThisQuestionLunchReflexion: 0
   EnigmeQCM: 0
   PlayerAskQuestQuestion: 0
@@ -164,13 +165,29 @@ MonoBehaviour:
   QuestionAndDialogueLunchFade: {x: 0, y: 0}
   DialogueLunchPrez: 0
   PrezInfoLunch: {x: 0, y: 0}
+  MiniGame: {fileID: 0}
+  MiniGameLunchInfo:
+  - {x: 1, y: 3}
+  - {x: 2, y: 1}
   NewPosPNJAndPlayer: {x: 0, y: 0, z: 0, w: 0}
   InformationQuestEtapeQuestion:
   - {x: 2, y: 7, z: 1, w: 1}
+  - {x: 2, y: 20, z: 10, w: 1}
+  HideQuestionBeforeMomentX:
+  - {x: 2, y: 7, z: 2}
   DiscussionWithQuestion: 1
   Answer:
   - AnswerForQuestion: 
+  - AnswerForQuestion: 00000000010000000200000002000000
+  - AnswerForQuestion: 0200000002000000
+  - AnswerForQuestion: 03000000
   - AnswerForQuestion: 000000000100000002000000
+  - AnswerForQuestion: 000000000100000002000000
+  - AnswerForQuestion: 000000000100000002000000
+  - AnswerForQuestion: 000000000100000002000000
+  - AnswerForQuestion: 000000000100000002000000
+  - AnswerForQuestion: 000000000100000002000000
+  - AnswerForQuestion: 0400000005000000
 --- !u!61 &7454713249344840310
 BoxCollider2D:
   m_ObjectHideFlags: 0

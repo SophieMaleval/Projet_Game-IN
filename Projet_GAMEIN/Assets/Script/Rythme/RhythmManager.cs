@@ -38,8 +38,13 @@ public class RhythmManager : MonoBehaviour
     public TextMeshProUGUI percentHitText, normalsText, goodsText, perfectsText, missesText, rankText, finalScoreText;
 
     public GameObject resultScreen;
-    public GameObject dad, gameLauncher;
-    public GameObject player;
+    public GameObject DadMaster, dad, gameLauncher;
+
+    [SerializeField] public PNJDialogue PNJCurrent ;
+    public PlayerMovement player;
+    private Vector2 OldPlayerPosition ;
+    public Vector2 PlayerPosition ;
+
     public GameObject minigameCam;
 
 
@@ -49,24 +54,42 @@ public class RhythmManager : MonoBehaviour
     void Start()
     {
         instance = this;
-        scoreText.text = "Score: 0";
+        scoreText.text = /*"Score: 0"*/ "0";
         currentMultiplier = 1;
         //totalNotes = GameObject.Find("NoteHolder").transform.childCount;
         //Invoke("DestroyGame", 52f);
         resultScreen.SetActive(false);
-        player.GetComponent<PlayerMovement>().StartActivity();
+
     }
 
     void OnEnable()
+    {   
+        dad.SetActive(false);
+        StartCoroutine(MiniGameEnable());
+    }
+
+    IEnumerator MiniGameEnable()
     {
-        SwitchCam();
+        PNJCurrent.gameObject.SetActive(false);
+        player.StartActivity();          
+        player.GetComponent<PlayerScript>().LunchAnimationFadeIn();
+        OldPlayerPosition = player.transform.position ;   
+        player.GiveGoodAnimation(new Vector2(0,-1f));            
+        if(PlayerPosition != Vector2.zero) player.transform.position = new Vector2(PlayerPosition.x, PlayerPosition.y);          
+        SwitchCam();      
+        player.GetComponent<PlayerScript>().InventoryUIIndestructible.SetActive(false);                 
+        yield return new WaitForSeconds(0.75f);
+        player.GetComponent<PlayerScript>().LunchFadeOut();
+
+        yield return new WaitForSeconds(1f);
+        dad.SetActive(true);             
     }
 
     private void Awake()
     {
         questSys = GameObject.Find("QuestManager").GetComponent<QuestSys>();
-        scoreText = GameObject.Find("ScoreText").GetComponent<TextMeshProUGUI>();
-        multiText = GameObject.Find("MultiplierText").GetComponent<TextMeshProUGUI>();
+      /*  scoreText = GameObject.Find("Score Text").GetComponent<TextMeshProUGUI>();
+        multiText = GameObject.Find("Best Score Text").GetComponent<TextMeshProUGUI>();
         percentHitText = GameObject.Find("Percent Hit Value").GetComponent<TextMeshProUGUI>();
         normalsText = GameObject.Find("Normal Hits Value").GetComponent<TextMeshProUGUI>();
         goodsText = GameObject.Find("Good Hits Value").GetComponent<TextMeshProUGUI>();
@@ -75,12 +98,13 @@ public class RhythmManager : MonoBehaviour
         rankText = GameObject.Find("Rank Value").GetComponent<TextMeshProUGUI>();
         finalScoreText = GameObject.Find("Final Score Value").GetComponent<TextMeshProUGUI>();
         resultScreen = GameObject.Find("Results");
-        dad = GameObject.Find("RythmoGamos");
+        DadMaster = GameObject.Find("Jeu de Rythme");
+        dad = GameObject.Find("RythmoGamos");*/
         if (dad == null)
         {
             dad = GameObject.Find("CookBoy");
         }
-        player = GameObject.Find("Player");
+        player = GameObject.Find("Player").GetComponent<PlayerMovement>();
 
     }
 
@@ -100,10 +124,10 @@ public class RhythmManager : MonoBehaviour
     void DestroyGame()
     {
         SwitchBackCam();
-        player.GetComponent<PlayerMovement>().EndActivity();
+        player.EndActivity();
         questSys.Progression();
-        Destroy(gameLauncher);        
-        Destroy(dad);
+      /*  Destroy(gameLauncher);        
+        Destroy(dad);*/
     }
     // Update is called once per frame
     void Update()
@@ -124,7 +148,7 @@ public class RhythmManager : MonoBehaviour
             }
         }
 
-        multiText.text = /*"Multiplier: x" +*/""+ currentMultiplier;
+        multiText.text = "x" + currentMultiplier;
 
         currentScore += scorePerNote * currentMultiplier;
         scoreText.text = /*"Score: " +*/ ""+ currentScore; 
@@ -155,7 +179,7 @@ public class RhythmManager : MonoBehaviour
         currentMultiplier = 1;
         multiplierTracker = 0;
 
-        multiText.text = "Multiplier: x" + currentMultiplier;
+        multiText.text = "x" + currentMultiplier;
         missedHits++;
     }
 
@@ -173,7 +197,7 @@ public class RhythmManager : MonoBehaviour
             float totalHits = normalHits + goodHits + perfectHits;
             //Debug.Log("allez raconte");
             //Debug.Log(totalHits + " = " + normalHits + " + " + goodHits + " + " + perfectHits);
-            //totalNotes = GameObject.Find("NoteHolder").GetComponent<NotesSpawner>().notesCounter;
+            //totalNotes = GameObject.Find("NoteHolder").transform.childCount ;//GetComponent<NotesSpawner>().notesCounter;
             float percentHit = (totalHits / totalNotes) * 100f ;
 
             percentHitText.text = percentHit.ToString("F1") + "%"; //F1= 1 float après la virgule
@@ -204,10 +228,45 @@ public class RhythmManager : MonoBehaviour
             rankText.text = rankVal;
 
             finalScoreText.text = currentScore.ToString();
-            Invoke("DestroyGame", 5f);
+            //Invoke("DestroyGame", 5f);
+            StartCoroutine(WaitAndDisableGame());            
         }
 
     }
+
+
+    IEnumerator WaitAndDisableGame()
+    {
+        yield return new WaitForSeconds(5f);
+        SwitchBackCam();
+
+
+        if(PNJCurrent == null)
+        {
+            player.GetComponent<PlayerScript>().LunchAnimationFadeIn();             
+        } else {
+            PNJCurrent.TellPlayerLunchFade();
+        }                  
+        yield return new WaitForSeconds(0.75f);
+        PNJCurrent.gameObject.SetActive(true);
+        player.GetComponent<PlayerScript>().InventoryUIIndestructible.SetActive(true);
+        DadMaster.SetActive(false);
+        player.transform.position = new Vector2(OldPlayerPosition.x, OldPlayerPosition.y);
+
+        // Redonner la même direction qu'avant le mini jeu
+        player.GiveGoodAnimation(PNJCurrent.OldLastMovePlayer);   
+     
+
+        //player.GetComponent<PlayerScript>().LunchFadeOut();
+        player.enabled = true ;        
+   
+        if(PNJCurrent == null)
+        {
+            player.EndActivity();             
+        }
+
+    }
+
 
     #region Sound effects
 
