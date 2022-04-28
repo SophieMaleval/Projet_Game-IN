@@ -53,12 +53,13 @@ public class SceneEntManager : MonoBehaviour
             if(PM.GetComponent<PlayerScript>().PreviousSceneName == "Character Customer")
             {
                 PM.transform.position = new Vector2(-5.5f, 2.65f);  
-
+                PM.GiveGoodAnimation(new Vector2(0f, -1f));
                 ChangePartScene(1);
             } 
             if(PM.GetComponent<PlayerScript>().PreviousSceneName == "Main" || PM.GetComponent<PlayerScript>().PreviousSceneName == "Tilemaps test")
             {   
-               PM.transform.position = SetPosition;                
+                PM.transform.position = SetPosition;  
+                PM.GiveGoodAnimation(new Vector2(0f, 1f));              
             } 
         }
  

@@ -24,7 +24,6 @@ public class ChangeScene : MonoBehaviour
         if(GameObject.Find("DoorOpening") != null)
         {
             if (DoorOpeningSound == null)    DoorOpeningSound = GameObject.Find("DoorOpening").GetComponent<AudioSource>() ;
-
         }
     }
 
