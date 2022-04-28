@@ -23,7 +23,7 @@ public class SceneManagerFeature : MonoBehaviour
         
      
             PM.enabled = true ;
-            PM.PlayerArrivedInNewScene = true ;
+            PM.PlayerNeedInitialePosition = true ;
             PM.MakePlayerInGoodSens = true ;     
             PM.ChangePlayerSpeed(false);
             PM.InExterior = true ;

@@ -22,7 +22,11 @@ public class PlayerMovement : MonoBehaviour
     [HideInInspector] public bool PlayerChangeScene ;
     [HideInInspector] public bool MakePlayerInGoodSens = false ; 
 
-        [HideInInspector] public bool PlayerArrivedInNewScene = false ;
+        [HideInInspector] public bool PlayerNeedInitialePosition = false ;
+        [HideInInspector] public bool PlayerNeedLookUp = false ;
+        [HideInInspector] public bool PlayerNeedLookRight = false ;
+        [HideInInspector] public bool PlayerNeedLookLeft = false ;
+
 
 
 
@@ -174,22 +178,38 @@ public class PlayerMovement : MonoBehaviour
                 Move = PlayerActionControllers.PlayerInLand.Move.ReadValue<Vector2>();
             else
                 Move = PlayerActionControllers.PlayerInScoot.MoveScoot.ReadValue<Vector2>();            
-        } else {
+        }/* else {*/
             if(MakePlayerInGoodSens) 
             {
-                if(PlayerArrivedInNewScene)
-                {
-                    MakePlayerInGoodSens = false ;
-                    Move = new Vector2(0, -1f);
 
-                    PlayerChangeScene = false ;
-                } else {
-                    MakePlayerInGoodSens = false ;
-                    PlayerArrivedInNewScene = true ;
+
+                if(PlayerNeedInitialePosition)
+                {
+                    PlayerNeedInitialePosition = false ;                    
+                    Move = new Vector2(0, -1f);
+                } 
+
+                if(PlayerNeedLookUp)
+                {
+                    PlayerNeedLookUp = false ;   
                     Move = new Vector2(0, 1f);
-                }
+                } 
+
+                if(PlayerNeedLookLeft)
+                {
+                    PlayerNeedLookLeft = false ;   
+                    Move = new Vector2(-1f, 0f);
+                } 
+
+                if(PlayerNeedLookRight)
+                {
+                    PlayerNeedLookRight = false ;   
+                    Move = new Vector2(1f, 0f);
+                } 
+                MakePlayerInGoodSens = false ;  
+                PlayerChangeScene = false ;                 
             }
-        }
+      //  }
 
 
 
@@ -277,6 +297,21 @@ public class PlayerMovement : MonoBehaviour
                 Animators[i].SetFloat("AnimMoveMagnitude",MoveDirection.magnitude);
             }
         }
+    }
+
+    public Vector2 GetLastMovePlayer()
+    {
+        return LastMoveDirection ;
+    }
+
+    public void GiveGoodAnimation(Vector2 OldLastMove)
+    {
+        if(OldLastMove.x == -1f) PlayerNeedLookLeft = true ;
+        if(OldLastMove.x == 1f) PlayerNeedLookRight = true ;
+        if(OldLastMove.y == -1f) PlayerNeedInitialePosition = true ;
+        if(OldLastMove.y == 1f) PlayerNeedLookUp = true ;
+
+        MakePlayerInGoodSens = true ;
     }
 
   

@@ -86,7 +86,7 @@ public class PlayerScript : MonoBehaviour
 
     void InventoryInteract()
     {
-        if(InventoryUIIndestructible != null)
+        if(InventoryUIIndestructible != null && InventoryUIIndestructible.activeInHierarchy)
         {
             InventoryUIIndestructible.GetComponent<InventoryScript>().SwitchToggleInventoryDisplay();
         }

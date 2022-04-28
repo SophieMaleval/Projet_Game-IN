@@ -10,6 +10,8 @@ public class ChangeScene : MonoBehaviour
     public string NameScene;
 
     public AudioSource DoorOpeningSound;
+    
+    [HideInInspector] public bool PlayerChangeScene = false ;
 
     private void Awake() 
     {
@@ -32,7 +34,7 @@ public class ChangeScene : MonoBehaviour
         if(other.gameObject.tag == "Player" && !PM.OnScooter)
         {
             PM.PlayerChangeScene = true ;
-            PM.PlayerArrivedInNewScene = false ;
+            PM.PlayerNeedInitialePosition = false ;
             if(other.gameObject.transform.position.y < (transform.position.y + GetComponent<BoxCollider2D>().offset.y)) PM.MakePlayerInGoodSens = true ;
             else PM.MakePlayerInGoodSens = false ;
 
@@ -68,7 +70,9 @@ public class ChangeScene : MonoBehaviour
     {
         FadeImage.SetActive(true);
         FadeImage.GetComponent<AnimationTransitionScene>().QuitScene();
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
+        PlayerChangeScene = true ;
+        yield return new WaitForSeconds(1f);
         SceneManager.LoadScene(NameScene);
 
     }

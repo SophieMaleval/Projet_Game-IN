@@ -34,7 +34,6 @@ public class QCMManager : MonoBehaviour
     private List<QuestionQCMContainer> TextQCMFR = new List<QuestionQCMContainer>() ;
     private List<QuestionQCMContainer> TextQCMEN = new List<QuestionQCMContainer>() ;
 
-
     // Start is called before the first frame update
     void OnEnable()
     {
@@ -83,6 +82,12 @@ public class QCMManager : MonoBehaviour
         {
             TextQCMFR = QCMContaine.QCMPresFR1 ;
             TextQCMEN = QCMContaine.QCMPresEN1 ;            
+        }   
+
+        if(CurrentEnigme == 3)
+        {
+            TextQCMFR = QCMContaine.QCMEnigmeFR2 ;
+            TextQCMEN = QCMContaine.QCMEnigmeEN2 ;            
         }   
 
         if(PlayerPrefs.GetInt("Langue") == 0 && TextQCM != TextQCMFR)    TextQCM = TextQCMFR ;
