@@ -279,6 +279,14 @@ public class DialogueDisplayerController : MonoBehaviour
 
         if(CurrentPNJDiscussion.DialogueLunchPrez && (CurrentDialogueDisplay == CurrentPNJDiscussion.PrezInfoLunch.x && CurrentDialogueState == CurrentPNJDiscussion.PrezInfoLunch.y) && !PlayerFadeScript.AnimationBeMake) BoolReturned = true ;
         if(CurrentPNJDiscussion.DialogueWithFadeAnimation && (CurrentDialogueDisplay == CurrentPNJDiscussion.QuestionAndDialogueLunchFade.x && CurrentDialogueState == CurrentPNJDiscussion.QuestionAndDialogueLunchFade.y) && !PlayerFadeScript.AnimationBeMake) BoolReturned = true ;
+        if(CurrentPNJDiscussion.MiniGame != null) 
+        {
+            for (int i = 0; i < CurrentPNJDiscussion.MiniGameLunchInfo.Count; i++)
+            {
+                if((CurrentDialogueDisplay == CurrentPNJDiscussion.MiniGameLunchInfo[i].x && CurrentDialogueState == CurrentPNJDiscussion.MiniGameLunchInfo[i].y) && !PlayerFadeScript.AnimationBeMake) BoolReturned = true ;
+            }            
+        }
+
 
         return BoolReturned ;
     }
@@ -350,8 +358,13 @@ public class DialogueDisplayerController : MonoBehaviour
                     SetQuestion(true, ChildNum, DialoguePNJQuestion);  
                 }                            
             } else {
-                SetQuestion(QuestionXRead, ChildNum, DialoguePNJQuestion); 
-                BoxQuestion.transform.GetChild(ChildNum).GetComponentInChildren<TextMeshProUGUI>().color = QuestionClassicColor ;
+                if(CanDisplayQuestQuestion(ChildNum + 1))
+                {
+                    SetQuestion(QuestionXRead, ChildNum, DialoguePNJQuestion); 
+                    BoxQuestion.transform.GetChild(ChildNum).GetComponentInChildren<TextMeshProUGUI>().color = QuestionClassicColor ;                
+                } else {
+                    SetQuestion(true, ChildNum, DialoguePNJQuestion);  
+                }
             }
         } else {
             SetQuestion(true, ChildNum, DialoguePNJQuestion);
@@ -382,15 +395,42 @@ public class DialogueDisplayerController : MonoBehaviour
     bool CanDisplayQuestQuestion(int ValueSearch)
     {
         bool Result = false ;
+        bool ValueSearchNeedToBeHide = false ;
         for (int i = 0; i < CurrentPNJDiscussion.InformationQuestEtapeQuestion.Count; i++)
         {
-            if(QuestSysManager.niveau == CurrentPNJDiscussion.InformationQuestEtapeQuestion[i].x && QuestSysManager.etape == CurrentPNJDiscussion.InformationQuestEtapeQuestion[i].y && ((int) CurrentPNJDiscussion.InformationQuestEtapeQuestion[i].z == ValueSearch))
+           /* if(QuestSysManager.niveau == CurrentPNJDiscussion.InformationQuestEtapeQuestion[i].x && QuestSysManager.etape == CurrentPNJDiscussion.InformationQuestEtapeQuestion[i].y && ((int) CurrentPNJDiscussion.InformationQuestEtapeQuestion[i].z == ValueSearch))
             {
                 Result = true ;
-            }
+            }*/
+            //Result = ConditionForDisplayQuestion(i, ValueSearch) ;
+
+            if(QuestSysManager.niveau == CurrentPNJDiscussion.InformationQuestEtapeQuestion[i].x && QuestSysManager.etape == CurrentPNJDiscussion.InformationQuestEtapeQuestion[i].y && ((int) CurrentPNJDiscussion.InformationQuestEtapeQuestion[i].z == ValueSearch)) Result = true ;
         }
 
+        if(CurrentPNJDiscussion.HideQuestionBeforeMomentX.Count != 0) 
+        {
+            for (int AllQuestionHide = 0; AllQuestionHide < CurrentPNJDiscussion.HideQuestionBeforeMomentX.Count; AllQuestionHide++)
+            {
+                if(ValueSearch == (int) CurrentPNJDiscussion.HideQuestionBeforeMomentX[AllQuestionHide].z)
+                {
+                    ValueSearchNeedToBeHide = true ;
+                    if(QuestSysManager.DifferentQuestStep[(int) CurrentPNJDiscussion.HideQuestionBeforeMomentX[AllQuestionHide].x] > (int) CurrentPNJDiscussion.HideQuestionBeforeMomentX[AllQuestionHide].y) Result = true ;
+                }
+            }    
+        }
+        
+        if(!Result && !ContainsZValue(ValueSearch) && !ValueSearchNeedToBeHide) Result = true ;        
+
         return Result ;
+    }
+
+    bool ConditionForDisplayQuestion(int i, int ValueSearch)
+    {
+        bool BooleanReturned = false ;
+    
+
+        
+        return BooleanReturned ;
     }
 
     float ReturnWValue(int ValueSearch)

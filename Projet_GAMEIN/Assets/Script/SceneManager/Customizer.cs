@@ -495,7 +495,6 @@ public class Customizer : MonoBehaviour
         
         PlayerPersonnality.PreviousSceneName = SceneManager.GetActiveScene().name;
         yield return new WaitForSeconds(0.5f);
-        //SceneManager.LoadScene("Accidental Queens");
         SceneManager.LoadScene("Game In");
     }
 

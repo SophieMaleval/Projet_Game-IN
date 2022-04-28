@@ -13,6 +13,7 @@ public class QuestSys : MonoBehaviour
     [TextArea] public string roamingGoal;*/
     public int lvlTracker = 0;
     public int firstLvlStep, secondLvlStep, thirdLvlStep, fourthLvlStep, fifthLvlStep = 0;
+    [HideInInspector] public List<int> DifferentQuestStep = new List<int>() ;
 
     
     [Header("Quest Manager")]
@@ -52,6 +53,12 @@ public class QuestSys : MonoBehaviour
         animContent = GameObject.Find("AnimContent").GetComponent<CanvasGroup>();
         niveau = PlayerPrefs.GetInt("Niveau");
 
+        DifferentQuestStep.Add(0);
+        DifferentQuestStep.Add(firstLvlStep);
+        DifferentQuestStep.Add(secondLvlStep);
+        DifferentQuestStep.Add(thirdLvlStep);
+        DifferentQuestStep.Add(fourthLvlStep);
+        DifferentQuestStep.Add(fifthLvlStep);
 
         ShowOrHideCurrentQuestPanel(false);
     }
@@ -66,6 +73,9 @@ public class QuestSys : MonoBehaviour
         //titleEffect.text = quest[niveau].questTitle; //fond ombre
         contenu.text = quest[niveau].questGoal[etape];
         quest[niveau].questCode = niveau;
+
+        DifferentQuestStep[niveau] = etape ;   
+             
         if (niveau == 0)
         {
             etape = 0;
@@ -73,6 +83,7 @@ public class QuestSys : MonoBehaviour
         if (niveau == 1)
         {
             firstLvlStep = etape;
+
         }
         if (niveau == 2)
         {
@@ -194,7 +205,7 @@ public class QuestSys : MonoBehaviour
 
         if (niveau == 5)
         {
-            etape = thirdLvlStep;
+            etape = fifthLvlStep;
         }
         ShowOrHideCurrentQuestPanel(true);
     }
