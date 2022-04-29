@@ -27,11 +27,17 @@ public class ChangeScene : MonoBehaviour
         }
     }
 
+    void Start() 
+    {
+        PM.EndActivity();
+    }
+
 
     private void OnTriggerEnter2D(Collider2D other) 
     {
         if(other.gameObject.tag == "Player" && !PM.OnScooter)
         {
+            PM.StartActivity();
             PM.PlayerChangeScene = true ;
             PM.PlayerNeedInitialePosition = false ;
             if(other.gameObject.transform.position.y < (transform.position.y + GetComponent<BoxCollider2D>().offset.y)) PM.MakePlayerInGoodSens = true ;
