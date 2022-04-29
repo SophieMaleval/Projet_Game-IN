@@ -46,7 +46,7 @@ public class ChangeScene : MonoBehaviour
             PM.ResetVelocity();
 
             if(SceneManager.GetActiveScene().name == "Tilemaps test" || SceneManager.GetActiveScene().name == "Main") PM.GetComponent<PlayerScript>().MainSceneLoadPos = GiveNewPos();
-            if(SceneManager.GetActiveScene().name == "Game In") PM.GetComponent<PlayerScript>().MainSceneLoadPos = new Vector2(-4f, -2f);
+            if(SceneManager.GetActiveScene().name == "Game In") PM.GetComponent<PlayerScript>().MainSceneLoadPos = new Vector2(-3.75f, -1.25f);
             PM.GetComponent<PlayerScript>().PreviousSceneName = SceneManager.GetActiveScene().name;
 
             if(DoorOpeningSound != null) DoorOpeningSound.Play();

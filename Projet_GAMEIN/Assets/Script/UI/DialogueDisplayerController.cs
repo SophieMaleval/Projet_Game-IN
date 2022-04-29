@@ -79,6 +79,9 @@ public class DialogueDisplayerController : MonoBehaviour
         public List<int> AnswerForQuestion ; 
     }
 
+
+    private bool CanPass = true ;
+
     public void ResetAllValue()
     {
         PNJSpeak = false ;
@@ -113,6 +116,8 @@ public class DialogueDisplayerController : MonoBehaviour
         NamePNJ.transform.parent.GetComponent<RectTransform>().sizeDelta = new Vector2( (NumOfChar*14f) + 10f, NamePNJ.transform.parent.GetComponent<RectTransform>().sizeDelta.y) ;
     }
 
+    
+
     void FixedUpdate()
     {       
         if(PlayerDialogueManager != null)
@@ -120,7 +125,7 @@ public class DialogueDisplayerController : MonoBehaviour
             if(CurrentDialoguePlayerChoice != PlayerDialogueManager.CurrentSelectQuestion )
             {
                 CurrentDialoguePlayerChoice = PlayerDialogueManager.CurrentSelectQuestion  ;   
-                KeyPressed = true ;                
+               // KeyPressed = true ;                
             }
 
             SelectedButton();                  
@@ -155,7 +160,6 @@ public class DialogueDisplayerController : MonoBehaviour
 
         if(TextAsCompletelyDisplay && PassTextImg.gameObject.activeSelf == false)
         {
-            
             PassTextImg.gameObject.SetActive(true);
             PassTextImg.anchoredPosition = new Vector2(PassTextImg.anchoredPosition.x, -2.5f);
             StopCoroutine(AnimationPassText());
@@ -239,10 +243,10 @@ public class DialogueDisplayerController : MonoBehaviour
                 {
                     if(CurrentDialogueState < CurrentPNJDiscussion.Answer[CurrentDialogueDisplay].AnswerForQuestion.Count )
                     {
-                        if(!TextAsCompletelyDisplay) TextDiscussion(false, true); // Arrête l'animation et affiche tout le texte
+                        if(!TextAsCompletelyDisplay/*) /*if(*/ && PlayerDialogueManager.CanPassDialogue) TextDiscussion(false, true); // Arrête l'animation et affiche tout le texte
                         else {
                             if(CheckIfNeedLunchFade()) PlayerFadeScript.LunchAnimationFadeIn();
-                            else TextDiscussion(false, false); // Affiche le prochain texte avec l'animation       
+                            else if(PlayerDialogueManager.CanPassDialogue) TextDiscussion(false, false); // Affiche le prochain texte avec l'animation       
                         }             
                     } else {
                         ShowDialogueChoice(true);
@@ -250,10 +254,10 @@ public class DialogueDisplayerController : MonoBehaviour
                 } else {
                     if(CurrentDialogueState < CurrentPNJDiscussion.Answer[CurrentDialogueDisplay].AnswerForQuestion.Count )
                     {
-                        if(!TextAsCompletelyDisplay) TextDiscussion(false, true); // Arrête l'animation et affiche tout le texte
+                        if(!TextAsCompletelyDisplay/*) if(*/ && PlayerDialogueManager.CanPassDialogue) TextDiscussion(false, true); // Arrête l'animation et affiche tout le texte
                         else {
                             if(CheckIfNeedLunchFade()) PlayerFadeScript.LunchAnimationFadeIn();
-                            else TextDiscussion(false, false); // Affiche le prochain texte avec l'animation      
+                            else if(PlayerDialogueManager.CanPassDialogue) TextDiscussion(false, false); // Affiche le prochain texte avec l'animation      
                         }         
                     } else ButtonClose();                           
                 }
@@ -265,7 +269,7 @@ public class DialogueDisplayerController : MonoBehaviour
                 if(!CurrentPNJDiscussion.DiscussionWithQuestion)
                 {
                     ResetDialogueContinuationValue(1);        
-                    TextDiscussion(true, false);
+                    if(PlayerDialogueManager.CanPassDialogue) TextDiscussion(true, false);
                 }  
             }
 
@@ -439,6 +443,7 @@ public class DialogueDisplayerController : MonoBehaviour
 
     void TextDiscussion(bool ToggleDisplayBox, bool TextState)
     {
+        PlayerDialogueManager.DialoguePass();
         GetComponent<Button>().interactable = true ;
         WeAreInChoice = false ;
 
@@ -460,6 +465,7 @@ public class DialogueDisplayerController : MonoBehaviour
             TextAsCompletelyDisplay = true ;
         }
     }
+
 
     void CloseDiscussion(bool ToggleDisplayBox,bool TextState)
     {
