@@ -66,7 +66,7 @@ public class DialogueDisplayerController : MonoBehaviour
     public AudioSource VoicePnj;
 
     [HideInInspector] public bool WeAreInChoice = false ;
-    private float DelayAnimationText = 0.1f ;
+    private float DelayAnimationText = 0.05f ;
 
     [SerializeField] private RectTransform PassTextImg ;
     private bool TextAsCompletelyDisplay = true ;
@@ -304,7 +304,10 @@ public class DialogueDisplayerController : MonoBehaviour
         if(!QuestionAsRead)
         {
             BoxQuestion.transform.GetChild(ChildNum).gameObject.SetActive(true) ;
-            BoxQuestion.transform.GetChild(ChildNum).GetComponentInChildren<TextMeshProUGUI>().text = DialogueText ;            
+            BoxQuestion.transform.GetChild(ChildNum).GetComponentInChildren<TextMeshProUGUI>().text = DialogueText ;   
+            
+            if(BoxQuestion.transform.GetChild(ChildNum).GetComponentInChildren<TextMeshProUGUI>().preferredWidth < this.GetComponent<RectTransform>().sizeDelta.x) BoxQuestion.transform.GetChild(ChildNum).GetComponent<RectTransform>().sizeDelta = new Vector2(BoxQuestion.transform.GetChild(ChildNum).GetComponent<RectTransform>().sizeDelta.x, 16.5f);
+            else BoxQuestion.transform.GetChild(ChildNum).GetComponent<RectTransform>().sizeDelta = new Vector2(BoxQuestion.transform.GetChild(ChildNum).GetComponent<RectTransform>().sizeDelta.x, (16.5f * 2f));
         } else {
             BoxQuestion.transform.GetChild(ChildNum).GetComponentInChildren<TextMeshProUGUI>().text = " " ;                   
             BoxQuestion.transform.GetChild(ChildNum).gameObject.SetActive(false) ;
@@ -336,7 +339,7 @@ public class DialogueDisplayerController : MonoBehaviour
         float HeightFinalBox = 30f ;
         for (int HChoiceQuestion = 0; HChoiceQuestion < BoxQuestion.transform.childCount; HChoiceQuestion++)
         {
-            if(BoxQuestion.transform.GetChild(HChoiceQuestion).gameObject.activeSelf) HeightFinalBox += 16.5f ;
+            if(BoxQuestion.transform.GetChild(HChoiceQuestion).gameObject.activeSelf) HeightFinalBox += BoxQuestion.transform.GetChild(HChoiceQuestion).GetComponent<RectTransform>().sizeDelta.y ;
         }
         ThisRect.sizeDelta = new Vector2(ThisRect.sizeDelta.x, HeightFinalBox);
 
@@ -386,7 +389,6 @@ public class DialogueDisplayerController : MonoBehaviour
         for (int i = 0; i < CurrentPNJDiscussion.InformationQuestEtapeQuestion.Count; i++)
         {
             if(((int) CurrentPNJDiscussion.InformationQuestEtapeQuestion[i].z == ValueSearch) ) BoolReturned = true ;
-
         }
 
         return BoolReturned ;
@@ -423,14 +425,6 @@ public class DialogueDisplayerController : MonoBehaviour
         return Result ;
     }
 
-    bool ConditionForDisplayQuestion(int i, int ValueSearch)
-    {
-        bool BooleanReturned = false ;
-    
-
-        
-        return BooleanReturned ;
-    }
 
     float ReturnWValue(int ValueSearch)
     {
