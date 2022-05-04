@@ -4817,6 +4817,7 @@ GameObject:
   - component: {fileID: 1290278483}
   - component: {fileID: 1290278481}
   - component: {fileID: 1290278484}
+  - component: {fileID: 1290278485}
   m_Layer: 0
   m_Name: CM vcam1 RDC
   m_TagString: Untagged
@@ -4898,6 +4899,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fb86854f6b5f8146ad716f4191a4a56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1290278485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1290278480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2fba25a5cd15594e8f050a11e386c80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ConfineMode: 0
+  m_BoundingVolume: {fileID: 0}
+  m_BoundingShape2D: {fileID: 1312101652}
+  m_ConfineScreenEdges: 1
+  m_Damping: 0
 --- !u!1 &1300287341
 GameObject:
   m_ObjectHideFlags: 0
@@ -5077,10 +5095,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -5.9667234, y: 4.0117645}
-      - {x: -5.9819565, y: -4.947618}
-      - {x: 5.865657, y: -4.9162693}
-      - {x: 5.8840084, y: 4.0693626}
+    - - {x: -5.870551, y: 4.0758796}
+      - {x: -5.901813, y: -4.9636464}
+      - {x: 5.8816843, y: -4.9322977}
+      - {x: 5.8840084, y: 4.085392}
 --- !u!1 &1330790846
 GameObject:
   m_ObjectHideFlags: 0
@@ -7310,7 +7328,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2018145429}
   m_Layer: 0
-  m_Name: CameraContainer
+  m_Name: Camera Container
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7655,8 +7673,8 @@ MonoBehaviour:
   m_LookaheadTime: 0
   m_LookaheadSmoothing: 0
   m_LookaheadIgnoreY: 0
-  m_XDamping: 2
-  m_YDamping: 2
+  m_XDamping: 0.75
+  m_YDamping: 0.75
   m_ZDamping: 0
   m_TargetMovementOnly: 0
   m_ScreenX: 0.5
