@@ -85,7 +85,7 @@ public class QuestSys : MonoBehaviour
             firstLvlStep = etape;
 
         }
-        if (niveau == 2)
+     /*   if (niveau == 2)
         {
             secondLvlStep = etape;
         }
@@ -96,7 +96,7 @@ public class QuestSys : MonoBehaviour
         if(niveau == 4)
         {
             fourthLvlStep = etape;
-        }
+        }*/
         /*if (niveau == 5)
         {
             fifthLvlStep = etape;
