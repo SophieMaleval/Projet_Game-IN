@@ -12571,7 +12571,7 @@ GameObject:
   - component: {fileID: 1162147547066524459}
   - component: {fileID: 5198789626192333256}
   - component: {fileID: 8475917624156115727}
-  - component: {fileID: 5723913089930248208}
+  - component: {fileID: 3556678702205595217}
   m_Layer: 5
   m_Name: Minimap Pannel
   m_TagString: Untagged
@@ -12589,7 +12589,8 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 3924143527149263192}
   m_Father: {fileID: 8869368856093525879}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -12636,6 +12637,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 2
+--- !u!114 &3556678702205595217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6237273335736665917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31a19414c41e5ae4aae2af33fee712f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShowMaskGraphic: 1
 --- !u!1 &6317136983332850299
 GameObject:
   m_ObjectHideFlags: 0
@@ -25131,7 +25145,7 @@ PrefabInstance:
     - target: {fileID: 6842716538680931960, guid: 110e9b295de06d2408b9b3110fc9788c,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6842716538680931960, guid: 110e9b295de06d2408b9b3110fc9788c,
         type: 3}
