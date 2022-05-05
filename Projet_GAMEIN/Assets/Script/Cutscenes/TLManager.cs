@@ -10,30 +10,53 @@ public class TLManager : MonoBehaviour
     //public string camera2;
    // public GameObject camPrincipal;
     public GameObject camCutscene;
-    public bool isActivated = false;
+    public bool isActivated = false, inQuest = false;
+    
     public PlayableDirector debutCS;
     public PlayableDirector finCS;
 
     public string debutSequence, finSequence;
-    void OnEnable()
+    public QuestSys questSys;
+    public int level;
+
+    private void Awake()
     {
-       // camPrincipal = GameObject.Find(camera1);
-      //  camCutscene = GameObject.Find(camera2);
-        camCutscene.SetActive(false);
-      camCutscene.GetComponent<CinemachineVirtualCamera>().m_Lens.OrthographicSize = 3 ;
         debutCS = GameObject.Find(debutSequence).GetComponent<PlayableDirector>();
         finCS = GameObject.Find(finSequence).GetComponent<PlayableDirector>();
         debutCS.enabled = false;
         finCS.enabled = false;
+        questSys = GameObject.Find("QuestManager").GetComponent<QuestSys>();
+    }
+    void OnEnable()
+    {
+        camCutscene.SetActive(false);
+        camCutscene.GetComponent<CinemachineVirtualCamera>().m_Lens.OrthographicSize = 3 ;
     }
 
+    private void FixedUpdate()
+    {
+        StepChecker();
+    }
     // Update is called once per frame
     void Update()
     {
-        SwitchCam();
-        Lighting();
+        if (inQuest)
+        {
+            SwitchCam();
+            Lighting();
+        }
     }
-
+    void StepChecker()
+    {
+        if (questSys.niveau == level)
+        {
+            inQuest = true;
+        }
+        else
+        {
+            inQuest = false;
+        }               
+    }
     public void Toggle()
     {
         isActivated = !isActivated;
