@@ -65,7 +65,7 @@ public class PlayerDialogue : MonoBehaviour
     [HideInInspector] public bool PlayerAsRead = false ;
     [HideInInspector] public int CurrentSelectQuestion = 0 ;
 
-
+    [HideInInspector] public bool CanPassDialogue = true ;
 
 
 
@@ -181,6 +181,18 @@ public class PlayerDialogue : MonoBehaviour
 
 
 
+    public void DialoguePass()
+    {
+        StopAllCoroutines();
+        StartCoroutine(TimeBeforeResetPass());
+    }
+
+    IEnumerator TimeBeforeResetPass()
+    {
+        CanPassDialogue = false ;
+        yield return new WaitForSeconds(0.1f);
+        CanPassDialogue = true ;
+    }
 
 
 }

@@ -109,7 +109,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: d79f7483729b3224fa595eedfd1aa0c0, type: 3}
+  m_Sprite: {fileID: 8146423880735617080, guid: 0e7685333d2bf824b888071d801d8e84,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -130,7 +131,7 @@ Animator:
   m_GameObject: {fileID: 7454713249344840315}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 0158a2e28f35e59479978bd46d39e502, type: 2}
+  m_Controller: {fileID: 9100000, guid: a534cd5f9f1843641baaf4eab142f678, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -157,6 +158,7 @@ MonoBehaviour:
   PNJInENT: 0
   TextDialogue: {fileID: 0}
   DialogueCanvasBox: {fileID: 0}
+  OldLastMovePlayer: {x: 0, y: 0}
   ThisQuestionLunchReflexion: 0
   EnigmeQCM: 0
   PlayerAskQuestQuestion: 0
@@ -164,9 +166,12 @@ MonoBehaviour:
   QuestionAndDialogueLunchFade: {x: 3, y: 1}
   DialogueLunchPrez: 0
   PrezInfoLunch: {x: 0, y: 0}
+  MiniGame: {fileID: 0}
+  MiniGameLunchInfo: []
   NewPosPNJAndPlayer: {x: 0, y: 0, z: 0, w: 0}
   InformationQuestEtapeQuestion:
   - {x: 4, y: 2, z: 3, w: 1}
+  HideQuestionBeforeMomentX: []
   DiscussionWithQuestion: 1
   Answer:
   - AnswerForQuestion: 
@@ -189,8 +194,8 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.38, y: 0.63}
+    pivot: {x: 0.5, y: 0}
+    oldSize: {x: 0.5625, y: 0.875}
     newSize: {x: 0.38, y: 0.63}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -215,8 +220,8 @@ PolygonCollider2D:
   m_Offset: {x: 0, y: 0.5}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.38, y: 0.63}
+    pivot: {x: 0.5, y: 0}
+    oldSize: {x: 0.5625, y: 0.875}
     newSize: {x: 0.38, y: 0.63}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -273,7 +278,8 @@ AudioSource:
   m_GameObject: {fileID: 8215071331028764595}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -5723755797506681443, guid: accc17b3909243240a4eae0c39ab4d78,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: e38098e95657de3458b8408c58ca175a, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.785
@@ -367,6 +373,27 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7454713249344840312}
     m_Modifications:
+    - target: {fileID: 8854087391415928261, guid: e43991f473271d74fba607a5b13c5ff5,
+        type: 3}
+      propertyPath: item
+      value: 
+      objectReference: {fileID: 11400000, guid: a64e76127c4deb144beadd0445941dae,
+        type: 2}
+    - target: {fileID: 8854087391415928261, guid: e43991f473271d74fba607a5b13c5ff5,
+        type: 3}
+      propertyPath: mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8854087391415928261, guid: e43991f473271d74fba607a5b13c5ff5,
+        type: 3}
+      propertyPath: QuestEtape.x
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8854087391415928261, guid: e43991f473271d74fba607a5b13c5ff5,
+        type: 3}
+      propertyPath: QuestEtape.y
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8854087391415928262, guid: e43991f473271d74fba607a5b13c5ff5,
         type: 3}
       propertyPath: m_Name
@@ -442,6 +469,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7454713249344840312}
     m_Modifications:
+    - target: {fileID: 8854087391415928261, guid: e43991f473271d74fba607a5b13c5ff5,
+        type: 3}
+      propertyPath: item
+      value: 
+      objectReference: {fileID: 11400000, guid: 49393d7314403c048ba1dd74a07d04e9,
+        type: 2}
+    - target: {fileID: 8854087391415928261, guid: e43991f473271d74fba607a5b13c5ff5,
+        type: 3}
+      propertyPath: QuestEtape.x
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8854087391415928261, guid: e43991f473271d74fba607a5b13c5ff5,
+        type: 3}
+      propertyPath: QuestEtape.y
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8854087391415928262, guid: e43991f473271d74fba607a5b13c5ff5,
         type: 3}
       propertyPath: m_Name
