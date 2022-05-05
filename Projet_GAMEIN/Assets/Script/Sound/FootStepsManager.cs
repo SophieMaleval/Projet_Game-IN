@@ -31,7 +31,7 @@ public class FootStepsManager : MonoBehaviour
     }
 
     AudioClip GetRandomClip (){
-        if (scene.name == "Tilemaps test")
+        if (scene.name == "Main")
         {
             
             return clipsOutside [UnityEngine.Random.Range(0, clipsOutside.Length)];
