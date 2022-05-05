@@ -489,7 +489,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7972223242693659117
 Transform:
   m_ObjectHideFlags: 0
@@ -520,10 +520,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   camCutscene: {fileID: 1046427446624561514}
   isActivated: 0
+  inQuest: 0
   debutCS: {fileID: 0}
   finCS: {fileID: 0}
   debutSequence: "Debut_Enqu\xEAte"
   finSequence: "Fin_Enqu\xEAte"
+  questSys: {fileID: 0}
+  level: 0
 --- !u!1 &2988669070893021297
 GameObject:
   m_ObjectHideFlags: 0
@@ -6445,6 +6448,8 @@ PlayableDirector:
     value: {fileID: 5962912835240128584}
   - key: {fileID: 7663268362626959241, guid: e14a1a19e2428e245a4029a2599c7061, type: 2}
     value: {fileID: 2366280526230941625}
+  - key: {fileID: 0}
+    value: {fileID: 2366280526230941625}
   m_ExposedReferences:
     m_References: []
 --- !u!1 &7705379444181384874
@@ -7415,10 +7420,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   camCutscene: {fileID: 1046427446624561514}
   isActivated: 0
-  debutCS: {fileID: 0}
-  finCS: {fileID: 0}
+  inQuest: 0
+  debutCS: {fileID: 3247545419387138039}
+  finCS: {fileID: 5500250447676719892}
   debutSequence: Debut_Rythme
   finSequence: Fin_Rythme
+  questSys: {fileID: 0}
+  level: 1
 --- !u!1 &8921430932628508471
 GameObject:
   m_ObjectHideFlags: 0
