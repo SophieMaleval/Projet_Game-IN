@@ -190,9 +190,7 @@ public class PlayerDialogue : MonoBehaviour
     IEnumerator TimeBeforeResetPass()
     {
         CanPassDialogue = false ;
-        Debug.Log("Att");
         yield return new WaitForSeconds(0.1f);
-        Debug.Log("Azy");
         CanPassDialogue = true ;
     }
 

@@ -17,16 +17,16 @@ public class Checker : MonoBehaviour
             isOn = true;
             firstQuest.SetActive(true);
             secondQuest.SetActive(true);
-            thirdQuest.SetActive(true);
-            fourthQuest.SetActive(true);
+          /*  thirdQuest.SetActive(true);
+            fourthQuest.SetActive(true);*/
         }
         else
         {
             isOn = false;
             firstQuest.SetActive(false);
             secondQuest.SetActive(false);
-            thirdQuest.SetActive(false);
-            fourthQuest.SetActive(false);
+        /*    thirdQuest.SetActive(false);
+            fourthQuest.SetActive(false);*/
         }
     }
 }

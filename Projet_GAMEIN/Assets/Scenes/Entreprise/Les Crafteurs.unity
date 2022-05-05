@@ -1555,6 +1555,7 @@ MonoBehaviour:
   PartSceneValue: 0
   ThisIsScale: 0
   NewScalePos: {x: 0, y: 0}
+  PlayerOrientation: 0
   ScriptPlayer: {fileID: 0}
 --- !u!50 &340310495
 Rigidbody2D:
@@ -2403,6 +2404,7 @@ MonoBehaviour:
   PartSceneValue: 1
   ThisIsScale: 0
   NewScalePos: {x: 0, y: 0}
+  PlayerOrientation: 0
   ScriptPlayer: {fileID: 0}
 --- !u!50 &428176464
 Rigidbody2D:
@@ -2713,8 +2715,7 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: 94dba4c5a101d214785878511678dce2, type: 3}
 --- !u!4 &453785522 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 7454713249344840312, guid: 94dba4c5a101d214785878511678dce2,
-    type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 453785521}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &456609933
@@ -4744,7 +4745,8 @@ AudioSource:
   m_GameObject: {fileID: 1210344634}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -5723755797506681443, guid: accc17b3909243240a4eae0c39ab4d78,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: b1fa3712c451c4647993fef9f66ed004, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -5625,6 +5627,7 @@ MonoBehaviour:
   - {fileID: 1417301522}
   VolumeFirstCam: {fileID: 340310494}
   SetPosition: {x: 0.8, y: -2.25}
+  LightAutoGenerateInThisScene: 0
 --- !u!114 &1413676768
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5639,6 +5642,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NameScene: Main
   DoorOpeningSound: {fileID: 1210344636}
+  PlayerChangeScene: 0
 --- !u!1 &1417301522
 GameObject:
   m_ObjectHideFlags: 0

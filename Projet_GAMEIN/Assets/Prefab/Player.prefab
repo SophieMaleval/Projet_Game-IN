@@ -322,6 +322,8 @@ MonoBehaviour:
     QCMEnigmeEN1: []
     QCMPresFR1: []
     QCMPresEN1: []
+    QCMEnigmeFR2: []
+    QCMEnigmeEN2: []
   QuestManager: {fileID: 0}
   TextUIPanneauxENT: []
 --- !u!114 &6101403331850239422
@@ -342,6 +344,7 @@ MonoBehaviour:
   "myDialogueAdh\xE9rentEN": []
   PlayerAsRead: 0
   CurrentSelectQuestion: 0
+  CanPassDialogue: 1
 --- !u!1 &1321418917422301378
 GameObject:
   m_ObjectHideFlags: 0
@@ -690,7 +693,7 @@ GameObject:
   - component: {fileID: 2056280681917097995}
   - component: {fileID: 5150215309098930134}
   - component: {fileID: 631416780472497620}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Marqueur
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -705,7 +708,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4303474374458125749}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 165.9, y: 0, z: 59.94}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2833699217548194170}
@@ -5517,7 +5520,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6194354122754073810
 Transform:
   m_ObjectHideFlags: 0
@@ -6782,7 +6785,10 @@ MonoBehaviour:
   PlayOneShotClip: 1
   PlayerChangeScene: 0
   MakePlayerInGoodSens: 0
-  PlayerArrivedInNewScene: 0
+  PlayerNeedInitialePosition: 0
+  PlayerNeedLookUp: 0
+  PlayerNeedLookRight: 0
+  PlayerNeedLookLeft: 0
   PlayerRenderers:
   - {fileID: 7705379444423092921}
   - {fileID: 7705379444181384879}
