@@ -15,11 +15,16 @@ public class NoteObject : MonoBehaviour
     public bool canBePressed;
     public InputAction keyToPress;
     public GameObject hitEffect, goodEffect, perfectEffect, missEffect;
+    public Transform noteHolder, detector;
+    public Vector3 laPos;
 
     private void Awake()
     {
         //controls = new PlayerActionControls();
+
         keyToPress.performed += onPress;
+        noteHolder = transform.parent.transform;
+            
         //keyToPressed.canceled += WaitingForAttempt;
     }
     private void OnEnable() { keyToPress.Enable(); }
@@ -33,14 +38,14 @@ public class NoteObject : MonoBehaviour
             {
                 gameObject.SetActive(false);
                 
-                if(Mathf.Abs(transform.localPosition.y) > 0.25)
+                if(Mathf.Abs(noteHolder.localPosition.y + transform.localPosition.y) > 0.25)
                 {
                     //Debug.Log("Hit");
                     RhythmManager.instance.NormalHit();
                     PlaySound();
                     Instantiate(hitEffect, transform.position, hitEffect.transform.rotation);
                 }
-                else if(Mathf.Abs(transform.localPosition.y) > 0.05f)
+                else if(Mathf.Abs(noteHolder.localPosition.y + transform.localPosition.y) > 0.05f)
                 {
                     //Debug.Log("Good");
                     RhythmManager.instance.GoodHit();
@@ -58,10 +63,16 @@ public class NoteObject : MonoBehaviour
 
         }
     }
+    private void FixedUpdate()
+    {
+        noteHolder = transform.parent.transform;
+        laPos = noteHolder.position;
+    }
     private void OnTriggerEnter2D(Collider2D other)
     {
         if(other.tag == "Activator")
         {
+            detector = other.transform;
             canBePressed = true;
         }
     }
@@ -72,6 +83,7 @@ public class NoteObject : MonoBehaviour
         {
             if (other.tag == "Activator")
             {
+                detector = null;
                 canBePressed = false;
                 Instantiate(missEffect, transform.position, missEffect.transform.rotation);
                 RhythmManager.instance.NoteMissed();
