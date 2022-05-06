@@ -16,6 +16,8 @@ public class ButtonController : MonoBehaviour
 
     public InputAction arrow;
 
+    public List<GameObject> NoteParticleprefab = new List<GameObject>() ;
+
     private void Awake()
     {
         //controls = new PlayerActionControls();
@@ -42,6 +44,9 @@ public class ButtonController : MonoBehaviour
         if (ctx.performed)
         {
             spriteRenderer.sprite = pressedImage;
+
+            GameObject NoteInstantiate = Instantiate(NoteParticleprefab[Random.Range(0, NoteParticleprefab.Count)], new Vector2(0.36f, 2.42f), Quaternion.identity) ;
+            Destroy(NoteInstantiate, 1f) ;
             //Debug.Log("button pressed");
         }
     }
