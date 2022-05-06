@@ -89,10 +89,6 @@ public class AnimationCustomizer : MonoBehaviour
         SetCustomTextLangue(PlayerPrefs.GetInt("Langue"));
     }
 
-    private void FixedUpdate() 
-    {
-
-    }
 
     IEnumerator WaitBeforeOpenningRideaux()
     {      

@@ -37,7 +37,7 @@ public class PannelENTManager : MonoBehaviour
     public List<Vector3> DisplayTypeV1 ;
     public List<Vector3> DisplayTypeV2 ;
     public List<Vector3> DisplayTypeV3 ;
-
+    public List<Vector3> DisplayTypeV4 ;
 
 
     [Header ("Information ENT")]
@@ -114,6 +114,7 @@ public class PannelENTManager : MonoBehaviour
             SetPos(FeuilleActi[0], DisplayTypeV1[3]) ;
             SetPos(FeuilleActi[1], DisplayTypeV1[4]) ;
             SetPos(FeuilleActi[2], DisplayTypeV1[5]) ;
+            SetPos(FeuilleActi[3], DisplayTypeV1[6]) ;
         }
 
         if(Disposition == 2)
@@ -125,6 +126,7 @@ public class PannelENTManager : MonoBehaviour
             SetPos(FeuilleActi[0], DisplayTypeV2[3]) ;
             SetPos(FeuilleActi[1], DisplayTypeV2[4]) ;
             SetPos(FeuilleActi[2], DisplayTypeV2[5]) ;
+            SetPos(FeuilleActi[3], DisplayTypeV2[6]) ;
         }
 
         if(Disposition == 3)
@@ -136,6 +138,19 @@ public class PannelENTManager : MonoBehaviour
             SetPos(FeuilleActi[0], DisplayTypeV3[3]) ;
             SetPos(FeuilleActi[1], DisplayTypeV3[4]) ;
             SetPos(FeuilleActi[2], DisplayTypeV3[5]) ;
+            SetPos(FeuilleActi[3], DisplayTypeV3[6]) ;
+        }
+
+        if(Disposition == 4)
+        {
+            SetPos(FeuilleEnt, DisplayTypeV4[0]) ;
+            SetPos(FeuilleRéseauxSociaux, DisplayTypeV4[1]) ;
+            SetPos(FeuilleContact, DisplayTypeV4[2]) ;
+
+            SetPos(FeuilleActi[0], DisplayTypeV4[3]) ;
+            SetPos(FeuilleActi[1], DisplayTypeV4[4]) ;
+            SetPos(FeuilleActi[2], DisplayTypeV4[5]) ;
+            SetPos(FeuilleActi[3], DisplayTypeV4[6]) ;
         }
     }
 
@@ -211,10 +226,12 @@ public class PannelENTManager : MonoBehaviour
         SetActivityText(0);
         SetActivityText(1);
         SetActivityText(2);
+        SetActivityText(3);
 
-        if(FeuilleActi[0].gameObject.activeSelf && FeuilleActi[1].gameObject.activeSelf && FeuilleActi[2].gameObject.activeSelf) SetDispositionPage(1) ;
-        if(FeuilleActi[0].gameObject.activeSelf && FeuilleActi[1].gameObject.activeSelf && !FeuilleActi[2].gameObject.activeSelf) SetDispositionPage(2) ;
-        if(FeuilleActi[0].gameObject.activeSelf && !FeuilleActi[1].gameObject.activeSelf && !FeuilleActi[2].gameObject.activeSelf) SetDispositionPage(3) ;
+        if(FeuilleActi[0].gameObject.activeSelf && FeuilleActi[1].gameObject.activeSelf && FeuilleActi[2].gameObject.activeSelf && !FeuilleActi[3].gameObject.activeSelf) SetDispositionPage(1) ;
+        if(FeuilleActi[0].gameObject.activeSelf && FeuilleActi[1].gameObject.activeSelf && !FeuilleActi[2].gameObject.activeSelf && !FeuilleActi[3].gameObject.activeSelf) SetDispositionPage(2) ;
+        if(FeuilleActi[0].gameObject.activeSelf && !FeuilleActi[1].gameObject.activeSelf && !FeuilleActi[2].gameObject.activeSelf && !FeuilleActi[3].gameObject.activeSelf) SetDispositionPage(3) ;
+        if(FeuilleActi[0].gameObject.activeSelf && FeuilleActi[1].gameObject.activeSelf && FeuilleActi[2].gameObject.activeSelf && FeuilleActi[3].gameObject.activeSelf) SetDispositionPage(4) ;
     }
 
     void SetActivityText(int ActivityInt)
@@ -225,21 +242,25 @@ public class PannelENTManager : MonoBehaviour
             {
                 FeuilleActi[ActivityInt].gameObject.SetActive(true);
                 ListContenuPage[ActivityInt].TitleActivité.text = InformationENT.ListActivité[ActivityInt].NameActivité ;
-                ListContenuPage[ActivityInt].IllustrationActivité.sprite = InformationENT.ListActivité[ActivityInt].IllustrationActivité ;
-            
+
                 if(PlayerPrefs.GetInt("Langue") == 0) ListContenuPage[ActivityInt].DescriptionAtivité.text = InformationENT.ListActivité[ActivityInt].TextActivtéFR ;            
-                if(PlayerPrefs.GetInt("Langue") == 1) ListContenuPage[ActivityInt].DescriptionAtivité.text = InformationENT.ListActivité[ActivityInt].TextActivtéEN ;            
-        
-                Vector2 SizeIllustration = InformationENT.ListActivité[ActivityInt].IllustrationActivité.bounds.size ;
-                SizeIllustration *= 100f ;
-                float DivisionImage = 1 ;
+                if(PlayerPrefs.GetInt("Langue") == 1) ListContenuPage[ActivityInt].DescriptionAtivité.text = InformationENT.ListActivité[ActivityInt].TextActivtéEN ;     
 
-                while((SizeIllustration.x / DivisionImage) > (FeuilleActi[ActivityInt].sizeDelta.x -50f))
+                if(InformationENT.ListActivité[ActivityInt].IllustrationActivité != null)
                 {
-                    DivisionImage += 0.1f ;                  
-                }
+                    ListContenuPage[ActivityInt].IllustrationActivité.sprite = InformationENT.ListActivité[ActivityInt].IllustrationActivité ;        
+                    Vector2 SizeIllustration = InformationENT.ListActivité[ActivityInt].IllustrationActivité.bounds.size ;
 
-                ListContenuPage[ActivityInt].IllustrationActivité.GetComponent<RectTransform>().sizeDelta = new Vector2(SizeIllustration.x / DivisionImage, SizeIllustration.y / DivisionImage) ;
+                    SizeIllustration *= 100f ;
+                    float DivisionImage = 1 ;
+
+                    while((SizeIllustration.x / DivisionImage) > (FeuilleActi[ActivityInt].sizeDelta.x -50f))
+                    {
+                        DivisionImage += 0.1f ;                  
+                    }
+
+                    ListContenuPage[ActivityInt].IllustrationActivité.GetComponent<RectTransform>().sizeDelta = new Vector2(SizeIllustration.x / DivisionImage, SizeIllustration.y / DivisionImage) ;
+                }
 
                 FeuilleActi[ActivityInt].sizeDelta = new Vector2(FeuilleActi[ActivityInt].sizeDelta.x,  (ListContenuPage[ActivityInt].TitleActivité.GetComponent<RectTransform>().sizeDelta.y + ListContenuPage[ActivityInt].IllustrationActivité.GetComponent<RectTransform>().sizeDelta.y + 90f + InformationENT.ListActivité[ActivityInt].HeightArticle));                
             } else {
@@ -256,10 +277,12 @@ public class PannelENTManager : MonoBehaviour
         NomEntreprise.text = InformationENT.NomEntreprise ;
         NoteSiteWebURLDisplay.text = InformationENT.URLSiteWebDisplay ;
 
-
-        for (int LFP = 0; LFP < LogoFondPage.Count; LFP++)
+        if(InformationENT.LogoENT != null)
         {
-            LogoFondPage[LFP].sprite = InformationENT.LogoENT ;
+            for (int LFP = 0; LFP < LogoFondPage.Count; LFP++)
+            {
+                LogoFondPage[LFP].sprite = InformationENT.LogoENT ;
+            }
         }
 
 
