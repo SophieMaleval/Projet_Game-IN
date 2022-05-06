@@ -301,7 +301,7 @@ public class PNJDialogue : MonoBehaviour
     public void OpenMinigame()
     {
         OldLastMovePlayer = PlayerScript.GetComponent<PlayerMovement>().GetLastMovePlayer(); 
-        MiniGame.GetComponentInChildren<RhythmManager>().PNJCurrent = this ;
+        MiniGame.GetComponent<InstantiationPrefabGame>().PNJScript = this ;
         MiniGame.SetActive(true);
         DialogueCanvasBox.gameObject.SetActive(false);  
         // Set Player Rotation

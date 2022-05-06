@@ -33,14 +33,14 @@ public class NoteObject : MonoBehaviour
             {
                 gameObject.SetActive(false);
                 
-                if(Mathf.Abs(transform.position.y) > 0.25)
+                if(Mathf.Abs(transform.localPosition.y) > 0.25)
                 {
                     //Debug.Log("Hit");
                     RhythmManager.instance.NormalHit();
                     PlaySound();
                     Instantiate(hitEffect, transform.position, hitEffect.transform.rotation);
                 }
-                else if(Mathf.Abs(transform.position.y) > 0.05f)
+                else if(Mathf.Abs(transform.localPosition.y) > 0.05f)
                 {
                     //Debug.Log("Good");
                     RhythmManager.instance.GoodHit();
