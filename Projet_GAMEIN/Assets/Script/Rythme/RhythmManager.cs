@@ -38,7 +38,7 @@ public class RhythmManager : MonoBehaviour
     public TextMeshProUGUI percentHitText, normalsText, goodsText, perfectsText, missesText, rankText, finalScoreText;
 
     public GameObject resultScreen;
-    public GameObject DadMaster, dad, gameLauncher;
+    public GameObject DadMaster, dad, gameLauncher, NoteHold;
 
     [SerializeField] public PNJDialogue PNJCurrent ;
     public PlayerMovement player;
@@ -70,9 +70,10 @@ public class RhythmManager : MonoBehaviour
 
     IEnumerator MiniGameEnable()
     {
+        yield return new WaitForSeconds(0.025f);
         PNJCurrent.gameObject.SetActive(false);
         player.StartActivity();          
-        player.GetComponent<PlayerScript>().LunchAnimationFadeIn();
+       // player.GetComponent<PlayerScript>().LunchAnimationFadeIn();
         OldPlayerPosition = player.transform.position ;   
         player.GiveGoodAnimation(new Vector2(0,-1f));            
         if(PlayerPosition != Vector2.zero) player.transform.position = new Vector2(PlayerPosition.x, PlayerPosition.y);          
@@ -250,6 +251,8 @@ public class RhythmManager : MonoBehaviour
         yield return new WaitForSeconds(0.75f);
         PNJCurrent.gameObject.SetActive(true);
         player.GetComponent<PlayerScript>().InventoryUIIndestructible.SetActive(true);
+        resultScreen.SetActive(false);
+        NoteHold.transform.localPosition = new Vector2(NoteHold.transform.localPosition.x, 0);
         DadMaster.SetActive(false);
         player.transform.position = new Vector2(OldPlayerPosition.x, OldPlayerPosition.y);
 
