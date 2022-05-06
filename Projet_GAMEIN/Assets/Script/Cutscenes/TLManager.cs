@@ -25,7 +25,7 @@ public class TLManager : MonoBehaviour
         finCS = GameObject.Find(finSequence).GetComponent<PlayableDirector>();
         debutCS.enabled = false;
         finCS.enabled = false;
-        questSys = GameObject.Find("QuestManager").GetComponent<QuestSys>();
+        
     }
     void OnEnable()
     {
@@ -35,7 +35,7 @@ public class TLManager : MonoBehaviour
 
     private void FixedUpdate()
     {
-        StepChecker();
+        if(questSys != null) StepChecker();
     }
     // Update is called once per frame
     void Update()
@@ -45,6 +45,8 @@ public class TLManager : MonoBehaviour
             SwitchCam();
             Lighting();
         }
+
+        if(questSys == null && GameObject.Find("QuestManager") != null) questSys = GameObject.Find("QuestManager").GetComponent<QuestSys>();
     }
     void StepChecker()
     {

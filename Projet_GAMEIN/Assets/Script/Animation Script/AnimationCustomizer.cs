@@ -51,6 +51,7 @@ public class AnimationCustomizer : MonoBehaviour
         [SerializeField] private TextMeshProUGUI BtnCategorieTop ;
         [SerializeField] private TextMeshProUGUI BtnCategorieBottom ;
         [SerializeField] private TextMeshProUGUI BtnCategorieShoe ;
+        [SerializeField] private GameObject BtnBackMenuCustomisation ;
 
     [SerializeField] private TextMeshProUGUI NamingText ;
     [SerializeField] private TextMeshProUGUI BtnRandomText ;
@@ -87,6 +88,7 @@ public class AnimationCustomizer : MonoBehaviour
 
         SetCustomTextLangue(PlayerPrefs.GetInt("Langue"));
     }
+
 
     IEnumerator WaitBeforeOpenningRideaux()
     {      
@@ -141,6 +143,12 @@ public class AnimationCustomizer : MonoBehaviour
             ChangeTitleCategories(CategorieNumber);
             SwitchCat(CategorieNumber);
 
+            if(CurrentCategorie == 0) BtnBackMenuCustomisation.SetActive(false);
+            else BtnBackMenuCustomisation.SetActive(true);   
+
+            if(CurrentCategorie == 1) BtnBackMenuCustomisation.GetComponent<RectTransform>().anchoredPosition = new Vector2(BtnBackMenuCustomisation.GetComponent<RectTransform>().anchoredPosition.x, -117.5f) ;         
+            if(CurrentCategorie > 1) BtnBackMenuCustomisation.GetComponent<RectTransform>().anchoredPosition = new Vector2(BtnBackMenuCustomisation.GetComponent<RectTransform>().anchoredPosition.x, -200f) ;         
+
             Panel.DOAnchorPosY(-100f, .75f);
             yield return new WaitForSeconds(.75f);
             Panel.DOAnchorPosY(-25f, 0.25f);
@@ -152,7 +160,7 @@ public class AnimationCustomizer : MonoBehaviour
     {
         if(CatNumber == 0)
         {
-            FondContainer.sizeDelta = new Vector2(FondContainer.sizeDelta.x, 200f) ;
+            FondContainer.sizeDelta = new Vector2(415f, 180f) ;
 
             ContainerChoiceCatPanel.gameObject.SetActive(true) ; 
             ContainerSkinPanel.gameObject.SetActive(false) ;
@@ -161,7 +169,7 @@ public class AnimationCustomizer : MonoBehaviour
      
         if(CatNumber == 1)
         {
-            FondContainer.sizeDelta = new Vector2(FondContainer.sizeDelta.x, 175f) ;
+            FondContainer.sizeDelta = new Vector2(400f, 175f + 20f) ;
     
             ContainerChoiceCatPanel.gameObject.SetActive(false) ; 
             ContainerSkinPanel.gameObject.SetActive(true) ;
@@ -169,7 +177,7 @@ public class AnimationCustomizer : MonoBehaviour
         }
         if(CatNumber > 1 && CatNumber < 6)
         {
-            FondContainer.sizeDelta = new Vector2(FondContainer.sizeDelta.x, 225f) ;
+            FondContainer.sizeDelta = new Vector2(400f, 235f + 40f) ;
     
             ContainerChoiceCatPanel.gameObject.SetActive(false) ; 
             ContainerSkinPanel.gameObject.SetActive(false) ;
@@ -207,7 +215,15 @@ public class AnimationCustomizer : MonoBehaviour
 
         StartCoroutine(ChangePanel(NextCat));
     }
+    public void MenuCategorie()
+    {
+        CustomizerReference.ResetBtnSprite(RotateAvatarLeft);
+        CustomizerReference.ResetBtnSprite(RotateAvatarRight);
 
+        CurrentCategorie = 0 ;
+
+        StartCoroutine(ChangePanel(0));
+    }
 
     public void InterractSkinButton()
     {    
