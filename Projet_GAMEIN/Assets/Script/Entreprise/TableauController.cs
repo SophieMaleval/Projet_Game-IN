@@ -10,6 +10,8 @@ public class TableauController : MonoBehaviour
 {
     [Header ("Information ENT")]
     public PannelENTContainer InformationsPrincipaleENT ;
+    public Sprite TableauENTNormal;
+    public Sprite TableauENTHighlighted;
     [HideInInspector] public CSVReader RefTextENT ;    
     private PannelENTManager Board;
     private GameObject InventoryPanel ;
