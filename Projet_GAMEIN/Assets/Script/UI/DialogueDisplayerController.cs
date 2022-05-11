@@ -21,7 +21,7 @@ public class DialogueDisplayerController : MonoBehaviour
     public TextMeshProUGUI NamePNJ ;
     private QuestSys QuestSysManager ;
 
-   /* [HideInInspector] */public DialogueContainer DialoguePNJ ;
+    [HideInInspector] public DialogueContainer DialoguePNJ ;
     [HideInInspector] public DialogueContainer DialoguePNJ_FR ;
     [HideInInspector] public DialogueContainer DialoguePNJ_EN ;
     private PlayerScript PlayerFadeScript ;
@@ -310,8 +310,8 @@ public class DialogueDisplayerController : MonoBehaviour
             BoxQuestion.transform.GetChild(ChildNum).gameObject.SetActive(true) ;
             BoxQuestion.transform.GetChild(ChildNum).GetComponentInChildren<TextMeshProUGUI>().text = DialogueText ;   
             
-            if(BoxQuestion.transform.GetChild(ChildNum).GetComponentInChildren<TextMeshProUGUI>().preferredWidth < this.GetComponent<RectTransform>().sizeDelta.x) BoxQuestion.transform.GetChild(ChildNum).GetComponent<RectTransform>().sizeDelta = new Vector2(BoxQuestion.transform.GetChild(ChildNum).GetComponent<RectTransform>().sizeDelta.x, 16.5f);
-            else BoxQuestion.transform.GetChild(ChildNum).GetComponent<RectTransform>().sizeDelta = new Vector2(BoxQuestion.transform.GetChild(ChildNum).GetComponent<RectTransform>().sizeDelta.x, (16.5f * 2f));
+           /* if(BoxQuestion.transform.GetChild(ChildNum).GetComponentInChildren<TextMeshProUGUI>().preferredWidth < this.GetComponent<RectTransform>().sizeDelta.x)*/ BoxQuestion.transform.GetChild(ChildNum).GetComponent<RectTransform>().sizeDelta = new Vector2(BoxQuestion.transform.GetChild(ChildNum).GetComponent<RectTransform>().sizeDelta.x, BoxQuestion.transform.GetChild(ChildNum).GetComponentInChildren<TextMeshProUGUI>().preferredHeight);
+            //else BoxQuestion.transform.GetChild(ChildNum).GetComponent<RectTransform>().sizeDelta = new Vector2(BoxQuestion.transform.GetChild(ChildNum).GetComponent<RectTransform>().sizeDelta.x, (16.5f * 2f));
         } else {
             BoxQuestion.transform.GetChild(ChildNum).GetComponentInChildren<TextMeshProUGUI>().text = " " ;                   
             BoxQuestion.transform.GetChild(ChildNum).gameObject.SetActive(false) ;
