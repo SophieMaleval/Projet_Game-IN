@@ -277,11 +277,16 @@ public class PannelENTManager : MonoBehaviour
         NomEntreprise.text = InformationENT.NomEntreprise ;
         NoteSiteWebURLDisplay.text = InformationENT.URLSiteWebDisplay ;
 
-        if(InformationENT.LogoENT != null)
+
+        for (int LFP = 0; LFP < LogoFondPage.Count; LFP++)
         {
-            for (int LFP = 0; LFP < LogoFondPage.Count; LFP++)
-            {
+            if(InformationENT.LogoENT != null)
+            {   
+                LogoFondPage[LFP].enabled = true ;
                 LogoFondPage[LFP].sprite = InformationENT.LogoENT ;
+            } else {
+                LogoFondPage[LFP].enabled = false ;
+                LogoFondPage[LFP].sprite = null ;
             }
         }
 
