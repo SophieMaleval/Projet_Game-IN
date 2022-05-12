@@ -15,6 +15,7 @@ public class TableauController : MonoBehaviour
     [HideInInspector] public CSVReader RefTextENT ;    
     private PannelENTManager Board;
     private GameObject InventoryPanel ;
+    private SpriteRenderer TableauSpriteRenderer ;
 
     private PlayerScript PlayerScript;
     private PlayerMovement PlayerMovement;
@@ -35,6 +36,7 @@ public class TableauController : MonoBehaviour
 
             RefTextENT = GameObject.Find("Player Backpack").GetComponent<CSVReader>() ;
             InventoryPanel = GameObject.Find("Inventory").GetComponent<InventoryScript>().InventoryPanel ;
+            TableauSpriteRenderer = transform.GetComponentInChildren<SpriteRenderer>();
             
 
             // Récupérer les paragraphes de l'entreprise
@@ -61,6 +63,8 @@ public class TableauController : MonoBehaviour
                     
             if (PlayerArroundPannel == true)
             {
+                TableauSpriteRenderer.sprite = TableauENTHighlighted ;
+
                 if(PlayerScript.PlayerAsInterract && Board.gameObject.activeSelf == false)
                 {
                     PlayerScript.PlayerAsInterract = false;
@@ -72,7 +76,9 @@ public class TableauController : MonoBehaviour
                     PlayerScript.PlayerAsInterract = false;
                     Board.SwitchTogglePannelDisplay();
                 }
-            }                 
+            } else {
+                TableauSpriteRenderer.sprite = TableauENTNormal ;
+            }              
         }
 
 

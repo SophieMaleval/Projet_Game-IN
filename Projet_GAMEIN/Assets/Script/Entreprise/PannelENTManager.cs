@@ -238,13 +238,22 @@ public class PannelENTManager : MonoBehaviour
     {
         if(InformationENT.ListActivité.Count > ActivityInt)
         {
-            if(InformationENT.ListActivité[ActivityInt].NameActivité != "")
+            if(InformationENT.ListActivité[ActivityInt].NameActivitéFR != "")
             {
                 FeuilleActi[ActivityInt].gameObject.SetActive(true);
-                ListContenuPage[ActivityInt].TitleActivité.text = InformationENT.ListActivité[ActivityInt].NameActivité ;
 
-                if(PlayerPrefs.GetInt("Langue") == 0) ListContenuPage[ActivityInt].DescriptionAtivité.text = InformationENT.ListActivité[ActivityInt].TextActivtéFR ;            
-                if(PlayerPrefs.GetInt("Langue") == 1) ListContenuPage[ActivityInt].DescriptionAtivité.text = InformationENT.ListActivité[ActivityInt].TextActivtéEN ;     
+
+                if(PlayerPrefs.GetInt("Langue") == 0) 
+                {
+                    ListContenuPage[ActivityInt].TitleActivité.text = InformationENT.ListActivité[ActivityInt].NameActivitéFR ;
+                    ListContenuPage[ActivityInt].DescriptionAtivité.text = InformationENT.ListActivité[ActivityInt].TextActivtéFR ; 
+                }    
+                if(PlayerPrefs.GetInt("Langue") == 1) 
+                {
+                    ListContenuPage[ActivityInt].TitleActivité.text = InformationENT.ListActivité[ActivityInt].NameActivitéEN ;
+                    if(InformationENT.ListActivité[ActivityInt].TextActivtéEN != null) ListContenuPage[ActivityInt].DescriptionAtivité.text = InformationENT.ListActivité[ActivityInt].TextActivtéEN ;  
+                    else ListContenuPage[ActivityInt].DescriptionAtivité.text = InformationENT.ListActivité[ActivityInt].TextActivtéFR ;  
+                }   
 
                 if(InformationENT.ListActivité[ActivityInt].IllustrationActivité != null)
                 {
