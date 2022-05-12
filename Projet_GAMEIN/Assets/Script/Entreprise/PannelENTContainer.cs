@@ -50,7 +50,8 @@ public class ValeurENT
 [System.Serializable]
 public class ActivitéENT
 {
-    public string NameActivité ;
+    public string NameActivitéFR ;
+    public string NameActivitéEN ;
     public Sprite IllustrationActivité ;
     [TextArea (5,10)] public string TextActivtéFR;
     [TextArea (5,10)] public string TextActivtéEN ;
