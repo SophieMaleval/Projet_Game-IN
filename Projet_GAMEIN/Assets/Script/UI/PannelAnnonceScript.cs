@@ -7,6 +7,9 @@ public class PannelAnnonceScript : MonoBehaviour
     [Header ("Information ENT")]
     public PetiteAnnonceContainer InformationsAnnonces ;
     [HideInInspector] public CSVReader RefTextENT ;    
+    private SpriteRenderer TableauSpriteRenderer ;
+    public Sprite TableauPANormal;
+    public Sprite TableauPAHighlighted;
     private PetiteAnnonceManager BoardAnnonce;
     private GameObject InventoryPanel ;
 
@@ -27,7 +30,7 @@ public class PannelAnnonceScript : MonoBehaviour
             PlayerScript = PlayerMovement.GetComponent<PlayerScript>();
             BoardAnnonce = PlayerScript.PannelAnnonceUIIndestructible.GetComponent<PetiteAnnonceManager>() ;
             InventoryPanel = GameObject.Find("Inventory").GetComponent<InventoryScript>().InventoryPanel ;
-            
+            TableauSpriteRenderer = transform.GetComponentInChildren<SpriteRenderer>();
             
         }
     }
@@ -40,6 +43,8 @@ public class PannelAnnonceScript : MonoBehaviour
                     
         if (PlayerArroundPannel == true)
         {
+            TableauSpriteRenderer.sprite = TableauPAHighlighted ;
+    
             if(PlayerScript.PlayerAsInterract && BoardAnnonce.gameObject.activeSelf == false)
             {
                 PlayerScript.PlayerAsInterract = false;
@@ -54,7 +59,9 @@ public class PannelAnnonceScript : MonoBehaviour
                 PlayerScript.PlayerAsInterract = false;
                 BoardAnnonce.SwitchTogglePannelDisplay();
             }
-        }                 
+        } else {
+            TableauSpriteRenderer.sprite = TableauPANormal ;
+        }           
     }
 
 
