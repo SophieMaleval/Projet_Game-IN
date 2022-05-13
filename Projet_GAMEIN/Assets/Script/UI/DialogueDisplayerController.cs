@@ -66,7 +66,7 @@ public class DialogueDisplayerController : MonoBehaviour
     public AudioSource VoicePnj;
 
     [HideInInspector] public bool WeAreInChoice = false ;
-    private float DelayAnimationText = 0.05f ;
+    private float DelayAnimationText = 0.025f ;
 
     [SerializeField] private RectTransform PassTextImg ;
     private bool TextAsCompletelyDisplay = true ;
