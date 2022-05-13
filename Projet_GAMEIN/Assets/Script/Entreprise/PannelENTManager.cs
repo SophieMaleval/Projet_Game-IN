@@ -415,37 +415,44 @@ public class PannelENTManager : MonoBehaviour
 
     void SetListPersonneJoignable()
     {
-        if(FeuilleContact.GetChild(2).childCount > 0)
+        if(InformationENT.ContactEmail != null ||  InformationENT.PersonneJoignable.Count != 0)
         {
-            for (int CPj = 0; CPj < FeuilleContact.GetChild(2).childCount; CPj++)
+            FeuilleContact.gameObject.SetActive(true);
+
+            if(FeuilleContact.GetChild(2).childCount > 0)
             {
-                Destroy(FeuilleContact.GetChild(2).transform.GetChild(CPj).transform.gameObject) ; 
-            }            
-        }
-
-        float ContactMailHeightAdd = 0f ;
-        MailButton.text = InformationENT.ContactEmail ;        
-        if(InformationENT.ContactEmail != "")
-        {
-            MailButton.gameObject.SetActive(true);
-            ContactMailHeightAdd = 20f ;
-            FeuilleContact.GetChild(2).GetComponent<RectTransform>().anchoredPosition = new Vector2(25f, -75f);
+                for (int CPj = 0; CPj < FeuilleContact.GetChild(2).childCount; CPj++)
+                {
+                    Destroy(FeuilleContact.GetChild(2).transform.GetChild(CPj).transform.gameObject) ; 
+                }            
+            }
+    
+            float ContactMailHeightAdd = 0f ;
+            MailButton.text = InformationENT.ContactEmail ;        
+            if(InformationENT.ContactEmail != "")
+            {
+                MailButton.gameObject.SetActive(true);
+                ContactMailHeightAdd = 20f ;
+                FeuilleContact.GetChild(2).GetComponent<RectTransform>().anchoredPosition = new Vector2(25f, -75f);
+            } else {
+                MailButton.gameObject.SetActive(false);
+                ContactMailHeightAdd = 0f ;
+                FeuilleContact.GetChild(2).GetComponent<RectTransform>().anchoredPosition = new Vector2(25f, -50f);
+            }
+    
+    
+            for (int Lj = 0; Lj < InformationENT.PersonneJoignable.Count; Lj++)
+            {
+                GameObject NameInstantiate = Instantiate(PrefabNameCréateur, FeuilleContact.GetChild(2).transform);
+                NameInstantiate.transform.SetParent(FeuilleContact.GetChild(2).transform);
+                NameInstantiate.GetComponent<TextMeshProUGUI>().text = InformationENT.PersonneJoignable[Lj];
+            }
+    
+    
+            FeuilleContact.sizeDelta = new Vector2(FeuilleContact.sizeDelta.x, (80f + ContactMailHeightAdd + 20f * InformationENT.PersonneJoignable.Count)) ;
         } else {
-            MailButton.gameObject.SetActive(false);
-            ContactMailHeightAdd = 0f ;
-            FeuilleContact.GetChild(2).GetComponent<RectTransform>().anchoredPosition = new Vector2(25f, -50f);
-        }
-
-
-        for (int Lj = 0; Lj < InformationENT.PersonneJoignable.Count; Lj++)
-        {
-            GameObject NameInstantiate = Instantiate(PrefabNameCréateur, FeuilleContact.GetChild(2).transform);
-            NameInstantiate.transform.SetParent(FeuilleContact.GetChild(2).transform);
-            NameInstantiate.GetComponent<TextMeshProUGUI>().text = InformationENT.PersonneJoignable[Lj];
-        }
-
-
-        FeuilleContact.sizeDelta = new Vector2(FeuilleContact.sizeDelta.x, (80f + ContactMailHeightAdd + 20f * InformationENT.PersonneJoignable.Count)) ;
+            FeuilleContact.gameObject.SetActive(false);
+        } 
     }
 
 
