@@ -21,7 +21,7 @@ public class MenuManager : MonoBehaviour
 
     [SerializeField] private RectTransform SettingPanel;
     [SerializeField] private RectTransform ControlsPanel;
-
+    [SerializeField] private RectTransform CreditsPanel;
 
     [SerializeField] public GameObject FadeImage ;
 
@@ -94,7 +94,14 @@ public class MenuManager : MonoBehaviour
     {
         StartCoroutine(AnimationPanels(false, ControlsPanel));
     }
-
+    public void OpenCredits()
+    {
+        StartCoroutine(AnimationPanels(true, CreditsPanel));
+    }
+    public void CloseCredits()
+    {
+        StartCoroutine(AnimationPanels(false, CreditsPanel));
+    }
 
     public void SetMenuTextLangue(int Langue) // 0 - FR et 1 - EN
     {

@@ -30,6 +30,8 @@ public class InventoryScript : MonoBehaviour
 
     [SerializeField] private RectTransform SettingPanel ;
     [SerializeField] private RectTransform ControlsPanel;
+    [SerializeField] private RectTransform CreditsPanel;
+
     private CSVReader TextUILocation ;
 
 
@@ -89,6 +91,14 @@ public class InventoryScript : MonoBehaviour
         StartCoroutine(AnimationPanels(false, ControlsPanel));
     }
 
+    public void OpenCredits()
+    {
+        StartCoroutine(AnimationPanels(true, CreditsPanel));
+    }
+    public void CloseCredits()
+    {
+        StartCoroutine(AnimationPanels(false, CreditsPanel));
+    }
 
     IEnumerator AnimationPanels(bool OpenSettings, RectTransform PanelAnimate)
     {
