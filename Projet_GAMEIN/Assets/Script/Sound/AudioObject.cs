@@ -5,11 +5,18 @@ using UnityEngine;
 
 public class AudioObject : MonoBehaviour
 {
+    #region UnityInspector
+
     public AudioData ClickingSlider;
-    // Start is called before the first frame update
-    
+
+    #endregion
+
+    #region Behaviour
+
     public void ClickingOnSlider(){
 
         AudioController.Instance.PlayAudio(ClickingSlider);
     }
+
+    #endregion
 }
