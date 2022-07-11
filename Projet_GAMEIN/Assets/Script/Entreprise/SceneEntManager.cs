@@ -8,6 +8,8 @@ using UnityEngine.SceneManagement;
 public class SceneEntManager : MonoBehaviour
 {
 
+    private PNJDialogue[] pnjs;
+
     private PlayerMovement PM;
     private GameObject FadeImage ;
 
@@ -26,7 +28,9 @@ public class SceneEntManager : MonoBehaviour
         {
             PM =  GameObject.Find("Player").GetComponent<PlayerMovement>();
 
-            if(VolumeFirstCam == null)
+            pnjs = FindObjectsOfType<PNJDialogue>();
+
+            if (VolumeFirstCam == null)
             {
                 if(PM.GetComponent<PlayerScript>().PreviousSceneName == "Character Customer") VolumeFirstCam = GameObject.Find("Camera Trigger Zone Etage").GetComponent<CameraTriggerVolume>() ;
                 if(PM.GetComponent<PlayerScript>().PreviousSceneName == "Main" || PM.GetComponent<PlayerScript>().PreviousSceneName == "Tilemaps test") VolumeFirstCam = GameObject.Find("Camera Trigger Zone RDC").GetComponent<CameraTriggerVolume>() ;
@@ -73,6 +77,8 @@ public class SceneEntManager : MonoBehaviour
 
         GlobalLightPlayer = GameObject.Find("Global Light Player");
         if(LightAutoGenerateInThisScene) GlobalLightPlayer.SetActive(false);
+
+        
     }
     
     private void Update() 
@@ -89,5 +95,10 @@ public class SceneEntManager : MonoBehaviour
         }
 
         PartScene[PartDisplay].SetActive(true) ;
+
+        for (int i = 0; i < pnjs.Length; i++)
+        {
+            pnjs[i].InitAnimator();
+        }
     }
 }

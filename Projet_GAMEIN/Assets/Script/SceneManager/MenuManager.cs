@@ -5,6 +5,7 @@ using UnityEngine.UI ;
 using TMPro ;
 using DG.Tweening ;
 using UnityEngine.SceneManagement;
+using AllosiusDev.Audio;
 
 public class MenuManager : MonoBehaviour
 {
@@ -25,18 +26,28 @@ public class MenuManager : MonoBehaviour
 
     [SerializeField] public GameObject FadeImage ;
 
+    [Header("Sounds")]
+    [SerializeField] private AudioData menuMusic;
+    [SerializeField] private AudioData birdsChippingAmbients;
+
     private CSVReader SettingPanelReader ;
 
-
+    private void Awake()
+    {
+        PlayerPrefs.SetFloat("VolumeGlobal", 1.0f);
+        PlayerPrefs.SetFloat("Musique", 1.0f);
+        PlayerPrefs.SetFloat("SFX", 1.0f);
+    }
     void Start()
     {
         //PlayerPrefs.SetInt("Langue", 0);
         StartCoroutine(WaitTransitionAnim());
 
         if(SettingPanel.GetComponent<CSVReader>() != null) SettingPanelReader = SettingPanel.GetComponent<CSVReader>() ;
-    
-    
-    
+
+
+        PlaySound(menuMusic);
+        PlaySound(birdsChippingAmbients);
     
     
         /* A Supprimer */
@@ -71,6 +82,8 @@ public class MenuManager : MonoBehaviour
     IEnumerator Fade() 
     {
         ATS.ShouldReveal = false;
+        AllosiusDev.Audio.AudioController.Instance.StopAllAmbients();
+        AllosiusDev.Audio.AudioController.Instance.StopAllMusics();
         yield return new WaitForSeconds(3f);
         SceneManager.LoadScene("Character Customer");
     }
@@ -150,5 +163,10 @@ public class MenuManager : MonoBehaviour
             OpenSettingBtn.interactable = true ; 
             SettingOpen = false ;
         }
+    }
+
+    public void PlaySound(AudioData audioData)
+    {
+        AllosiusDev.Audio.AudioController.Instance.PlayAudio(audioData);
     }
 }

@@ -9,6 +9,36 @@ using System.Text;
 
 public class PNJDialogue : MonoBehaviour
 {
+    #region Fields
+
+    private TextMeshProUGUI DialogueCanvasDisplayerText ;
+
+
+    private PlayerScript PlayerScript;
+    private PlayerDialogue PlayerDialogueManager;
+    private bool PlayerAround = false ;
+
+    private GameObject BoxQuestion;
+
+    private bool QCMPannelAsBeOpen = false;
+
+    private Vector4 LastPosPNJAndPlayer;
+    private QuestSys questSys;
+
+    private DialogueContainer DialoguePNJ_FR;
+    private DialogueContainer DialoguePNJ_EN;
+
+    private List<string> QuestionDisponible_FR;
+    private List<string> QuestionDisponible_EN;
+    private List<string> AnswerDisponible_FR;
+    private List<string> AnswerDisponible_EN;
+
+    private int CurrentDialoguePlayerChoice = 0;
+
+    #endregion
+
+    #region UnityInspector
+
     [Header ("PNJ Information")]
     public string Entrerpise ;
     public string NamePNJ ;
@@ -18,16 +48,9 @@ public class PNJDialogue : MonoBehaviour
     [HideInInspector] public CSVReader TextDialogue ;
 
     [Header ("Dialogue Canvas Reference")]
-    [HideInInspector] public DialogueDisplayerController DialogueCanvasBox ;       
-    private TextMeshProUGUI DialogueCanvasDisplayerText ;
-
-
-    private PlayerScript PlayerScript;
-    private PlayerDialogue PlayerDialogueManager;
-    private bool PlayerAround = false ;
+    [HideInInspector] public DialogueDisplayerController DialogueCanvasBox ;    
+    
     [HideInInspector] public Vector2 OldLastMovePlayer ;
-
-    private GameObject BoxQuestion ;
 
     [Header ("Dialogue Animation")]
     public bool ThisQuestionLunchReflexion = false ;
@@ -37,32 +60,28 @@ public class PNJDialogue : MonoBehaviour
     [Space(10)]
     public bool DialogueWithFadeAnimation = false ;
     public Vector2 QuestionAndDialogueLunchFade ;
-    private bool QCMPannelAsBeOpen = false ;
-    [Space(10)]
-    public bool DialogueLunchPrez = false ;
-    public Vector2 PrezInfoLunch ;
-    [Space(10)]
-    public GameObject MiniGame ;
-    public List<Vector2> MiniGameLunchInfo ;
-    private bool MiniGameAsBePlayed ;
-    [Space(10)]
-    public Vector4 NewPosPNJAndPlayer ;   
-    private Vector4 LastPosPNJAndPlayer ;
-    private QuestSys questSys;
 
-    private DialogueContainer DialoguePNJ_FR ;
-    private DialogueContainer DialoguePNJ_EN ;
-
-        private List<string> QuestionDisponible_FR ;
-        private List<string> QuestionDisponible_EN ;
-        private List<string> AnswerDisponible_FR ;
-        private List<string> AnswerDisponible_EN ;
-
-    private int CurrentDialoguePlayerChoice = 0 ;
+    [Space(10)]
+    public bool DialogueLunchPrez = false;
+    public Vector2 PrezInfoLunch;
+    [Space(10)]
+    public GameObject MiniGame;
+    public List<Vector2> MiniGameLunchInfo;
+    private bool MiniGameAsBePlayed;
+    [Space(10)]
+    public Vector4 NewPosPNJAndPlayer;
 
     [Header ("Quest Gestion Question")]
     public List<Vector4> InformationQuestEtapeQuestion ;  // X: Quest  Y: Etape    Z:Question Hide  W: Value Add for Etape validation
     public List<Vector3> HideQuestionBeforeMomentX ; // X: Quest  Y: Etape    Z:Question Hide
+
+    [Header("Réponse Question")]
+    public bool DiscussionWithQuestion = true;
+    public List<SerializableAnswer> Answer = new List<SerializableAnswer>();
+
+    #endregion
+
+    #region Class
 
     [System.Serializable]    
     public class SerializableAnswer
@@ -70,24 +89,26 @@ public class PNJDialogue : MonoBehaviour
         public List<int> AnswerForQuestion ; 
     }
 
+    #endregion
 
-    [Header ("Réponse Question")]
-    public bool DiscussionWithQuestion = true ;
-    public List<SerializableAnswer> Answer = new List<SerializableAnswer>() ;
-
+    #region Behaviour
 
     private void Awake() 
     {
-        questSys = GameObject.Find("QuestManager").GetComponent<QuestSys>();
-        if (GameObject.Find("Player") != null)   // Récupère le player au lancement de la scène
+        questSys = GameManager.Instance.gameCanvasManager.questManager;
+        if (GameManager.Instance.player != null)   // Récupère le player au lancement de la scène
         {    
-            PlayerScript = GameObject.Find("Player").GetComponent<PlayerScript>() ; 
-            PlayerDialogueManager = GameObject.Find("Player Backpack").GetComponent<PlayerDialogue>() ; 
+            PlayerScript = GameManager.Instance.player; 
+            PlayerDialogueManager = GameManager.Instance.player.playerBackpack; 
 
             DialogueCanvasBox = PlayerScript.DialogueUIIndestructible.GetComponent<DialogueDisplayerController>() ;
-        }   
+        }
+        else
+        {
+            Debug.LogWarning("Player is null");
+        }
 
-        GetComponent<Animator>().SetInteger("PNJ Need", PNJInENT) ;
+        InitAnimator();
 
 
         if(NamePNJDisplay == "") NamePNJDisplay = NamePNJ ;
@@ -117,6 +138,11 @@ public class PNJDialogue : MonoBehaviour
        StartCoroutine(CallDialogue());
     }
 
+
+    public void InitAnimator()
+    {
+        GetComponent<Animator>().SetInteger("PNJ Need", PNJInENT);
+    }
 
 
     IEnumerator CallDialogue()
@@ -180,7 +206,8 @@ public class PNJDialogue : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == ("Player"))
+        PlayerScript player = other.GetComponent<PlayerScript>();
+        if (player != null)
         {
             PlayerAround = true ;
             PlayerScript.SwitchInputSprite();
@@ -189,7 +216,8 @@ public class PNJDialogue : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.tag == ("Player"))
+        PlayerScript player = other.GetComponent<PlayerScript>();
+        if (player != null)
         {
             PlayerAround = false ;
             PlayerScript.SwitchInputSprite();
@@ -424,4 +452,5 @@ public class PNJDialogue : MonoBehaviour
         PlayerScript.transform.position = new Vector2(NewPoss.z, NewPoss.w);
     }
 
+    #endregion
 }

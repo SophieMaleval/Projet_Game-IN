@@ -10,22 +10,52 @@ using System.Text;
 
 public class DialogueDisplayerController : MonoBehaviour
 {
-    [HideInInspector] public bool MouseIsHover ;
+    #region Fields
+
     private bool KeyPressed = false ;
     private Vector2 MousePos ;
     private Vector2 OldMousePos ; 
     
     private RectTransform ThisRect ;
+
+    private QuestSys QuestSysManager ;
+
+    private PlayerScript PlayerFadeScript ;
+    private PlayerDialogue PlayerDialogueManager;
+
+
+    private bool Question1AsRead, Question2AsRead, Question3AsRead, Question4AsRead, Question5AsRead, Question6AsRead, Question7AsRead, Question8AsRead, Question9AsRead, Question10AsRead = false;
+
+    private bool PNJSpeak = false;
+
+    private int CurrentDialogueLength = 0;
+
+    private int CurrentDialoguePlayerChoice = 0;
+    private bool ChoiceValidation = false;
+    private string CurrentDialogue;
+    private bool CanChangeCurrentDialogue = false;
+
+    private float DelayAnimationText = 0.025f;
+
+    private bool TextAsCompletelyDisplay = true;
+    private bool TextOppeningDisplayCompletely = false;
+    private bool TextCloseDisplayCompletely = true;
+
+    private bool CanPass = true;
+
+    #endregion
+
+    #region UnityInspector
+
+    [HideInInspector] public bool MouseIsHover ;
+
     public PNJDialogue CurrentPNJDiscussion ;
     public TextMeshProUGUI DialogueCanvas ;
     public TextMeshProUGUI NamePNJ ;
-    private QuestSys QuestSysManager ;
 
-    [HideInInspector] public DialogueContainer DialoguePNJ ;
-    [HideInInspector] public DialogueContainer DialoguePNJ_FR ;
-    [HideInInspector] public DialogueContainer DialoguePNJ_EN ;
-    private PlayerScript PlayerFadeScript ;
-    private PlayerDialogue PlayerDialogueManager;
+    public DialogueContainer DialoguePNJ ;
+    public DialogueContainer DialoguePNJ_FR ;
+    public DialogueContainer DialoguePNJ_EN ;
 
     public GameObject BoxQuestion ;
     public Color32 QuestionClassicColor ;
@@ -33,10 +63,6 @@ public class DialogueDisplayerController : MonoBehaviour
 
 
     public AudioSource SoundDialogueSpawning;
-    
- 
-
-
 
     [HideInInspector] public List<string> QuestionDisponible = new List<string>() ;
         [HideInInspector]  public List<string> QuestionDisponible_FR = new List<string>() ;
@@ -45,42 +71,31 @@ public class DialogueDisplayerController : MonoBehaviour
         [HideInInspector] public List<string> AnswerDisponible_FR = new List<string>() ;
         [HideInInspector]  public List<string> AnswerDisponible_EN = new List<string>() ;
 
-
-    private bool Question1AsRead, Question2AsRead, Question3AsRead, Question4AsRead, Question5AsRead, Question6AsRead, Question7AsRead, Question8AsRead, Question9AsRead, Question10AsRead = false ;
     [HideInInspector] public float PNJQuestValueValidation = 0 ;
-
-
-    private bool PNJSpeak = false ;
-    public int CurrentDialogueDisplay = 0 ;
     
-    private int CurrentDialogueLength = 0 ;
+    public int CurrentDialogueDisplay = 0 ;
+
     public int CurrentDialogueState = 0 ;
 
-
-
-    private int CurrentDialoguePlayerChoice = 0 ;
-    private bool ChoiceValidation = false ;
-    private string CurrentDialogue ;
-    private bool CanChangeCurrentDialogue = false ;
-    
     public AudioSource VoicePnj;
 
     [HideInInspector] public bool WeAreInChoice = false ;
-    private float DelayAnimationText = 0.025f ;
 
     [SerializeField] private RectTransform PassTextImg ;
-    private bool TextAsCompletelyDisplay = true ;
-    private bool TextOppeningDisplayCompletely = false ;
-    private bool TextCloseDisplayCompletely = true ;
 
-    [System.Serializable]    
+    #endregion
+
+    #region Class
+
+    [System.Serializable]
     public class SerializableAnswer
     {
-        public List<int> AnswerForQuestion ; 
+        public List<int> AnswerForQuestion;
     }
 
+    #endregion
 
-    private bool CanPass = true ;
+    #region Behaviour
 
     public void ResetAllValue()
     {
@@ -644,5 +659,5 @@ public class DialogueDisplayerController : MonoBehaviour
         SetQuestionDisponible()[CurrentDialoguePlayerChoice].onClick.Invoke();     
     }
 
-
+    #endregion
 }

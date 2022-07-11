@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu (menuName = "Item - Custome Character")]
+[CreateAssetMenu(fileName = "New ItemCustomer", menuName = "Village/Item - Custome Character")]
 public class ItemCustomer : ScriptableObject
 {
     [Header ("Customisation de Personnage")]

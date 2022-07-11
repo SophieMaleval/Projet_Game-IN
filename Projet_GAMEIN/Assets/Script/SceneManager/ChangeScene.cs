@@ -1,29 +1,40 @@
-﻿using System.Collections;
+﻿using AllosiusDev.Audio;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class ChangeScene : MonoBehaviour
 {
+    #region Fields
+
     private PlayerMovement PM;
     private GameObject FadeImage ;
+
+    #endregion
+
+    #region UnityInspector
+
     public string NameScene;
 
-    public AudioSource DoorOpeningSound;
+    [SerializeField] private AudioData sfxDoorOpening;
     
     [HideInInspector] public bool PlayerChangeScene = false ;
 
+    #endregion
+
+    #region Behaviour
+
     private void Awake() 
     {
-        if(GameObject.Find("Player") != null)
+        if(GameManager.Instance.player != null)
         {
-            PM =  GameObject.Find("Player").GetComponent<PlayerMovement>();
-            FadeImage = PM.GetComponent<PlayerScript>().CanvasIndestrucitble.gameObject.transform.Find("Fade").gameObject ;
+            PM = GameManager.Instance.player.GetComponent<PlayerMovement>();
+            FadeImage = GameManager.Instance.player.CanvasIndestrucitble.GetComponent<GameCanvasManager>().Fade;
         }
-
-        if(GameObject.Find("DoorOpening") != null)
+        else
         {
-            if (DoorOpeningSound == null)    DoorOpeningSound = GameObject.Find("DoorOpening").GetComponent<AudioSource>() ;
+            Debug.LogWarning("Player is null");
         }
     }
 
@@ -35,7 +46,9 @@ public class ChangeScene : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other) 
     {
-        if(other.gameObject.tag == "Player" && !PM.OnScooter)
+        PlayerScript player = other.GetComponent<PlayerScript>();
+
+        if(player != null && !PM.OnScooter)
         {
             PM.StartActivity();
             PM.PlayerChangeScene = true ;
@@ -49,14 +62,12 @@ public class ChangeScene : MonoBehaviour
             if(SceneManager.GetActiveScene().name == "Game In") PM.GetComponent<PlayerScript>().MainSceneLoadPos = new Vector2(-3.75f, -1.25f);
             PM.GetComponent<PlayerScript>().PreviousSceneName = SceneManager.GetActiveScene().name;
 
-            if(DoorOpeningSound != null) DoorOpeningSound.Play();
+            if (sfxDoorOpening != null)
+            {
+                AudioController.Instance.PlayAudio(sfxDoorOpening);
+            }
             GoNewScene();
         }
-    }
-
-    private void OnDrawGizmos() {
-        Gizmos.color = Color.red ;
-        Gizmos.DrawWireSphere(GiveNewPos(), 0.1f);
     }
 
     Vector2 GiveNewPos()
@@ -76,9 +87,23 @@ public class ChangeScene : MonoBehaviour
         FadeImage.SetActive(true);
         FadeImage.GetComponent<AnimationTransitionScene>().QuitScene();
         yield return new WaitForSeconds(1f);
+        AudioController.Instance.StopAllAmbients();
+        AudioController.Instance.StopAllMusics();
         PlayerChangeScene = true ;
         yield return new WaitForSeconds(1f);
         SceneManager.LoadScene(NameScene);
 
     }
+
+    #endregion
+
+    #region Gizmos
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(GiveNewPos(), 0.1f);
+    }
+
+    #endregion
 }

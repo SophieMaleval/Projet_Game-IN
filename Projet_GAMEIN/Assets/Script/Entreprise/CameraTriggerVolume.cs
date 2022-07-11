@@ -16,11 +16,21 @@ public enum PlayerLookAffterMove
 [RequireComponent (typeof(Rigidbody2D))]
 public class CameraTriggerVolume : MonoBehaviour
 {
-    [SerializeField] private CinemachineVirtualCamera Cam ;
-    [SerializeField] private Vector3 BoxSize ;
+    #region Fields
 
     BoxCollider2D BoxCol ;
     Rigidbody2D Rb2D ;
+
+    private bool PlayerAround = false ;
+
+    private bool PlayerMoveOnScale = false ;
+
+    #endregion
+
+    #region UnityInspector
+
+    [SerializeField] private CinemachineVirtualCamera Cam ;
+    [SerializeField] private Vector3 BoxSize ;
 
     [Space]
     [SerializeField] private SceneEntManager ManagerENT ;
@@ -29,12 +39,12 @@ public class CameraTriggerVolume : MonoBehaviour
     [SerializeField] private bool ThisIsScale = false ;
     [SerializeField] private Vector2 NewScalePos ;
     [SerializeField] private PlayerLookAffterMove PlayerOrientation ;
-    private bool PlayerAround = false ;
-
 
     [SerializeField] private PlayerScript ScriptPlayer ;
-    private bool PlayerMoveOnScale = false ;
 
+    #endregion
+
+    #region Behaviour
 
     private void Awake() 
     {
@@ -43,16 +53,22 @@ public class CameraTriggerVolume : MonoBehaviour
         BoxCol.isTrigger = true ;
         //BoxCol.size = BoxSize ;
 
-        Rb2D.isKinematic = true ;  
+        Rb2D.isKinematic = true ;
 
-        if(ThisIsScale && GameObject.Find("Player") != null) ScriptPlayer = GameObject.Find("Player").GetComponent<PlayerScript>() ;           
+        if (ThisIsScale)
+        {
+            if(GameManager.Instance.player != null)
+            {
+                ScriptPlayer = GameManager.Instance.player;
+            }
+            else
+            {
+                Debug.LogWarning("Player Is null");
+            }
+        }
     }
 
-    private void OnDrawGizmos() 
-    {
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireCube(transform.position, BoxSize);
-    }
+    
 
     private void Update() {
         if(ThisIsScale && PlayerAround && !PlayerMoveOnScale)
@@ -67,7 +83,9 @@ public class CameraTriggerVolume : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other) 
     {
-        if(other.gameObject.tag == "Player")
+        PlayerScript player = other.GetComponent<PlayerScript>();
+
+        if (player != null)
         {
             if(!ThisIsScale)
             {
@@ -82,7 +100,9 @@ public class CameraTriggerVolume : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other) 
     {
-        if(other.gameObject.tag == "Player")
+        PlayerScript player = other.GetComponent<PlayerScript>();
+
+        if(player != null)
         {
             if(ThisIsScale)
             {
@@ -127,4 +147,16 @@ public class CameraTriggerVolume : MonoBehaviour
         
         ScriptPlayer.GetComponent<PlayerMovement>().GiveGoodAnimation(NewAnimationPosValue);
     }
+
+    #endregion
+
+    #region Gizmos
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireCube(transform.position, BoxSize);
+    }
+
+    #endregion
 }

@@ -9,8 +9,19 @@ public enum ObjType
     Item,
     PannelAnnonce
 }
+
 public class ActiveAsProg : MonoBehaviour
 {
+    #region Fields
+
+    Collider2D detecteur;
+
+    bool gathered = false;
+
+    #endregion
+
+    #region UnityInspector
+
     public ObjType progressType;
     //active et desactive des objets en fonction de la progression du joueur
     [HideInInspector]
@@ -24,10 +35,16 @@ public class ActiveAsProg : MonoBehaviour
     //public int level; // à titre indicatif uniquement
     //public int step; // à  titre indicatif uniquement
     public Interactible interactible;
-    Collider2D detecteur;
+
     public TalkQuest talkQuest;
-    bool gathered = false;
-    public PannelAnnonceScript PannelAnnonceGestion ;
+
+    public PannelAnnonceScript PannelAnnonceGestion;
+
+    [SerializeField] private bool canIsDestroyed = true;
+
+    #endregion
+
+    #region Behaviour
 
     //différent selon la méthode utilisée
     void Awake()
@@ -36,10 +53,10 @@ public class ActiveAsProg : MonoBehaviour
         if(questSys == null)
         {
             questSys = GameObject.Find("QuestManager").GetComponent<QuestSys>();
-            if(numeroDeQuete == 1 &&  questSys.firstLvlStep >= etapeDeQuete) {DestroyThis();  } 
-            if(numeroDeQuete == 2 &&  questSys.secondLvlStep >= etapeDeQuete) {DestroyThis(); } 
-            if(numeroDeQuete == 3 &&  questSys.thirdLvlStep >= etapeDeQuete) {DestroyThis(); }
-            if(numeroDeQuete == 4 &&  questSys.fourthLvlStep >= etapeDeQuete) {DestroyThis(); }
+            if(numeroDeQuete == 1 &&  questSys.firstLvlStep >= etapeDeQuete && canIsDestroyed) {DestroyThis();  } 
+            if(numeroDeQuete == 2 &&  questSys.secondLvlStep >= etapeDeQuete && canIsDestroyed) {DestroyThis(); } 
+            if(numeroDeQuete == 3 &&  questSys.thirdLvlStep >= etapeDeQuete && canIsDestroyed) {DestroyThis(); }
+            if(numeroDeQuete == 4 &&  questSys.fourthLvlStep >= etapeDeQuete && canIsDestroyed) {DestroyThis(); }
         }
 
         checker = GameObject.Find("Inventory").GetComponent<Checker>();
@@ -65,6 +82,7 @@ public class ActiveAsProg : MonoBehaviour
 
     void DestroyThis()
     {
+        Debug.Log("Destroy this");
         Destroy(this.gameObject);
     }
 
@@ -129,5 +147,5 @@ public class ActiveAsProg : MonoBehaviour
         }
     }
 
-
+    #endregion
 }

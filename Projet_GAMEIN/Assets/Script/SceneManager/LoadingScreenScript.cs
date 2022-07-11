@@ -7,8 +7,14 @@ using DG.Tweening;
 
 public class LoadingScreenScript : MonoBehaviour
 {
+    #region UnityInspector
+
     [SerializeField] private Image Fade ;
     [SerializeField] private float TimeWait = 5f ;
+
+    #endregion
+
+    #region Behaviour
 
     void Start()
     {
@@ -21,6 +27,8 @@ public class LoadingScreenScript : MonoBehaviour
         yield return new WaitForSeconds(TimeToWait - 1.25f);
         StartCoroutine(FadeAnimtion(true));
         yield return new WaitForSeconds(1f);
+        AllosiusDev.Audio.AudioController.Instance.StopAllAmbients();
+        AllosiusDev.Audio.AudioController.Instance.StopAllMusics();
         SceneManager.LoadScene("Menu");
         //SceneManager.LoadScene("Menu");
     }
@@ -40,7 +48,11 @@ public class LoadingScreenScript : MonoBehaviour
             Fade.raycastTarget = true ;
             Fade.DOFade(1, 1f) ;
             yield return new WaitForSeconds(2f);
+            AllosiusDev.Audio.AudioController.Instance.StopAllAmbients();
+            AllosiusDev.Audio.AudioController.Instance.StopAllMusics();
             SceneManager.LoadScene("Character Customer") ;
         }
     }
+
+    #endregion
 }

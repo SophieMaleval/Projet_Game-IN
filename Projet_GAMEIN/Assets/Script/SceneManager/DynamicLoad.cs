@@ -10,26 +10,39 @@ public enum CheckMethod
 }
 public class DynamicLoad : MonoBehaviour
 {
-    public Transform player;
-    public CheckMethod checkMethod;
-    public float loadRange;
+    #region Fields
 
     //Scene state
     bool isLoaded; //eviter de charger 2x
     bool shouldLoad; //pour la méthode en trigger
 
+    #endregion
 
-    private void Awake() {
-        
-        if(GameObject.Find("Player") != null)
+    #region UnityInspector
+
+    public Transform player;
+    public CheckMethod checkMethod;
+    public float loadRange;
+
+    #endregion
+
+    #region Behaviour
+
+    private void Awake()
+    {
+        if (GameManager.Instance.player != null)
         {
-            player = GameObject.Find("Player").transform ;
+            player = GameManager.Instance.player.transform;
+        }
+        else
+        {
+            Debug.LogWarning("Player is null");
         }
 
     }
     void Start()
     {
-        
+
     }
     void LoadScene()
     {
@@ -60,10 +73,10 @@ public class DynamicLoad : MonoBehaviour
             TriggerCheck();
         }
     }
-//method Distance
+    //method Distance
     void DistanceCheck()
     {
-        if(Vector3.Distance(player.position, transform.position) < loadRange)
+        if (Vector3.Distance(player.position, transform.position) < loadRange)
         {
             LoadScene();
         }
@@ -73,9 +86,9 @@ public class DynamicLoad : MonoBehaviour
         }
     }
 
-  
 
- //method Trigger
+
+    //method Trigger
     void TriggerCheck()
     {
         if (shouldLoad)
@@ -90,7 +103,8 @@ public class DynamicLoad : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.tag == "Player")
+        PlayerScript player = other.GetComponent<PlayerScript>();
+        if (player != null)
         {
             shouldLoad = true;
         }
@@ -98,9 +112,12 @@ public class DynamicLoad : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.tag == "Player")
+        PlayerScript player = other.GetComponent<PlayerScript>();
+        if (player != null)
         {
             shouldLoad = false;
         }
     }
+
+    #endregion
 }

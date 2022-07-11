@@ -9,73 +9,87 @@ using UnityEngine.SceneManagement;
 
 public class AnimationCustomizer : MonoBehaviour
 {
-    [Header ("Customizer Reference")]
-    [SerializeField] private Customizer CustomizerReference ;
+    #region Fields
 
-    [Header ("Animation Ouverture et Fermeture Scene")]
-    [SerializeField] private Animator RideauxAnimator ;
-
-    [Header ("Rotate Avatar")]
-    public List<Animator> AnimatorsCustom ;
-    [SerializeField] private List<Vector2> DirectionView ;
     private int RotationState = 0 ;
+
+    private float SkinPanelHeight = 130f;
+    private float SkinPanelFondHeight = 80f;
+
+
+    private CSVReader TextUILocation;
+
+
+
+
+    private float OpenSkinGroupHeight = 165f;
+    private float OpenChoiceGroupHeight = 195f;
+    private float CloseGroupHeight = 70f;
+
+    private float ChoicePanelHeight = 160f;
+    private float ChoicePanelFondHeight = 111f;
+
+    private float PanelAnimationSpeed = 1f;
+    private float ClosePanelSpeed = 0.5f;
+    private float OpenPanelSpeed = 1.5f;
+
+    private float PanelWidth = 445f;
+
+    private int CurrentCategorie;
+
+    #endregion
+
+    #region UnityInspector
+
+    [Header("Customizer Reference")]
+    [SerializeField] private Customizer CustomizerReference;
+
+    [Header("Animation Ouverture et Fermeture Scene")]
+    [SerializeField] private Animator RideauxAnimator;
+
+    [Header("Rotate Avatar")]
+    public List<Animator> AnimatorsCustom;
+    [SerializeField] private List<Vector2> DirectionView;
 
     [Header ("CustomerPanel")]
     [SerializeField] private RectTransform ContainerChoiceCatPanel ;
     [SerializeField] private RectTransform ContainerSkinPanel ;
-    private float SkinPanelHeight = 130f ;
-    private float SkinPanelFondHeight = 80f ;
-    
-    [Space(10)]
-
-    [SerializeField] private RectTransform Panel ;
-    [SerializeField] private RectTransform ContainerChoicePanel ;
 
     [Space(10)]
 
-    [SerializeField] private RectTransform FondContainer ;
-    
-    [Header ("Button")]
-    [SerializeField] private Button RotateAvatarLeft ;
-    [SerializeField] private Button RotateAvatarRight ;
+    [SerializeField] private RectTransform Panel;
+    [SerializeField] private RectTransform ContainerChoicePanel;
 
-    [SerializeField] private Button PreviousCatBtn ;
-    [SerializeField] private Button NextCatBtn ;
+    [Space(10)]
 
+    [SerializeField] private RectTransform FondContainer;
 
+    [Header("Button")]
+    [SerializeField] private Button RotateAvatarLeft;
+    [SerializeField] private Button RotateAvatarRight;
 
-    [Header ("UI Text")]
-    [SerializeField] private TextMeshProUGUI TitleCategories ;
-        [SerializeField] private TextMeshProUGUI BtnCategorieSkin ;
-        [SerializeField] private TextMeshProUGUI BtnCategorieHair ;
-        [SerializeField] private TextMeshProUGUI BtnCategorieTop ;
-        [SerializeField] private TextMeshProUGUI BtnCategorieBottom ;
-        [SerializeField] private TextMeshProUGUI BtnCategorieShoe ;
-        [SerializeField] private GameObject BtnBackMenuCustomisation ;
-
-    [SerializeField] private TextMeshProUGUI NamingText ;
-    [SerializeField] private TextMeshProUGUI BtnRandomText ;
-    [SerializeField] private TextMeshProUGUI BtnSubmitText ;
-    private CSVReader TextUILocation ;
-
-    
+    [SerializeField] private Button PreviousCatBtn;
+    [SerializeField] private Button NextCatBtn;
 
 
-    private float OpenSkinGroupHeight = 165f ;
-    private float OpenChoiceGroupHeight = 195f ;
-    private float CloseGroupHeight = 70f ;
 
-    private float ChoicePanelHeight = 160f ;
-    private float ChoicePanelFondHeight = 111f ;   
+    [Header("UI Text")]
+    [SerializeField] private TextMeshProUGUI TitleCategories;
+    [SerializeField] private TextMeshProUGUI BtnCategorieSkin;
+    [SerializeField] private TextMeshProUGUI BtnCategorieHair;
+    [SerializeField] private TextMeshProUGUI BtnCategorieTop;
+    [SerializeField] private TextMeshProUGUI BtnCategorieBottom;
+    [SerializeField] private TextMeshProUGUI BtnCategorieShoe;
+    [SerializeField] private GameObject BtnBackMenuCustomisation;
 
-        private float PanelAnimationSpeed = 1f ;
-        private float ClosePanelSpeed = 0.5f ;
-        private float OpenPanelSpeed = 1.5f ;
+    [SerializeField] private TextMeshProUGUI NamingText;
+    [SerializeField] private TextMeshProUGUI BtnRandomText;
+    [SerializeField] private TextMeshProUGUI BtnSubmitText;
 
-    private float PanelWidth = 445f ;
+    #endregion
 
-    private int CurrentCategorie ;
-    
+    #region Behaviour
+
     private void Start() 
     {   
         StartCoroutine(WaitBeforeOpenningRideaux());
@@ -104,8 +118,15 @@ public class AnimationCustomizer : MonoBehaviour
         CustomizerReference.ResetBtnSprite(RotateAvatarRight);
 
         RotationState += RotationValueAdd ;
-        if(RotationState < 0) RotationState = DirectionView.Count - 1 ;
-        if(RotationState > DirectionView.Count - 1) RotationState = 0 ;
+        UpdateRotationView();
+
+        //Debug.Log(RotationState);
+    }
+
+    public void UpdateRotationView()
+    {
+        if (RotationState < 0) RotationState = DirectionView.Count - 1;
+        if (RotationState > DirectionView.Count - 1) RotationState = 0;
 
         Animate();
     }
@@ -332,4 +353,6 @@ public class AnimationCustomizer : MonoBehaviour
             BtnSubmitText.text = TextUILocation.UIText.CustomisationEN[9] ;
         }
     }
+
+    #endregion
 }

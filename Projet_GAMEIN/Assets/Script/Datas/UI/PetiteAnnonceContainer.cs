@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI ;
 
-[CreateAssetMenu (menuName = "Petite Annonce Contenu")]
+[CreateAssetMenu(fileName = "New PetiteAnnonceContainer", menuName = "Village/Petite Annonce Contenu")]
 public class PetiteAnnonceContainer : ScriptableObject
 {
     public List<Annonce> AnnonceDisponible = new List<Annonce>() ;

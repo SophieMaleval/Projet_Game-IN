@@ -5,9 +5,20 @@ using Cinemachine;
 
 public class GameInPNJManager : MonoBehaviour
 {
+    #region Fields
+
+    private Transform Player ;
+
+    private bool LaurentSayHello;
+    private bool PopUpScoot;
+
+    #endregion
+
+    #region UnityInspector
+
     [Header ("Animation Talk")]
     [SerializeField] private CinemachineVirtualCamera CineVCam; 
-    private Transform Player ;
+
     [SerializeField] private Sprite ScooterPopUpImg ;
 
     [Header ("PNJ")]
@@ -16,13 +27,20 @@ public class GameInPNJManager : MonoBehaviour
     [SerializeField] private GameObject PNJManon ;
     [SerializeField] private GameObject PNJSophie ;
 
-    private bool LaurentSayHello ;
-    private bool PopUpScoot ;
+    #endregion
 
+    #region Behaviour
 
     void Awake()
     {
-        if(GameObject.Find("Player") != null) Player = GameObject.Find("Player").transform ;
+        if (GameManager.Instance.player != null)
+        {
+            Player = GameManager.Instance.player.transform;
+        }
+        else
+        {
+            Debug.LogWarning("Player is null");
+        }
 
         if(PlayerPrefs.GetInt("LaurentSayHello") == 0)    PlayerPrefs.SetInt("LaurentSayHello", 1);
         else    SwitchLaurentPNJ();
@@ -37,7 +55,10 @@ public class GameInPNJManager : MonoBehaviour
         CineVCam.Follow = Player ;
         GetComponent<BoxCollider2D>().enabled = false ;
 
-        if(GameObject.Find("PopUp Displayer") != null && PopUpScoot) GameObject.Find("PopUp Displayer").GetComponent<PopUpManager>().CreatePopUpForScooter(ScooterPopUpImg);
+        if (GameManager.Instance.gameCanvasManager.inventory.PopUpManager != null && PopUpScoot)
+        {
+            GameManager.Instance.gameCanvasManager.inventory.PopUpManager.CreatePopUpForScooter(ScooterPopUpImg);
+        }
     }
     void Update()
     {
@@ -46,7 +67,8 @@ public class GameInPNJManager : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other) 
     {
-        if(other.gameObject.tag == "Player")
+        PlayerScript player = other.GetComponent<PlayerScript>();
+        if(player != null)
         {
            
             PNJLaurentHello.GetComponent<PNJDialogue>().LunchDiscussion();
@@ -62,5 +84,5 @@ public class GameInPNJManager : MonoBehaviour
         PopUpScoot = true ;
     }
 
-    
+    #endregion
 }

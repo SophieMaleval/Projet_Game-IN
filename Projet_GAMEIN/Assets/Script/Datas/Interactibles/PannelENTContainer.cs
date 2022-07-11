@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu (menuName = "Informations Pannel")]
+[CreateAssetMenu(fileName = "New PannelENTContainer", menuName = "Village/Informations Pannel")]
 public class PannelENTContainer : ScriptableObject
 {
+    #region UnityInspector
+
     [Header ("Entreprise")]
     public string NomEntreprise ;    
     public Sprite LogoENT ;
@@ -35,6 +37,8 @@ public class PannelENTContainer : ScriptableObject
 
     [Header ("Activité")]
     public List<ActivitéENT> ListActivité = new List<ActivitéENT>();
+
+    #endregion
 }
 
 

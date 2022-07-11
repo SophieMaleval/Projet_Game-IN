@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu (menuName = "Objet Inventaire Interactible")]
+[CreateAssetMenu(fileName = "New InteractibleObject", menuName = "Village/Objet Inventaire Interactible")]
 public class InteractibleObject : ScriptableObject
 {
+    #region UnityInspector
+
     [Header ("Sprites Display in Game")]
     public Sprite NormalSprite ;
     public Sprite HighlightSprite ;
@@ -29,6 +31,9 @@ public class InteractibleObject : ScriptableObject
 
     public bool multipleEntries;
 
+    #endregion
+
+    #region Behaviour
 
     public void AddEntry()
     {
@@ -48,4 +53,6 @@ public class InteractibleObject : ScriptableObject
             UISprite = finalSprite;
         }
     }
+
+    #endregion
 }

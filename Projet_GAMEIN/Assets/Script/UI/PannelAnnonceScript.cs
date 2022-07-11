@@ -82,4 +82,9 @@ public class PannelAnnonceScript : MonoBehaviour
             PlayerScript.SwitchInputSprite();
         }
     }
+
+    private void OnDestroy()
+    {
+        //Debug.Log(gameObject.name + "is Destroy");
+    }
 }

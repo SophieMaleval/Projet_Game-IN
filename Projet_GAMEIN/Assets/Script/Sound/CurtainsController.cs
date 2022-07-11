@@ -1,20 +1,29 @@
-﻿using System.Collections;
+﻿using AllosiusDev.Audio;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class CurtainsController : MonoBehaviour
 {
-    public AudioSource Curtains;
-    public AudioSource CurtainsClosing;
+    #region UnityInspector
 
-    void PlayCurtainsSoundsOpening()
+    public AudioData Curtains;
+    public AudioData CurtainsClosing;
+
+    #endregion
+
+    #region Behaviour
+
+    public void PlayCurtainsSoundsOpening()
     {
 
-        Curtains.Play();
+        AllosiusDev.Audio.AudioController.Instance.PlayAudio(Curtains);
     }
-    void PlayCurtainsSoundsClosing()
+    public void PlayCurtainsSoundsClosing()
     {
 
-        CurtainsClosing.Play();
+        AllosiusDev.Audio.AudioController.Instance.PlayAudio(CurtainsClosing);
     }
+
+    #endregion
 }

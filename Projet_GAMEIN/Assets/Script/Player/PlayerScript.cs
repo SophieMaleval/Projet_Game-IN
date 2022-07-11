@@ -33,6 +33,8 @@ public class PlayerScript : MonoBehaviour
     [HideInInspector] public bool FadeMake = false ;
     [HideInInspector] public bool AnimationBeMake = false ;
 
+    public PlayerDialogue playerBackpack;
+
     [Header ("Canvas Location")]
     public GameObject CanvasIndestrucitble ;
     public GameObject DialogueUIIndestructible ;
