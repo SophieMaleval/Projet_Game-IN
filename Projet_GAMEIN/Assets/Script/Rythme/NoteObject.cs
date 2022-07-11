@@ -11,12 +11,18 @@ public enum Stade{
 }
 public class NoteObject : MonoBehaviour
 {
+    #region UnityInspector
+
     public Stade stade;
     public bool canBePressed;
     public InputAction keyToPress;
     public GameObject hitEffect, goodEffect, perfectEffect, missEffect;
     public Transform noteHolder, detector;
     public Vector3 laPos;
+
+    #endregion
+
+    #region Behaviour
 
     private void Awake()
     {
@@ -97,4 +103,6 @@ public class NoteObject : MonoBehaviour
         if (stade == Stade.Cuisson) RhythmManager.instance.FrySound();
         if (stade == Stade.Dressage) RhythmManager.instance.DressSound();
     }
+
+    #endregion
 }

@@ -6,10 +6,20 @@ using UnityEngine.UI ;
 
 public class PetiteAnnonceManager : MonoBehaviour
 {
-    [SerializeField] private GameObject PrefabAnnonce ;
-    [HideInInspector] public PetiteAnnonceContainer InfoTableau ;
+    #region Fields
+
     private int ValueLangageOnDisplay = 0 ;
 
+    #endregion
+
+    #region UnityInspector
+
+    [SerializeField] private GameObject PrefabAnnonce ;
+    [HideInInspector] public PetiteAnnonceContainer InfoTableau ;
+
+    #endregion
+
+    #region Behaviour
 
     void Start()
     {
@@ -111,12 +121,13 @@ public class PetiteAnnonceManager : MonoBehaviour
         if(gameObject.activeSelf == false)
         {
             gameObject.SetActive(!gameObject.activeSelf);
-            GameObject.Find("Player").GetComponent<PlayerMovement>().StartActivity();
+            GameManager.Instance.player.GetComponent<PlayerMovement>().StartActivity();
             SetAnnonce();
         } else {
             gameObject.SetActive(!gameObject.activeSelf);
-            GameObject.Find("Player").GetComponent<PlayerMovement>().EndActivity(); 
+            GameManager.Instance.player.GetComponent<PlayerMovement>().EndActivity(); 
         }
     }
 
+    #endregion
 }

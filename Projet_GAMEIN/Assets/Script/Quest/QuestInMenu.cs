@@ -7,6 +7,9 @@ using UnityEngine.UI;
 
 public class QuestInMenu : MonoBehaviour
 {
+
+    #region UnityInspector
+
     public GameObject[] questSlot;
     public GameObject fleche;
     public Sprite unclickedFleche;
@@ -17,6 +20,10 @@ public class QuestInMenu : MonoBehaviour
     //public GameObject[] otherQ3;
     //public string list1, list2, list3;
     public bool isOpen;
+
+    #endregion
+
+    #region Behaviour
 
     private void Start()
     {
@@ -141,4 +148,6 @@ public class QuestInMenu : MonoBehaviour
 */
         
     }
+
+    #endregion
 }

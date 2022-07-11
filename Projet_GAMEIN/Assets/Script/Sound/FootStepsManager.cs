@@ -5,13 +5,24 @@ using UnityEngine.SceneManagement;
 
 public class FootStepsManager : MonoBehaviour
 {
+    #region Fields
+
+    Scene scene;
+    private AudioSource audioSource;
+
+    #endregion
+
+    #region UnityInspector
+
     [SerializeField]
 
     public  AudioClip[] clipsInside; 
 
-    public AudioClip[] clipsOutside; 
-    Scene scene;
-    private AudioSource audioSource;
+    public AudioClip[] clipsOutside;
+
+    #endregion
+
+    #region Behaviour
 
     void Awake(){
         
@@ -44,7 +55,7 @@ public class FootStepsManager : MonoBehaviour
         
     }
 
+    #endregion
 
-    
 
 }

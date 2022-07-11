@@ -5,12 +5,22 @@ using DG.Tweening;
 
 public class InstantiationPrefabGame : MonoBehaviour
 {
-    public GameObject PrefabJeuRythme ;
+    #region Fields
+
     private GameObject PrefabInstant ;
+
+    #endregion
+
+    #region UnityInspector
+
+    public GameObject PrefabJeuRythme ;
     [HideInInspector] public PNJDialogue PNJScript ;
     public AudioSource AmbiantMusic ;
     public float VolumeAmbiantMusic ;
 
+    #endregion
+
+    #region Behaviour
 
     // Start is called before the first frame update
     void Start()
@@ -44,5 +54,7 @@ public class InstantiationPrefabGame : MonoBehaviour
     {
         DOTween.To(x => AmbiantMusic.volume = x, 0, VolumeAmbiantMusic, 0.5f) ;
     }
-    
+
+    #endregion
+
 }

@@ -4,9 +4,20 @@ using UnityEngine;
 
 public class HighlightPNJ : MonoBehaviour
 {
+    #region Fields
+
+    private SpriteRenderer SP ;
+
+    #endregion
+
+    #region UnityInspector
+
     public Sprite NormalSprite;
     public Sprite HighlightSprite;
-    private SpriteRenderer SP ;
+
+    #endregion
+
+    #region Behaviour
 
     // Start is called before the first frame update
     void Awake()
@@ -29,4 +40,6 @@ public class HighlightPNJ : MonoBehaviour
     {
         SP.sprite = NormalSprite ;
     }
+
+    #endregion
 }

@@ -7,6 +7,8 @@ using DG.Tweening;
 
 public class PopUpScript : MonoBehaviour
 {
+    #region UnityInspector
+
     [Header ("Parameter")]
     [SerializeField] private Image ImgPopUP ;
     [SerializeField] private TextMeshProUGUI TitlePopUP ;
@@ -18,8 +20,11 @@ public class PopUpScript : MonoBehaviour
     [HideInInspector] public string TitlePopUPEN;
     [HideInInspector] public string DescripPopUPFR;
     [HideInInspector] public string DescripPopUPEN;
-    
-    
+
+    #endregion
+
+    #region Behaviour
+
     // Start is called before the first frame update
     void Start()
     {
@@ -102,4 +107,6 @@ public class PopUpScript : MonoBehaviour
         GetComponentInParent<PopUpManager>().SetHeightPopUpAgain();
         Destroy(gameObject, 1f);
     }
+
+    #endregion
 }

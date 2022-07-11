@@ -5,8 +5,14 @@ using UnityEngine.InputSystem;
 
 public class ButtonController : MonoBehaviour
 {
+    #region Fields
+
     private SpriteRenderer spriteRenderer;
-    
+
+    #endregion
+
+    #region UnityInspector
+
     [SerializeField]
     private Sprite defaultImage;
 
@@ -17,6 +23,10 @@ public class ButtonController : MonoBehaviour
     public InputAction arrow;
 
     public List<GameObject> NoteParticleprefab = new List<GameObject>() ;
+
+    #endregion
+
+    #region Behaviour
 
     private void Awake()
     {
@@ -59,4 +69,6 @@ public class ButtonController : MonoBehaviour
             //Debug.Log("waiting for an attempt");
         }
     }
+
+    #endregion
 }

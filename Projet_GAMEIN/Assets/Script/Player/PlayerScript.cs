@@ -8,8 +8,14 @@ using DG.Tweening;
 
 public class PlayerScript : MonoBehaviour
 {
+    #region Fields
+
     [Header ("Inputs")]
     private PlayerActionControls PlayerActionControllers ;
+
+    #endregion
+
+    #region UnityInspector
 
     [Header ("Information")]
     public string PlayerName ;
@@ -33,6 +39,8 @@ public class PlayerScript : MonoBehaviour
     [HideInInspector] public bool FadeMake = false ;
     [HideInInspector] public bool AnimationBeMake = false ;
 
+    public GameObject globalLightPlayer;
+
     public PlayerDialogue playerBackpack;
 
     [Header ("Canvas Location")]
@@ -44,6 +52,9 @@ public class PlayerScript : MonoBehaviour
     public GameObject QCMPanelUIIndestructible ;
     [HideInInspector] public Image FadeAnimation ;
 
+    #endregion
+
+    #region Behaviour
 
     private void OnEnable() { PlayerActionControllers.Enable(); }
     private void OnDisable() { PlayerActionControllers.Disable(); } 
@@ -53,6 +64,11 @@ public class PlayerScript : MonoBehaviour
         PlayerActionControllers = new PlayerActionControls();
         PlayerActionControllers.PlayerInLand.Interact.performed += OnInteract;
         PlayerActionControllers.PlayerInLand.Inventory.performed += OnInventory;
+
+        if(GameManager.Instance.player == null)
+        {
+            GameManager.Instance.player = this;
+        }
     }
 
     public void OnInteract(InputAction.CallbackContext ctx)
@@ -204,5 +220,5 @@ public class PlayerScript : MonoBehaviour
         FadeAnimation.raycastTarget = false ;    
     }
 
-
+    #endregion
 }

@@ -5,6 +5,15 @@ using TMPro;
 
 public class AaPTalk : MonoBehaviour
 {
+    #region Fields
+
+    Collider2D detecteur;
+    bool gathered = false;
+
+    #endregion
+
+    #region UnityInspector
+
     //active et desactive des objets en fonction de la progression du joueur
     [HideInInspector]
     public QuestSys questSys;
@@ -17,13 +26,15 @@ public class AaPTalk : MonoBehaviour
     //public int level; // à titre indicatif uniquement
     //public int step; // à  titre indicatif uniquement
     public TalkQuest talkQuest;
-    Collider2D detecteur;
-    bool gathered = false;
+
+    #endregion
+
+    #region Behaviour
 
     void Awake()
     {
-        questSys = GameObject.Find("QuestManager").GetComponent<QuestSys>();
-        checker = GameObject.Find("Inventory").GetComponent<Checker>();
+        questSys = GameManager.Instance.gameCanvasManager.questManager;
+        checker = GameManager.Instance.gameCanvasManager.inventory.GetComponent<Checker>();
         talkQuest = GetComponent<TalkQuest>(); //la composante doit, si déterminante pour une quête, être inactive sur l'objet
         detecteur = GetComponent<Collider2D>();
     }
@@ -59,4 +70,6 @@ public class AaPTalk : MonoBehaviour
             gathered = true;
         }
     }
+
+    #endregion
 }

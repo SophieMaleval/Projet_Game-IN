@@ -5,11 +5,20 @@ using UnityEngine.Rendering;
 
 public class SlopeManager : MonoBehaviour
 {
+    #region Fields
+
     private PlayerMovement PM;
-    public  bool TopAsLeft;
+
     private bool BottomAsLeft = false ;
-    public float SlopeValue = 1.5f;
+
     private float SlopeValueNegative ;
+
+    #endregion
+
+    #region UnityInspector
+
+    public  bool TopAsLeft;
+    public float SlopeValue = 1.5f;
 
     public GameObject ColliderBridgelevel;
     public GameObject ColliderPontDessouslevel;
@@ -22,15 +31,19 @@ public class SlopeManager : MonoBehaviour
 
    
     public SpriteRenderer spriteBridge;
- 
+
+    #endregion
+
+    #region Behaviour
+
     void Awake()
     {
         if(GameObject.Find("FloorNiveau2") != null) GetSortingroup = GameObject.Find("FloorNiveau2");
     
         //SortingLayerFLoor = GetComponent<SortingGroup>().sortingOrder;
         if(spriteBridge != null) spriteBridge.sortingOrder = 1;
-        if(GameObject.Find("Player") != null)
-            PM = GameObject.Find("Player").GetComponent<PlayerMovement>();
+        if(GameManager.Instance.player != null)
+            PM = GameManager.Instance.player.GetComponent<PlayerMovement>();
     
         SlopeValueNegative = SlopeValue * -1 ;
         BottomAsLeft = !TopAsLeft ;
@@ -38,7 +51,8 @@ public class SlopeManager : MonoBehaviour
 
    void OnTriggerEnter2D(Collider2D other) 
    {
-       if(other.gameObject.tag == "Player")
+       PlayerScript player = other.GetComponent<PlayerScript>();
+       if(player != null)
         {
             if(TopAsLeft)   // Si le haut de la pente est à Gauche
             {
@@ -63,7 +77,8 @@ public class SlopeManager : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D other) 
    {
-        if(other.gameObject.tag == "Player")
+        PlayerScript player = other.GetComponent<PlayerScript>();
+        if (player != null)
         {
            PM.SlopeParameter(false, 0f, BottomAsLeft, 0);
 
@@ -109,4 +124,6 @@ public class SlopeManager : MonoBehaviour
 
 
     }
+
+    #endregion
 }

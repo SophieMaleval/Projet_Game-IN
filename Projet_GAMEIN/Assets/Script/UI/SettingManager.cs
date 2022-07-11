@@ -8,6 +8,16 @@ using DG.Tweening ;
 
 public class SettingManager : MonoBehaviour
 {
+    #region Fields
+
+    private CSVReader TextUILocation ;
+
+    private bool CanCheckLanguage = false ;
+
+    #endregion
+
+    #region UnityInspector
+
     [Header ("Set Parameter")]
     [SerializeField] private AudioMixer MyAudioMixer;    
     [SerializeField] private GameObject ToggleFrançais;
@@ -28,9 +38,9 @@ public class SettingManager : MonoBehaviour
     [SerializeField] private Slider volumeMusicSlider;
     [SerializeField] private Slider volumeSfxSlider;
 
-    private CSVReader TextUILocation ;
+    #endregion
 
-    private bool CanCheckLanguage = false ;
+    #region Behaviour
 
     private void Start() 
     {
@@ -168,4 +178,6 @@ public class SettingManager : MonoBehaviour
                     EnglishTitle.text = TextUILocation.UIText.SettingEN[7] ;
         }
     }
+
+    #endregion
 }

@@ -7,18 +7,29 @@ using UnityEngine.SceneManagement;
 
 public class SceneManagerFeature : MonoBehaviour
 {
-    public CinemachineVirtualCamera CMVirtualCam ;
+    #region Fields
+
     private PlayerMovement PM;
     private GameObject FadeImage ;
 
+    #endregion
+
+    #region UnityInspector
+
+    public CinemachineVirtualCamera CMVirtualCam ;
+
+    #endregion
+
+    #region Behaviour
+
     private void Awake() 
     {
-        if(GameObject.Find("Player") != null)
+        if (GameManager.Instance.player != null)
         {
-            PM =  GameObject.Find("Player").GetComponent<PlayerMovement>();
+            PM =  GameManager.Instance.player.GetComponent<PlayerMovement>();
             CMVirtualCam.Follow = PM.transform ;
             SetPositionOnLoad();
-            FadeImage = PM.GetComponent<PlayerScript>().CanvasIndestrucitble.gameObject.transform.Find("Fade").gameObject ;
+            FadeImage = GameManager.Instance.gameCanvasManager.Fade ;
             PM.GetComponent<PlayerScript>().CanvasIndestrucitble.GetComponent<Canvas>().worldCamera = Camera.main;
         
      
@@ -45,4 +56,6 @@ public class SceneManagerFeature : MonoBehaviour
         yield return new WaitForSeconds(0.05f);
         FadeImage.GetComponent<AnimationTransitionScene>().OpenningScene();
     }
+
+    #endregion
 }

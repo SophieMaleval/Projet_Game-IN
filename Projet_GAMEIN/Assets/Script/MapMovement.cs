@@ -4,9 +4,20 @@ using UnityEngine;
 
 public class MapMovement : MonoBehaviour
 {
+    #region Fields
+
     private float x, y;
-    public float moveSpeed;
     private bool isWalking;
+
+    #endregion
+
+    #region UnityInspector
+
+    public float moveSpeed;
+
+    #endregion
+
+    #region Behaviour
 
     private void Update()
     {
@@ -40,9 +51,6 @@ public class MapMovement : MonoBehaviour
             transform.position = new Vector2(transform.position.x + 0, transform.position.y + (y * Time.deltaTime * 5f));
     }
 
-
-
-
-
+    #endregion
 
 }

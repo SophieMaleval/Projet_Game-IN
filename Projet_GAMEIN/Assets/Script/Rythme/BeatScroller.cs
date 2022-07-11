@@ -4,10 +4,22 @@ using UnityEngine;
 
 public class BeatScroller : MonoBehaviour
 {
+    #region Fields
+
+    //private NotesSpawner notesSpawner; 
+
+    #endregion
+
+    #region UnityInspector
+
     public AudioSource music;
     public float beatTempo;
     public float dureeMusique;
-    //private NotesSpawner notesSpawner; 
+
+    #endregion
+
+    #region Behaviour
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -50,4 +62,6 @@ public class BeatScroller : MonoBehaviour
         }
 
     }
+
+    #endregion
 }

@@ -5,7 +5,13 @@ using UnityEngine.UI;
 using DG.Tweening ;
 public class QCMPresentationManager : MonoBehaviour
 {
+    #region UnityInspector
+
     public Slider AudienceBar ;
+
+    #endregion
+
+    #region Behaviour
 
     private void OnEnable() 
     {
@@ -30,5 +36,7 @@ public class QCMPresentationManager : MonoBehaviour
 
             AudienceBar.DOValue((AudienceBar.value + ValueAdd), 0.1f) ;        
     }
+
+    #endregion
 
 }

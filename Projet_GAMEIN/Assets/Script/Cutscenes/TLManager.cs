@@ -6,9 +6,11 @@ using UnityEngine.Playables;
 
 public class TLManager : MonoBehaviour
 {
+    #region UnityInspector
+
     //public string camera1;
     //public string camera2;
-   // public GameObject camPrincipal;
+    // public GameObject camPrincipal;
     public GameObject camCutscene;
     public bool isActivated = false, inQuest = false;
     
@@ -18,6 +20,10 @@ public class TLManager : MonoBehaviour
     public string debutSequence, finSequence;
     public QuestSys questSys;
     public int level;
+
+    #endregion
+
+    #region Behaviour
 
     private void Awake()
     {
@@ -46,7 +52,7 @@ public class TLManager : MonoBehaviour
             Lighting();
         }
 
-        if(questSys == null && GameObject.Find("QuestManager") != null) questSys = GameObject.Find("QuestManager").GetComponent<QuestSys>();
+        if(questSys == null && GameManager.Instance.gameCanvasManager != null && GameManager.Instance.gameCanvasManager.questManager != null) questSys = GameManager.Instance.gameCanvasManager.questManager;
     }
     void StepChecker()
     {
@@ -97,5 +103,5 @@ public class TLManager : MonoBehaviour
         }
     }
 
-
+    #endregion
 }

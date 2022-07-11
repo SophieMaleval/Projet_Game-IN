@@ -4,7 +4,13 @@ using UnityEngine;
 
 public class QuestMenuDisplayerManager : MonoBehaviour
 {
+    #region UnityInspector
+
     [SerializeField] private List<QuestInMenu> QuestTitle = new List<QuestInMenu>() ;
+
+    #endregion
+
+    #region Behaviour
 
     void Start()
     {
@@ -69,4 +75,6 @@ public class QuestMenuDisplayerManager : MonoBehaviour
             }
         }
     }
+
+    #endregion
 }

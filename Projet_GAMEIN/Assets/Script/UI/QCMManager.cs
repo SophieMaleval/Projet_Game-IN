@@ -8,6 +8,23 @@ using TMPro;
 
 public class QCMManager : MonoBehaviour
 {
+    #region Fields
+
+    private bool MouseIsHover ;
+
+    private int CurrentQuestion = 0 ;
+
+    private GameObject PlayerText ;
+
+    private QCMContainer QCMContaine = new QCMContainer() ;
+
+    private List<QuestionQCMContainer> TextQCMFR = new List<QuestionQCMContainer>() ;
+    private List<QuestionQCMContainer> TextQCMEN = new List<QuestionQCMContainer>() ;
+
+    #endregion
+
+    #region UnityInspector
+
     [SerializeField] private QCMPresentationManager QCMPresentation ;
 
     [SerializeField] private RectTransform FondQCM ;
@@ -20,24 +37,22 @@ public class QCMManager : MonoBehaviour
     [SerializeField] private Color HighlightColor ;
     [SerializeField] private Color GoodColor ;
     [SerializeField] private Color WrongColor ;
-    private bool MouseIsHover ;
     public int CurrentChoice ;
-    private int CurrentQuestion = 0 ;
     public int CurrentEnigme = 1 ;
 
-    private GameObject PlayerText ;
     [HideInInspector] public PNJDialogue PNJCurrent ;
 
     [Header ("QCM Text")]
-    private QCMContainer QCMContaine = new QCMContainer() ;
     public List<QuestionQCMContainer> TextQCM = new List<QuestionQCMContainer>() ;
-    private List<QuestionQCMContainer> TextQCMFR = new List<QuestionQCMContainer>() ;
-    private List<QuestionQCMContainer> TextQCMEN = new List<QuestionQCMContainer>() ;
+
+    #endregion
+
+    #region Behaviour
 
     // Start is called before the first frame update
     void OnEnable()
     {
-        PlayerMovement PlayerApparance = GameObject.Find("Player").GetComponent<PlayerMovement>() ; 
+        PlayerMovement PlayerApparance = GameManager.Instance.player.GetComponent<PlayerMovement>() ; 
         PlayerApparance.enabled = false ;                 
         PlayerScript PlayerPersonnality = PlayerApparance.GetComponent<PlayerScript>() ;
 
@@ -61,7 +76,7 @@ public class QCMManager : MonoBehaviour
     }
     private void Start() 
     {
-        if(GameObject.Find("Player Backpack") != null)  PlayerText = GameObject.Find("Player Backpack");
+        if(GameManager.Instance.player.playerBackpack != null)  PlayerText = GameManager.Instance.player.playerBackpack.gameObject;
 
         PlayerText.GetComponentInParent<PlayerMovement>().StartActivity();
         PlayerText.GetComponent<PlayerDialogue>().DialogueStart();
@@ -198,11 +213,11 @@ public class QCMManager : MonoBehaviour
         if(PNJCurrent == null)
         {
             GameObject.Find("Quest Dialogue Manager").GetComponent<TalkQuest>().TalkedTo();   
-            GameObject.Find("QuestManager").GetComponent<QuestSys>().Progression();
-            GameObject.Find("Player").GetComponent<PlayerMovement>().enabled = true ;
+            GameManager.Instance.gameCanvasManager.questManager.Progression();
+            GameManager.Instance.player.GetComponent<PlayerMovement>().enabled = true ;
             PlayerText.GetComponentInParent<PlayerMovement>().EndActivity();
         } else {
-            GameObject.Find("Player").GetComponent<PlayerMovement>().enabled = true ;
+            GameManager.Instance.player.GetComponent<PlayerMovement>().enabled = true ;
             PlayerText.GetComponentInParent<PlayerMovement>().StartActivity();
 
             PNJCurrent.TellPlayerLunchFade();
@@ -261,4 +276,6 @@ public class QCMManager : MonoBehaviour
     {
         return QCMPresentation.AudienceBar.value ;
     }
+
+    #endregion
 }

@@ -142,8 +142,17 @@ public class Customizer : MonoBehaviour
 
             PlayerPersonnality.playerBackpack.GetComponent<CSVReader>().QuestManager = InventoryUIInstatiate.GetComponentInChildren<QuestSys>();
 
-            CanvasInstatiate.GetComponent<GameCanvasManager>().inventory = InventoryUIInstatiate.GetComponent<InventoryScript>();
-            CanvasInstatiate.GetComponent<GameCanvasManager>().questManager = InventoryUIInstatiate.GetComponentInChildren<QuestSys>();
+
+            GameCanvasManager gameCanvasManager = CanvasInstatiate.GetComponent<GameCanvasManager>();
+
+            GameManager.Instance.gameCanvasManager = gameCanvasManager;
+
+            gameCanvasManager.inventory = InventoryUIInstatiate.GetComponent<InventoryScript>();
+            gameCanvasManager.questManager = InventoryUIInstatiate.GetComponentInChildren<QuestSys>();
+
+            gameCanvasManager.dialogCanvas = DialogueUIInstatiate.GetComponent<DialogueDisplayerController>();
+
+            gameCanvasManager.qcmPanel = QCMPanelInstantiate.GetComponent<QCMManager>();
 
             DontDestroyOnLoad(PlayerApparance.gameObject);
             DontDestroyOnLoad(CanvasInstatiate.gameObject);

@@ -4,12 +4,19 @@ using UnityEngine;
 
 public class MapExterior : MonoBehaviour
 {
+    #region UnityInspector
+
     public PlayerMovement pM;
     public GameObject text;
+
+    #endregion
+
+    #region Behaviour
+
     // Start is called before the first frame update
     void Awake()
     {
-        pM = GameObject.Find("Player").GetComponent<PlayerMovement>();
+        pM = GameManager.Instance.player.GetComponent<PlayerMovement>();
     }
     void OnEnable()
     {
@@ -28,4 +35,6 @@ public class MapExterior : MonoBehaviour
     {
         
     }
+
+    #endregion
 }

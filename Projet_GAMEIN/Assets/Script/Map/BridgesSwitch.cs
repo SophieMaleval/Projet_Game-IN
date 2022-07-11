@@ -4,10 +4,17 @@ using UnityEngine;
 
 public class BridgesSwitch : MonoBehaviour
 {
+    #region UnityInspector
+
     public GameObject sidePont;
     public GameObject sousPont;
 
     public bool crossed = false;
+
+    #endregion
+
+    #region Behaviour
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,4 +45,6 @@ public class BridgesSwitch : MonoBehaviour
             sidePont.SetActive(false);
         }
     }
+
+    #endregion
 }

@@ -3,9 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 
-public class MixerController : MonoBehaviour{
+public class MixerController : MonoBehaviour
+{
+    #region UnityInspector
+
     public AudioMixer MyAudioMixer;
 
+    #endregion
+
+    #region Behaviour
 
     public void SetVolume(float sliderValue){
 
@@ -29,5 +35,6 @@ public class MixerController : MonoBehaviour{
 
         PlayerPrefs.SetFloat("VolumeGlobal", sliderValue);
     }
-    
+
+    #endregion
 }

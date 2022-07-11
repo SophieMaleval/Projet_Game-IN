@@ -10,6 +10,8 @@ public class GameCanvasManager : MonoBehaviour
 
     public InventoryScript inventory { get; set; }
     public QuestSys questManager { get; set; }
+    public DialogueDisplayerController dialogCanvas { get; set; }
+    public QCMManager qcmPanel { get; set; }
 
     #endregion
 
@@ -21,7 +23,7 @@ public class GameCanvasManager : MonoBehaviour
 
     #region Behaviour
 
-    private void Start()
+    private void Awake()
     {
         GameManager.Instance.gameCanvasManager = this;
     }

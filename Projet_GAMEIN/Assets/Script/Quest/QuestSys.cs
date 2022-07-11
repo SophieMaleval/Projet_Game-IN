@@ -8,6 +8,14 @@ using DG.Tweening;
 
 public class QuestSys : MonoBehaviour
 {
+    #region Fields
+
+    QuestCt questCount;
+
+    #endregion
+
+    #region UnityInspector
+
     /*[Header("Sans Quête")]
     public string roamingTitle;
     [TextArea] public string roamingGoal;*/
@@ -27,10 +35,7 @@ public class QuestSys : MonoBehaviour
     
     [HideInInspector]
     public int niveau = 0;
-    
-    QuestCt questCount;
-    
-    
+
     public int etape = 0;
     public int sizeOfList;
     public int globalSteps = 0;
@@ -40,6 +45,9 @@ public class QuestSys : MonoBehaviour
     public CanvasGroup animContent;
     public float duration;
 
+    #endregion
+
+    #region Behaviour
 
     private void Start()
     {
@@ -263,4 +271,6 @@ public class QuestSys : MonoBehaviour
     {
         animContent.DOFade(1f, 0.3f);
     }
+
+    #endregion
 }

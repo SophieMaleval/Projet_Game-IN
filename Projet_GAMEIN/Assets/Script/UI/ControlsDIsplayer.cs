@@ -6,10 +6,19 @@ using UnityEngine.UI ;
 
 public class ControlsDIsplayer : MonoBehaviour
 {
+    #region Fields
+
+    private int CurrentControls = 0;
+
+    private List<string> ListTitleControl = new List<string>() ;
+
+    #endregion
+
+    #region UnityInspector
+
     [SerializeField] private TextMeshProUGUI TitleControls ;
     [SerializeField] private List<GameObject> ControlsGroup ;
     [SerializeField] private Transform ControlsParent ;
-    private int CurrentControls = 0;
 
     public CSVReader TextUILocation ;
 
@@ -26,13 +35,13 @@ public class ControlsDIsplayer : MonoBehaviour
     [SerializeField] private List<TextMeshProUGUI> InventoryInput ;
     [SerializeField] private List<TextMeshProUGUI> ScooterInput ;
 
-    private List<string> ListTitleControl = new List<string>() ;
+    #endregion
 
-    
+    #region Behaviour
 
     private void OnEnable() {
         if(TextUILocation == null)
-            TextUILocation = GameObject.Find("Player Backpack").GetComponent<CSVReader>() ;
+            TextUILocation = GameManager.Instance.player.playerBackpack.GetComponent<CSVReader>() ;
 
         SetLangue(PlayerPrefs.GetInt("Langue"));
         ChangeControlsDisplay();
@@ -118,4 +127,6 @@ public class ControlsDIsplayer : MonoBehaviour
                 ListTitleControl.Add(TextLangue[9]);
                 ListTitleControl.Add(TextLangue[12]);
     }
+
+    #endregion
 }
