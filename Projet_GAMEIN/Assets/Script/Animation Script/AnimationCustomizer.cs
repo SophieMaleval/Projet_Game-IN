@@ -94,10 +94,10 @@ public class AnimationCustomizer : MonoBehaviour
     {   
         StartCoroutine(WaitBeforeOpenningRideaux());
 
-        if(GameObject.Find("Player") != null)
+        if (GameManager.Instance.player != null)
         {
-            AnimatorsCustom = GameObject.Find("Player").GetComponent<PlayerMovement>().Animators ;
-            TextUILocation = GameObject.Find("Player Backpack").GetComponent<CSVReader>() ;
+            AnimatorsCustom = GameManager.Instance.player.GetComponent<PlayerMovement>().Animators ;
+            TextUILocation = GameManager.Instance.player.playerBackpack.GetComponent<CSVReader>() ;
         }
 
         SetCustomTextLangue(PlayerPrefs.GetInt("Langue"));
@@ -325,6 +325,9 @@ public class AnimationCustomizer : MonoBehaviour
     {
         if(Langue == 0)
         {
+            //Debug.Log(TextUILocation.gameObject.name);
+            //Debug.Log(TextUILocation.UIText.CustomisationFR.Count);
+                
             TitleCategories.text = TextUILocation.UIText.CustomisationFR[0] ;
         
             BtnCategorieSkin.text = TextUILocation.UIText.CustomisationFR[1] ;

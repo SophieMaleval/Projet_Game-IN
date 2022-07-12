@@ -57,5 +57,10 @@ public class ButtonCtrl : MonoBehaviour, IPointerEnterHandler, IPointerDownHandl
 
     }
 
+    public void PlaySound(AudioData audioData)
+    {
+        AllosiusDev.Audio.AudioController.Instance.PlayAudio(audioData);
+    }
+
     #endregion
 }
