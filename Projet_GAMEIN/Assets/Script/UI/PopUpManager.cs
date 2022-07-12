@@ -5,12 +5,18 @@ using DG.Tweening;
 
 public class PopUpManager : MonoBehaviour
 {
+    #region UnityInspector
+
     [SerializeField] private GameObject PrefabPopUp ;
     [SerializeField] private CSVReader PopUpUIText ;
 
+    #endregion
+
+    #region Behaviour
+
     void Awake() 
     {
-        if(GameObject.Find("Player Backpack") != null) PopUpUIText = GameObject.Find("Player Backpack").GetComponent<CSVReader>();
+        if(GameManager.Instance.player.playerBackpack != null) PopUpUIText = GameManager.Instance.player.playerBackpack.GetComponent<CSVReader>();
     }
 
     public void CreatePopUpItem(InteractibleObject ItemModify, bool IsAdded)
@@ -71,4 +77,6 @@ public class PopUpManager : MonoBehaviour
         yield return new WaitForSeconds(1.05f);
         SetHeightPopUpDisplayer();
     }
+
+    #endregion
 }

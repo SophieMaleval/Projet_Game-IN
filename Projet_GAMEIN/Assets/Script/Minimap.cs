@@ -4,13 +4,23 @@ using UnityEngine;
 
 public class Minimap : MonoBehaviour
 {
+    #region Fields
+
+    private bool mapActivated;
+
+    #endregion
+
+    #region UnityInspector
+
     public Transform playerIcon;
 
     [Header("Minimap Cameras")]
     public GameObject mainCam;
     public GameObject mapCam;
 
-    private bool mapActivated;
+    #endregion
+
+    #region Behaviour
 
     // Update is called once per frame
 
@@ -47,4 +57,6 @@ public class Minimap : MonoBehaviour
             mapCam.SetActive(false);
         }
     }
+
+    #endregion
 }

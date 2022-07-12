@@ -5,9 +5,15 @@ using Cinemachine;
 
 public class CameraSwitcher : MonoBehaviour
 {
+    #region Properties
+
     static List<CinemachineVirtualCamera> Cameras = new List<CinemachineVirtualCamera>();
 
     public static CinemachineVirtualCamera ActiveCamera = null ;
+
+    #endregion
+
+    #region Behaviour
 
     public static bool IsActiveCamera(CinemachineVirtualCamera Camera)
     {
@@ -39,4 +45,6 @@ public class CameraSwitcher : MonoBehaviour
         Cameras.Remove(Camera);
         //Debug.Log("Camera unregistered: " + Camera) ;
     }
+
+    #endregion
 }

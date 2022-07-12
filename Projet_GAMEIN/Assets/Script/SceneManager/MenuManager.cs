@@ -9,6 +9,16 @@ using AllosiusDev.Audio;
 
 public class MenuManager : MonoBehaviour
 {
+    #region Fields
+
+    private bool SettingOpen = false ;
+
+    private CSVReader SettingPanelReader ;
+
+    #endregion
+
+    #region Unity Inspector
+
     public string NameScene ;
 
 
@@ -18,7 +28,6 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private RectTransform TitlePanel ;
     [SerializeField] private Button OpenSettingBtn;
     [SerializeField] private Button CloseSettingBtn ;
-    private bool SettingOpen = false ;
 
     [SerializeField] private RectTransform SettingPanel;
     [SerializeField] private RectTransform ControlsPanel;
@@ -30,7 +39,9 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private AudioData menuMusic;
     [SerializeField] private AudioData birdsChippingAmbients;
 
-    private CSVReader SettingPanelReader ;
+    #endregion
+
+    #region Behaviour
 
     private void Awake()
     {
@@ -169,4 +180,6 @@ public class MenuManager : MonoBehaviour
     {
         AllosiusDev.Audio.AudioController.Instance.PlayAudio(audioData);
     }
+
+    #endregion
 }

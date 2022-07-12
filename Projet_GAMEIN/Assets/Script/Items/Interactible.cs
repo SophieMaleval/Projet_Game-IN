@@ -11,23 +11,37 @@ public enum Quantité
 }
 public class Interactible : MonoBehaviour
 {
+    #region Fields
+
+    private SpriteRenderer SpriteRend;
+
+    private bool PlayerAround = false;
+    //private bool gathered = false;
+
+    #endregion
+
+    #region UnityInspector
+
     public Quantité qté;
     public GameObject DisplayerInventory;
     public InteractibleObject Object ;
     public QuestSys questSys;
     //public ActiveAsProg AaP;
-    private SpriteRenderer SpriteRend;
+
     [SerializeField] private PlayerScript PlayerScript;
-    private bool PlayerAround = false;
-    //private bool gathered = false;
+
     //public int code;
     //public int stepCode;
 
+    #endregion
+
+    #region Behaviour
+
     private void Awake() {
-        if(GameObject.Find("Player") != null)   // Récupère le player au lancement de la scène
-        {    PlayerScript = GameObject.Find("Player").GetComponent<PlayerScript>() ; }
+        if(GameManager.Instance.player != null)   // Récupère le player au lancement de la scène
+        {    PlayerScript = GameManager.Instance.player ; }
         SpriteRend = GetComponent<SpriteRenderer>();
-        questSys = GameObject.Find("QuestManager").GetComponent<QuestSys>() ;
+        questSys = GameManager.Instance.gameCanvasManager.questManager ;
         //AaP = this.gameObject.GetComponent<ActiveAsProg>();
     }
 
@@ -38,7 +52,8 @@ public class Interactible : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == ("Player"))
+        PlayerScript playerScript = other.GetComponent<PlayerScript>();
+        if (playerScript != null)
         {
             PlayerCanCollectThisObject(true);
             PlayerScript.SwitchInputSprite();
@@ -56,7 +71,7 @@ public class Interactible : MonoBehaviour
             {
                 PlayerScript.PlayerAsInterract = false ;
                 Collected();
-                if(GameObject.Find("PopUp Displayer") != null) GameObject.Find("PopUp Displayer").GetComponent<PopUpManager>().CreatePopUpItem(Object, true);
+                if(GameManager.Instance.gameCanvasManager.inventory.PopUpManager != null) GameManager.Instance.gameCanvasManager.inventory.PopUpManager.CreatePopUpItem(Object, true);
             }
             else 
             {              
@@ -111,7 +126,8 @@ public class Interactible : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if(other.tag == ("Player"))
+        PlayerScript playerScript = other.GetComponent<PlayerScript>();
+        if (playerScript != null)
         {
             PlayerCanCollectThisObject(false);
             PlayerScript.SwitchInputSprite();
@@ -131,4 +147,6 @@ public class Interactible : MonoBehaviour
             SpriteRend.sprite = Object.HighlightSprite;            
         }      
     }
+
+    #endregion
 }

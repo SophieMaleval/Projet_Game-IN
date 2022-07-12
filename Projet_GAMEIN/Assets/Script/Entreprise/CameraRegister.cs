@@ -5,6 +5,8 @@ using Cinemachine;
 
 public class CameraRegister : MonoBehaviour
 {
+    #region Behaviour
+
     void OnEnable() 
     {
         CameraSwitcher.Register(GetComponent<CinemachineVirtualCamera>());
@@ -14,4 +16,6 @@ public class CameraRegister : MonoBehaviour
     {
         CameraSwitcher.Unregister(GetComponent<CinemachineVirtualCamera>());
     }
+
+    #endregion
 }

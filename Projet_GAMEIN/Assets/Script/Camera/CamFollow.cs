@@ -4,11 +4,17 @@ using UnityEngine;
 
 public class CamFollow : MonoBehaviour
 {
+    #region UnityInspector
+
     public Transform player;
+
+    #endregion
+
+    #region Behaviour
 
     void Awake()
     {
-        player = GameObject.Find("Player").transform;
+        player = GameManager.Instance.player.transform;
     }
 
     // Update is called once per frame
@@ -16,4 +22,6 @@ public class CamFollow : MonoBehaviour
     {
         this.transform.position = new Vector3(player.position.x, player.position.y, this.transform.position.z);
     }
+
+    #endregion
 }

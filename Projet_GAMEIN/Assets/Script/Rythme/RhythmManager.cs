@@ -7,13 +7,25 @@ using UnityEngine.SceneManagement;
 
 public class RhythmManager : MonoBehaviour
 {
+    #region Fields
+
+    private QuestSys questSys;
+
+    #endregion
+
+    #region Properties
+
+    public static RhythmManager instance;
+
+    #endregion
+
+    #region UnityInspector
+
     //public AudioSource theMusic;
 
     public bool startPlaying;
 
     public BeatScroller beatScroller;
-    public static RhythmManager instance;
-    private QuestSys questSys;
 
 
     [Header("Score")]
@@ -47,8 +59,8 @@ public class RhythmManager : MonoBehaviour
 
     public GameObject minigameCam;
 
+    #endregion
 
-    
 
     // Start is called before the first frame update
     void Start()
@@ -88,7 +100,7 @@ public class RhythmManager : MonoBehaviour
 
     private void Awake()
     {
-        questSys = GameObject.Find("QuestManager").GetComponent<QuestSys>();
+        questSys = GameManager.Instance.gameCanvasManager.questManager;
       /*  scoreText = GameObject.Find("Score Text").GetComponent<TextMeshProUGUI>();
         multiText = GameObject.Find("Best Score Text").GetComponent<TextMeshProUGUI>();
         percentHitText = GameObject.Find("Percent Hit Value").GetComponent<TextMeshProUGUI>();
@@ -105,7 +117,7 @@ public class RhythmManager : MonoBehaviour
         {
             dad = GameObject.Find("CookBoy");
         }
-        player = GameObject.Find("Player").GetComponent<PlayerMovement>();
+        player = GameManager.Instance.player.GetComponent<PlayerMovement>();
 
     }
 

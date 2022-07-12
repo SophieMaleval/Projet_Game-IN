@@ -8,10 +8,18 @@ using UnityEngine.SceneManagement;
 public class SceneEntManager : MonoBehaviour
 {
 
+    #region Fields
+
     private PNJDialogue[] pnjs;
 
     private PlayerMovement PM;
     private GameObject FadeImage ;
+
+    private GameObject GlobalLightPlayer ;
+
+    #endregion
+
+    #region UnityInspector
 
     [SerializeField] private List<GameObject> PartScene ;
     [SerializeField] private CameraTriggerVolume VolumeFirstCam ;
@@ -19,14 +27,16 @@ public class SceneEntManager : MonoBehaviour
     [SerializeField] private Vector2 SetPosition ;
     
     [SerializeField] private bool LightAutoGenerateInThisScene = false ;
-    private GameObject GlobalLightPlayer ;
 
+    #endregion
+
+    #region Behaviour
 
     private void Awake() 
     {
-        if(GameObject.Find("Player") != null)
+        if(GameManager.Instance.player != null)
         {
-            PM =  GameObject.Find("Player").GetComponent<PlayerMovement>();
+            PM =  GameManager.Instance.player.GetComponent<PlayerMovement>();
 
             pnjs = FindObjectsOfType<PNJDialogue>();
 
@@ -38,8 +48,8 @@ public class SceneEntManager : MonoBehaviour
 
 
             SetPositionOnLoad();
-            FadeImage = PM.GetComponent<PlayerScript>().CanvasIndestrucitble.gameObject.transform.Find("Fade").gameObject ;
-            PM.GetComponent<PlayerScript>().CanvasIndestrucitble.GetComponent<Canvas>().worldCamera = Camera.main;
+            FadeImage = GameManager.Instance.gameCanvasManager.Fade;
+            GameManager.Instance.gameCanvasManager.GetComponent<Canvas>().worldCamera = Camera.main;
         
             PM.enabled = true ;
             PM.PlayerChangeScene = false ;
@@ -73,9 +83,9 @@ public class SceneEntManager : MonoBehaviour
     {
         if(FadeImage != null)    FadeImage.GetComponent<AnimationTransitionScene>().OpenningScene();
 
-        if(VolumeFirstCam != null) VolumeFirstCam.SetFirstCamera(); 
+        if(VolumeFirstCam != null) VolumeFirstCam.SetFirstCamera();
 
-        GlobalLightPlayer = GameObject.Find("Global Light Player");
+        GlobalLightPlayer = GameManager.Instance.player.globalLightPlayer;
         if(LightAutoGenerateInThisScene) GlobalLightPlayer.SetActive(false);
 
         
@@ -101,4 +111,6 @@ public class SceneEntManager : MonoBehaviour
             pnjs[i].InitAnimator();
         }
     }
+
+    #endregion
 }

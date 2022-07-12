@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class QuestSync : MonoBehaviour
 {
+    #region UnityInspector
+
     public QuestSys questSys;
     //public Checker checker;
     //public ActiveAsProg Aap;
@@ -21,9 +23,13 @@ public class QuestSync : MonoBehaviour
     public int numberOfGoals;
     public QuestInMenu buttons;
 
+    #endregion
+
+    #region Behaviour
+
     private void Awake()
     {
-        questSys = GameObject.Find("QuestManager").GetComponent<QuestSys>();
+        questSys = GameManager.Instance.gameCanvasManager.questManager;
         descObj = GameObject.FindGameObjectsWithTag(descName);
         title = this.gameObject;
         //AaP = GameObject.Find(.GetComponent<ActiveAsProg>();
@@ -108,5 +114,7 @@ public class QuestSync : MonoBehaviour
     {
         questSys.niveau = lvlID;
     }
-    
+
+    #endregion
+
 }

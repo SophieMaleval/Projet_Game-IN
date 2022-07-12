@@ -9,21 +9,29 @@ public enum ModifInventaire{
 }
 public class TalkQuest : MonoBehaviour
 {
+    #region Fields
+
     private QuestSys questSys;
     private PlayerScript ScriptPlayer ;
+
+    #endregion
+
+    #region UnityInspector
+
     public ModifInventaire mode;
     public bool multipleObj;
 
     public Vector2 QuestEtape ;
     public InteractibleObject item ;
 
+    #endregion
 
-
+    #region Behaviour
 
     private void Awake()
     {
-        questSys = GameObject.Find("QuestManager").GetComponent<QuestSys>();
-        ScriptPlayer = GameObject.Find("Player").GetComponent<PlayerScript>() ;
+        questSys = GameManager.Instance.gameCanvasManager.questManager;
+        ScriptPlayer = GameManager.Instance.player ;
     }
 
     public void TalkedTo()
@@ -33,7 +41,7 @@ public class TalkQuest : MonoBehaviour
             if(mode == ModifInventaire.Retrait) 
             {
                 ScriptPlayer.RemoveObject(item);
-                if(GameObject.Find("PopUp Displayer") != null) GameObject.Find("PopUp Displayer").GetComponent<PopUpManager>().CreatePopUpItem(item, false);
+                if(GameManager.Instance.gameCanvasManager.inventory.PopUpManager != null) GameManager.Instance.gameCanvasManager.inventory.PopUpManager.CreatePopUpItem(item, false);
             }
 
             if(mode == ModifInventaire.Ajout)
@@ -41,7 +49,7 @@ public class TalkQuest : MonoBehaviour
                 if(!ScriptPlayer.ItemChecker(item))
                 {
                     ScriptPlayer.AjoutInventaire(item);  
-                    if(GameObject.Find("PopUp Displayer") != null) GameObject.Find("PopUp Displayer").GetComponent<PopUpManager>().CreatePopUpItem(item, true);
+                    if(GameManager.Instance.gameCanvasManager.inventory.PopUpManager != null) GameManager.Instance.gameCanvasManager.inventory.PopUpManager.CreatePopUpItem(item, true);
                 } else {
                     item.AddEntry();
                 }     
@@ -53,4 +61,6 @@ public class TalkQuest : MonoBehaviour
         //questSys.Progression();        
         //Destroy(this.gameObject, 0.05f);
     }
+
+    #endregion
 }

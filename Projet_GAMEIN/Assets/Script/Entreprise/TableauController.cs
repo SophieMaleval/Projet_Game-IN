@@ -8,11 +8,8 @@ using UnityEngine.InputSystem;
 
 public class TableauController : MonoBehaviour
 {
-    [Header ("Information ENT")]
-    public PannelENTContainer InformationsPrincipaleENT ;
-    public Sprite TableauENTNormal;
-    public Sprite TableauENTHighlighted;
-    [HideInInspector] public CSVReader RefTextENT ;    
+    #region Fields
+
     private PannelENTManager Board;
     private GameObject InventoryPanel ;
     private SpriteRenderer TableauSpriteRenderer ;
@@ -22,20 +19,33 @@ public class TableauController : MonoBehaviour
 
     [Header ("Gestion Code")]
     private bool PannelSetUp = false ;
-    private bool PlayerArroundPannel = false;    
+    private bool PlayerArroundPannel = false;
 
+    #endregion
+
+    #region UnityInspector
+
+    [Header ("Information ENT")]
+    public PannelENTContainer InformationsPrincipaleENT ;
+    public Sprite TableauENTNormal;
+    public Sprite TableauENTHighlighted;
+    [HideInInspector] public CSVReader RefTextENT ;
+
+    #endregion
+
+    #region Behaviour
 
     void Awake()
     {
-        if(GameObject.Find("Player") != null)
+        if(GameManager.Instance.player != null)
         {
-            PlayerMovement = GameObject.Find("Player").GetComponent<PlayerMovement>();
+            PlayerMovement = GameManager.Instance.player.GetComponent<PlayerMovement>();
             PlayerScript = PlayerMovement.GetComponent<PlayerScript>();
             Board = PlayerScript.PannelENTUIIndestructible.GetComponent<PannelENTManager>();
             Board.InformationENT = InformationsPrincipaleENT ;
 
-            RefTextENT = GameObject.Find("Player Backpack").GetComponent<CSVReader>() ;
-            InventoryPanel = GameObject.Find("Inventory").GetComponent<InventoryScript>().InventoryPanel ;
+            RefTextENT = GameManager.Instance.player.playerBackpack.GetComponent<CSVReader>() ;
+            InventoryPanel = GameManager.Instance.gameCanvasManager.inventory.InventoryPanel ;
             TableauSpriteRenderer = transform.GetComponentInChildren<SpriteRenderer>();
             
 
@@ -87,7 +97,8 @@ public class TableauController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == ("Player"))
+        PlayerScript player = other.GetComponent<PlayerScript>();
+        if (player != null)
         {
             PlayerArroundPannel = true;
             PlayerScript.SwitchInputSprite();
@@ -96,10 +107,13 @@ public class TableauController : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.tag == ("Player"))
+        PlayerScript player = other.GetComponent<PlayerScript>();
+        if (player != null)
         {
             PlayerArroundPannel = false;
             PlayerScript.SwitchInputSprite();
         }
     }
+
+    #endregion
 }

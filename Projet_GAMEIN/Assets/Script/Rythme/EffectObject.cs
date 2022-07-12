@@ -4,7 +4,13 @@ using UnityEngine;
 
 public class EffectObject : MonoBehaviour
 {
+    #region UnityInspector
+
     public float lifeTime = 1f;
+
+    #endregion
+
+    #region Behaviour
     // Start is called before the first frame update
     void Start()
     {
@@ -16,4 +22,6 @@ public class EffectObject : MonoBehaviour
     {
         Destroy(gameObject, lifeTime);
     }
+
+    #endregion
 }

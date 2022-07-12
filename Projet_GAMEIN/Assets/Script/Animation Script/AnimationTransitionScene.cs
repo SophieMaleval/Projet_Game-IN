@@ -5,6 +5,8 @@ using UnityEngine.UI ;
 
 public class AnimationTransitionScene : MonoBehaviour
 {
+    #region UnityInspector
+
     public Image ImageAnimate;
 
     [SerializeField] private float TransitionSpeed = 0.7f;
@@ -12,18 +14,15 @@ public class AnimationTransitionScene : MonoBehaviour
     public bool ShouldReveal;
     [SerializeField] private float CircleSize = 1.23f;
 
+    #endregion
 
-  
-   
-
+    #region Behaviour
 
     void Awake()
     {
         ImageAnimate.material.SetFloat("_FloatResize", 0) ;
     //    ShouldReveal =  true;
     }
-
-
 
     void Update()
     {
@@ -55,6 +54,6 @@ public class AnimationTransitionScene : MonoBehaviour
         ShouldReveal = false ;
     }
 
- 
+    #endregion
 
 }

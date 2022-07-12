@@ -52,11 +52,18 @@ public class DialogueContainer
 
 public class PlayerDialogue : MonoBehaviour
 {
+    #region Fields
+
+    private PlayerActionControls PlayerActionControllers ;
+
+    #endregion
+
+    #region UnityInspector
+
     public AudioSource SelectingQuestion;
     
     public AudioSource ValidatingChoiceSound;
     [Header ("Inputs")]
-    private PlayerActionControls PlayerActionControllers ;
 
     [HideInInspector] public List<DialogueContainer> myDialogueAdhérentFR = new List<DialogueContainer>();
     [HideInInspector] public List<DialogueContainer> myDialogueAdhérentEN = new List<DialogueContainer>();
@@ -67,8 +74,9 @@ public class PlayerDialogue : MonoBehaviour
 
     [HideInInspector] public bool CanPassDialogue = true ;
 
+    #endregion
 
-
+    #region Behaviour
 
     private void OnEnable() {   PlayerActionControllers.Disable(); }
     private void OnDisable() { PlayerActionControllers.Disable(); }
@@ -88,12 +96,6 @@ public class PlayerDialogue : MonoBehaviour
         PlayerActionControllers.PlayerInDialogue.SelectPreviousQuestion.performed += OnSelectPreviousQuestion ;
         PlayerActionControllers.PlayerInDialogue.SelectNextQuestion.performed += OnSelectNextQuestion ;
     }
-
-
-
-
-
-
 
     void ResetCurrentSelectQuestion()
     {
@@ -121,7 +123,7 @@ public class PlayerDialogue : MonoBehaviour
     {
         if(ctx.performed)
         {
-            if(GameObject.Find("Dialogue Canvas") != null) PlayingSelectingChoices();
+            if(GameManager.Instance.gameCanvasManager.dialogCanvas != null) PlayingSelectingChoices();
             SetQuestionSelect(true);
         }
     }
@@ -129,7 +131,7 @@ public class PlayerDialogue : MonoBehaviour
     {
         if(ctx.performed)
         {
-            if(GameObject.Find("Dialogue Canvas") != null) PlayingSelectingChoices();
+            if(GameManager.Instance.gameCanvasManager.dialogCanvas != null) PlayingSelectingChoices();
             SetQuestionSelect(false);
         }
     }
@@ -142,19 +144,19 @@ public class PlayerDialogue : MonoBehaviour
 
     private void SetQuestionSelect(bool IsAdd)
     {
-        if(GameObject.Find("Dialogue Canvas") != null || GameObject.Find("QCM Panel") != null)
+        if(GameManager.Instance.gameCanvasManager.dialogCanvas != null || GameManager.Instance.gameCanvasManager.qcmPanel != null)
         {
             int RefChildCount = 0 ;     
 
-            if(GameObject.Find("Dialogue Canvas") != null)
+            if(GameManager.Instance.gameCanvasManager.dialogCanvas != null)
             {
-                DialogueDisplayerController DialogueBox = GameObject.Find("Dialogue Canvas").GetComponent<DialogueDisplayerController>() ;
+                DialogueDisplayerController DialogueBox = GameManager.Instance.gameCanvasManager.dialogCanvas;
                 RefChildCount = DialogueBox.SetQuestionDisponible().Count - 1 ;            
             }                   
             
-            if(GameObject.Find("QCM Panel") != null)
+            if(GameManager.Instance.gameCanvasManager.qcmPanel != null)
             {
-                QCMManager QCMManagement = GameObject.Find("QCM Panel").GetComponent<QCMManager>() ;
+                QCMManager QCMManagement = GameManager.Instance.gameCanvasManager.qcmPanel;
                 RefChildCount = QCMManagement.SetButtonDisponnible().Count - 1 ;          
             } 
             
@@ -194,5 +196,6 @@ public class PlayerDialogue : MonoBehaviour
         CanPassDialogue = true ;
     }
 
+    #endregion
 
 }

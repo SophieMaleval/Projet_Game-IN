@@ -28,6 +28,17 @@ public class ContenuArticleActivity
 
 public class PannelENTManager : MonoBehaviour
 {
+    #region Fields
+
+    private List<string> UIPanelENT;
+
+    private UIPanelENTContainer InformationPannelENT;
+    private bool NewPanel = false;
+
+    #endregion
+
+    #region UnityInspector
+
     [Header ("Gestionnaire des Pages")]
     [SerializeField] private RectTransform FeuilleEnt ;
     [SerializeField] private RectTransform FeuilleRéseauxSociaux ;
@@ -79,17 +90,20 @@ public class PannelENTManager : MonoBehaviour
 
     [HideInInspector] public List<string> UIPanelENTFR ;
     [HideInInspector] public List<string> UIPanelENTEN ;
-    private List<string> UIPanelENT ;
+
 
     [HideInInspector] public UIPanelENTContainer InformationPannelENTFR ;
     [HideInInspector] public UIPanelENTContainer InformationPannelENTEN ;
-    private UIPanelENTContainer InformationPannelENT ;
-    private bool NewPanel = false ;
+
+
+    #endregion
+
+    #region Behaviour
 
     void Start() 
     {
-        UIPanelENTFR = GameObject.Find("Player Backpack").GetComponent<CSVReader>().UIText.PanelENTFR ;
-        UIPanelENTEN = GameObject.Find("Player Backpack").GetComponent<CSVReader>().UIText.PanelENTEN ;
+        UIPanelENTFR = GameManager.Instance.player.playerBackpack.GetComponent<CSVReader>().UIText.PanelENTFR ;
+        UIPanelENTEN = GameManager.Instance.player.playerBackpack.GetComponent<CSVReader>().UIText.PanelENTEN ;
     }
 
     public void StartShow()
@@ -463,28 +477,16 @@ public class PannelENTManager : MonoBehaviour
         {
 
             gameObject.SetActive(!gameObject.activeSelf);
-            GameObject.Find("Player").GetComponent<PlayerMovement>().StartActivity();
+            GameManager.Instance.player.GetComponent<PlayerMovement>().StartActivity();
             StartShow();            
         } else {
             gameObject.SetActive(!gameObject.activeSelf);
-            GameObject.Find("Player").GetComponent<PlayerMovement>().EndActivity(); 
+            GameManager.Instance.player.GetComponent<PlayerMovement>().EndActivity(); 
             NewPanel = false ;
         }
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+    #region URL
 
     public void OpenWebSite()
     {
@@ -540,4 +542,8 @@ public class PannelENTManager : MonoBehaviour
     {
         Application.ExternalEval("window.open('" + URLLink + "', '_blank')");      
     }
+
+    #endregion
+
+    #endregion
 }

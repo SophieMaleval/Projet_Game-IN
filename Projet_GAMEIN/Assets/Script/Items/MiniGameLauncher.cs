@@ -6,24 +6,40 @@ using TMPro;
 
 public class MiniGameLauncher : MonoBehaviour
 {
+    #region Fields
+
+    private SpriteRenderer SpriteRend;
+
+    private bool PlayerAround = false;
+
+    //private bool gathered = false;
+
+    #endregion
+
+    #region UnityInspector
+
     //public InteractibleObject Object;
     public QuestSys questSys;
     //public ActiveAsProg AaP;
-    private SpriteRenderer SpriteRend;
+
     [SerializeField] private PlayerScript PlayerScript;
     public GameObject gamePrefab;
-    private bool PlayerAround = false;
+
     //public GameObject roomCam, minigameCam;
-    //private bool gathered = false;
+
     public int etapeDeQuete, numeroDeQuete;
     //public int stepCode;
 
+    #endregion
+
+    #region Behaviour
+
     private void Awake()
     {
-        if (GameObject.Find("Player") != null)   // Récupère le player au lancement de la scène
-        { PlayerScript = GameObject.Find("Player").GetComponent<PlayerScript>(); }
+        if (GameManager.Instance.player != null)   // Récupère le player au lancement de la scène
+        { PlayerScript = GameManager.Instance.player; }
         SpriteRend = GetComponent<SpriteRenderer>();
-        questSys = GameObject.Find("QuestManager").GetComponent<QuestSys>();
+        questSys = GameManager.Instance.gameCanvasManager.questManager;
         //gamePrefab = GameObject.FindGameObjectWithTag("MiniGame");
     }
 
@@ -34,7 +50,8 @@ public class MiniGameLauncher : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == ("Player"))
+        PlayerScript player = other.GetComponent<PlayerScript>();
+        if (player != null)
         {
             CanStartThisMiniGame(true);
             PlayerScript.SwitchInputSprite();
@@ -93,7 +110,8 @@ public class MiniGameLauncher : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.tag == ("Player"))
+        PlayerScript player = other.GetComponent<PlayerScript>();
+        if (player != null)
         {
             CanStartThisMiniGame(false);
             PlayerScript.SwitchInputSprite();
@@ -112,4 +130,6 @@ public class MiniGameLauncher : MonoBehaviour
             //SpriteRend.sprite = Object.HighlightSprite;
         }
     }
+
+    #endregion
 }

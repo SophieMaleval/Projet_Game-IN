@@ -4,7 +4,13 @@ using UnityEngine;
 
 public class TriggerGame : MonoBehaviour
 {
+    #region UnityInspector
+
     public GameObject game;
+
+    #endregion
+
+    #region Behaviour
 
     private void Awake()
     {
@@ -14,7 +20,8 @@ public class TriggerGame : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.tag == "Player")
+        PlayerScript player = other.GetComponent<PlayerScript>();
+        if(player != null)
         {
             game.SetActive(true);
             other.gameObject.GetComponent<PlayerMovement>().StartActivity();
@@ -29,4 +36,6 @@ public class TriggerGame : MonoBehaviour
             other.gameObject.GetComponent<PlayerMovement>().EndActivity();
         }
     }*/
+
+    #endregion
 }

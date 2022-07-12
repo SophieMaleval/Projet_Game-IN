@@ -52,6 +52,28 @@ public class QCMContainer
 
 public class CSVReader : MonoBehaviour
 {
+    #region Fields
+
+    [Header ("Adaptation de texte")]
+    private PlayerScript PlayerInformations ;
+
+    private string[] Pronoms = new string[]{"une", "un", "un·e"};
+    private string[] Terminaisons = new string[]
+    { 
+        /* féminin, masculin, inclusif */
+        "elle", "el", "el·elle",    // 1-3
+        "euse", "eur", "eur·euse",  // 4-6
+        "rice", "eur", "eur·rice",  // 7-9
+        "eure", "eur", "eur·e", // 10-12
+        "ière", "ier", "ier·ière",  //13-15
+        "ère", "er", "er·ère",  // 16-18
+        "ienne", "ien", "ien·ienne" // 19-21
+    };
+
+    #endregion
+
+    #region UnityInspector
+
     [Header ("Fichier Texte")]
     public TextAsset DialogDataFR ;
     public TextAsset DialogDataEN ;
@@ -70,27 +92,15 @@ public class CSVReader : MonoBehaviour
     [Header ("QCM")]
     public QCMContainer QCMCont = new QCMContainer();
 
-    [Header ("Adaptation de texte")]
-    private PlayerScript PlayerInformations ;
-
-    private string[] Pronoms = new string[]{"une", "un", "un·e"};
-    private string[] Terminaisons = new string[]
-    { 
-        /* féminin, masculin, inclusif */
-        "elle", "el", "el·elle",    // 1-3
-        "euse", "eur", "eur·euse",  // 4-6
-        "rice", "eur", "eur·rice",  // 7-9
-        "eure", "eur", "eur·e", // 10-12
-        "ière", "ier", "ier·ière",  //13-15
-        "ère", "er", "er·ère",  // 16-18
-        "ienne", "ien", "ien·ienne" // 19-21
-    };
-
     [Header ("Texte Quest")]
     public QuestSys QuestManager ;    
 
     [Header ("PannelENT")]
     public List<UIPanelENTContainer> TextUIPanneauxENT = new List<UIPanelENTContainer>();
+
+    #endregion
+
+    #region Behaviour
 
     private void Awake() 
     {
@@ -366,5 +376,5 @@ public class CSVReader : MonoBehaviour
         return ThiContainerState ;
     }
 
-
+    #endregion
 }

@@ -4,32 +4,44 @@ using UnityEngine;
 
 public class PannelAnnonceScript : MonoBehaviour
 {
-    [Header ("Information ENT")]
-    public PetiteAnnonceContainer InformationsAnnonces ;
-    [HideInInspector] public CSVReader RefTextENT ;    
+    #region Fields
+
     private SpriteRenderer TableauSpriteRenderer ;
-    public Sprite TableauPANormal;
-    public Sprite TableauPAHighlighted;
+
     private PetiteAnnonceManager BoardAnnonce;
     private GameObject InventoryPanel ;
 
     private PlayerScript PlayerScript;
     private PlayerMovement PlayerMovement;
 
-    [Header ("Gestion Code")]
     private bool PannelSetUp = false ;
     private bool PlayerArroundPannel = false;    
+    #endregion
+
+    #region UnityInspector
+
+    [Header ("Information ENT")]
+    public PetiteAnnonceContainer InformationsAnnonces ;
+    [HideInInspector] public CSVReader RefTextENT ;  
+    
+    public Sprite TableauPANormal;
+    public Sprite TableauPAHighlighted;
+
+    [Header ("Gestion Code")]
     [HideInInspector] public bool CanProgress = false ;
 
+    #endregion
+
+    #region Behaviour
 
     void Awake()
     {
-        if(GameObject.Find("Player") != null)
+        if(GameManager.Instance.player != null)
         {
-            PlayerMovement = GameObject.Find("Player").GetComponent<PlayerMovement>();
-            PlayerScript = PlayerMovement.GetComponent<PlayerScript>();
+            PlayerMovement = GameManager.Instance.player.GetComponent<PlayerMovement>();
+            PlayerScript = GameManager.Instance.player;
             BoardAnnonce = PlayerScript.PannelAnnonceUIIndestructible.GetComponent<PetiteAnnonceManager>() ;
-            InventoryPanel = GameObject.Find("Inventory").GetComponent<InventoryScript>().InventoryPanel ;
+            InventoryPanel = GameManager.Instance.gameCanvasManager.inventory.InventoryPanel ;
             TableauSpriteRenderer = transform.GetComponentInChildren<SpriteRenderer>();
             
         }
@@ -51,7 +63,7 @@ public class PannelAnnonceScript : MonoBehaviour
                 BoardAnnonce.InfoTableau = InformationsAnnonces ;
                 BoardAnnonce.SwitchTogglePannelDisplay();
 
-                if(CanProgress) GameObject.Find("QuestManager").GetComponent<QuestSys>().Progression() ;
+                if(CanProgress) GameManager.Instance.gameCanvasManager.questManager.Progression() ;
             }
 
             if (PlayerScript.PlayerAsInterract && BoardAnnonce.gameObject.activeSelf == true && InventoryPanel.activeSelf == false)
@@ -67,7 +79,8 @@ public class PannelAnnonceScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == ("Player"))
+        PlayerScript player = other.GetComponent<PlayerScript>();
+        if (player != null)
         {
             PlayerArroundPannel = true;
             PlayerScript.SwitchInputSprite();
@@ -76,7 +89,8 @@ public class PannelAnnonceScript : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.tag == ("Player"))
+        PlayerScript player = other.GetComponent<PlayerScript>();
+        if (player != null)
         {
             PlayerArroundPannel = false;
             PlayerScript.SwitchInputSprite();
@@ -87,4 +101,6 @@ public class PannelAnnonceScript : MonoBehaviour
     {
         //Debug.Log(gameObject.name + "is Destroy");
     }
+
+    #endregion
 }

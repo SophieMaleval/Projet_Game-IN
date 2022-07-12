@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class QuestionManager : MonoBehaviour
 {
+    #region UnityInspector
+
     public GameObject QuestionBox;
 
     public GameObject Prop1;
@@ -19,9 +21,10 @@ public class QuestionManager : MonoBehaviour
 
     public bool BoxIsActivated;
 
+    #endregion
 
+    #region Behaviour
 
- 
     void Start()
     {
 
@@ -77,9 +80,9 @@ public class QuestionManager : MonoBehaviour
                 NbProp = 1 ;
             }
         }
-        
-    
-
+       
         
     }
+
+    #endregion
 }
