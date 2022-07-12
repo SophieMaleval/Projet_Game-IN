@@ -15,7 +15,7 @@ public class SceneEntManager : MonoBehaviour
     private PlayerMovement PM;
     private GameObject FadeImage ;
 
-    private GameObject GlobalLightPlayer ;
+    //private GameObject GlobalLightPlayer ;
 
     #endregion
 
@@ -85,15 +85,15 @@ public class SceneEntManager : MonoBehaviour
 
         if(VolumeFirstCam != null) VolumeFirstCam.SetFirstCamera();
 
-        GlobalLightPlayer = GameManager.Instance.player.globalLightPlayer;
-        if(LightAutoGenerateInThisScene) GlobalLightPlayer.SetActive(false);
+        //GlobalLightPlayer = GameManager.Instance.player.globalLightPlayer;
+        //if(LightAutoGenerateInThisScene) GlobalLightPlayer.SetActive(false);
 
         
     }
     
     private void Update() 
     {
-        if(GetComponent<ChangeScene>().PlayerChangeScene) GlobalLightPlayer.SetActive(true);
+        //if(GetComponent<ChangeScene>().PlayerChangeScene) GlobalLightPlayer.SetActive(true);
     }
 
 
