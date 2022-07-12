@@ -52,14 +52,14 @@ public class ActiveAsProg : MonoBehaviour
 
         if(questSys == null)
         {
-            questSys = GameObject.Find("QuestManager").GetComponent<QuestSys>();
+            questSys = GameManager.Instance.gameCanvasManager.questManager;
             if(numeroDeQuete == 1 &&  questSys.firstLvlStep >= etapeDeQuete && canIsDestroyed) {DestroyThis();  } 
             if(numeroDeQuete == 2 &&  questSys.secondLvlStep >= etapeDeQuete && canIsDestroyed) {DestroyThis(); } 
             if(numeroDeQuete == 3 &&  questSys.thirdLvlStep >= etapeDeQuete && canIsDestroyed) {DestroyThis(); }
             if(numeroDeQuete == 4 &&  questSys.fourthLvlStep >= etapeDeQuete && canIsDestroyed) {DestroyThis(); }
         }
 
-        checker = GameObject.Find("Inventory").GetComponent<Checker>();
+        checker = GameManager.Instance.gameCanvasManager.inventory.GetComponent<Checker>();
 
         if (progressType == ObjType.Item)
         {
