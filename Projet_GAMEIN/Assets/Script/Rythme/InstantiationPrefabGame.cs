@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using AllosiusDev.Audio;
 
 public class InstantiationPrefabGame : MonoBehaviour
 {
@@ -15,8 +16,6 @@ public class InstantiationPrefabGame : MonoBehaviour
 
     public GameObject PrefabJeuRythme ;
     [HideInInspector] public PNJDialogue PNJScript ;
-    public AudioSource AmbiantMusic ;
-    public float VolumeAmbiantMusic ;
 
     #endregion
 
@@ -25,7 +24,7 @@ public class InstantiationPrefabGame : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        VolumeAmbiantMusic = AmbiantMusic.volume ;
+        AudioController.Instance.StopAudio(GameCore.Instance.MainMusic);
     }
 
     private void OnEnable() 
@@ -47,12 +46,14 @@ public class InstantiationPrefabGame : MonoBehaviour
 
     void SetOffAmbiantMusic()
     {
-        DOTween.To(x => AmbiantMusic.volume = x, AmbiantMusic.volume, 0, 0.5f) ;
+        //DOTween.To(x => AmbiantMusic.volume = x, AmbiantMusic.volume, 0, 0.5f) ;
+        AudioController.Instance.StopAudio(GameCore.Instance.MainMusic);
     }
 
     void SetOnAmbiantMusic()
     {
-        DOTween.To(x => AmbiantMusic.volume = x, 0, VolumeAmbiantMusic, 0.5f) ;
+        //DOTween.To(x => AmbiantMusic.volume = x, 0, VolumeAmbiantMusic, 0.5f) ;
+        AudioController.Instance.PlayAudio(GameCore.Instance.MainMusic);
     }
 
     #endregion

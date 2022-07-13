@@ -10,6 +10,8 @@ public class GameCore : Singleton<GameCore>
 
     public SceneData CurrentScene => currentScene;
 
+    public AudioData MainMusic => mainMusic;
+
     #endregion
 
     #region UnityInspector
