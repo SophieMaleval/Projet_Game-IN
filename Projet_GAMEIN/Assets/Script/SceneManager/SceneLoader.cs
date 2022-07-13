@@ -21,7 +21,22 @@ public class SceneLoader : Singleton<SceneLoader>
         AllosiusDev.Audio.AudioController.Instance.StopAllAmbients();
         AllosiusDev.Audio.AudioController.Instance.StopAllMusics();
 
+        if(GameCore.Instance != null)
+            GameCore.ResetInstance();
+
         SceneManager.LoadScene((int)(object)sceneData.sceneToLoad);
+    }
+
+    public void LoadSceneAsync(SceneData sceneData)
+    {
+        OnSceneChanged?.Invoke();
+
+        SceneManager.LoadSceneAsync((int)(object)sceneData.sceneToLoad, LoadSceneMode.Additive);
+    }
+
+    public void UnloadSceneAsync(SceneData sceneData)
+    {
+        SceneManager.UnloadSceneAsync((int)(object)sceneData.sceneToLoad);
     }
 
     #endregion

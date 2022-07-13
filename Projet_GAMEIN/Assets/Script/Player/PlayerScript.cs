@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI ;
 using DG.Tweening;
-
+using AllosiusDev.Audio;
 
 public class PlayerScript : MonoBehaviour
 {
@@ -22,7 +22,7 @@ public class PlayerScript : MonoBehaviour
     public int PlayerSexualGenre ;
 
     public GameObject InterractInputSprite;
-    public AudioSource selectedSound;
+    //public AudioSource selectedSound;
 
 
     public bool CanCollectObject = true ;
@@ -39,7 +39,7 @@ public class PlayerScript : MonoBehaviour
     [HideInInspector] public bool FadeMake = false ;
     [HideInInspector] public bool AnimationBeMake = false ;
 
-    public GameObject globalLightPlayer;
+    //public GameObject globalLightPlayer;
 
     public PlayerDialogue playerBackpack;
 
@@ -51,6 +51,9 @@ public class PlayerScript : MonoBehaviour
     public GameObject PannelAnnonceUIIndestructible ;
     public GameObject QCMPanelUIIndestructible ;
     [HideInInspector] public Image FadeAnimation ;
+
+    [Header("Sounds")]
+    [SerializeField] private AudioData selectedSound;
 
     #endregion
 
@@ -141,7 +144,7 @@ public class PlayerScript : MonoBehaviour
             }
         }*/
         Inventaire.Add(ObjetAjouter) ;
-        selectedSound.Play();
+        AudioController.Instance.PlayAudio(selectedSound);
         //AskInventairePlein();
     }
 

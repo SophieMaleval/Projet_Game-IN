@@ -20,6 +20,8 @@ public class DynamicLoad : MonoBehaviour
 
     #region UnityInspector
 
+    [SerializeField] private SceneData sceneToLoad;
+
     public Transform player;
     public CheckMethod checkMethod;
     public float loadRange;
@@ -48,7 +50,8 @@ public class DynamicLoad : MonoBehaviour
     {
         if (!isLoaded)
         {
-            SceneManager.LoadSceneAsync(gameObject.name, LoadSceneMode.Additive); // le nom du game object "Part n+1" doit être identique à celui de la scène à charger
+            //SceneManager.LoadSceneAsync(gameObject.name, LoadSceneMode.Additive); // le nom du game object "Part n+1" doit être identique à celui de la scène à charger
+            SceneLoader.Instance.LoadSceneAsync(sceneToLoad);
             isLoaded = true;
         }
     }
@@ -57,7 +60,8 @@ public class DynamicLoad : MonoBehaviour
     {
         if (isLoaded)
         {
-            SceneManager.UnloadSceneAsync(gameObject.name);
+            //SceneManager.UnloadSceneAsync(gameObject.name);
+            SceneLoader.Instance.UnloadSceneAsync(sceneToLoad);
             isLoaded = false;
         }
     }

@@ -482,20 +482,7 @@ public class Customizer : MonoBehaviour
         SetGender(Random.Range(0, GenderButton.Count));
 
         // Random Name
-        if(PlayerPersonnality.PlayerSexualGenre == 0)
-        {
-            List<string> maleNames = new List<string>();
-            maleNames = playerNamesSelection.GetSumLists(maleNames, playerNamesSelection.maleRandomNames);
-            maleNames = playerNamesSelection.GetSumLists(maleNames, playerNamesSelection.mixedRandomNames);
-
-            /*for (int i = 0; i < maleNames.Count; i++)
-            {
-                Debug.Log(maleNames[i]);
-            }*/
-
-            NamingField.text = maleNames[Random.Range(0, maleNames.Count)];
-        }
-        else if (PlayerPersonnality.PlayerSexualGenre == 1)
+        if (PlayerPersonnality.PlayerSexualGenre == 0)
         {
             List<string> femaleNames = new List<string>();
             femaleNames = playerNamesSelection.GetSumLists(femaleNames, playerNamesSelection.femaleRandomNames);
@@ -507,6 +494,19 @@ public class Customizer : MonoBehaviour
             }*/
 
             NamingField.text = femaleNames[Random.Range(0, femaleNames.Count)];
+        }
+        else if (PlayerPersonnality.PlayerSexualGenre == 1)
+        {
+            List<string> maleNames = new List<string>();
+            maleNames = playerNamesSelection.GetSumLists(maleNames, playerNamesSelection.maleRandomNames);
+            maleNames = playerNamesSelection.GetSumLists(maleNames, playerNamesSelection.mixedRandomNames);
+
+            /*for (int i = 0; i < maleNames.Count; i++)
+            {
+                Debug.Log(maleNames[i]);
+            }*/
+
+            NamingField.text = maleNames[Random.Range(0, maleNames.Count)];
         }
         else if (PlayerPersonnality.PlayerSexualGenre == 2)
         {

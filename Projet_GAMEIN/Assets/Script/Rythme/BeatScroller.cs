@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using AllosiusDev.Audio;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,7 +13,10 @@ public class BeatScroller : MonoBehaviour
 
     #region UnityInspector
 
-    public AudioSource music;
+    //public AudioSource music;
+
+    [SerializeField] private AudioData music;
+
     public float beatTempo;
     public float dureeMusique;
 
@@ -30,7 +34,7 @@ public class BeatScroller : MonoBehaviour
     private void OnEnable()
     {
         StartCoroutine(GuyterHiro());
-        music.Play();
+        AudioController.Instance.PlayAudio(music);
         InvokeRepeating("DecreaseTime", 1.0f, 1.0f);
     }
 

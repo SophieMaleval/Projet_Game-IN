@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using AllosiusDev.Audio;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -6,16 +7,38 @@ using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [Header ("Inputs")]
-    private PlayerActionControls PlayerActionControllers ;
+    #region Fields
+
+    [Header("Inputs")]
+    private PlayerActionControls PlayerActionControllers;
+
+    private float InitialMoveSpeed;
+
+    Scene scene;
+
+    private Vector2 LastMoveDirection;
+    private Vector2 MoveDirection;
+
+    private float AmplitudeToSwitchScoot = 0.125f;
+    bool OnSlope = false;
+    float ValueSlopeAdd;
+
+    bool SlopeStartLeft;
+    int ElevationValue;
+
+    #endregion
+
+    #region UnityInspector
+
+
 
     [Header ("Movement")]
     [SerializeField] private float MoveSpeed ;
-        private float InitialMoveSpeed ;
+        
         [SerializeField] private float ScooterSpeed ;
 
-        public AudioSource ScooterStop;
-        public AudioSource ScooterMoving;
+        //public AudioSource ScooterStop;
+        //public AudioSource ScooterMoving;
 
         public bool PlayOneShotClip = true;
 
@@ -32,12 +55,11 @@ public class PlayerMovement : MonoBehaviour
 
     public List<SpriteRenderer> PlayerRenderers ;
     public Rigidbody2D RbPlayer ;
-    Scene scene;
+    
 
     public List<Animator> Animators ;
 
-    private Vector2 LastMoveDirection ;
-    private Vector2 MoveDirection ;
+    
 
     [Header ("Avatar Display")]
     public List<float> ValueColorDisplay ;
@@ -46,15 +68,16 @@ public class PlayerMovement : MonoBehaviour
 
     public bool OnScooter = false;
     public bool InExterior = false ;
-    private float AmplitudeToSwitchScoot = 0.125f;
-    bool OnSlope = false;
-    float ValueSlopeAdd;
-
-    bool SlopeStartLeft;
-    int ElevationValue ;
-     
     
 
+    [Header("Sounds")]
+
+    [SerializeField] private AudioData sfxScooterStop;
+    [SerializeField] private AudioData sfxScooterMoving;
+
+    #endregion
+
+    #region Behaviour
 
     //public void LunchPlayerGame() {PlayerActionControllers.PlayerInLand.Enable() ;  }
 
@@ -94,7 +117,8 @@ public class PlayerMovement : MonoBehaviour
             PlayerActionControllers.PlayerInLand.Disable();
             PlayerActionControllers.PlayerInScoot.Enable();
             switchScootState(true);
-            ScooterStop.Play();
+            //ScooterStop.Play();
+            AudioController.Instance.PlayAudio(sfxScooterStop);
         }    
     }
     public void OnExitScoot (InputAction.CallbackContext ctx )
@@ -106,8 +130,10 @@ public class PlayerMovement : MonoBehaviour
                 PlayerActionControllers.PlayerInScoot.Disable() ;                
                 PlayerActionControllers.PlayerInLand.Enable() ;
                 switchScootState(false);  
-                ScooterStop.Stop();
-                ScooterMoving.Stop();
+                //ScooterStop.Stop();
+                AudioController.Instance.StopAudio(sfxScooterStop);
+                //ScooterMoving.Stop();
+                AudioController.Instance.StopAudio(sfxScooterMoving);
             }
         }
     }
@@ -263,15 +289,19 @@ public class PlayerMovement : MonoBehaviour
     void ScootNotMoving()
     {
         PlayOneShotClip = false;
-        ScooterStop.Play();
-        ScooterMoving.Stop();
+        //ScooterStop.Play();
+        AudioController.Instance.PlayAudio(sfxScooterStop);
+        //ScooterMoving.Stop();
+        AudioController.Instance.StopAudio(sfxScooterMoving);
     }
 
     void ScootMovingForward() {
         PlayOneShotClip = true; 
 
-        ScooterMoving.Play();
-        ScooterStop.Stop();     
+        //ScooterMoving.Play();
+        //ScooterStop.Stop();
+        AudioController.Instance.PlayAudio(sfxScooterMoving);
+        AudioController.Instance.StopAudio(sfxScooterStop);
     }
     
 
@@ -323,4 +353,6 @@ public class PlayerMovement : MonoBehaviour
         for (int i = 0; i < Animators.Count; i++)
         {    Animators[i].Rebind();  }
     }
+
+    #endregion
 }

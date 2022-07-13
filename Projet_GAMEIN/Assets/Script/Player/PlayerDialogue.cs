@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using AllosiusDev.Audio;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -58,11 +59,17 @@ public class PlayerDialogue : MonoBehaviour
 
     #endregion
 
+    #region Properties
+
+    public bool dialogueStarted { get; set; }
+
+    #endregion
+
     #region UnityInspector
 
-    public AudioSource SelectingQuestion;
-    
-    public AudioSource ValidatingChoiceSound;
+    //public AudioSource SelectingQuestion;
+
+    //public AudioSource ValidatingChoiceSound;
     [Header ("Inputs")]
 
     [HideInInspector] public List<DialogueContainer> myDialogueAdhérentFR = new List<DialogueContainer>();
@@ -74,6 +81,11 @@ public class PlayerDialogue : MonoBehaviour
 
     [HideInInspector] public bool CanPassDialogue = true ;
 
+    [Header("Sounds")]
+
+    [SerializeField] private AudioData sfxSelectingQuestion;
+    [SerializeField] private AudioData sfxValidatingChoiceSound;
+
     #endregion
 
     #region Behaviour
@@ -81,8 +93,20 @@ public class PlayerDialogue : MonoBehaviour
     private void OnEnable() {   PlayerActionControllers.Disable(); }
     private void OnDisable() { PlayerActionControllers.Disable(); }
 
-    public void DialogueStart() { PlayerActionControllers.Enable(); ResetCurrentSelectQuestion(); }
-    public void DialogueEnd() { PlayerActionControllers.Disable(); }
+    public void DialogueStart() 
+    {
+        Debug.Log("Dialogue Start");
+        dialogueStarted = true;
+        PlayerActionControllers.Enable(); 
+        ResetCurrentSelectQuestion(); 
+    }
+    public void DialogueEnd() 
+    {
+        Debug.Log("Dialogue End");
+        dialogueStarted = false;
+
+        PlayerActionControllers.Disable(); 
+    }
 
     public void PausedInDialogue() {   PlayerActionControllers.Disable(); }
     public void ResumeDialogue() { PlayerActionControllers.Enable(); }
@@ -102,8 +126,10 @@ public class PlayerDialogue : MonoBehaviour
         CurrentSelectQuestion = 0 ;
     }
 
-    void PlayingSelectingChoices(){
-        SelectingQuestion.Play();        
+    void PlayingSelectingChoices()
+    {
+        if(dialogueStarted)
+            AudioController.Instance.PlayAudio(sfxSelectingQuestion);
     }
 
    

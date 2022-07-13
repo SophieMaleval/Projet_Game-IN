@@ -116,12 +116,12 @@ public class DialogueDisplayerController : MonoBehaviour
     private void Awake() 
     {
         ThisRect = gameObject.GetComponent<RectTransform>() ;
-        if(GameObject.Find("Player") != null)   // Récupère le player au lancement de la scène
+        if(GameManager.Instance.player != null)   // Récupère le player au lancement de la scène
         {    
-            PlayerFadeScript = GameObject.Find("Player").GetComponent<PlayerScript>() ; 
-            PlayerDialogueManager = GameObject.Find("Player Backpack").GetComponent<PlayerDialogue>() ; 
+            PlayerFadeScript = GameManager.Instance.player ; 
+            PlayerDialogueManager = PlayerFadeScript.playerBackpack ; 
         }    
-        QuestSysManager = GameObject.Find("QuestManager").GetComponent<QuestSys>();
+        QuestSysManager = GameManager.Instance.gameCanvasManager.questManager;
 
     } 
 
@@ -503,6 +503,9 @@ public class DialogueDisplayerController : MonoBehaviour
             TextAsCompletelyDisplay = true ;
         }
         PNJSpeak = false ;
+
+        Debug.Log("Dialogue Close");
+        PlayerDialogueManager.dialogueStarted = false;
     }
 
 
