@@ -1,4 +1,5 @@
 ﻿using AllosiusDev.Audio;
+using Core.Session;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,7 +16,8 @@ public class ChangeScene : MonoBehaviour
 
     #region UnityInspector
 
-    public string NameScene;
+    //public string NameScene;
+    [SerializeField] private SceneData sceneDataToLoad;
 
     [SerializeField] private AudioData sfxDoorOpening;
     
@@ -91,7 +93,8 @@ public class ChangeScene : MonoBehaviour
         AudioController.Instance.StopAllMusics();
         PlayerChangeScene = true ;
         yield return new WaitForSeconds(1f);
-        SceneManager.LoadScene(NameScene);
+        //SceneManager.LoadScene(NameScene);
+        SceneLoader.Instance.ChangeScene(sceneDataToLoad);
 
     }
 

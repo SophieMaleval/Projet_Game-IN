@@ -6,6 +6,7 @@ using TMPro ;
 using DG.Tweening ;
 using UnityEngine.SceneManagement;
 using AllosiusDev.Audio;
+using Core.Session;
 
 public class MenuManager : MonoBehaviour
 {
@@ -96,7 +97,8 @@ public class MenuManager : MonoBehaviour
         AllosiusDev.Audio.AudioController.Instance.StopAllAmbients();
         AllosiusDev.Audio.AudioController.Instance.StopAllMusics();
         yield return new WaitForSeconds(3f);
-        SceneManager.LoadScene("Character Customer");
+        SceneLoader.Instance.ChangeScene(SessionController.Instance.Game.CharacterCustomerScene);
+        //SceneManager.LoadScene("Character Customer");
     }
 
  

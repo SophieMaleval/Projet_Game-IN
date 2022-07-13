@@ -1,4 +1,6 @@
 ﻿using AllosiusDev.Audio;
+using Core;
+using Core.Session;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,8 +10,15 @@ public class EssentialsLoaders : MonoBehaviour
 {
     #region UnityInspector
 
-    [SerializeField] private AllosiusDev.Audio.AudioController audioController;
+    [SerializeField] private AudioController audioController;
+
     [SerializeField] private GameManager gameManager;
+
+    [SerializeField] private SceneLoader sceneLoader;
+
+    [SerializeField] private SessionController sessionController;
+
+    [SerializeField] private BaseGameController gameController;
 
     #endregion
 
@@ -17,7 +26,7 @@ public class EssentialsLoaders : MonoBehaviour
 
     private void Awake()
     {
-        if (AllosiusDev.Audio.AudioController.Instance == null)
+        if (AudioController.Instance == null)
         {
             Instantiate(audioController);
         }
@@ -25,6 +34,22 @@ public class EssentialsLoaders : MonoBehaviour
         if(GameManager.Instance == null)
         {
             Instantiate(gameManager);
+        }
+
+        if(SceneLoader.Instance == null)
+        {
+            Instantiate(sceneLoader);
+        }
+
+        if(SessionController.Instance == null)
+        {
+            Instantiate(sessionController);
+        }
+
+        BaseGameController baseGameController = FindObjectOfType<BaseGameController>();
+        if(baseGameController == null)
+        {
+            Instantiate(gameController);
         }
     }
 

@@ -8,6 +8,8 @@ using DG.Tweening;
 using UnityEngine.SceneManagement;
 using Cinemachine;
 using AllosiusDev.Audio;
+using Core;
+using Core.Session;
 
 public class Customizer : MonoBehaviour
 {
@@ -584,9 +586,7 @@ public class Customizer : MonoBehaviour
 
         PlayerPersonnality.PreviousSceneName = SceneManager.GetActiveScene().name;
         yield return new WaitForSeconds(0.5f);
-        AudioController.Instance.StopAllAmbients();
-        AudioController.Instance.StopAllMusics();
-        SceneManager.LoadScene("Game In");
+        SceneLoader.Instance.ChangeScene(SessionController.Instance.Game.StartLevelScene);
     }
 
 
