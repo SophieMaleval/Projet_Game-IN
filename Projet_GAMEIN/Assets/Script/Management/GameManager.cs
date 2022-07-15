@@ -70,12 +70,7 @@ public class GameManager : Singleton<GameManager>
     {
         Debug.Log("Init");
 
-        PlayerPrefs.SetFloat("VolumeGlobal", 1.0f);
-        PlayerPrefs.SetFloat("Musique", 1.0f);
-        PlayerPrefs.SetFloat("SFX", 1.0f);
-
-        /* A Supprimer */
-        PlayerPrefs.SetInt("LaurentSayHello", 0);
+        ResetPlayerPrefsValues();
 
         if (GameCore.Instance != null && GameCore.Instance.CurrentScene.isGameScene)
         {
@@ -89,6 +84,16 @@ public class GameManager : Singleton<GameManager>
                 EssentialInitPlayer();
             }
         }
+    }
+
+    public void ResetPlayerPrefsValues()
+    {
+        PlayerPrefs.SetFloat("VolumeGlobal", 1.0f);
+        PlayerPrefs.SetFloat("Musique", 1.0f);
+        PlayerPrefs.SetFloat("SFX", 1.0f);
+
+        /* A Supprimer */
+        PlayerPrefs.SetInt("LaurentSayHello", 0);
     }
 
     public void EssentialInitPlayer()
@@ -123,7 +128,7 @@ public class GameManager : Singleton<GameManager>
         player.PannelENTUIIndestructible.SetActive(false);
         player.PannelAnnonceUIIndestructible.SetActive(false);
 
-        player.PreviousSceneName = SessionController.Instance.Game.CharacterCustomerScene;
+        
     }
 
     public void CreatePlayer(Vector3 _playerPositionCustom)

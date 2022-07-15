@@ -18,7 +18,7 @@ public class EssentialsLoaders : MonoBehaviour
 
     [SerializeField] private SessionController sessionController;
 
-    [SerializeField] private BaseGameController gameController;
+    //[SerializeField] private BaseGameController gameController;
 
     #endregion
 
@@ -46,11 +46,11 @@ public class EssentialsLoaders : MonoBehaviour
             Instantiate(sessionController);
         }
 
-        BaseGameController baseGameController = FindObjectOfType<BaseGameController>();
+        /*BaseGameController baseGameController = FindObjectOfType<BaseGameController>();
         if(baseGameController == null)
         {
             Instantiate(gameController);
-        }
+        }*/
     }
 
     #endregion

@@ -1,5 +1,6 @@
 ﻿using AllosiusDev;
 using AllosiusDev.Audio;
+using Core.Session;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -24,10 +25,23 @@ public class GameCore : Singleton<GameCore>
 
     #region Behaviour
 
+    protected override void Awake()
+    {
+        base.Awake();
+
+        if (GameManager.Instance.player != null)
+        {
+            GameManager.Instance.player.PreviousSceneName = SessionController.Instance.Game.CharacterCustomerScene;
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         AudioController.Instance.PlayAudio(mainMusic);
+
+        
+        
     }
 
     #endregion

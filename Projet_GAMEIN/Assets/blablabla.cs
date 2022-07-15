@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class blablabla : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public Dialogue dialogue;
 
-    // Update is called once per frame
-    void Update()
+    [ContextMenu("TestDialog")]
+    public void TestDialog()
     {
-        
+        DialogueTextNode node = (DialogueTextNode)dialogue.dialogueGraph.nodes[0];
+        node.GetPorts();
+
+
     }
 }

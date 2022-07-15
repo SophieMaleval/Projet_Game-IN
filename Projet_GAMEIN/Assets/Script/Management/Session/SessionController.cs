@@ -42,12 +42,28 @@ namespace Core
 
             #endregion
 
+            #region UnityInspector
+
+            [SerializeField] private BaseGameController gameController;
+
+            #endregion
+
             #region Unity Functions
             protected override void Awake()
             {
                 base.Awake();
 
                 Configure();
+
+                if (m_Game == null)
+                {
+                    Instantiate(gameController);
+                }
+            }
+
+            private void Start()
+            {
+               
             }
 
             private void Update() 

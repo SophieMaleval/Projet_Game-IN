@@ -42,7 +42,9 @@ namespace Core
 
         public virtual void OnInit()
         {
+            transform.parent = SessionController.Instance.transform;
 
+            
         }
 
         public virtual void OnUpdate()
