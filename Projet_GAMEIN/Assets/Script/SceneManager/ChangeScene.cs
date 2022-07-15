@@ -60,9 +60,18 @@ public class ChangeScene : MonoBehaviour
 
             PM.ResetVelocity();
 
-            if(SceneManager.GetActiveScene().name == "Tilemaps test" || SceneManager.GetActiveScene().name == "Main") PM.GetComponent<PlayerScript>().MainSceneLoadPos = GiveNewPos();
-            if(SceneManager.GetActiveScene().name == "Game In") PM.GetComponent<PlayerScript>().MainSceneLoadPos = new Vector2(-3.75f, -1.25f);
-            PM.GetComponent<PlayerScript>().PreviousSceneName = SceneManager.GetActiveScene().name;
+            //if(SceneManager.GetActiveScene().name == "Tilemaps test" || SceneManager.GetActiveScene().name == "Main") PM.GetComponent<PlayerScript>().MainSceneLoadPos = GiveNewPos();
+            if(GameCore.Instance.CurrentScene.sceneOutside && GameCore.Instance.CurrentScene.isGameScene)
+            {
+                PM.GetComponent<PlayerScript>().MainSceneLoadPos = GiveNewPos();
+            }
+            //if(SceneManager.GetActiveScene().name == "Game In") PM.GetComponent<PlayerScript>().MainSceneLoadPos = new Vector2(-3.75f, -1.25f);
+            if(GameCore.Instance.CurrentScene == SessionController.Instance.Game.StartLevelScene)
+            {
+                PM.GetComponent<PlayerScript>().MainSceneLoadPos = new Vector2(-3.75f, -1.25f);
+            }
+            //PM.GetComponent<PlayerScript>().PreviousSceneName = SceneManager.GetActiveScene().name;
+            PM.GetComponent<PlayerScript>().PreviousSceneName = GameCore.Instance.CurrentScene;
 
             if (sfxDoorOpening != null)
             {

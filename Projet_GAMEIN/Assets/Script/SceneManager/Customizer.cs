@@ -420,7 +420,8 @@ public class Customizer : MonoBehaviour
         PlayerPersonnality.PannelENTUIIndestructible.SetActive(false);
         PlayerPersonnality.PannelAnnonceUIIndestructible.SetActive(false);
 
-        PlayerPersonnality.PreviousSceneName = SceneManager.GetActiveScene().name;
+        //PlayerPersonnality.PreviousSceneName = SceneManager.GetActiveScene().name;
+        PlayerPersonnality.PreviousSceneName = SessionController.Instance.Game.CharacterCustomerScene;
         yield return new WaitForSeconds(0.5f);
         SceneLoader.Instance.ChangeScene(SessionController.Instance.Game.StartLevelScene);
     }

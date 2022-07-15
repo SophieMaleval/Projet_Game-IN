@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using AllosiusDev;
 using UnityEngine.UI;
+using Core.Session;
 
 public class GameManager : Singleton<GameManager>
 {
@@ -122,7 +123,7 @@ public class GameManager : Singleton<GameManager>
         player.PannelENTUIIndestructible.SetActive(false);
         player.PannelAnnonceUIIndestructible.SetActive(false);
 
-        player.PreviousSceneName = "Character Customer";
+        player.PreviousSceneName = SessionController.Instance.Game.CharacterCustomerScene;
     }
 
     public void CreatePlayer(Vector3 _playerPositionCustom)

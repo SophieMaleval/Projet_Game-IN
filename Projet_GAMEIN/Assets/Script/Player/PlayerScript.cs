@@ -15,10 +15,26 @@ public class PlayerScript : MonoBehaviour
 
     #endregion
 
+    #region Properties
+
+    public string PlayerName { get; set; }
+
+    //[Header ("Canvas Location")]
+    public GameObject CanvasIndestrucitble { get; set; }
+    public GameObject DialogueUIIndestructible { get; set; }
+    public GameObject InventoryUIIndestructible { get; set; }
+    public GameObject PannelENTUIIndestructible { get; set; }
+    public GameObject PannelAnnonceUIIndestructible { get; set; }
+    public GameObject QCMPanelUIIndestructible { get; set; }
+
+    //public string PreviousSceneName { get; set; }
+    public SceneData PreviousSceneName { get; set; }
+
+    #endregion
+
     #region UnityInspector
 
     [Header ("Information")]
-    public string PlayerName ;
     public int PlayerSexualGenre ;
 
     public GameObject InterractInputSprite;
@@ -34,7 +50,6 @@ public class PlayerScript : MonoBehaviour
     public TLManager TimeLineManager ;
 
     public Vector2 MainSceneLoadPos ;
-    public string PreviousSceneName ;
     [HideInInspector] public bool InAnimationFade = false ;
     [HideInInspector] public bool FadeMake = false ;
     [HideInInspector] public bool AnimationBeMake = false ;
@@ -43,13 +58,6 @@ public class PlayerScript : MonoBehaviour
 
     public PlayerDialogue playerBackpack;
 
-    [Header ("Canvas Location")]
-    public GameObject CanvasIndestrucitble ;
-    public GameObject DialogueUIIndestructible ;
-    public GameObject InventoryUIIndestructible ;
-    public GameObject PannelENTUIIndestructible ;
-    public GameObject PannelAnnonceUIIndestructible ;
-    public GameObject QCMPanelUIIndestructible ;
     [HideInInspector] public Image FadeAnimation ;
 
     [Header("Sounds")]

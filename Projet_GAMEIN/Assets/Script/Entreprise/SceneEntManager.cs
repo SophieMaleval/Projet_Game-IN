@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
 using UnityEngine.SceneManagement;
-
+using Core.Session;
 
 public class SceneEntManager : MonoBehaviour
 {
@@ -42,8 +42,10 @@ public class SceneEntManager : MonoBehaviour
 
             if (VolumeFirstCam == null)
             {
-                if(PM.GetComponent<PlayerScript>().PreviousSceneName == "Character Customer") VolumeFirstCam = GameObject.Find("Camera Trigger Zone Etage").GetComponent<CameraTriggerVolume>() ;
-                if(PM.GetComponent<PlayerScript>().PreviousSceneName == "Main" || PM.GetComponent<PlayerScript>().PreviousSceneName == "Tilemaps test") VolumeFirstCam = GameObject.Find("Camera Trigger Zone RDC").GetComponent<CameraTriggerVolume>() ;
+                //if(PM.GetComponent<PlayerScript>().PreviousSceneName == "Character Customer") VolumeFirstCam = GameObject.Find("Camera Trigger Zone Etage").GetComponent<CameraTriggerVolume>() ;
+                if(PM.GetComponent<PlayerScript>().PreviousSceneName.isGameScene == false) VolumeFirstCam = GameObject.Find("Camera Trigger Zone Etage").GetComponent<CameraTriggerVolume>();
+                //if(PM.GetComponent<PlayerScript>().PreviousSceneName == "Main" || PM.GetComponent<PlayerScript>().PreviousSceneName == "Tilemaps test") VolumeFirstCam = GameObject.Find("Camera Trigger Zone RDC").GetComponent<CameraTriggerVolume>() ;
+                if (PM.GetComponent<PlayerScript>().PreviousSceneName.sceneOutside) VolumeFirstCam = GameObject.Find("Camera Trigger Zone RDC").GetComponent<CameraTriggerVolume>();
             }
 
 
@@ -60,17 +62,22 @@ public class SceneEntManager : MonoBehaviour
 
     void SetPositionOnLoad()
     {
-        if(SceneManager.GetActiveScene().name != "Game In")
+        //if(SceneManager.GetActiveScene().name != "Game In")
+        if(GameCore.Instance.CurrentScene != SessionController.Instance.Game.StartLevelScene)
         {
             PM.transform.position = SetPosition;  
-        } else {
-            if(PM.GetComponent<PlayerScript>().PreviousSceneName == "Character Customer")
+        } 
+        else 
+        {
+            //if(PM.GetComponent<PlayerScript>().PreviousSceneName == "Character Customer")
+            if (PM.GetComponent<PlayerScript>().PreviousSceneName.isGameScene == false)
             {
                 PM.transform.position = new Vector2(-5.5f, 2.65f);  
                 PM.GiveGoodAnimation(new Vector2(0f, -1f));
                 ChangePartScene(1);
             } 
-            if(PM.GetComponent<PlayerScript>().PreviousSceneName == "Main" || PM.GetComponent<PlayerScript>().PreviousSceneName == "Tilemaps test")
+            //if(PM.GetComponent<PlayerScript>().PreviousSceneName == "Main" || PM.GetComponent<PlayerScript>().PreviousSceneName == "Tilemaps test")
+            if (PM.GetComponent<PlayerScript>().PreviousSceneName.isGameScene && PM.GetComponent<PlayerScript>().PreviousSceneName.sceneOutside)
             {   
                 PM.transform.position = SetPosition;  
                 PM.GiveGoodAnimation(new Vector2(0f, 1f));              
