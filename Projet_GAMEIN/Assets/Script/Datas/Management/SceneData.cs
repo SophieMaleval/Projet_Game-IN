@@ -9,7 +9,10 @@ public class SceneData : ScriptableObject
 
     public Scenes sceneToLoad;
 
+    public bool isGameScene = true;
+
     public bool sceneOutside;
+
 
     #endregion
 }

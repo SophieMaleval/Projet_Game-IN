@@ -36,7 +36,7 @@ public class Customizer : MonoBehaviour
     #region UnityInspector
 
     [Header("Custom Avatar")]
-    [SerializeField] private GameObject PlayerPrefab;
+    //[SerializeField] private GameObject PlayerPrefab;
 
     [SerializeField] private Vector3 PlayerPositionCustom = new Vector3(-0.5f, -0.335f, 0f);
 
@@ -49,17 +49,17 @@ public class Customizer : MonoBehaviour
     [Header("CustomerPanel")]
     [SerializeField] private Slider SkinSlider;
     public int CurrentCategorie;
-    public List<int> ChoiceInCategorie;
+    //public List<int> ChoiceInCategorie;
 
     [SerializeField] private List<Image> ChoiceDisplayer;
     [SerializeField] private Button PreviousChoiceButton;
     [SerializeField] private Button NextChoiceButton;
 
-    [SerializeField] private List<Button> AllChoiceColorButton;
+    public List<Button> AllChoiceColorButton;
 
     [Header("Player Information")]
     public InputField NamingField;
-    [SerializeField] private PlayerNamesSelection playerNamesSelection;
+    //[SerializeField] private PlayerNamesSelection playerNamesSelection;
 
 
     [Header("Gender")]
@@ -69,11 +69,11 @@ public class Customizer : MonoBehaviour
     public Color GenderSelected;
 
 
-    [Header("Item Disponible")]
+    /*[Header("Item Disponible")]
     public List<ItemCustomer> HairChoice;
     public List<ItemCustomer> TopChoice;
     public List<ItemCustomer> PantsChoice;
-    public List<ItemCustomer> ShoeChoice;
+    public List<ItemCustomer> ShoeChoice;*/
     [Space]
     [SerializeField] private Color ColorDoNotUse;
     [SerializeField] private Color ColorUse;
@@ -81,16 +81,16 @@ public class Customizer : MonoBehaviour
 
     [Header("Custom Color Possible")]
     public List<Color> SkinGradient;
-    public List<Color> ColorCustomList;
+    //public List<Color> ColorCustomList;
 
-    [Header("Canvas")]
+    /*[Header("Canvas")]
     [SerializeField] private GameObject CanvasPrefab;
     [SerializeField] private GameObject DialogueUIPrefab;
     [SerializeField] private GameObject InventoryUIPrefab;
     [SerializeField] private GameObject PannelENTUIPrefab;
     [SerializeField] private GameObject PannelAnnonceUIPrefab;
     [SerializeField] private GameObject QCMPanelPrefab;
-    [SerializeField] private GameObject EventSystemPrefab;
+    [SerializeField] private GameObject EventSystemPrefab;*/
 
     [Header("Sounds")]
     [SerializeField] private AudioData music;
@@ -104,100 +104,10 @@ public class Customizer : MonoBehaviour
 
         if (GameManager.Instance.player == null)
         {
-            GameObject PlayerInstantiate = Instantiate(PlayerPrefab, PlayerPositionCustom, Quaternion.identity);
-            PlayerApparance = PlayerInstantiate.GetComponent<PlayerMovement>();
-            PlayerPersonnality = PlayerInstantiate.GetComponent<PlayerScript>();
-            PlayerApparance.enabled = false;
-            PlayerApparance.gameObject.name = "Player";
+            GameManager.Instance.CreatePlayer(PlayerPositionCustom);
 
-            GameManager.Instance.player = PlayerPersonnality;
-
-
-            GameObject CanvasInstatiate = Instantiate(CanvasPrefab);
-            GameObject DialogueUIInstatiate = Instantiate(DialogueUIPrefab);
-            GameObject InventoryUIInstatiate = Instantiate(InventoryUIPrefab);
-            GameObject PannelENTUIInstatiate = Instantiate(PannelENTUIPrefab);
-            GameObject PannelAnnonceUIInstatiate = Instantiate(PannelAnnonceUIPrefab);
-            GameObject QCMPanelInstantiate = Instantiate(QCMPanelPrefab);
-            GameObject EventSystemInstantiate = Instantiate(EventSystemPrefab);
-
-            DialogueUIInstatiate.transform.SetParent(CanvasInstatiate.transform);
-            DialogueUIInstatiate.transform.SetSiblingIndex(0);
-            DialogueUIInstatiate.name = "Dialogue Canvas";
-
-            PannelENTUIInstatiate.transform.SetParent(CanvasInstatiate.transform);
-            PannelENTUIInstatiate.transform.SetSiblingIndex(1);
-            PannelENTUIInstatiate.name = "Pannel ENT";
-
-            PannelAnnonceUIInstatiate.transform.SetParent(CanvasInstatiate.transform);
-            PannelAnnonceUIInstatiate.transform.SetSiblingIndex(1);
-            PannelAnnonceUIInstatiate.name = "Pannel Annonce";
-
-
-            QCMPanelInstantiate.transform.SetParent(CanvasInstatiate.transform);
-            QCMPanelInstantiate.transform.SetSiblingIndex(3);
-            QCMPanelInstantiate.name = "QCM Panel";
-
-            InventoryUIInstatiate.transform.SetParent(CanvasInstatiate.transform);
-            InventoryUIInstatiate.transform.SetSiblingIndex(4);
-            InventoryUIInstatiate.name = "Inventory";
-
-            PlayerPersonnality.playerBackpack.GetComponent<CSVReader>().QuestManager = InventoryUIInstatiate.GetComponentInChildren<QuestSys>();
-
-
-            GameCanvasManager gameCanvasManager = CanvasInstatiate.GetComponent<GameCanvasManager>();
-
-            GameManager.Instance.gameCanvasManager = gameCanvasManager;
-
-            gameCanvasManager.inventory = InventoryUIInstatiate.GetComponent<InventoryScript>();
-            gameCanvasManager.questManager = InventoryUIInstatiate.GetComponentInChildren<QuestSys>();
-
-            gameCanvasManager.dialogCanvas = DialogueUIInstatiate.GetComponent<DialogueDisplayerController>();
-
-            gameCanvasManager.qcmPanel = QCMPanelInstantiate.GetComponent<QCMManager>();
-
-            DontDestroyOnLoad(PlayerApparance.gameObject);
-            DontDestroyOnLoad(CanvasInstatiate.gameObject);
-            DontDestroyOnLoad(DialogueUIInstatiate.gameObject);
-            DontDestroyOnLoad(InventoryUIInstatiate.gameObject);
-            DontDestroyOnLoad(PannelENTUIInstatiate.gameObject);
-            DontDestroyOnLoad(PannelAnnonceUIInstatiate.gameObject);
-            DontDestroyOnLoad(QCMPanelInstantiate.gameObject);
-            DontDestroyOnLoad(EventSystemInstantiate);
-
-            PlayerPersonnality.CanvasIndestrucitble = CanvasInstatiate;
-            PlayerPersonnality.DialogueUIIndestructible = DialogueUIInstatiate;
-            PlayerPersonnality.InventoryUIIndestructible = InventoryUIInstatiate;
-            PlayerPersonnality.PannelENTUIIndestructible = PannelENTUIInstatiate;
-            PlayerPersonnality.PannelAnnonceUIIndestructible = PannelAnnonceUIInstatiate;
-            PlayerPersonnality.QCMPanelUIIndestructible = QCMPanelInstantiate;
-
-            CanvasInstatiate.SetActive(false);
-            DialogueUIInstatiate.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, 15f, 0);
-            DialogueUIInstatiate.GetComponent<RectTransform>().localScale = new Vector3(2f, 2f, 2f);
-
-            InventoryUIInstatiate.GetComponent<RectTransform>().offsetMin = new Vector2(0, 0); // Left & Bottom
-            InventoryUIInstatiate.GetComponent<RectTransform>().offsetMax = new Vector2(0, 0); // Right & Top
-            InventoryUIInstatiate.GetComponent<RectTransform>().localScale = Vector3.one;
-
-            PannelENTUIInstatiate.GetComponent<RectTransform>().offsetMin = new Vector2(250f, 25f);
-            PannelENTUIInstatiate.GetComponent<RectTransform>().offsetMax = new Vector2(-250f, -25f);
-            PannelENTUIInstatiate.GetComponent<RectTransform>().localScale = Vector3.one;
-
-            PannelAnnonceUIInstatiate.GetComponent<RectTransform>().offsetMin = new Vector2(350f, 200f);
-            PannelAnnonceUIInstatiate.GetComponent<RectTransform>().offsetMax = new Vector2(-350f, -200f);
-            PannelAnnonceUIInstatiate.GetComponent<RectTransform>().localScale = Vector3.one;
-
-            QCMPanelInstantiate.GetComponent<RectTransform>().anchoredPosition = new Vector2(0f, -600f);
-            QCMPanelInstantiate.GetComponent<RectTransform>().sizeDelta = new Vector2(992f, 415f);
-            QCMPanelInstantiate.GetComponent<RectTransform>().localScale = Vector3.one;
-
-
-            InventoryUIInstatiate.GetComponent<InventoryScript>().PlayerScript = PlayerPersonnality;
-            InventoryUIInstatiate.GetComponent<InventoryScript>().DialogueCanvas = DialogueUIInstatiate;
-            InventoryUIInstatiate.GetComponent<InventoryScript>().PannelENTCanvas = PannelENTUIInstatiate;
-
-            PlayerPersonnality.FadeAnimation = CanvasInstatiate.transform.GetChild(CanvasInstatiate.transform.childCount - 1).GetComponent<Image>();
+            PlayerApparance = GameManager.Instance.player.GetComponent<PlayerMovement>();
+            PlayerPersonnality = GameManager.Instance.player;
         }
         else
         {
@@ -259,7 +169,7 @@ public class Customizer : MonoBehaviour
     { PlayerApparance.GetComponent<PlayerScript>().PlayerName = NameEnter; }
     public void SetGender(int GenderValue)
     {
-        PlayerApparance.GetComponent<PlayerScript>().PlayerSexualGenre = GenderValue;
+        GameManager.Instance.SetPlayerGender(GenderValue);
         for (int G = 0; G < GenderButton.Count; G++)
         {
             if (G == PlayerApparance.GetComponent<PlayerScript>().PlayerSexualGenre)
@@ -287,43 +197,43 @@ public class Customizer : MonoBehaviour
         ResetBtnSprite(NextChoiceButton);
 
         if (CurrentCategorie == 1)
-            ChoiceDisplay(HairChoice);
+            ChoiceDisplay(GameManager.Instance.HairChoice);
         if (CurrentCategorie == 2)
-            ChoiceDisplay(TopChoice);
+            ChoiceDisplay(GameManager.Instance.TopChoice);
         if (CurrentCategorie == 3)
-            ChoiceDisplay(PantsChoice);
+            ChoiceDisplay(GameManager.Instance.PantsChoice);
         if (CurrentCategorie == 4)
-            ChoiceDisplay(ShoeChoice);
+            ChoiceDisplay(GameManager.Instance.ShoeChoice);
     }
 
     public void ChoiceDisplay(List<ItemCustomer> CategorieChoice)
     {
         // Affiche dans la liste le : dernier PREMIER second
-        if (ChoiceInCategorie[CurrentCategorie - 1] == 0)
+        if (GameManager.Instance.ChoiceInCategorie[CurrentCategorie - 1] == 0)
         {
             ChoiceDisplayer[0].sprite = CategorieChoice[CategorieChoice.Count - 1].DisplayCustomisation;
-            ChoiceDisplayer[2].sprite = CategorieChoice[ChoiceInCategorie[CurrentCategorie - 1] + 1].DisplayCustomisation;
+            ChoiceDisplayer[2].sprite = CategorieChoice[GameManager.Instance.ChoiceInCategorie[CurrentCategorie - 1] + 1].DisplayCustomisation;
         }
 
         // Set sur le Player la sélection
-        ChoiceDisplayer[1].sprite = CategorieChoice[ChoiceInCategorie[CurrentCategorie - 1]].DisplayCustomisation;
+        ChoiceDisplayer[1].sprite = CategorieChoice[GameManager.Instance.ChoiceInCategorie[CurrentCategorie - 1]].DisplayCustomisation;
 
         // Affiche dans la liste le : avant-dernier DERNIER premier
-        if (ChoiceInCategorie[CurrentCategorie - 1] == CategorieChoice.Count - 1)
+        if (GameManager.Instance.ChoiceInCategorie[CurrentCategorie - 1] == CategorieChoice.Count - 1)
         {
-            ChoiceDisplayer[0].sprite = CategorieChoice[ChoiceInCategorie[CurrentCategorie - 1] - 1].DisplayCustomisation;
+            ChoiceDisplayer[0].sprite = CategorieChoice[GameManager.Instance.ChoiceInCategorie[CurrentCategorie - 1] - 1].DisplayCustomisation;
             ChoiceDisplayer[2].sprite = CategorieChoice[0].DisplayCustomisation;
         }
 
         // Affiche dans la liste le : n-1 N n+1
-        if ((ChoiceInCategorie[CurrentCategorie - 1] != 0) && (ChoiceInCategorie[CurrentCategorie - 1] != CategorieChoice.Count - 1))
+        if ((GameManager.Instance.ChoiceInCategorie[CurrentCategorie - 1] != 0) && (GameManager.Instance.ChoiceInCategorie[CurrentCategorie - 1] != CategorieChoice.Count - 1))
         {
-            ChoiceDisplayer[0].sprite = CategorieChoice[ChoiceInCategorie[CurrentCategorie - 1] - 1].DisplayCustomisation;
-            ChoiceDisplayer[2].sprite = CategorieChoice[ChoiceInCategorie[CurrentCategorie - 1] + 1].DisplayCustomisation;
+            ChoiceDisplayer[0].sprite = CategorieChoice[GameManager.Instance.ChoiceInCategorie[CurrentCategorie - 1] - 1].DisplayCustomisation;
+            ChoiceDisplayer[2].sprite = CategorieChoice[GameManager.Instance.ChoiceInCategorie[CurrentCategorie - 1] + 1].DisplayCustomisation;
         }
 
         //if(CurrentCategorie == 1)PlayerApparance.Animators[CurrentCategorie - 1].SetFloat("HairChoice", 1);
-        PlayerApparance.SpriteDisplay[CurrentCategorie - 1] = CategorieChoice[ChoiceInCategorie[CurrentCategorie - 1]].Animator;
+        PlayerApparance.SpriteDisplay[CurrentCategorie - 1] = CategorieChoice[GameManager.Instance.ChoiceInCategorie[CurrentCategorie - 1]].Animator;
         SetAvatar();
     }
 
@@ -334,13 +244,13 @@ public class Customizer : MonoBehaviour
         ResetBtnSprite(NextChoiceButton);
 
         if (CurrentCategorie == 1)
-            ChangeChoice(ValueAdd, HairChoice, 1);
+            ChangeChoice(ValueAdd, GameManager.Instance.HairChoice, 1);
         if (CurrentCategorie == 2)
-            ChangeChoice(ValueAdd, TopChoice, 2);
+            ChangeChoice(ValueAdd, GameManager.Instance.TopChoice, 2);
         if (CurrentCategorie == 3)
-            ChangeChoice(ValueAdd, PantsChoice, 3);
+            ChangeChoice(ValueAdd, GameManager.Instance.PantsChoice, 3);
         if (CurrentCategorie == 4)
-            ChangeChoice(ValueAdd, ShoeChoice, 4);
+            ChangeChoice(ValueAdd, GameManager.Instance.ShoeChoice, 4);
     }
 
     void ChangeChoice(int ChoiceValueAdd, List<ItemCustomer> CategorieChoice, int CategorieNum)
@@ -348,19 +258,19 @@ public class Customizer : MonoBehaviour
         // Choix Précédent --
         if (ChoiceValueAdd < 0)
         {
-            if (ChoiceInCategorie[CurrentCategorie - 1] == 0)
-                ChoiceInCategorie[CurrentCategorie - 1] = CategorieChoice.Count - 1;
+            if (GameManager.Instance.ChoiceInCategorie[CurrentCategorie - 1] == 0)
+                GameManager.Instance.ChoiceInCategorie[CurrentCategorie - 1] = CategorieChoice.Count - 1;
             else
-                ChoiceInCategorie[CurrentCategorie - 1]--;
+                GameManager.Instance.ChoiceInCategorie[CurrentCategorie - 1]--;
         }
 
         // Choix Suivant ++
         if (ChoiceValueAdd > 0)
         {
-            if (ChoiceInCategorie[CurrentCategorie - 1] == CategorieChoice.Count - 1)
-                ChoiceInCategorie[CurrentCategorie - 1] = 0;
+            if (GameManager.Instance.ChoiceInCategorie[CurrentCategorie - 1] == CategorieChoice.Count - 1)
+                GameManager.Instance.ChoiceInCategorie[CurrentCategorie - 1] = 0;
             else
-                ChoiceInCategorie[CurrentCategorie - 1]++;
+                GameManager.Instance.ChoiceInCategorie[CurrentCategorie - 1]++;
         }
 
         ChoiceDisplay(CategorieChoice);
@@ -380,31 +290,31 @@ public class Customizer : MonoBehaviour
         SkinSlider.value = PlayerApparance.ValueColorDisplay[0];
 
         // Récupère les choix de Hair
-        for (int ChoiceInCategorieHair = 0; ChoiceInCategorieHair < HairChoice.Count; ChoiceInCategorieHair++)
+        for (int ChoiceInCategorieHair = 0; ChoiceInCategorieHair < GameManager.Instance.HairChoice.Count; ChoiceInCategorieHair++)
         {
-            if (HairChoice[ChoiceInCategorieHair].Animator == PlayerApparance.SpriteDisplay[0])
-                ChoiceInCategorie[0] = ChoiceInCategorieHair;
+            if (GameManager.Instance.HairChoice[ChoiceInCategorieHair].Animator == PlayerApparance.SpriteDisplay[0])
+                GameManager.Instance.ChoiceInCategorie[0] = ChoiceInCategorieHair;
         }
 
         // Récupère les choix de Top
-        for (int ChoiceInCategorieTop = 0; ChoiceInCategorieTop < TopChoice.Count; ChoiceInCategorieTop++)
+        for (int ChoiceInCategorieTop = 0; ChoiceInCategorieTop < GameManager.Instance.TopChoice.Count; ChoiceInCategorieTop++)
         {
-            if (TopChoice[ChoiceInCategorieTop].Animator == PlayerApparance.SpriteDisplay[1])
-                ChoiceInCategorie[1] = ChoiceInCategorieTop;
+            if (GameManager.Instance.TopChoice[ChoiceInCategorieTop].Animator == PlayerApparance.SpriteDisplay[1])
+                GameManager.Instance.ChoiceInCategorie[1] = ChoiceInCategorieTop;
         }
 
         // Récupère les choix de Pants
-        for (int ChoiceInCategoriePants = 0; ChoiceInCategoriePants < PantsChoice.Count; ChoiceInCategoriePants++)
+        for (int ChoiceInCategoriePants = 0; ChoiceInCategoriePants < GameManager.Instance.PantsChoice.Count; ChoiceInCategoriePants++)
         {
-            if (PantsChoice[ChoiceInCategoriePants].Animator == PlayerApparance.SpriteDisplay[2])
-                ChoiceInCategorie[2] = ChoiceInCategoriePants;
+            if (GameManager.Instance.PantsChoice[ChoiceInCategoriePants].Animator == PlayerApparance.SpriteDisplay[2])
+                GameManager.Instance.ChoiceInCategorie[2] = ChoiceInCategoriePants;
         }
 
         // Récupère les choix de Shoe
-        for (int ChoiceInCategorieShoe = 0; ChoiceInCategorieShoe < ShoeChoice.Count; ChoiceInCategorieShoe++)
+        for (int ChoiceInCategorieShoe = 0; ChoiceInCategorieShoe < GameManager.Instance.ShoeChoice.Count; ChoiceInCategorieShoe++)
         {
-            if (ShoeChoice[ChoiceInCategorieShoe].Animator == PlayerApparance.SpriteDisplay[3])
-                ChoiceInCategorie[3] = ChoiceInCategorieShoe;
+            if (GameManager.Instance.ShoeChoice[ChoiceInCategorieShoe].Animator == PlayerApparance.SpriteDisplay[3])
+                GameManager.Instance.ChoiceInCategorie[3] = ChoiceInCategorieShoe;
         }
     }
 
@@ -418,7 +328,7 @@ public class Customizer : MonoBehaviour
     public void SetChoiceColor(int ColorNumList)
     {
         PlayerApparance.ValueColorDisplay[CurrentCategorie] = ColorNumList;
-        PlayerApparance.ColorsDisplay[CurrentCategorie] = ColorCustomList[ColorNumList];
+        PlayerApparance.ColorsDisplay[CurrentCategorie] = GameManager.Instance.ColorCustomList[ColorNumList];
         SetAvatar();
     }
 
@@ -444,24 +354,11 @@ public class Customizer : MonoBehaviour
 
     public void SetAvatar()
     {
-        // Set Color
-        for (int i = 0; i < PlayerApparance.PlayerRenderers.Count; i++)
-        {
-            PlayerApparance.PlayerRenderers[i].color = PlayerApparance.ColorsDisplay[i];
-        }
+        GameManager.Instance.SetAvatarColor();
         DisableButtonColorChoice();
 
 
-        // Afficher le choix
-        for (int i = 0; i < PlayerApparance.SpriteDisplay.Count; i++)
-        {
-            PlayerApparance.Animators[i + 1].runtimeAnimatorController = PlayerApparance.SpriteDisplay[i];
-        }
-
-
-        // Reset Animator pour les coordonnées
-        for (int a = 0; a < PlayerApparance.Animators.Count; a++)
-        { PlayerApparance.Animators[a].Rebind(); }
+        GameManager.Instance.UpdateAvatarAnimators();
 
         if(avatarIsInit)
             animationCustomizer.UpdateRotationView();
@@ -482,75 +379,14 @@ public class Customizer : MonoBehaviour
         SetGender(Random.Range(0, GenderButton.Count));
 
         // Random Name
-        if (PlayerPersonnality.PlayerSexualGenre == 0)
-        {
-            List<string> femaleNames = new List<string>();
-            femaleNames = playerNamesSelection.GetSumLists(femaleNames, playerNamesSelection.femaleRandomNames);
-            femaleNames = playerNamesSelection.GetSumLists(femaleNames, playerNamesSelection.mixedRandomNames);
-
-            /*for (int i = 0; i < femaleNames.Count; i++)
-            {
-                Debug.Log(femaleNames[i]);
-            }*/
-
-            NamingField.text = femaleNames[Random.Range(0, femaleNames.Count)];
-        }
-        else if (PlayerPersonnality.PlayerSexualGenre == 1)
-        {
-            List<string> maleNames = new List<string>();
-            maleNames = playerNamesSelection.GetSumLists(maleNames, playerNamesSelection.maleRandomNames);
-            maleNames = playerNamesSelection.GetSumLists(maleNames, playerNamesSelection.mixedRandomNames);
-
-            /*for (int i = 0; i < maleNames.Count; i++)
-            {
-                Debug.Log(maleNames[i]);
-            }*/
-
-            NamingField.text = maleNames[Random.Range(0, maleNames.Count)];
-        }
-        else if (PlayerPersonnality.PlayerSexualGenre == 2)
-        {
-            List<string> nonBinaryNames = new List<string>();
-            nonBinaryNames = playerNamesSelection.GetSumLists(nonBinaryNames, playerNamesSelection.maleRandomNames);
-            nonBinaryNames = playerNamesSelection.GetSumLists(nonBinaryNames, playerNamesSelection.femaleRandomNames);
-            nonBinaryNames = playerNamesSelection.GetSumLists(nonBinaryNames, playerNamesSelection.mixedRandomNames);
-
-            /*for (int i = 0; i < nonBinaryNames.Count; i++)
-            {
-                Debug.Log(nonBinaryNames[i]);
-            }*/
-
-            NamingField.text = nonBinaryNames[Random.Range(0, nonBinaryNames.Count)];
-        }
+        NamingField.text = GameManager.Instance.RandomPlayerName();
 
 
         // Random Skin
-        PlayerApparance.ValueColorDisplay[0] = Random.Range(0f, 1f);
+        GameManager.Instance.RandomSkinPlayer();
         SkinSlider.value = PlayerApparance.ValueColorDisplay[0];
 
-        // Random Hair
-        ChoiceInCategorie[0] = Random.Range(0, HairChoice.Count);
-        PlayerApparance.SpriteDisplay[0] = HairChoice[ChoiceInCategorie[0]].Animator;
-        PlayerApparance.ValueColorDisplay[1] = Random.Range(0, AllChoiceColorButton.Count);
-        PlayerApparance.ColorsDisplay[1] = ColorCustomList[(int)PlayerApparance.ValueColorDisplay[1]];
-
-        // Random Top
-        ChoiceInCategorie[1] = Random.Range(0, TopChoice.Count);
-        PlayerApparance.SpriteDisplay[1] = TopChoice[ChoiceInCategorie[1]].Animator;
-        PlayerApparance.ValueColorDisplay[2] = Random.Range(0, AllChoiceColorButton.Count);
-        PlayerApparance.ColorsDisplay[2] = ColorCustomList[(int)PlayerApparance.ValueColorDisplay[2]];
-
-        // Random Bottom
-        ChoiceInCategorie[2] = Random.Range(0, PantsChoice.Count /*- 1*/);
-        PlayerApparance.SpriteDisplay[2] = PantsChoice[ChoiceInCategorie[2]].Animator;
-        PlayerApparance.ValueColorDisplay[3] = Random.Range(0, AllChoiceColorButton.Count);
-        PlayerApparance.ColorsDisplay[3] = ColorCustomList[(int)PlayerApparance.ValueColorDisplay[3]];
-
-        // Random Shoe
-        ChoiceInCategorie[3] = Random.Range(0, ShoeChoice.Count);
-        PlayerApparance.SpriteDisplay[3] = ShoeChoice[ChoiceInCategorie[3]].Animator;
-        PlayerApparance.ValueColorDisplay[4] = Random.Range(0, AllChoiceColorButton.Count);
-        PlayerApparance.ColorsDisplay[4] = ColorCustomList[(int)PlayerApparance.ValueColorDisplay[4]];
+        GameManager.Instance.RandomAppearancePlayer();
 
         ChangeDisplay(0);
         SetAvatar();
@@ -565,7 +401,7 @@ public class Customizer : MonoBehaviour
         FadeImage.gameObject.SetActive(true);
         GetComponent<AnimationCustomizer>().ChangeTitleCategories(6);
 
-        PlayerPersonnality.playerBackpack.GetComponent<CSVReader>().SetUpDialogueAdhérent();
+        GameManager.Instance.SetupDialogues();
 
 
         StartCoroutine(WaitBeforeChangeScene());

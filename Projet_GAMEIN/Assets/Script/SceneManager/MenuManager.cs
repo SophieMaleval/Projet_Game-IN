@@ -20,7 +20,7 @@ public class MenuManager : MonoBehaviour
 
     #region Unity Inspector
 
-    public string NameScene ;
+    //public string NameScene ;
 
 
     public TextMeshProUGUI Message ;
@@ -46,9 +46,7 @@ public class MenuManager : MonoBehaviour
 
     private void Awake()
     {
-        PlayerPrefs.SetFloat("VolumeGlobal", 1.0f);
-        PlayerPrefs.SetFloat("Musique", 1.0f);
-        PlayerPrefs.SetFloat("SFX", 1.0f);
+        
     }
     void Start()
     {
@@ -60,11 +58,6 @@ public class MenuManager : MonoBehaviour
 
         PlaySound(menuMusic);
         PlaySound(birdsChippingAmbients);
-    
-    
-        /* A Supprimer */
-        PlayerPrefs.SetInt("LaurentSayHello", 0);
-    
     }
 
 
@@ -74,7 +67,7 @@ public class MenuManager : MonoBehaviour
         {
             FadeImage.SetActive(true);
             StopAllCoroutines();
-            StartCoroutine("Fade");
+            StartCoroutine(Fade());
         }
 
     }
@@ -94,8 +87,6 @@ public class MenuManager : MonoBehaviour
     IEnumerator Fade() 
     {
         ATS.ShouldReveal = false;
-        AllosiusDev.Audio.AudioController.Instance.StopAllAmbients();
-        AllosiusDev.Audio.AudioController.Instance.StopAllMusics();
         yield return new WaitForSeconds(3f);
         SceneLoader.Instance.ChangeScene(SessionController.Instance.Game.CharacterCustomerScene);
         //SceneManager.LoadScene("Character Customer");
