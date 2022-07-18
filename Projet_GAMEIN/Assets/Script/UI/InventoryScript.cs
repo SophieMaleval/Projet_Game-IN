@@ -83,10 +83,18 @@ public class InventoryScript : MonoBehaviour
 
             if (DialogueCanvas.activeSelf == false && PannelENTCanvas.activeSelf == false && GameManager.Instance.gameCanvasManager.newDialogCanvas.gameObject.activeSelf == false) PlayerScript.GetComponent<PlayerMovement>().EndActivity();
 
-            if (GameManager.Instance.player.InDiscussion && GameManager.Instance.gameCanvasManager.newDialogCanvas.CurrentChoices.Count > 0)
+            if(GameManager.Instance.player.InDiscussion)
             {
-                GameManager.Instance.gameCanvasManager.eventSystem.SetSelectedGameObject(GameManager.Instance.gameCanvasManager.newDialogCanvas.CurrentChoices[0]);
+                if(GameManager.Instance.player.GetComponent<PlayerConversant>().IsChoosing() == false)
+                {
+                    GameManager.Instance.gameCanvasManager.eventSystem.SetSelectedGameObject(GameManager.Instance.gameCanvasManager.newDialogCanvas.NextButton.gameObject);
+                }
+                else if (GameManager.Instance.player.GetComponent<PlayerConversant>().IsChoosing() && GameManager.Instance.gameCanvasManager.newDialogCanvas.CurrentChoices.Count > 0)
+                {
+                    GameManager.Instance.gameCanvasManager.eventSystem.SetSelectedGameObject(GameManager.Instance.gameCanvasManager.newDialogCanvas.CurrentChoices[0]);
+                }
             }
+           
 
         }
         else

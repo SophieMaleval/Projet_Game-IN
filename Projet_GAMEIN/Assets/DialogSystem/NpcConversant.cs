@@ -43,7 +43,7 @@ public class NpcConversant : MonoBehaviour
         {
             if (GameManager.Instance.player.PlayerAsInterract && !GameManager.Instance.player.InDiscussion)
             {
-                Debug.Log("Launch Discussion");
+                //Debug.Log("Launch Discussion");
                 StartDialog();
             }
         }

@@ -45,7 +45,7 @@ public class GameCanvasManager : MonoBehaviour
             eventSystemCurrentObjectSelected = eventSystem.currentSelectedGameObject;
         }
 
-        if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0)
+        if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0 || Input.GetButtonDown("Submit"))
         {
             if (eventSystemCurrentObjectSelected != null && eventSystem.currentSelectedGameObject == null)
             {
@@ -53,8 +53,8 @@ public class GameCanvasManager : MonoBehaviour
             }
         }
 
-        if(eventSystem.currentSelectedGameObject != null)
-            Debug.Log(eventSystem.currentSelectedGameObject.name);
+        /*if(eventSystem.currentSelectedGameObject != null)
+            Debug.Log(eventSystem.currentSelectedGameObject.name);*/
     }
 
     #endregion

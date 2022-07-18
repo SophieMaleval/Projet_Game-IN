@@ -66,10 +66,10 @@ public class DialogueTextNode : Node
         {
             if(item.direction == NodePort.IO.Output)
             {
-                Debug.Log(item.fieldName + " ");
+                //Debug.Log(item.fieldName + " ");
                 for (int i = 0; i < item.ConnectionCount; i++)
                 {
-                    Debug.Log(item.GetConnection(i).fieldName + " " + item.GetConnection(i).node.name);
+                    //Debug.Log(item.GetConnection(i).fieldName + " " + item.GetConnection(i).node.name);
                     nodesChildren.Add(item.GetConnection(i).node);
                 }
             }
@@ -83,10 +83,10 @@ public class DialogueTextNode : Node
     {
 		foreach (var item in Ports)
         {
-			Debug.Log(item.fieldName + " ");
+			//Debug.Log(item.fieldName + " ");
             for (int i = 0; i < item.ConnectionCount; i++)
             {
-                Debug.Log(item.GetConnection(i).fieldName + " " + item.GetConnection(i).node.name);
+                //Debug.Log(item.GetConnection(i).fieldName + " " + item.GetConnection(i).node.name);
             }
         }
     }

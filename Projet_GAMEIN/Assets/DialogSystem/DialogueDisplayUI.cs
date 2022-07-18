@@ -26,6 +26,8 @@ public class DialogueDisplayUI : MonoBehaviour
 
     public List<GameObject> CurrentChoices => currentChoices;
 
+    public Button NextButton => nextButton;
+
     #endregion
 
     #region UnityInspector
@@ -68,7 +70,7 @@ public class DialogueDisplayUI : MonoBehaviour
 
     private void UpdateButtonsListeners()
     {
-        Debug.Log("Clear Next and Exit Dialogue Buttons");
+        //Debug.Log("Clear Next and Exit Dialogue Buttons");
         nextButton.onClick.RemoveAllListeners();
         nextButton.onClick.AddListener(() => ButtonNext());
     }
@@ -102,6 +104,8 @@ public class DialogueDisplayUI : MonoBehaviour
                 StopCoroutine(writeTextCoroutine);
             }
             writeTextCoroutine = StartCoroutine(WriteText(playerConversant.GetText()));
+
+            GameManager.Instance.gameCanvasManager.eventSystem.SetSelectedGameObject(nextButton.gameObject);
         }
 
     }
@@ -126,7 +130,7 @@ public class DialogueDisplayUI : MonoBehaviour
 
         foreach (DialogueTextNode choice in playerConversant.GetChoices())
         {
-            Debug.Log("Instantiate");
+            //Debug.Log("Instantiate");
             GameObject _choiceInstance = Instantiate(choicePrefab, choicesRoot);
             currentChoices.Add(_choiceInstance);
             var _textComp = _choiceInstance.GetComponentInChildren<TextMeshProUGUI>();
@@ -173,6 +177,7 @@ public class DialogueDisplayUI : MonoBehaviour
 
     private void ButtonNext()
     {
+        Debug.Log("Button Next");
 
         if (canTurnNext)
         {
