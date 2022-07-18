@@ -81,8 +81,12 @@ public class InventoryScript : MonoBehaviour
 
             if (DialogueCanvas.activeSelf == true) PlayerScript.playerBackpack.ResumeDialogue();
 
-            if (DialogueCanvas.activeSelf == false && PannelENTCanvas.activeSelf == false) PlayerScript.GetComponent<PlayerMovement>().EndActivity();
+            if (DialogueCanvas.activeSelf == false && PannelENTCanvas.activeSelf == false && GameManager.Instance.gameCanvasManager.newDialogCanvas.gameObject.activeSelf == false) PlayerScript.GetComponent<PlayerMovement>().EndActivity();
 
+            if (GameManager.Instance.player.InDiscussion && GameManager.Instance.gameCanvasManager.newDialogCanvas.CurrentChoices.Count > 0)
+            {
+                GameManager.Instance.gameCanvasManager.eventSystem.SetSelectedGameObject(GameManager.Instance.gameCanvasManager.newDialogCanvas.CurrentChoices[0]);
+            }
 
         }
         else
@@ -91,6 +95,7 @@ public class InventoryScript : MonoBehaviour
 
             PlayerScript.GetComponent<PlayerMovement>().StartActivity();
             PlayerScript.playerBackpack.PausedInDialogue();
+            
         }
     }
 

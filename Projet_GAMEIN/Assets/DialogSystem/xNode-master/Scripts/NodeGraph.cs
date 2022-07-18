@@ -11,6 +11,12 @@ namespace XNode {
         /// See: <see cref="AddNode{T}"/> </summary>
         [SerializeField] public List<Node> nodes = new List<Node>();
 
+
+        public Node GetRootNode()
+        {
+            return nodes[0];
+        }
+
         /// <summary> Add a node to the graph by type (convenience method - will call the System.Type version) </summary>
         public T AddNode<T>() where T : Node {
             return AddNode(typeof(T)) as T;

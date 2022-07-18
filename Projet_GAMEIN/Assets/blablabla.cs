@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class blablabla : MonoBehaviour
 {
-    public Dialogue dialogue;
+    public DialogueGraph dialogue;
 
     [ContextMenu("TestDialog")]
     public void TestDialog()
     {
-        DialogueTextNode node = (DialogueTextNode)dialogue.dialogueGraph.nodes[0];
+        DialogueTextNode node = (DialogueTextNode)dialogue.nodes[0];
         node.GetPorts();
 
 

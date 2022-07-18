@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-8340661608666029046
+--- !u!114 &-5038959784193652938
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -10,29 +10,29 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
-  m_Name: discussion
+  m_Name: "J'interviens \xE9galement sur diff\xE9rents sujets"
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -24, y: 264}
+  position: {x: 984, y: -40}
   ports:
     keys:
     - previousNode
     - nextNodes
     values:
     - _fieldName: previousNode
-      _node: {fileID: -8340661608666029046}
+      _node: {fileID: -5038959784193652938}
       _typeQualifiedName: DialogueTextNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
       connections:
       - fieldName: nextNodes
-        node: {fileID: 658057114209618927}
+        node: {fileID: 8869301363328838000}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
     - _fieldName: nextNodes
-      _node: {fileID: -8340661608666029046}
+      _node: {fileID: -5038959784193652938}
       _typeQualifiedName: DialogueBaseNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
       connections: []
@@ -43,10 +43,15 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 0
-  message: 
-  hasGameActions: 0
+  message: "J'interviens \xE9galement sur diff\xE9rents sujets pour valoriser la
+    fili\xE8re jeu vid\xE9o. H\xE9site pas \xE0 venir vers nous si tu as des questionnements,
+    nous sommes l\xE0 pour trouver des solutions !"
+  singleRead: 0
+  hasGameActions: 1
+  GameActionsList:
+  - actionType: 0
   hasRequirements: 0
---- !u!114 &-3140012249581429740
+--- !u!114 &-2582589227376332609
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -56,43 +61,48 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
-  m_Name: blabla
+  m_Name: Qui es tu ?
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -72, y: -152}
+  position: {x: -24, y: -40}
   ports:
     keys:
     - previousNode
     - nextNodes
     values:
     - _fieldName: previousNode
-      _node: {fileID: -3140012249581429740}
+      _node: {fileID: -2582589227376332609}
       _typeQualifiedName: DialogueTextNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
       connections:
       - fieldName: nextNodes
-        node: {fileID: 658057114209618927}
+        node: {fileID: -139774485296518974}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
     - _fieldName: nextNodes
-      _node: {fileID: -3140012249581429740}
+      _node: {fileID: -2582589227376332609}
       _typeQualifiedName: DialogueBaseNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
-      connections: []
+      connections:
+      - fieldName: previousNode
+        node: {fileID: 8869301363328838000}
+        reroutePoints: []
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
-  identityType: 0
-  message: test03
+  identityType: 1
+  message: Qui es-tu ?
+  singleRead: 1
   hasGameActions: 0
+  GameActionsList: []
   hasRequirements: 0
---- !u!114 &-2099776929169632045
+--- !u!114 &-139774485296518974
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -102,32 +112,35 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
-  m_Name: Chercher
+  m_Name: Bienvenue chez Game In
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -40, y: 648}
+  position: {x: -792, y: 72}
   ports:
     keys:
     - previousNode
     - nextNodes
     values:
     - _fieldName: previousNode
-      _node: {fileID: -2099776929169632045}
+      _node: {fileID: -139774485296518974}
       _typeQualifiedName: DialogueTextNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
-      connections:
-      - fieldName: nextNodes
-        node: {fileID: 658057114209618927}
-        reroutePoints: []
+      connections: []
       _direction: 0
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
     - _fieldName: nextNodes
-      _node: {fileID: -2099776929169632045}
+      _node: {fileID: -139774485296518974}
       _typeQualifiedName: DialogueBaseNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
-      connections: []
+      connections:
+      - fieldName: previousNode
+        node: {fileID: -2582589227376332609}
+        reroutePoints: []
+      - fieldName: previousNode
+        node: {fileID: 1508310202377379228}
+        reroutePoints: []
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
@@ -135,8 +148,10 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 0
-  message: 
+  message: Salut, bienvenue chez Game In.
+  singleRead: 0
   hasGameActions: 0
+  GameActionsList: []
   hasRequirements: 0
 --- !u!114 &11400000
 MonoBehaviour:
@@ -148,20 +163,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4c135d5abc97ad74e959ab5b6aa5d6eb, type: 3}
-  m_Name: New DialogueGraph
+  m_Name: GameIn Sophie Maleval DialogueGraph
   m_EditorClassIdentifier: 
   nodes:
-  - {fileID: 658057114209618927}
-  - {fileID: 8655858668868067979}
-  - {fileID: -3140012249581429740}
-  - {fileID: -8340661608666029046}
-  - {fileID: -2099776929169632045}
-  ID: -1
-  displayName: Test
-  description: Test
-  hasExitNode: 1
-  exitNodeText: Goodbye
---- !u!114 &658057114209618927
+  - {fileID: -139774485296518974}
+  - {fileID: -2582589227376332609}
+  - {fileID: 1508310202377379228}
+  - {fileID: 8869301363328838000}
+  - {fileID: -5038959784193652938}
+  - {fileID: 8499048538454508534}
+  displayName: Sophie Maleval Dialogue
+  description: "Dialogue G\xE9n\xE9rique Pr\xE9sentation Sophie"
+  mainNodeParent: {fileID: -139774485296518974}
+--- !u!114 &1508310202377379228
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -171,84 +185,80 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
-  m_Name: RPG Dialogue Text
+  m_Name: Je dois y aller
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -760, y: -8}
+  position: {x: -24, y: 264}
   ports:
     keys:
     - previousNode
     - nextNodes
     values:
     - _fieldName: previousNode
-      _node: {fileID: 658057114209618927}
-      _typeQualifiedName: DialogueTextNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      connections: []
-      _direction: 0
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: nextNodes
-      _node: {fileID: 658057114209618927}
-      _typeQualifiedName: DialogueBaseNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      connections:
-      - fieldName: previousNode
-        node: {fileID: 8655858668868067979}
-        reroutePoints: []
-      - fieldName: previousNode
-        node: {fileID: -3140012249581429740}
-        reroutePoints: []
-      - fieldName: previousNode
-        node: {fileID: -8340661608666029046}
-        reroutePoints: []
-      - fieldName: previousNode
-        node: {fileID: -2099776929169632045}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-  previousNode: {fileID: 0}
-  nextNodes: {fileID: 0}
-  identityType: 0
-  message: test 01
-  hasGameActions: 0
-  hasRequirements: 0
---- !u!114 &8655858668868067979
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
-  m_Name: Test
-  m_EditorClassIdentifier: 
-  graph: {fileID: 11400000}
-  position: {x: -40, y: -536}
-  ports:
-    keys:
-    - previousNode
-    - nextNodes
-    values:
-    - _fieldName: previousNode
-      _node: {fileID: 8655858668868067979}
+      _node: {fileID: 1508310202377379228}
       _typeQualifiedName: DialogueTextNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
       connections:
       - fieldName: nextNodes
-        node: {fileID: 658057114209618927}
+        node: {fileID: -139774485296518974}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
     - _fieldName: nextNodes
-      _node: {fileID: 8655858668868067979}
+      _node: {fileID: 1508310202377379228}
+      _typeQualifiedName: DialogueBaseNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: previousNode
+        node: {fileID: 8499048538454508534}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  previousNode: {fileID: 0}
+  nextNodes: {fileID: 0}
+  identityType: 1
+  message: Je dois y aller.
+  singleRead: 0
+  hasGameActions: 0
+  GameActionsList: []
+  hasRequirements: 0
+--- !u!114 &8499048538454508534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
+  m_Name: A plus tard
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 488, y: 264}
+  ports:
+    keys:
+    - previousNode
+    - nextNodes
+    values:
+    - _fieldName: previousNode
+      _node: {fileID: 8499048538454508534}
+      _typeQualifiedName: DialogueTextNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: nextNodes
+        node: {fileID: 1508310202377379228}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: nextNodes
+      _node: {fileID: 8499048538454508534}
       _typeQualifiedName: DialogueBaseNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
       connections: []
@@ -259,6 +269,62 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 0
-  message: test02
+  message: "\xC0 plus tard !"
+  singleRead: 0
   hasGameActions: 0
+  GameActionsList: []
+  hasRequirements: 0
+--- !u!114 &8869301363328838000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
+  m_Name: Je suis Sophie
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 456, y: -40}
+  ports:
+    keys:
+    - previousNode
+    - nextNodes
+    values:
+    - _fieldName: previousNode
+      _node: {fileID: 8869301363328838000}
+      _typeQualifiedName: DialogueTextNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: nextNodes
+        node: {fileID: -2582589227376332609}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: nextNodes
+      _node: {fileID: 8869301363328838000}
+      _typeQualifiedName: DialogueBaseNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: previousNode
+        node: {fileID: -5038959784193652938}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  previousNode: {fileID: 0}
+  nextNodes: {fileID: 0}
+  identityType: 0
+  message: "Je suis Sophie Maleval, je suis Cheffe de Projet au sein de l'association.
+    J'accompagne les cr\xE9ateurs de projets vid\xE9oludiques \xE0 l'incubateur de
+    la Plaine Image dans la cr\xE9ation de leurs studios et dans l'\xE9laboration
+    de leurs jeux. "
+  singleRead: 0
+  hasGameActions: 0
+  GameActionsList: []
   hasRequirements: 0

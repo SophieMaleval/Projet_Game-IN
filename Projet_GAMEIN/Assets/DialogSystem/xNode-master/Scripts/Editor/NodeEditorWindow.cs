@@ -122,7 +122,7 @@ namespace XNodeEditor {
         /// <summary> Create editor window </summary>
         public static NodeEditorWindow Init() {
             NodeEditorWindow w = CreateInstance<NodeEditorWindow>();
-            w.titleContent = new GUIContent("RPG Builder Dialogue");
+            w.titleContent = new GUIContent("Allosius Dev Builder Dialogue");
             w.wantsMouseMove = true;
             w.Show();
             return w;
@@ -206,7 +206,7 @@ namespace XNodeEditor {
         public static NodeEditorWindow Open(XNode.NodeGraph graph) {
             if (!graph) return null;
 
-            NodeEditorWindow w = GetWindow(typeof(NodeEditorWindow), false, "RPG Builder Dialogue", true) as NodeEditorWindow;
+            NodeEditorWindow w = GetWindow(typeof(NodeEditorWindow), false, "Allosius Dev Builder Dialogue", true) as NodeEditorWindow;
             w.wantsMouseMove = true;
             w.graph = graph;
 

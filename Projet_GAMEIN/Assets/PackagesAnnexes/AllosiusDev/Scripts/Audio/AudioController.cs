@@ -308,7 +308,7 @@ namespace AllosiusDev
                 source.SetSoundToSource(_job.data);
                 source.Play();
 
-                Debug.Log("Play Sound " + _job.data.name);
+                Log("Play Sound " + _job.data.name);
             }
 
             private void PlayOneShotSound(AudioJob _job)
@@ -343,12 +343,12 @@ namespace AllosiusDev
                 source.SetSoundToSource(_job.data);
                 source.PlayOneShot(_job.data.Clip);
 
-                Debug.Log("Play One Shot Sound " + _job.data.name);
+                Log("Play One Shot Sound " + _job.data.name);
             }
 
             private void StopSound(AudioJob _job)
             {
-                Debug.Log("Stop Sound " + _job.data.name);
+                Log("Stop Sound " + _job.data.name);
 
                 foreach (AudioSource audioSource in Instance.audioSources)
                 {

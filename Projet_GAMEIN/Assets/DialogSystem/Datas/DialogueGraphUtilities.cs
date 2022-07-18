@@ -5,7 +5,7 @@ using XNode;
 #if UNITY_EDITOR
 using XNodeEditor;
 
-public static class RPGDialogueGraphUtilities
+public static class DialogueGraphUtilities
 {
     public static Color getBackgroundColor(NodeEditor editor)
     {
