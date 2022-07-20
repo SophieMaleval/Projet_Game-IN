@@ -52,6 +52,8 @@ public class ChangeScene : MonoBehaviour
 
         if(player != null && !PM.OnScooter)
         {
+            Debug.Log("Player Change Scene");
+
             PM.StartActivity();
             PM.PlayerChangeScene = true ;
             PM.PlayerNeedInitialePosition = false ;
@@ -72,6 +74,7 @@ public class ChangeScene : MonoBehaviour
             }
             //PM.GetComponent<PlayerScript>().PreviousSceneName = SceneManager.GetActiveScene().name;
             PM.GetComponent<PlayerScript>().PreviousSceneName = GameCore.Instance.CurrentScene;
+            Debug.Log(PM.GetComponent<PlayerScript>().PreviousSceneName.name + " " + GameCore.Instance.CurrentScene.name);
 
             if (sfxDoorOpening != null)
             {

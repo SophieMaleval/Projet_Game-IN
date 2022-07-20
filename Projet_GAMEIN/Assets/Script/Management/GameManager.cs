@@ -22,11 +22,17 @@ public class GameManager : Singleton<GameManager>
 
     public GameCanvasManager gameCanvasManager { get; set; }
 
+    public QuestList questManager { get; protected set; }
+
     #endregion
 
     #region UnityInspector
 
     [SerializeField] private SamplableLibrary dialoguesLibrary;
+
+    [SerializeField] private QuestList questManagerPrefab;
+
+    [Space]
 
     public List<int> ChoiceInCategorie;
 
@@ -92,6 +98,9 @@ public class GameManager : Singleton<GameManager>
     public void InitGame()
     {
         Debug.Log("Init");
+
+        QuestList questList = Instantiate(questManagerPrefab, transform);
+        questManager = questList;
 
         ResetPlayerPrefsValues();
 
@@ -211,6 +220,7 @@ public class GameManager : Singleton<GameManager>
 
             gameCanvasManager.inventory = InventoryUIInstatiate.GetComponent<InventoryScript>();
             gameCanvasManager.questManager = InventoryUIInstatiate.GetComponentInChildren<QuestSys>();
+            gameCanvasManager.questUi = gameCanvasManager.inventory.QuestUi;
 
             gameCanvasManager.dialogCanvas = DialogueUIInstatiate.GetComponent<DialogueDisplayerController>();
             gameCanvasManager.newDialogCanvas = NewDialogueUIInstantiate.GetComponent<DialogueDisplayUI>();

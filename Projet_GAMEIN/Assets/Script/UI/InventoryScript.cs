@@ -18,6 +18,9 @@ public class InventoryScript : MonoBehaviour
     #region Properties
 
     public PlayerScript PlayerScript { get; set; }
+
+    public QuestUI QuestUi => questUi;
+
     public PopUpManager PopUpManager => popUpManager;
 
     #endregion
@@ -39,6 +42,8 @@ public class InventoryScript : MonoBehaviour
     [SerializeField] private TextMeshProUGUI InventoryTitle ;
     [SerializeField] private TextMeshProUGUI MapTitle ;
     //public List<Image> InventoryDisplayer ;
+
+    [SerializeField] private QuestUI questUi;
 
     [SerializeField] private RectTransform SettingPanel ;
     [SerializeField] private RectTransform ControlsPanel;

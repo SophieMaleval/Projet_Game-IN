@@ -56,6 +56,8 @@ public class TLManager : MonoBehaviour
     }
     void StepChecker()
     {
+        Debug.Log("Step Checker");
+
         if (questSys.niveau == level)
         {
             inQuest = true;

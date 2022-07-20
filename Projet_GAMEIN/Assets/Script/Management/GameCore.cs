@@ -29,7 +29,7 @@ public class GameCore : Singleton<GameCore>
     {
         base.Awake();
 
-        if (GameManager.Instance.player != null)
+        if (GameManager.Instance.player != null && GameManager.Instance.player.PreviousSceneName == null)
         {
             GameManager.Instance.player.PreviousSceneName = SessionController.Instance.Game.CharacterCustomerScene;
         }
