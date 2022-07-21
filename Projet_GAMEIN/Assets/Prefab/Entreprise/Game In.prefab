@@ -129,7 +129,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cc3bf6b2dd6fd34e9344d6b2fc5a0eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NameScene: Game In
   sceneDataToLoad: {fileID: 11400000, guid: 60045f17baef43d4a9c2ea7cdf7c8517, type: 2}
   sfxDoorOpening: {fileID: 11400000, guid: 940b7e394eca4da448cb1021c550e636, type: 2}
   PlayerChangeScene: 0
@@ -237,7 +236,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8132852570197664909}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.35, y: -0.6, z: 0}
+  m_LocalPosition: {x: -1.94, y: -1.04, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8132852570327134253}
@@ -257,7 +256,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.028431416, y: -0.74268043}
+  m_Offset: {x: 0.028431416, y: -0.41}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -289,6 +288,15 @@ MonoBehaviour:
   TableauPAHighlighted: {fileID: 21300000, guid: 0f30f67c38760274eada8d2e0078d9c7,
     type: 3}
   CanProgress: 0
+  gameActions:
+    actionsList:
+    - actionType: 2
+      questToAdd: {fileID: 0}
+      questAssociated: {fileID: 11400000, guid: e62da928601dc8545b2e1b2042a10cbb,
+        type: 2}
+      questStepToComplete: {fileID: 11400000, guid: 29f07fcdb74ec7d4389cd5cd8ff34e23,
+        type: 2}
+      ScooterPopUpImg: {fileID: 0}
 --- !u!114 &1587952082818942013
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -310,7 +318,7 @@ MonoBehaviour:
   interactible: {fileID: 0}
   talkQuest: {fileID: 0}
   PannelAnnonceGestion: {fileID: 0}
-  canIsDestroyed: 1
+  canIsDestroyed: 0
 --- !u!1 &8132852570327134254
 GameObject:
   m_ObjectHideFlags: 0

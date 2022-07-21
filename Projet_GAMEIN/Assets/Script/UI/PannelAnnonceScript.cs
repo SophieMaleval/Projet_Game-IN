@@ -30,6 +30,10 @@ public class PannelAnnonceScript : MonoBehaviour
     [Header ("Gestion Code")]
     [HideInInspector] public bool CanProgress = false ;
 
+    [Space]
+
+    [SerializeField] GameActions gameActions;
+
     #endregion
 
     #region Behaviour
@@ -63,7 +67,15 @@ public class PannelAnnonceScript : MonoBehaviour
                 BoardAnnonce.InfoTableau = InformationsAnnonces ;
                 BoardAnnonce.SwitchTogglePannelDisplay();
 
-                if(CanProgress) GameManager.Instance.gameCanvasManager.questManager.Progression() ;
+                if (CanProgress)
+                {
+                    if (GameManager.Instance.gameCanvasManager.questManager != null)
+                    {
+                        GameManager.Instance.gameCanvasManager.questManager.Progression();
+                    }
+
+                    gameActions.ExecuteGameActions();
+                }
             }
 
             if (PlayerScript.PlayerAsInterract && BoardAnnonce.gameObject.activeSelf == true && InventoryPanel.activeSelf == false)

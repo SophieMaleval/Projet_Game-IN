@@ -48,6 +48,7 @@ public class TalkQuest : MonoBehaviour
             {
                 if(!ScriptPlayer.ItemChecker(item))
                 {
+                    Debug.Log("Add Item");
                     ScriptPlayer.AjoutInventaire(item);  
                     if(GameManager.Instance.gameCanvasManager.inventory.PopUpManager != null) GameManager.Instance.gameCanvasManager.inventory.PopUpManager.CreatePopUpItem(item, true);
                 } else {

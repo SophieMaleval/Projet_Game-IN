@@ -45,11 +45,53 @@ public class DialogueGraph : NodeGraph {
         }
     }
 
+    public DialogueTextNode GetRequiredNodes (DialogueTextNode node)
+    {
+        if (node.hasRequirements)
+        {
+            if (node.gameRequirements.ExecuteGameRequirements())
+                 return node;
+        }
+        else
+        {
+             return node;
+        }
+
+        return null;
+    }
+
     public IEnumerable<DialogueTextNode> GetAllChildren(DialogueTextNode parentNode)
     {
         foreach (DialogueTextNode child in parentNode.GetOutputsPorts())
         {
-            yield return child;
+            if (child.hasRequirements)
+            {
+                if (child.gameRequirements.ExecuteGameRequirements())
+                    yield return child;
+            }
+            else
+            {
+                yield return child;
+            }
+        }
+    }
+
+    public IEnumerable<DialogueTextNode> GetPlayerChoisingChildren()
+    {
+        foreach (DialogueTextNode node in startNodes)
+        {
+            if (node.identityType == DialogueTextNode.IdentityType.Player)
+            {
+                if (node.singleRead == false)
+                {
+                    yield return node;
+                }
+                else if (node.singleRead && node.GetAlreadyRead() == false)
+                {
+                    yield return node;
+                }
+
+            }
         }
     }
 
@@ -72,6 +114,29 @@ public class DialogueGraph : NodeGraph {
         }
     }
 
+    public IEnumerable<DialogueTextNode> GetAiChildren()
+    {
+        foreach (DialogueTextNode node in startNodes)
+        {
+            DialogueTextNode nodeChecked = GetRequiredNodes(node);
+            if (nodeChecked != null)
+            {
+                if (node.identityType == DialogueTextNode.IdentityType.NPC)
+                {
+                    if (node.singleRead == false)
+                    {
+                        yield return node;
+                    }
+                    else if (node.singleRead && node.GetAlreadyRead() == false)
+                    {
+                        yield return node;
+                    }
+                }
+            }
+
+        }
+    }
+
     public IEnumerable<DialogueTextNode> GetAiChildren(DialogueTextNode currentNode)
     {
         foreach (DialogueTextNode node in GetAllChildren(currentNode))
@@ -89,5 +154,7 @@ public class DialogueGraph : NodeGraph {
             }
         }
     }
+
+    
 
 }

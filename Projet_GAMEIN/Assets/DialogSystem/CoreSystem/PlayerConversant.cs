@@ -12,7 +12,6 @@ public class PlayerConversant : MonoBehaviour
     PlayerScript playerScript;
 
     DialogueGraph currentDialog;
-    DialogueTextNode currentNode = null;
 
     NpcConversant currentConversant = null;
 
@@ -21,6 +20,10 @@ public class PlayerConversant : MonoBehaviour
     #endregion
 
     #region Properties
+
+    public DialogueTextNode currentNode { get; set; }
+
+    public DialogueGraph CurrentDialog => currentDialog;
 
     public NpcConversant CurrentConversant => currentConversant;
 
@@ -41,6 +44,8 @@ public class PlayerConversant : MonoBehaviour
 
     public void StartDialog(NpcConversant conversant, DialogueGraph dialogue)
     {
+        dialogue.SetStartNodes();
+
         playerScript.GetComponent<PlayerMovement>().StartActivity();
 
         playerScript.PlayerAsInterract = false;
@@ -48,9 +53,9 @@ public class PlayerConversant : MonoBehaviour
 
         currentConversant = conversant;
         currentDialog = dialogue;
-        currentNode = (DialogueTextNode)currentDialog.GetRootNode();
+        //currentNode = (DialogueTextNode)currentDialog.GetRootNode();
 
-        onConversationUpdated();
+        SetNewCurrentNode();
     }
 
     public bool IsActive()
@@ -95,7 +100,7 @@ public class PlayerConversant : MonoBehaviour
     {
         if(currentNode.hasGameActions)
         {
-            ExecuteGameAction();
+            currentNode.gameActions.ExecuteGameActions();
         }
 
         currentNode.SetAlreadyReadValue(true);
@@ -106,18 +111,7 @@ public class PlayerConversant : MonoBehaviour
             return;
         }
 
-        int numPlayerResponses = currentDialog.GetPlayerChoisingChildren(currentNode).Count();
-        if (numPlayerResponses > 0)
-        {
-            isChoosing = true;
-            onConversationUpdated();
-            return;
-        }
-
-        DialogueTextNode[] children = currentDialog.GetAiChildren(currentNode).ToArray();
-        int randomIndex = UnityEngine.Random.Range(0, children.Count());
-        currentNode = children[randomIndex];
-        onConversationUpdated();
+        SetNewCurrentNode();
     }
 
     public bool HasNext()
@@ -146,27 +140,43 @@ public class PlayerConversant : MonoBehaviour
        
     }
 
-    private void ExecuteGameAction()
+    private void SetNewCurrentNode()
     {
-        if (currentNode != null && currentNode.GameActionsList.Count > 0)
+        int numPlayerResponses = 0;
+
+        if (currentNode == null)
         {
-            DialogueTextNode newNode = null;
-
-            foreach (var item in currentNode.GameActionsList)
-            {
-                if (item.actionType == ActionType.ReturnMainNodeDialogue)
-                {
-                    newNode = (DialogueTextNode)item.ExecuteReturnMainNodeDialogueAction(currentDialog);
-                }
-
-            }
-
-            if(newNode != null)
-            {
-                currentNode = newNode;
-            }
+            numPlayerResponses = currentDialog.GetPlayerChoisingChildren().Count();
         }
+        else
+        {
+            numPlayerResponses = currentDialog.GetPlayerChoisingChildren(currentNode).Count();
+        }
+        
+        if (numPlayerResponses > 0)
+        {
+            isChoosing = true;
+            onConversationUpdated();
+            return;
+        }
+
+        DialogueTextNode[] children = null;
+
+        if (currentNode == null)
+        {
+           children = currentDialog.GetAiChildren().ToArray();
+        }
+        else
+        {
+            children = currentDialog.GetAiChildren(currentNode).ToArray();
+        }
+            
+        int randomIndex = UnityEngine.Random.Range(0, children.Count());
+        currentNode = children[randomIndex];
+        onConversationUpdated();
     }
+
+    
 
     #endregion
 }

@@ -120,6 +120,8 @@ public class QuestSys : MonoBehaviour
     //gestion progression des niveaux en jeu
     public void Progression()
     {
+        Debug.Log("Progression");
+
         globalSteps++;
         if (etape > quest[niveau].questGoal.Count - 2)
         {

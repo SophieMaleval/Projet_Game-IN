@@ -203,11 +203,53 @@ namespace XNode {
             else return port;
         }
 
+        public List<Node> GetOutputsPorts()
+        {
+            List<Node> nodesChildren = new List<Node>();
+
+            foreach (var item in Ports)
+            {
+                if (item.direction == NodePort.IO.Output)
+                {
+                    //Debug.Log(item.fieldName + " ");
+                    for (int i = 0; i < item.ConnectionCount; i++)
+                    {
+                        //Debug.Log(item.GetConnection(i).fieldName + " " + item.GetConnection(i).node.name);
+                        nodesChildren.Add(item.GetConnection(i).node);
+                    }
+                }
+
+            }
+
+            return nodesChildren;
+        }
+
         /// <summary> Returns input port which matches fieldName </summary>
         public NodePort GetInputPort(string fieldName) {
             NodePort port = GetPort(fieldName);
             if (port == null || port.direction != NodePort.IO.Input) return null;
             else return port;
+        }
+
+        public List<Node> GetInputsPorts()
+        {
+            List<Node> nodesChildren = new List<Node>();
+
+            foreach (var item in Ports)
+            {
+                if (item.direction == NodePort.IO.Input)
+                {
+                    //Debug.Log(item.fieldName + " ");
+                    for (int i = 0; i < item.ConnectionCount; i++)
+                    {
+                        //Debug.Log(item.GetConnection(i).fieldName + " " + item.GetConnection(i).node.name);
+                        nodesChildren.Add(item.GetConnection(i).node);
+                    }
+                }
+
+            }
+
+            return nodesChildren;
         }
 
         /// <summary> Returns port which matches fieldName </summary>

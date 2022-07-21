@@ -12,6 +12,8 @@ namespace XNode {
         [SerializeField] public List<Node> nodes = new List<Node>();
 
 
+        public List<Node> startNodes { get; set; }
+
         public Node GetRootNode()
         {
             return nodes[0];
@@ -24,7 +26,20 @@ namespace XNode {
 
         public void OpenGraph()
         {
+            //Debug.Log("Open Graph");
+            SetStartNodes();
+        }
 
+        public void SetStartNodes()
+        {
+            startNodes.Clear();
+            for (int i = 0; i < nodes.Count; i++)
+            {
+                if (nodes[i].GetInputsPorts().Count == 0)
+                {
+                    startNodes.Add(nodes[i]);
+                }
+            }
         }
 
         /// <summary> Add a node to the graph by type </summary>

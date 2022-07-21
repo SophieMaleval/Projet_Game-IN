@@ -31,10 +31,10 @@ public class DialogueTextNode : Node
     public bool singleRead;
 
 	public bool hasGameActions;
-	public List<GameAction> GameActionsList = new List<GameAction>();
+    public GameActions gameActions;
 	
 	public bool hasRequirements;
-    //public List<RequirementsManager.RequirementDATA> RequirementList = new List<RequirementsManager.RequirementDATA>();
+    public GameRequirements gameRequirements;
 
     //public bool showSettings;
     //public bool viewedEndless = true, clickedEndless = true;
@@ -56,27 +56,6 @@ public class DialogueTextNode : Node
     public void SetAlreadyReadValue(bool value)
     {
         alreadyRead = value;
-    }
-
-    public List<Node> GetOutputsPorts()
-    {
-        List<Node> nodesChildren = new List<Node>();
-
-        foreach (var item in Ports)
-        {
-            if(item.direction == NodePort.IO.Output)
-            {
-                //Debug.Log(item.fieldName + " ");
-                for (int i = 0; i < item.ConnectionCount; i++)
-                {
-                    //Debug.Log(item.GetConnection(i).fieldName + " " + item.GetConnection(i).node.name);
-                    nodesChildren.Add(item.GetConnection(i).node);
-                }
-            }
-            
-        }
-
-        return nodesChildren;
     }
 
 	public void GetPorts()
@@ -101,6 +80,8 @@ public class DialogueTextNode : Node
 		// After you've gotten your input values, you can perform your calculations and return a value
 		return previousNode;
 	}
+
+    
 
     #endregion
 }
