@@ -1,0 +1,355 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8301186320615673822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
+  m_Name: "Qui \xEAtes-vous ?"
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 2312, y: -328}
+  ports:
+    keys:
+    - previousNode
+    - nextNodes
+    values:
+    - _fieldName: previousNode
+      _node: {fileID: -8301186320615673822}
+      _typeQualifiedName: DialogueTextNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: nextNodes
+        node: {fileID: -1219618056866951188}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: nextNodes
+      _node: {fileID: -8301186320615673822}
+      _typeQualifiedName: DialogueBaseNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: previousNode
+        node: {fileID: 7890605716931660442}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  previousNode: {fileID: 0}
+  nextNodes: {fileID: 0}
+  identityType: 1
+  message: "Qui \xEAtes-vous ?\n"
+  singleRead: 1
+  hasGameActions: 0
+  gameActions:
+    actionsList: []
+  hasRequirements: 0
+  gameRequirements:
+    requirementsList: []
+--- !u!114 &-6093208089526505406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
+  m_Name: Je dois y aller.
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 2312, y: 40}
+  ports:
+    keys:
+    - previousNode
+    - nextNodes
+    values:
+    - _fieldName: previousNode
+      _node: {fileID: -6093208089526505406}
+      _typeQualifiedName: DialogueTextNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: nextNodes
+        node: {fileID: -1219618056866951188}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: nextNodes
+      _node: {fileID: -6093208089526505406}
+      _typeQualifiedName: DialogueBaseNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: previousNode
+        node: {fileID: -1417703090059796293}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  previousNode: {fileID: 0}
+  nextNodes: {fileID: 0}
+  identityType: 1
+  message: Je dois y aller.
+  singleRead: 1
+  hasGameActions: 0
+  gameActions:
+    actionsList: []
+  hasRequirements: 0
+  gameRequirements:
+    requirementsList: []
+--- !u!114 &-1417703090059796293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
+  m_Name: On se voit plus tard !
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 2792, y: 40}
+  ports:
+    keys:
+    - previousNode
+    - nextNodes
+    values:
+    - _fieldName: previousNode
+      _node: {fileID: -1417703090059796293}
+      _typeQualifiedName: DialogueTextNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: nextNodes
+        node: {fileID: -6093208089526505406}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: nextNodes
+      _node: {fileID: -1417703090059796293}
+      _typeQualifiedName: DialogueBaseNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  previousNode: {fileID: 0}
+  nextNodes: {fileID: 0}
+  identityType: 0
+  message: On se voit plus tard !
+  singleRead: 0
+  hasGameActions: 0
+  gameActions:
+    actionsList: []
+  hasRequirements: 0
+  gameRequirements:
+    requirementsList: []
+--- !u!114 &-1219618056866951188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
+  m_Name: Bonjour ! Bienvenue !
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 1720, y: -168}
+  ports:
+    keys:
+    - previousNode
+    - nextNodes
+    values:
+    - _fieldName: previousNode
+      _node: {fileID: -1219618056866951188}
+      _typeQualifiedName: DialogueTextNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: nextNodes
+      _node: {fileID: -1219618056866951188}
+      _typeQualifiedName: DialogueBaseNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: previousNode
+        node: {fileID: -8301186320615673822}
+        reroutePoints: []
+      - fieldName: previousNode
+        node: {fileID: -6093208089526505406}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  previousNode: {fileID: 0}
+  nextNodes: {fileID: 0}
+  identityType: 0
+  message: Bonjour ! Bienvenue !
+  singleRead: 0
+  hasGameActions: 0
+  gameActions:
+    actionsList: []
+  hasRequirements: 0
+  gameRequirements:
+    requirementsList: []
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c135d5abc97ad74e959ab5b6aa5d6eb, type: 3}
+  m_Name: GameIn Manon Lesire DialogueGraph
+  m_EditorClassIdentifier: 
+  nodes:
+  - {fileID: -1219618056866951188}
+  - {fileID: -8301186320615673822}
+  - {fileID: -6093208089526505406}
+  - {fileID: 7890605716931660442}
+  - {fileID: 7775371662095286920}
+  - {fileID: -1417703090059796293}
+  displayName: Manon Lesire Dialogue
+  description: "Dialogue G\xE9n\xE9rique Pr\xE9sentation Manon"
+  mainNodeParent: {fileID: -1219618056866951188}
+--- !u!114 &7775371662095286920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
+  m_Name: "... et du Game Camp France \xE9galement oui !"
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 3336, y: -344}
+  ports:
+    keys:
+    - previousNode
+    - nextNodes
+    values:
+    - _fieldName: previousNode
+      _node: {fileID: 7775371662095286920}
+      _typeQualifiedName: DialogueTextNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: nextNodes
+        node: {fileID: 7890605716931660442}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: nextNodes
+      _node: {fileID: 7775371662095286920}
+      _typeQualifiedName: DialogueBaseNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  previousNode: {fileID: 0}
+  nextNodes: {fileID: 0}
+  identityType: 0
+  message: "... et du Game Camp France \xE9galement oui ! J'\xE9tais s\xFBre que
+    tu en avais d\xE9j\xE0 entendu parler. C'est le grand rassemblement annuel des
+    pros du jeu vid\xE9o. On l'a cr\xE9\xE9 avec le Syndicat National du Jeu Vid\xE9o
+    en 2017."
+  singleRead: 0
+  hasGameActions: 1
+  gameActions:
+    actionsList:
+    - actionType: 0
+      questToAdd: {fileID: 0}
+      questAssociated: {fileID: 0}
+      questStepToComplete: {fileID: 0}
+      ScooterPopUpImg: {fileID: 0}
+      itemToAdd: {fileID: 0}
+      itemToRemove: {fileID: 0}
+  hasRequirements: 0
+  gameRequirements:
+    requirementsList: []
+--- !u!114 &7890605716931660442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
+  m_Name: Je m'occupe de toute la communication de Game IN
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 2824, y: -328}
+  ports:
+    keys:
+    - previousNode
+    - nextNodes
+    values:
+    - _fieldName: previousNode
+      _node: {fileID: 7890605716931660442}
+      _typeQualifiedName: DialogueTextNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: nextNodes
+        node: {fileID: -8301186320615673822}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: nextNodes
+      _node: {fileID: 7890605716931660442}
+      _typeQualifiedName: DialogueBaseNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: previousNode
+        node: {fileID: 7775371662095286920}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  previousNode: {fileID: 0}
+  nextNodes: {fileID: 0}
+  identityType: 0
+  message: "Manon Lesire ! Je m'occupe de toute la communication de Game IN : promotion
+    des actions de l'association, des d\xE9marches collectives, cr\xE9er du lien
+    entre adh\xE9rents, faciliter les \xE9changes, g\xE9rer nos r\xE9seaux sociaux,
+    cr\xE9er du contenu ..."
+  singleRead: 0
+  hasGameActions: 0
+  gameActions:
+    actionsList: []
+  hasRequirements: 0
+  gameRequirements:
+    requirementsList: []
