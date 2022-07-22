@@ -19,7 +19,11 @@ public class GameActions
     {
         #region UnityInspector
 
+        [Header("Generals Properties")]
         public ActionType actionType;
+
+        public bool hasCondition;
+        public List<DialogueTextNode> nodesRequiredToRead = new List<DialogueTextNode>();
 
         [Space]
         [Header("Add Quest Properties")]
@@ -50,8 +54,28 @@ public class GameActions
 
         #region Behaviour
 
+        public bool CheckCondition()
+        {
+            if(hasCondition)
+            {
+                if(nodesRequiredToRead.Count > 0)
+                {
+                    for (int i = 0; i < nodesRequiredToRead.Count; i++)
+                    {
+                        if(nodesRequiredToRead[i].GetAlreadyRead() == false)
+                        {
+                            return false;
+                        }
+                    }
+                }
+            }
+
+            return true;
+        }
+
         public Node ExecuteReturnMainNodeDialogueAction(DialogueGraph dialogueGraph)
         {
+            GameManager.Instance.player.GetComponent<PlayerConversant>().currentNode.SetAlreadyReadValue(true);
             return dialogueGraph.mainNodeParent;
         }
 
@@ -74,14 +98,21 @@ public class GameActions
 
         public void ExecuteAddItem()
         {
-            GameManager.Instance.player.AjoutInventaire(itemToAdd);
+            if (!GameManager.Instance.player.ItemChecker(itemToAdd))
+                GameManager.Instance.player.AjoutInventaire(itemToAdd);
             if (GameManager.Instance.gameCanvasManager.inventory.PopUpManager != null) GameManager.Instance.gameCanvasManager.inventory.PopUpManager.CreatePopUpItem(itemToAdd, true);
         }
 
         public void ExecuteRemoveItem()
         {
-            GameManager.Instance.player.RemoveObject(itemToRemove);
+            if (GameManager.Instance.player.ItemChecker(itemToRemove))
+                GameManager.Instance.player.RemoveObject(itemToRemove);
             if (GameManager.Instance.gameCanvasManager.inventory.PopUpManager != null) GameManager.Instance.gameCanvasManager.inventory.PopUpManager.CreatePopUpItem(itemToRemove, false);
+        }
+
+        public void ExecuteLaunchMiniGame()
+        {
+            GameCore.Instance.OpenMinigame();
         }
 
         #endregion
@@ -99,31 +130,37 @@ public class GameActions
 
             foreach (var item in actionsList)
             {
-                if (item.actionType == ActionType.ReturnMainNodeDialogue)
+                if(item.CheckCondition())
                 {
-                    newNode = (DialogueTextNode)item.ExecuteReturnMainNodeDialogueAction(GameManager.Instance.player.GetComponent<PlayerConversant>().CurrentDialog);
+                    if (item.actionType == ActionType.ReturnMainNodeDialogue)
+                    {
+                        newNode = (DialogueTextNode)item.ExecuteReturnMainNodeDialogueAction(GameManager.Instance.player.GetComponent<PlayerConversant>().CurrentDialog);
+                    }
+                    else if (item.actionType == ActionType.AddQuest)
+                    {
+                        item.ExecuteAddQuest(GameManager.Instance.questManager);
+                    }
+                    else if (item.actionType == ActionType.CompleteQuestStep)
+                    {
+                        item.ExecuteCompleteQuestStep(GameManager.Instance.questManager);
+                    }
+                    else if (item.actionType == ActionType.CreatePopupScooter)
+                    {
+                        item.ExecuteCreatePopUpScooter();
+                    }
+                    else if (item.actionType == ActionType.AddItemToInventory)
+                    {
+                        item.ExecuteAddItem();
+                    }
+                    else if (item.actionType == ActionType.RemoveItemToInventory)
+                    {
+                        item.ExecuteRemoveItem();
+                    }
+                    else if (item.actionType == ActionType.LaunchMiniGame)
+                    {
+                        item.ExecuteLaunchMiniGame();
+                    }
                 }
-                else if (item.actionType == ActionType.AddQuest)
-                {
-                    item.ExecuteAddQuest(GameManager.Instance.questManager);
-                }
-                else if (item.actionType == ActionType.CompleteQuestStep)
-                {
-                    item.ExecuteCompleteQuestStep(GameManager.Instance.questManager);
-                }
-                else if (item.actionType == ActionType.CreatePopupScooter)
-                {
-                    item.ExecuteCreatePopUpScooter();
-                }
-                else if (item.actionType == ActionType.AddItemToInventory)
-                {
-                    item.ExecuteAddItem();
-                }
-                else if (item.actionType == ActionType.RemoveItemToInventory)
-                {
-                    item.ExecuteRemoveItem();
-                }
-
             }
 
             if(newNode != null)
@@ -144,4 +181,5 @@ public enum ActionType
     CreatePopupScooter,
     AddItemToInventory,
     RemoveItemToInventory,
+    LaunchMiniGame,
 }

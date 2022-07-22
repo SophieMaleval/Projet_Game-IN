@@ -13,6 +13,9 @@ public class GameCore : Singleton<GameCore>
 
     public AudioData MainMusic => mainMusic;
 
+
+    public Vector2 OldLastMovePlayer { get; set; }
+
     #endregion
 
     #region UnityInspector
@@ -20,6 +23,10 @@ public class GameCore : Singleton<GameCore>
     [SerializeField] private SceneData currentScene;
 
     [SerializeField] private AudioData mainMusic;
+
+
+    [SerializeField] private GameObject MiniGame;
+
 
     #endregion
 
@@ -42,6 +49,17 @@ public class GameCore : Singleton<GameCore>
 
         
         
+    }
+
+    public void OpenMinigame()
+    {
+        if(MiniGame == null)
+        {
+            return;
+        }
+        OldLastMovePlayer = GameManager.Instance.player.GetComponent<PlayerMovement>().GetLastMovePlayer();
+        MiniGame.GetComponent<InstantiationPrefabGame>().npcScript = GameManager.Instance.player.GetComponent<PlayerConversant>().CurrentConversant;
+        MiniGame.SetActive(true);
     }
 
     #endregion

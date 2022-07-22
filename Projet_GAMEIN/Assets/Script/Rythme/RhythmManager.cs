@@ -52,7 +52,9 @@ public class RhythmManager : MonoBehaviour
     public GameObject resultScreen;
     public GameObject DadMaster, dad, gameLauncher, NoteHold;
 
-    [SerializeField] public PNJDialogue PNJCurrent ;
+    public PNJDialogue PNJCurrent ;
+    public NpcConversant npcCurrent;
+
     public PlayerMovement player;
     private Vector2 OldPlayerPosition ;
     public Vector2 PlayerPosition ;
@@ -83,7 +85,12 @@ public class RhythmManager : MonoBehaviour
     IEnumerator MiniGameEnable()
     {
         yield return new WaitForSeconds(0.025f);
-        PNJCurrent.gameObject.SetActive(false);
+        if(PNJCurrent != null)
+            PNJCurrent.gameObject.SetActive(false);
+        if(npcCurrent != null)
+        {
+            npcCurrent.gameObject.SetActive(false);
+        }
         player.StartActivity();          
        // player.GetComponent<PlayerScript>().LunchAnimationFadeIn();
         OldPlayerPosition = player.transform.position ;   
@@ -254,14 +261,19 @@ public class RhythmManager : MonoBehaviour
         SwitchBackCam();
 
 
-        if(PNJCurrent == null)
+        if(PNJCurrent == null && npcCurrent == null)
         {
             player.GetComponent<PlayerScript>().LunchAnimationFadeIn();             
-        } else {
+        } else if(PNJCurrent != null){
             PNJCurrent.TellPlayerLunchFade();
         }                  
         yield return new WaitForSeconds(0.75f);
-        PNJCurrent.gameObject.SetActive(true);
+        if(PNJCurrent != null)
+            PNJCurrent.gameObject.SetActive(true);
+        if(npcCurrent != null)
+        {
+            npcCurrent.gameObject.SetActive(true);
+        }
         player.GetComponent<PlayerScript>().InventoryUIIndestructible.SetActive(true);
         resultScreen.SetActive(false);
         NoteHold.transform.localPosition = new Vector2(NoteHold.transform.localPosition.x, 0);
@@ -269,7 +281,8 @@ public class RhythmManager : MonoBehaviour
         player.transform.position = new Vector2(OldPlayerPosition.x, OldPlayerPosition.y);
 
         // Redonner la même direction qu'avant le mini jeu
-        player.GiveGoodAnimation(PNJCurrent.OldLastMovePlayer);   
+        //player.GiveGoodAnimation(PNJCurrent.OldLastMovePlayer);   
+        player.GiveGoodAnimation(GameCore.Instance.OldLastMovePlayer);
      
 
         //player.GetComponent<PlayerScript>().LunchFadeOut();

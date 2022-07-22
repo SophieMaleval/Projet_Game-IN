@@ -15,7 +15,10 @@ public class PannelAnnonceScript : MonoBehaviour
     private PlayerMovement PlayerMovement;
 
     private bool PannelSetUp = false ;
-    private bool PlayerArroundPannel = false;    
+    private bool PlayerArroundPannel = false;
+
+    private bool hasExecuted;
+
     #endregion
 
     #region UnityInspector
@@ -74,7 +77,14 @@ public class PannelAnnonceScript : MonoBehaviour
                         GameManager.Instance.gameCanvasManager.questManager.Progression();
                     }
 
+                    
+                }
+
+                if (!hasExecuted)
+                {
+                    Debug.Log("Execute Actions");
                     gameActions.ExecuteGameActions();
+                    hasExecuted = true;
                 }
             }
 

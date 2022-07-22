@@ -11,6 +11,8 @@ public class blablabla : MonoBehaviour
     public QuestStepData questStep;
     public QuestTaskData questTask;
 
+    public InteractibleObject item;
+
 
     private void Start()
     {
@@ -43,5 +45,22 @@ public class blablabla : MonoBehaviour
     public void TestCompleteQuestTask()
     {
         questList.CompleteQuestTask(quest, questStep, questTask);
+    }
+
+
+    [ContextMenu("TestAddItem")]
+    public void TestAddItem()
+    {
+        if (!GameManager.Instance.player.ItemChecker(item))
+            GameManager.Instance.player.AjoutInventaire(item);
+        if (GameManager.Instance.gameCanvasManager.inventory.PopUpManager != null) GameManager.Instance.gameCanvasManager.inventory.PopUpManager.CreatePopUpItem(item, true);
+    }
+
+    [ContextMenu("TestRemoveItem")]
+    public void TestRemoveItem()
+    {
+        if (GameManager.Instance.player.ItemChecker(item))
+            GameManager.Instance.player.RemoveObject(item);
+        if (GameManager.Instance.gameCanvasManager.inventory.PopUpManager != null) GameManager.Instance.gameCanvasManager.inventory.PopUpManager.CreatePopUpItem(item, false);
     }
 }

@@ -169,6 +169,7 @@ public class PlayerScript : MonoBehaviour
                 }
             }
         }
+        Debug.Log("ItemChecker : " + ObjectSearch.NameFR + " " + returned);
         return returned;
     }
 

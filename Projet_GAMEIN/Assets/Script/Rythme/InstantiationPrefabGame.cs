@@ -12,10 +12,16 @@ public class InstantiationPrefabGame : MonoBehaviour
 
     #endregion
 
+    #region Properties
+
+    public PNJDialogue PNJScript { get; set; }
+    public NpcConversant npcScript { get; set; }
+
+    #endregion
+
     #region UnityInspector
 
     public GameObject PrefabJeuRythme ;
-    [HideInInspector] public PNJDialogue PNJScript ;
 
     #endregion
 
@@ -30,7 +36,10 @@ public class InstantiationPrefabGame : MonoBehaviour
     private void OnEnable() 
     {
         PrefabInstant =  Instantiate(PrefabJeuRythme, Vector3.zero, Quaternion.identity);
-        PrefabInstant.GetComponentInChildren<RhythmManager>().PNJCurrent = PNJScript ;
+        if(PNJScript != null)
+            PrefabInstant.GetComponentInChildren<RhythmManager>().PNJCurrent = PNJScript ;
+        if(npcScript != null)
+            PrefabInstant.GetComponentInChildren<RhythmManager>().npcCurrent = npcScript ;
         PrefabInstant.GetComponentInChildren<RhythmManager>().DadMaster = this.gameObject ;
         PrefabInstant.transform.SetParent(this.transform);
 
