@@ -69,9 +69,9 @@ public class QuestList : MonoBehaviour
         }
     }
 
-    public bool HasQuest(QuestData quest, bool questMustBeComplete = false)
+    public bool HasQuest(QuestData quest, StateQuestWanted state = StateQuestWanted.None)
     {
-        return GetQuestStatus(quest) != null;
+        return GetQuestStatus(quest, state) != null;
     }
 
     public IEnumerable<QuestStatus> GetStatuses()
@@ -79,15 +79,71 @@ public class QuestList : MonoBehaviour
         return statuses;
     }
 
-    private QuestStatus GetQuestStatus(QuestData quest, bool questMustBeComplete = false)
+    private QuestStatus GetQuestStatus(QuestData quest, StateQuestWanted state = StateQuestWanted.None)
     {
         foreach (QuestStatus status in statuses)
         {
-            if (status.GetQuest() == quest && status.GetQuestCompleted() == questMustBeComplete)
+            if (status.GetQuest() == quest)
             {
-                return status;
+                if(state == StateQuestWanted.None)
+                {
+                    return status;
+                }
+                else if(state == StateQuestWanted.Uncompleted)
+                {
+                    if (status.GetQuestCompleted() == false)
+                    {
+                        return status;
+                    }
+                }
+                else if(state == StateQuestWanted.Completed)
+                {
+                    if(status.GetQuestCompleted() == true)
+                    {
+                        return status;
+                    }
+                }
             }
         }
+        return null;
+    }
+
+    public bool HasQuestStep(QuestData quest, QuestStepData objectiveRef, StateQuestWanted state = StateQuestWanted.None)
+    {
+        QuestStatus status = GetQuestStatus(quest);
+        return GetQuestStepStatus(status, objectiveRef, state) != null;
+    }
+
+    private QuestStepStatus GetQuestStepStatus(QuestStatus status, QuestStepData objectiveRef, StateQuestWanted state = StateQuestWanted.None)
+    {
+        if (status != null)
+        {
+            foreach (QuestStepStatus stepStatus in status.GetQuestStepStatuses())
+            {
+                if (stepStatus.GetQuestStep() == objectiveRef)
+                {
+                    if (state == StateQuestWanted.None)
+                    {
+                        return stepStatus;
+                    }
+                    else if (state == StateQuestWanted.Uncompleted)
+                    {
+                        if (stepStatus.GetStepCompleted() == false)
+                        {
+                            return stepStatus;
+                        }
+                    }
+                    else if (state == StateQuestWanted.Completed)
+                    {
+                        if (stepStatus.GetStepCompleted() == true)
+                        {
+                            return stepStatus;
+                        }
+                    }
+                }
+            }
+        }
+
         return null;
     }
 
