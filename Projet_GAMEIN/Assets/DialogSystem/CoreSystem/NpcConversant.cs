@@ -37,6 +37,13 @@ public class NpcConversant : MonoBehaviour
         InitAnimator();
     }
 
+    void OnEnable()
+    {
+        Debug.Log("NPC Conversant is active");
+
+        InitAnimator();
+    }
+
     private void Update()
     {
         if (PlayerAround && !GameManager.Instance.player.QCMPanelUIIndestructible.activeSelf)

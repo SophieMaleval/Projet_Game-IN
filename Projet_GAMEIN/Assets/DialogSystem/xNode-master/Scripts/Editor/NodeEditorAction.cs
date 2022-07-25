@@ -86,6 +86,7 @@ namespace XNodeEditor {
                             if (e.control) gridSnap = !gridSnap;
 
                             Vector2 mousePos = WindowToGridPosition(e.mousePosition);
+                            //Debug.Log(mousePos);
                             // Move selected nodes with offset
                             for (int i = 0; i < Selection.objects.Length; i++) {
                                 if (Selection.objects[i] is XNode.Node) {

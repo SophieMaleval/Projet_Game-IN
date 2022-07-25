@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 3491493698501698522}
   - component: {fileID: 3491493698501698523}
   - component: {fileID: 3491493698501698521}
-  - component: {fileID: 96329082531820497}
   - component: {fileID: 8421963092378958069}
   m_Layer: 0
   m_Name: Ampli C&P
@@ -119,37 +118,43 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3491493698501698517}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 98d6793d4fbe9ba4f9be12197c747a0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  triggerCol: {fileID: 3491493698501698523}
   "qt\xE9": 0
   DisplayerInventory: {fileID: 0}
   Object: {fileID: 11400000, guid: 476c6f5960426de4db209e16f5e628b7, type: 2}
   questSys: {fileID: 0}
   PlayerScript: {fileID: 0}
---- !u!114 &96329082531820497
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3491493698501698517}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d49e86bb96891b48b1d2c1f3aec8066, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  progressType: 1
-  questSys: {fileID: 0}
-  checker: {fileID: 0}
-  questSync: {fileID: 0}
-  numeroDeQuete: 1
-  etapeDeQuete: 7
-  interactible: {fileID: 0}
-  talkQuest: {fileID: 0}
-  PannelAnnonceGestion: {fileID: 0}
+  gameRequirements:
+    requirementsList:
+    - requirementType: 1
+      questToCheck: {fileID: 0}
+      questCheckedValueWanted: 0
+      questToCheckState: 0
+      questAssociatedToCheck: {fileID: 11400000, guid: e62da928601dc8545b2e1b2042a10cbb,
+        type: 2}
+      questStepToCheck: {fileID: 11400000, guid: 2b0405ef8a3dbe744aafe2df63483c5c,
+        type: 2}
+      questStepCheckedValueWanted: 1
+      questStepToCheckState: 1
+      itemToCheck: {fileID: 0}
+  gameActions:
+    actionsList:
+    - actionType: 2
+      hasCondition: 0
+      nodesRequiredToRead: []
+      questToAdd: {fileID: 0}
+      questAssociated: {fileID: 11400000, guid: e62da928601dc8545b2e1b2042a10cbb,
+        type: 2}
+      questStepToComplete: {fileID: 11400000, guid: 2b0405ef8a3dbe744aafe2df63483c5c,
+        type: 2}
+      ScooterPopUpImg: {fileID: 0}
+      itemToAdd: {fileID: 0}
+      itemToRemove: {fileID: 0}
 --- !u!61 &8421963092378958069
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -31,6 +31,11 @@ public class DialogTrigger : MonoBehaviour
 
     void SwitchCineVCamTarget()
     {
+        if(CineVCam == null)
+        {
+            return;
+        }
+
         CineVCam.Follow = GameManager.Instance.player.transform;
         resetCam = false;
     }
@@ -57,7 +62,10 @@ public class DialogTrigger : MonoBehaviour
         {
             alreadyUsed = true;
             resetCam = true;
-            CineVCam.Follow = npcConversant.transform;
+            if (CineVCam != null)
+            {
+                CineVCam.Follow = npcConversant.transform;
+            }
             npcConversant.StartDialog();
         }
     }

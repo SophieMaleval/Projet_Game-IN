@@ -13,6 +13,10 @@ public class Interactible : MonoBehaviour
 {
     #region Fields
 
+    bool hasCollected;
+
+    bool canCollect = true;
+
     private SpriteRenderer SpriteRend;
 
     private bool PlayerAround = false;
@@ -21,6 +25,8 @@ public class Interactible : MonoBehaviour
     #endregion
 
     #region UnityInspector
+
+    [SerializeField] private Collider2D triggerCol;
 
     public Quantité qté;
     public GameObject DisplayerInventory;
@@ -32,6 +38,12 @@ public class Interactible : MonoBehaviour
 
     //public int code;
     //public int stepCode;
+
+    [Space]
+
+    [SerializeField] GameRequirements gameRequirements;
+
+    [SerializeField] GameActions gameActions;
 
     #endregion
 
@@ -53,7 +65,7 @@ public class Interactible : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         PlayerScript playerScript = other.GetComponent<PlayerScript>();
-        if (playerScript != null)
+        if (playerScript != null && !hasCollected)
         {
             PlayerCanCollectThisObject(true);
             PlayerScript.SwitchInputSprite();
@@ -62,7 +74,27 @@ public class Interactible : MonoBehaviour
 
     private void Update()
     {
-        if(PlayerScript.gameObject.transform.position.x < transform.position.x) PlayerScript.InputSpritePos(false);
+        if (gameRequirements.requirementsList.Count > 0)
+        {
+            canCollect = gameRequirements.ExecuteGameRequirements();
+        }
+
+        if(!canCollect)
+        {
+            if(triggerCol != null)
+            {
+                triggerCol.enabled = false;
+            }
+        }
+        else
+        {
+            if (triggerCol != null)
+            {
+                triggerCol.enabled = true;
+            }
+        }
+
+        if (PlayerScript.gameObject.transform.position.x < transform.position.x) PlayerScript.InputSpritePos(false);
         if(PlayerScript.gameObject.transform.position.x > transform.position.x) PlayerScript.InputSpritePos(true);
         
         if (PlayerAround)
@@ -70,7 +102,15 @@ public class Interactible : MonoBehaviour
             if(PlayerScript.CanCollectObject && PlayerScript.PlayerAsInterract)
             {
                 PlayerScript.PlayerAsInterract = false ;
-                Collected();
+
+               
+
+                if(canCollect)
+                {
+                    Collected();
+                }
+                
+                
                 if(GameManager.Instance.gameCanvasManager.inventory.PopUpManager != null) GameManager.Instance.gameCanvasManager.inventory.PopUpManager.CreatePopUpItem(Object, true);
             }
             else 
@@ -83,11 +123,20 @@ public class Interactible : MonoBehaviour
 
     void Collected()
     {
-        if(qté == Quantité.Single)
+        hasCollected = true;
+
+        if (gameActions.actionsList.Count > 0)
+        {
+            Debug.Log("Execute Actions");
+            gameActions.ExecuteGameActions();
+        }
+
+        if (qté == Quantité.Single)
         {
             PlayerScript.AjoutInventaire(Object);
-            PlayerScript.SwitchInputSprite();       
-            questSys.Progression();
+            PlayerScript.SwitchInputSprite();     
+            if(questSys != null)
+                questSys.Progression();
             //AaP.StrikeThrough();
             Destroy(this.gameObject, 0.05f);    
         }
@@ -113,21 +162,24 @@ public class Interactible : MonoBehaviour
                 {
                     PlayerScript.SwitchInputSprite();
                     Object.AddEntry();
-                    questSys.Progression();
+                    if(questSys != null)
+                        questSys.Progression();
                     Debug.Log("trop cool t'as tout");
                     Destroy(this.gameObject, 0.05f);      
                 }         
             }
             
         }
-                  
+
+        
+
     }
 
 
     private void OnTriggerExit2D(Collider2D other)
     {
         PlayerScript playerScript = other.GetComponent<PlayerScript>();
-        if (playerScript != null)
+        if (playerScript != null && !hasCollected)
         {
             PlayerCanCollectThisObject(false);
             PlayerScript.SwitchInputSprite();

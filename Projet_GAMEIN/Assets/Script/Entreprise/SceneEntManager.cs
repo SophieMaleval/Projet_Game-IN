@@ -11,6 +11,7 @@ public class SceneEntManager : MonoBehaviour
     #region Fields
 
     private PNJDialogue[] pnjs;
+    private NpcConversant[] npcs;
 
     private PlayerMovement PM;
     private GameObject FadeImage ;
@@ -39,6 +40,7 @@ public class SceneEntManager : MonoBehaviour
             PM =  GameManager.Instance.player.GetComponent<PlayerMovement>();
 
             pnjs = FindObjectsOfType<PNJDialogue>();
+            npcs = FindObjectsOfType<NpcConversant>();
 
             if (VolumeFirstCam == null)
             {
@@ -117,6 +119,11 @@ public class SceneEntManager : MonoBehaviour
         {
             pnjs[i].InitAnimator();
         }
+
+        /*for (int i = 0; i < npcs.Length; i++)
+        {
+            npcs[i].InitAnimator();
+        }*/
     }
 
     #endregion

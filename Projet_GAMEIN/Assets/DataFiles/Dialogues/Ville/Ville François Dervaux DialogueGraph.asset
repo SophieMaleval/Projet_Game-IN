@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   showGeneralProperties: 1
   graph: {fileID: 11400000}
-  position: {x: 8, y: 200}
+  position: {x: 1832, y: -264}
   ports:
     keys:
     - previousNode
@@ -72,7 +72,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   showGeneralProperties: 1
   graph: {fileID: 11400000}
-  position: {x: 984, y: 200}
+  position: {x: 2808, y: -264}
   ports:
     keys:
     - previousNode
@@ -106,7 +106,7 @@ MonoBehaviour:
     associ\xE9, L\xE9o Capou !"
   singleRead: 0
   hasGameActions: 1
-  showGameActions: 0
+  showGameActions: 1
   gameActions:
     actionsList:
     - actionType: 0
@@ -136,7 +136,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   showGeneralProperties: 1
   graph: {fileID: 11400000}
-  position: {x: 8, y: 584}
+  position: {x: 1832, y: 344}
   ports:
     keys:
     - previousNode
@@ -168,10 +168,22 @@ MonoBehaviour:
   identityType: 0
   message: Installe toi !
   singleRead: 0
-  hasGameActions: 0
-  showGameActions: 0
+  hasGameActions: 1
+  showGameActions: 1
   gameActions:
-    actionsList: []
+    actionsList:
+    - actionType: 2
+      hasCondition: 1
+      nodesRequiredToRead:
+      - {fileID: 3949031678284559005}
+      questToAdd: {fileID: 0}
+      questAssociated: {fileID: 11400000, guid: e62da928601dc8545b2e1b2042a10cbb,
+        type: 2}
+      questStepToComplete: {fileID: 11400000, guid: b2ef848b0e0e0d84290a73e6dbf4930b,
+        type: 2}
+      ScooterPopUpImg: {fileID: 0}
+      itemToAdd: {fileID: 0}
+      itemToRemove: {fileID: 0}
   hasRequirements: 0
   showGameRequirements: 0
   gameRequirements:
@@ -195,9 +207,12 @@ MonoBehaviour:
   - {fileID: -7473681781276582679}
   - {fileID: -3024362567230942257}
   - {fileID: -627037138826635667}
+  - {fileID: 5795113161418385337}
+  - {fileID: 2348771242085467068}
+  - {fileID: 3949031678284559005}
   displayName: "Fran\xE7ois Dervaux Dialogue"
   description: "Dialogue Pr\xE9sentation Fran\xE7ois Dervaux Ville"
-  mainNodeParent: {fileID: 0}
+  mainNodeParent: {fileID: 410351848926416507}
 --- !u!114 &410351848926416507
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -212,7 +227,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   showGeneralProperties: 1
   graph: {fileID: 11400000}
-  position: {x: -1912, y: 392}
+  position: {x: -40, y: -8}
   ports:
     keys:
     - previousNode
@@ -236,6 +251,9 @@ MonoBehaviour:
         node: {fileID: 8692507302123382572}
         reroutePoints: []
       - fieldName: previousNode
+        node: {fileID: 5795113161418385337}
+        reroutePoints: []
+      - fieldName: previousNode
         node: {fileID: 7639924187425463628}
         reroutePoints: []
       _direction: 1
@@ -255,6 +273,198 @@ MonoBehaviour:
   showGameRequirements: 0
   gameRequirements:
     requirementsList: []
+--- !u!114 &2348771242085467068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
+  m_Name: Ouais j'avoue qu'on en est content,
+  m_EditorClassIdentifier: 
+  showGeneralProperties: 1
+  graph: {fileID: 11400000}
+  position: {x: 1832, y: 40}
+  ports:
+    keys:
+    - previousNode
+    - nextNodes
+    values:
+    - _fieldName: previousNode
+      _node: {fileID: 2348771242085467068}
+      _typeQualifiedName: DialogueTextNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: nextNodes
+        node: {fileID: 5795113161418385337}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: nextNodes
+      _node: {fileID: 2348771242085467068}
+      _typeQualifiedName: DialogueBaseNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: previousNode
+        node: {fileID: 3949031678284559005}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  previousNode: {fileID: 0}
+  nextNodes: {fileID: 0}
+  identityType: 0
+  message: "Ouais j'avoue qu'on en est content, mais \xE7a sonnerait encore mieux
+    si on avait un ampli adapt\xE9 !"
+  singleRead: 0
+  hasGameActions: 0
+  showGameActions: 0
+  gameActions:
+    actionsList: []
+  hasRequirements: 0
+  showGameRequirements: 0
+  gameRequirements:
+    requirementsList: []
+--- !u!114 &3949031678284559005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
+  m_Name: Celui qu'on a ne nous convient pas,
+  m_EditorClassIdentifier: 
+  showGeneralProperties: 1
+  graph: {fileID: 11400000}
+  position: {x: 2760, y: 40}
+  ports:
+    keys:
+    - previousNode
+    - nextNodes
+    values:
+    - _fieldName: previousNode
+      _node: {fileID: 3949031678284559005}
+      _typeQualifiedName: DialogueTextNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: nextNodes
+        node: {fileID: 2348771242085467068}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: nextNodes
+      _node: {fileID: 3949031678284559005}
+      _typeQualifiedName: DialogueBaseNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  previousNode: {fileID: 0}
+  nextNodes: {fileID: 0}
+  identityType: 0
+  message: "Celui qu'on a ne nous convient pas, et le rendu n'est pas tout \xE0 fait
+    comme on voudrait. Fred du studio C&P est toujours de bon conseil. Si jamais
+    tu passes l\xE0-bas, tu pourrais lui demander de nous en pr\xEAter un, en lui
+    disant que tu viens de ma part ?"
+  singleRead: 0
+  hasGameActions: 1
+  showGameActions: 1
+  gameActions:
+    actionsList:
+    - actionType: 0
+      hasCondition: 0
+      nodesRequiredToRead: []
+      questToAdd: {fileID: 0}
+      questAssociated: {fileID: 0}
+      questStepToComplete: {fileID: 0}
+      ScooterPopUpImg: {fileID: 0}
+      itemToAdd: {fileID: 0}
+      itemToRemove: {fileID: 0}
+  hasRequirements: 0
+  showGameRequirements: 0
+  gameRequirements:
+    requirementsList: []
+--- !u!114 &5795113161418385337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
+  m_Name: Sympa la musique !
+  m_EditorClassIdentifier: 
+  showGeneralProperties: 1
+  graph: {fileID: 11400000}
+  position: {x: 904, y: 8}
+  ports:
+    keys:
+    - previousNode
+    - nextNodes
+    values:
+    - _fieldName: previousNode
+      _node: {fileID: 5795113161418385337}
+      _typeQualifiedName: DialogueTextNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: nextNodes
+        node: {fileID: 410351848926416507}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: nextNodes
+      _node: {fileID: 5795113161418385337}
+      _typeQualifiedName: DialogueBaseNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: previousNode
+        node: {fileID: 2348771242085467068}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  previousNode: {fileID: 0}
+  nextNodes: {fileID: 0}
+  identityType: 1
+  message: Sympa la musique !
+  singleRead: 1
+  hasGameActions: 0
+  showGameActions: 0
+  gameActions:
+    actionsList: []
+  hasRequirements: 1
+  showGameRequirements: 1
+  gameRequirements:
+    requirementsList:
+    - requirementType: 1
+      questToCheck: {fileID: 0}
+      questCheckedValueWanted: 0
+      questToCheckState: 0
+      questAssociatedToCheck: {fileID: 11400000, guid: e62da928601dc8545b2e1b2042a10cbb,
+        type: 2}
+      questStepToCheck: {fileID: 11400000, guid: b2ef848b0e0e0d84290a73e6dbf4930b,
+        type: 2}
+      questStepCheckedValueWanted: 1
+      questStepToCheckState: 1
+      itemToCheck: {fileID: 0}
 --- !u!114 &7639924187425463628
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -269,7 +479,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   showGeneralProperties: 1
   graph: {fileID: 11400000}
-  position: {x: -872, y: 568}
+  position: {x: 888, y: 344}
   ports:
     keys:
     - previousNode
@@ -326,7 +536,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   showGeneralProperties: 1
   graph: {fileID: 11400000}
-  position: {x: -888, y: 200}
+  position: {x: 936, y: -264}
   ports:
     keys:
     - previousNode

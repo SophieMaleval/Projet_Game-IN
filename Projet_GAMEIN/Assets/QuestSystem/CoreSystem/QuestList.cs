@@ -120,7 +120,7 @@ public class QuestList : MonoBehaviour
         {
             foreach (QuestStepStatus stepStatus in status.GetQuestStepStatuses())
             {
-                if (stepStatus.GetQuestStep() == objectiveRef)
+                if (stepStatus.GetQuestStep() == objectiveRef && stepStatus.isUnlocked)
                 {
                     if (state == StateQuestWanted.None)
                     {
@@ -142,6 +142,7 @@ public class QuestList : MonoBehaviour
                     }
                 }
             }
+
         }
 
         return null;

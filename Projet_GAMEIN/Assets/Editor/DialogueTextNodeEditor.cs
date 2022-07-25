@@ -37,7 +37,7 @@ public class DialogueTextNodeEditor : Editor
             dialogNode.singleRead = EditorGUILayout.Toggle("Single Read", dialogNode.singleRead);
 
             dialogNode.hasGameActions = EditorGUILayout.Toggle("Has Game Actions", dialogNode.hasGameActions);
-            dialogNode.hasRequirements = EditorGUILayout.Toggle("Has Requirements", dialogNode.hasRequirements);
+           
         }
 
         EditorGUILayout.Separator();
@@ -172,6 +172,10 @@ public class DialogueTextNodeEditor : Editor
                 EditorGUILayout.Separator();
             }
         }
+
+        EditorGUILayout.Separator();
+
+        dialogNode.hasRequirements = EditorGUILayout.Toggle("Has Requirements", dialogNode.hasRequirements);
 
         EditorGUILayout.Separator();
 

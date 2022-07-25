@@ -1,5 +1,62 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8616234794236354262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
+  m_Name: "Ah, tu arrives juste \xE0 temps, formidable !"
+  m_EditorClassIdentifier: 
+  showGeneralProperties: 1
+  graph: {fileID: 11400000}
+  position: {x: 2152, y: 840}
+  ports:
+    keys:
+    - previousNode
+    - nextNodes
+    values:
+    - _fieldName: previousNode
+      _node: {fileID: -8616234794236354262}
+      _typeQualifiedName: DialogueTextNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: nextNodes
+        node: {fileID: -1534926111420869802}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: nextNodes
+      _node: {fileID: -8616234794236354262}
+      _typeQualifiedName: DialogueBaseNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: previousNode
+        node: {fileID: -6471678193662114170}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  previousNode: {fileID: 0}
+  nextNodes: {fileID: 0}
+  identityType: 0
+  message: "Ah, tu arrives juste \xE0 temps, formidable !"
+  singleRead: 0
+  hasGameActions: 0
+  showGameActions: 0
+  gameActions:
+    actionsList: []
+  hasRequirements: 0
+  showGameRequirements: 0
+  gameRequirements:
+    requirementsList: []
 --- !u!114 &-7403972914979835252
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14,7 +71,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   showGeneralProperties: 1
   graph: {fileID: 11400000}
-  position: {x: -648, y: 1096}
+  position: {x: 2056, y: 360}
   ports:
     keys:
     - previousNode
@@ -74,7 +131,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   showGeneralProperties: 1
   graph: {fileID: 11400000}
-  position: {x: -616, y: 696}
+  position: {x: 2088, y: -40}
   ports:
     keys:
     - previousNode
@@ -138,7 +195,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   showGeneralProperties: 1
   graph: {fileID: 11400000}
-  position: {x: 24, y: 1080}
+  position: {x: 2728, y: 344}
   ports:
     keys:
     - previousNode
@@ -197,7 +254,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   showGeneralProperties: 1
   graph: {fileID: 11400000}
-  position: {x: -1416, y: 1544}
+  position: {x: 1272, y: 1192}
   ports:
     keys:
     - previousNode
@@ -240,6 +297,71 @@ MonoBehaviour:
   showGameRequirements: 0
   gameRequirements:
     requirementsList: []
+--- !u!114 &-6471678193662114170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
+  m_Name: "Je crois que \xE7a fonctionne ! Tout le monde"
+  m_EditorClassIdentifier: 
+  showGeneralProperties: 1
+  graph: {fileID: 11400000}
+  position: {x: 2952, y: 840}
+  ports:
+    keys:
+    - previousNode
+    - nextNodes
+    values:
+    - _fieldName: previousNode
+      _node: {fileID: -6471678193662114170}
+      _typeQualifiedName: DialogueTextNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: nextNodes
+        node: {fileID: -8616234794236354262}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: nextNodes
+      _node: {fileID: -6471678193662114170}
+      _typeQualifiedName: DialogueBaseNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  previousNode: {fileID: 0}
+  nextNodes: {fileID: 0}
+  identityType: 0
+  message: "Je crois que \xE7a fonctionne ! Tout le monde va recevoir une notification
+    maintenant que les serveurs fonctionnent, un grand merci \xE0 toi et bienvenue
+    parmi nous !"
+  singleRead: 0
+  hasGameActions: 1
+  showGameActions: 1
+  gameActions:
+    actionsList:
+    - actionType: 0
+      hasCondition: 0
+      nodesRequiredToRead: []
+      questToAdd: {fileID: 0}
+      questAssociated: {fileID: 0}
+      questStepToComplete: {fileID: 0}
+      ScooterPopUpImg: {fileID: 0}
+      itemToAdd: {fileID: 0}
+      itemToRemove: {fileID: 0}
+  hasRequirements: 0
+  showGameRequirements: 0
+  gameRequirements:
+    requirementsList: []
 --- !u!114 &-6309653750551691130
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -254,7 +376,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   showGeneralProperties: 1
   graph: {fileID: 11400000}
-  position: {x: -1336, y: 680}
+  position: {x: 1368, y: -56}
   ports:
     keys:
     - previousNode
@@ -322,7 +444,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   showGeneralProperties: 1
   graph: {fileID: 11400000}
-  position: {x: -376, y: 328}
+  position: {x: 2328, y: -408}
   ports:
     keys:
     - previousNode
@@ -388,7 +510,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   showGeneralProperties: 1
   graph: {fileID: 11400000}
-  position: {x: -1336, y: 312}
+  position: {x: 1368, y: -424}
   ports:
     keys:
     - previousNode
@@ -431,6 +553,85 @@ MonoBehaviour:
   showGameRequirements: 0
   gameRequirements:
     requirementsList: []
+--- !u!114 &-1534926111420869802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
+  m_Name: '*Branche la clef sur son socle* C''est bon Anna avait bien la solution
+    !'
+  m_EditorClassIdentifier: 
+  showGeneralProperties: 1
+  graph: {fileID: 11400000}
+  position: {x: 1320, y: 856}
+  ports:
+    keys:
+    - previousNode
+    - nextNodes
+    values:
+    - _fieldName: previousNode
+      _node: {fileID: -1534926111420869802}
+      _typeQualifiedName: DialogueTextNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: nextNodes
+        node: {fileID: 9197923390815994889}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: nextNodes
+      _node: {fileID: -1534926111420869802}
+      _typeQualifiedName: DialogueBaseNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: previousNode
+        node: {fileID: -8616234794236354262}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  previousNode: {fileID: 0}
+  nextNodes: {fileID: 0}
+  identityType: 1
+  message: '*Branche la clef sur son socle* C''est bon Anna avait bien la solution
+    !'
+  singleRead: 1
+  hasGameActions: 0
+  showGameActions: 0
+  gameActions:
+    actionsList: []
+  hasRequirements: 1
+  showGameRequirements: 1
+  gameRequirements:
+    requirementsList:
+    - requirementType: 1
+      questToCheck: {fileID: 0}
+      questCheckedValueWanted: 0
+      questToCheckState: 0
+      questAssociatedToCheck: {fileID: 11400000, guid: e62da928601dc8545b2e1b2042a10cbb,
+        type: 2}
+      questStepToCheck: {fileID: 11400000, guid: cfb2f435b902ee140b998696db1e3429,
+        type: 2}
+      questStepCheckedValueWanted: 1
+      questStepToCheckState: 1
+      itemToCheck: {fileID: 0}
+    - requirementType: 2
+      questToCheck: {fileID: 0}
+      questCheckedValueWanted: 0
+      questToCheckState: 0
+      questAssociatedToCheck: {fileID: 0}
+      questStepToCheck: {fileID: 0}
+      questStepCheckedValueWanted: 0
+      questStepToCheckState: 0
+      itemToCheck: {fileID: 11400000, guid: bab35fb751967bc42bdb42b46e19fa76, type: 2}
 --- !u!114 &-737703275199554694
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -445,7 +646,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   showGeneralProperties: 1
   graph: {fileID: 11400000}
-  position: {x: -1336, y: -8}
+  position: {x: 1368, y: -744}
   ports:
     keys:
     - previousNode
@@ -514,6 +715,9 @@ MonoBehaviour:
   - {fileID: 3661262345068914170}
   - {fileID: 2290855891668395596}
   - {fileID: -3528913489138850852}
+  - {fileID: -1534926111420869802}
+  - {fileID: -8616234794236354262}
+  - {fileID: -6471678193662114170}
   displayName: PIX Dialogue
   description: "Dialogue Pr\xE9sentation PIX Plaine Image"
   mainNodeParent: {fileID: 9197923390815994889}
@@ -531,7 +735,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   showGeneralProperties: 1
   graph: {fileID: 11400000}
-  position: {x: 792, y: 1096}
+  position: {x: 3496, y: 360}
   ports:
     keys:
     - previousNode
@@ -595,7 +799,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   showGeneralProperties: 1
   graph: {fileID: 11400000}
-  position: {x: -376, y: 8}
+  position: {x: 2328, y: -728}
   ports:
     keys:
     - previousNode
@@ -658,7 +862,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   showGeneralProperties: 1
   graph: {fileID: 11400000}
-  position: {x: -520, y: 1544}
+  position: {x: 2168, y: 1192}
   ports:
     keys:
     - previousNode
@@ -691,7 +895,7 @@ MonoBehaviour:
   message: "\xC0 bient\xF4t !"
   singleRead: 0
   hasGameActions: 1
-  showGameActions: 0
+  showGameActions: 1
   gameActions:
     actionsList:
     - actionType: 2
@@ -707,6 +911,28 @@ MonoBehaviour:
       ScooterPopUpImg: {fileID: 0}
       itemToAdd: {fileID: 0}
       itemToRemove: {fileID: 0}
+    - actionType: 2
+      hasCondition: 1
+      nodesRequiredToRead:
+      - {fileID: -6471678193662114170}
+      questToAdd: {fileID: 0}
+      questAssociated: {fileID: 11400000, guid: e62da928601dc8545b2e1b2042a10cbb,
+        type: 2}
+      questStepToComplete: {fileID: 11400000, guid: cfb2f435b902ee140b998696db1e3429,
+        type: 2}
+      ScooterPopUpImg: {fileID: 0}
+      itemToAdd: {fileID: 0}
+      itemToRemove: {fileID: 0}
+    - actionType: 5
+      hasCondition: 1
+      nodesRequiredToRead:
+      - {fileID: -6471678193662114170}
+      questToAdd: {fileID: 0}
+      questAssociated: {fileID: 0}
+      questStepToComplete: {fileID: 0}
+      ScooterPopUpImg: {fileID: 0}
+      itemToAdd: {fileID: 0}
+      itemToRemove: {fileID: 11400000, guid: bab35fb751967bc42bdb42b46e19fa76, type: 2}
   hasRequirements: 0
   showGameRequirements: 0
   gameRequirements:
@@ -725,7 +951,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   showGeneralProperties: 1
   graph: {fileID: 11400000}
-  position: {x: -1320, y: 1112}
+  position: {x: 1384, y: 376}
   ports:
     keys:
     - previousNode
@@ -793,7 +1019,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   showGeneralProperties: 1
   graph: {fileID: 11400000}
-  position: {x: -2616, y: 488}
+  position: {x: 0, y: 0}
   ports:
     keys:
     - previousNode
@@ -824,6 +1050,9 @@ MonoBehaviour:
         reroutePoints: []
       - fieldName: previousNode
         node: {fileID: 9186991489692531737}
+        reroutePoints: []
+      - fieldName: previousNode
+        node: {fileID: -1534926111420869802}
         reroutePoints: []
       - fieldName: previousNode
         node: {fileID: -6888946049721797171}

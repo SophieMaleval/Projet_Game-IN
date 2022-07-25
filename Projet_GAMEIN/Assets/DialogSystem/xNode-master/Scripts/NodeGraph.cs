@@ -27,6 +27,7 @@ namespace XNode {
         public void OpenGraph()
         {
             Debug.Log("Open Graph");
+
             SetStartNodes();
         }
 

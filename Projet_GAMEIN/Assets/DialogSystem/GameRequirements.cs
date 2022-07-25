@@ -31,7 +31,7 @@ public class GameRequirements
                 {
                     if (item.CheckQuestState(GameManager.Instance.questManager) == false)
                     {
-                        //Debug.Log("false");
+                        Debug.Log("false");
                         return false;
                     }
                 }
@@ -47,7 +47,7 @@ public class GameRequirements
             }
         }
 
-        //Debug.Log("true");
+        Debug.Log("true");
         return true;
     }
 

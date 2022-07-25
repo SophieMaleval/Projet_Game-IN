@@ -76,7 +76,10 @@ namespace XNodeEditor {
         public float zoom { get { return _zoom; } set { _zoom = Mathf.Clamp(value, NodeEditorPreferences.GetSettings().minZoom, NodeEditorPreferences.GetSettings().maxZoom); Repaint(); } }
         private float _zoom = 1;
 
-        void OnFocus() {
+        void OnFocus() 
+        {
+            //Debug.Log("On Focus");
+
             current = this;
             ValidateGraphEditor();
             if (graphEditor != null) {
@@ -85,6 +88,9 @@ namespace XNodeEditor {
             }
 
             dragThreshold = Math.Max(1f, Screen.width / 1000f);
+            //Debug.Log(dragThreshold);
+            //Debug.Log(panOffset);
+            //Debug.Log(position);
         }
 
         void OnLostFocus() {
@@ -152,10 +158,12 @@ namespace XNodeEditor {
         }
 
         public Vector2 WindowToGridPosition(Vector2 windowPosition) {
+            //Debug.Log((windowPosition - (position.size * 0.5f) - (panOffset / zoom)) * zoom);
             return (windowPosition - (position.size * 0.5f) - (panOffset / zoom)) * zoom;
         }
 
         public Vector2 GridToWindowPosition(Vector2 gridPosition) {
+            //Debug.Log((position.size * 0.5f) + (panOffset / zoom) + (gridPosition / zoom));
             return (position.size * 0.5f) + (panOffset / zoom) + (gridPosition / zoom);
         }
 
@@ -167,6 +175,7 @@ namespace XNodeEditor {
         public Rect GridToWindowRect(Rect gridRect) {
             gridRect.position = GridToWindowPosition(gridRect.position);
             gridRect.size /= zoom;
+            Debug.Log(gridRect.position);
             return gridRect;
         }
 
@@ -206,11 +215,18 @@ namespace XNodeEditor {
         public static NodeEditorWindow Open(XNode.NodeGraph graph) {
             if (!graph) return null;
 
+
             NodeEditorWindow w = GetWindow(typeof(NodeEditorWindow), false, "Allosius Dev Builder Dialogue", true) as NodeEditorWindow;
             w.wantsMouseMove = true;
             w.graph = graph;
 
+            Debug.Log("Graph Open");
             graph.OpenGraph();
+            //Vector2 pos = w.GridToWindowPosition(graph.nodes[0].position);
+
+            //Debug.Log(w.position.position);
+            //w.position.Set(pos.x, pos.y, w.position.width, w.position.height);
+            //Debug.Log(w.position.position);
 
             return w;
         }
