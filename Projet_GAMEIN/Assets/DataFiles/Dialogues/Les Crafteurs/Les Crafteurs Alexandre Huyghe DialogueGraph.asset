@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-9055791848320741274
+--- !u!114 &-8715764402097658583
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -10,35 +10,35 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
-  m_Name: "Comment occupes-tu tes journ\xE9es?"
+  m_Name: Comment vas-tu?
   m_EditorClassIdentifier: 
   showGeneralProperties: 1
   graph: {fileID: 11400000}
-  position: {x: -1368, y: 360}
+  position: {x: -1192, y: 152}
   ports:
     keys:
     - previousNode
     - nextNodes
     values:
     - _fieldName: previousNode
-      _node: {fileID: -9055791848320741274}
+      _node: {fileID: -8715764402097658583}
       _typeQualifiedName: DialogueTextNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
       connections:
       - fieldName: nextNodes
-        node: {fileID: -4936497958065170798}
+        node: {fileID: 6574630625412936316}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
     - _fieldName: nextNodes
-      _node: {fileID: -9055791848320741274}
+      _node: {fileID: -8715764402097658583}
       _typeQualifiedName: DialogueBaseNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
       connections:
       - fieldName: previousNode
-        node: {fileID: -3646179288635473351}
+        node: {fileID: 883602486872866726}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -47,7 +47,7 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 1
-  message: "Comment occupes-tu tes journ\xE9es?"
+  message: Comment vas-tu?
   singleRead: 1
   hasGameActions: 0
   showGameActions: 0
@@ -57,7 +57,7 @@ MonoBehaviour:
   showGameRequirements: 0
   gameRequirements:
     requirementsList: []
---- !u!114 &-7145624865385606598
+--- !u!114 &-4002078389386458272
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -67,30 +67,30 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
-  m_Name: "Bonne journ\xE9e !"
+  m_Name: "\xC0 bient\xF4t."
   m_EditorClassIdentifier: 
   showGeneralProperties: 1
   graph: {fileID: 11400000}
-  position: {x: -504, y: 728}
+  position: {x: 8, y: 664}
   ports:
     keys:
     - previousNode
     - nextNodes
     values:
     - _fieldName: previousNode
-      _node: {fileID: -7145624865385606598}
+      _node: {fileID: -4002078389386458272}
       _typeQualifiedName: DialogueTextNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
       connections:
       - fieldName: nextNodes
-        node: {fileID: -923886878133318754}
+        node: {fileID: 7274676323317640073}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
     - _fieldName: nextNodes
-      _node: {fileID: -7145624865385606598}
+      _node: {fileID: -4002078389386458272}
       _typeQualifiedName: DialogueBaseNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
       connections: []
@@ -101,245 +101,8 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 0
-  message: "Bonne journ\xE9e !"
+  message: "\xC0 bient\xF4t."
   singleRead: 0
-  hasGameActions: 0
-  showGameActions: 0
-  gameActions:
-    actionsList: []
-  hasRequirements: 0
-  showGameRequirements: 0
-  gameRequirements:
-    requirementsList: []
---- !u!114 &-5010082056131577452
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
-  m_Name: "Il est toujours tr\xE8s valuable d'\xEAtre \xE0 la pointe"
-  m_EditorClassIdentifier: 
-  showGeneralProperties: 1
-  graph: {fileID: 11400000}
-  position: {x: 168, y: 360}
-  ports:
-    keys:
-    - previousNode
-    - nextNodes
-    values:
-    - _fieldName: previousNode
-      _node: {fileID: -5010082056131577452}
-      _typeQualifiedName: DialogueTextNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      connections:
-      - fieldName: nextNodes
-        node: {fileID: -3646179288635473351}
-        reroutePoints: []
-      _direction: 0
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: nextNodes
-      _node: {fileID: -5010082056131577452}
-      _typeQualifiedName: DialogueBaseNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-  previousNode: {fileID: 0}
-  nextNodes: {fileID: 0}
-  identityType: 0
-  message: "Il est toujours tr\xE8s valuable d'\xEAtre \xE0 la pointe de ce qui est
-    produit dans notre domaine, et tant qu'il y aura d'autres mages, j'aurais toujours
-    de quoi lire et observer !"
-  singleRead: 0
-  hasGameActions: 1
-  showGameActions: 0
-  gameActions:
-    actionsList:
-    - actionType: 0
-      hasCondition: 0
-      nodesRequiredToRead: []
-      questToAdd: {fileID: 0}
-      questAssociated: {fileID: 0}
-      questStepToComplete: {fileID: 0}
-      ScooterPopUpImg: {fileID: 0}
-      itemToAdd: {fileID: 0}
-      itemToRemove: {fileID: 0}
-  hasRequirements: 0
-  showGameRequirements: 0
-  gameRequirements:
-    requirementsList: []
---- !u!114 &-4936497958065170798
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
-  m_Name: Bienvenue dans ma tour {PLAYER} !
-  m_EditorClassIdentifier: 
-  showGeneralProperties: 1
-  graph: {fileID: 11400000}
-  position: {x: -2392, y: 472}
-  ports:
-    keys:
-    - previousNode
-    - nextNodes
-    values:
-    - _fieldName: previousNode
-      _node: {fileID: -4936497958065170798}
-      _typeQualifiedName: DialogueTextNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      connections: []
-      _direction: 0
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: nextNodes
-      _node: {fileID: -4936497958065170798}
-      _typeQualifiedName: DialogueBaseNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      connections:
-      - fieldName: previousNode
-        node: {fileID: -9055791848320741274}
-        reroutePoints: []
-      - fieldName: previousNode
-        node: {fileID: -923886878133318754}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-  previousNode: {fileID: 0}
-  nextNodes: {fileID: 0}
-  identityType: 0
-  message: Bienvenue dans ma tour {PLAYER} !
-  singleRead: 0
-  hasGameActions: 0
-  showGameActions: 0
-  gameActions:
-    actionsList: []
-  hasRequirements: 0
-  showGameRequirements: 0
-  gameRequirements:
-    requirementsList: []
---- !u!114 &-3646179288635473351
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
-  m_Name: Quand je ne confectionne pas mes propres sorts
-  m_EditorClassIdentifier: 
-  showGeneralProperties: 1
-  graph: {fileID: 11400000}
-  position: {x: -520, y: 360}
-  ports:
-    keys:
-    - previousNode
-    - nextNodes
-    values:
-    - _fieldName: previousNode
-      _node: {fileID: -3646179288635473351}
-      _typeQualifiedName: DialogueTextNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      connections:
-      - fieldName: nextNodes
-        node: {fileID: -9055791848320741274}
-        reroutePoints: []
-      _direction: 0
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: nextNodes
-      _node: {fileID: -3646179288635473351}
-      _typeQualifiedName: DialogueBaseNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      connections:
-      - fieldName: previousNode
-        node: {fileID: -5010082056131577452}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-  previousNode: {fileID: 0}
-  nextNodes: {fileID: 0}
-  identityType: 0
-  message: Quand je ne confectionne pas mes propres sorts et mixtures, j'aime beaucoup
-    me pencher sur les travaux de mes pairs.
-  singleRead: 0
-  hasGameActions: 0
-  showGameActions: 0
-  gameActions:
-    actionsList: []
-  hasRequirements: 0
-  showGameRequirements: 0
-  gameRequirements:
-    requirementsList: []
---- !u!114 &-923886878133318754
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
-  m_Name: Je dois y aller.
-  m_EditorClassIdentifier: 
-  showGeneralProperties: 1
-  graph: {fileID: 11400000}
-  position: {x: -1384, y: 712}
-  ports:
-    keys:
-    - previousNode
-    - nextNodes
-    values:
-    - _fieldName: previousNode
-      _node: {fileID: -923886878133318754}
-      _typeQualifiedName: DialogueTextNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      connections:
-      - fieldName: nextNodes
-        node: {fileID: -4936497958065170798}
-        reroutePoints: []
-      _direction: 0
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: nextNodes
-      _node: {fileID: -923886878133318754}
-      _typeQualifiedName: DialogueBaseNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      connections:
-      - fieldName: previousNode
-        node: {fileID: -7145624865385606598}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-  previousNode: {fileID: 0}
-  nextNodes: {fileID: 0}
-  identityType: 1
-  message: Je dois y aller.
-  singleRead: 1
   hasGameActions: 0
   showGameActions: 0
   gameActions:
@@ -358,15 +121,192 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4c135d5abc97ad74e959ab5b6aa5d6eb, type: 3}
-  m_Name: Stormancer Raiteva DialogueGraph
+  m_Name: Les Crafteurs Alexandre Huyghe DialogueGraph
   m_EditorClassIdentifier: 
   nodes:
-  - {fileID: -4936497958065170798}
-  - {fileID: -9055791848320741274}
-  - {fileID: -923886878133318754}
-  - {fileID: -3646179288635473351}
-  - {fileID: -5010082056131577452}
-  - {fileID: -7145624865385606598}
-  displayName: Raiteva Dialogue
-  description: "Dialogue Pr\xE9sentation Raiteva Stormancer"
-  mainNodeParent: {fileID: -4936497958065170798}
+  - {fileID: 6574630625412936316}
+  - {fileID: -8715764402097658583}
+  - {fileID: 7274676323317640073}
+  - {fileID: 883602486872866726}
+  - {fileID: -4002078389386458272}
+  displayName: Alexandre Huygue Dialogue
+  description: "Dialogue Pr\xE9sentation Alexandre Huygue Les Crafteurs"
+  mainNodeParent: {fileID: 6574630625412936316}
+--- !u!114 &883602486872866726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
+  m_Name: "Je me sens un peu raide \xE0 force d'\xEAtre immobile,"
+  m_EditorClassIdentifier: 
+  showGeneralProperties: 1
+  graph: {fileID: 11400000}
+  position: {x: 24, y: 136}
+  ports:
+    keys:
+    - previousNode
+    - nextNodes
+    values:
+    - _fieldName: previousNode
+      _node: {fileID: 883602486872866726}
+      _typeQualifiedName: DialogueTextNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: nextNodes
+        node: {fileID: -8715764402097658583}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: nextNodes
+      _node: {fileID: 883602486872866726}
+      _typeQualifiedName: DialogueBaseNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  previousNode: {fileID: 0}
+  nextNodes: {fileID: 0}
+  identityType: 0
+  message: "Je me sens un peu raide \xE0 force d'\xEAtre immobile, j'attends ton
+    d\xE9part pour reprendre le cours de ma vie. Comme les jouets d'Andy."
+  singleRead: 0
+  hasGameActions: 1
+  showGameActions: 1
+  gameActions:
+    actionsList:
+    - actionType: 0
+      hasCondition: 0
+      nodesRequiredToRead: []
+      questToAdd: {fileID: 0}
+      questAssociated: {fileID: 0}
+      questStepToComplete: {fileID: 0}
+      ScooterPopUpImg: {fileID: 0}
+      itemToAdd: {fileID: 0}
+      itemToRemove: {fileID: 0}
+  hasRequirements: 0
+  showGameRequirements: 0
+  gameRequirements:
+    requirementsList: []
+--- !u!114 &6574630625412936316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
+  m_Name: Hello {PLAYER}, bienvenue chez les Crafteurs !
+  m_EditorClassIdentifier: 
+  showGeneralProperties: 1
+  graph: {fileID: 11400000}
+  position: {x: -2312, y: 392}
+  ports:
+    keys:
+    - previousNode
+    - nextNodes
+    values:
+    - _fieldName: previousNode
+      _node: {fileID: 6574630625412936316}
+      _typeQualifiedName: DialogueTextNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: nextNodes
+      _node: {fileID: 6574630625412936316}
+      _typeQualifiedName: DialogueBaseNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: previousNode
+        node: {fileID: -8715764402097658583}
+        reroutePoints: []
+      - fieldName: previousNode
+        node: {fileID: 7274676323317640073}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  previousNode: {fileID: 0}
+  nextNodes: {fileID: 0}
+  identityType: 0
+  message: Hello {PLAYER}, bienvenue chez les Crafteurs !
+  singleRead: 0
+  hasGameActions: 0
+  showGameActions: 0
+  gameActions:
+    actionsList: []
+  hasRequirements: 0
+  showGameRequirements: 0
+  gameRequirements:
+    requirementsList: []
+--- !u!114 &7274676323317640073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
+  m_Name: Je dois y aller.
+  m_EditorClassIdentifier: 
+  showGeneralProperties: 1
+  graph: {fileID: 11400000}
+  position: {x: -1176, y: 680}
+  ports:
+    keys:
+    - previousNode
+    - nextNodes
+    values:
+    - _fieldName: previousNode
+      _node: {fileID: 7274676323317640073}
+      _typeQualifiedName: DialogueTextNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: nextNodes
+        node: {fileID: 6574630625412936316}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: nextNodes
+      _node: {fileID: 7274676323317640073}
+      _typeQualifiedName: DialogueBaseNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: previousNode
+        node: {fileID: -4002078389386458272}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  previousNode: {fileID: 0}
+  nextNodes: {fileID: 0}
+  identityType: 1
+  message: Je dois y aller.
+  singleRead: 1
+  hasGameActions: 0
+  showGameActions: 0
+  gameActions:
+    actionsList: []
+  hasRequirements: 0
+  showGameRequirements: 0
+  gameRequirements:
+    requirementsList: []

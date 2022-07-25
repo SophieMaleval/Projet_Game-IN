@@ -1,207 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-8987655422176391741
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
-  m_Name: Ahah. Merci d'avoir pris le temps de nous ramener
-  m_EditorClassIdentifier: 
-  showGeneralProperties: 1
-  graph: {fileID: 11400000}
-  position: {x: -568, y: 360}
-  ports:
-    keys:
-    - previousNode
-    - nextNodes
-    values:
-    - _fieldName: previousNode
-      _node: {fileID: -8987655422176391741}
-      _typeQualifiedName: DialogueTextNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      connections:
-      - fieldName: nextNodes
-        node: {fileID: 1651009807151080977}
-        reroutePoints: []
-      _direction: 0
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: nextNodes
-      _node: {fileID: -8987655422176391741}
-      _typeQualifiedName: DialogueBaseNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      connections:
-      - fieldName: previousNode
-        node: {fileID: 2731291292029470256}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-  previousNode: {fileID: 0}
-  nextNodes: {fileID: 0}
-  identityType: 0
-  message: Ahah. Merci d'avoir pris le temps de nous ramener un nouvel ampli, on
-    va pouvoir tester la nouvelle structure de ce morceau.
-  singleRead: 0
-  hasGameActions: 0
-  showGameActions: 0
-  gameActions:
-    actionsList: []
-  hasRequirements: 0
-  showGameRequirements: 0
-  gameRequirements:
-    requirementsList: []
---- !u!114 &-7221414822225601504
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
-  m_Name: "Ah salut, tu dois \xEAtre le gars dont Fran\xE7ois"
-  m_EditorClassIdentifier: 
-  showGeneralProperties: 1
-  graph: {fileID: 11400000}
-  position: {x: -2424, y: 920}
-  ports:
-    keys:
-    - previousNode
-    - nextNodes
-    values:
-    - _fieldName: previousNode
-      _node: {fileID: -7221414822225601504}
-      _typeQualifiedName: DialogueTextNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      connections: []
-      _direction: 0
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: nextNodes
-      _node: {fileID: -7221414822225601504}
-      _typeQualifiedName: DialogueBaseNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      connections:
-      - fieldName: previousNode
-        node: {fileID: 1651009807151080977}
-        reroutePoints: []
-      - fieldName: previousNode
-        node: {fileID: -2689633983413299045}
-        reroutePoints: []
-      - fieldName: previousNode
-        node: {fileID: 739595734663279748}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-  previousNode: {fileID: 0}
-  nextNodes: {fileID: 0}
-  identityType: 0
-  message: "Ah salut, tu dois \xEAtre le gars dont Fran\xE7ois m'a parl\xE9 tout
-    a l'heure ! "
-  singleRead: 0
-  hasGameActions: 0
-  showGameActions: 0
-  gameActions:
-    actionsList: []
-  hasRequirements: 0
-  showGameRequirements: 0
-  gameRequirements:
-    requirementsList: []
---- !u!114 &-2689633983413299045
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
-  m_Name: C'est super sympa ici.
-  m_EditorClassIdentifier: 
-  showGeneralProperties: 1
-  graph: {fileID: 11400000}
-  position: {x: -1304, y: 728}
-  ports:
-    keys:
-    - previousNode
-    - nextNodes
-    values:
-    - _fieldName: previousNode
-      _node: {fileID: -2689633983413299045}
-      _typeQualifiedName: DialogueTextNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      connections:
-      - fieldName: nextNodes
-        node: {fileID: -7221414822225601504}
-        reroutePoints: []
-      _direction: 0
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: nextNodes
-      _node: {fileID: -2689633983413299045}
-      _typeQualifiedName: DialogueBaseNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      connections:
-      - fieldName: previousNode
-        node: {fileID: 9077375013189059067}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-  previousNode: {fileID: 0}
-  nextNodes: {fileID: 0}
-  identityType: 1
-  message: C'est super sympa ici.
-  singleRead: 1
-  hasGameActions: 0
-  showGameActions: 0
-  gameActions:
-    actionsList: []
-  hasRequirements: 0
-  showGameRequirements: 0
-  gameRequirements:
-    requirementsList: []
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c135d5abc97ad74e959ab5b6aa5d6eb, type: 3}
-  m_Name: SpookyRabbits Gualtiero DialogueGraph
-  m_EditorClassIdentifier: 
-  nodes:
-  - {fileID: -7221414822225601504}
-  - {fileID: -2689633983413299045}
-  - {fileID: 739595734663279748}
-  - {fileID: 9077375013189059067}
-  - {fileID: 4169675818908155671}
-  - {fileID: 1651009807151080977}
-  - {fileID: -8987655422176391741}
-  - {fileID: 2731291292029470256}
-  - {fileID: 2898290403095339554}
-  displayName: Gualtiero Dialogue
-  description: "Dialogue Pr\xE9sentation Gualtiero Spooky Rabbits"
-  mainNodeParent: {fileID: -7221414822225601504}
---- !u!114 &739595734663279748
+--- !u!114 &-8661240175182881575
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -215,31 +14,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   showGeneralProperties: 1
   graph: {fileID: 11400000}
-  position: {x: -1272, y: 1192}
+  position: {x: -552, y: 840}
   ports:
     keys:
     - previousNode
     - nextNodes
     values:
     - _fieldName: previousNode
-      _node: {fileID: 739595734663279748}
+      _node: {fileID: -8661240175182881575}
       _typeQualifiedName: DialogueTextNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
       connections:
       - fieldName: nextNodes
-        node: {fileID: -7221414822225601504}
+        node: {fileID: -7222027222213430401}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
     - _fieldName: nextNodes
-      _node: {fileID: 739595734663279748}
+      _node: {fileID: -8661240175182881575}
       _typeQualifiedName: DialogueBaseNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
       connections:
       - fieldName: previousNode
-        node: {fileID: 4169675818908155671}
+        node: {fileID: 7750414249604005467}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -258,7 +57,7 @@ MonoBehaviour:
   showGameRequirements: 0
   gameRequirements:
     requirementsList: []
---- !u!114 &1651009807151080977
+--- !u!114 &-8573261147854726904
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -268,35 +67,36 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
-  m_Name: '*Donner l''ampli.*'
+  m_Name: "Je peux avoir un indice \xE0 propos de qui se cache derri\xE8re ce masque
+    ?"
   m_EditorClassIdentifier: 
   showGeneralProperties: 1
   graph: {fileID: 11400000}
-  position: {x: -1320, y: 344}
+  position: {x: -568, y: 456}
   ports:
     keys:
     - previousNode
     - nextNodes
     values:
     - _fieldName: previousNode
-      _node: {fileID: 1651009807151080977}
+      _node: {fileID: -8573261147854726904}
       _typeQualifiedName: DialogueTextNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
       connections:
       - fieldName: nextNodes
-        node: {fileID: -7221414822225601504}
+        node: {fileID: -7222027222213430401}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
     - _fieldName: nextNodes
-      _node: {fileID: 1651009807151080977}
+      _node: {fileID: -8573261147854726904}
       _typeQualifiedName: DialogueBaseNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
       connections:
       - fieldName: previousNode
-        node: {fileID: -8987655422176391741}
+        node: {fileID: -7473727401222889965}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -305,57 +105,18 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 1
-  message: '*Donner l''ampli.*'
-  singleRead: 0
+  message: "Je peux avoir un indice \xE0 propos de qui se cache derri\xE8re ce masque
+    ?"
+  singleRead: 1
   hasGameActions: 0
   showGameActions: 0
   gameActions:
-    actionsList:
-    - actionType: 5
-      hasCondition: 0
-      nodesRequiredToRead: []
-      questToAdd: {fileID: 0}
-      questAssociated: {fileID: 0}
-      questStepToComplete: {fileID: 0}
-      ScooterPopUpImg: {fileID: 0}
-      itemToAdd: {fileID: 0}
-      itemToRemove: {fileID: 11400000, guid: 476c6f5960426de4db209e16f5e628b7, type: 2}
-    - actionType: 2
-      hasCondition: 0
-      nodesRequiredToRead: []
-      questToAdd: {fileID: 0}
-      questAssociated: {fileID: 11400000, guid: e62da928601dc8545b2e1b2042a10cbb,
-        type: 2}
-      questStepToComplete: {fileID: 11400000, guid: 516daa7b7d89e2d4db9d2b078c82bbf4,
-        type: 2}
-      ScooterPopUpImg: {fileID: 0}
-      itemToAdd: {fileID: 0}
-      itemToRemove: {fileID: 11400000, guid: 476c6f5960426de4db209e16f5e628b7, type: 2}
-  hasRequirements: 1
-  showGameRequirements: 1
+    actionsList: []
+  hasRequirements: 0
+  showGameRequirements: 0
   gameRequirements:
-    requirementsList:
-    - requirementType: 1
-      questToCheck: {fileID: 0}
-      questCheckedValueWanted: 0
-      questToCheckState: 0
-      questAssociatedToCheck: {fileID: 11400000, guid: e62da928601dc8545b2e1b2042a10cbb,
-        type: 2}
-      questStepToCheck: {fileID: 11400000, guid: 516daa7b7d89e2d4db9d2b078c82bbf4,
-        type: 2}
-      questStepCheckedValueWanted: 1
-      questStepToCheckState: 1
-      itemToCheck: {fileID: 0}
-    - requirementType: 2
-      questToCheck: {fileID: 0}
-      questCheckedValueWanted: 0
-      questToCheckState: 0
-      questAssociatedToCheck: {fileID: 0}
-      questStepToCheck: {fileID: 0}
-      questStepCheckedValueWanted: 0
-      questStepToCheckState: 0
-      itemToCheck: {fileID: 11400000, guid: 476c6f5960426de4db209e16f5e628b7, type: 2}
---- !u!114 &2731291292029470256
+    requirementsList: []
+--- !u!114 &-8473547257642939651
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -365,35 +126,35 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
-  m_Name: Montre-moi ce que tu sais faire !
+  m_Name: Merci ! Mes anciens camarades m'ont fait
   m_EditorClassIdentifier: 
   showGeneralProperties: 1
   graph: {fileID: 11400000}
-  position: {x: 200, y: 344}
+  position: {x: 376, y: 88}
   ports:
     keys:
     - previousNode
     - nextNodes
     values:
     - _fieldName: previousNode
-      _node: {fileID: 2731291292029470256}
+      _node: {fileID: -8473547257642939651}
       _typeQualifiedName: DialogueTextNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
       connections:
       - fieldName: nextNodes
-        node: {fileID: -8987655422176391741}
+        node: {fileID: 7364547565942207724}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
     - _fieldName: nextNodes
-      _node: {fileID: 2731291292029470256}
+      _node: {fileID: -8473547257642939651}
       _typeQualifiedName: DialogueBaseNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
       connections:
       - fieldName: previousNode
-        node: {fileID: 2898290403095339554}
+        node: {fileID: 6734777085124109491}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -402,7 +163,8 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 0
-  message: Montre-moi ce que tu sais faire !
+  message: "Merci ! Mes anciens camarades m'ont fait don de tous ces petits souvenirs.
+    \xC0 ce rythme, on finira par \xEAtre \xE0 court de meubles pour les exposer."
   singleRead: 0
   hasGameActions: 0
   showGameActions: 0
@@ -412,7 +174,7 @@ MonoBehaviour:
   showGameRequirements: 0
   gameRequirements:
     requirementsList: []
---- !u!114 &2898290403095339554
+--- !u!114 &-8161615369389797807
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -422,30 +184,30 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
-  m_Name: 'Attention suis bien le rythme : 3,2, 1..'
+  m_Name: "Si tu veux r\xE9ellement me d\xE9finir, je suis"
   m_EditorClassIdentifier: 
   showGeneralProperties: 1
   graph: {fileID: 11400000}
-  position: {x: 1048, y: 344}
+  position: {x: 1176, y: 440}
   ports:
     keys:
     - previousNode
     - nextNodes
     values:
     - _fieldName: previousNode
-      _node: {fileID: 2898290403095339554}
+      _node: {fileID: -8161615369389797807}
       _typeQualifiedName: DialogueTextNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
       connections:
       - fieldName: nextNodes
-        node: {fileID: 2731291292029470256}
+        node: {fileID: -7473727401222889965}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
     - _fieldName: nextNodes
-      _node: {fileID: 2898290403095339554}
+      _node: {fileID: -8161615369389797807}
       _typeQualifiedName: DialogueBaseNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
       connections: []
@@ -456,128 +218,11 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 0
-  message: 'Attention suis bien le rythme : 3,2, 1..'
+  message: "Si tu veux r\xE9ellement me d\xE9finir, je suis fran\xE7aise, espagnole,
+    anglaise, danoise\u2026 Je suis comme l'Europe, je suis tout \xE7a \xE0 la fois."
   singleRead: 0
   hasGameActions: 1
-  showGameActions: 0
-  gameActions:
-    actionsList:
-    - actionType: 6
-      hasCondition: 0
-      nodesRequiredToRead: []
-      questToAdd: {fileID: 0}
-      questAssociated: {fileID: 0}
-      questStepToComplete: {fileID: 0}
-      ScooterPopUpImg: {fileID: 0}
-      itemToAdd: {fileID: 0}
-      itemToRemove: {fileID: 0}
-  hasRequirements: 0
-  showGameRequirements: 0
-  gameRequirements:
-    requirementsList: []
---- !u!114 &4169675818908155671
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
-  m_Name: Pas de souci !
-  m_EditorClassIdentifier: 
-  showGeneralProperties: 1
-  graph: {fileID: 11400000}
-  position: {x: -472, y: 1208}
-  ports:
-    keys:
-    - previousNode
-    - nextNodes
-    values:
-    - _fieldName: previousNode
-      _node: {fileID: 4169675818908155671}
-      _typeQualifiedName: DialogueTextNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      connections:
-      - fieldName: nextNodes
-        node: {fileID: 739595734663279748}
-        reroutePoints: []
-      _direction: 0
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: nextNodes
-      _node: {fileID: 4169675818908155671}
-      _typeQualifiedName: DialogueBaseNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-  previousNode: {fileID: 0}
-  nextNodes: {fileID: 0}
-  identityType: 0
-  message: Pas de souci !
-  singleRead: 0
-  hasGameActions: 0
-  showGameActions: 0
-  gameActions:
-    actionsList: []
-  hasRequirements: 0
-  showGameRequirements: 0
-  gameRequirements:
-    requirementsList: []
---- !u!114 &9077375013189059067
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
-  m_Name: "Merci ! On a beaucoup travaill\xE9 pour obtenir le traitement"
-  m_EditorClassIdentifier: 
-  showGeneralProperties: 1
-  graph: {fileID: 11400000}
-  position: {x: -536, y: 744}
-  ports:
-    keys:
-    - previousNode
-    - nextNodes
-    values:
-    - _fieldName: previousNode
-      _node: {fileID: 9077375013189059067}
-      _typeQualifiedName: DialogueTextNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      connections:
-      - fieldName: nextNodes
-        node: {fileID: -2689633983413299045}
-        reroutePoints: []
-      _direction: 0
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: nextNodes
-      _node: {fileID: 9077375013189059067}
-      _typeQualifiedName: DialogueBaseNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-  previousNode: {fileID: 0}
-  nextNodes: {fileID: 0}
-  identityType: 0
-  message: "Merci ! On a beaucoup travaill\xE9 pour obtenir le traitement acoustique
-    parfait sans sacrifier la qualit\xE9 du cadre."
-  singleRead: 0
-  hasGameActions: 0
-  showGameActions: 0
+  showGameActions: 1
   gameActions:
     actionsList:
     - actionType: 0
@@ -589,6 +234,325 @@ MonoBehaviour:
       ScooterPopUpImg: {fileID: 0}
       itemToAdd: {fileID: 0}
       itemToRemove: {fileID: 0}
+  hasRequirements: 0
+  showGameRequirements: 0
+  gameRequirements:
+    requirementsList: []
+--- !u!114 &-7473727401222889965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
+  m_Name: "Pour \xEAtre honn\xEAte, je "
+  m_EditorClassIdentifier: 
+  showGeneralProperties: 1
+  graph: {fileID: 11400000}
+  position: {x: 360, y: 456}
+  ports:
+    keys:
+    - previousNode
+    - nextNodes
+    values:
+    - _fieldName: previousNode
+      _node: {fileID: -7473727401222889965}
+      _typeQualifiedName: DialogueTextNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: nextNodes
+        node: {fileID: -8573261147854726904}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: nextNodes
+      _node: {fileID: -7473727401222889965}
+      _typeQualifiedName: DialogueBaseNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: previousNode
+        node: {fileID: -8161615369389797807}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  previousNode: {fileID: 0}
+  nextNodes: {fileID: 0}
+  identityType: 0
+  message: "Pour \xEAtre honn\xEAte, je ne ''suis'' que quand j'\xE9change et profite
+    des diff\xE9rentes cultures dont le monde regorge."
+  singleRead: 0
+  hasGameActions: 0
+  showGameActions: 0
+  gameActions:
+    actionsList: []
+  hasRequirements: 0
+  showGameRequirements: 0
+  gameRequirements:
+    requirementsList: []
+--- !u!114 &-7222027222213430401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
+  m_Name: Salut {PLAYER}, bienvenue dans le Van Cosmocover.
+  m_EditorClassIdentifier: 
+  showGeneralProperties: 1
+  graph: {fileID: 11400000}
+  position: {x: -1624, y: 520}
+  ports:
+    keys:
+    - previousNode
+    - nextNodes
+    values:
+    - _fieldName: previousNode
+      _node: {fileID: -7222027222213430401}
+      _typeQualifiedName: DialogueTextNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: nextNodes
+      _node: {fileID: -7222027222213430401}
+      _typeQualifiedName: DialogueBaseNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: previousNode
+        node: {fileID: 7364547565942207724}
+        reroutePoints: []
+      - fieldName: previousNode
+        node: {fileID: -8573261147854726904}
+        reroutePoints: []
+      - fieldName: previousNode
+        node: {fileID: -8661240175182881575}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  previousNode: {fileID: 0}
+  nextNodes: {fileID: 0}
+  identityType: 0
+  message: Salut {PLAYER}, bienvenue dans le Van Cosmocover.
+  singleRead: 0
+  hasGameActions: 0
+  showGameActions: 0
+  gameActions:
+    actionsList: []
+  hasRequirements: 0
+  showGameRequirements: 0
+  gameRequirements:
+    requirementsList: []
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c135d5abc97ad74e959ab5b6aa5d6eb, type: 3}
+  m_Name: Cosmocover Corseta DialogueGraph
+  m_EditorClassIdentifier: 
+  nodes:
+  - {fileID: -7222027222213430401}
+  - {fileID: 7364547565942207724}
+  - {fileID: -8573261147854726904}
+  - {fileID: -8661240175182881575}
+  - {fileID: -8473547257642939651}
+  - {fileID: 6734777085124109491}
+  - {fileID: -7473727401222889965}
+  - {fileID: -8161615369389797807}
+  - {fileID: 7750414249604005467}
+  displayName: Corseta Dialogue
+  description: "Dialogue Pr\xE9sentation Corseta Cosmocover"
+  mainNodeParent: {fileID: -7222027222213430401}
+--- !u!114 &6734777085124109491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
+  m_Name: "Le van est d\xE9j\xE0 un peu en d\xE9sordre, mais l'ambiance y est vraiment
+    sympa !"
+  m_EditorClassIdentifier: 
+  showGeneralProperties: 1
+  graph: {fileID: 11400000}
+  position: {x: 1208, y: 88}
+  ports:
+    keys:
+    - previousNode
+    - nextNodes
+    values:
+    - _fieldName: previousNode
+      _node: {fileID: 6734777085124109491}
+      _typeQualifiedName: DialogueTextNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: nextNodes
+        node: {fileID: -8473547257642939651}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: nextNodes
+      _node: {fileID: 6734777085124109491}
+      _typeQualifiedName: DialogueBaseNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  previousNode: {fileID: 0}
+  nextNodes: {fileID: 0}
+  identityType: 0
+  message: "Le van est d\xE9j\xE0 un peu en d\xE9sordre, mais l'ambiance y est vraiment
+    sympa !"
+  singleRead: 0
+  hasGameActions: 1
+  showGameActions: 1
+  gameActions:
+    actionsList:
+    - actionType: 0
+      hasCondition: 0
+      nodesRequiredToRead: []
+      questToAdd: {fileID: 0}
+      questAssociated: {fileID: 0}
+      questStepToComplete: {fileID: 0}
+      ScooterPopUpImg: {fileID: 0}
+      itemToAdd: {fileID: 0}
+      itemToRemove: {fileID: 0}
+  hasRequirements: 0
+  showGameRequirements: 0
+  gameRequirements:
+    requirementsList: []
+--- !u!114 &7364547565942207724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
+  m_Name: "Sympa la d\xE9coration !"
+  m_EditorClassIdentifier: 
+  showGeneralProperties: 1
+  graph: {fileID: 11400000}
+  position: {x: -561.0754, y: 89.6318}
+  ports:
+    keys:
+    - previousNode
+    - nextNodes
+    values:
+    - _fieldName: previousNode
+      _node: {fileID: 7364547565942207724}
+      _typeQualifiedName: DialogueTextNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: nextNodes
+        node: {fileID: -7222027222213430401}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: nextNodes
+      _node: {fileID: 7364547565942207724}
+      _typeQualifiedName: DialogueBaseNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: previousNode
+        node: {fileID: -8473547257642939651}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  previousNode: {fileID: 0}
+  nextNodes: {fileID: 0}
+  identityType: 1
+  message: "Sympa la d\xE9coration !"
+  singleRead: 1
+  hasGameActions: 0
+  showGameActions: 0
+  gameActions:
+    actionsList: []
+  hasRequirements: 0
+  showGameRequirements: 0
+  gameRequirements:
+    requirementsList: []
+--- !u!114 &7750414249604005467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
+  m_Name: On se voit plus tard.
+  m_EditorClassIdentifier: 
+  showGeneralProperties: 1
+  graph: {fileID: 11400000}
+  position: {x: 344, y: 840}
+  ports:
+    keys:
+    - previousNode
+    - nextNodes
+    values:
+    - _fieldName: previousNode
+      _node: {fileID: 7750414249604005467}
+      _typeQualifiedName: DialogueTextNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: nextNodes
+        node: {fileID: -8661240175182881575}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: nextNodes
+      _node: {fileID: 7750414249604005467}
+      _typeQualifiedName: DialogueBaseNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  previousNode: {fileID: 0}
+  nextNodes: {fileID: 0}
+  identityType: 0
+  message: On se voit plus tard.
+  singleRead: 0
+  hasGameActions: 0
+  showGameActions: 0
+  gameActions:
+    actionsList: []
   hasRequirements: 0
   showGameRequirements: 0
   gameRequirements:

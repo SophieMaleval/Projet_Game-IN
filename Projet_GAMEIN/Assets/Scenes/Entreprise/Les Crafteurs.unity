@@ -946,6 +946,40 @@ PolygonCollider2D:
       - {x: 0.38579798, y: 0.43870234}
       - {x: -0.5278952, y: 0.4037826}
       - {x: -0.7971902, y: 0.38784218}
+--- !u!1 &187948346
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 187948347}
+  m_Layer: 0
+  m_Name: NPC
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &187948347
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 187948346}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1895330479}
+  - {fileID: 1888176893}
+  - {fileID: 1929991876}
+  - {fileID: 1609586305}
+  m_Father: {fileID: 1885215600}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &218534334
 GameObject:
   m_ObjectHideFlags: 0
@@ -1258,7 +1292,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 247659338}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.44126248, y: -1.174654, z: -10}
+  m_LocalPosition: {x: 0.31800008, y: 2.11, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1906045140}
@@ -3638,6 +3672,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: "Les Crafteurs - Th\xE9o Maria"
       objectReference: {fileID: 0}
+    - target: {fileID: 7454713249344840315, guid: c64a8826e6ff4f14681f8c8e7d68123f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c64a8826e6ff4f14681f8c8e7d68123f, type: 3}
 --- !u!4 &775267946 stripped
@@ -3812,6 +3851,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &857471275
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 857471276}
+  m_Layer: 0
+  m_Name: NPC
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &857471276
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 857471275}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1399621357}
+  m_Father: {fileID: 1417301523}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &887877441
 GameObject:
   m_ObjectHideFlags: 0
@@ -4166,7 +4236,7 @@ PrefabInstance:
     - target: {fileID: 4996901833556267676, guid: 03a6ba75661f06c43b2873bfc2464d25,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4996901833556267676, guid: 03a6ba75661f06c43b2873bfc2464d25,
         type: 3}
@@ -4533,7 +4603,7 @@ PrefabInstance:
     - target: {fileID: 1267104718512802164, guid: 765da57ec812d7847ab7d7408ed91688,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1267104718512802164, guid: 765da57ec812d7847ab7d7408ed91688,
         type: 3}
@@ -4703,7 +4773,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1145911538
 Transform:
   m_ObjectHideFlags: 0
@@ -5622,6 +5692,143 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.671875, y: 1.415862}
   m_EdgeRadius: 0
+--- !u!1001 &1399621356
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 857471276}
+    m_Modifications:
+    - target: {fileID: 5437542290871946368, guid: 4a3b6f66b68759541a20dc93fecfdec4,
+        type: 3}
+      propertyPath: m_Name
+      value: "Les Crafteurs - Th\xE9o Maria NPC"
+      objectReference: {fileID: 0}
+    - target: {fileID: 5437542290871946369, guid: 4a3b6f66b68759541a20dc93fecfdec4,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5437542290871946369, guid: 4a3b6f66b68759541a20dc93fecfdec4,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5437542290871946369, guid: 4a3b6f66b68759541a20dc93fecfdec4,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5437542290871946369, guid: 4a3b6f66b68759541a20dc93fecfdec4,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.976107
+      objectReference: {fileID: 0}
+    - target: {fileID: 5437542290871946369, guid: 4a3b6f66b68759541a20dc93fecfdec4,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 5.770667
+      objectReference: {fileID: 0}
+    - target: {fileID: 5437542290871946369, guid: 4a3b6f66b68759541a20dc93fecfdec4,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5437542290871946369, guid: 4a3b6f66b68759541a20dc93fecfdec4,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5437542290871946369, guid: 4a3b6f66b68759541a20dc93fecfdec4,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5437542290871946369, guid: 4a3b6f66b68759541a20dc93fecfdec4,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5437542290871946369, guid: 4a3b6f66b68759541a20dc93fecfdec4,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5437542290871946369, guid: 4a3b6f66b68759541a20dc93fecfdec4,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5437542290871946369, guid: 4a3b6f66b68759541a20dc93fecfdec4,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5437542290871946369, guid: 4a3b6f66b68759541a20dc93fecfdec4,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5437542290871946370, guid: 4a3b6f66b68759541a20dc93fecfdec4,
+        type: 3}
+      propertyPath: namePNJ
+      value: "Th\xE9o Maria"
+      objectReference: {fileID: 0}
+    - target: {fileID: 5437542290871946370, guid: 4a3b6f66b68759541a20dc93fecfdec4,
+        type: 3}
+      propertyPath: pnjInENT
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5437542290871946370, guid: 4a3b6f66b68759541a20dc93fecfdec4,
+        type: 3}
+      propertyPath: npcDialogue
+      value: 
+      objectReference: {fileID: 11400000, guid: 065cdfe94f0d0c24fa7518c48c54ce4d,
+        type: 2}
+    - target: {fileID: 5437542290871946396, guid: 4a3b6f66b68759541a20dc93fecfdec4,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 1.26
+      objectReference: {fileID: 0}
+    - target: {fileID: 5437542290871946396, guid: 4a3b6f66b68759541a20dc93fecfdec4,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 1.26
+      objectReference: {fileID: 0}
+    - target: {fileID: 5437542290871946396, guid: 4a3b6f66b68759541a20dc93fecfdec4,
+        type: 3}
+      propertyPath: m_Offset.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5437542290871946396, guid: 4a3b6f66b68759541a20dc93fecfdec4,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5437542290871946397, guid: 4a3b6f66b68759541a20dc93fecfdec4,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: b9af589fa9292d640a40ef8528f1a9ab, type: 2}
+    - target: {fileID: 5437542290871946398, guid: 4a3b6f66b68759541a20dc93fecfdec4,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 298710986438333997, guid: ab2c15329b9817942bb5ed7a3fc9b2a7,
+        type: 3}
+    - target: {fileID: 5437542290871946398, guid: 4a3b6f66b68759541a20dc93fecfdec4,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4a3b6f66b68759541a20dc93fecfdec4, type: 3}
+--- !u!4 &1399621357 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5437542290871946369, guid: 4a3b6f66b68759541a20dc93fecfdec4,
+    type: 3}
+  m_PrefabInstance: {fileID: 1399621356}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1417301522
 GameObject:
   m_ObjectHideFlags: 0
@@ -5651,6 +5858,7 @@ Transform:
   m_Children:
   - {fileID: 887877442}
   - {fileID: 1836965918}
+  - {fileID: 857471276}
   m_Father: {fileID: 272812415}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6941,6 +7149,133 @@ Transform:
   m_Father: {fileID: 1956501563}
   m_RootOrder: 27
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1609586304
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 187948347}
+    m_Modifications:
+    - target: {fileID: 5437542290871946368, guid: 4a3b6f66b68759541a20dc93fecfdec4,
+        type: 3}
+      propertyPath: m_Name
+      value: Les Crafteurs - Alexandre Huyghe NPC
+      objectReference: {fileID: 0}
+    - target: {fileID: 5437542290871946369, guid: 4a3b6f66b68759541a20dc93fecfdec4,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5437542290871946369, guid: 4a3b6f66b68759541a20dc93fecfdec4,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.093039
+      objectReference: {fileID: 0}
+    - target: {fileID: 5437542290871946369, guid: 4a3b6f66b68759541a20dc93fecfdec4,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.6293695
+      objectReference: {fileID: 0}
+    - target: {fileID: 5437542290871946369, guid: 4a3b6f66b68759541a20dc93fecfdec4,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5437542290871946369, guid: 4a3b6f66b68759541a20dc93fecfdec4,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5437542290871946369, guid: 4a3b6f66b68759541a20dc93fecfdec4,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5437542290871946369, guid: 4a3b6f66b68759541a20dc93fecfdec4,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5437542290871946369, guid: 4a3b6f66b68759541a20dc93fecfdec4,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5437542290871946369, guid: 4a3b6f66b68759541a20dc93fecfdec4,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5437542290871946369, guid: 4a3b6f66b68759541a20dc93fecfdec4,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5437542290871946369, guid: 4a3b6f66b68759541a20dc93fecfdec4,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5437542290871946370, guid: 4a3b6f66b68759541a20dc93fecfdec4,
+        type: 3}
+      propertyPath: namePNJ
+      value: Alexandre Huyghe
+      objectReference: {fileID: 0}
+    - target: {fileID: 5437542290871946370, guid: 4a3b6f66b68759541a20dc93fecfdec4,
+        type: 3}
+      propertyPath: npcDialogue
+      value: 
+      objectReference: {fileID: 11400000, guid: 55acf5ec5356d1a40b821bec8dcfe0c5,
+        type: 2}
+    - target: {fileID: 5437542290871946396, guid: 4a3b6f66b68759541a20dc93fecfdec4,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 1.26
+      objectReference: {fileID: 0}
+    - target: {fileID: 5437542290871946396, guid: 4a3b6f66b68759541a20dc93fecfdec4,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 1.26
+      objectReference: {fileID: 0}
+    - target: {fileID: 5437542290871946396, guid: 4a3b6f66b68759541a20dc93fecfdec4,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5437542290871946396, guid: 4a3b6f66b68759541a20dc93fecfdec4,
+        type: 3}
+      propertyPath: m_Offset.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5437542290871946396, guid: 4a3b6f66b68759541a20dc93fecfdec4,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5437542290871946397, guid: 4a3b6f66b68759541a20dc93fecfdec4,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: b9af589fa9292d640a40ef8528f1a9ab, type: 2}
+    - target: {fileID: 5437542290871946398, guid: 4a3b6f66b68759541a20dc93fecfdec4,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1351821374064007882, guid: ab2c15329b9817942bb5ed7a3fc9b2a7,
+        type: 3}
+    - target: {fileID: 5437542290871946398, guid: 4a3b6f66b68759541a20dc93fecfdec4,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4a3b6f66b68759541a20dc93fecfdec4, type: 3}
+--- !u!4 &1609586305 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5437542290871946369, guid: 4a3b6f66b68759541a20dc93fecfdec4,
+    type: 3}
+  m_PrefabInstance: {fileID: 1609586304}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1628801605
 GameObject:
   m_ObjectHideFlags: 0
@@ -8076,24 +8411,150 @@ Transform:
   - {fileID: 1202545438}
   - {fileID: 1457466256}
   - {fileID: 1956501563}
-  - {fileID: 1895330479}
-  - {fileID: 1929991876}
+  - {fileID: 187948347}
   - {fileID: 1083046551}
   - {fileID: 942546354}
   m_Father: {fileID: 272812415}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1888176892
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 187948347}
+    m_Modifications:
+    - target: {fileID: 5437542290871946368, guid: 4a3b6f66b68759541a20dc93fecfdec4,
+        type: 3}
+      propertyPath: m_Name
+      value: Les Crafteurs - Joris Mazielle NPC
+      objectReference: {fileID: 0}
+    - target: {fileID: 5437542290871946369, guid: 4a3b6f66b68759541a20dc93fecfdec4,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5437542290871946369, guid: 4a3b6f66b68759541a20dc93fecfdec4,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.9699999
+      objectReference: {fileID: 0}
+    - target: {fileID: 5437542290871946369, guid: 4a3b6f66b68759541a20dc93fecfdec4,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.46
+      objectReference: {fileID: 0}
+    - target: {fileID: 5437542290871946369, guid: 4a3b6f66b68759541a20dc93fecfdec4,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5437542290871946369, guid: 4a3b6f66b68759541a20dc93fecfdec4,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5437542290871946369, guid: 4a3b6f66b68759541a20dc93fecfdec4,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5437542290871946369, guid: 4a3b6f66b68759541a20dc93fecfdec4,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5437542290871946369, guid: 4a3b6f66b68759541a20dc93fecfdec4,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5437542290871946369, guid: 4a3b6f66b68759541a20dc93fecfdec4,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5437542290871946369, guid: 4a3b6f66b68759541a20dc93fecfdec4,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5437542290871946369, guid: 4a3b6f66b68759541a20dc93fecfdec4,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5437542290871946370, guid: 4a3b6f66b68759541a20dc93fecfdec4,
+        type: 3}
+      propertyPath: namePNJ
+      value: Joris Mazelle
+      objectReference: {fileID: 0}
+    - target: {fileID: 5437542290871946370, guid: 4a3b6f66b68759541a20dc93fecfdec4,
+        type: 3}
+      propertyPath: pnjInENT
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5437542290871946370, guid: 4a3b6f66b68759541a20dc93fecfdec4,
+        type: 3}
+      propertyPath: npcDialogue
+      value: 
+      objectReference: {fileID: 11400000, guid: 4c9f8303f54747744aa0ffc5fb3dd7bc,
+        type: 2}
+    - target: {fileID: 5437542290871946396, guid: 4a3b6f66b68759541a20dc93fecfdec4,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 1.26
+      objectReference: {fileID: 0}
+    - target: {fileID: 5437542290871946396, guid: 4a3b6f66b68759541a20dc93fecfdec4,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 1.26
+      objectReference: {fileID: 0}
+    - target: {fileID: 5437542290871946396, guid: 4a3b6f66b68759541a20dc93fecfdec4,
+        type: 3}
+      propertyPath: m_Offset.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5437542290871946396, guid: 4a3b6f66b68759541a20dc93fecfdec4,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5437542290871946397, guid: 4a3b6f66b68759541a20dc93fecfdec4,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: b9af589fa9292d640a40ef8528f1a9ab, type: 2}
+    - target: {fileID: 5437542290871946398, guid: 4a3b6f66b68759541a20dc93fecfdec4,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -5138494748393680214, guid: ab2c15329b9817942bb5ed7a3fc9b2a7,
+        type: 3}
+    - target: {fileID: 5437542290871946398, guid: 4a3b6f66b68759541a20dc93fecfdec4,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4a3b6f66b68759541a20dc93fecfdec4, type: 3}
+--- !u!4 &1888176893 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5437542290871946369, guid: 4a3b6f66b68759541a20dc93fecfdec4,
+    type: 3}
+  m_PrefabInstance: {fileID: 1888176892}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1895330478
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1885215600}
+    m_TransformParent: {fileID: 187948347}
     m_Modifications:
     - target: {fileID: 7454713249344840312, guid: 99d4885b6a72a934682c4010130d7428,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7454713249344840312, guid: 99d4885b6a72a934682c4010130d7428,
         type: 3}
@@ -8159,6 +8620,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Les Crafteurs - Joris Mazielle
+      objectReference: {fileID: 0}
+    - target: {fileID: 7454713249344840315, guid: 99d4885b6a72a934682c4010130d7428,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 99d4885b6a72a934682c4010130d7428, type: 3}
@@ -8318,12 +8784,12 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1885215600}
+    m_TransformParent: {fileID: 187948347}
     m_Modifications:
     - target: {fileID: 7454713249344840312, guid: 7a23736b0064322428f2a99cc3fcb3c2,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7454713249344840312, guid: 7a23736b0064322428f2a99cc3fcb3c2,
         type: 3}
@@ -8389,6 +8855,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Les Crafteurs - Alexandre Huyghe
+      objectReference: {fileID: 0}
+    - target: {fileID: 7454713249344840315, guid: 7a23736b0064322428f2a99cc3fcb3c2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a23736b0064322428f2a99cc3fcb3c2, type: 3}

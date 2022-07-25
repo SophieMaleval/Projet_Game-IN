@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-7701533418533667112
+--- !u!114 &-7929467391356267135
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -10,35 +10,41 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
-  m_Name: "Oui je vois de quoi tu parles\u2026"
+  m_Name: "Salut \xE7a va ?"
   m_EditorClassIdentifier: 
   showGeneralProperties: 1
   graph: {fileID: 11400000}
-  position: {x: 5112, y: 1096}
+  position: {x: 2796.8662, y: 885.4422}
   ports:
     keys:
     - previousNode
     - nextNodes
     values:
     - _fieldName: previousNode
-      _node: {fileID: -7701533418533667112}
+      _node: {fileID: -7929467391356267135}
       _typeQualifiedName: DialogueTextNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
-      connections:
-      - fieldName: nextNodes
-        node: {fileID: 3461363145032375743}
-        reroutePoints: []
+      connections: []
       _direction: 0
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
     - _fieldName: nextNodes
-      _node: {fileID: -7701533418533667112}
+      _node: {fileID: -7929467391356267135}
       _typeQualifiedName: DialogueBaseNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
       connections:
       - fieldName: previousNode
-        node: {fileID: -6065045921602390104}
+        node: {fileID: 9133443016425131666}
+        reroutePoints: []
+      - fieldName: previousNode
+        node: {fileID: -2518256416883792095}
+        reroutePoints: []
+      - fieldName: previousNode
+        node: {fileID: -5654576937040834976}
+        reroutePoints: []
+      - fieldName: previousNode
+        node: {fileID: -6582388156246096292}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -47,9 +53,8 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 0
-  message: "Oui je vois de quoi tu parles\u2026 Pas \xE9tonnant que \xE7a coince,
-    laisse-moi quelques secondes, je vais pr\xE9parer quelque chose qui devrait r\xE9soudre
-    le probl\xE8me."
+  message: "Salut \xE7a va ? Alors comment tu trouves notre d\xE9co ? Pas mal hein
+    ! "
   singleRead: 0
   hasGameActions: 0
   showGameActions: 0
@@ -59,7 +64,7 @@ MonoBehaviour:
   showGameRequirements: 0
   gameRequirements:
     requirementsList: []
---- !u!114 &-6065045921602390104
+--- !u!114 &-6582388156246096292
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -69,92 +74,35 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
-  m_Name: "\u2026"
+  m_Name: Je dois y aller.
   m_EditorClassIdentifier: 
   showGeneralProperties: 1
   graph: {fileID: 11400000}
-  position: {x: 5800, y: 1096}
+  position: {x: 3554.2688, y: 1482.8907}
   ports:
     keys:
     - previousNode
     - nextNodes
     values:
     - _fieldName: previousNode
-      _node: {fileID: -6065045921602390104}
+      _node: {fileID: -6582388156246096292}
       _typeQualifiedName: DialogueTextNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
       connections:
       - fieldName: nextNodes
-        node: {fileID: -7701533418533667112}
+        node: {fileID: -7929467391356267135}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
     - _fieldName: nextNodes
-      _node: {fileID: -6065045921602390104}
+      _node: {fileID: -6582388156246096292}
       _typeQualifiedName: DialogueBaseNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
       connections:
       - fieldName: previousNode
-        node: {fileID: 6881296720382686756}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-  previousNode: {fileID: 0}
-  nextNodes: {fileID: 0}
-  identityType: 0
-  message: "\u2026"
-  singleRead: 0
-  hasGameActions: 0
-  showGameActions: 0
-  gameActions:
-    actionsList: []
-  hasRequirements: 0
-  showGameRequirements: 0
-  gameRequirements:
-    requirementsList: []
---- !u!114 &-2328754256436848117
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
-  m_Name: "Qui \xEAtes-vous ?"
-  m_EditorClassIdentifier: 
-  showGeneralProperties: 1
-  graph: {fileID: 11400000}
-  position: {x: 4456, y: 824}
-  ports:
-    keys:
-    - previousNode
-    - nextNodes
-    values:
-    - _fieldName: previousNode
-      _node: {fileID: -2328754256436848117}
-      _typeQualifiedName: DialogueTextNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      connections:
-      - fieldName: nextNodes
-        node: {fileID: 3890432912757033914}
-        reroutePoints: []
-      _direction: 0
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: nextNodes
-      _node: {fileID: -2328754256436848117}
-      _typeQualifiedName: DialogueBaseNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      connections:
-      - fieldName: previousNode
-        node: {fileID: 605201534521296367}
+        node: {fileID: 4432982407440634197}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -163,7 +111,250 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 1
-  message: "Qui \xEAtes-vous ?"
+  message: Je dois y aller.
+  singleRead: 0
+  hasGameActions: 0
+  showGameActions: 0
+  gameActions:
+    actionsList: []
+  hasRequirements: 0
+  showGameRequirements: 0
+  gameRequirements:
+    requirementsList: []
+--- !u!114 &-5654576937040834976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
+  m_Name: 'C''est toi qui peins ? '
+  m_EditorClassIdentifier: 
+  showGeneralProperties: 1
+  graph: {fileID: 11400000}
+  position: {x: 3550.9285, y: 1135.7153}
+  ports:
+    keys:
+    - previousNode
+    - nextNodes
+    values:
+    - _fieldName: previousNode
+      _node: {fileID: -5654576937040834976}
+      _typeQualifiedName: DialogueTextNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: nextNodes
+        node: {fileID: -7929467391356267135}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: nextNodes
+      _node: {fileID: -5654576937040834976}
+      _typeQualifiedName: DialogueBaseNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: previousNode
+        node: {fileID: 181157353371795683}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  previousNode: {fileID: 0}
+  nextNodes: {fileID: 0}
+  identityType: 1
+  message: 'C''est toi qui peins ? '
+  singleRead: 1
+  hasGameActions: 0
+  showGameActions: 0
+  gameActions:
+    actionsList: []
+  hasRequirements: 0
+  showGameRequirements: 0
+  gameRequirements:
+    requirementsList: []
+--- !u!114 &-3901583835203835776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
+  m_Name: 'Un one-woman studio '
+  m_EditorClassIdentifier: 
+  showGeneralProperties: 1
+  graph: {fileID: 11400000}
+  position: {x: 4184, y: 840}
+  ports:
+    keys:
+    - previousNode
+    - nextNodes
+    values:
+    - _fieldName: previousNode
+      _node: {fileID: -3901583835203835776}
+      _typeQualifiedName: DialogueTextNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: nextNodes
+        node: {fileID: -2518256416883792095}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: nextNodes
+      _node: {fileID: -3901583835203835776}
+      _typeQualifiedName: DialogueBaseNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  previousNode: {fileID: 0}
+  nextNodes: {fileID: 0}
+  identityType: 0
+  message: "Un one-woman studio qui vise \xE0 raconter des histoires, mettre en lumi\xE8re
+    des personnages notamment f\xE9minins, tout en sortant des sentiers battus et
+    des biais cognitifs !"
+  singleRead: 0
+  hasGameActions: 1
+  showGameActions: 1
+  gameActions:
+    actionsList:
+    - actionType: 0
+      hasCondition: 0
+      nodesRequiredToRead: []
+      questToAdd: {fileID: 0}
+      questAssociated: {fileID: 0}
+      questStepToComplete: {fileID: 0}
+      ScooterPopUpImg: {fileID: 0}
+      itemToAdd: {fileID: 0}
+      itemToRemove: {fileID: 0}
+  hasRequirements: 0
+  showGameRequirements: 0
+  gameRequirements:
+    requirementsList: []
+--- !u!114 &-3279531102884861870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
+  m_Name: "Je suis Agn\xE8s VuillaumeJe suis Agn\xE8s Vuillaume"
+  m_EditorClassIdentifier: 
+  showGeneralProperties: 1
+  graph: {fileID: 11400000}
+  position: {x: 4200, y: 584}
+  ports:
+    keys:
+    - previousNode
+    - nextNodes
+    values:
+    - _fieldName: previousNode
+      _node: {fileID: -3279531102884861870}
+      _typeQualifiedName: DialogueTextNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: nextNodes
+        node: {fileID: 9133443016425131666}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: nextNodes
+      _node: {fileID: -3279531102884861870}
+      _typeQualifiedName: DialogueBaseNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  previousNode: {fileID: 0}
+  nextNodes: {fileID: 0}
+  identityType: 0
+  message: "Je suis Agn\xE8s Vuillaume fondatrice de 2054 et cr\xE9atrice de The
+    Sundew."
+  singleRead: 0
+  hasGameActions: 1
+  showGameActions: 1
+  gameActions:
+    actionsList:
+    - actionType: 0
+      hasCondition: 0
+      nodesRequiredToRead: []
+      questToAdd: {fileID: 0}
+      questAssociated: {fileID: 0}
+      questStepToComplete: {fileID: 0}
+      ScooterPopUpImg: {fileID: 0}
+      itemToAdd: {fileID: 0}
+      itemToRemove: {fileID: 0}
+  hasRequirements: 0
+  showGameRequirements: 0
+  gameRequirements:
+    requirementsList: []
+--- !u!114 &-2518256416883792095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
+  m_Name: 'Qu''est ce que 2054 ? '
+  m_EditorClassIdentifier: 
+  showGeneralProperties: 1
+  graph: {fileID: 11400000}
+  position: {x: 3544, y: 840}
+  ports:
+    keys:
+    - previousNode
+    - nextNodes
+    values:
+    - _fieldName: previousNode
+      _node: {fileID: -2518256416883792095}
+      _typeQualifiedName: DialogueTextNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: nextNodes
+        node: {fileID: -7929467391356267135}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: nextNodes
+      _node: {fileID: -2518256416883792095}
+      _typeQualifiedName: DialogueBaseNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: previousNode
+        node: {fileID: -3901583835203835776}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  previousNode: {fileID: 0}
+  nextNodes: {fileID: 0}
+  identityType: 1
+  message: 'Qu''est ce que 2054 ? '
   singleRead: 1
   hasGameActions: 0
   showGameActions: 0
@@ -183,22 +374,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4c135d5abc97ad74e959ab5b6aa5d6eb, type: 3}
-  m_Name: Anna
+  m_Name: "2054 Agn\xE9s DialogueGraph"
   m_EditorClassIdentifier: 
   nodes:
-  - {fileID: 3890432912757033914}
-  - {fileID: -2328754256436848117}
-  - {fileID: 3461363145032375743}
-  - {fileID: 7584700168366374770}
-  - {fileID: 605201534521296367}
-  - {fileID: 3453889113899715858}
-  - {fileID: -7701533418533667112}
-  - {fileID: -6065045921602390104}
-  - {fileID: 6881296720382686756}
-  displayName: 
-  description: 
-  mainNodeParent: {fileID: 3890432912757033914}
---- !u!114 &605201534521296367
+  - {fileID: -7929467391356267135}
+  - {fileID: 9133443016425131666}
+  - {fileID: -2518256416883792095}
+  - {fileID: -5654576937040834976}
+  - {fileID: -6582388156246096292}
+  - {fileID: -3279531102884861870}
+  - {fileID: -3901583835203835776}
+  - {fileID: 181157353371795683}
+  - {fileID: 4432982407440634197}
+  displayName: "Agn\xE8s Dialogue"
+  description: "Dialogue Pr\xE9sentation Agn\xE8s 2054"
+  mainNodeParent: {fileID: -7929467391356267135}
+--- !u!114 &181157353371795683
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -208,30 +399,30 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
-  m_Name: 'Je suis Anna '
+  m_Name: Oui ! Je viens du milieu artistique
   m_EditorClassIdentifier: 
   showGeneralProperties: 1
   graph: {fileID: 11400000}
-  position: {x: 5112, y: 840}
+  position: {x: 4184, y: 1128}
   ports:
     keys:
     - previousNode
     - nextNodes
     values:
     - _fieldName: previousNode
-      _node: {fileID: 605201534521296367}
+      _node: {fileID: 181157353371795683}
       _typeQualifiedName: DialogueTextNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
       connections:
       - fieldName: nextNodes
-        node: {fileID: -2328754256436848117}
+        node: {fileID: -5654576937040834976}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
     - _fieldName: nextNodes
-      _node: {fileID: 605201534521296367}
+      _node: {fileID: 181157353371795683}
       _typeQualifiedName: DialogueBaseNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
       connections: []
@@ -242,10 +433,8 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 0
-  message: "Je suis Anna ! La flic cyborg du coin ! Je suis extr\xEAmement cal\xE9
-    sur tout ce qui concerne la technologie et l'intelligence articielle. Et toi
-    tu dois \xEAtre Olivier ! Un \xEAtre humain pur souche qui ne frappe pas aux
-    portes !"
+  message: Oui ! Je viens du milieu artistique et j'adore peindre pendant mon temps
+    libre.
   singleRead: 0
   hasGameActions: 1
   showGameActions: 1
@@ -264,211 +453,7 @@ MonoBehaviour:
   showGameRequirements: 0
   gameRequirements:
     requirementsList: []
---- !u!114 &3453889113899715858
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
-  m_Name: On se voit plus tard !
-  m_EditorClassIdentifier: 
-  showGeneralProperties: 1
-  graph: {fileID: 11400000}
-  position: {x: 5144, y: 1336}
-  ports:
-    keys:
-    - previousNode
-    - nextNodes
-    values:
-    - _fieldName: previousNode
-      _node: {fileID: 3453889113899715858}
-      _typeQualifiedName: DialogueTextNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      connections:
-      - fieldName: nextNodes
-        node: {fileID: 7584700168366374770}
-        reroutePoints: []
-      _direction: 0
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: nextNodes
-      _node: {fileID: 3453889113899715858}
-      _typeQualifiedName: DialogueBaseNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-  previousNode: {fileID: 0}
-  nextNodes: {fileID: 0}
-  identityType: 0
-  message: On se voit plus tard !
-  singleRead: 0
-  hasGameActions: 0
-  showGameActions: 0
-  gameActions:
-    actionsList: []
-  hasRequirements: 0
-  showGameRequirements: 0
-  gameRequirements:
-    requirementsList: []
---- !u!114 &3461363145032375743
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
-  m_Name: Quetes
-  m_EditorClassIdentifier: 
-  showGeneralProperties: 1
-  graph: {fileID: 11400000}
-  position: {x: 4456, y: 1080}
-  ports:
-    keys:
-    - previousNode
-    - nextNodes
-    values:
-    - _fieldName: previousNode
-      _node: {fileID: 3461363145032375743}
-      _typeQualifiedName: DialogueTextNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      connections:
-      - fieldName: nextNodes
-        node: {fileID: 3890432912757033914}
-        reroutePoints: []
-      _direction: 0
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: nextNodes
-      _node: {fileID: 3461363145032375743}
-      _typeQualifiedName: DialogueBaseNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      connections:
-      - fieldName: previousNode
-        node: {fileID: -7701533418533667112}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-  previousNode: {fileID: 0}
-  nextNodes: {fileID: 0}
-  identityType: 1
-  message: "Je vous prie de m'excuser, mais c'est urgent ! Tous les r\xE9seaux de
-    la Plaine Images sont inaccessibles et ils organisent un \xE9v\xE9nement important
-    ce soir ! Et PIX n'a pas encore le bon protocole"
-  singleRead: 1
-  hasGameActions: 0
-  showGameActions: 0
-  gameActions:
-    actionsList:
-    - actionType: 4
-      hasCondition: 0
-      nodesRequiredToRead: []
-      questToAdd: {fileID: 0}
-      questAssociated: {fileID: 0}
-      questStepToComplete: {fileID: 0}
-      ScooterPopUpImg: {fileID: 0}
-      itemToAdd: {fileID: 11400000, guid: bab35fb751967bc42bdb42b46e19fa76, type: 2}
-      itemToRemove: {fileID: 0}
-    - actionType: 2
-      hasCondition: 0
-      nodesRequiredToRead: []
-      questToAdd: {fileID: 0}
-      questAssociated: {fileID: 11400000, guid: e62da928601dc8545b2e1b2042a10cbb,
-        type: 2}
-      questStepToComplete: {fileID: 11400000, guid: e4411e934df7da549910f7e5e9195a7f,
-        type: 2}
-      ScooterPopUpImg: {fileID: 0}
-      itemToAdd: {fileID: 0}
-      itemToRemove: {fileID: 0}
-  hasRequirements: 1
-  showGameRequirements: 1
-  gameRequirements:
-    requirementsList:
-    - requirementType: 1
-      questToCheck: {fileID: 11400000, guid: e62da928601dc8545b2e1b2042a10cbb, type: 2}
-      questCheckedValueWanted: 0
-      questToCheckState: 0
-      questAssociatedToCheck: {fileID: 11400000, guid: e62da928601dc8545b2e1b2042a10cbb,
-        type: 2}
-      questStepToCheck: {fileID: 11400000, guid: e4411e934df7da549910f7e5e9195a7f,
-        type: 2}
-      questStepCheckedValueWanted: 0
-      questStepToCheckState: 0
-      itemToCheck: {fileID: 0}
---- !u!114 &3890432912757033914
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
-  m_Name: Wow ! Bonjour ?
-  m_EditorClassIdentifier: 
-  showGeneralProperties: 1
-  graph: {fileID: 11400000}
-  position: {x: 3772.2222, y: 984.21515}
-  ports:
-    keys:
-    - previousNode
-    - nextNodes
-    values:
-    - _fieldName: previousNode
-      _node: {fileID: 3890432912757033914}
-      _typeQualifiedName: DialogueTextNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      connections: []
-      _direction: 0
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: nextNodes
-      _node: {fileID: 3890432912757033914}
-      _typeQualifiedName: DialogueBaseNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      connections:
-      - fieldName: previousNode
-        node: {fileID: -2328754256436848117}
-        reroutePoints: []
-      - fieldName: previousNode
-        node: {fileID: 3461363145032375743}
-        reroutePoints: []
-      - fieldName: previousNode
-        node: {fileID: 7584700168366374770}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-  previousNode: {fileID: 0}
-  nextNodes: {fileID: 0}
-  identityType: 0
-  message: "Wow ! Bonjour ? Je t'ai pas entendu rentrer ! Tu avais frapp\xE9 ? "
-  singleRead: 0
-  hasGameActions: 0
-  showGameActions: 0
-  gameActions:
-    actionsList: []
-  hasRequirements: 0
-  showGameRequirements: 0
-  gameRequirements:
-    requirementsList: []
---- !u!114 &6881296720382686756
+--- !u!114 &4432982407440634197
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -482,26 +467,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   showGeneralProperties: 1
   graph: {fileID: 11400000}
-  position: {x: 6536, y: 1096}
+  position: {x: 4216, y: 1496}
   ports:
     keys:
     - previousNode
     - nextNodes
     values:
     - _fieldName: previousNode
-      _node: {fileID: 6881296720382686756}
+      _node: {fileID: 4432982407440634197}
       _typeQualifiedName: DialogueTextNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
       connections:
       - fieldName: nextNodes
-        node: {fileID: -6065045921602390104}
+        node: {fileID: -6582388156246096292}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
     - _fieldName: nextNodes
-      _node: {fileID: 6881296720382686756}
+      _node: {fileID: 4432982407440634197}
       _typeQualifiedName: DialogueBaseNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
       connections: []
@@ -512,38 +497,17 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 0
-  message: "Et voil\xE0 ! Tu n'auras qu'\xE0 donner \xE7a \xE0 la Plaine Images,
-    ils sauront quoi en faire."
+  message: "Prends soin de toi ! \xC0 plus !"
   singleRead: 0
-  hasGameActions: 1
-  showGameActions: 1
+  hasGameActions: 0
+  showGameActions: 0
   gameActions:
-    actionsList:
-    - actionType: 4
-      hasCondition: 0
-      nodesRequiredToRead: []
-      questToAdd: {fileID: 0}
-      questAssociated: {fileID: 0}
-      questStepToComplete: {fileID: 0}
-      ScooterPopUpImg: {fileID: 0}
-      itemToAdd: {fileID: 11400000, guid: bab35fb751967bc42bdb42b46e19fa76, type: 2}
-      itemToRemove: {fileID: 0}
-    - actionType: 2
-      hasCondition: 0
-      nodesRequiredToRead: []
-      questToAdd: {fileID: 0}
-      questAssociated: {fileID: 11400000, guid: e62da928601dc8545b2e1b2042a10cbb,
-        type: 2}
-      questStepToComplete: {fileID: 11400000, guid: e4411e934df7da549910f7e5e9195a7f,
-        type: 2}
-      ScooterPopUpImg: {fileID: 0}
-      itemToAdd: {fileID: 0}
-      itemToRemove: {fileID: 0}
+    actionsList: []
   hasRequirements: 0
   showGameRequirements: 0
   gameRequirements:
     requirementsList: []
---- !u!114 &7584700168366374770
+--- !u!114 &9133443016425131666
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -553,35 +517,35 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
-  m_Name: Je dois y aller.
+  m_Name: "Qui \xEAtes vous ?"
   m_EditorClassIdentifier: 
   showGeneralProperties: 1
   graph: {fileID: 11400000}
-  position: {x: 4456, y: 1336}
+  position: {x: 3544, y: 568}
   ports:
     keys:
     - previousNode
     - nextNodes
     values:
     - _fieldName: previousNode
-      _node: {fileID: 7584700168366374770}
+      _node: {fileID: 9133443016425131666}
       _typeQualifiedName: DialogueTextNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
       connections:
       - fieldName: nextNodes
-        node: {fileID: 3890432912757033914}
+        node: {fileID: -7929467391356267135}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
     - _fieldName: nextNodes
-      _node: {fileID: 7584700168366374770}
+      _node: {fileID: 9133443016425131666}
       _typeQualifiedName: DialogueBaseNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
       connections:
       - fieldName: previousNode
-        node: {fileID: 3453889113899715858}
+        node: {fileID: -3279531102884861870}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -590,8 +554,8 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 1
-  message: Je dois y aller.
-  singleRead: 0
+  message: "Qui \xEAtes vous ?"
+  singleRead: 1
   hasGameActions: 0
   showGameActions: 0
   gameActions:
