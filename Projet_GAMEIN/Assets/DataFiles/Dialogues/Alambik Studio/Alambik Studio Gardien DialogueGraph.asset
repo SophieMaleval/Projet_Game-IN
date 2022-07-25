@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
   m_Name: Je suis le Gardien du phare !
   m_EditorClassIdentifier: 
+  showGeneralProperties: 1
   graph: {fileID: 11400000}
   position: {x: 488, y: -696}
   ports:
@@ -49,9 +50,11 @@ MonoBehaviour:
   message: Je suis le Gardien du phare !
   singleRead: 0
   hasGameActions: 0
+  showGameActions: 0
   gameActions:
     actionsList: []
   hasRequirements: 0
+  showGameRequirements: 0
   gameRequirements:
     requirementsList: []
 --- !u!114 &-9150096652433532396
@@ -66,6 +69,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
   m_Name: "C'est Laurent Peroy qui m'a donn\xE9 plusieurs conseils pour la construction."
   m_EditorClassIdentifier: 
+  showGeneralProperties: 1
   graph: {fileID: 11400000}
   position: {x: 936, y: -360}
   ports:
@@ -103,9 +107,11 @@ MonoBehaviour:
   message: "C'est Laurent Peroy qui m'a donn\xE9 plusieurs conseils pour la construction."
   singleRead: 0
   hasGameActions: 0
+  showGameActions: 0
   gameActions:
     actionsList: []
   hasRequirements: 0
+  showGameRequirements: 0
   gameRequirements:
     requirementsList: []
 --- !u!114 &-7578785628902633992
@@ -120,6 +126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
   m_Name: "Qui \xEAtes-vous?"
   m_EditorClassIdentifier: 
+  showGeneralProperties: 1
   graph: {fileID: 11400000}
   position: {x: -8, y: -712}
   ports:
@@ -157,9 +164,11 @@ MonoBehaviour:
   message: "Qui \xEAtes-vous?"
   singleRead: 1
   hasGameActions: 0
+  showGameActions: 0
   gameActions:
     actionsList: []
   hasRequirements: 0
+  showGameRequirements: 0
   gameRequirements:
     requirementsList: []
 --- !u!114 &-6049694848510944433
@@ -174,6 +183,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
   m_Name: Un fin connaisseur de phare
   m_EditorClassIdentifier: 
+  showGeneralProperties: 1
   graph: {fileID: 11400000}
   position: {x: 1400, y: -360}
   ports:
@@ -208,9 +218,12 @@ MonoBehaviour:
   message: Un fin connaisseur de phare, une passion assez farfelu !
   singleRead: 0
   hasGameActions: 1
+  showGameActions: 0
   gameActions:
     actionsList:
     - actionType: 0
+      hasCondition: 0
+      nodesRequiredToRead: []
       questToAdd: {fileID: 0}
       questAssociated: {fileID: 0}
       questStepToComplete: {fileID: 0}
@@ -218,6 +231,7 @@ MonoBehaviour:
       itemToAdd: {fileID: 0}
       itemToRemove: {fileID: 0}
   hasRequirements: 0
+  showGameRequirements: 0
   gameRequirements:
     requirementsList: []
 --- !u!114 &-5305083484290676177
@@ -232,6 +246,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
   m_Name: Je dois y aller.
   m_EditorClassIdentifier: 
+  showGeneralProperties: 1
   graph: {fileID: 11400000}
   position: {x: -44.722816, y: 30.249481}
   ports:
@@ -269,9 +284,11 @@ MonoBehaviour:
   message: Je dois y aller.
   singleRead: 0
   hasGameActions: 0
+  showGameActions: 0
   gameActions:
     actionsList: []
   hasRequirements: 0
+  showGameRequirements: 0
   gameRequirements:
     requirementsList: []
 --- !u!114 &-3962355328011269244
@@ -286,6 +303,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
   m_Name: Merci jeune moussallion !
   m_EditorClassIdentifier: 
+  showGeneralProperties: 1
   graph: {fileID: 11400000}
   position: {x: 472, y: -360}
   ports:
@@ -323,9 +341,11 @@ MonoBehaviour:
   message: Merci jeune moussallion !
   singleRead: 0
   hasGameActions: 0
+  showGameActions: 0
   gameActions:
     actionsList: []
   hasRequirements: 0
+  showGameRequirements: 0
   gameRequirements:
     requirementsList: []
 --- !u!114 &-1114538294474037649
@@ -340,6 +360,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
   m_Name: Nous accueillons tous
   m_EditorClassIdentifier: 
+  showGeneralProperties: 1
   graph: {fileID: 11400000}
   position: {x: 888, y: -680}
   ports:
@@ -375,9 +396,12 @@ MonoBehaviour:
     !"
   singleRead: 0
   hasGameActions: 1
+  showGameActions: 0
   gameActions:
     actionsList:
     - actionType: 0
+      hasCondition: 0
+      nodesRequiredToRead: []
       questToAdd: {fileID: 0}
       questAssociated: {fileID: 0}
       questStepToComplete: {fileID: 0}
@@ -385,6 +409,7 @@ MonoBehaviour:
       itemToAdd: {fileID: 0}
       itemToRemove: {fileID: 0}
   hasRequirements: 0
+  showGameRequirements: 0
   gameRequirements:
     requirementsList: []
 --- !u!114 &11400000
@@ -397,7 +422,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4c135d5abc97ad74e959ab5b6aa5d6eb, type: 3}
-  m_Name: Gardien
+  m_Name: Alambik Studio Gardien DialogueGraph
   m_EditorClassIdentifier: 
   nodes:
   - {fileID: 4497387322064166735}
@@ -425,6 +450,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
   m_Name: Bien le bonjour moussallion !
   m_EditorClassIdentifier: 
+  showGeneralProperties: 1
   graph: {fileID: 11400000}
   position: {x: -600, y: -328}
   ports:
@@ -465,9 +491,11 @@ MonoBehaviour:
   message: Bien le bonjour moussallion !
   singleRead: 0
   hasGameActions: 0
+  showGameActions: 0
   gameActions:
     actionsList: []
   hasRequirements: 0
+  showGameRequirements: 0
   gameRequirements:
     requirementsList: []
 --- !u!114 &5624722928568029068
@@ -482,6 +510,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
   m_Name: "\xC0 bient\xF4t moussallion."
   m_EditorClassIdentifier: 
+  showGeneralProperties: 1
   graph: {fileID: 11400000}
   position: {x: 424, y: 40}
   ports:
@@ -516,9 +545,11 @@ MonoBehaviour:
   message: "\xC0 bient\xF4t moussallion."
   singleRead: 0
   hasGameActions: 0
+  showGameActions: 0
   gameActions:
     actionsList: []
   hasRequirements: 0
+  showGameRequirements: 0
   gameRequirements:
     requirementsList: []
 --- !u!114 &7761927949036561422
@@ -533,6 +564,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
   m_Name: Il est bien joli votre phare.
   m_EditorClassIdentifier: 
+  showGeneralProperties: 1
   graph: {fileID: 11400000}
   position: {x: -24, y: -360}
   ports:
@@ -570,8 +602,10 @@ MonoBehaviour:
   message: Il est bien joli votre phare.
   singleRead: 1
   hasGameActions: 0
+  showGameActions: 0
   gameActions:
     actionsList: []
   hasRequirements: 0
+  showGameRequirements: 0
   gameRequirements:
     requirementsList: []

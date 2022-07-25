@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
   m_Name: Je suis Diane Landais
   m_EditorClassIdentifier: 
+  showGeneralProperties: 1
   graph: {fileID: 11400000}
   position: {x: 456, y: -344}
   ports:
@@ -46,9 +47,12 @@ MonoBehaviour:
   message: Je suis Diane Landais, co-fondatrice d'Accidental Queens.
   singleRead: 0
   hasGameActions: 1
+  showGameActions: 0
   gameActions:
     actionsList:
     - actionType: 0
+      hasCondition: 0
+      nodesRequiredToRead: []
       questToAdd: {fileID: 0}
       questAssociated: {fileID: 0}
       questStepToComplete: {fileID: 0}
@@ -56,6 +60,7 @@ MonoBehaviour:
       itemToAdd: {fileID: 0}
       itemToRemove: {fileID: 0}
   hasRequirements: 0
+  showGameRequirements: 0
   gameRequirements:
     requirementsList: []
 --- !u!114 &-7578785628902633992
@@ -70,6 +75,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
   m_Name: "Qui \xEAtes-vous?"
   m_EditorClassIdentifier: 
+  showGeneralProperties: 1
   graph: {fileID: 11400000}
   position: {x: -40, y: -360}
   ports:
@@ -107,9 +113,11 @@ MonoBehaviour:
   message: "Qui \xEAtes-vous?"
   singleRead: 1
   hasGameActions: 0
+  showGameActions: 0
   gameActions:
     actionsList: []
   hasRequirements: 0
+  showGameRequirements: 0
   gameRequirements:
     requirementsList: []
 --- !u!114 &-5305083484290676177
@@ -124,6 +132,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
   m_Name: Je dois y aller.
   m_EditorClassIdentifier: 
+  showGeneralProperties: 1
   graph: {fileID: 11400000}
   position: {x: -56, y: 376}
   ports:
@@ -161,9 +170,11 @@ MonoBehaviour:
   message: Je dois y aller.
   singleRead: 0
   hasGameActions: 0
+  showGameActions: 0
   gameActions:
     actionsList: []
   hasRequirements: 0
+  showGameRequirements: 0
   gameRequirements:
     requirementsList: []
 --- !u!114 &11400000
@@ -176,7 +187,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4c135d5abc97ad74e959ab5b6aa5d6eb, type: 3}
-  m_Name: Diane Landais
+  m_Name: AccidentalQueens Diane Landais DialogueGraph
   m_EditorClassIdentifier: 
   nodes:
   - {fileID: 4497387322064166735}
@@ -203,6 +214,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
   m_Name: 'Euh ? Non ? '
   m_EditorClassIdentifier: 
+  showGeneralProperties: 1
   graph: {fileID: 11400000}
   position: {x: 424, y: 8}
   ports:
@@ -241,9 +253,11 @@ MonoBehaviour:
     visant \xE0 sensibiliser \xE0 des th\xE9matiques actuelles."
   singleRead: 0
   hasGameActions: 0
+  showGameActions: 0
   gameActions:
     actionsList: []
   hasRequirements: 0
+  showGameRequirements: 0
   gameRequirements:
     requirementsList: []
 --- !u!114 &4055223412551208098
@@ -258,6 +272,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
   m_Name: "Traiter de sujets soci\xE9taux"
   m_EditorClassIdentifier: 
+  showGeneralProperties: 1
   graph: {fileID: 11400000}
   position: {x: 840, y: 24}
   ports:
@@ -296,9 +311,11 @@ MonoBehaviour:
     !"
   singleRead: 0
   hasGameActions: 0
+  showGameActions: 0
   gameActions:
     actionsList: []
   hasRequirements: 0
+  showGameRequirements: 0
   gameRequirements:
     requirementsList: []
 --- !u!114 &4497387322064166735
@@ -313,6 +330,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
   m_Name: Bienvenue dans les bureaux d'Accidental Queens !
   m_EditorClassIdentifier: 
+  showGeneralProperties: 1
   graph: {fileID: 11400000}
   position: {x: -600, y: -328}
   ports:
@@ -353,9 +371,11 @@ MonoBehaviour:
   message: Bienvenue dans les bureaux d'Accidental Queens !
   singleRead: 0
   hasGameActions: 0
+  showGameActions: 0
   gameActions:
     actionsList: []
   hasRequirements: 0
+  showGameRequirements: 0
   gameRequirements:
     requirementsList: []
 --- !u!114 &4516393225328065634
@@ -370,6 +390,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
   m_Name: "Joli couronne ! Je pourrai en avoir une comme \xE7a ? "
   m_EditorClassIdentifier: 
+  showGeneralProperties: 1
   graph: {fileID: 11400000}
   position: {x: -56, y: 8}
   ports:
@@ -407,9 +428,11 @@ MonoBehaviour:
   message: Qu'est-ce qu'Accidental Queens ?
   singleRead: 1
   hasGameActions: 0
+  showGameActions: 0
   gameActions:
     actionsList: []
   hasRequirements: 0
+  showGameRequirements: 0
   gameRequirements:
     requirementsList: []
 --- !u!114 &5624722928568029068
@@ -424,6 +447,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
   m_Name: "N'h\xE9site pas si tu as besoin de quoi que ce soit !"
   m_EditorClassIdentifier: 
+  showGeneralProperties: 1
   graph: {fileID: 11400000}
   position: {x: 408, y: 392}
   ports:
@@ -458,9 +482,11 @@ MonoBehaviour:
   message: "\xC0 bient\xF4t !"
   singleRead: 0
   hasGameActions: 0
+  showGameActions: 0
   gameActions:
     actionsList: []
   hasRequirements: 0
+  showGameRequirements: 0
   gameRequirements:
     requirementsList: []
 --- !u!114 &6314156493554091909
@@ -475,6 +501,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
   m_Name: 'Tu peux en savoir plus sur nos titres '
   m_EditorClassIdentifier: 
+  showGeneralProperties: 1
   graph: {fileID: 11400000}
   position: {x: 1240, y: 40}
   ports:
@@ -509,9 +536,12 @@ MonoBehaviour:
   message: Tu peux en savoir plus sur nos titres en allant voir le panneau.
   singleRead: 0
   hasGameActions: 1
+  showGameActions: 0
   gameActions:
     actionsList:
     - actionType: 0
+      hasCondition: 0
+      nodesRequiredToRead: []
       questToAdd: {fileID: 0}
       questAssociated: {fileID: 0}
       questStepToComplete: {fileID: 0}
@@ -519,5 +549,6 @@ MonoBehaviour:
       itemToAdd: {fileID: 0}
       itemToRemove: {fileID: 0}
   hasRequirements: 0
+  showGameRequirements: 0
   gameRequirements:
     requirementsList: []

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
   m_Name: Dialogue Text
   m_EditorClassIdentifier: 
+  showGeneralProperties: 1
   graph: {fileID: 11400000}
   position: {x: 456, y: -344}
   ports:
@@ -47,9 +48,12 @@ MonoBehaviour:
     inaccessible."
   singleRead: 0
   hasGameActions: 1
+  showGameActions: 0
   gameActions:
     actionsList:
     - actionType: 0
+      hasCondition: 0
+      nodesRequiredToRead: []
       questToAdd: {fileID: 0}
       questAssociated: {fileID: 0}
       questStepToComplete: {fileID: 0}
@@ -57,6 +61,7 @@ MonoBehaviour:
       itemToAdd: {fileID: 0}
       itemToRemove: {fileID: 0}
   hasRequirements: 0
+  showGameRequirements: 0
   gameRequirements:
     requirementsList: []
 --- !u!114 &-7578785628902633992
@@ -71,6 +76,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
   m_Name: Dialogue Text
   m_EditorClassIdentifier: 
+  showGeneralProperties: 1
   graph: {fileID: 11400000}
   position: {x: -40, y: -360}
   ports:
@@ -108,9 +114,11 @@ MonoBehaviour:
   message: "A quoi m\xE8ne la porte condamn\xE9e en haut de l'escalier?"
   singleRead: 1
   hasGameActions: 0
+  showGameActions: 0
   gameActions:
     actionsList: []
   hasRequirements: 0
+  showGameRequirements: 0
   gameRequirements:
     requirementsList: []
 --- !u!114 &-5305083484290676177
@@ -125,6 +133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
   m_Name: Dialogue Text
   m_EditorClassIdentifier: 
+  showGeneralProperties: 1
   graph: {fileID: 11400000}
   position: {x: -44.722816, y: 30.249481}
   ports:
@@ -162,9 +171,11 @@ MonoBehaviour:
   message: Je dois y aller.
   singleRead: 0
   hasGameActions: 0
+  showGameActions: 0
   gameActions:
     actionsList: []
   hasRequirements: 0
+  showGameRequirements: 0
   gameRequirements:
     requirementsList: []
 --- !u!114 &11400000
@@ -177,7 +188,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4c135d5abc97ad74e959ab5b6aa5d6eb, type: 3}
-  m_Name: "J\xE9r\xF4me Fait"
+  m_Name: "1P2P J\xE9r\xF4me Fait DialogueGraph"
   m_EditorClassIdentifier: 
   nodes:
   - {fileID: 4497387322064166735}
@@ -200,6 +211,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
   m_Name: Dialogue Text
   m_EditorClassIdentifier: 
+  showGeneralProperties: 1
   graph: {fileID: 11400000}
   position: {x: -600, y: -328}
   ports:
@@ -237,9 +249,11 @@ MonoBehaviour:
   message: Coucou, bienvenue chez nous, fais comme chez toi !
   singleRead: 0
   hasGameActions: 0
+  showGameActions: 0
   gameActions:
     actionsList: []
   hasRequirements: 0
+  showGameRequirements: 0
   gameRequirements:
     requirementsList: []
 --- !u!114 &5624722928568029068
@@ -254,6 +268,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
   m_Name: Dialogue Text
   m_EditorClassIdentifier: 
+  showGeneralProperties: 1
   graph: {fileID: 11400000}
   position: {x: 424, y: 40}
   ports:
@@ -288,8 +303,10 @@ MonoBehaviour:
   message: "\xC0 plus tard !"
   singleRead: 0
   hasGameActions: 0
+  showGameActions: 0
   gameActions:
     actionsList: []
   hasRequirements: 0
+  showGameRequirements: 0
   gameRequirements:
     requirementsList: []
