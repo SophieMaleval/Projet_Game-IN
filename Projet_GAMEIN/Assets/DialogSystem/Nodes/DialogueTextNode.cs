@@ -31,9 +31,11 @@ public class DialogueTextNode : Node
     [SerializeField] public bool singleRead;
 
     [SerializeField] public bool hasGameActions;
+    [SerializeField] public bool showGameActions;
     [SerializeField] public GameActions gameActions;
 
     [SerializeField] public bool hasRequirements;
+    [SerializeField] public bool showGameRequirements;
     [SerializeField] public GameRequirements gameRequirements;
 
     

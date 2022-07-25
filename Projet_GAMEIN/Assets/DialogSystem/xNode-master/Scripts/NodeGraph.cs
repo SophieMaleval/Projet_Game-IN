@@ -32,6 +32,7 @@ namespace XNode {
 
         public void SetStartNodes()
         {
+            //Debug.Log(startNodes.Count);
             startNodes.Clear();
             for (int i = 0; i < nodes.Count; i++)
             {

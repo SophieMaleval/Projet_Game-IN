@@ -11,11 +11,7 @@ public class DialogueTextNodeEditor : Editor
 {
     DialogueTextNode dialogNode;
 
-    [SerializeField] public bool showGeneralProperties = true;
-
-    [SerializeField] public bool showGameActions;
-
-    [SerializeField] public bool showGameRequirements;
+    
 
     void OnEnable()
     {
@@ -25,9 +21,9 @@ public class DialogueTextNodeEditor : Editor
     {
         //base.OnInspectorGUI();
 
-        showGeneralProperties = EditorGUILayout.Toggle("Show General Properties", showGeneralProperties);
+        dialogNode.showGeneralProperties = EditorGUILayout.Toggle("Show General Properties", dialogNode.showGeneralProperties);
 
-        if(showGeneralProperties)
+        if(dialogNode.showGeneralProperties)
         {
             dialogNode.graph = (NodeGraph)EditorGUILayout.ObjectField("Graph", dialogNode.graph, typeof(NodeGraph), true);
             dialogNode.position = EditorGUILayout.Vector2Field("Position", dialogNode.position);
@@ -46,9 +42,9 @@ public class DialogueTextNodeEditor : Editor
 
         EditorGUILayout.Separator();
 
-        showGameActions = EditorGUILayout.Toggle("Show Game Actions", showGameActions);
+        dialogNode.showGameActions = EditorGUILayout.Toggle("Show Game Actions", dialogNode.showGameActions);
 
-        if (showGameActions)
+        if (dialogNode.showGameActions)
         {
             List<GameAction> gameActions = dialogNode.gameActions.actionsList;
             int gameActionsSize = Mathf.Max(0, EditorGUILayout.IntField("Game Actions Size :", gameActions.Count));
@@ -179,9 +175,9 @@ public class DialogueTextNodeEditor : Editor
 
         EditorGUILayout.Separator();
 
-        showGameRequirements = EditorGUILayout.Toggle("Show Game Requirements", showGameRequirements);
+        dialogNode.showGameRequirements = EditorGUILayout.Toggle("Show Game Requirements", dialogNode.showGameRequirements);
 
-        if (showGameRequirements)
+        if (dialogNode.showGameRequirements)
         {
             List<Requirement> gameRequirements = dialogNode.gameRequirements.requirementsList;
             int size = Mathf.Max(0, EditorGUILayout.IntField("Game Requirements Size :", gameRequirements.Count));
