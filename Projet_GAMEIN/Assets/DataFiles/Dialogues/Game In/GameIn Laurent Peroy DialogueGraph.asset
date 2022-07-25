@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: "Tu peux v\xE9rifier les qu\xEAtes"
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 2392, y: -744}
+  position: {x: 3576, y: -760}
   ports:
     keys:
     - previousNode
@@ -50,16 +50,24 @@ MonoBehaviour:
   gameActions:
     actionsList:
     - actionType: 1
+      hasCondition: 0
+      nodesRequiredToRead: []
       questToAdd: {fileID: 11400000, guid: e62da928601dc8545b2e1b2042a10cbb, type: 2}
       questAssociated: {fileID: 0}
       questStepToComplete: {fileID: 0}
       ScooterPopUpImg: {fileID: 0}
+      itemToAdd: {fileID: 0}
+      itemToRemove: {fileID: 0}
     - actionType: 3
+      hasCondition: 0
+      nodesRequiredToRead: []
       questToAdd: {fileID: 0}
       questAssociated: {fileID: 0}
       questStepToComplete: {fileID: 0}
       ScooterPopUpImg: {fileID: 7490734612441648926, guid: 236f237f8186e2a47a7e470d6bf71eae,
         type: 3}
+      itemToAdd: {fileID: 0}
+      itemToRemove: {fileID: 0}
   hasRequirements: 1
   gameRequirements:
     requirementsList:
@@ -67,8 +75,9 @@ MonoBehaviour:
       questToCheck: {fileID: 11400000, guid: e62da928601dc8545b2e1b2042a10cbb, type: 2}
       questCheckedValueWanted: 0
       questAssociatedToCheck: {fileID: 0}
-      questStepToChecked: {fileID: 0}
+      questStepToCheck: {fileID: 0}
       questStepCheckedValueWanted: 0
+      itemToCheck: {fileID: 0}
 --- !u!114 &-4601967397657579344
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -82,7 +91,7 @@ MonoBehaviour:
   m_Name: Bien le bonjour
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -1032, y: -168}
+  position: {x: -1976, y: -184}
   ports:
     keys:
     - previousNode
@@ -124,8 +133,9 @@ MonoBehaviour:
       questToCheck: {fileID: 11400000, guid: e62da928601dc8545b2e1b2042a10cbb, type: 2}
       questCheckedValueWanted: 0
       questAssociatedToCheck: {fileID: 0}
-      questStepToChecked: {fileID: 0}
+      questStepToCheck: {fileID: 0}
       questStepCheckedValueWanted: 0
+      itemToCheck: {fileID: 0}
 --- !u!114 &-4502136979778286970
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -139,7 +149,7 @@ MonoBehaviour:
   m_Name: Qu'est-ce que Game In ?
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -184, y: 824}
+  position: {x: -536, y: 888}
   ports:
     keys:
     - previousNode
@@ -193,7 +203,7 @@ MonoBehaviour:
   m_Name: Tu dois surement etre {PLAYER}
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 856, y: -184}
+  position: {x: 1016, y: -168}
   ports:
     keys:
     - previousNode
@@ -248,7 +258,7 @@ MonoBehaviour:
   m_Name: Bienvenue dans le village
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 376, y: -168}
+  position: {x: 184, y: -136}
   ports:
     keys:
     - previousNode
@@ -308,7 +318,7 @@ MonoBehaviour:
   m_Name: Ici, tu es dans une zone
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 1352, y: -184}
+  position: {x: 1736, y: -184}
   ports:
     keys:
     - previousNode
@@ -363,7 +373,7 @@ MonoBehaviour:
   m_Name: Game IN est l'association qui
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 344, y: 824}
+  position: {x: 616, y: 824}
   ports:
     keys:
     - previousNode
@@ -418,7 +428,7 @@ MonoBehaviour:
   m_Name: "Beaucoup de nos adh\xE9rants sont partis"
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 2360, y: 216}
+  position: {x: 3576, y: 184}
   ports:
     keys:
     - previousNode
@@ -464,8 +474,9 @@ MonoBehaviour:
       questToCheck: {fileID: 11400000, guid: e62da928601dc8545b2e1b2042a10cbb, type: 2}
       questCheckedValueWanted: 1
       questAssociatedToCheck: {fileID: 0}
-      questStepToChecked: {fileID: 0}
+      questStepToCheck: {fileID: 0}
       questStepCheckedValueWanted: 0
+      itemToCheck: {fileID: 0}
 --- !u!114 &-878895454420717927
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -479,7 +490,7 @@ MonoBehaviour:
   m_Name: Reviens dans quelques semaines
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 2856, y: 200}
+  position: {x: 4376, y: 136}
   ports:
     keys:
     - previousNode
@@ -515,10 +526,14 @@ MonoBehaviour:
   gameActions:
     actionsList:
     - actionType: 0
+      hasCondition: 0
+      nodesRequiredToRead: []
       questToAdd: {fileID: 0}
       questAssociated: {fileID: 0}
       questStepToComplete: {fileID: 0}
       ScooterPopUpImg: {fileID: 0}
+      itemToAdd: {fileID: 0}
+      itemToRemove: {fileID: 0}
   hasRequirements: 0
   gameRequirements:
     requirementsList: []
@@ -570,7 +585,7 @@ MonoBehaviour:
   m_Name: "Nous avons \xE0 vocation \xE0 repr\xE9senter"
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 840, y: 824}
+  position: {x: 1432, y: 808}
   ports:
     keys:
     - previousNode
@@ -625,7 +640,7 @@ MonoBehaviour:
   m_Name: Sors et explore les environs
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 1864, y: -184}
+  position: {x: 2568, y: -376}
   ports:
     keys:
     - previousNode
@@ -683,7 +698,7 @@ MonoBehaviour:
   m_Name: Pas de soucis, on se voit plus tard.
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 328, y: 1128}
+  position: {x: 680, y: 1128}
   ports:
     keys:
     - previousNode
@@ -734,7 +749,7 @@ MonoBehaviour:
   m_Name: "Qui \xEAtes vous ?"
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -184, y: 488}
+  position: {x: -536, y: 552}
   ports:
     keys:
     - previousNode
@@ -788,7 +803,7 @@ MonoBehaviour:
   m_Name: "O\xF9 sommes-nous ?"
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -184, y: 168}
+  position: {x: -536, y: 232}
   ports:
     keys:
     - previousNode
@@ -842,7 +857,7 @@ MonoBehaviour:
   m_Name: "Notre \xE9cosyst\xE8me ne cesse de se d\xE9velopper"
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 1352, y: 824}
+  position: {x: 2200, y: 824}
   ports:
     keys:
     - previousNode
@@ -879,10 +894,14 @@ MonoBehaviour:
   gameActions:
     actionsList:
     - actionType: 0
+      hasCondition: 0
+      nodesRequiredToRead: []
       questToAdd: {fileID: 0}
       questAssociated: {fileID: 0}
       questStepToComplete: {fileID: 0}
       ScooterPopUpImg: {fileID: 0}
+      itemToAdd: {fileID: 0}
+      itemToRemove: {fileID: 0}
   hasRequirements: 0
   gameRequirements:
     requirementsList: []
@@ -899,7 +918,7 @@ MonoBehaviour:
   m_Name: Je dois y aller
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -168, y: 1128}
+  position: {x: -520, y: 1192}
   ports:
     keys:
     - previousNode
@@ -953,7 +972,7 @@ MonoBehaviour:
   m_Name: Je suis Laurent Peroy !
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 408, y: 472}
+  position: {x: 568, y: 456}
   ports:
     keys:
     - previousNode
@@ -1007,7 +1026,7 @@ MonoBehaviour:
   m_Name: "Le d\xE9l\xE9gu\xE9 g\xE9n\xE9ral de Game In."
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 920, y: 232}
+  position: {x: 1464, y: 248}
   ports:
     keys:
     - previousNode
@@ -1043,10 +1062,14 @@ MonoBehaviour:
   gameActions:
     actionsList:
     - actionType: 0
+      hasCondition: 0
+      nodesRequiredToRead: []
       questToAdd: {fileID: 0}
       questAssociated: {fileID: 0}
       questStepToComplete: {fileID: 0}
       ScooterPopUpImg: {fileID: 0}
+      itemToAdd: {fileID: 0}
+      itemToRemove: {fileID: 0}
   hasRequirements: 0
   gameRequirements:
     requirementsList: []
@@ -1063,7 +1086,7 @@ MonoBehaviour:
   m_Name: Comment vas-tu ?
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -1016, y: 584}
+  position: {x: -1976, y: 648}
   ports:
     keys:
     - previousNode
@@ -1114,5 +1137,6 @@ MonoBehaviour:
       questToCheck: {fileID: 11400000, guid: e62da928601dc8545b2e1b2042a10cbb, type: 2}
       questCheckedValueWanted: 1
       questAssociatedToCheck: {fileID: 0}
-      questStepToChecked: {fileID: 0}
+      questStepToCheck: {fileID: 0}
       questStepCheckedValueWanted: 0
+      itemToCheck: {fileID: 0}

@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using XNode;
 
-[NodeWidth(360)]
+[NodeWidth(600)]
 [NodeTint(46, 46, 46)]
 [CreateNodeMenu("Dialogue Text Node")]
 public class DialogueTextNode : Node
@@ -22,19 +22,21 @@ public class DialogueTextNode : Node
 	[Output] public DialogueBaseNode nextNodes;
 
 	public enum IdentityType { NPC, Player }
-	[NodeEnum] public IdentityType identityType;
+	[NodeEnum] [SerializeField] public IdentityType identityType;
 
 	//public string nodeName = "";
 	[TextArea]
-	public string message = "";
+    [SerializeField] public string message = "";
 
-    public bool singleRead;
+    [SerializeField] public bool singleRead;
 
-	public bool hasGameActions;
-    public GameActions gameActions;
-	
-	public bool hasRequirements;
-    public GameRequirements gameRequirements;
+    [SerializeField] public bool hasGameActions;
+    [SerializeField] public GameActions gameActions;
+
+    [SerializeField] public bool hasRequirements;
+    [SerializeField] public GameRequirements gameRequirements;
+
+    
 
     //public bool showSettings;
     //public bool viewedEndless = true, clickedEndless = true;

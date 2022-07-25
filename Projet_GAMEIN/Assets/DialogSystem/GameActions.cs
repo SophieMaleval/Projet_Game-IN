@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using XNode;
@@ -8,115 +9,7 @@ public class GameActions
 {
     #region UnityInspector
 
-    public List<GameAction> actionsList = new List<GameAction>();
-
-    #endregion
-
-    #region Class
-
-    [System.Serializable]
-    public class GameAction
-    {
-        #region UnityInspector
-
-        [Header("Generals Properties")]
-        public ActionType actionType;
-
-        public bool hasCondition;
-        public List<DialogueTextNode> nodesRequiredToRead = new List<DialogueTextNode>();
-
-        [Space]
-        [Header("Add Quest Properties")]
-        [SerializeField] private QuestData questToAdd;
-
-        [Space]
-        [Header("Complete Quest Step Properties")]
-        [SerializeField] private QuestData questAssociated;
-        [SerializeField] private QuestStepData questStepToComplete;
-
-        [Space]
-
-        [Space]
-        [Header("Create Popup Scooter Properties")]
-        [SerializeField] private Sprite ScooterPopUpImg;
-
-        [Space]
-
-        [Space]
-        [Header("Add Item To Inventory Properties")]
-        [SerializeField] private InteractibleObject itemToAdd;
-
-        [Space]
-        [Header("Remove Item To Inventory Properties")]
-        [SerializeField] private InteractibleObject itemToRemove;
-
-        #endregion
-
-        #region Behaviour
-
-        public bool CheckCondition()
-        {
-            if(hasCondition)
-            {
-                if(nodesRequiredToRead.Count > 0)
-                {
-                    for (int i = 0; i < nodesRequiredToRead.Count; i++)
-                    {
-                        if(nodesRequiredToRead[i].GetAlreadyRead() == false)
-                        {
-                            return false;
-                        }
-                    }
-                }
-            }
-
-            return true;
-        }
-
-        public Node ExecuteReturnMainNodeDialogueAction(DialogueGraph dialogueGraph)
-        {
-            GameManager.Instance.player.GetComponent<PlayerConversant>().currentNode.SetAlreadyReadValue(true);
-            return dialogueGraph.mainNodeParent;
-        }
-
-        public void ExecuteAddQuest(QuestList questList)
-        {
-            questList.AddQuest(questToAdd);
-        }
-
-        public void ExecuteCompleteQuestStep(QuestList questList)
-        {
-            questList.CompleteQuestStep(questAssociated, questStepToComplete);
-        }
-
-
-        public void ExecuteCreatePopUpScooter()
-        {
-            GameManager.Instance.gameCanvasManager.inventory.PopUpManager.CreatePopUpForScooter(ScooterPopUpImg);
-        }
-
-
-        public void ExecuteAddItem()
-        {
-            if (!GameManager.Instance.player.ItemChecker(itemToAdd))
-                GameManager.Instance.player.AjoutInventaire(itemToAdd);
-            if (GameManager.Instance.gameCanvasManager.inventory.PopUpManager != null) GameManager.Instance.gameCanvasManager.inventory.PopUpManager.CreatePopUpItem(itemToAdd, true);
-        }
-
-        public void ExecuteRemoveItem()
-        {
-            if (GameManager.Instance.player.ItemChecker(itemToRemove))
-                GameManager.Instance.player.RemoveObject(itemToRemove);
-            if (GameManager.Instance.gameCanvasManager.inventory.PopUpManager != null) GameManager.Instance.gameCanvasManager.inventory.PopUpManager.CreatePopUpItem(itemToRemove, false);
-        }
-
-        public void ExecuteLaunchMiniGame()
-        {
-            GameCore.Instance.OpenMinigame();
-        }
-
-        #endregion
-    }
+    [SerializeField] public List<GameAction> actionsList = new List<GameAction>();
 
     #endregion
 
@@ -168,6 +61,111 @@ public class GameActions
                 GameManager.Instance.player.GetComponent<PlayerConversant>().currentNode = newNode;
             }
         }
+    }
+
+    #endregion
+}
+
+
+[System.Serializable]
+public class GameAction
+{
+    #region UnityInspector
+
+    [Header("Generals Properties")]
+    [SerializeField] public ActionType actionType;
+
+    [SerializeField] public bool hasCondition;
+    [SerializeField] public List<DialogueTextNode> nodesRequiredToRead = new List<DialogueTextNode>();
+
+    [Space]
+    [Header("Add Quest Properties")]
+    [SerializeField] public QuestData questToAdd;
+
+    [Space]
+    [Header("Complete Quest Step Properties")]
+    [SerializeField] public QuestData questAssociated;
+    [SerializeField] public QuestStepData questStepToComplete;
+
+    [Space]
+
+    [Space]
+    [Header("Create Popup Scooter Properties")]
+    [SerializeField] public Sprite ScooterPopUpImg;
+
+    [Space]
+
+    [Space]
+    [Header("Add Item To Inventory Properties")]
+    [SerializeField] public InteractibleObject itemToAdd;
+
+    [Space]
+    [Header("Remove Item To Inventory Properties")]
+    [SerializeField] public InteractibleObject itemToRemove;
+
+    #endregion
+
+    #region Behaviour
+
+    public bool CheckCondition()
+    {
+        if (hasCondition)
+        {
+            if (nodesRequiredToRead.Count > 0)
+            {
+                for (int i = 0; i < nodesRequiredToRead.Count; i++)
+                {
+                    if (nodesRequiredToRead[i].GetAlreadyRead() == false)
+                    {
+                        return false;
+                    }
+                }
+            }
+        }
+
+        return true;
+    }
+
+    public Node ExecuteReturnMainNodeDialogueAction(DialogueGraph dialogueGraph)
+    {
+        GameManager.Instance.player.GetComponent<PlayerConversant>().currentNode.SetAlreadyReadValue(true);
+        return dialogueGraph.mainNodeParent;
+    }
+
+    public void ExecuteAddQuest(QuestList questList)
+    {
+        questList.AddQuest(questToAdd);
+    }
+
+    public void ExecuteCompleteQuestStep(QuestList questList)
+    {
+        questList.CompleteQuestStep(questAssociated, questStepToComplete);
+    }
+
+
+    public void ExecuteCreatePopUpScooter()
+    {
+        GameManager.Instance.gameCanvasManager.inventory.PopUpManager.CreatePopUpForScooter(ScooterPopUpImg);
+    }
+
+
+    public void ExecuteAddItem()
+    {
+        if (!GameManager.Instance.player.ItemChecker(itemToAdd))
+            GameManager.Instance.player.AjoutInventaire(itemToAdd);
+        if (GameManager.Instance.gameCanvasManager.inventory.PopUpManager != null) GameManager.Instance.gameCanvasManager.inventory.PopUpManager.CreatePopUpItem(itemToAdd, true);
+    }
+
+    public void ExecuteRemoveItem()
+    {
+        if (GameManager.Instance.player.ItemChecker(itemToRemove))
+            GameManager.Instance.player.RemoveObject(itemToRemove);
+        if (GameManager.Instance.gameCanvasManager.inventory.PopUpManager != null) GameManager.Instance.gameCanvasManager.inventory.PopUpManager.CreatePopUpItem(itemToRemove, false);
+    }
+
+    public void ExecuteLaunchMiniGame()
+    {
+        GameCore.Instance.OpenMinigame();
     }
 
     #endregion
