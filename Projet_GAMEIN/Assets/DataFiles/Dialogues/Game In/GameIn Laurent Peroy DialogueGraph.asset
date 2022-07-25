@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
   m_Name: "Tu peux v\xE9rifier les qu\xEAtes"
   m_EditorClassIdentifier: 
+  showGeneralProperties: 1
   graph: {fileID: 11400000}
   position: {x: 3576, y: -760}
   ports:
@@ -47,6 +48,7 @@ MonoBehaviour:
     sur la touche R, des adh\xE9rents ont certainement besoin de ton aide !"
   singleRead: 0
   hasGameActions: 1
+  showGameActions: 0
   gameActions:
     actionsList:
     - actionType: 1
@@ -69,14 +71,17 @@ MonoBehaviour:
       itemToAdd: {fileID: 0}
       itemToRemove: {fileID: 0}
   hasRequirements: 1
+  showGameRequirements: 0
   gameRequirements:
     requirementsList:
     - requirementType: 0
       questToCheck: {fileID: 11400000, guid: e62da928601dc8545b2e1b2042a10cbb, type: 2}
       questCheckedValueWanted: 0
+      questToCheckState: 0
       questAssociatedToCheck: {fileID: 0}
       questStepToCheck: {fileID: 0}
       questStepCheckedValueWanted: 0
+      questStepToCheckState: 0
       itemToCheck: {fileID: 0}
 --- !u!114 &-4601967397657579344
 MonoBehaviour:
@@ -90,6 +95,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
   m_Name: Bien le bonjour
   m_EditorClassIdentifier: 
+  showGeneralProperties: 1
   graph: {fileID: 11400000}
   position: {x: -1976, y: -184}
   ports:
@@ -124,17 +130,21 @@ MonoBehaviour:
   message: Bien le bonjour ! Je ne t'avais pas vu arriver !
   singleRead: 0
   hasGameActions: 0
+  showGameActions: 0
   gameActions:
     actionsList: []
   hasRequirements: 1
+  showGameRequirements: 1
   gameRequirements:
     requirementsList:
     - requirementType: 0
       questToCheck: {fileID: 11400000, guid: e62da928601dc8545b2e1b2042a10cbb, type: 2}
       questCheckedValueWanted: 0
+      questToCheckState: 0
       questAssociatedToCheck: {fileID: 0}
       questStepToCheck: {fileID: 0}
       questStepCheckedValueWanted: 0
+      questStepToCheckState: 0
       itemToCheck: {fileID: 0}
 --- !u!114 &-4502136979778286970
 MonoBehaviour:
@@ -148,6 +158,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
   m_Name: Qu'est-ce que Game In ?
   m_EditorClassIdentifier: 
+  showGeneralProperties: 1
   graph: {fileID: 11400000}
   position: {x: -536, y: 888}
   ports:
@@ -185,9 +196,11 @@ MonoBehaviour:
   message: Qu'est-ce que Game In ?
   singleRead: 1
   hasGameActions: 0
+  showGameActions: 0
   gameActions:
     actionsList: []
   hasRequirements: 0
+  showGameRequirements: 0
   gameRequirements:
     requirementsList: []
 --- !u!114 &-4198220868043171896
@@ -202,6 +215,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
   m_Name: Tu dois surement etre {PLAYER}
   m_EditorClassIdentifier: 
+  showGeneralProperties: 1
   graph: {fileID: 11400000}
   position: {x: 1016, y: -168}
   ports:
@@ -240,9 +254,11 @@ MonoBehaviour:
     de toi, tout le monde se parle beaucoup au sein de l'\xE9cosyst\xE8me."
   singleRead: 0
   hasGameActions: 0
+  showGameActions: 0
   gameActions:
     actionsList: []
   hasRequirements: 0
+  showGameRequirements: 0
   gameRequirements:
     requirementsList: []
 --- !u!114 &-3438407982681496540
@@ -257,6 +273,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
   m_Name: Bienvenue dans le village
   m_EditorClassIdentifier: 
+  showGeneralProperties: 1
   graph: {fileID: 11400000}
   position: {x: 184, y: -136}
   ports:
@@ -300,9 +317,11 @@ MonoBehaviour:
     avec une forte implantation en m\xE9tropole lilloise."
   singleRead: 0
   hasGameActions: 0
+  showGameActions: 0
   gameActions:
     actionsList: []
   hasRequirements: 0
+  showGameRequirements: 0
   gameRequirements:
     requirementsList: []
 --- !u!114 &-2488566780663862123
@@ -317,6 +336,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
   m_Name: Ici, tu es dans une zone
   m_EditorClassIdentifier: 
+  showGeneralProperties: 1
   graph: {fileID: 11400000}
   position: {x: 1736, y: -184}
   ports:
@@ -355,9 +375,11 @@ MonoBehaviour:
     de l'association."
   singleRead: 0
   hasGameActions: 0
+  showGameActions: 0
   gameActions:
     actionsList: []
   hasRequirements: 0
+  showGameRequirements: 0
   gameRequirements:
     requirementsList: []
 --- !u!114 &-2370520982994890058
@@ -372,6 +394,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
   m_Name: Game IN est l'association qui
   m_EditorClassIdentifier: 
+  showGeneralProperties: 1
   graph: {fileID: 11400000}
   position: {x: 616, y: 824}
   ports:
@@ -410,9 +433,11 @@ MonoBehaviour:
     tout le nord de la France."
   singleRead: 0
   hasGameActions: 0
+  showGameActions: 0
   gameActions:
     actionsList: []
   hasRequirements: 0
+  showGameRequirements: 0
   gameRequirements:
     requirementsList: []
 --- !u!114 &-1421191217058410309
@@ -427,6 +452,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
   m_Name: "Beaucoup de nos adh\xE9rants sont partis"
   m_EditorClassIdentifier: 
+  showGeneralProperties: 1
   graph: {fileID: 11400000}
   position: {x: 3576, y: 184}
   ports:
@@ -465,17 +491,21 @@ MonoBehaviour:
     pas tarder \xE0 revenir."
   singleRead: 0
   hasGameActions: 0
+  showGameActions: 0
   gameActions:
     actionsList: []
   hasRequirements: 1
+  showGameRequirements: 0
   gameRequirements:
     requirementsList:
     - requirementType: 0
       questToCheck: {fileID: 11400000, guid: e62da928601dc8545b2e1b2042a10cbb, type: 2}
       questCheckedValueWanted: 1
+      questToCheckState: 0
       questAssociatedToCheck: {fileID: 0}
       questStepToCheck: {fileID: 0}
       questStepCheckedValueWanted: 0
+      questStepToCheckState: 0
       itemToCheck: {fileID: 0}
 --- !u!114 &-878895454420717927
 MonoBehaviour:
@@ -489,6 +519,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
   m_Name: Reviens dans quelques semaines
   m_EditorClassIdentifier: 
+  showGeneralProperties: 1
   graph: {fileID: 11400000}
   position: {x: 4376, y: 136}
   ports:
@@ -523,6 +554,7 @@ MonoBehaviour:
   message: "Reviens dans quelques semaines pour commencer \xE0 les rencontrer."
   singleRead: 0
   hasGameActions: 1
+  showGameActions: 0
   gameActions:
     actionsList:
     - actionType: 0
@@ -535,6 +567,7 @@ MonoBehaviour:
       itemToAdd: {fileID: 0}
       itemToRemove: {fileID: 0}
   hasRequirements: 0
+  showGameRequirements: 0
   gameRequirements:
     requirementsList: []
 --- !u!114 &11400000
@@ -584,6 +617,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
   m_Name: "Nous avons \xE0 vocation \xE0 repr\xE9senter"
   m_EditorClassIdentifier: 
+  showGeneralProperties: 1
   graph: {fileID: 11400000}
   position: {x: 1432, y: 808}
   ports:
@@ -622,9 +656,11 @@ MonoBehaviour:
     notre \xE9cosyst\xE8me."
   singleRead: 0
   hasGameActions: 0
+  showGameActions: 0
   gameActions:
     actionsList: []
   hasRequirements: 0
+  showGameRequirements: 0
   gameRequirements:
     requirementsList: []
 --- !u!114 &2749788414628938383
@@ -639,6 +675,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
   m_Name: Sors et explore les environs
   m_EditorClassIdentifier: 
+  showGeneralProperties: 1
   graph: {fileID: 11400000}
   position: {x: 2568, y: -376}
   ports:
@@ -680,9 +717,11 @@ MonoBehaviour:
     le village, et donc notre \xE9cosyst\xE8me jeu vid\xE9o professionnel !"
   singleRead: 0
   hasGameActions: 0
+  showGameActions: 0
   gameActions:
     actionsList: []
   hasRequirements: 0
+  showGameRequirements: 0
   gameRequirements:
     requirementsList: []
 --- !u!114 &3482064786892699512
@@ -697,6 +736,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
   m_Name: Pas de soucis, on se voit plus tard.
   m_EditorClassIdentifier: 
+  showGeneralProperties: 1
   graph: {fileID: 11400000}
   position: {x: 680, y: 1128}
   ports:
@@ -731,9 +771,11 @@ MonoBehaviour:
   message: Pas de soucis, on se voit plus tard.
   singleRead: 0
   hasGameActions: 0
+  showGameActions: 0
   gameActions:
     actionsList: []
   hasRequirements: 0
+  showGameRequirements: 0
   gameRequirements:
     requirementsList: []
 --- !u!114 &5285104979407355240
@@ -748,6 +790,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
   m_Name: "Qui \xEAtes vous ?"
   m_EditorClassIdentifier: 
+  showGeneralProperties: 1
   graph: {fileID: 11400000}
   position: {x: -536, y: 552}
   ports:
@@ -785,9 +828,11 @@ MonoBehaviour:
   message: "Qui \xEAtes vous ?"
   singleRead: 1
   hasGameActions: 0
+  showGameActions: 0
   gameActions:
     actionsList: []
   hasRequirements: 0
+  showGameRequirements: 0
   gameRequirements:
     requirementsList: []
 --- !u!114 &5332864120110888595
@@ -802,6 +847,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
   m_Name: "O\xF9 sommes-nous ?"
   m_EditorClassIdentifier: 
+  showGeneralProperties: 1
   graph: {fileID: 11400000}
   position: {x: -536, y: 232}
   ports:
@@ -839,9 +885,11 @@ MonoBehaviour:
   message: "O\xF9 sommes-nous ?"
   singleRead: 1
   hasGameActions: 0
+  showGameActions: 0
   gameActions:
     actionsList: []
   hasRequirements: 0
+  showGameRequirements: 0
   gameRequirements:
     requirementsList: []
 --- !u!114 &5643845861732760083
@@ -856,6 +904,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
   m_Name: "Notre \xE9cosyst\xE8me ne cesse de se d\xE9velopper"
   m_EditorClassIdentifier: 
+  showGeneralProperties: 1
   graph: {fileID: 11400000}
   position: {x: 2200, y: 824}
   ports:
@@ -891,6 +940,7 @@ MonoBehaviour:
     est d'accompagner tout le monde au quotidien."
   singleRead: 0
   hasGameActions: 1
+  showGameActions: 0
   gameActions:
     actionsList:
     - actionType: 0
@@ -903,6 +953,7 @@ MonoBehaviour:
       itemToAdd: {fileID: 0}
       itemToRemove: {fileID: 0}
   hasRequirements: 0
+  showGameRequirements: 0
   gameRequirements:
     requirementsList: []
 --- !u!114 &5807107776296967619
@@ -917,6 +968,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
   m_Name: Je dois y aller
   m_EditorClassIdentifier: 
+  showGeneralProperties: 1
   graph: {fileID: 11400000}
   position: {x: -520, y: 1192}
   ports:
@@ -954,9 +1006,11 @@ MonoBehaviour:
   message: Je dois y aller.
   singleRead: 0
   hasGameActions: 0
+  showGameActions: 0
   gameActions:
     actionsList: []
   hasRequirements: 0
+  showGameRequirements: 0
   gameRequirements:
     requirementsList: []
 --- !u!114 &6019790548738135165
@@ -971,6 +1025,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
   m_Name: Je suis Laurent Peroy !
   m_EditorClassIdentifier: 
+  showGeneralProperties: 1
   graph: {fileID: 11400000}
   position: {x: 568, y: 456}
   ports:
@@ -1008,9 +1063,11 @@ MonoBehaviour:
   message: Je suis Laurent Peroy !
   singleRead: 0
   hasGameActions: 0
+  showGameActions: 0
   gameActions:
     actionsList: []
   hasRequirements: 0
+  showGameRequirements: 0
   gameRequirements:
     requirementsList: []
 --- !u!114 &7799694237710190274
@@ -1025,6 +1082,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
   m_Name: "Le d\xE9l\xE9gu\xE9 g\xE9n\xE9ral de Game In."
   m_EditorClassIdentifier: 
+  showGeneralProperties: 1
   graph: {fileID: 11400000}
   position: {x: 1464, y: 248}
   ports:
@@ -1059,6 +1117,7 @@ MonoBehaviour:
   message: "Le d\xE9l\xE9gu\xE9 g\xE9n\xE9ral de Game In."
   singleRead: 0
   hasGameActions: 1
+  showGameActions: 0
   gameActions:
     actionsList:
     - actionType: 0
@@ -1071,6 +1130,7 @@ MonoBehaviour:
       itemToAdd: {fileID: 0}
       itemToRemove: {fileID: 0}
   hasRequirements: 0
+  showGameRequirements: 0
   gameRequirements:
     requirementsList: []
 --- !u!114 &8216100275982466525
@@ -1085,6 +1145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
   m_Name: Comment vas-tu ?
   m_EditorClassIdentifier: 
+  showGeneralProperties: 1
   graph: {fileID: 11400000}
   position: {x: -1976, y: 648}
   ports:
@@ -1128,15 +1189,19 @@ MonoBehaviour:
   message: Comment vas-tu ?
   singleRead: 0
   hasGameActions: 0
+  showGameActions: 0
   gameActions:
     actionsList: []
   hasRequirements: 1
+  showGameRequirements: 1
   gameRequirements:
     requirementsList:
     - requirementType: 0
       questToCheck: {fileID: 11400000, guid: e62da928601dc8545b2e1b2042a10cbb, type: 2}
       questCheckedValueWanted: 1
+      questToCheckState: 0
       questAssociatedToCheck: {fileID: 0}
       questStepToCheck: {fileID: 0}
       questStepCheckedValueWanted: 0
+      questStepToCheckState: 0
       itemToCheck: {fileID: 0}

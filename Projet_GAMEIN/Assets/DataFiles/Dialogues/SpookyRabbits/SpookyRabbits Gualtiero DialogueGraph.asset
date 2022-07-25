@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
   m_Name: Ahah. Merci d'avoir pris le temps de nous ramener
   m_EditorClassIdentifier: 
+  showGeneralProperties: 1
   graph: {fileID: 11400000}
-  position: {x: 1752, y: -488}
+  position: {x: 1544, y: 552}
   ports:
     keys:
     - previousNode
@@ -50,9 +51,11 @@ MonoBehaviour:
     va pouvoir tester la nouvelle structure de ce morceau.
   singleRead: 0
   hasGameActions: 0
+  showGameActions: 0
   gameActions:
     actionsList: []
   hasRequirements: 0
+  showGameRequirements: 0
   gameRequirements:
     requirementsList: []
 --- !u!114 &-7221414822225601504
@@ -67,8 +70,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
   m_Name: "Ah salut, tu dois \xEAtre le gars dont Fran\xE7ois"
   m_EditorClassIdentifier: 
+  showGeneralProperties: 1
   graph: {fileID: 11400000}
-  position: {x: -200, y: 24}
+  position: {x: -312, y: 1112}
   ports:
     keys:
     - previousNode
@@ -108,9 +112,11 @@ MonoBehaviour:
     a l'heure ! "
   singleRead: 0
   hasGameActions: 0
+  showGameActions: 0
   gameActions:
     actionsList: []
   hasRequirements: 0
+  showGameRequirements: 0
   gameRequirements:
     requirementsList: []
 --- !u!114 &-2689633983413299045
@@ -125,8 +131,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
   m_Name: C'est super sympa ici.
   m_EditorClassIdentifier: 
+  showGeneralProperties: 1
   graph: {fileID: 11400000}
-  position: {x: 1016, y: -120}
+  position: {x: 808, y: 920}
   ports:
     keys:
     - previousNode
@@ -162,9 +169,11 @@ MonoBehaviour:
   message: C'est super sympa ici.
   singleRead: 1
   hasGameActions: 0
+  showGameActions: 0
   gameActions:
     actionsList: []
   hasRequirements: 0
+  showGameRequirements: 0
   gameRequirements:
     requirementsList: []
 --- !u!114 &11400000
@@ -204,8 +213,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
   m_Name: Je dois y aller.
   m_EditorClassIdentifier: 
+  showGeneralProperties: 1
   graph: {fileID: 11400000}
-  position: {x: 1039.6772, y: 338.6987}
+  position: {x: 840, y: 1384}
   ports:
     keys:
     - previousNode
@@ -241,9 +251,11 @@ MonoBehaviour:
   message: Je dois y aller.
   singleRead: 1
   hasGameActions: 0
+  showGameActions: 0
   gameActions:
     actionsList: []
   hasRequirements: 0
+  showGameRequirements: 0
   gameRequirements:
     requirementsList: []
 --- !u!114 &1651009807151080977
@@ -258,8 +270,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
   m_Name: '*Donner l''ampli.*'
   m_EditorClassIdentifier: 
+  showGeneralProperties: 1
   graph: {fileID: 11400000}
-  position: {x: 1000, y: -504}
+  position: {x: 792, y: 536}
   ports:
     keys:
     - previousNode
@@ -295,6 +308,7 @@ MonoBehaviour:
   message: '*Donner l''ampli.*'
   singleRead: 0
   hasGameActions: 0
+  showGameActions: 0
   gameActions:
     actionsList:
     - actionType: 5
@@ -318,22 +332,28 @@ MonoBehaviour:
       itemToAdd: {fileID: 0}
       itemToRemove: {fileID: 11400000, guid: 476c6f5960426de4db209e16f5e628b7, type: 2}
   hasRequirements: 1
+  showGameRequirements: 1
   gameRequirements:
     requirementsList:
     - requirementType: 1
       questToCheck: {fileID: 0}
       questCheckedValueWanted: 0
+      questToCheckState: 0
       questAssociatedToCheck: {fileID: 11400000, guid: e62da928601dc8545b2e1b2042a10cbb,
         type: 2}
-      questStepToCheck: {fileID: 0}
+      questStepToCheck: {fileID: 11400000, guid: 516daa7b7d89e2d4db9d2b078c82bbf4,
+        type: 2}
       questStepCheckedValueWanted: 1
+      questStepToCheckState: 1
       itemToCheck: {fileID: 0}
     - requirementType: 2
       questToCheck: {fileID: 0}
       questCheckedValueWanted: 0
+      questToCheckState: 0
       questAssociatedToCheck: {fileID: 0}
       questStepToCheck: {fileID: 0}
       questStepCheckedValueWanted: 0
+      questStepToCheckState: 0
       itemToCheck: {fileID: 11400000, guid: 476c6f5960426de4db209e16f5e628b7, type: 2}
 --- !u!114 &2731291292029470256
 MonoBehaviour:
@@ -347,8 +367,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
   m_Name: Montre-moi ce que tu sais faire !
   m_EditorClassIdentifier: 
+  showGeneralProperties: 1
   graph: {fileID: 11400000}
-  position: {x: 2520, y: -504}
+  position: {x: 2312, y: 536}
   ports:
     keys:
     - previousNode
@@ -384,9 +405,11 @@ MonoBehaviour:
   message: Montre-moi ce que tu sais faire !
   singleRead: 0
   hasGameActions: 0
+  showGameActions: 0
   gameActions:
     actionsList: []
   hasRequirements: 0
+  showGameRequirements: 0
   gameRequirements:
     requirementsList: []
 --- !u!114 &2898290403095339554
@@ -401,8 +424,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
   m_Name: 'Attention suis bien le rythme : 3,2, 1..'
   m_EditorClassIdentifier: 
+  showGeneralProperties: 1
   graph: {fileID: 11400000}
-  position: {x: 3368, y: -504}
+  position: {x: 3160, y: 536}
   ports:
     keys:
     - previousNode
@@ -435,6 +459,7 @@ MonoBehaviour:
   message: 'Attention suis bien le rythme : 3,2, 1..'
   singleRead: 0
   hasGameActions: 1
+  showGameActions: 0
   gameActions:
     actionsList:
     - actionType: 6
@@ -447,6 +472,7 @@ MonoBehaviour:
       itemToAdd: {fileID: 0}
       itemToRemove: {fileID: 0}
   hasRequirements: 0
+  showGameRequirements: 0
   gameRequirements:
     requirementsList: []
 --- !u!114 &4169675818908155671
@@ -461,8 +487,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
   m_Name: Pas de souci !
   m_EditorClassIdentifier: 
+  showGeneralProperties: 1
   graph: {fileID: 11400000}
-  position: {x: 1848, y: 360}
+  position: {x: 1640, y: 1400}
   ports:
     keys:
     - previousNode
@@ -495,9 +522,11 @@ MonoBehaviour:
   message: Pas de souci !
   singleRead: 0
   hasGameActions: 0
+  showGameActions: 0
   gameActions:
     actionsList: []
   hasRequirements: 0
+  showGameRequirements: 0
   gameRequirements:
     requirementsList: []
 --- !u!114 &9077375013189059067
@@ -512,8 +541,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
   m_Name: "Merci ! On a beaucoup travaill\xE9 pour obtenir le traitement"
   m_EditorClassIdentifier: 
+  showGeneralProperties: 1
   graph: {fileID: 11400000}
-  position: {x: 1784, y: -104}
+  position: {x: 1576, y: 936}
   ports:
     keys:
     - previousNode
@@ -547,6 +577,7 @@ MonoBehaviour:
     parfait sans sacrifier la qualit\xE9 du cadre."
   singleRead: 0
   hasGameActions: 0
+  showGameActions: 0
   gameActions:
     actionsList:
     - actionType: 0
@@ -559,5 +590,6 @@ MonoBehaviour:
       itemToAdd: {fileID: 0}
       itemToRemove: {fileID: 0}
   hasRequirements: 0
+  showGameRequirements: 0
   gameRequirements:
     requirementsList: []
