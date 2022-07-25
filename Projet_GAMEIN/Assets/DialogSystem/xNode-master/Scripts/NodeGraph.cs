@@ -33,12 +33,15 @@ namespace XNode {
         public void SetStartNodes()
         {
             //Debug.Log(startNodes.Count);
-            startNodes.Clear();
-            for (int i = 0; i < nodes.Count; i++)
+            if (startNodes != null)
             {
-                if (nodes[i].GetInputsPorts().Count == 0)
+                startNodes.Clear();
+                for (int i = 0; i < nodes.Count; i++)
                 {
-                    startNodes.Add(nodes[i]);
+                    if (nodes[i].GetInputsPorts().Count == 0)
+                    {
+                        startNodes.Add(nodes[i]);
+                    }
                 }
             }
         }

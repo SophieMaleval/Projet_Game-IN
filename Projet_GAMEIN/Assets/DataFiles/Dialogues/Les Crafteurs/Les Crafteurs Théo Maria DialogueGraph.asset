@@ -1,0 +1,70 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c135d5abc97ad74e959ab5b6aa5d6eb, type: 3}
+  m_Name: "Les Crafteurs Th\xE9o Maria DialogueGraph"
+  m_EditorClassIdentifier: 
+  nodes:
+  - {fileID: 6574630625412936316}
+  displayName: "Th\xE9o Maria Dialogue"
+  description: "Dialogue Pr\xE9sentation Th\xE9o Maria Les Crafteurs"
+  mainNodeParent: {fileID: 0}
+--- !u!114 &6574630625412936316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
+  m_Name: Dialogue Text
+  m_EditorClassIdentifier: 
+  showGeneralProperties: 1
+  graph: {fileID: 11400000}
+  position: {x: -1500.1278, y: 576.9209}
+  ports:
+    keys:
+    - previousNode
+    - nextNodes
+    values:
+    - _fieldName: previousNode
+      _node: {fileID: 6574630625412936316}
+      _typeQualifiedName: DialogueTextNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: nextNodes
+      _node: {fileID: 6574630625412936316}
+      _typeQualifiedName: DialogueBaseNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  previousNode: {fileID: 0}
+  nextNodes: {fileID: 0}
+  identityType: 0
+  message: 
+  singleRead: 0
+  hasGameActions: 0
+  showGameActions: 0
+  gameActions:
+    actionsList: []
+  hasRequirements: 0
+  showGameRequirements: 0
+  gameRequirements:
+    requirementsList: []
