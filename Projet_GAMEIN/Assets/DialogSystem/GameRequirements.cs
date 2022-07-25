@@ -64,12 +64,15 @@ public class Requirement
     [Space]
     [Header("Has Quest Properties")]
     [SerializeField] public QuestData questToCheck;
+    [SerializeField] public bool questToCheckMustBeCompleted;
     [SerializeField] public bool questCheckedValueWanted;
 
     [Space]
     [Header("Quest State Properties")]
     [SerializeField] public QuestData questAssociatedToCheck;
+    [SerializeField] public bool questAssociatedToCheckMustBeCompleted;
     [SerializeField] public QuestStepData questStepToCheck;
+    [SerializeField] public bool questStepToCheckMustBeCompleted;
     [SerializeField] public bool questStepCheckedValueWanted;
 
     [Space]
@@ -85,7 +88,7 @@ public class Requirement
 
     public bool CheckHasQuest(QuestList questList)
     {
-        bool hasQuest = questList.HasQuest(questToCheck);
+        bool hasQuest = questList.HasQuest(questToCheck, questToCheckMustBeCompleted);
         if (hasQuest == questCheckedValueWanted)
         {
             //Debug.Log("true");
@@ -97,7 +100,7 @@ public class Requirement
 
     public bool CheckQuestState(QuestList questList)
     {
-        bool hasQuest = questList.HasQuest(questAssociatedToCheck);
+        bool hasQuest = questList.HasQuest(questAssociatedToCheck, questAssociatedToCheckMustBeCompleted);
         if (hasQuest)
         {
             bool hasQuestStep = questAssociatedToCheck.HasQuestStep(questStepToCheck);

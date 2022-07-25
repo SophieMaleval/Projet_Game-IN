@@ -69,7 +69,7 @@ public class QuestList : MonoBehaviour
         }
     }
 
-    public bool HasQuest(QuestData quest)
+    public bool HasQuest(QuestData quest, bool questMustBeComplete = false)
     {
         return GetQuestStatus(quest) != null;
     }
@@ -79,11 +79,11 @@ public class QuestList : MonoBehaviour
         return statuses;
     }
 
-    private QuestStatus GetQuestStatus(QuestData quest)
+    private QuestStatus GetQuestStatus(QuestData quest, bool questMustBeComplete = false)
     {
         foreach (QuestStatus status in statuses)
         {
-            if (status.GetQuest() == quest)
+            if (status.GetQuest() == quest && status.GetQuestCompleted() == questMustBeComplete)
             {
                 return status;
             }

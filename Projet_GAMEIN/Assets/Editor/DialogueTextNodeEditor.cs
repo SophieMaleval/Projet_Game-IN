@@ -213,13 +213,16 @@ public class DialogueTextNodeEditor : Editor
                     case RequirementType.HasQuest:
                         {
                             requirement.questToCheck = (QuestData)EditorGUILayout.ObjectField("Quest To Check", requirement.questToCheck, typeof(QuestData), true);
+                            requirement.questToCheckMustBeCompleted = EditorGUILayout.Toggle("Quest To Check Must Be Completed", requirement.questToCheckMustBeCompleted);
                             requirement.questCheckedValueWanted = EditorGUILayout.Toggle("Quest Checked Value Wanted", requirement.questCheckedValueWanted);
                             break;
                         }
                     case RequirementType.QuestState:
                         {
                             requirement.questAssociatedToCheck = (QuestData)EditorGUILayout.ObjectField("Quest Associated To Check", requirement.questAssociatedToCheck, typeof(QuestData), true);
+                            requirement.questAssociatedToCheckMustBeCompleted = EditorGUILayout.Toggle("Quest Associated To Check Must Be Completed", requirement.questAssociatedToCheckMustBeCompleted);
                             requirement.questStepToCheck = (QuestStepData)EditorGUILayout.ObjectField("Quest Step To Check", requirement.questStepToCheck, typeof(QuestStepData), true);
+                            requirement.questStepToCheckMustBeCompleted = EditorGUILayout.Toggle("Quest Step To Check Must Be Completed", requirement.questStepToCheckMustBeCompleted);
                             requirement.questStepCheckedValueWanted = EditorGUILayout.Toggle("Quest Step Checked Value Wanted", requirement.questStepCheckedValueWanted);
                             break;
                         }
