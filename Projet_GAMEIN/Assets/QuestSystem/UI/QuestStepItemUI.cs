@@ -11,6 +11,12 @@ public class QuestStepItemUI : MonoBehaviour
 
     #endregion
 
+    #region Properties
+
+    public TextMeshProUGUI Description => description;
+
+    #endregion
+
     #region UnityInspector
 
     [SerializeField] TextMeshProUGUI description;

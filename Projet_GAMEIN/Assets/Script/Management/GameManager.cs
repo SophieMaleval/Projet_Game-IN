@@ -220,6 +220,7 @@ public class GameManager : Singleton<GameManager>
 
             gameCanvasManager.inventory = InventoryUIInstatiate.GetComponent<InventoryScript>();
             gameCanvasManager.questManager = InventoryUIInstatiate.GetComponentInChildren<QuestSys>();
+            gameCanvasManager.questTrackingUi = gameCanvasManager.inventory.QuestTrackingUi;
             gameCanvasManager.questUi = gameCanvasManager.inventory.QuestUi;
 
             gameCanvasManager.dialogCanvas = DialogueUIInstatiate.GetComponent<DialogueDisplayerController>();

@@ -25,6 +25,10 @@ public class QuestList : MonoBehaviour
         QuestStatus newStatus = new QuestStatus(quest);
         newStatus.SetQuestStepUnlocked(newStatus.GetQuestStepStatuses()[0], true);
         statuses.Add(newStatus);
+        if (GameManager.Instance.gameCanvasManager.questTrackingUi.gameObject.activeSelf == false )
+        {
+            GameManager.Instance.gameCanvasManager.questUi.Redraw();
+        }
         if (OnUpdate != null)
         {
             OnUpdate();

@@ -6,8 +6,6 @@ public class QuestUI : MonoBehaviour
 {
     #region Fields
 
-    private QuestList questList;
-
     private List<QuestItemUI> questsUi = new List<QuestItemUI>();
 
     #endregion
@@ -25,13 +23,14 @@ public class QuestUI : MonoBehaviour
 
     void Start()
     {
-        questList = GameManager.Instance.questManager;
-        questList.OnUpdate += Redraw;
+        
         Redraw();
     }
 
-    private void Redraw()
+    public void Redraw()
     {
+        Debug.Log("Redraw");
+
         foreach (Transform item in contentQuests)
         {
             Destroy(item.gameObject);
@@ -39,7 +38,7 @@ public class QuestUI : MonoBehaviour
 
         questsUi.Clear();
 
-        foreach (QuestStatus status in questList.GetStatuses())
+        foreach (QuestStatus status in GameManager.Instance.questManager.GetStatuses())
         {
             if (status.GetQuestCompleted() == false)
             {
@@ -55,10 +54,35 @@ public class QuestUI : MonoBehaviour
                     }
                 }
 
+                Debug.Log("Seup Ui Instance");
                 uiInstance.Setup(status);
+                if (GameManager.Instance.gameCanvasManager.questTrackingUi.currentQuestStatusActive == null || GameManager.Instance.gameCanvasManager.questTrackingUi.currentQuestStatusActive == uiInstance.Statuts)
+                {
+                    GameManager.Instance.gameCanvasManager.questTrackingUi.SetQuestTrackingState(true, uiInstance.Statuts);
+                }
                 questsUi.Add(uiInstance);
             }
+            else
+            {
+                if(GameManager.Instance.gameCanvasManager.questTrackingUi.currentQuestStatusActive != null)
+                {
+                    GameManager.Instance.gameCanvasManager.questTrackingUi.SetQuestTrackingState(false, null);
+                }
+            }
         }
+    }
+
+    public void UpdateQuestsItemsUI()
+    {
+        if(questsUi.Count > 0)
+        {
+            foreach (QuestItemUI questItem in questsUi)
+            {
+                questItem.CheckActiveList();
+            }
+
+        }
+        
     }
 
     public List<QuestItemUI> GetQuestsUI()

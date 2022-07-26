@@ -16,6 +16,12 @@ public class QuestItemUI : MonoBehaviour
 
     #endregion
 
+    #region Properties
+
+    public QuestStatus Statuts => statuts;
+
+    #endregion
+
     #region UnityInspector
 
     [SerializeField] private Sprite listOpenIcon;
@@ -32,6 +38,17 @@ public class QuestItemUI : MonoBehaviour
     private void Start()
     {
         SetOpenList(false);
+
+        CheckActiveList();
+    }
+
+    public void CheckActiveList()
+    {
+        if (GameManager.Instance.gameCanvasManager.questTrackingUi.currentQuestStatusActive != null && GameManager.Instance.gameCanvasManager.questTrackingUi.currentQuestStatusActive == statuts && isOpen == false)
+        {
+            Debug.Log("OpenList");
+            OpenList();
+        }
     }
 
     public void AddStepsUi(QuestStepItemUI stepUi)
@@ -46,6 +63,7 @@ public class QuestItemUI : MonoBehaviour
     {
         this.statuts = status;
         title.text = status.GetQuest()._name;
+        
     }
 
     public QuestStatus GetQuestStatus()
@@ -80,6 +98,8 @@ public class QuestItemUI : MonoBehaviour
     {
         if (isOpen)
         {
+            GameManager.Instance.gameCanvasManager.questTrackingUi.SetQuestTrackingState(true, this.statuts);
+
             listArrow.GetComponent<RectTransform>().localEulerAngles = new Vector3(0, 0, 0);
             listArrow.sprite = listOpenIcon;
         }

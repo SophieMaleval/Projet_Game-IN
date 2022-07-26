@@ -167,8 +167,25 @@ public class DialogueDisplayUI : MonoBehaviour
             //Debug.Log("Instantiate");
             GameObject _choiceInstance = Instantiate(choicePrefab, choicesRoot);
             currentChoices.Add(_choiceInstance);
+
             var _textComp = _choiceInstance.GetComponentInChildren<TextMeshProUGUI>();
             _textComp.text = choice.message;
+            if (choice.hasRequirements)
+            {
+                for (int i = 0; i < choice.gameRequirements.requirementsList.Count; i++)
+                {
+                    if (choice.gameRequirements.requirementsList[i].requirementType == RequirementType.HasQuest
+                        || choice.gameRequirements.requirementsList[i].requirementType == RequirementType.QuestState)
+                    {
+                        _textComp.color = QuestionQuestColor;
+                    }
+                }
+            }
+            else
+            {
+                _textComp.color = QuestionClassicColor;
+            }
+
             Button button = _choiceInstance.GetComponentInChildren<Button>();
             button.onClick.AddListener(() =>
             {

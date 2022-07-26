@@ -20,6 +20,7 @@ public class InventoryScript : MonoBehaviour
     public PlayerScript PlayerScript { get; set; }
 
     public QuestUI QuestUi => questUi;
+    public QuestTrackingUI QuestTrackingUi => questTrackingUi;
 
     public PopUpManager PopUpManager => popUpManager;
 
@@ -43,7 +44,12 @@ public class InventoryScript : MonoBehaviour
     [SerializeField] private TextMeshProUGUI MapTitle ;
     //public List<Image> InventoryDisplayer ;
 
+    [Header("Quests")]
+
     [SerializeField] private QuestUI questUi;
+    [SerializeField] private QuestTrackingUI questTrackingUi;
+
+    [Header("Generals")]
 
     [SerializeField] private RectTransform SettingPanel ;
     [SerializeField] private RectTransform ControlsPanel;
@@ -99,6 +105,8 @@ public class InventoryScript : MonoBehaviour
                     GameManager.Instance.gameCanvasManager.eventSystem.SetSelectedGameObject(GameManager.Instance.gameCanvasManager.newDialogCanvas.CurrentChoices[0]);
                 }
             }
+
+            GameManager.Instance.gameCanvasManager.questUi.UpdateQuestsItemsUI();
            
 
         }
