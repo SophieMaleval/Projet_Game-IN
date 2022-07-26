@@ -196,18 +196,37 @@ public class PlayerScript : MonoBehaviour
             CanCollectObject = false ;
     }
 
+    [ContextMenu("LunchAnimationFadeIn")]
     public void LunchAnimationFadeIn()
     {
         StartCoroutine(FadeInIEnum());
     }
+
+    [ContextMenu("LaunchFade")]
+    public void LaunchFade(float fadeDuration = 0.5f, float fadeOutSwitchDuration = 1f)
+    {
+        StartCoroutine(Fade(fadeDuration, fadeOutSwitchDuration));
+    }
  
     IEnumerator FadeInIEnum()
     {
+        Debug.Log("FadeInIEnum");
+
         InAnimationFade = true ;
         FadeAnimation.raycastTarget = true ;
         FadeAnimation.DOFade(1f, 0.5f);
         yield return new WaitForSeconds(1f);
         FadeMake = true ;        
+    }
+
+    IEnumerator Fade(float fadeDuration, float fadeOutSwitchDuration)
+    {
+        FadeAnimation.raycastTarget = true;
+        FadeAnimation.DOFade(1f, fadeDuration);
+        yield return new WaitForSeconds(fadeOutSwitchDuration);
+        FadeAnimation.DOFade(0f, fadeDuration);
+        yield return new WaitForSeconds(0.25f);
+        FadeAnimation.raycastTarget = false;
     }
 
     public void LunchFadeOut()

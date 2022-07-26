@@ -234,7 +234,7 @@ public class DialogueDisplayUI : MonoBehaviour
         if (canTurnNext)
         {
             AudioController.Instance.PlayAudio(sfxValidate);
-            playerConversant.Next();
+            StartCoroutine(playerConversant.Next());
 
             if (animationPassTouchCoroutine != null)
             {

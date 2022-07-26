@@ -53,6 +53,10 @@ public class GameActions
                     {
                         item.ExecuteLaunchMiniGame();
                     }
+                    else if (item.actionType == ActionType.LaunchFade)
+                    {
+                        item.ExecuteLaunchFade();
+                    }
                 }
             }
 
@@ -102,6 +106,13 @@ public class GameAction
     [Space]
     [Header("Remove Item To Inventory Properties")]
     [SerializeField] public InteractibleObject itemToRemove;
+
+    [Space]
+
+    [Space]
+    [Header("Launch Fade Properties")]
+    [SerializeField] public float fadeDuration = 0.5f;
+    [SerializeField] public float fadeOutSwitchDuration = 1f;
 
     #endregion
 
@@ -168,6 +179,13 @@ public class GameAction
         GameCore.Instance.OpenMinigame();
     }
 
+    public void ExecuteLaunchFade()
+    {
+        GameManager.Instance.player.LaunchFade(fadeDuration, fadeOutSwitchDuration);
+        GameManager.Instance.player.GetComponent<PlayerConversant>().currentNode.timerBeforeNextNode = fadeDuration * 2 + fadeOutSwitchDuration;
+        GameManager.Instance.player.GetComponent<PlayerConversant>().canDialog = false;
+    }
+
     #endregion
 }
 
@@ -180,4 +198,5 @@ public enum ActionType
     AddItemToInventory,
     RemoveItemToInventory,
     LaunchMiniGame,
+    LaunchFade,
 }

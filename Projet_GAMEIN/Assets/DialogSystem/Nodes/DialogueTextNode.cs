@@ -16,6 +16,12 @@ public class DialogueTextNode : Node
 
     #endregion
 
+    #region Properties
+
+    public float timerBeforeNextNode { get; set; }
+
+    #endregion
+
     #region UnityInspector
 
     [Input] public DialogueTextNode previousNode;

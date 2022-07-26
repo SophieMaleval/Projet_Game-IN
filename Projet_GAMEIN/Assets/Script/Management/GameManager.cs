@@ -91,6 +91,7 @@ public class GameManager : Singleton<GameManager>
             {
                 DialogueTextNode node = (DialogueTextNode)item;
                 node.SetAlreadyReadValue(false);
+                node.timerBeforeNextNode = 0.0f;
             }
         }
     }

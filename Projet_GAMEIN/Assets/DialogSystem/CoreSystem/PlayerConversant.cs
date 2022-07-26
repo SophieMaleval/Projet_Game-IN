@@ -21,6 +21,8 @@ public class PlayerConversant : MonoBehaviour
 
     #region Properties
 
+    public bool canDialog { get; set; }
+
     public DialogueTextNode currentNode { get; set; }
 
     public DialogueGraph CurrentDialog => currentDialog;
@@ -40,6 +42,8 @@ public class PlayerConversant : MonoBehaviour
     private void Awake()
     {
         playerScript = GetComponent<PlayerScript>();
+
+        canDialog = true;
     }
 
     public void StartDialog(NpcConversant conversant, DialogueGraph dialogue)
@@ -93,22 +97,31 @@ public class PlayerConversant : MonoBehaviour
         Debug.Log("SelectChoice");
         currentNode = chosenNode;
         isChoosing = false;
-        Next();
+        StartCoroutine(Next());
     }
 
-    public void Next()
+    public IEnumerator Next()
     {
+        if(canDialog == false)
+        {
+            yield break;
+        }
+
         if(currentNode.hasGameActions)
         {
             currentNode.gameActions.ExecuteGameActions();
         }
+
+        yield return new WaitForSeconds(currentNode.timerBeforeNextNode);
+
+        canDialog = true;
 
         currentNode.SetAlreadyReadValue(true);
 
         if (!HasNext())
         {
             Quit();
-            return;
+            yield break;
         }
 
         SetNewCurrentNode();

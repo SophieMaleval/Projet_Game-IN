@@ -151,6 +151,12 @@ public class DialogueTextNodeEditor : Editor
                         {
                             break;
                         }
+                    case ActionType.LaunchFade:
+                        {
+                            action.fadeDuration = EditorGUILayout.FloatField("Fade Duration", action.fadeDuration);
+                            action.fadeOutSwitchDuration = EditorGUILayout.FloatField("Fade Out Switch Duration", action.fadeOutSwitchDuration);
+                            break;
+                        }
 
                 }
 
