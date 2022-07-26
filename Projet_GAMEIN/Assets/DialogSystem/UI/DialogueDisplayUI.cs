@@ -20,6 +20,8 @@ public class DialogueDisplayUI : MonoBehaviour
 
     private bool canTurnNext = true;
 
+    private bool updateButtons;
+    private List<Button> currentChoicesButtons = new List<Button>();
     #endregion
 
     #region Properties
@@ -68,6 +70,35 @@ public class DialogueDisplayUI : MonoBehaviour
         UpdateUI();
     }
 
+    private void LateUpdate()
+    {
+        UpdateDialogueChoicesButtons();
+    }
+
+    private void UpdateDialogueChoicesButtons()
+    {
+        if (currentChoicesButtons.Count > 0 && updateButtons)
+        {
+            float HeightFinalBox = 30f;
+
+            foreach (Button button in currentChoicesButtons)
+            {
+                RectTransform hoverElementRect = button.GetComponentInChildren<TextMeshProUGUI>().GetComponent<RectTransform>();
+                Debug.Log(hoverElementRect.gameObject.name);
+                Debug.Log(hoverElementRect.sizeDelta);
+
+                button.GetComponent<RectTransform>().sizeDelta += hoverElementRect.sizeDelta;
+
+                Debug.Log(button.GetComponent<RectTransform>().sizeDelta.y);
+
+                HeightFinalBox += button.GetComponent<RectTransform>().sizeDelta.y;
+                ThisRect.sizeDelta = new Vector2(ThisRect.sizeDelta.x, HeightFinalBox);
+            }
+
+            Debug.Log(HeightFinalBox);
+        }
+    }
+
     private void UpdateButtonsListeners()
     {
         //Debug.Log("Clear Next and Exit Dialogue Buttons");
@@ -78,6 +109,7 @@ public class DialogueDisplayUI : MonoBehaviour
     private void UpdateUI()
     {
         UpdateButtonsListeners();
+        updateButtons = false;
 
         gameObject.SetActive(playerConversant.IsActive());
         if (!playerConversant.IsActive())
@@ -116,6 +148,8 @@ public class DialogueDisplayUI : MonoBehaviour
         dialogueNpcNameText.transform.parent.GetComponent<RectTransform>().sizeDelta = new Vector2((NumOfChar * 14f) + 10f, dialogueNpcNameText.transform.parent.GetComponent<RectTransform>().sizeDelta.y);
     }
 
+    
+
     private void BuildChoiceList()
     {
         foreach (Transform item in choicesRoot)
@@ -124,8 +158,8 @@ public class DialogueDisplayUI : MonoBehaviour
         }
 
         currentChoices.Clear();
-
-        float HeightFinalBox = 30f;
+        currentChoicesButtons.Clear();
+        
 
 
         foreach (DialogueTextNode choice in playerConversant.GetChoices())
@@ -141,9 +175,10 @@ public class DialogueDisplayUI : MonoBehaviour
                 ButtonSelectChoice(choice);
             });
 
-            HeightFinalBox += _choiceInstance.GetComponent<RectTransform>().sizeDelta.y;
-            ThisRect.sizeDelta = new Vector2(ThisRect.sizeDelta.x, HeightFinalBox);
+            currentChoicesButtons.Add(button);
         }
+
+        updateButtons = true;
 
         for (int i = 0; i < currentChoices.Count; i++)
         {

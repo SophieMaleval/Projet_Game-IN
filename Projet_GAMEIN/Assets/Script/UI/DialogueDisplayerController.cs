@@ -359,8 +359,11 @@ public class DialogueDisplayerController : MonoBehaviour
         for (int HChoiceQuestion = 0; HChoiceQuestion < BoxQuestion.transform.childCount; HChoiceQuestion++)
         {
             if(BoxQuestion.transform.GetChild(HChoiceQuestion).gameObject.activeSelf) HeightFinalBox += BoxQuestion.transform.GetChild(HChoiceQuestion).GetComponent<RectTransform>().sizeDelta.y ;
+            Debug.Log(HeightFinalBox);
         }
         ThisRect.sizeDelta = new Vector2(ThisRect.sizeDelta.x, HeightFinalBox);
+
+        Debug.Log(HeightFinalBox);
 
 
         SelectedButton();
