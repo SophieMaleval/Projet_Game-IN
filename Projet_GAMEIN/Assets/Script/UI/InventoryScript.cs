@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro ;
 using DG.Tweening;
+using AllosiusDev.QuestSystem;
+using AllosiusDev.DialogSystem;
 
 public class InventoryScript : MonoBehaviour
 {

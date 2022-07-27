@@ -3,47 +3,50 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class QuestStepItemUI : MonoBehaviour
+namespace AllosiusDev.QuestSystem
 {
-    #region Fields
-
-    QuestStepStatus statuts;
-
-    #endregion
-
-    #region Properties
-
-    public TextMeshProUGUI Description => description;
-
-    #endregion
-
-    #region UnityInspector
-
-    [SerializeField] TextMeshProUGUI description;
-
-    #endregion
-
-    #region Behaviour
-
-    public void Setup(QuestStepStatus statuts)
+    public class QuestStepItemUI : MonoBehaviour
     {
-        this.statuts = statuts;
-        description.text = statuts.GetQuestStep().description;
+        #region Fields
 
-        if(statuts.IsComplete())
+        QuestStepStatus statuts;
+
+        #endregion
+
+        #region Properties
+
+        public TextMeshProUGUI Description => description;
+
+        #endregion
+
+        #region UnityInspector
+
+        [SerializeField] TextMeshProUGUI description;
+
+        #endregion
+
+        #region Behaviour
+        public QuestStepStatus GetQuestStatus()
         {
-            description.fontStyle = FontStyles.Strikethrough;
+            return statuts;
         }
-        else
+
+        public void Setup(QuestStepStatus statuts)
         {
-            description.fontStyle = FontStyles.Normal;
+            this.statuts = statuts;
+            description.text = statuts.GetQuestStep().description;
+
+            if (statuts.IsComplete())
+            {
+                description.fontStyle = FontStyles.Strikethrough;
+            }
+            else
+            {
+                description.fontStyle = FontStyles.Normal;
+            }
         }
-    }
 
-    public QuestStepStatus GetQuestStatus()
-    {
-        return statuts;
-    }
 
-    #endregion
+        #endregion
+    }
 }

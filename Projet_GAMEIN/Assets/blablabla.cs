@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿using AllosiusDev.DialogSystem;
+using AllosiusDev.QuestSystem;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 

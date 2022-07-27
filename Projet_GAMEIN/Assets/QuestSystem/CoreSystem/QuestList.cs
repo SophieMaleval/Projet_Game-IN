@@ -1,156 +1,161 @@
-﻿using System;
+﻿using AllosiusDev.Core;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class QuestList : MonoBehaviour
+namespace AllosiusDev.QuestSystem
 {
-    #region Fields
-
-    public List<QuestStatus> statuses = new List<QuestStatus>();
-
-    #endregion
-
-    #region Events
-
-    public event Action OnUpdate;
-
-    #endregion
-
-    #region Behaviour
-
-    public void AddQuest(QuestData quest)
+    public class QuestList : MonoBehaviour
     {
-        if (HasQuest(quest)) return;
-        QuestStatus newStatus = new QuestStatus(quest);
-        newStatus.SetQuestStepUnlocked(newStatus.GetQuestStepStatuses()[0], true);
-        statuses.Add(newStatus);
-        if (GameManager.Instance.gameCanvasManager.questTrackingUi.gameObject.activeSelf == false )
+        #region Fields
+
+        public List<QuestStatus> statuses = new List<QuestStatus>();
+
+        #endregion
+
+        #region Events
+
+        public event Action OnUpdate;
+
+        #endregion
+
+        #region Behaviour
+
+        public IEnumerable<QuestStatus> GetStatuses()
         {
-            GameManager.Instance.gameCanvasManager.questUi.Redraw();
+            return statuses;
         }
-        if (OnUpdate != null)
+
+        private QuestStatus GetQuestStatus(QuestData quest, StateQuestWanted state = StateQuestWanted.None)
         {
-            OnUpdate();
-        }
-    }
-
-    public void CompleteQuestStep(QuestData quest, QuestStepData step)
-    {
-        QuestStatus status = GetQuestStatus(quest);
-        if (status != null)
-        {
-            Debug.Log(status);
-            status.CompleteQuestStep(step);
-
-            if (OnUpdate != null)
+            foreach (QuestStatus status in statuses)
             {
-                OnUpdate();
-            }
-            else
-            {
-                Debug.LogWarning("OnUpdate is null");
-            }
-        }
-    }
-
-    public void CompleteQuestTask(QuestData quest, QuestStepData step, QuestTaskData task)
-    {
-        QuestStatus status = GetQuestStatus(quest);
-        if (status != null)
-        {
-            Debug.Log(status);
-            status.CompleteQuestTask(step, task);
-
-            if (OnUpdate != null)
-            {
-                OnUpdate();
-            }
-            else
-            {
-                Debug.LogWarning("OnUpdate is null");
-            }
-        }
-    }
-
-    public bool HasQuest(QuestData quest, StateQuestWanted state = StateQuestWanted.None)
-    {
-        return GetQuestStatus(quest, state) != null;
-    }
-
-    public IEnumerable<QuestStatus> GetStatuses()
-    {
-        return statuses;
-    }
-
-    private QuestStatus GetQuestStatus(QuestData quest, StateQuestWanted state = StateQuestWanted.None)
-    {
-        foreach (QuestStatus status in statuses)
-        {
-            if (status.GetQuest() == quest)
-            {
-                if(state == StateQuestWanted.None)
-                {
-                    return status;
-                }
-                else if(state == StateQuestWanted.Uncompleted)
-                {
-                    if (status.GetQuestCompleted() == false)
-                    {
-                        return status;
-                    }
-                }
-                else if(state == StateQuestWanted.Completed)
-                {
-                    if(status.GetQuestCompleted() == true)
-                    {
-                        return status;
-                    }
-                }
-            }
-        }
-        return null;
-    }
-
-    public bool HasQuestStep(QuestData quest, QuestStepData objectiveRef, StateQuestWanted state = StateQuestWanted.None)
-    {
-        QuestStatus status = GetQuestStatus(quest);
-        return GetQuestStepStatus(status, objectiveRef, state) != null;
-    }
-
-    private QuestStepStatus GetQuestStepStatus(QuestStatus status, QuestStepData objectiveRef, StateQuestWanted state = StateQuestWanted.None)
-    {
-        if (status != null)
-        {
-            foreach (QuestStepStatus stepStatus in status.GetQuestStepStatuses())
-            {
-                if (stepStatus.GetQuestStep() == objectiveRef && stepStatus.isUnlocked)
+                if (status.GetQuest() == quest)
                 {
                     if (state == StateQuestWanted.None)
                     {
-                        return stepStatus;
+                        return status;
                     }
                     else if (state == StateQuestWanted.Uncompleted)
                     {
-                        if (stepStatus.GetStepCompleted() == false)
+                        if (status.GetQuestCompleted() == false)
                         {
-                            return stepStatus;
+                            return status;
                         }
                     }
                     else if (state == StateQuestWanted.Completed)
                     {
-                        if (stepStatus.GetStepCompleted() == true)
+                        if (status.GetQuestCompleted() == true)
                         {
-                            return stepStatus;
+                            return status;
                         }
                     }
                 }
             }
-
+            return null;
         }
 
-        return null;
-    }
+        private QuestStepStatus GetQuestStepStatus(QuestStatus status, QuestStepData objectiveRef, StateQuestWanted state = StateQuestWanted.None)
+        {
+            if (status != null)
+            {
+                foreach (QuestStepStatus stepStatus in status.GetQuestStepStatuses())
+                {
+                    if (stepStatus.GetQuestStep() == objectiveRef && stepStatus.isUnlocked)
+                    {
+                        if (state == StateQuestWanted.None)
+                        {
+                            return stepStatus;
+                        }
+                        else if (state == StateQuestWanted.Uncompleted)
+                        {
+                            if (stepStatus.GetStepCompleted() == false)
+                            {
+                                return stepStatus;
+                            }
+                        }
+                        else if (state == StateQuestWanted.Completed)
+                        {
+                            if (stepStatus.GetStepCompleted() == true)
+                            {
+                                return stepStatus;
+                            }
+                        }
+                    }
+                }
 
-    #endregion
+            }
+
+            return null;
+        }
+
+        public bool HasQuest(QuestData quest, StateQuestWanted state = StateQuestWanted.None)
+        {
+            return GetQuestStatus(quest, state) != null;
+        }
+
+        public bool HasQuestStep(QuestData quest, QuestStepData objectiveRef, StateQuestWanted state = StateQuestWanted.None)
+        {
+            QuestStatus status = GetQuestStatus(quest);
+            return GetQuestStepStatus(status, objectiveRef, state) != null;
+        }
+
+        public void AddQuest(QuestData quest)
+        {
+            if (HasQuest(quest)) return;
+            QuestStatus newStatus = new QuestStatus(quest);
+            newStatus.SetQuestStepUnlocked(newStatus.GetQuestStepStatuses()[0], true);
+            statuses.Add(newStatus);
+            if (GameManager.Instance.gameCanvasManager.questTrackingUi.gameObject.activeSelf == false)
+            {
+                GameManager.Instance.gameCanvasManager.questUi.Redraw();
+            }
+            if (OnUpdate != null)
+            {
+                OnUpdate();
+            }
+        }
+
+        public void CompleteQuestStep(QuestData quest, QuestStepData step)
+        {
+            QuestStatus status = GetQuestStatus(quest);
+            if (status != null)
+            {
+                Debug.Log(status);
+                status.CompleteQuestStep(step);
+
+                if (OnUpdate != null)
+                {
+                    OnUpdate();
+                }
+                else
+                {
+                    Debug.LogWarning("OnUpdate is null");
+                }
+            }
+        }
+
+        public void CompleteQuestTask(QuestData quest, QuestStepData step, QuestTaskData task)
+        {
+            QuestStatus status = GetQuestStatus(quest);
+            if (status != null)
+            {
+                Debug.Log(status);
+                status.CompleteQuestTask(step, task);
+
+                if (OnUpdate != null)
+                {
+                    OnUpdate();
+                }
+                else
+                {
+                    Debug.LogWarning("OnUpdate is null");
+                }
+            }
+        }
+
+
+        #endregion
+    }
 }

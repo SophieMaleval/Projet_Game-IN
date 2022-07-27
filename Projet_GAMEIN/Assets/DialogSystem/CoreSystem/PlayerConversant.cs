@@ -5,191 +5,192 @@ using System.Linq;
 using UnityEngine;
 using XNode;
 
-public class PlayerConversant : MonoBehaviour
+namespace AllosiusDev.DialogSystem
 {
-    #region Fields
-
-    PlayerScript playerScript;
-
-    DialogueGraph currentDialog;
-
-    NpcConversant currentConversant = null;
-
-    private bool isChoosing = false;
-
-    #endregion
-
-    #region Properties
-
-    public bool canDialog { get; set; }
-
-    public DialogueTextNode currentNode { get; set; }
-
-    public DialogueGraph CurrentDialog => currentDialog;
-
-    public NpcConversant CurrentConversant => currentConversant;
-
-    #endregion
-
-    #region Events
-
-    public event Action onConversationUpdated;
-
-    #endregion
-
-    #region Behaviour
-
-    private void Awake()
+    public class PlayerConversant : MonoBehaviour
     {
-        playerScript = GetComponent<PlayerScript>();
+        #region Fields
 
-        canDialog = true;
-    }
+        PlayerScript playerScript;
 
-    public void StartDialog(NpcConversant conversant, DialogueGraph dialogue)
-    {
-        dialogue.SetStartNodes();
+        DialogueGraph currentDialog;
 
-        playerScript.GetComponent<PlayerMovement>().StartActivity();
+        NpcConversant currentConversant = null;
 
-        playerScript.PlayerAsInterract = false;
-        playerScript.InDiscussion = true;
+        private bool isChoosing = false;
 
-        currentConversant = conversant;
-        currentDialog = dialogue;
-        //currentNode = (DialogueTextNode)currentDialog.GetRootNode();
+        #endregion
 
-        SetNewCurrentNode();
-    }
+        #region Properties
 
-    public bool IsActive()
-    {
-        return currentDialog != null;
-    }
+        public bool canDialog { get; set; }
 
-    public string GetCurrentConversantName()
-    {
-        return currentConversant.NamePnj;
-    }
+        public DialogueTextNode currentNode { get; set; }
 
-    public bool IsChoosing()
-    {
-        return isChoosing;
-    }
+        public DialogueGraph CurrentDialog => currentDialog;
 
-    public string GetText()
-    {
-        if (currentNode == null)
+        public NpcConversant CurrentConversant => currentConversant;
+
+        #endregion
+
+        #region Events
+
+        public event Action onConversationUpdated;
+
+        #endregion
+
+        #region Behaviour
+
+        private void Awake()
         {
-            return "";
+            playerScript = GetComponent<PlayerScript>();
+
+            canDialog = true;
+        }
+        public bool IsActive()
+        {
+            return currentDialog != null;
         }
 
-        return currentNode.message;
-    }
-
-    public IEnumerable<DialogueTextNode> GetChoices()
-    {
-        return currentDialog.GetPlayerChoisingChildren(currentNode);
-    }
-
-    public void SelectChoice(DialogueTextNode chosenNode)
-    {
-        Debug.Log("SelectChoice");
-        currentNode = chosenNode;
-        isChoosing = false;
-        StartCoroutine(Next());
-    }
-
-    public IEnumerator Next()
-    {
-        if(canDialog == false)
+        public string GetCurrentConversantName()
         {
-            yield break;
+            return currentConversant.NamePnj;
         }
 
-        if(currentNode.hasGameActions)
+        public bool IsChoosing()
         {
-            currentNode.gameActions.ExecuteGameActions();
+            return isChoosing;
         }
 
-        yield return new WaitForSeconds(currentNode.timerBeforeNextNode);
-
-        canDialog = true;
-
-        currentNode.SetAlreadyReadValue(true);
-
-        if (!HasNext())
+        public string GetText()
         {
-            Quit();
-            yield break;
+            if (currentNode == null)
+            {
+                return "";
+            }
+
+            return currentNode.message;
         }
 
-        SetNewCurrentNode();
-    }
-
-    public bool HasNext()
-    {
-        return currentDialog.GetAllChildren(currentNode).Count() > 0;
-    }
-
-    public void Quit()
-    {
-        currentDialog.ResetDialogues();
-
-        playerScript.PlayerAsInterract = false;
-        playerScript.InDiscussion = false;
-
-        playerScript.GetComponent<PlayerMovement>().EndActivity();
-
-        currentConversant.PNJTalkAnimation(false);
-
-        currentDialog = null;
-
-        currentNode = null;
-        isChoosing = false;
-        currentConversant = null;
-        onConversationUpdated();
-
-       
-    }
-
-    private void SetNewCurrentNode()
-    {
-        int numPlayerResponses = 0;
-
-        if (currentNode == null)
+        public IEnumerable<DialogueTextNode> GetChoices()
         {
-            numPlayerResponses = currentDialog.GetPlayerChoisingChildren().Count();
+            return currentDialog.GetPlayerChoisingChildren(currentNode);
         }
-        else
+        public bool HasNext()
         {
-            numPlayerResponses = currentDialog.GetPlayerChoisingChildren(currentNode).Count();
+            return currentDialog.GetAllChildren(currentNode).Count() > 0;
         }
-        
-        if (numPlayerResponses > 0)
+
+
+        public void StartDialog(NpcConversant conversant, DialogueGraph dialogue)
         {
-            isChoosing = true;
+            dialogue.SetStartNodes();
+
+            playerScript.GetComponent<PlayerMovement>().StartActivity();
+
+            playerScript.PlayerAsInterract = false;
+            playerScript.InDiscussion = true;
+
+            currentConversant = conversant;
+            currentDialog = dialogue;
+            //currentNode = (DialogueTextNode)currentDialog.GetRootNode();
+
+            SetNewCurrentNode();
+        }
+
+
+        public void SelectChoice(DialogueTextNode chosenNode)
+        {
+            Debug.Log("SelectChoice");
+            currentNode = chosenNode;
+            isChoosing = false;
+            StartCoroutine(Next());
+        }
+
+        public IEnumerator Next()
+        {
+            if (canDialog == false)
+            {
+                yield break;
+            }
+
+            if (currentNode.hasGameActions)
+            {
+                currentNode.gameActions.ExecuteGameActions();
+            }
+
+            yield return new WaitForSeconds(currentNode.timerBeforeNextNode);
+
+            canDialog = true;
+
+            currentNode.SetAlreadyReadValue(true);
+
+            if (!HasNext())
+            {
+                Quit();
+                yield break;
+            }
+
+            SetNewCurrentNode();
+        }
+
+        private void SetNewCurrentNode()
+        {
+            int numPlayerResponses = 0;
+
+            if (currentNode == null)
+            {
+                numPlayerResponses = currentDialog.GetPlayerChoisingChildren().Count();
+            }
+            else
+            {
+                numPlayerResponses = currentDialog.GetPlayerChoisingChildren(currentNode).Count();
+            }
+
+            if (numPlayerResponses > 0)
+            {
+                isChoosing = true;
+                onConversationUpdated();
+                return;
+            }
+
+            DialogueTextNode[] children = null;
+
+            if (currentNode == null)
+            {
+                children = currentDialog.GetAiChildren().ToArray();
+            }
+            else
+            {
+                children = currentDialog.GetAiChildren(currentNode).ToArray();
+            }
+
+            int randomIndex = UnityEngine.Random.Range(0, children.Count());
+            currentNode = children[randomIndex];
             onConversationUpdated();
-            return;
         }
 
-        DialogueTextNode[] children = null;
+        public void Quit()
+        {
+            currentDialog.ResetDialogues();
 
-        if (currentNode == null)
-        {
-           children = currentDialog.GetAiChildren().ToArray();
+            playerScript.PlayerAsInterract = false;
+            playerScript.InDiscussion = false;
+
+            playerScript.GetComponent<PlayerMovement>().EndActivity();
+
+            currentConversant.PNJTalkAnimation(false);
+
+            currentDialog = null;
+
+            currentNode = null;
+            isChoosing = false;
+            currentConversant = null;
+            onConversationUpdated();
+
+
         }
-        else
-        {
-            children = currentDialog.GetAiChildren(currentNode).ToArray();
-        }
-            
-        int randomIndex = UnityEngine.Random.Range(0, children.Count());
-        currentNode = children[randomIndex];
-        onConversationUpdated();
+
+        #endregion
     }
-
-    
-
-    #endregion
 }

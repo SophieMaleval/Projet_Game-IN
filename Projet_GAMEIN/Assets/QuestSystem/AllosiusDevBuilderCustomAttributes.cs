@@ -3,12 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[AttributeUsage(AttributeTargets.Field)]
+namespace AllosiusDev.QuestSystem
+{
+    [AttributeUsage(AttributeTargets.Field)]
 
-public class BaseCustomAttribute : Attribute { }
+    public class BaseCustomAttribute : Attribute { }
 
-public class IDAttribute : BaseCustomAttribute { }
+    public class IDAttribute : BaseCustomAttribute { }
 
-public class TaskIDAttribute : IDAttribute { }
+    public class TaskIDAttribute : IDAttribute { }
 
-public class AllosiusDevDataListAttribute : BaseCustomAttribute { }
+    public class AllosiusDevDataListAttribute : BaseCustomAttribute { }
+}

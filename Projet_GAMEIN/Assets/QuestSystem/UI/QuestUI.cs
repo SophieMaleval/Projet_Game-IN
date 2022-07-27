@@ -2,93 +2,96 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class QuestUI : MonoBehaviour
+namespace AllosiusDev.QuestSystem
 {
-    #region Fields
-
-    private List<QuestItemUI> questsUi = new List<QuestItemUI>();
-
-    #endregion
-
-    #region UnityInspector
-
-    [SerializeField] QuestItemUI questPrefab;
-    [SerializeField] QuestStepItemUI questStepPrefab;
-
-    [SerializeField] private Transform contentQuests;
-
-    #endregion
-
-    #region Behaviour
-
-    void Start()
+    public class QuestUI : MonoBehaviour
     {
-        
-        Redraw();
-    }
+        #region Fields
 
-    public void Redraw()
-    {
-        Debug.Log("Redraw");
+        private List<QuestItemUI> questsUi = new List<QuestItemUI>();
 
-        foreach (Transform item in contentQuests)
+        #endregion
+
+        #region UnityInspector
+
+        [SerializeField] QuestItemUI questPrefab;
+        [SerializeField] QuestStepItemUI questStepPrefab;
+
+        [SerializeField] private Transform contentQuests;
+
+        #endregion
+
+        #region Behaviour
+
+        void Start()
         {
-            Destroy(item.gameObject);
+
+            Redraw();
+        }
+        public List<QuestItemUI> GetQuestsUI()
+        {
+            return questsUi;
         }
 
-        questsUi.Clear();
-
-        foreach (QuestStatus status in GameManager.Instance.questManager.GetStatuses())
+        public void Redraw()
         {
-            if (status.GetQuestCompleted() == false)
-            {
-                QuestItemUI uiInstance = Instantiate<QuestItemUI>(questPrefab, contentQuests);
+            Debug.Log("Redraw");
 
-                foreach (QuestStepStatus step in status.GetQuestStepStatuses())
+            foreach (Transform item in contentQuests)
+            {
+                Destroy(item.gameObject);
+            }
+
+            questsUi.Clear();
+
+            foreach (QuestStatus status in GameManager.Instance.questManager.GetStatuses())
+            {
+                if (status.GetQuestCompleted() == false)
                 {
-                    if (step.isUnlocked)
+                    QuestItemUI uiInstance = Instantiate<QuestItemUI>(questPrefab, contentQuests);
+
+                    foreach (QuestStepStatus step in status.GetQuestStepStatuses())
                     {
-                        QuestStepItemUI stepUiInstance = Instantiate<QuestStepItemUI>(questStepPrefab, contentQuests);
-                        stepUiInstance.Setup(step);
-                        uiInstance.AddStepsUi(stepUiInstance);
+                        if (step.isUnlocked)
+                        {
+                            QuestStepItemUI stepUiInstance = Instantiate<QuestStepItemUI>(questStepPrefab, contentQuests);
+                            stepUiInstance.Setup(step);
+                            uiInstance.AddStepsUi(stepUiInstance);
+                        }
+                    }
+
+                    Debug.Log("Seup Ui Instance");
+                    uiInstance.Setup(status);
+                    if (GameManager.Instance.gameCanvasManager.questTrackingUi.currentQuestStatusActive == null || GameManager.Instance.gameCanvasManager.questTrackingUi.currentQuestStatusActive == uiInstance.Statuts)
+                    {
+                        GameManager.Instance.gameCanvasManager.questTrackingUi.SetQuestTrackingState(true, uiInstance.Statuts);
+                    }
+                    questsUi.Add(uiInstance);
+                }
+                else
+                {
+                    if (GameManager.Instance.gameCanvasManager.questTrackingUi.currentQuestStatusActive != null)
+                    {
+                        GameManager.Instance.gameCanvasManager.questTrackingUi.SetQuestTrackingState(false, null);
                     }
                 }
-
-                Debug.Log("Seup Ui Instance");
-                uiInstance.Setup(status);
-                if (GameManager.Instance.gameCanvasManager.questTrackingUi.currentQuestStatusActive == null || GameManager.Instance.gameCanvasManager.questTrackingUi.currentQuestStatusActive == uiInstance.Statuts)
-                {
-                    GameManager.Instance.gameCanvasManager.questTrackingUi.SetQuestTrackingState(true, uiInstance.Statuts);
-                }
-                questsUi.Add(uiInstance);
-            }
-            else
-            {
-                if(GameManager.Instance.gameCanvasManager.questTrackingUi.currentQuestStatusActive != null)
-                {
-                    GameManager.Instance.gameCanvasManager.questTrackingUi.SetQuestTrackingState(false, null);
-                }
             }
         }
-    }
 
-    public void UpdateQuestsItemsUI()
-    {
-        if(questsUi.Count > 0)
+        public void UpdateQuestsItemsUI()
         {
-            foreach (QuestItemUI questItem in questsUi)
+            if (questsUi.Count > 0)
             {
-                questItem.CheckActiveList();
+                foreach (QuestItemUI questItem in questsUi)
+                {
+                    questItem.CheckActiveList();
+                }
+
             }
 
         }
-        
-    }
 
-    public List<QuestItemUI> GetQuestsUI()
-    {
-        return questsUi;
-    }
 
-    #endregion
+        #endregion
+    }
 }

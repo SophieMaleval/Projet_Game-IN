@@ -5,6 +5,8 @@ using AllosiusDev;
 using UnityEngine.UI;
 using Core.Session;
 using UnityEngine.EventSystems;
+using AllosiusDev.QuestSystem;
+using AllosiusDev.DialogSystem;
 
 public class GameManager : Singleton<GameManager>
 {

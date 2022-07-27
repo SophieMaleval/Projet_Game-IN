@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using AllosiusDev.Audio;
+using AllosiusDev.DialogSystem;
 
 public class InstantiationPrefabGame : MonoBehaviour
 {

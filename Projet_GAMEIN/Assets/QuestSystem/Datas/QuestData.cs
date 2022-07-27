@@ -2,28 +2,31 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Quest", menuName = "AllosiusDev/Quests/Quest")]
-public class QuestData : ScriptableObject
+namespace AllosiusDev.QuestSystem
 {
-    #region UnityInspector
-
-    public string _name;
-
-    public List<QuestStepData> questSteps = new List<QuestStepData>();
-
-    #endregion
-
-    #region Functions
-
-    public bool HasQuestStep(QuestStepData objectiveRef)
+    [CreateAssetMenu(fileName = "New Quest", menuName = "AllosiusDev/Quests/Quest")]
+    public class QuestData : ScriptableObject
     {
-        if(questSteps.Contains(objectiveRef))
+        #region UnityInspector
+
+        public string _name;
+
+        public List<QuestStepData> questSteps = new List<QuestStepData>();
+
+        #endregion
+
+        #region Functions
+
+        public bool HasQuestStep(QuestStepData objectiveRef)
         {
-            return true;
+            if (questSteps.Contains(objectiveRef))
+            {
+                return true;
+            }
+
+            return false;
         }
 
-        return false;
+        #endregion
     }
-
-    #endregion
 }

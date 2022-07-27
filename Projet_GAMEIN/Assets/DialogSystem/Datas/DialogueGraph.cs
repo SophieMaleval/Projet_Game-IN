@@ -5,122 +5,134 @@ using System.Linq;
 using UnityEngine;
 using XNode;
 
-[CreateAssetMenu(fileName = "New DialogueGraph", menuName = "AllosiusDev/Dialogue Graph")]
-public class DialogueGraph : NodeGraph {
-
-    [Space]
-
-    //public int ID = -1;
-    //public string _name;
-    //public string _fileName;
-    public string displayName;
-    public string description;
-
-    //public bool hasExitNode;
-    //public string exitNodeText = "Goodbye";
-
-    [Space]
-
-    public Node mainNodeParent;
-
-    public void updateThis(DialogueGraph newData)
+namespace AllosiusDev.DialogSystem
+{
+    [CreateAssetMenu(fileName = "New DialogueGraph", menuName = "AllosiusDev/Dialogue Graph")]
+    public class DialogueGraph : NodeGraph
     {
-        //ID = newData.ID;
-        //_name = newData._name;
-        //_fileName = newData._fileName;
-        description = newData.description;
-        displayName = newData.displayName;
-        //hasExitNode = newData.hasExitNode;
-        //exitNodeText = newData.exitNodeText;
 
-        mainNodeParent = newData.mainNodeParent;
-    }
+        [Space]
 
-    public void ResetDialogues()
-    {
-        foreach (var item in nodes)
-        {
-            DialogueTextNode node = (DialogueTextNode)item;
-            node.SetAlreadyReadValue(false);
-            node.timerBeforeNextNode = 0.0f;
-        }
-    }
+        public string displayName;
+        public string description;
 
-    public DialogueTextNode GetRequiredNodes (DialogueTextNode node)
-    {
-        if (node.hasRequirements)
+        [Space]
+
+        public Node mainNodeParent;
+
+        public void updateThis(DialogueGraph newData)
         {
-            if (node.gameRequirements.ExecuteGameRequirements())
-                 return node;
-        }
-        else
-        {
-             return node;
+            description = newData.description;
+            displayName = newData.displayName;
+
+            mainNodeParent = newData.mainNodeParent;
         }
 
-        return null;
-    }
-
-    public IEnumerable<DialogueTextNode> GetAllChildren(DialogueTextNode parentNode)
-    {
-        foreach (DialogueTextNode child in parentNode.GetOutputsPorts())
+        public void ResetDialogues()
         {
-            if (child.hasRequirements)
+            foreach (var item in nodes)
             {
-                if (child.gameRequirements.ExecuteGameRequirements())
-                    yield return child;
+                DialogueTextNode node = (DialogueTextNode)item;
+                node.SetAlreadyReadValue(false);
+                node.timerBeforeNextNode = 0.0f;
+            }
+        }
+
+        public DialogueTextNode GetRequiredNodes(DialogueTextNode node)
+        {
+            if (node.hasRequirements)
+            {
+                if (node.gameRequirements.ExecuteGameRequirements())
+                    return node;
             }
             else
             {
-                yield return child;
+                return node;
             }
-        }
-    }
 
-    public IEnumerable<DialogueTextNode> GetPlayerChoisingChildren()
-    {
-        foreach (DialogueTextNode node in startNodes)
+            return null;
+        }
+
+        public IEnumerable<DialogueTextNode> GetAllChildren(DialogueTextNode parentNode)
         {
-            if (node.identityType == DialogueTextNode.IdentityType.Player)
+            foreach (DialogueTextNode child in parentNode.GetOutputsPorts())
             {
-                if (node.singleRead == false)
+                if (child.hasRequirements)
                 {
-                    yield return node;
+                    if (child.gameRequirements.ExecuteGameRequirements())
+                        yield return child;
                 }
-                else if (node.singleRead && node.GetAlreadyRead() == false)
+                else
                 {
-                    yield return node;
+                    yield return child;
                 }
-
             }
         }
-    }
 
-    public IEnumerable<DialogueTextNode> GetPlayerChoisingChildren(DialogueTextNode currentNode)
-    {
-        foreach (DialogueTextNode node in GetAllChildren(currentNode))
+        public IEnumerable<DialogueTextNode> GetPlayerChoisingChildren()
         {
-            if (node.identityType == DialogueTextNode.IdentityType.Player)
+            foreach (DialogueTextNode node in startNodes)
             {
-                if(node.singleRead == false)
+                if (node.identityType == DialogueTextNode.IdentityType.Player)
                 {
-                    yield return node;
+                    if (node.singleRead == false)
+                    {
+                        yield return node;
+                    }
+                    else if (node.singleRead && node.GetAlreadyRead() == false)
+                    {
+                        yield return node;
+                    }
+
                 }
-                else if(node.singleRead && node.GetAlreadyRead() == false)
-                {
-                    yield return node;
-                }
-                
             }
         }
-    }
 
-    public IEnumerable<DialogueTextNode> GetAiChildren()
-    {
-        foreach (DialogueTextNode node in startNodes)
+        public IEnumerable<DialogueTextNode> GetPlayerChoisingChildren(DialogueTextNode currentNode)
         {
-            DialogueTextNode nodeChecked = GetRequiredNodes(node);
-            if (nodeChecked != null)
+            foreach (DialogueTextNode node in GetAllChildren(currentNode))
+            {
+                if (node.identityType == DialogueTextNode.IdentityType.Player)
+                {
+                    if (node.singleRead == false)
+                    {
+                        yield return node;
+                    }
+                    else if (node.singleRead && node.GetAlreadyRead() == false)
+                    {
+                        yield return node;
+                    }
+
+                }
+            }
+        }
+
+        public IEnumerable<DialogueTextNode> GetAiChildren()
+        {
+            foreach (DialogueTextNode node in startNodes)
+            {
+                DialogueTextNode nodeChecked = GetRequiredNodes(node);
+                if (nodeChecked != null)
+                {
+                    if (node.identityType == DialogueTextNode.IdentityType.NPC)
+                    {
+                        if (node.singleRead == false)
+                        {
+                            yield return node;
+                        }
+                        else if (node.singleRead && node.GetAlreadyRead() == false)
+                        {
+                            yield return node;
+                        }
+                    }
+                }
+
+            }
+        }
+
+        public IEnumerable<DialogueTextNode> GetAiChildren(DialogueTextNode currentNode)
+        {
+            foreach (DialogueTextNode node in GetAllChildren(currentNode))
             {
                 if (node.identityType == DialogueTextNode.IdentityType.NPC)
                 {
@@ -134,28 +146,9 @@ public class DialogueGraph : NodeGraph {
                     }
                 }
             }
-
         }
+
+
+
     }
-
-    public IEnumerable<DialogueTextNode> GetAiChildren(DialogueTextNode currentNode)
-    {
-        foreach (DialogueTextNode node in GetAllChildren(currentNode))
-        {
-            if (node.identityType == DialogueTextNode.IdentityType.NPC)
-            {
-                if (node.singleRead == false)
-                {
-                    yield return node;
-                }
-                else if (node.singleRead && node.GetAlreadyRead() == false)
-                {
-                    yield return node;
-                }
-            }
-        }
-    }
-
-    
-
 }

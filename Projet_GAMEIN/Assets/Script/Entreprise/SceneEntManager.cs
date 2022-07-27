@@ -4,6 +4,7 @@ using UnityEngine;
 using Cinemachine;
 using UnityEngine.SceneManagement;
 using Core.Session;
+using AllosiusDev.DialogSystem;
 
 public class SceneEntManager : MonoBehaviour
 {

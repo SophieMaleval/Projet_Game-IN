@@ -1,5 +1,6 @@
 ﻿using AllosiusDev;
 using AllosiusDev.Audio;
+using AllosiusDev.DialogSystem;
 using Core.Session;
 using System.Collections;
 using System.Collections.Generic;
