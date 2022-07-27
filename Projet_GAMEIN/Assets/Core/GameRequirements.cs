@@ -18,6 +18,8 @@ namespace AllosiusDev.Core
 
         public bool ExecuteGameRequirements()
         {
+            Debug.Log("Execute Game Requirements");
+
             if (requirementsList.Count > 0)
             {
                 foreach (var item in requirementsList)

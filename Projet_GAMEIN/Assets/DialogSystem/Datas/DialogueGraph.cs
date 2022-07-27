@@ -30,6 +30,8 @@ namespace AllosiusDev.DialogSystem
 
         public void ResetDialogues()
         {
+            //Debug.LogError("Reset Dialogues");
+
             foreach (var item in nodes)
             {
                 DialogueTextNode node = (DialogueTextNode)item;
@@ -40,6 +42,8 @@ namespace AllosiusDev.DialogSystem
 
         public DialogueTextNode GetRequiredNodes(DialogueTextNode node)
         {
+            //Debug.Log("Get Required Nodes");
+
             if (node.hasRequirements)
             {
                 if (node.gameRequirements.ExecuteGameRequirements())
@@ -55,6 +59,8 @@ namespace AllosiusDev.DialogSystem
 
         public IEnumerable<DialogueTextNode> GetAllChildren(DialogueTextNode parentNode)
         {
+            //Debug.Log("Get All Children");
+
             foreach (DialogueTextNode child in parentNode.GetOutputsPorts())
             {
                 if (child.hasRequirements)
@@ -71,8 +77,12 @@ namespace AllosiusDev.DialogSystem
 
         public IEnumerable<DialogueTextNode> GetPlayerChoisingChildren()
         {
+            //Debug.Log("Get Player Choicsing Children");
+
             foreach (DialogueTextNode node in startNodes)
             {
+                //Debug.Log(node.name);
+
                 if (node.identityType == DialogueTextNode.IdentityType.Player)
                 {
                     if (node.singleRead == false)
@@ -90,8 +100,12 @@ namespace AllosiusDev.DialogSystem
 
         public IEnumerable<DialogueTextNode> GetPlayerChoisingChildren(DialogueTextNode currentNode)
         {
+            //Debug.Log("Get Player Choicsing Children");
+
             foreach (DialogueTextNode node in GetAllChildren(currentNode))
             {
+                //Debug.Log(node.name);
+
                 if (node.identityType == DialogueTextNode.IdentityType.Player)
                 {
                     if (node.singleRead == false)
@@ -109,8 +123,12 @@ namespace AllosiusDev.DialogSystem
 
         public IEnumerable<DialogueTextNode> GetAiChildren()
         {
+            //Debug.Log("Get AI Children");
+
             foreach (DialogueTextNode node in startNodes)
             {
+                //Debug.Log(node.name);
+
                 DialogueTextNode nodeChecked = GetRequiredNodes(node);
                 if (nodeChecked != null)
                 {
@@ -132,8 +150,12 @@ namespace AllosiusDev.DialogSystem
 
         public IEnumerable<DialogueTextNode> GetAiChildren(DialogueTextNode currentNode)
         {
+            //Debug.Log("Get AI Children");
+
             foreach (DialogueTextNode node in GetAllChildren(currentNode))
             {
+                //Debug.Log(node.name);
+
                 if (node.identityType == DialogueTextNode.IdentityType.NPC)
                 {
                     if (node.singleRead == false)

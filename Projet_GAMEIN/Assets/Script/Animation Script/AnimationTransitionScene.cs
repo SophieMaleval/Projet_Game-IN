@@ -27,8 +27,9 @@ public class AnimationTransitionScene : MonoBehaviour
 
     void Update()
     {
-  
-        if(ShouldReveal)
+        Debug.Log(ImageAnimate.material.shader.GetPropertyCount());
+
+        if (ShouldReveal)
         {
             Debug.LogWarning("Should Reveal");
             ImageAnimate.material.SetFloat("_FloatResize" , Mathf.MoveTowards(ImageAnimate.material.GetFloat("_FloatResize"), CircleSize, TransitionSpeed * Time.deltaTime));
@@ -42,9 +43,11 @@ public class AnimationTransitionScene : MonoBehaviour
     {
         ImageAnimate.material.SetFloat("_FloatResize", 0) ;
         Debug.LogWarning(ImageAnimate.material.name);
-        StartCoroutine(AnimOpeningScene()) ;
+        /*StartCoroutine(AnimOpeningScene()) ;*/
+
+        ShouldReveal = true;
     }
-    IEnumerator AnimOpeningScene()
+    /*IEnumerator AnimOpeningScene()
     {
         Debug.LogWarning("Start Anim Opening Scene");
         yield return new WaitForSeconds(0.25f);
@@ -52,11 +55,11 @@ public class AnimationTransitionScene : MonoBehaviour
         yield return new WaitForSeconds(2f) ;
         ImageAnimate.gameObject.SetActive(false);
         Debug.LogWarning("End Anim Opening Scene");
-    }
+    }*/
 
     public void QuitScene()
     {
-        StopAllCoroutines();
+        //StopAllCoroutines();
         ShouldReveal = false ;
     }
 

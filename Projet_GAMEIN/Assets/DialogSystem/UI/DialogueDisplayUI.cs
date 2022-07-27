@@ -67,6 +67,8 @@ namespace AllosiusDev.DialogSystem
 
         private void Start()
         {
+            //Debug.LogError("Init Dialogue UI");
+
             playerConversant = GameManager.Instance.player.GetComponent<PlayerConversant>();
             playerConversant.onConversationUpdated += UpdateUI;
 
@@ -80,6 +82,8 @@ namespace AllosiusDev.DialogSystem
 
         private void UpdateDialogueChoicesButtons()
         {
+            //Debug.Log("Update DIalogue Choices Buttons");
+
             if (currentChoicesButtons.Count > 0 && updateButtons)
             {
                 float HeightFinalBox = 30f;
@@ -87,30 +91,33 @@ namespace AllosiusDev.DialogSystem
                 foreach (Button button in currentChoicesButtons)
                 {
                     RectTransform hoverElementRect = button.GetComponentInChildren<TextMeshProUGUI>().GetComponent<RectTransform>();
-                    Debug.Log(hoverElementRect.gameObject.name);
-                    Debug.Log(hoverElementRect.sizeDelta);
+                    //Debug.Log(hoverElementRect.gameObject.name);
+                    //Debug.Log(hoverElementRect.sizeDelta);
 
                     button.GetComponent<RectTransform>().sizeDelta += hoverElementRect.sizeDelta;
 
-                    Debug.Log(button.GetComponent<RectTransform>().sizeDelta.y);
+                    //Debug.Log(button.GetComponent<RectTransform>().sizeDelta.y);
 
                     HeightFinalBox += button.GetComponent<RectTransform>().sizeDelta.y;
                     ThisRect.sizeDelta = new Vector2(ThisRect.sizeDelta.x, HeightFinalBox);
                 }
 
-                Debug.Log(HeightFinalBox);
+                //Debug.Log(HeightFinalBox);
             }
         }
 
         private void UpdateButtonsListeners()
         {
             //Debug.Log("Clear Next and Exit Dialogue Buttons");
+
             nextButton.onClick.RemoveAllListeners();
             nextButton.onClick.AddListener(() => ButtonNext());
         }
 
         private void UpdateUI()
         {
+            //Debug.LogError("Update UI");
+
             UpdateButtonsListeners();
             updateButtons = false;
 
@@ -155,6 +162,8 @@ namespace AllosiusDev.DialogSystem
 
         private void BuildChoiceList()
         {
+            //Debug.LogError("Build Choice List");
+
             foreach (Transform item in choicesRoot)
             {
                 Destroy(item.gameObject);
@@ -232,7 +241,7 @@ namespace AllosiusDev.DialogSystem
 
         private void ButtonNext()
         {
-            Debug.Log("Button Next");
+            //Debug.LogError("Button Next");
 
             if (canTurnNext)
             {
@@ -268,15 +277,19 @@ namespace AllosiusDev.DialogSystem
 
         private IEnumerator WriteText(string text)
         {
+            //Debug.Log("Write Text Coroutine");
+
             canTurnNext = false;
 
             dialogueDisplayerText.text = "";
+            //Debug.Log(dialogueDisplayerText.text);
 
             playerConversant.CurrentConversant.PNJTalkAnimation(true);
 
             for (int i = 0; i < text.Length; i++)
             {
                 dialogueDisplayerText.text += text[i];
+                //Debug.Log(dialogueDisplayerText.text);
 
                 if (text[i] != ' ')
                 {
@@ -291,8 +304,10 @@ namespace AllosiusDev.DialogSystem
 
         private void EndTextWrite(string text)
         {
+            //Debug.Log("End Text Write");
 
             dialogueDisplayerText.text = text;
+            //Debug.Log(dialogueDisplayerText.text);
 
             playerConversant.CurrentConversant.PNJTalkAnimation(false);
 
@@ -311,9 +326,9 @@ namespace AllosiusDev.DialogSystem
             {
                 passTouch.gameObject.SetActive(true);
 
-                passTouch.anchoredPosition = new Vector2(passTouch.anchoredPosition.x, passTouch.anchoredPosition.y + 2.5f);
+                //passTouch.anchoredPosition = new Vector2(passTouch.anchoredPosition.x, passTouch.anchoredPosition.y + 2.5f);
                 yield return new WaitForSeconds(0.5f);
-                passTouch.anchoredPosition = new Vector2(passTouch.anchoredPosition.x, passTouch.anchoredPosition.y - 2.5f);
+                //passTouch.anchoredPosition = new Vector2(passTouch.anchoredPosition.x, passTouch.anchoredPosition.y - 2.5f);
                 yield return new WaitForSeconds(0.5f);
 
                 StartCoroutine(AnimationPassText());

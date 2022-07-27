@@ -236,10 +236,14 @@ namespace XNode {
 
         public List<Node> GetInputsPorts()
         {
+            //Debug.Log("Get InPuts Ports");
+
             List<Node> nodesChildren = new List<Node>();
 
             foreach (var item in Ports)
             {
+                //Debug.Log(item);
+
                 if (item.direction == NodePort.IO.Input)
                 {
                     //Debug.Log(item.fieldName + " ");
@@ -251,7 +255,7 @@ namespace XNode {
                 }
 
             }
-
+            //Debug.Log(nodesChildren.Count);
             return nodesChildren;
         }
 

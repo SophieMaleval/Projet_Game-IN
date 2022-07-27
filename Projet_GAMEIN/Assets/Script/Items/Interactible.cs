@@ -77,6 +77,7 @@ public class Interactible : MonoBehaviour
     {
         if (gameRequirements.requirementsList.Count > 0)
         {
+            Debug.Log(gameObject.name + " Interactible Execute Requirements");
             canCollect = gameRequirements.ExecuteGameRequirements();
         }
 

@@ -84,6 +84,8 @@ namespace AllosiusDev.DialogSystem
 
         public void StartDialog(NpcConversant conversant, DialogueGraph dialogue)
         {
+            //Debug.LogError("Start Dialog");
+
             dialogue.SetStartNodes();
 
             playerScript.GetComponent<PlayerMovement>().StartActivity();
@@ -92,7 +94,9 @@ namespace AllosiusDev.DialogSystem
             playerScript.InDiscussion = true;
 
             currentConversant = conversant;
+            //Debug.Log(currentConversant.name);
             currentDialog = dialogue;
+            //Debug.Log(currentDialog.name);
             //currentNode = (DialogueTextNode)currentDialog.GetRootNode();
 
             SetNewCurrentNode();
@@ -101,7 +105,7 @@ namespace AllosiusDev.DialogSystem
 
         public void SelectChoice(DialogueTextNode chosenNode)
         {
-            Debug.Log("SelectChoice");
+            //Debug.Log("SelectChoice");
             currentNode = chosenNode;
             isChoosing = false;
             StartCoroutine(Next());
@@ -109,6 +113,8 @@ namespace AllosiusDev.DialogSystem
 
         public IEnumerator Next()
         {
+            //Debug.LogError("Next " + currentNode.name);
+
             if (canDialog == false)
             {
                 yield break;
@@ -116,6 +122,7 @@ namespace AllosiusDev.DialogSystem
 
             if (currentNode.hasGameActions)
             {
+                //Debug.LogError("Execute Game Actions");
                 currentNode.gameActions.ExecuteGameActions();
             }
 
@@ -127,28 +134,35 @@ namespace AllosiusDev.DialogSystem
 
             if (!HasNext())
             {
+                //Debug.LogError("Quit Dialog");
                 Quit();
                 yield break;
             }
 
             SetNewCurrentNode();
+
+            //Debug.LogError(currentNode.name);
         }
 
         private void SetNewCurrentNode()
         {
+            //Debug.LogError("Set New Current Node");
             int numPlayerResponses = 0;
 
             if (currentNode == null)
             {
                 numPlayerResponses = currentDialog.GetPlayerChoisingChildren().Count();
+                //Debug.Log(numPlayerResponses);
             }
             else
             {
                 numPlayerResponses = currentDialog.GetPlayerChoisingChildren(currentNode).Count();
+                //Debug.Log(numPlayerResponses);
             }
 
             if (numPlayerResponses > 0)
             {
+                //Debug.Log("Player Choice");
                 isChoosing = true;
                 onConversationUpdated();
                 return;
@@ -158,20 +172,27 @@ namespace AllosiusDev.DialogSystem
 
             if (currentNode == null)
             {
+                //Debug.Log("Init Node");
                 children = currentDialog.GetAiChildren().ToArray();
+                //Debug.Log(children[0].name);
             }
             else
             {
+                //Debug.Log("New Current Node");
                 children = currentDialog.GetAiChildren(currentNode).ToArray();
+                //Debug.Log(children[0].name);
             }
 
             int randomIndex = UnityEngine.Random.Range(0, children.Count());
+            //Debug.Log(randomIndex);
             currentNode = children[randomIndex];
             onConversationUpdated();
         }
 
         public void Quit()
         {
+            //Debug.Log("Quit Dialog");
+
             currentDialog.ResetDialogues();
 
             playerScript.PlayerAsInterract = false;

@@ -50,19 +50,21 @@ namespace AllosiusDev.DialogSystem
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (hasRequirements && !gameRequirements.ExecuteGameRequirements())
-            {
-                return;
-            }
-
-            if (singleUse && alreadyUsed)
-            {
-                return;
-            }
-
             PlayerScript player = collision.GetComponent<PlayerScript>();
             if (player != null)
             {
+                //Debug.Log(gameObject.name + "Execute Requirements");
+
+                if (hasRequirements && !gameRequirements.ExecuteGameRequirements())
+                {
+                    return;
+                }
+
+                if (singleUse && alreadyUsed)
+                {
+                    return;
+                }
+
                 alreadyUsed = true;
                 resetCam = true;
                 if (CineVCam != null)
