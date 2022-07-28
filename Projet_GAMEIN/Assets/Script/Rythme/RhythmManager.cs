@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
 using AllosiusDev.DialogSystem;
+using AllosiusDev.Core;
 
 public class RhythmManager : MonoBehaviour
 {
@@ -61,6 +62,10 @@ public class RhythmManager : MonoBehaviour
     public Vector2 PlayerPosition ;
 
     public GameObject minigameCam;
+
+    [Space]
+
+    [SerializeField] private GameActions gameActions;
 
     #endregion
 
@@ -292,6 +297,11 @@ public class RhythmManager : MonoBehaviour
         if(PNJCurrent == null)
         {
             player.EndActivity();             
+        }
+
+        if(gameActions.actionsList.Count > 0)
+        {
+            gameActions.ExecuteGameActions();
         }
 
     }

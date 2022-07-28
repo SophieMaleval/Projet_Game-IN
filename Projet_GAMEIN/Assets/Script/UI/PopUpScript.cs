@@ -102,9 +102,11 @@ public class PopUpScript : MonoBehaviour
 
     IEnumerator TimeDisplay()
     {
+        Debug.Log("Time Display");
         yield return new WaitForSeconds(7.5f);
         transform.GetChild(0).GetComponent<RectTransform>().DOAnchorPosX(transform.GetChild(0).GetComponent<RectTransform>().anchoredPosition.x + 500f, 0.95f);
         GetComponentInParent<PopUpManager>().SetHeightPopUpAgain();
+        Debug.Log("End Time Display");
         Destroy(gameObject, 1f);
     }
 
