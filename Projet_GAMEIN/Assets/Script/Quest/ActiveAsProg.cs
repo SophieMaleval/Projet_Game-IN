@@ -25,18 +25,18 @@ public class ActiveAsProg : MonoBehaviour
     public ObjType progressType;
     //active et desactive des objets en fonction de la progression du joueur
     [HideInInspector]
-    public QuestSys questSys;
-    [HideInInspector]
+    //public QuestSys questSys;
+    //[HideInInspector]
     public Checker checker;
     //[HideInInspector]
-    public QuestSync questSync;
+    //public QuestSync questSync;
     public int numeroDeQuete;
     public int etapeDeQuete;
     //public int level; // à titre indicatif uniquement
     //public int step; // à  titre indicatif uniquement
     public Interactible interactible;
 
-    public TalkQuest talkQuest;
+    //public TalkQuest talkQuest;
 
     public PannelAnnonceScript PannelAnnonceGestion;
 
@@ -50,14 +50,14 @@ public class ActiveAsProg : MonoBehaviour
     void Awake()
     {
 
-        if(questSys == null)
+        /*if(questSys == null)
         {
             questSys = GameManager.Instance.gameCanvasManager.questManager;
             if(numeroDeQuete == 1 &&  questSys.firstLvlStep >= etapeDeQuete && canIsDestroyed) {DestroyThis();  } 
             if(numeroDeQuete == 2 &&  questSys.secondLvlStep >= etapeDeQuete && canIsDestroyed) {DestroyThis(); } 
             if(numeroDeQuete == 3 &&  questSys.thirdLvlStep >= etapeDeQuete && canIsDestroyed) {DestroyThis(); }
             if(numeroDeQuete == 4 &&  questSys.fourthLvlStep >= etapeDeQuete && canIsDestroyed) {DestroyThis(); }
-        }
+        }*/
 
         checker = GameManager.Instance.gameCanvasManager.inventory.GetComponent<Checker>();
 
@@ -68,7 +68,7 @@ public class ActiveAsProg : MonoBehaviour
         
         if (progressType == ObjType.PNJ)
         {
-            talkQuest = GetComponent<TalkQuest>(); //la composante doit, si déterminante pour une quête, être inactive sur l'objet
+            //talkQuest = GetComponent<TalkQuest>(); //la composante doit, si déterminante pour une quête, être inactive sur l'objet
         }
 
         if(progressType == ObjType.PannelAnnonce)
@@ -95,14 +95,14 @@ public class ActiveAsProg : MonoBehaviour
 
     public void InteractMethod()
     {
-        if (questSys.niveau == numeroDeQuete && questSys.etape + 1 == etapeDeQuete)
+        /*if (questSys.niveau == numeroDeQuete && questSys.etape + 1 == etapeDeQuete)
         {
             interactible.enabled = true;
             detecteur.enabled = true;
             //StrikeThrough();
         } else {
             detecteur.enabled = false;
-        }
+        }*/
 
         if (!gathered)
         {
@@ -112,14 +112,14 @@ public class ActiveAsProg : MonoBehaviour
 
     public void DiscussionMethod()
     {
-        if (questSys.niveau == numeroDeQuete && questSys.etape + 1 == etapeDeQuete)
+        /*if (questSys.niveau == numeroDeQuete && questSys.etape + 1 == etapeDeQuete)
         {
             talkQuest.enabled = true;
             detecteur.enabled = true;
             //StrikeThrough();
         } else {
             detecteur.enabled = false;
-        }
+        }*/
 
         if (!gathered)
         {
@@ -131,7 +131,7 @@ public class ActiveAsProg : MonoBehaviour
         if (checker.isOn)
         {
             checker.isOn = false;
-            questSync = GameObject.Find("Quest" + numeroDeQuete).GetComponent<QuestSync>();
+            //questSync = GameObject.Find("Quest" + numeroDeQuete).GetComponent<QuestSync>();
             //ecrits.text = questSys.quest[numeroDeQuete].questGoal[etapeDeQuete - 1];
             gathered = true;
         }     
@@ -139,12 +139,12 @@ public class ActiveAsProg : MonoBehaviour
 
     void PannelViewMethod()
     {
-        if (questSys.niveau == numeroDeQuete && questSys.etape + 1 == etapeDeQuete)
+        /*if (questSys.niveau == numeroDeQuete && questSys.etape + 1 == etapeDeQuete)
         {
             PannelAnnonceGestion.CanProgress = true ;
         } else {
             PannelAnnonceGestion.CanProgress = false ;
-        }
+        }*/
     }
 
     #endregion

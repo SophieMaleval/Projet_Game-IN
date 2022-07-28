@@ -18,7 +18,7 @@ public class DialogueDisplayerController : MonoBehaviour
     
     private RectTransform ThisRect ;
 
-    private QuestSys QuestSysManager ;
+    //private QuestSys QuestSysManager ;
 
     private PlayerScript PlayerFadeScript ;
     private PlayerDialogue PlayerDialogueManager;
@@ -121,7 +121,7 @@ public class DialogueDisplayerController : MonoBehaviour
             PlayerFadeScript = GameManager.Instance.player ; 
             PlayerDialogueManager = PlayerFadeScript.playerBackpack ; 
         }    
-        QuestSysManager = GameManager.Instance.gameCanvasManager.questManager;
+        //QuestSysManager = GameManager.Instance.gameCanvasManager.questManager;
 
     } 
 
@@ -428,7 +428,7 @@ public class DialogueDisplayerController : MonoBehaviour
             }*/
             //Result = ConditionForDisplayQuestion(i, ValueSearch) ;
 
-            if(QuestSysManager.niveau == CurrentPNJDiscussion.InformationQuestEtapeQuestion[i].x && QuestSysManager.etape == CurrentPNJDiscussion.InformationQuestEtapeQuestion[i].y && ((int) CurrentPNJDiscussion.InformationQuestEtapeQuestion[i].z == ValueSearch)) Result = true ;
+            //if(QuestSysManager.niveau == CurrentPNJDiscussion.InformationQuestEtapeQuestion[i].x && QuestSysManager.etape == CurrentPNJDiscussion.InformationQuestEtapeQuestion[i].y && ((int) CurrentPNJDiscussion.InformationQuestEtapeQuestion[i].z == ValueSearch)) Result = true ;
         }
 
         if(CurrentPNJDiscussion.HideQuestionBeforeMomentX.Count != 0) 
@@ -438,7 +438,7 @@ public class DialogueDisplayerController : MonoBehaviour
                 if(ValueSearch == (int) CurrentPNJDiscussion.HideQuestionBeforeMomentX[AllQuestionHide].z)
                 {
                     ValueSearchNeedToBeHide = true ;
-                    if(QuestSysManager.DifferentQuestStep[(int) CurrentPNJDiscussion.HideQuestionBeforeMomentX[AllQuestionHide].x] > (int) CurrentPNJDiscussion.HideQuestionBeforeMomentX[AllQuestionHide].y) Result = true ;
+                    //if(QuestSysManager.DifferentQuestStep[(int) CurrentPNJDiscussion.HideQuestionBeforeMomentX[AllQuestionHide].x] > (int) CurrentPNJDiscussion.HideQuestionBeforeMomentX[AllQuestionHide].y) Result = true ;
                 }
             }    
         }

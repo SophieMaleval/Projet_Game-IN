@@ -19,7 +19,7 @@ public class GameCanvasManager : MonoBehaviour
     public CutoutAnim CutoutMask => cutoutMask;
 
     public InventoryScript inventory { get; set; }
-    public QuestSys questManager { get; set; }
+    //public QuestSys questManager { get; set; }
     public QuestTrackingUI questTrackingUi { get; set; }
     public QuestUI questUi { get; set; }
     public DialogueDisplayerController dialogCanvas { get; set; }

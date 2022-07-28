@@ -32,7 +32,7 @@ public class Interactible : MonoBehaviour
     public Quantité qté;
     public GameObject DisplayerInventory;
     public InteractibleObject Object ;
-    public QuestSys questSys;
+    //public QuestSys questSys;
     //public ActiveAsProg AaP;
 
     [SerializeField] private PlayerScript PlayerScript;
@@ -54,7 +54,7 @@ public class Interactible : MonoBehaviour
         if(GameManager.Instance.player != null)   // Récupère le player au lancement de la scène
         {    PlayerScript = GameManager.Instance.player ; }
         SpriteRend = GetComponent<SpriteRenderer>();
-        questSys = GameManager.Instance.gameCanvasManager.questManager ;
+        //questSys = GameManager.Instance.gameCanvasManager.questManager ;
         //AaP = this.gameObject.GetComponent<ActiveAsProg>();
     }
 
@@ -137,8 +137,8 @@ public class Interactible : MonoBehaviour
         {
             PlayerScript.AjoutInventaire(Object);
             PlayerScript.SwitchInputSprite();     
-            if(questSys != null)
-                questSys.Progression();
+            /*if(questSys != null)
+                questSys.Progression();*/
             //AaP.StrikeThrough();
             Destroy(this.gameObject, 0.05f);    
         }
@@ -164,8 +164,8 @@ public class Interactible : MonoBehaviour
                 {
                     PlayerScript.SwitchInputSprite();
                     Object.AddEntry();
-                    if(questSys != null)
-                        questSys.Progression();
+                    /*if(questSys != null)
+                        questSys.Progression();*/
                     Debug.Log("trop cool t'as tout");
                     Destroy(this.gameObject, 0.05f);      
                 }         

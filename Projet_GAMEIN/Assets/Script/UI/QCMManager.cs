@@ -212,8 +212,8 @@ public class QCMManager : MonoBehaviour
     {
         if(PNJCurrent == null)
         {
-            GameObject.Find("Quest Dialogue Manager").GetComponent<TalkQuest>().TalkedTo();   
-            GameManager.Instance.gameCanvasManager.questManager.Progression();
+            //GameObject.Find("Quest Dialogue Manager").GetComponent<TalkQuest>().TalkedTo();   
+            //GameManager.Instance.gameCanvasManager.questManager.Progression();
             GameManager.Instance.player.GetComponent<PlayerMovement>().enabled = true ;
             PlayerText.GetComponentInParent<PlayerMovement>().EndActivity();
         } else {

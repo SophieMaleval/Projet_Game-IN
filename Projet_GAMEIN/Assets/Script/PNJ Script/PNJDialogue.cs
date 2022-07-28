@@ -23,7 +23,7 @@ public class PNJDialogue : MonoBehaviour
     private bool QCMPannelAsBeOpen = false;
 
     private Vector4 LastPosPNJAndPlayer;
-    private QuestSys questSys;
+    //private QuestSys questSys;
 
     private DialogueContainer DialoguePNJ_FR;
     private DialogueContainer DialoguePNJ_EN;
@@ -95,7 +95,7 @@ public class PNJDialogue : MonoBehaviour
 
     private void Awake() 
     {
-        questSys = GameManager.Instance.gameCanvasManager.questManager;
+        //questSys = GameManager.Instance.gameCanvasManager.questManager;
         if (GameManager.Instance.player != null)   // Récupère le player au lancement de la scène
         {    
             PlayerScript = GameManager.Instance.player; 
@@ -424,9 +424,9 @@ public class PNJDialogue : MonoBehaviour
             } else {
                 for (int TQC = 1; TQC < transform.childCount; TQC++)
                 {
-                    transform.GetChild(TQC).gameObject.GetComponent<TalkQuest>().TalkedTo();  
+                    //transform.GetChild(TQC).gameObject.GetComponent<TalkQuest>().TalkedTo();  
                 }
-                questSys.Progression();
+                //questSys.Progression();
                 PlayerScript.gameObject.GetComponent<PlayerMovement>().EndActivity() ;   
             }        
         } else {

@@ -11,7 +11,7 @@ public class RhythmManager : MonoBehaviour
 {
     #region Fields
 
-    private QuestSys questSys;
+    //private QuestSys questSys;
 
     #endregion
 
@@ -113,7 +113,7 @@ public class RhythmManager : MonoBehaviour
 
     private void Awake()
     {
-        questSys = GameManager.Instance.gameCanvasManager.questManager;
+        //questSys = GameManager.Instance.gameCanvasManager.questManager;
       /*  scoreText = GameObject.Find("Score Text").GetComponent<TextMeshProUGUI>();
         multiText = GameObject.Find("Best Score Text").GetComponent<TextMeshProUGUI>();
         percentHitText = GameObject.Find("Percent Hit Value").GetComponent<TextMeshProUGUI>();
@@ -151,7 +151,7 @@ public class RhythmManager : MonoBehaviour
     {
         SwitchBackCam();
         player.EndActivity();
-        questSys.Progression();
+        //questSys.Progression();
       /*  Destroy(gameLauncher);        
         Destroy(dad);*/
     }

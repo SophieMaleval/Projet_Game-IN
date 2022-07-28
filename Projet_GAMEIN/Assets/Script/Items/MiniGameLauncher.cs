@@ -19,7 +19,7 @@ public class MiniGameLauncher : MonoBehaviour
     #region UnityInspector
 
     //public InteractibleObject Object;
-    public QuestSys questSys;
+    //public QuestSys questSys;
     //public ActiveAsProg AaP;
 
     [SerializeField] private PlayerScript PlayerScript;
@@ -39,7 +39,7 @@ public class MiniGameLauncher : MonoBehaviour
         if (GameManager.Instance.player != null)   // Récupère le player au lancement de la scène
         { PlayerScript = GameManager.Instance.player; }
         SpriteRend = GetComponent<SpriteRenderer>();
-        questSys = GameManager.Instance.gameCanvasManager.questManager;
+        //questSys = GameManager.Instance.gameCanvasManager.questManager;
         //gamePrefab = GameObject.FindGameObjectWithTag("MiniGame");
     }
 
@@ -62,14 +62,14 @@ public class MiniGameLauncher : MonoBehaviour
     {
         if (PlayerScript.gameObject.transform.position.x < transform.position.x) PlayerScript.InputSpritePos(false);
         if (PlayerScript.gameObject.transform.position.x > transform.position.x) PlayerScript.InputSpritePos(true);
-        if (numeroDeQuete == questSys.niveau && etapeDeQuete == questSys.etape)
+        /*if (numeroDeQuete == questSys.niveau && etapeDeQuete == questSys.etape)
         {
             ZoneInteractible();
         }
         else
         {
             ZoneNonInteractible();
-        }
+        }*/
 
 
         if (PlayerAround)

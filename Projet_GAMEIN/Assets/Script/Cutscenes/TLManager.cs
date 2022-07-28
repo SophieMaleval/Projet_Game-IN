@@ -18,7 +18,7 @@ public class TLManager : MonoBehaviour
     public PlayableDirector finCS;
 
     public string debutSequence, finSequence;
-    public QuestSys questSys;
+    //public QuestSys questSys;
     public int level;
 
     #endregion
@@ -41,7 +41,7 @@ public class TLManager : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(questSys != null) StepChecker();
+        //if(questSys != null) StepChecker();
     }
     // Update is called once per frame
     void Update()
@@ -52,20 +52,20 @@ public class TLManager : MonoBehaviour
             Lighting();
         }
 
-        if(questSys == null && GameManager.Instance.gameCanvasManager != null && GameManager.Instance.gameCanvasManager.questManager != null) questSys = GameManager.Instance.gameCanvasManager.questManager;
+        //if(questSys == null && GameManager.Instance.gameCanvasManager != null && GameManager.Instance.gameCanvasManager.questManager != null) questSys = GameManager.Instance.gameCanvasManager.questManager;
     }
     void StepChecker()
     {
         Debug.Log("Step Checker");
 
-        if (questSys.niveau == level)
+        /*if (questSys.niveau == level)
         {
             inQuest = true;
         }
         else
         {
             inQuest = false;
-        }               
+        } */              
     }
     public void Toggle()
     {

@@ -73,10 +73,10 @@ public class PannelAnnonceScript : MonoBehaviour
 
                 if (CanProgress)
                 {
-                    if (GameManager.Instance.gameCanvasManager.questManager != null)
+                   /* if (GameManager.Instance.gameCanvasManager.questManager != null)
                     {
                         GameManager.Instance.gameCanvasManager.questManager.Progression();
-                    }
+                    }*/
 
                     
                 }

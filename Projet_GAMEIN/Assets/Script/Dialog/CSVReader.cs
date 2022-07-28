@@ -92,8 +92,8 @@ public class CSVReader : MonoBehaviour
     [Header ("QCM")]
     public QCMContainer QCMCont = new QCMContainer();
 
-    [Header ("Texte Quest")]
-    public QuestSys QuestManager ;    
+    //[Header ("Texte Quest")]
+    //public QuestSys QuestManager ;    
 
     [Header ("PannelENT")]
     public List<UIPanelENTContainer> TextUIPanneauxENT = new List<UIPanelENTContainer>();
@@ -110,7 +110,7 @@ public class CSVReader : MonoBehaviour
     void Start()
     {
         ReadUICSV();
-        if(QuestManager != null) ReadQuestCSV();
+        //if(QuestManager != null) ReadQuestCSV();
         if(PannelENTText != null) ReadTextPannelENT();
         if(QCMData != null) ReadQCMCSV() ;
     }
@@ -289,7 +289,7 @@ public class CSVReader : MonoBehaviour
     }
 
 
-    void ReadQuestCSV()
+    /*void ReadQuestCSV()
     {
         string[] LineData = QuestText.text.Split(new string[] { "\n" }, StringSplitOptions.None) ; //Line Data correspond à chaque Ligne
         int QuestCode = 0;
@@ -323,12 +323,12 @@ public class CSVReader : MonoBehaviour
                 {
                     QuestAdd = true ;
                     QuestManager.QuestEN.Add(NewQuestCt);  
-                } 
+                }
             } else {
                 QuestCode ++ ;
             } 
         }
-    }
+    }*/
 
 
     void ReadTextPannelENT()

@@ -221,7 +221,7 @@ public class GameManager : Singleton<GameManager>
             InventoryUIInstatiate.transform.SetSiblingIndex(4);
             InventoryUIInstatiate.name = "Inventory";
 
-            player.playerBackpack.GetComponent<CSVReader>().QuestManager = InventoryUIInstatiate.GetComponentInChildren<QuestSys>();
+            //player.playerBackpack.GetComponent<CSVReader>().QuestManager = InventoryUIInstatiate.GetComponentInChildren<QuestSys>();
 
 
             GameCanvasManager _gameCanvasManager = CanvasInstatiate.GetComponent<GameCanvasManager>();
@@ -229,7 +229,7 @@ public class GameManager : Singleton<GameManager>
             gameCanvasManager = _gameCanvasManager;
 
             gameCanvasManager.inventory = InventoryUIInstatiate.GetComponent<InventoryScript>();
-            gameCanvasManager.questManager = InventoryUIInstatiate.GetComponentInChildren<QuestSys>();
+            //gameCanvasManager.questManager = InventoryUIInstatiate.GetComponentInChildren<QuestSys>();
             gameCanvasManager.questTrackingUi = gameCanvasManager.inventory.QuestTrackingUi;
             gameCanvasManager.questUi = gameCanvasManager.inventory.QuestUi;
 
