@@ -27,7 +27,7 @@ public class CutoutAnim : MonoBehaviour
 
     private void Awake()
     {
-        FadeOut();
+        FadeIn();
     }
 
     public void ResetMask()
@@ -37,15 +37,15 @@ public class CutoutAnim : MonoBehaviour
         mask.GetComponent<Mask>().enabled = true;
     }
 
-    [ContextMenu("FadeIn")]
-    public void FadeIn()
+    [ContextMenu("FadeOut")]
+    public void FadeOut()
     {
         ResetMask();
         mask.DOSizeDelta(minMaskSize, cutoutAnimDuration);
     }
 
-    [ContextMenu("FadeOut")]
-    public void FadeOut()
+    [ContextMenu("FadeIn")]
+    public void FadeIn()
     {
         ResetMask();
         mask.DOSizeDelta(maxMaskSize, cutoutAnimDuration);

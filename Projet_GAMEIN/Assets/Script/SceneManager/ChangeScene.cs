@@ -101,7 +101,7 @@ public class ChangeScene : MonoBehaviour
         //FadeImage.SetActive(true);
         //FadeImage.GetComponent<AnimationTransitionScene>().QuitScene();
         if (GameManager.Instance.gameCanvasManager.CutoutMask != null)
-            GameManager.Instance.gameCanvasManager.CutoutMask.FadeIn();
+            GameManager.Instance.gameCanvasManager.CutoutMask.FadeOut();
 
         yield return new WaitForSeconds(GameManager.Instance.gameCanvasManager.CutoutMask.CutoutAnimDuration);
         AudioController.Instance.StopAllAmbients();

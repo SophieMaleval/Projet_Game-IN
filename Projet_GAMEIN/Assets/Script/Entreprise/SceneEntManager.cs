@@ -93,7 +93,7 @@ public class SceneEntManager : MonoBehaviour
     {
         //if(FadeImage != null)    FadeImage.GetComponent<AnimationTransitionScene>().OpenningScene();
         if (GameManager.Instance.gameCanvasManager.CutoutMask != null)
-            GameManager.Instance.gameCanvasManager.CutoutMask.FadeOut();
+            GameManager.Instance.gameCanvasManager.CutoutMask.FadeIn();
 
         if (VolumeFirstCam != null) VolumeFirstCam.SetFirstCamera();
 

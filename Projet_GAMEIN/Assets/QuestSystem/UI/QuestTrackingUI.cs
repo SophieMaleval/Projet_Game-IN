@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using DG.Tweening;
 
 namespace AllosiusDev.QuestSystem
 {
@@ -18,6 +19,12 @@ namespace AllosiusDev.QuestSystem
         #endregion
 
         #region UnityInspector
+
+        [SerializeField] private CanvasGroup animTitle;
+        [SerializeField] private CanvasGroup animContent;
+        [SerializeField] private float transitionAnimDuration;
+
+        [Space]
 
         [SerializeField] private TextMeshProUGUI questTrackingTitleText;
 
@@ -41,9 +48,11 @@ namespace AllosiusDev.QuestSystem
         {
             Debug.Log("Set Quest Tracking State");
 
+            gameObject.SetActive(value);
+
             if (questStatus != null)
             {
-                SetQuestTrackingTitle(questStatus.GetQuest().name);
+                StartCoroutine(SetQuestTrackingTitle(questStatus.GetQuest().name));
 
                 List<QuestStepStatus> steps = new List<QuestStepStatus>();
                 foreach (QuestStepStatus step in questStatus.GetQuestStepStatuses())
@@ -53,22 +62,49 @@ namespace AllosiusDev.QuestSystem
                         steps.Add(step);
                     }
                 }
-                SetQuestTrackingDescription(steps[steps.Count - 1].GetQuestStep().description);
+                StartCoroutine(SetQuestTrackingDescription(steps[steps.Count - 1].GetQuestStep().description));
 
             }
 
             currentQuestStatusActive = questStatus;
-            gameObject.SetActive(value);
         }
 
-        public void SetQuestTrackingTitle(string text)
+        public IEnumerator SetQuestTrackingTitle(string text)
         {
+            if(questTrackingTitleText.text != text && currentQuestStatusActive != null)
+            {
+                FadeOutUI(animTitle);
+
+                yield return new WaitForSeconds(transitionAnimDuration);
+
+                FadeInUI(animTitle);
+            }
+
             questTrackingTitleText.text = text;
         }
 
-        public void SetQuestTrackingDescription(string text)
+        public IEnumerator SetQuestTrackingDescription(string text)
         {
+            if (questTrackingDescriptionText.text != text && currentQuestStatusActive != null)
+            {
+                FadeOutUI(animContent);
+
+                yield return new WaitForSeconds(transitionAnimDuration);
+
+                FadeInUI(animContent);
+            }
+
             questTrackingDescriptionText.text = text;
+        }
+
+        private void FadeOutUI(CanvasGroup canvasGroup)
+        {
+            canvasGroup.DOFade(0, transitionAnimDuration);
+        }
+
+        private void FadeInUI(CanvasGroup canvasGroup)
+        {
+            canvasGroup.DOFade(1, transitionAnimDuration);
         }
 
         #endregion

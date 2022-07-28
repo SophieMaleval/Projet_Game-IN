@@ -50,7 +50,7 @@ public class SceneManagerFeature : MonoBehaviour
     {
         //FadeImage.GetComponent<AnimationTransitionScene>().OpenningScene();
         if (GameManager.Instance.gameCanvasManager.CutoutMask != null)
-            GameManager.Instance.gameCanvasManager.CutoutMask.FadeOut();
+            GameManager.Instance.gameCanvasManager.CutoutMask.FadeIn();
     }
 
     IEnumerator WaitOppeningScene()
@@ -58,7 +58,7 @@ public class SceneManagerFeature : MonoBehaviour
         yield return new WaitForSeconds(0.05f);
         //FadeImage.GetComponent<AnimationTransitionScene>().OpenningScene();
         if (GameManager.Instance.gameCanvasManager.CutoutMask != null)
-            GameManager.Instance.gameCanvasManager.CutoutMask.FadeOut();
+            GameManager.Instance.gameCanvasManager.CutoutMask.FadeIn();
     }
 
     #endregion
