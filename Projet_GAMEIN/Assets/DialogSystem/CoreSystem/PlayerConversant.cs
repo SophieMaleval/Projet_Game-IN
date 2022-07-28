@@ -152,17 +152,17 @@ namespace AllosiusDev.DialogSystem
             if (currentNode == null)
             {
                 numPlayerResponses = currentDialog.GetPlayerChoisingChildren().Count();
-                //Debug.Log(numPlayerResponses);
+                Debug.Log(numPlayerResponses);
             }
             else
             {
                 numPlayerResponses = currentDialog.GetPlayerChoisingChildren(currentNode).Count();
-                //Debug.Log(numPlayerResponses);
+                Debug.Log(numPlayerResponses);
             }
 
             if (numPlayerResponses > 0)
             {
-                //Debug.Log("Player Choice");
+                Debug.Log("Player Choice");
                 isChoosing = true;
                 onConversationUpdated();
                 return;
@@ -172,19 +172,19 @@ namespace AllosiusDev.DialogSystem
 
             if (currentNode == null)
             {
-                //Debug.Log("Init Node");
+                Debug.Log("Init Node");
                 children = currentDialog.GetAiChildren().ToArray();
-                //Debug.Log(children[0].name);
+                Debug.Log(children[0].name);
             }
             else
             {
-                //Debug.Log("New Current Node");
+                Debug.Log("New Current Node");
                 children = currentDialog.GetAiChildren(currentNode).ToArray();
-                //Debug.Log(children[0].name);
+                Debug.Log(children[0].name);
             }
 
             int randomIndex = UnityEngine.Random.Range(0, children.Count());
-            //Debug.Log(randomIndex);
+            Debug.Log(randomIndex);
             currentNode = children[randomIndex];
             onConversationUpdated();
         }

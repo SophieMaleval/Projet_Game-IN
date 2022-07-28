@@ -75,7 +75,7 @@ public class ChangeScene : MonoBehaviour
             //if(SceneManager.GetActiveScene().name == "Game In") PM.GetComponent<PlayerScript>().MainSceneLoadPos = new Vector2(-3.75f, -1.25f);
             if(GameCore.Instance.CurrentScene == SessionController.Instance.Game.StartLevelScene)
             {
-                PM.GetComponent<PlayerScript>().MainSceneLoadPos = new Vector2(-3.75f, -1.25f);
+                PM.GetComponent<PlayerScript>().MainSceneLoadPos = GameManager.Instance.InitStartLevelPlayerSpawnPos;
             }
             //PM.GetComponent<PlayerScript>().PreviousSceneName = SceneManager.GetActiveScene().name;
             PM.GetComponent<PlayerScript>().PreviousSceneName = GameCore.Instance.CurrentScene;

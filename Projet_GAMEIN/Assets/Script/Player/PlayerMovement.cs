@@ -133,8 +133,6 @@ public class PlayerMovement : MonoBehaviour
             PlayerActionControllers.PlayerInLand.Disable();
             PlayerActionControllers.PlayerInScoot.Enable();
             switchScootState(true);
-            //ScooterStop.Play();
-            AudioController.Instance.PlayAudio(sfxScooterStop);
         }    
     }
     public void OnExitScoot (InputAction.CallbackContext ctx )
@@ -146,10 +144,6 @@ public class PlayerMovement : MonoBehaviour
                 PlayerActionControllers.PlayerInScoot.Disable() ;                
                 PlayerActionControllers.PlayerInLand.Enable() ;
                 switchScootState(false);  
-                //ScooterStop.Stop();
-                AudioController.Instance.StopAudio(sfxScooterStop);
-                //ScooterMoving.Stop();
-                AudioController.Instance.StopAudio(sfxScooterMoving);
             }
         }
     }
@@ -165,10 +159,13 @@ public class PlayerMovement : MonoBehaviour
             if(state == true)
             {
                 Animators[0].SetTrigger("InScoot");
+                AudioController.Instance.PlayAudio(sfxScooterStop);
             }
             else
             {
                 Animators[0].SetTrigger("OnWalk");
+                AudioController.Instance.StopAudio(sfxScooterStop);
+                AudioController.Instance.StopAudio(sfxScooterMoving);
             }
             
         }

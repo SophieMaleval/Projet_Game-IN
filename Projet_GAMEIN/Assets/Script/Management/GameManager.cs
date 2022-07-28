@@ -26,6 +26,8 @@ public class GameManager : Singleton<GameManager>
 
     public QuestList questManager { get; protected set; }
 
+    public Vector2 InitStartLevelPlayerSpawnPos => initStartLevelPlayerSpawnPos;
+
     #endregion
 
     #region UnityInspector
@@ -33,6 +35,11 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] private SamplableLibrary dialoguesLibrary;
 
     [SerializeField] private QuestList questManagerPrefab;
+
+    [Space]
+
+    [Tooltip("Position where the player will appear when leaving the Game In building for the first time to arrive on the outdoor map")]
+    [SerializeField] private Vector2 initStartLevelPlayerSpawnPos;
 
     [Space]
 
