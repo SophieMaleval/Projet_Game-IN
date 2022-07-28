@@ -50,9 +50,14 @@ public class ChangeScene : MonoBehaviour
     {
         PlayerScript player = other.GetComponent<PlayerScript>();
 
-        if(player != null && !PM.OnScooter)
+        if(player != null)
         {
             Debug.Log("Player Change Scene");
+
+            if(PM.OnScooter)
+            {
+                PM.switchScootState(false);
+            }
 
             PM.StartActivity();
             PM.PlayerChangeScene = true ;

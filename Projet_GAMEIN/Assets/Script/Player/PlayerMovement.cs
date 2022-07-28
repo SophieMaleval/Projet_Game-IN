@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Inputs")]
     private PlayerActionControls PlayerActionControllers;
+    private bool canMove;
 
     private float InitialMoveSpeed;
 
@@ -19,12 +20,16 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 LastMoveDirection;
     private Vector2 MoveDirection;
 
-    private float AmplitudeToSwitchScoot = 0.125f;
     bool OnSlope = false;
     float ValueSlopeAdd;
 
     bool SlopeStartLeft;
     int ElevationValue;
+
+    #endregion
+
+    #region Properties
+
 
     #endregion
 
@@ -36,6 +41,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float MoveSpeed ;
         
         [SerializeField] private float ScooterSpeed ;
+    //[SerializeField] private float AmplitudeToSwitchScoot = 0.125f;
 
         //public AudioSource ScooterStop;
         //public AudioSource ScooterMoving;
@@ -84,8 +90,16 @@ public class PlayerMovement : MonoBehaviour
     private void OnEnable() {   PlayerActionControllers.Enable(); }
     private void OnDisable() {   PlayerActionControllers.Disable();   }
 
-    public void StartActivity() {   PlayerActionControllers.Disable();   }
-    public void EndActivity() {   PlayerActionControllers.Enable(); }
+    public void StartActivity() 
+    {   
+        PlayerActionControllers.Disable();
+        canMove = false;
+    }
+    public void EndActivity() 
+    {   
+        PlayerActionControllers.Enable();
+        canMove = true;
+    }
 
     private void Awake() 
     {  
@@ -94,6 +108,8 @@ public class PlayerMovement : MonoBehaviour
         PlayerActionControllers.PlayerInScoot.ExitScoot.performed += OnExitScoot;
 
         InitialMoveSpeed = MoveSpeed ;
+
+        canMove = true;
     }
 
     private void Start() 
@@ -112,7 +128,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnEnterScoot (InputAction.CallbackContext ctx )
     {      
-        if(ctx.performed && (MoveDirection.magnitude >= -AmplitudeToSwitchScoot) && (MoveDirection.magnitude <= AmplitudeToSwitchScoot) && InExterior)
+        if(ctx.performed && /*(MoveDirection.magnitude >= -AmplitudeToSwitchScoot) && (MoveDirection.magnitude <= AmplitudeToSwitchScoot) &&*/ InExterior)
         {
             PlayerActionControllers.PlayerInLand.Disable();
             PlayerActionControllers.PlayerInScoot.Enable();
@@ -123,7 +139,7 @@ public class PlayerMovement : MonoBehaviour
     }
     public void OnExitScoot (InputAction.CallbackContext ctx )
     {
-        if(ctx.performed && (MoveDirection.magnitude >= -AmplitudeToSwitchScoot) && (MoveDirection.magnitude <= AmplitudeToSwitchScoot) && InExterior)
+        if(ctx.performed && /*(MoveDirection.magnitude >= -AmplitudeToSwitchScoot) && (MoveDirection.magnitude <= AmplitudeToSwitchScoot) &&*/ InExterior)
         {        
             if(OnScooter)
             {
@@ -141,9 +157,21 @@ public class PlayerMovement : MonoBehaviour
 
     public void switchScootState(bool state)
     {
-        OnScooter = state;    
-        if(Animators[0].runtimeAnimatorController != null)
-            Animators[0].SetBool("InScoot", state); 
+        Debug.Log("Switch Scoot State");
+
+        OnScooter = state;
+        if (Animators[0].runtimeAnimatorController != null)
+        {
+            if(state == true)
+            {
+                Animators[0].SetTrigger("InScoot");
+            }
+            else
+            {
+                Animators[0].SetTrigger("OnWalk");
+            }
+            
+        }
 
         if(!OnScooter) Animators[0].GetComponent<SpriteRenderer>().color = ColorsDisplay[0];
         else Animators[0].GetComponent<SpriteRenderer>().color = Color.white;
@@ -196,16 +224,33 @@ public class PlayerMovement : MonoBehaviour
 
     void ProcessInputs()
     {
-        Vector2 Move = Vector2.zero ;
+        Vector2 Move = Vector2.zero;
 
-        if(!PlayerChangeScene)
+        //Vector2 moveLand = PlayerActionControllers.PlayerInLand.Move.ReadValue<Vector2>();
+
+        //Vector2 moveScoot = PlayerActionControllers.PlayerInScoot.MoveScoot.ReadValue<Vector2>();
+
+        //Vector2 moveOldSyst = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+
+        //Debug.Log(moveLand + " " + moveScoot + " " + moveOldSyst);
+
+        if (!PlayerChangeScene && canMove)
         {
-            if(!OnScooter)
+            Move = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+
+            /*if (!OnScooter)
+            {
                 Move = PlayerActionControllers.PlayerInLand.Move.ReadValue<Vector2>();
+
+            }
             else
-                Move = PlayerActionControllers.PlayerInScoot.MoveScoot.ReadValue<Vector2>();            
+            {
+                Move = PlayerActionControllers.PlayerInScoot.MoveScoot.ReadValue<Vector2>();
+
+            }*/
         }/* else {*/
-            if(MakePlayerInGoodSens) 
+        //Debug.Log(Move);    
+        if(MakePlayerInGoodSens) 
             {
 
 
