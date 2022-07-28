@@ -10,7 +10,7 @@ public class SceneManagerFeature : MonoBehaviour
     #region Fields
 
     private PlayerMovement PM;
-    private GameObject FadeImage ;
+    //private GameObject FadeImage ;
 
     #endregion
 
@@ -29,7 +29,7 @@ public class SceneManagerFeature : MonoBehaviour
             PM =  GameManager.Instance.player.GetComponent<PlayerMovement>();
             CMVirtualCam.Follow = PM.transform ;
             SetPositionOnLoad();
-            FadeImage = GameManager.Instance.gameCanvasManager.Fade ;
+            //FadeImage = GameManager.Instance.gameCanvasManager.Fade ;
             PM.GetComponent<PlayerScript>().CanvasIndestrucitble.GetComponent<Canvas>().worldCamera = Camera.main;
         
      
@@ -48,13 +48,17 @@ public class SceneManagerFeature : MonoBehaviour
 
     private void Start() 
     {
-        FadeImage.GetComponent<AnimationTransitionScene>().OpenningScene();
+        //FadeImage.GetComponent<AnimationTransitionScene>().OpenningScene();
+        if (GameManager.Instance.gameCanvasManager.CutoutMask != null)
+            GameManager.Instance.gameCanvasManager.CutoutMask.FadeOut();
     }
 
     IEnumerator WaitOppeningScene()
     {
         yield return new WaitForSeconds(0.05f);
-        FadeImage.GetComponent<AnimationTransitionScene>().OpenningScene();
+        //FadeImage.GetComponent<AnimationTransitionScene>().OpenningScene();
+        if (GameManager.Instance.gameCanvasManager.CutoutMask != null)
+            GameManager.Instance.gameCanvasManager.CutoutMask.FadeOut();
     }
 
     #endregion

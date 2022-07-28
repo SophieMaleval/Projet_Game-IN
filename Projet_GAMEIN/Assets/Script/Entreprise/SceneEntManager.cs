@@ -15,7 +15,7 @@ public class SceneEntManager : MonoBehaviour
     private NpcConversant[] npcs;
 
     private PlayerMovement PM;
-    private GameObject FadeImage ;
+    //private GameObject FadeImage ;
 
     //private GameObject GlobalLightPlayer ;
 
@@ -53,7 +53,7 @@ public class SceneEntManager : MonoBehaviour
 
 
             SetPositionOnLoad();
-            FadeImage = GameManager.Instance.gameCanvasManager.Fade;
+            //FadeImage = GameManager.Instance.gameCanvasManager.Fade;
             GameManager.Instance.gameCanvasManager.GetComponent<Canvas>().worldCamera = Camera.main;
         
             PM.enabled = true ;
@@ -91,9 +91,11 @@ public class SceneEntManager : MonoBehaviour
 
     private void Start() 
     {
-        if(FadeImage != null)    FadeImage.GetComponent<AnimationTransitionScene>().OpenningScene();
+        //if(FadeImage != null)    FadeImage.GetComponent<AnimationTransitionScene>().OpenningScene();
+        if (GameManager.Instance.gameCanvasManager.CutoutMask != null)
+            GameManager.Instance.gameCanvasManager.CutoutMask.FadeOut();
 
-        if(VolumeFirstCam != null) VolumeFirstCam.SetFirstCamera();
+        if (VolumeFirstCam != null) VolumeFirstCam.SetFirstCamera();
 
         //GlobalLightPlayer = GameManager.Instance.player.globalLightPlayer;
         //if(LightAutoGenerateInThisScene) GlobalLightPlayer.SetActive(false);

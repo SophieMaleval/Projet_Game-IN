@@ -41,6 +41,8 @@ public class GameCore : Singleton<GameCore>
         {
             GameManager.Instance.player.PreviousSceneName = SessionController.Instance.Game.CharacterCustomerScene;
         }
+
+        //GameManager.Instance.gameCanvasManager.CutoutMask.ResetMask();
     }
 
     // Start is called before the first frame update

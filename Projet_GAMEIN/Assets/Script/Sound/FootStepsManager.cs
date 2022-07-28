@@ -43,8 +43,11 @@ public class FootStepsManager : MonoBehaviour
         /*AudioClip clip = GetRandomClip();
         audioSource.PlayOneShot(clip);*/
 
-        AudioData[] datas = GetRandomClip();
-        AudioController.Instance.PlayRandomOneShotAudio(datas);
+        if (GameCore.Instance != null)
+        {
+            AudioData[] datas = GetRandomClip();
+            AudioController.Instance.PlayRandomOneShotAudio(datas);
+        }
     }
 
     AudioData[] GetRandomClip ()

@@ -10,7 +10,7 @@ public class ChangeScene : MonoBehaviour
     #region Fields
 
     private PlayerMovement PM;
-    private GameObject FadeImage ;
+    //private GameObject FadeImage ;
 
     #endregion
 
@@ -32,7 +32,7 @@ public class ChangeScene : MonoBehaviour
         if(GameManager.Instance.player != null)
         {
             PM = GameManager.Instance.player.GetComponent<PlayerMovement>();
-            FadeImage = GameManager.Instance.player.CanvasIndestrucitble.GetComponent<GameCanvasManager>().Fade;
+            //FadeImage = GameManager.Instance.player.CanvasIndestrucitble.GetComponent<GameCanvasManager>().Fade;
         }
         else
         {
@@ -98,13 +98,16 @@ public class ChangeScene : MonoBehaviour
 
     IEnumerator WaitBeforeChangeScene()
     {
-        FadeImage.SetActive(true);
-        FadeImage.GetComponent<AnimationTransitionScene>().QuitScene();
-        yield return new WaitForSeconds(1f);
+        //FadeImage.SetActive(true);
+        //FadeImage.GetComponent<AnimationTransitionScene>().QuitScene();
+        if (GameManager.Instance.gameCanvasManager.CutoutMask != null)
+            GameManager.Instance.gameCanvasManager.CutoutMask.FadeIn();
+
+        yield return new WaitForSeconds(GameManager.Instance.gameCanvasManager.CutoutMask.CutoutAnimDuration);
         AudioController.Instance.StopAllAmbients();
         AudioController.Instance.StopAllMusics();
         PlayerChangeScene = true ;
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.2f);
         //SceneManager.LoadScene(NameScene);
         SceneLoader.Instance.ChangeScene(sceneDataToLoad);
 

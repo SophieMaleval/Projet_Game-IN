@@ -15,7 +15,8 @@ public class GameCanvasManager : MonoBehaviour
 
     #region Properties
 
-    public GameObject Fade => fade;
+    //public GameObject Fade => fade;
+    public CutoutAnim CutoutMask => cutoutMask;
 
     public InventoryScript inventory { get; set; }
     public QuestSys questManager { get; set; }
@@ -31,7 +32,8 @@ public class GameCanvasManager : MonoBehaviour
 
     #region UnityInspector
 
-    [SerializeField] private GameObject fade;
+    //[SerializeField] private GameObject fade;
+    [SerializeField] private CutoutAnim cutoutMask;
 
     #endregion
 
