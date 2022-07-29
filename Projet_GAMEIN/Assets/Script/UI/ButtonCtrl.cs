@@ -27,24 +27,24 @@ public class ButtonCtrl : MonoBehaviour, IPointerEnterHandler, IPointerDownHandl
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        Debug.Log("Mouse enter");
+        //Debug.Log("Mouse enter");
         AudioController.Instance.PlayAudio(sfxButtonHighlightedObject);
     }
 
     public virtual void OnPointerDown(PointerEventData eventData)
     {
-        Debug.Log("Mouse Down");
+        //Debug.Log("Mouse Down");
         AudioController.Instance.PlayAudio(sfxButtonClickedObject);
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        Debug.Log("Mouse Up");
+        //Debug.Log("Mouse Up");
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        Debug.Log("Mouse exit");
+        //Debug.Log("Mouse exit");
     }
 
     private void Awake()

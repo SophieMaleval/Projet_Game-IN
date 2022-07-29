@@ -42,10 +42,10 @@ GameObject:
   - component: {fileID: 7454713249344840312}
   - component: {fileID: 7454713249344840313}
   - component: {fileID: 7454713249344840314}
-  - component: {fileID: 7454713249344840311}
   - component: {fileID: 7454713249344840310}
   - component: {fileID: 8897650619861234399}
   - component: {fileID: 678770738770454203}
+  - component: {fileID: 920594393833598399}
   m_Layer: 0
   m_Name: Chantier en Construction
   m_TagString: Untagged
@@ -139,41 +139,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &7454713249344840311
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7454713249344840315}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2fe6f3ea6c3125d459b5ede804695985, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Entrerpise: Construction
-  NamePNJ: Info
-  NamePNJDisplay: 
-  PNJInENT: 0
-  TextDialogue: {fileID: 0}
-  DialogueCanvasBox: {fileID: 0}
-  OldLastMovePlayer: {x: 0, y: 0}
-  ThisQuestionLunchReflexion: 0
-  EnigmeQCM: 0
-  PlayerAskQuestQuestion: 0
-  DialogueWithFadeAnimation: 0
-  QuestionAndDialogueLunchFade: {x: 0, y: 0}
-  DialogueLunchPrez: 0
-  PrezInfoLunch: {x: 0, y: 0}
-  MiniGame: {fileID: 0}
-  MiniGameLunchInfo: []
-  NewPosPNJAndPlayer: {x: 0, y: 0, z: 0, w: 0}
-  InformationQuestEtapeQuestion: []
-  HideQuestionBeforeMomentX: []
-  DiscussionWithQuestion: 0
-  Answer:
-  - AnswerForQuestion: 
-  - AnswerForQuestion: 00000000
 --- !u!61 &7454713249344840310
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -244,6 +209,21 @@ MonoBehaviour:
   NormalSprite: {fileID: 3290927816896653337, guid: c2563d335a4c52f4199eb173b65b092a,
     type: 3}
   HighlightSprite: {fileID: 21300000, guid: c2e1ce462c30c5646838cba01d731388, type: 3}
+--- !u!114 &920594393833598399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7454713249344840315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c567f88034144741bee14cea5ba9849, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  namePNJ: Info
+  pnjInENT: 0
+  npcDialogue: {fileID: 11400000, guid: f6bfb8a34f84ba04886898b4d20c8708, type: 2}
 --- !u!1 &8215071331028764595
 GameObject:
   m_ObjectHideFlags: 0

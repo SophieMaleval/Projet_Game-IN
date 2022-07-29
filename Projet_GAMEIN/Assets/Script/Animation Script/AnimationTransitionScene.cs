@@ -21,20 +21,20 @@ public class AnimationTransitionScene : MonoBehaviour
     void Awake()
     {
         ImageAnimate.material.SetFloat("_FloatResize", 0) ;
-        Debug.LogWarning(ImageAnimate.material.name);
+        //Debug.LogWarning(ImageAnimate.material.name);
     //    ShouldReveal =  true;
     }
 
     void Update()
     {
-        Debug.Log(ImageAnimate.material.shader.GetPropertyCount());
+        //Debug.Log(ImageAnimate.material.shader.GetPropertyCount());
 
         if (ShouldReveal)
         {
-            Debug.LogWarning("Should Reveal");
+            //Debug.LogWarning("Should Reveal");
             ImageAnimate.material.SetFloat("_FloatResize" , Mathf.MoveTowards(ImageAnimate.material.GetFloat("_FloatResize"), CircleSize, TransitionSpeed * Time.deltaTime));
         } else {
-            Debug.LogWarning("Not Should Reveal");
+            //Debug.LogWarning("Not Should Reveal");
             ImageAnimate.material.SetFloat("_FloatResize" , Mathf.MoveTowards(ImageAnimate.material.GetFloat("_FloatResize"), 0, TransitionSpeed * Time.deltaTime));  
         }
     }
@@ -42,7 +42,7 @@ public class AnimationTransitionScene : MonoBehaviour
     public void OpenningScene()
     {
         ImageAnimate.material.SetFloat("_FloatResize", 0) ;
-        Debug.LogWarning(ImageAnimate.material.name);
+        //Debug.LogWarning(ImageAnimate.material.name);
         /*StartCoroutine(AnimOpeningScene()) ;*/
 
         ShouldReveal = true;

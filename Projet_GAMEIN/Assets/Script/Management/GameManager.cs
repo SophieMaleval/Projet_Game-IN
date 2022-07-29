@@ -242,12 +242,12 @@ public class GameManager : Singleton<GameManager>
 
             DontDestroyOnLoad(PlayerApparance.gameObject);
             DontDestroyOnLoad(CanvasInstatiate.gameObject);
-            DontDestroyOnLoad(DialogueUIInstatiate.gameObject);
-            DontDestroyOnLoad(NewDialogueUIInstantiate.gameObject);
-            DontDestroyOnLoad(InventoryUIInstatiate.gameObject);
-            DontDestroyOnLoad(PannelENTUIInstatiate.gameObject);
-            DontDestroyOnLoad(PannelAnnonceUIInstatiate.gameObject);
-            DontDestroyOnLoad(QCMPanelInstantiate.gameObject);
+            //DontDestroyOnLoad(DialogueUIInstatiate.gameObject);
+            //DontDestroyOnLoad(NewDialogueUIInstantiate.gameObject);
+            //DontDestroyOnLoad(InventoryUIInstatiate.gameObject);
+            //DontDestroyOnLoad(PannelENTUIInstatiate.gameObject);
+            //DontDestroyOnLoad(PannelAnnonceUIInstatiate.gameObject);
+            //DontDestroyOnLoad(QCMPanelInstantiate.gameObject);
             DontDestroyOnLoad(EventSystemInstantiate);
 
             player.CanvasIndestrucitble = CanvasInstatiate;
