@@ -41,7 +41,7 @@ public class InventoryScript : MonoBehaviour
     public GameObject ButtonPreviousSlot ;
     public GameObject ButtonNextSlot ;
 
-    [SerializeField] private TextMeshProUGUI QuestTitle ;
+    //[SerializeField] private TextMeshProUGUI QuestTitle ;
     [SerializeField] private TextMeshProUGUI InventoryTitle ;
     [SerializeField] private TextMeshProUGUI MapTitle ;
     //public List<Image> InventoryDisplayer ;
@@ -78,8 +78,8 @@ public class InventoryScript : MonoBehaviour
 
     void Update()
     {
-        if (PlayerPrefs.GetInt("Langue") == 0 && QuestTitle.text != TextUILocation.UIText.PauseFR[0]) SetUIText();
-        if (PlayerPrefs.GetInt("Langue") == 1 && QuestTitle.text != TextUILocation.UIText.PauseEN[0]) SetUIText();
+        if (PlayerPrefs.GetInt("Langue") == 0 && InventoryTitle.text != TextUILocation.UIText.PauseFR[1]) SetUIText();
+        if (PlayerPrefs.GetInt("Langue") == 1 && InventoryTitle.text != TextUILocation.UIText.PauseEN[1]) SetUIText();
     }
 
     public void SwitchToggleInventoryDisplay()
@@ -175,14 +175,14 @@ public class InventoryScript : MonoBehaviour
     {
         if (PlayerPrefs.GetInt("Langue") == 0)
         {
-            QuestTitle.text = TextUILocation.UIText.PauseFR[0];
+            //QuestTitle.text = TextUILocation.UIText.PauseFR[0];
             InventoryTitle.text = TextUILocation.UIText.PauseFR[1];
             TextInventoryEmpty.text = TextUILocation.UIText.PauseFR[2];
             MapTitle.text = TextUILocation.UIText.PauseFR[3];
         }
         if (PlayerPrefs.GetInt("Langue") == 1)
         {
-            QuestTitle.text = TextUILocation.UIText.PauseEN[0];
+            //QuestTitle.text = TextUILocation.UIText.PauseEN[0];
             InventoryTitle.text = TextUILocation.UIText.PauseEN[1];
             TextInventoryEmpty.text = TextUILocation.UIText.PauseEN[2];
             MapTitle.text = TextUILocation.UIText.PauseEN[3];
