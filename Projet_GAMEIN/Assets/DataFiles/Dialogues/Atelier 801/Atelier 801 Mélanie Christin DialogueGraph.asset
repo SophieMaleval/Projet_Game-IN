@@ -10,9 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
-  m_Name: Jean-Baptiste Le marchand, le co-fondateur
+  m_Name: "Je suis M\xE9lanie Christin, co-fondatrice d'Atelier 801."
   m_EditorClassIdentifier: 
-  showGeneralProperties: 1
   graph: {fileID: 11400000}
   position: {x: 1848, y: -344}
   ports:
@@ -22,8 +21,8 @@ MonoBehaviour:
     values:
     - _fieldName: previousNode
       _node: {fileID: -6731811032246089162}
-      _typeQualifiedName: DialogueTextNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueTextNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: nextNodes
         node: {fileID: 165797156017079086}
@@ -34,8 +33,8 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: nextNodes
       _node: {fileID: -6731811032246089162}
-      _typeQualifiedName: DialogueBaseNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueBaseNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections: []
       _direction: 1
       _connectionType: 0
@@ -44,7 +43,8 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 0
-  message: "Je suis M\xE9lanie Christin, co-fondatrice d'Atelier 801."
+  keyText: Dialogue_Melanie_Christin_JeSuisMelanieChristin
+  messagePreview: "Je suis M\xE9lanie Christin, co-fondatrice d'Atelier 801."
   singleRead: 0
   hasGameActions: 1
   showGameActions: 1
@@ -59,6 +59,8 @@ MonoBehaviour:
       ScooterPopUpImg: {fileID: 0}
       itemToAdd: {fileID: 0}
       itemToRemove: {fileID: 0}
+      fadeDuration: 0.5
+      fadeOutSwitchDuration: 1
   hasRequirements: 0
   showGameRequirements: 0
   gameRequirements:
@@ -73,9 +75,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
-  m_Name: "Oui ! Ces souris repr\xE9sentent notre magnifique"
+  m_Name: "Nous sommes le studio ind\xE9pendant auteur du jeu Transformice."
   m_EditorClassIdentifier: 
-  showGeneralProperties: 1
   graph: {fileID: 11400000}
   position: {x: 1848, y: 24}
   ports:
@@ -85,8 +86,8 @@ MonoBehaviour:
     values:
     - _fieldName: previousNode
       _node: {fileID: -4872764007403684664}
-      _typeQualifiedName: DialogueTextNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueTextNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: nextNodes
         node: {fileID: 5226430775150328271}
@@ -97,8 +98,8 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: nextNodes
       _node: {fileID: -4872764007403684664}
-      _typeQualifiedName: DialogueBaseNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueBaseNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: previousNode
         node: {fileID: 4536461042055506157}
@@ -110,7 +111,8 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 0
-  message: "Nous sommes le studio ind\xE9pendant auteur du jeu Transformice."
+  keyText: Dialogue_Melanie_Christin_NousSommesLeStudioIndependant
+  messagePreview: "Nous sommes le studio ind\xE9pendant auteur du jeu Transformice."
   singleRead: 0
   hasGameActions: 0
   showGameActions: 0
@@ -157,7 +159,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
   m_Name: "Qui \xEAtes-vous ?"
   m_EditorClassIdentifier: 
-  showGeneralProperties: 1
   graph: {fileID: 11400000}
   position: {x: 1016, y: -376}
   ports:
@@ -167,8 +168,8 @@ MonoBehaviour:
     values:
     - _fieldName: previousNode
       _node: {fileID: 165797156017079086}
-      _typeQualifiedName: DialogueTextNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueTextNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: nextNodes
         node: {fileID: 6220339796244599264}
@@ -179,8 +180,8 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: nextNodes
       _node: {fileID: 165797156017079086}
-      _typeQualifiedName: DialogueBaseNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueBaseNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: previousNode
         node: {fileID: -6731811032246089162}
@@ -192,7 +193,8 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 1
-  message: "Qui \xEAtes-vous ?"
+  keyText: Dialogue_Melanie_Christin_QuiEtesVous
+  messagePreview: "Qui \xEAtes-vous ?"
   singleRead: 1
   hasGameActions: 0
   showGameActions: 0
@@ -214,7 +216,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
   m_Name: Je dois y aller.
   m_EditorClassIdentifier: 
-  showGeneralProperties: 1
   graph: {fileID: 11400000}
   position: {x: 1000, y: 376}
   ports:
@@ -224,8 +225,8 @@ MonoBehaviour:
     values:
     - _fieldName: previousNode
       _node: {fileID: 479751073814225032}
-      _typeQualifiedName: DialogueTextNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueTextNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: nextNodes
         node: {fileID: 6220339796244599264}
@@ -236,8 +237,8 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: nextNodes
       _node: {fileID: 479751073814225032}
-      _typeQualifiedName: DialogueBaseNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueBaseNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: previousNode
         node: {fileID: 2696005444896043477}
@@ -249,7 +250,8 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 1
-  message: Je dois y aller.
+  keyText: Dialogue_Melanie_Christin_JeDoisYAller
+  messagePreview: Je dois y aller.
   singleRead: 1
   hasGameActions: 0
   showGameActions: 0
@@ -269,9 +271,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
-  m_Name: "Ne fais pas cette t\xEAte enfin "
+  m_Name: Celle-ci a d'ailleurs grandement
   m_EditorClassIdentifier: 
-  showGeneralProperties: 1
   graph: {fileID: 11400000}
   position: {x: 3512, y: 24}
   ports:
@@ -281,8 +282,8 @@ MonoBehaviour:
     values:
     - _fieldName: previousNode
       _node: {fileID: 2144413468821161205}
-      _typeQualifiedName: DialogueTextNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueTextNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: nextNodes
         node: {fileID: 4536461042055506157}
@@ -293,8 +294,8 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: nextNodes
       _node: {fileID: 2144413468821161205}
-      _typeQualifiedName: DialogueBaseNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueBaseNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections: []
       _direction: 1
       _connectionType: 0
@@ -303,8 +304,9 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 0
-  message: "Celle-ci a d'ailleurs grandement contribu\xE9e au succ\xE8s et \xE0 la
-    long\xE9vit\xE9 de notre studio."
+  keyText: Dialogue_Melanie_Christin_CelleCiADAilleurs
+  messagePreview: "Celle-ci a d'ailleurs grandement contribu\xE9e au succ\xE8s et
+    \xE0 la long\xE9vit\xE9 de notre studio."
   singleRead: 0
   hasGameActions: 1
   showGameActions: 1
@@ -319,6 +321,8 @@ MonoBehaviour:
       ScooterPopUpImg: {fileID: 0}
       itemToAdd: {fileID: 0}
       itemToRemove: {fileID: 0}
+      fadeDuration: 0.5
+      fadeOutSwitchDuration: 1
   hasRequirements: 0
   showGameRequirements: 0
   gameRequirements:
@@ -335,7 +339,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
   m_Name: Fais comme chez toi !
   m_EditorClassIdentifier: 
-  showGeneralProperties: 1
   graph: {fileID: 11400000}
   position: {x: 1848, y: 392}
   ports:
@@ -345,8 +348,8 @@ MonoBehaviour:
     values:
     - _fieldName: previousNode
       _node: {fileID: 2696005444896043477}
-      _typeQualifiedName: DialogueTextNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueTextNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: nextNodes
         node: {fileID: 479751073814225032}
@@ -357,8 +360,8 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: nextNodes
       _node: {fileID: 2696005444896043477}
-      _typeQualifiedName: DialogueBaseNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueBaseNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections: []
       _direction: 1
       _connectionType: 0
@@ -367,7 +370,8 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 0
-  message: Fais comme chez toi !
+  keyText: Dialogue_Melanie_Christin_FaisCommeChezToi
+  messagePreview: Fais comme chez toi !
   singleRead: 0
   hasGameActions: 0
   showGameActions: 0
@@ -387,9 +391,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
-  m_Name: "On y tient \xE9norm\xE9ment"
+  m_Name: "Gr\xE2ce \xE0 ce titre, nous avons pu nous forger"
   m_EditorClassIdentifier: 
-  showGeneralProperties: 1
   graph: {fileID: 11400000}
   position: {x: 2680, y: 24}
   ports:
@@ -399,8 +402,8 @@ MonoBehaviour:
     values:
     - _fieldName: previousNode
       _node: {fileID: 4536461042055506157}
-      _typeQualifiedName: DialogueTextNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueTextNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: nextNodes
         node: {fileID: -4872764007403684664}
@@ -411,8 +414,8 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: nextNodes
       _node: {fileID: 4536461042055506157}
-      _typeQualifiedName: DialogueBaseNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueBaseNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: previousNode
         node: {fileID: 2144413468821161205}
@@ -424,8 +427,9 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 0
-  message: "Gr\xE2ce \xE0 ce titre, nous avons pu nous forger une communaut\xE9 tr\xE8s
-    d\xE9vou\xE9e \xE0 travers le monde."
+  keyText: Dialogue_Melanie_Christin_GraceACeTitre
+  messagePreview: "Gr\xE2ce \xE0 ce titre, nous avons pu nous forger une communaut\xE9
+    tr\xE8s d\xE9vou\xE9e \xE0 travers le monde."
   singleRead: 0
   hasGameActions: 0
   showGameActions: 0
@@ -445,9 +449,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
-  m_Name: 'C''est normal qu''il y ait des souris sur vos bureaux ? '
+  m_Name: Qu'est ce qu'Atelier 801 ?
   m_EditorClassIdentifier: 
-  showGeneralProperties: 1
   graph: {fileID: 11400000}
   position: {x: 1016, y: 8}
   ports:
@@ -457,8 +460,8 @@ MonoBehaviour:
     values:
     - _fieldName: previousNode
       _node: {fileID: 5226430775150328271}
-      _typeQualifiedName: DialogueTextNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueTextNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: nextNodes
         node: {fileID: 6220339796244599264}
@@ -469,8 +472,8 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: nextNodes
       _node: {fileID: 5226430775150328271}
-      _typeQualifiedName: DialogueBaseNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueBaseNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: previousNode
         node: {fileID: -4872764007403684664}
@@ -482,7 +485,8 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 1
-  message: 'Qu''est ce qu''Atelier 801 ? '
+  keyText: Dialogue_Melanie_Christin_QuEstCeQuAtelier801
+  messagePreview: Qu'est ce qu'Atelier 801 ?
   singleRead: 1
   hasGameActions: 0
   showGameActions: 0
@@ -504,7 +508,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
   m_Name: "Bienvenue dans la sourissi\xE8re Atelier 801 !"
   m_EditorClassIdentifier: 
-  showGeneralProperties: 1
   graph: {fileID: 11400000}
   position: {x: 0, y: 0}
   ports:
@@ -514,8 +517,8 @@ MonoBehaviour:
     values:
     - _fieldName: previousNode
       _node: {fileID: 6220339796244599264}
-      _typeQualifiedName: DialogueTextNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueTextNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections: []
       _direction: 0
       _connectionType: 0
@@ -523,8 +526,8 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: nextNodes
       _node: {fileID: 6220339796244599264}
-      _typeQualifiedName: DialogueBaseNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueBaseNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: previousNode
         node: {fileID: 165797156017079086}
@@ -542,7 +545,8 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 0
-  message: "Bienvenue dans la sourissi\xE8re Atelier 801 !"
+  keyText: Dialogue_Melanie_Christin_BienvenueDansLaSourissiere
+  messagePreview: "Bienvenue dans la sourissi\xE8re Atelier 801 !"
   singleRead: 0
   hasGameActions: 0
   showGameActions: 0

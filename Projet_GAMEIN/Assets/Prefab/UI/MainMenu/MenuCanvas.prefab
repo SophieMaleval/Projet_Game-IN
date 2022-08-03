@@ -1748,14 +1748,14 @@ MonoBehaviour:
   MyAudioMixer: {fileID: 24100000, guid: accc17b3909243240a4eae0c39ab4d78, type: 2}
   "ToggleFran\xE7ais": {fileID: 3577859110034479424}
   ToggleAnglais: {fileID: 3577859109469707884}
-  SettingTitle: {fileID: 3577859109282487425}
-  SoundCatTitle: {fileID: 3577859108466900967}
-  VolumeGlobalTitle: {fileID: 3577859108395015306}
-  VolumeMusicTitle: {fileID: 3577859108202125026}
-  VolumeSFxTitle: {fileID: 3577859109210209612}
-  LanguageCatTitle: {fileID: 3577859109091733269}
-  FrenchTitle: {fileID: 3577859109545438857}
-  EnglishTitle: {fileID: 3577859109400256291}
+  settings: {fileID: 0}
+  soundCat: {fileID: 0}
+  volumeGlobal: {fileID: 0}
+  volumeMusic: {fileID: 0}
+  volumeSFx: {fileID: 0}
+  languageCat: {fileID: 0}
+  french: {fileID: 0}
+  english: {fileID: 0}
   volumeGlobalSlider: {fileID: 3577859108784328459}
   volumeMusicSlider: {fileID: 3577859108783390616}
   volumeSfxSlider: {fileID: 3577859109891183492}
@@ -1799,7 +1799,6 @@ MonoBehaviour:
     QCMPresEN1: []
     QCMEnigmeFR2: []
     QCMEnigmeEN2: []
-  QuestManager: {fileID: 0}
   TextUIPanneauxENT: []
 --- !u!1 &3577859108783390621
 GameObject:
@@ -4580,6 +4579,7 @@ GameObject:
   - component: {fileID: 3577859109840864116}
   - component: {fileID: 3577859109840864122}
   - component: {fileID: 3577859109840864117}
+  - component: {fileID: 8237100079119716657}
   m_Layer: 5
   m_Name: Continue Message
   m_TagString: Untagged
@@ -4735,6 +4735,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &8237100079119716657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3577859109840864120}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2915671b7480c64f9f3d3f8561d39d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textToTranslate: {fileID: 3577859109840864122}
+  translationKey: continue_message
 --- !u!1 &3577859109891183496
 GameObject:
   m_ObjectHideFlags: 0

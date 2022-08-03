@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
   m_Name: "Qui \xEAtes-vous ?"
   m_EditorClassIdentifier: 
-  showGeneralProperties: 1
   graph: {fileID: 11400000}
   position: {x: 920, y: -120}
   ports:
@@ -22,8 +21,8 @@ MonoBehaviour:
     values:
     - _fieldName: previousNode
       _node: {fileID: -8301186320615673822}
-      _typeQualifiedName: DialogueTextNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueTextNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: nextNodes
         node: {fileID: -1219618056866951188}
@@ -34,8 +33,8 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: nextNodes
       _node: {fileID: -8301186320615673822}
-      _typeQualifiedName: DialogueBaseNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueBaseNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: previousNode
         node: {fileID: 7890605716931660442}
@@ -47,7 +46,8 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 1
-  message: "Qui \xEAtes-vous ?\n"
+  keyText: Dialogue_Manon_Lesire_QuiEtesVous
+  messagePreview: "Qui \xEAtes-vous ?"
   singleRead: 1
   hasGameActions: 0
   showGameActions: 0
@@ -69,7 +69,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
   m_Name: Je dois y aller.
   m_EditorClassIdentifier: 
-  showGeneralProperties: 1
   graph: {fileID: 11400000}
   position: {x: 920, y: 248}
   ports:
@@ -79,8 +78,8 @@ MonoBehaviour:
     values:
     - _fieldName: previousNode
       _node: {fileID: -6093208089526505406}
-      _typeQualifiedName: DialogueTextNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueTextNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: nextNodes
         node: {fileID: -1219618056866951188}
@@ -91,8 +90,8 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: nextNodes
       _node: {fileID: -6093208089526505406}
-      _typeQualifiedName: DialogueBaseNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueBaseNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: previousNode
         node: {fileID: -1417703090059796293}
@@ -104,7 +103,8 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 1
-  message: Je dois y aller.
+  keyText: Dialogue_Manon_Lesire_JeDoisYAller
+  messagePreview: Je dois y aller.
   singleRead: 1
   hasGameActions: 0
   showGameActions: 0
@@ -126,7 +126,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
   m_Name: On se voit plus tard !
   m_EditorClassIdentifier: 
-  showGeneralProperties: 1
   graph: {fileID: 11400000}
   position: {x: 1784, y: 248}
   ports:
@@ -136,8 +135,8 @@ MonoBehaviour:
     values:
     - _fieldName: previousNode
       _node: {fileID: -1417703090059796293}
-      _typeQualifiedName: DialogueTextNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueTextNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: nextNodes
         node: {fileID: -6093208089526505406}
@@ -148,8 +147,8 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: nextNodes
       _node: {fileID: -1417703090059796293}
-      _typeQualifiedName: DialogueBaseNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueBaseNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections: []
       _direction: 1
       _connectionType: 0
@@ -158,7 +157,8 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 0
-  message: On se voit plus tard !
+  keyText: Dialogue_Manon_Lesire_OnSeVoitPlusTard
+  messagePreview: Dialogue_Manon_Lesire_OnSeVoitPlusTard
   singleRead: 0
   hasGameActions: 0
   showGameActions: 0
@@ -180,9 +180,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
   m_Name: Bonjour ! Bienvenue !
   m_EditorClassIdentifier: 
-  showGeneralProperties: 1
   graph: {fileID: 11400000}
-  position: {x: 0, y: 0}
+  position: {x: -8, y: -8}
   ports:
     keys:
     - previousNode
@@ -190,8 +189,8 @@ MonoBehaviour:
     values:
     - _fieldName: previousNode
       _node: {fileID: -1219618056866951188}
-      _typeQualifiedName: DialogueTextNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueTextNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections: []
       _direction: 0
       _connectionType: 0
@@ -199,8 +198,8 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: nextNodes
       _node: {fileID: -1219618056866951188}
-      _typeQualifiedName: DialogueBaseNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueBaseNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: previousNode
         node: {fileID: -8301186320615673822}
@@ -215,7 +214,8 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 0
-  message: Bonjour ! Bienvenue !
+  keyText: Dialogue_Manon_Lesire_BonjourBienvenue
+  messagePreview: Bonjour ! Bienvenue !
   singleRead: 0
   hasGameActions: 0
   showGameActions: 0
@@ -259,7 +259,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
   m_Name: "... et du Game Camp France \xE9galement oui !"
   m_EditorClassIdentifier: 
-  showGeneralProperties: 1
   graph: {fileID: 11400000}
   position: {x: 2552, y: -152}
   ports:
@@ -269,8 +268,8 @@ MonoBehaviour:
     values:
     - _fieldName: previousNode
       _node: {fileID: 7775371662095286920}
-      _typeQualifiedName: DialogueTextNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueTextNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: nextNodes
         node: {fileID: 7890605716931660442}
@@ -281,8 +280,8 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: nextNodes
       _node: {fileID: 7775371662095286920}
-      _typeQualifiedName: DialogueBaseNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueBaseNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections: []
       _direction: 1
       _connectionType: 0
@@ -291,10 +290,11 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 0
-  message: "... et du Game Camp France \xE9galement oui ! J'\xE9tais s\xFBre que
-    tu en avais d\xE9j\xE0 entendu parler. C'est le grand rassemblement annuel des
-    pros du jeu vid\xE9o. On l'a cr\xE9\xE9 avec le Syndicat National du Jeu Vid\xE9o
-    en 2017."
+  keyText: Dialogue_Manon_Lesire_EtDuGameCampFranceEgalementOui
+  messagePreview: "... et du Game Camp France \xE9galement oui ! J'\xE9tais s\xFBre
+    que tu en avais d\xE9j\xE0 entendu parler. C'est le grand rassemblement annuel
+    des pros du jeu vid\xE9o. On l'a cr\xE9\xE9 avec le Syndicat National du Jeu
+    Vid\xE9o en 2017."
   singleRead: 0
   hasGameActions: 1
   showGameActions: 0
@@ -309,6 +309,8 @@ MonoBehaviour:
       ScooterPopUpImg: {fileID: 0}
       itemToAdd: {fileID: 0}
       itemToRemove: {fileID: 0}
+      fadeDuration: 0.5
+      fadeOutSwitchDuration: 1
   hasRequirements: 0
   showGameRequirements: 0
   gameRequirements:
@@ -325,7 +327,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
   m_Name: Je m'occupe de toute la communication de Game IN
   m_EditorClassIdentifier: 
-  showGeneralProperties: 1
   graph: {fileID: 11400000}
   position: {x: 1800, y: -120}
   ports:
@@ -335,8 +336,8 @@ MonoBehaviour:
     values:
     - _fieldName: previousNode
       _node: {fileID: 7890605716931660442}
-      _typeQualifiedName: DialogueTextNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueTextNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: nextNodes
         node: {fileID: -8301186320615673822}
@@ -347,8 +348,8 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: nextNodes
       _node: {fileID: 7890605716931660442}
-      _typeQualifiedName: DialogueBaseNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueBaseNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: previousNode
         node: {fileID: 7775371662095286920}
@@ -360,10 +361,11 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 0
-  message: "Manon Lesire ! Je m'occupe de toute la communication de Game IN : promotion
-    des actions de l'association, des d\xE9marches collectives, cr\xE9er du lien
-    entre adh\xE9rents, faciliter les \xE9changes, g\xE9rer nos r\xE9seaux sociaux,
-    cr\xE9er du contenu ..."
+  keyText: Dialogue_Manon_Lesire_JeMOccupeDeTouteLaCommunicationDeGameIN
+  messagePreview: "Manon Lesire ! Je m'occupe de toute la communication de Game IN
+    : promotion des actions de l'association, des d\xE9marches collectives, cr\xE9er
+    du lien entre adh\xE9rents, faciliter les \xE9changes, g\xE9rer nos r\xE9seaux
+    sociaux, cr\xE9er du contenu ..."
   singleRead: 0
   hasGameActions: 0
   showGameActions: 0

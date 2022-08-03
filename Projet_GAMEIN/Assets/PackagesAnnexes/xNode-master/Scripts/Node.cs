@@ -109,7 +109,7 @@ namespace XNode {
         /// <summary> Iterate over all dynamic inputs on this node. </summary>
         public IEnumerable<NodePort> DynamicInputs { get { foreach (NodePort port in Ports) { if (port.IsDynamic && port.IsInput) yield return port; } } }
 
-        [SerializeField] public bool showGeneralProperties = true;
+        //[SerializeField] public bool showGeneralProperties = true;
 
         /// <summary> Parent <see cref="NodeGraph"/> </summary>
         [SerializeField] public NodeGraph graph;
@@ -129,7 +129,8 @@ namespace XNode {
         }
 
         /// <summary> Update static ports and dynamic ports managed by DynamicPortLists to reflect class fields. This happens automatically on enable or on redrawing a dynamic port list. </summary>
-        public void UpdatePorts() {
+        public void UpdatePorts() 
+        {
             NodeDataCache.UpdatePorts(this, ports);
         }
 

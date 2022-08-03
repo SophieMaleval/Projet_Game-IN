@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
   m_Name: "Ah, tu arrives juste \xE0 temps, formidable !"
   m_EditorClassIdentifier: 
-  showGeneralProperties: 1
   graph: {fileID: 11400000}
   position: {x: 2152, y: 840}
   ports:
@@ -22,8 +21,8 @@ MonoBehaviour:
     values:
     - _fieldName: previousNode
       _node: {fileID: -8616234794236354262}
-      _typeQualifiedName: DialogueTextNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueTextNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: nextNodes
         node: {fileID: -1534926111420869802}
@@ -34,8 +33,8 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: nextNodes
       _node: {fileID: -8616234794236354262}
-      _typeQualifiedName: DialogueBaseNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueBaseNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: previousNode
         node: {fileID: -6471678193662114170}
@@ -47,7 +46,8 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 0
-  message: "Ah, tu arrives juste \xE0 temps, formidable !"
+  keyText: Dialogue_PIX_AhTuArrivesJusteATempsFormidable
+  messagePreview: "Ah, tu arrives juste \xE0 temps, formidable !"
   singleRead: 0
   hasGameActions: 0
   showGameActions: 0
@@ -69,7 +69,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
   m_Name: "Tous nos r\xE9seaux sont en pannes"
   m_EditorClassIdentifier: 
-  showGeneralProperties: 1
   graph: {fileID: 11400000}
   position: {x: 2056, y: 360}
   ports:
@@ -79,8 +78,8 @@ MonoBehaviour:
     values:
     - _fieldName: previousNode
       _node: {fileID: -7403972914979835252}
-      _typeQualifiedName: DialogueTextNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueTextNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: nextNodes
         node: {fileID: 9186991489692531737}
@@ -91,8 +90,8 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: nextNodes
       _node: {fileID: -7403972914979835252}
-      _typeQualifiedName: DialogueBaseNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueBaseNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: previousNode
         node: {fileID: -7060014987147034933}
@@ -104,10 +103,11 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 0
-  message: "Tous nos r\xE9seaux sont en pannes depuis plusieurs heures, impossible
+  keyText: Dialogue_PIX_TousNosReseauxSontEnPanne
+  messagePreview: "Tous nos r\xE9seaux sont en panne depuis plusieurs heures, impossible
     de r\xE9cup\xE9rer la liste des participant\xB7e\xB7s pour leur confirmer leurs
     inscriptions ! On innove en permanence ici et on teste un nouveau syst\xE8me,
-    mais je n'ai pas le bon protocole pour r\xE9soudre cette situation pr\xE9cise. "
+    mais je n'ai pas le bon protocole pour r\xE9soudre cette situation pr\xE9cise."
   singleRead: 0
   hasGameActions: 0
   showGameActions: 0
@@ -129,7 +129,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
   m_Name: J'imagine que tu parles de l'afterwork de ce soir ?
   m_EditorClassIdentifier: 
-  showGeneralProperties: 1
   graph: {fileID: 11400000}
   position: {x: 2088, y: -40}
   ports:
@@ -139,8 +138,8 @@ MonoBehaviour:
     values:
     - _fieldName: previousNode
       _node: {fileID: -7359316428882871308}
-      _typeQualifiedName: DialogueTextNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueTextNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: nextNodes
         node: {fileID: -6309653750551691130}
@@ -151,8 +150,8 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: nextNodes
       _node: {fileID: -7359316428882871308}
-      _typeQualifiedName: DialogueBaseNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueBaseNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections: []
       _direction: 1
       _connectionType: 0
@@ -161,8 +160,9 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 0
-  message: "J'imagine que tu parles de l'afterwork de ce soir ? Malheureusement je
-    ne sais pas s'il pourra avoir lieu en l'\xE9tat actuel \u2026"
+  keyText: Dialogue_PIX_JImagineQueTuParlesDeLAfterworkDeCeSoir
+  messagePreview: "J'imagine que tu parles de l'afterwork de ce soir ? Malheureusement
+    je ne sais pas s'il pourra avoir lieu en l'\xE9tat actuel \u2026"
   singleRead: 0
   hasGameActions: 1
   showGameActions: 1
@@ -177,6 +177,8 @@ MonoBehaviour:
       ScooterPopUpImg: {fileID: 0}
       itemToAdd: {fileID: 0}
       itemToRemove: {fileID: 0}
+      fadeDuration: 0.5
+      fadeOutSwitchDuration: 1
   hasRequirements: 0
   showGameRequirements: 0
   gameRequirements:
@@ -193,7 +195,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
   m_Name: Maintenant que j'y pense,
   m_EditorClassIdentifier: 
-  showGeneralProperties: 1
   graph: {fileID: 11400000}
   position: {x: 2728, y: 344}
   ports:
@@ -203,8 +204,8 @@ MonoBehaviour:
     values:
     - _fieldName: previousNode
       _node: {fileID: -7060014987147034933}
-      _typeQualifiedName: DialogueTextNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueTextNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: nextNodes
         node: {fileID: -7403972914979835252}
@@ -215,8 +216,8 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: nextNodes
       _node: {fileID: -7060014987147034933}
-      _typeQualifiedName: DialogueBaseNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueBaseNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: previousNode
         node: {fileID: 129769390983613578}
@@ -228,9 +229,10 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 0
-  message: "Maintenant que j'y pense, je connais peut-\xEAtre une personne du r\xE9seau
-    qui pourrait nous aider ! Anna de 2054, elle est tr\xE8s cal\xE9e sur le sujet
-    ! Tu pourrais peut-\xEAtre aller lui demander de l'aide ?"
+  keyText: Dialogue_PIX_MaintenantQueJYPense
+  messagePreview: "Maintenant que j'y pense, je connais peut-\xEAtre une personne
+    du r\xE9seau qui pourrait nous aider ! Anna de 2054, elle est tr\xE8s cal\xE9e
+    sur le sujet ! Tu pourrais peut-\xEAtre aller lui demander de l'aide ?"
   singleRead: 0
   hasGameActions: 0
   showGameActions: 0
@@ -252,7 +254,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
   m_Name: Je dois y aller.
   m_EditorClassIdentifier: 
-  showGeneralProperties: 1
   graph: {fileID: 11400000}
   position: {x: 1272, y: 1192}
   ports:
@@ -262,8 +263,8 @@ MonoBehaviour:
     values:
     - _fieldName: previousNode
       _node: {fileID: -6888946049721797171}
-      _typeQualifiedName: DialogueTextNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueTextNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: nextNodes
         node: {fileID: 9197923390815994889}
@@ -274,8 +275,8 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: nextNodes
       _node: {fileID: -6888946049721797171}
-      _typeQualifiedName: DialogueBaseNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueBaseNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: previousNode
         node: {fileID: 3661262345068914170}
@@ -287,7 +288,8 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 1
-  message: Je dois y aller.
+  keyText: Dialogue_PIX_JeDoisYAller
+  messagePreview: Je dois y aller.
   singleRead: 1
   hasGameActions: 0
   showGameActions: 0
@@ -309,7 +311,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
   m_Name: "Je crois que \xE7a fonctionne ! Tout le monde"
   m_EditorClassIdentifier: 
-  showGeneralProperties: 1
   graph: {fileID: 11400000}
   position: {x: 2952, y: 840}
   ports:
@@ -319,8 +320,8 @@ MonoBehaviour:
     values:
     - _fieldName: previousNode
       _node: {fileID: -6471678193662114170}
-      _typeQualifiedName: DialogueTextNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueTextNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: nextNodes
         node: {fileID: -8616234794236354262}
@@ -331,8 +332,8 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: nextNodes
       _node: {fileID: -6471678193662114170}
-      _typeQualifiedName: DialogueBaseNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueBaseNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections: []
       _direction: 1
       _connectionType: 0
@@ -341,9 +342,10 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 0
-  message: "Je crois que \xE7a fonctionne ! Tout le monde va recevoir une notification
-    maintenant que les serveurs fonctionnent, un grand merci \xE0 toi et bienvenue
-    parmi nous !"
+  keyText: Dialogue_PIX_JeCroisQueCaFonctionne
+  messagePreview: "Je crois que \xE7a fonctionne ! Tout le monde va recevoir une
+    notification maintenant que les serveurs fonctionnent, un grand merci \xE0 toi
+    et bienvenue parmi nous !"
   singleRead: 0
   hasGameActions: 1
   showGameActions: 1
@@ -358,6 +360,8 @@ MonoBehaviour:
       ScooterPopUpImg: {fileID: 0}
       itemToAdd: {fileID: 0}
       itemToRemove: {fileID: 0}
+      fadeDuration: 0.5
+      fadeOutSwitchDuration: 1
   hasRequirements: 0
   showGameRequirements: 0
   gameRequirements:
@@ -374,7 +378,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
   m_Name: "J'ai vu que vous organisiez un \xE9v\xE9nement !"
   m_EditorClassIdentifier: 
-  showGeneralProperties: 1
   graph: {fileID: 11400000}
   position: {x: 1368, y: -56}
   ports:
@@ -384,8 +387,8 @@ MonoBehaviour:
     values:
     - _fieldName: previousNode
       _node: {fileID: -6309653750551691130}
-      _typeQualifiedName: DialogueTextNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueTextNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: nextNodes
         node: {fileID: 9197923390815994889}
@@ -396,8 +399,8 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: nextNodes
       _node: {fileID: -6309653750551691130}
-      _typeQualifiedName: DialogueBaseNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueBaseNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: previousNode
         node: {fileID: -7359316428882871308}
@@ -409,7 +412,8 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 1
-  message: "J'ai vu que vous organisiez un \xE9v\xE9nement !"
+  keyText: Dialogue_PIX_JAiVuQueVousOrganisiezUnEvenement
+  messagePreview: "J'ai vu que vous organisiez un \xE9v\xE9nement !"
   singleRead: 1
   hasGameActions: 0
   showGameActions: 0
@@ -442,7 +446,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
   m_Name: La Plaine Images, c'est le site d'excellence
   m_EditorClassIdentifier: 
-  showGeneralProperties: 1
   graph: {fileID: 11400000}
   position: {x: 2328, y: -408}
   ports:
@@ -452,8 +455,8 @@ MonoBehaviour:
     values:
     - _fieldName: previousNode
       _node: {fileID: -3528913489138850852}
-      _typeQualifiedName: DialogueTextNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueTextNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: nextNodes
         node: {fileID: -3338507370859227563}
@@ -464,8 +467,8 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: nextNodes
       _node: {fileID: -3528913489138850852}
-      _typeQualifiedName: DialogueBaseNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueBaseNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections: []
       _direction: 1
       _connectionType: 0
@@ -474,7 +477,8 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 0
-  message: "La Plaine Images, c'est le site d'excellence des Industries Cr\xE9atives
+  keyText: Dialogue_PIX_LaPlaineImagesCEstLeSiteDExcellence
+  messagePreview: "La Plaine Images, c'est le site d'excellence des Industries Cr\xE9atives
     en m\xE9tropole lilloise, un grand parc d'innovation en Hauts-de-France ! Notre
     mission, c'est de soutenir toutes les d\xE9marches qui cr\xE9ent de la valeur
     gr\xE2ce \xE0 l'imagination des porteurs de projets et entrepreneurs."
@@ -492,6 +496,8 @@ MonoBehaviour:
       ScooterPopUpImg: {fileID: 0}
       itemToAdd: {fileID: 0}
       itemToRemove: {fileID: 0}
+      fadeDuration: 0.5
+      fadeOutSwitchDuration: 1
   hasRequirements: 0
   showGameRequirements: 0
   gameRequirements:
@@ -508,7 +514,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
   m_Name: Qu'est ce que la Plaine Image ?
   m_EditorClassIdentifier: 
-  showGeneralProperties: 1
   graph: {fileID: 11400000}
   position: {x: 1368, y: -424}
   ports:
@@ -518,8 +523,8 @@ MonoBehaviour:
     values:
     - _fieldName: previousNode
       _node: {fileID: -3338507370859227563}
-      _typeQualifiedName: DialogueTextNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueTextNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: nextNodes
         node: {fileID: 9197923390815994889}
@@ -530,8 +535,8 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: nextNodes
       _node: {fileID: -3338507370859227563}
-      _typeQualifiedName: DialogueBaseNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueBaseNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: previousNode
         node: {fileID: -3528913489138850852}
@@ -543,7 +548,8 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 1
-  message: Qu'est ce que la Plaine Image ?
+  keyText: Dialogue_PIX_QuEstCeQueLaPlaineImage
+  messagePreview: Qu'est ce que la Plaine Image ?
   singleRead: 1
   hasGameActions: 0
   showGameActions: 0
@@ -566,7 +572,6 @@ MonoBehaviour:
   m_Name: '*Branche la clef sur son socle* C''est bon Anna avait bien la solution
     !'
   m_EditorClassIdentifier: 
-  showGeneralProperties: 1
   graph: {fileID: 11400000}
   position: {x: 1320, y: 856}
   ports:
@@ -576,8 +581,8 @@ MonoBehaviour:
     values:
     - _fieldName: previousNode
       _node: {fileID: -1534926111420869802}
-      _typeQualifiedName: DialogueTextNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueTextNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: nextNodes
         node: {fileID: 9197923390815994889}
@@ -588,8 +593,8 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: nextNodes
       _node: {fileID: -1534926111420869802}
-      _typeQualifiedName: DialogueBaseNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueBaseNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: previousNode
         node: {fileID: -8616234794236354262}
@@ -601,8 +606,9 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 1
-  message: '*Branche la clef sur son socle* C''est bon Anna avait bien la solution
-    !'
+  keyText: Dialogue_PIX_BrancheLaClefSurSonSocle
+  messagePreview: '*Branche la clef sur son socle* C''est bon Anna avait bien la
+    solution !'
   singleRead: 1
   hasGameActions: 0
   showGameActions: 0
@@ -644,7 +650,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
   m_Name: "Qui \xEAtes-vous ? "
   m_EditorClassIdentifier: 
-  showGeneralProperties: 1
   graph: {fileID: 11400000}
   position: {x: 1368, y: -744}
   ports:
@@ -654,8 +659,8 @@ MonoBehaviour:
     values:
     - _fieldName: previousNode
       _node: {fileID: -737703275199554694}
-      _typeQualifiedName: DialogueTextNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueTextNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: nextNodes
         node: {fileID: 9197923390815994889}
@@ -666,8 +671,8 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: nextNodes
       _node: {fileID: -737703275199554694}
-      _typeQualifiedName: DialogueBaseNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueBaseNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: previousNode
         node: {fileID: 2290855891668395596}
@@ -679,7 +684,8 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 1
-  message: "Qui \xEAtes-vous ? "
+  keyText: Dialogue_PIX_QuiEtesVous
+  messagePreview: "Qui \xEAtes-vous ?"
   singleRead: 1
   hasGameActions: 0
   showGameActions: 0
@@ -733,7 +739,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
   m_Name: "J'y serais bien all\xE9 mais "
   m_EditorClassIdentifier: 
-  showGeneralProperties: 1
   graph: {fileID: 11400000}
   position: {x: 3496, y: 360}
   ports:
@@ -743,8 +748,8 @@ MonoBehaviour:
     values:
     - _fieldName: previousNode
       _node: {fileID: 129769390983613578}
-      _typeQualifiedName: DialogueTextNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueTextNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: nextNodes
         node: {fileID: -7060014987147034933}
@@ -755,8 +760,8 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: nextNodes
       _node: {fileID: 129769390983613578}
-      _typeQualifiedName: DialogueBaseNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueBaseNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections: []
       _direction: 1
       _connectionType: 0
@@ -765,7 +770,8 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 0
-  message: "J'y serais bien all\xE9 mais je n'ai pas de jambes, et les r\xE9seaux
+  keyText: Dialogue_PIX_JYSeraisBienAlleMais
+  messagePreview: "J'y serais bien all\xE9 mais je n'ai pas de jambes, et les r\xE9seaux
     \xE9tant en panne \u2026"
   singleRead: 0
   hasGameActions: 1
@@ -781,6 +787,8 @@ MonoBehaviour:
       ScooterPopUpImg: {fileID: 0}
       itemToAdd: {fileID: 0}
       itemToRemove: {fileID: 0}
+      fadeDuration: 0.5
+      fadeOutSwitchDuration: 1
   hasRequirements: 0
   showGameRequirements: 0
   gameRequirements:
@@ -797,7 +805,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
   m_Name: Je suis PIX
   m_EditorClassIdentifier: 
-  showGeneralProperties: 1
   graph: {fileID: 11400000}
   position: {x: 2328, y: -728}
   ports:
@@ -807,8 +814,8 @@ MonoBehaviour:
     values:
     - _fieldName: previousNode
       _node: {fileID: 2290855891668395596}
-      _typeQualifiedName: DialogueTextNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueTextNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: nextNodes
         node: {fileID: -737703275199554694}
@@ -819,8 +826,8 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: nextNodes
       _node: {fileID: 2290855891668395596}
-      _typeQualifiedName: DialogueBaseNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueBaseNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections: []
       _direction: 1
       _connectionType: 0
@@ -829,10 +836,12 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 0
-  message: Je suis PIX, l'intelligence artificielle au service de la Plaine Images
+  keyText: Dialogue_PIX_JeSuisPIX
+  messagePreview: Je suis PIX, l'intelligence artificielle au service de la Plaine
+    Images
   singleRead: 0
   hasGameActions: 1
-  showGameActions: 0
+  showGameActions: 1
   gameActions:
     actionsList:
     - actionType: 0
@@ -844,6 +853,8 @@ MonoBehaviour:
       ScooterPopUpImg: {fileID: 0}
       itemToAdd: {fileID: 0}
       itemToRemove: {fileID: 0}
+      fadeDuration: 0.5
+      fadeOutSwitchDuration: 1
   hasRequirements: 0
   showGameRequirements: 0
   gameRequirements:
@@ -860,7 +871,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
   m_Name: "\xC0 bient\xF4t !"
   m_EditorClassIdentifier: 
-  showGeneralProperties: 1
   graph: {fileID: 11400000}
   position: {x: 2168, y: 1192}
   ports:
@@ -870,8 +880,8 @@ MonoBehaviour:
     values:
     - _fieldName: previousNode
       _node: {fileID: 3661262345068914170}
-      _typeQualifiedName: DialogueTextNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueTextNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: nextNodes
         node: {fileID: -6888946049721797171}
@@ -882,8 +892,8 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: nextNodes
       _node: {fileID: 3661262345068914170}
-      _typeQualifiedName: DialogueBaseNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueBaseNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections: []
       _direction: 1
       _connectionType: 0
@@ -892,7 +902,8 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 0
-  message: "\xC0 bient\xF4t !"
+  keyText: Dialogue_PIX_ABientot
+  messagePreview: "\xC0 bient\xF4t !"
   singleRead: 0
   hasGameActions: 1
   showGameActions: 1
@@ -911,6 +922,8 @@ MonoBehaviour:
       ScooterPopUpImg: {fileID: 0}
       itemToAdd: {fileID: 0}
       itemToRemove: {fileID: 0}
+      fadeDuration: 0.5
+      fadeOutSwitchDuration: 1
     - actionType: 2
       hasCondition: 1
       nodesRequiredToRead:
@@ -923,6 +936,8 @@ MonoBehaviour:
       ScooterPopUpImg: {fileID: 0}
       itemToAdd: {fileID: 0}
       itemToRemove: {fileID: 0}
+      fadeDuration: 0.5
+      fadeOutSwitchDuration: 1
     - actionType: 5
       hasCondition: 1
       nodesRequiredToRead:
@@ -933,6 +948,8 @@ MonoBehaviour:
       ScooterPopUpImg: {fileID: 0}
       itemToAdd: {fileID: 0}
       itemToRemove: {fileID: 11400000, guid: bab35fb751967bc42bdb42b46e19fa76, type: 2}
+      fadeDuration: 0.5
+      fadeOutSwitchDuration: 1
   hasRequirements: 0
   showGameRequirements: 0
   gameRequirements:
@@ -949,7 +966,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
   m_Name: Que se passe t'il ?!
   m_EditorClassIdentifier: 
-  showGeneralProperties: 1
   graph: {fileID: 11400000}
   position: {x: 1384, y: 376}
   ports:
@@ -959,8 +975,8 @@ MonoBehaviour:
     values:
     - _fieldName: previousNode
       _node: {fileID: 9186991489692531737}
-      _typeQualifiedName: DialogueTextNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueTextNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: nextNodes
         node: {fileID: 9197923390815994889}
@@ -971,8 +987,8 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: nextNodes
       _node: {fileID: 9186991489692531737}
-      _typeQualifiedName: DialogueBaseNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueBaseNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: previousNode
         node: {fileID: -7403972914979835252}
@@ -984,7 +1000,8 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 1
-  message: Que se passe t'il ?!
+  keyText: Dialogue_PIX_QueSePasseTIl
+  messagePreview: Que se passe t'il ?!
   singleRead: 1
   hasGameActions: 0
   showGameActions: 0
@@ -1017,9 +1034,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
   m_Name: "Salut tu dois \xEAtre {PLAYER} !"
   m_EditorClassIdentifier: 
-  showGeneralProperties: 1
   graph: {fileID: 11400000}
-  position: {x: 0, y: 0}
+  position: {x: 40, y: 8}
   ports:
     keys:
     - previousNode
@@ -1027,8 +1043,8 @@ MonoBehaviour:
     values:
     - _fieldName: previousNode
       _node: {fileID: 9197923390815994889}
-      _typeQualifiedName: DialogueTextNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueTextNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections: []
       _direction: 0
       _connectionType: 0
@@ -1036,8 +1052,8 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: nextNodes
       _node: {fileID: 9197923390815994889}
-      _typeQualifiedName: DialogueBaseNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueBaseNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: previousNode
         node: {fileID: -737703275199554694}
@@ -1064,7 +1080,8 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 0
-  message: "Salut tu dois \xEAtre {PLAYER} !  Laurent m'a parl\xE9 de ta nouvelle
+  keyText: Dialogue_PIX_SalutTuDoisEtre{PLAYER}
+  messagePreview: "Salut tu dois \xEAtre {PLAYER} !  Laurent m'a parl\xE9 de ta nouvelle
     venue en ville ! J'imagine que tu es interess\xE9 par l'afterwork de ce soir
     ? Malheureusement je ne pense pas qu'il puisse avoir lieu en l'\xE9tat actuel\u2026"
   singleRead: 0

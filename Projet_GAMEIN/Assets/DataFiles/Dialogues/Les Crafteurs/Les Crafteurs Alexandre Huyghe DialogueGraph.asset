@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
   m_Name: Comment vas-tu?
   m_EditorClassIdentifier: 
-  showGeneralProperties: 1
   graph: {fileID: 11400000}
   position: {x: 952, y: -280}
   ports:
@@ -22,8 +21,8 @@ MonoBehaviour:
     values:
     - _fieldName: previousNode
       _node: {fileID: -8715764402097658583}
-      _typeQualifiedName: DialogueTextNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueTextNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: nextNodes
         node: {fileID: 6574630625412936316}
@@ -34,8 +33,8 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: nextNodes
       _node: {fileID: -8715764402097658583}
-      _typeQualifiedName: DialogueBaseNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueBaseNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: previousNode
         node: {fileID: 883602486872866726}
@@ -47,7 +46,8 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 1
-  message: Comment vas-tu?
+  keyText: Dialogue_Alexandre_Huygue_CommentVasTu
+  messagePreview: Comment vas-tu ?
   singleRead: 1
   hasGameActions: 0
   showGameActions: 0
@@ -69,7 +69,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
   m_Name: "\xC0 bient\xF4t."
   m_EditorClassIdentifier: 
-  showGeneralProperties: 1
   graph: {fileID: 11400000}
   position: {x: 2152, y: 232}
   ports:
@@ -79,8 +78,8 @@ MonoBehaviour:
     values:
     - _fieldName: previousNode
       _node: {fileID: -4002078389386458272}
-      _typeQualifiedName: DialogueTextNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueTextNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: nextNodes
         node: {fileID: 7274676323317640073}
@@ -91,8 +90,8 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: nextNodes
       _node: {fileID: -4002078389386458272}
-      _typeQualifiedName: DialogueBaseNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueBaseNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections: []
       _direction: 1
       _connectionType: 0
@@ -101,7 +100,8 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 0
-  message: "\xC0 bient\xF4t."
+  keyText: Dialogue_Alexandre_Huygue_ABientot
+  messagePreview: "\xC0 bient\xF4t."
   singleRead: 0
   hasGameActions: 0
   showGameActions: 0
@@ -144,7 +144,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
   m_Name: "Je me sens un peu raide \xE0 force d'\xEAtre immobile,"
   m_EditorClassIdentifier: 
-  showGeneralProperties: 1
   graph: {fileID: 11400000}
   position: {x: 2168, y: -296}
   ports:
@@ -154,8 +153,8 @@ MonoBehaviour:
     values:
     - _fieldName: previousNode
       _node: {fileID: 883602486872866726}
-      _typeQualifiedName: DialogueTextNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueTextNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: nextNodes
         node: {fileID: -8715764402097658583}
@@ -166,8 +165,8 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: nextNodes
       _node: {fileID: 883602486872866726}
-      _typeQualifiedName: DialogueBaseNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueBaseNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections: []
       _direction: 1
       _connectionType: 0
@@ -176,8 +175,9 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 0
-  message: "Je me sens un peu raide \xE0 force d'\xEAtre immobile, j'attends ton
-    d\xE9part pour reprendre le cours de ma vie. Comme les jouets d'Andy."
+  keyText: Dialogue_Alexandre_Huygue_JeMeSensUnPeuRaideAForceDEtreImmobile
+  messagePreview: "Je me sens un peu raide \xE0 force d'\xEAtre immobile, j'attends
+    ton d\xE9part pour reprendre le cours de ma vie. Comme les jouets d'Andy."
   singleRead: 0
   hasGameActions: 1
   showGameActions: 1
@@ -192,6 +192,8 @@ MonoBehaviour:
       ScooterPopUpImg: {fileID: 0}
       itemToAdd: {fileID: 0}
       itemToRemove: {fileID: 0}
+      fadeDuration: 0.5
+      fadeOutSwitchDuration: 1
   hasRequirements: 0
   showGameRequirements: 0
   gameRequirements:
@@ -208,7 +210,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
   m_Name: Hello {PLAYER}, bienvenue chez les Crafteurs !
   m_EditorClassIdentifier: 
-  showGeneralProperties: 1
   graph: {fileID: 11400000}
   position: {x: 0, y: 0}
   ports:
@@ -218,8 +219,8 @@ MonoBehaviour:
     values:
     - _fieldName: previousNode
       _node: {fileID: 6574630625412936316}
-      _typeQualifiedName: DialogueTextNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueTextNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections: []
       _direction: 0
       _connectionType: 0
@@ -227,8 +228,8 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: nextNodes
       _node: {fileID: 6574630625412936316}
-      _typeQualifiedName: DialogueBaseNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueBaseNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: previousNode
         node: {fileID: -8715764402097658583}
@@ -243,7 +244,8 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 0
-  message: Hello {PLAYER}, bienvenue chez les Crafteurs !
+  keyText: Dialogue_Alexandre_Huygue_Hello{PLAYER}BienvenueChezLesCrafteurs
+  messagePreview: Hello {PLAYER}, bienvenue chez les Crafteurs !
   singleRead: 0
   hasGameActions: 0
   showGameActions: 0
@@ -265,7 +267,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
   m_Name: Je dois y aller.
   m_EditorClassIdentifier: 
-  showGeneralProperties: 1
   graph: {fileID: 11400000}
   position: {x: 968, y: 248}
   ports:
@@ -275,8 +276,8 @@ MonoBehaviour:
     values:
     - _fieldName: previousNode
       _node: {fileID: 7274676323317640073}
-      _typeQualifiedName: DialogueTextNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueTextNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: nextNodes
         node: {fileID: 6574630625412936316}
@@ -287,8 +288,8 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: nextNodes
       _node: {fileID: 7274676323317640073}
-      _typeQualifiedName: DialogueBaseNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueBaseNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: previousNode
         node: {fileID: -4002078389386458272}
@@ -300,7 +301,8 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 1
-  message: Je dois y aller.
+  keyText: Dialogue_Alexandre_Huygue_JeDoisYAller
+  messagePreview: Je dois y aller.
   singleRead: 1
   hasGameActions: 0
   showGameActions: 0

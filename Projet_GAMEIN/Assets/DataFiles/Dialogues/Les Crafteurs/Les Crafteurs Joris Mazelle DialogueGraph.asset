@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
   m_Name: Salut toi.
   m_EditorClassIdentifier: 
-  showGeneralProperties: 1
   graph: {fileID: 11400000}
   position: {x: 1800, y: -232}
   ports:
@@ -22,8 +21,8 @@ MonoBehaviour:
     values:
     - _fieldName: previousNode
       _node: {fileID: -4787127561177945844}
-      _typeQualifiedName: DialogueTextNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueTextNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: nextNodes
         node: {fileID: 8266312364389850344}
@@ -34,8 +33,8 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: nextNodes
       _node: {fileID: -4787127561177945844}
-      _typeQualifiedName: DialogueBaseNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueBaseNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections: []
       _direction: 1
       _connectionType: 0
@@ -44,7 +43,8 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 0
-  message: Salut toi.
+  keyText: Dialogue_Joris_Mazelle_SalutToi
+  messagePreview: Salut toi.
   singleRead: 0
   hasGameActions: 1
   showGameActions: 1
@@ -59,6 +59,8 @@ MonoBehaviour:
       ScooterPopUpImg: {fileID: 0}
       itemToAdd: {fileID: 0}
       itemToRemove: {fileID: 0}
+      fadeDuration: 0.5
+      fadeOutSwitchDuration: 1
   hasRequirements: 0
   showGameRequirements: 0
   gameRequirements:
@@ -75,7 +77,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
   m_Name: "\xC0 plus tard !"
   m_EditorClassIdentifier: 
-  showGeneralProperties: 1
   graph: {fileID: 11400000}
   position: {x: 1912, y: 120}
   ports:
@@ -85,8 +86,8 @@ MonoBehaviour:
     values:
     - _fieldName: previousNode
       _node: {fileID: -2109317975381496093}
-      _typeQualifiedName: DialogueTextNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueTextNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: nextNodes
         node: {fileID: 1305175893571192166}
@@ -97,8 +98,8 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: nextNodes
       _node: {fileID: -2109317975381496093}
-      _typeQualifiedName: DialogueBaseNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueBaseNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections: []
       _direction: 1
       _connectionType: 0
@@ -107,7 +108,8 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 0
-  message: "\xC0 plus tard !"
+  keyText: Dialogue_Joris_Mazelle_APlusTard
+  messagePreview: "\xC0 plus tard !"
   singleRead: 0
   hasGameActions: 0
   showGameActions: 0
@@ -150,7 +152,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
   m_Name: Je dois y aller.
   m_EditorClassIdentifier: 
-  showGeneralProperties: 1
   graph: {fileID: 11400000}
   position: {x: 1064, y: 152}
   ports:
@@ -160,8 +161,8 @@ MonoBehaviour:
     values:
     - _fieldName: previousNode
       _node: {fileID: 1305175893571192166}
-      _typeQualifiedName: DialogueTextNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueTextNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: nextNodes
         node: {fileID: 6574630625412936316}
@@ -172,8 +173,8 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: nextNodes
       _node: {fileID: 1305175893571192166}
-      _typeQualifiedName: DialogueBaseNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueBaseNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: previousNode
         node: {fileID: -2109317975381496093}
@@ -185,7 +186,8 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 1
-  message: Je dois y aller.
+  keyText: Dialogue_Joris_Mazelle_JeDoisYAller
+  messagePreview: Je dois y aller.
   singleRead: 1
   hasGameActions: 0
   showGameActions: 0
@@ -207,7 +209,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
   m_Name: Salut l'artiste !
   m_EditorClassIdentifier: 
-  showGeneralProperties: 1
   graph: {fileID: 11400000}
   position: {x: 0, y: 0}
   ports:
@@ -217,8 +218,8 @@ MonoBehaviour:
     values:
     - _fieldName: previousNode
       _node: {fileID: 6574630625412936316}
-      _typeQualifiedName: DialogueTextNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueTextNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections: []
       _direction: 0
       _connectionType: 0
@@ -226,8 +227,8 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: nextNodes
       _node: {fileID: 6574630625412936316}
-      _typeQualifiedName: DialogueBaseNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueBaseNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: previousNode
         node: {fileID: 8266312364389850344}
@@ -242,7 +243,8 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 0
-  message: Salut l'artiste !
+  keyText: Dialogue_Joris_Mazelle_SalutLArtiste
+  messagePreview: Salut l'artiste !
   singleRead: 0
   hasGameActions: 0
   showGameActions: 0
@@ -264,7 +266,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
   m_Name: Salut salut.
   m_EditorClassIdentifier: 
-  showGeneralProperties: 1
   graph: {fileID: 11400000}
   position: {x: 1032, y: -232}
   ports:
@@ -274,8 +275,8 @@ MonoBehaviour:
     values:
     - _fieldName: previousNode
       _node: {fileID: 8266312364389850344}
-      _typeQualifiedName: DialogueTextNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueTextNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: nextNodes
         node: {fileID: 6574630625412936316}
@@ -286,8 +287,8 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: nextNodes
       _node: {fileID: 8266312364389850344}
-      _typeQualifiedName: DialogueBaseNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueBaseNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: previousNode
         node: {fileID: -4787127561177945844}
@@ -299,7 +300,8 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 1
-  message: Salut salut.
+  keyText: Dialogue_Joris_Mazelle_SalutSalut
+  messagePreview: Salut salut.
   singleRead: 1
   hasGameActions: 0
   showGameActions: 0

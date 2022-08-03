@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
   m_Name: "Oui je vois de quoi tu parles\u2026"
   m_EditorClassIdentifier: 
-  showGeneralProperties: 1
   graph: {fileID: 11400000}
   position: {x: 1768, y: 56}
   ports:
@@ -47,9 +46,10 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 0
-  message: "Oui je vois de quoi tu parles\u2026 Pas \xE9tonnant que \xE7a coince,
-    laisse-moi quelques secondes, je vais pr\xE9parer quelque chose qui devrait r\xE9soudre
-    le probl\xE8me."
+  keyText: Dialogue_Anna_OuiJeVoisDeQuoiTuParles
+  messagePreview: "Oui je vois de quoi tu parles\u2026 Pas \xE9tonnant que \xE7a
+    coince, laisse-moi quelques secondes, je vais pr\xE9parer quelque chose qui devrait
+    r\xE9soudre le probl\xE8me."
   singleRead: 0
   hasGameActions: 0
   showGameActions: 0
@@ -71,7 +71,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
   m_Name: "\u2026"
   m_EditorClassIdentifier: 
-  showGeneralProperties: 1
   graph: {fileID: 11400000}
   position: {x: 2456, y: 56}
   ports:
@@ -106,7 +105,8 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 0
-  message: "\u2026"
+  keyText: Dialogue_Anna_Transition
+  messagePreview: "\u2026"
   singleRead: 0
   hasGameActions: 1
   showGameActions: 1
@@ -139,9 +139,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
   m_Name: "Qui \xEAtes-vous ?"
   m_EditorClassIdentifier: 
-  showGeneralProperties: 1
   graph: {fileID: 11400000}
-  position: {x: 1112, y: -216}
+  position: {x: 1128, y: -360}
   ports:
     keys:
     - previousNode
@@ -174,7 +173,8 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 1
-  message: "Qui \xEAtes-vous ?"
+  keyText: Dialogue_Anna_QuiEtesVous
+  messagePreview: "Qui \xEAtes-vous ?"
   singleRead: 1
   hasGameActions: 0
   showGameActions: 0
@@ -221,9 +221,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
   m_Name: 'Je suis Anna '
   m_EditorClassIdentifier: 
-  showGeneralProperties: 1
   graph: {fileID: 11400000}
-  position: {x: 1768, y: -200}
+  position: {x: 1784, y: -344}
   ports:
     keys:
     - previousNode
@@ -253,10 +252,11 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 0
-  message: "Je suis Anna ! La flic cyborg du coin ! Je suis extr\xEAmement cal\xE9
-    sur tout ce qui concerne la technologie et l'intelligence articielle. Et toi
-    tu dois \xEAtre Olivier ! Un \xEAtre humain pur souche qui ne frappe pas aux
-    portes !"
+  keyText: Dialogue_Anna_JeSuisAnna
+  messagePreview: "Je suis Anna ! La flic cyborg du coin ! Je suis extr\xEAmement
+    cal\xE9 sur tout ce qui concerne la technologie et l'intelligence articielle.
+    Et toi tu dois \xEAtre Olivier ! Un \xEAtre humain pur souche qui ne frappe pas
+    aux portes !"
   singleRead: 0
   hasGameActions: 1
   showGameActions: 1
@@ -289,9 +289,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
   m_Name: On se voit plus tard !
   m_EditorClassIdentifier: 
-  showGeneralProperties: 1
   graph: {fileID: 11400000}
-  position: {x: 1800, y: 296}
+  position: {x: 1816, y: 472}
   ports:
     keys:
     - previousNode
@@ -321,7 +320,8 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 0
-  message: On se voit plus tard !
+  keyText: Dialogue_Anna_OnSeVoitPlusTard
+  messagePreview: On se voit plus tard !
   singleRead: 0
   hasGameActions: 0
   showGameActions: 0
@@ -343,7 +343,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
   m_Name: Quetes
   m_EditorClassIdentifier: 
-  showGeneralProperties: 1
   graph: {fileID: 11400000}
   position: {x: 1112, y: 40}
   ports:
@@ -378,8 +377,9 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 1
-  message: "Je vous prie de m'excuser, mais c'est urgent ! Tous les r\xE9seaux de
-    la Plaine Images sont inaccessibles et ils organisent un \xE9v\xE9nement important
+  keyText: Dialogue_Anna_Quetes
+  messagePreview: "Je vous prie de m'excuser, mais c'est urgent ! Tous les r\xE9seaux
+    de la Plaine Images sont inaccessibles et ils organisent un \xE9v\xE9nement important
     ce soir ! Et PIX n'a pas encore le bon protocole"
   singleRead: 1
   hasGameActions: 0
@@ -437,7 +437,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
   m_Name: Wow ! Bonjour ?
   m_EditorClassIdentifier: 
-  showGeneralProperties: 1
   graph: {fileID: 11400000}
   position: {x: -8, y: -8}
   ports:
@@ -475,7 +474,9 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 0
-  message: "Wow ! Bonjour ? Je t'ai pas entendu rentrer ! Tu avais frapp\xE9 ? "
+  keyText: Dialogue_Anna_WowBonjour
+  messagePreview: "Wow ! Bonjour ? Je t'ai pas entendu rentrer ! Tu avais frapp\xE9
+    ?"
   singleRead: 0
   hasGameActions: 0
   showGameActions: 0
@@ -498,7 +499,6 @@ MonoBehaviour:
   m_Name: "Et voil\xE0 ! Tu n'auras qu'\xE0 donner \xE7a \xE0 la Plaine Images, ils
     sauront quoi en faire."
   m_EditorClassIdentifier: 
-  showGeneralProperties: 1
   graph: {fileID: 11400000}
   position: {x: 3192, y: 56}
   ports:
@@ -530,7 +530,8 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 0
-  message: "Et voil\xE0 ! Tu n'auras qu'\xE0 donner \xE7a \xE0 la Plaine Images,
+  keyText: Dialogue_Anna_EtVoilaTuNAurasQuADonner
+  messagePreview: "Et voil\xE0 ! Tu n'auras qu'\xE0 donner \xE7a \xE0 la Plaine Images,
     ils sauront quoi en faire."
   singleRead: 0
   hasGameActions: 1
@@ -588,9 +589,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
   m_Name: Je dois y aller.
   m_EditorClassIdentifier: 
-  showGeneralProperties: 1
   graph: {fileID: 11400000}
-  position: {x: 1112, y: 296}
+  position: {x: 1128, y: 472}
   ports:
     keys:
     - previousNode
@@ -623,7 +623,8 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 1
-  message: Je dois y aller.
+  keyText: Dialogue_Anna_JeDoisYAller
+  messagePreview: Je dois y aller.
   singleRead: 1
   hasGameActions: 0
   showGameActions: 0

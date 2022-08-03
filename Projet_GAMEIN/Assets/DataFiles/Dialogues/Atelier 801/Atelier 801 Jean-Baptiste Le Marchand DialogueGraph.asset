@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
   m_Name: Jean-Baptiste Le marchand, le co-fondateur
   m_EditorClassIdentifier: 
-  showGeneralProperties: 1
   graph: {fileID: 11400000}
   position: {x: 1896, y: -344}
   ports:
@@ -22,8 +21,8 @@ MonoBehaviour:
     values:
     - _fieldName: previousNode
       _node: {fileID: -6731811032246089162}
-      _typeQualifiedName: DialogueTextNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueTextNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: nextNodes
         node: {fileID: 165797156017079086}
@@ -34,8 +33,8 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: nextNodes
       _node: {fileID: -6731811032246089162}
-      _typeQualifiedName: DialogueBaseNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueBaseNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections: []
       _direction: 1
       _connectionType: 0
@@ -44,8 +43,9 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 0
-  message: "Jean-Baptiste Le marchand, le co-fondateur de l'entreprise Atelier 801
-    ! Je suis l'associ\xE9 et l'ami de Melanie Christin."
+  keyText: Dialogue_JeanBaptiste_LeMarchand_JeanBaptisteLeMarchandLeCoFondateur
+  messagePreview: "Jean-Baptiste Le marchand, le co-fondateur de l'entreprise Atelier
+    801 ! Je suis l'associ\xE9 et l'ami de Melanie Christin."
   singleRead: 0
   hasGameActions: 1
   showGameActions: 1
@@ -60,6 +60,8 @@ MonoBehaviour:
       ScooterPopUpImg: {fileID: 0}
       itemToAdd: {fileID: 0}
       itemToRemove: {fileID: 0}
+      fadeDuration: 0.5
+      fadeOutSwitchDuration: 1
   hasRequirements: 0
   showGameRequirements: 0
   gameRequirements:
@@ -76,7 +78,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
   m_Name: "Oui ! Ces souris repr\xE9sentent notre magnifique"
   m_EditorClassIdentifier: 
-  showGeneralProperties: 1
   graph: {fileID: 11400000}
   position: {x: 1896, y: 24}
   ports:
@@ -86,8 +87,8 @@ MonoBehaviour:
     values:
     - _fieldName: previousNode
       _node: {fileID: -4872764007403684664}
-      _typeQualifiedName: DialogueTextNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueTextNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: nextNodes
         node: {fileID: 5226430775150328271}
@@ -98,8 +99,8 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: nextNodes
       _node: {fileID: -4872764007403684664}
-      _typeQualifiedName: DialogueBaseNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueBaseNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: previousNode
         node: {fileID: 4536461042055506157}
@@ -111,8 +112,9 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 0
-  message: "Oui ! Ces souris repr\xE9sentent notre magnifique communaut\xE9 , sans
-    elles , nous n'en serions surement pas l\xE0 aujourd'hui !"
+  keyText: Dialogue_JeanBaptiste_LeMarchand_OuiCesSourisRepresentent
+  messagePreview: "Oui ! Ces souris repr\xE9sentent notre magnifique communaut\xE9
+    , sans elles , nous n'en serions surement pas l\xE0 aujourd'hui !"
   singleRead: 0
   hasGameActions: 0
   showGameActions: 0
@@ -159,7 +161,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
   m_Name: "Qui \xEAtes-vous ?"
   m_EditorClassIdentifier: 
-  showGeneralProperties: 1
   graph: {fileID: 11400000}
   position: {x: 952, y: -376}
   ports:
@@ -169,8 +170,8 @@ MonoBehaviour:
     values:
     - _fieldName: previousNode
       _node: {fileID: 165797156017079086}
-      _typeQualifiedName: DialogueTextNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueTextNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: nextNodes
         node: {fileID: 6220339796244599264}
@@ -181,8 +182,8 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: nextNodes
       _node: {fileID: 165797156017079086}
-      _typeQualifiedName: DialogueBaseNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueBaseNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: previousNode
         node: {fileID: -6731811032246089162}
@@ -194,7 +195,8 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 1
-  message: "Qui \xEAtes-vous ?"
+  keyText: Dialogue_JeanBaptiste_LeMarchand_QuiEtesVous
+  messagePreview: "Qui \xEAtes-vous ?"
   singleRead: 1
   hasGameActions: 0
   showGameActions: 0
@@ -216,7 +218,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
   m_Name: Je dois y aller.
   m_EditorClassIdentifier: 
-  showGeneralProperties: 1
   graph: {fileID: 11400000}
   position: {x: 936, y: 376}
   ports:
@@ -226,8 +227,8 @@ MonoBehaviour:
     values:
     - _fieldName: previousNode
       _node: {fileID: 479751073814225032}
-      _typeQualifiedName: DialogueTextNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueTextNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: nextNodes
         node: {fileID: 6220339796244599264}
@@ -238,8 +239,8 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: nextNodes
       _node: {fileID: 479751073814225032}
-      _typeQualifiedName: DialogueBaseNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueBaseNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: previousNode
         node: {fileID: 2696005444896043477}
@@ -251,7 +252,8 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 1
-  message: Je dois y aller.
+  keyText: Dialogue_JeanBaptiste_LeMarchand_JeDoisYAller
+  messagePreview: Je dois y aller.
   singleRead: 1
   hasGameActions: 0
   showGameActions: 0
@@ -273,7 +275,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
   m_Name: "Ne fais pas cette t\xEAte enfin "
   m_EditorClassIdentifier: 
-  showGeneralProperties: 1
   graph: {fileID: 11400000}
   position: {x: 3480, y: 40}
   ports:
@@ -283,8 +284,8 @@ MonoBehaviour:
     values:
     - _fieldName: previousNode
       _node: {fileID: 2144413468821161205}
-      _typeQualifiedName: DialogueTextNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueTextNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: nextNodes
         node: {fileID: 4536461042055506157}
@@ -295,8 +296,8 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: nextNodes
       _node: {fileID: 2144413468821161205}
-      _typeQualifiedName: DialogueBaseNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueBaseNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections: []
       _direction: 1
       _connectionType: 0
@@ -305,8 +306,9 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 0
-  message: "Ne fais pas cette t\xEAte enfin ! Les souris ne sont pas aussi ind\xE9sirables
-    qu'on ne le pense !"
+  keyText: Dialogue_JeanBaptiste_LeMarchand_NeFaisPasCetteTete
+  messagePreview: "Ne fais pas cette t\xEAte enfin ! Les souris ne sont pas aussi
+    ind\xE9sirables qu'on ne le pense !"
   singleRead: 0
   hasGameActions: 1
   showGameActions: 1
@@ -321,6 +323,8 @@ MonoBehaviour:
       ScooterPopUpImg: {fileID: 0}
       itemToAdd: {fileID: 0}
       itemToRemove: {fileID: 0}
+      fadeDuration: 0.5
+      fadeOutSwitchDuration: 1
   hasRequirements: 0
   showGameRequirements: 0
   gameRequirements:
@@ -337,7 +341,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
   m_Name: Fais comme chez toi !
   m_EditorClassIdentifier: 
-  showGeneralProperties: 1
   graph: {fileID: 11400000}
   position: {x: 1896, y: 392}
   ports:
@@ -347,8 +350,8 @@ MonoBehaviour:
     values:
     - _fieldName: previousNode
       _node: {fileID: 2696005444896043477}
-      _typeQualifiedName: DialogueTextNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueTextNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: nextNodes
         node: {fileID: 479751073814225032}
@@ -359,8 +362,8 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: nextNodes
       _node: {fileID: 2696005444896043477}
-      _typeQualifiedName: DialogueBaseNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueBaseNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections: []
       _direction: 1
       _connectionType: 0
@@ -369,7 +372,8 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 0
-  message: Fais comme chez toi !
+  keyText: Dialogue_JeanBaptiste_LeMarchand_FaisCommeChezToi
+  messagePreview: Fais comme chez toi
   singleRead: 0
   hasGameActions: 0
   showGameActions: 0
@@ -391,7 +395,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
   m_Name: "On y tient \xE9norm\xE9ment"
   m_EditorClassIdentifier: 
-  showGeneralProperties: 1
   graph: {fileID: 11400000}
   position: {x: 2712, y: 24}
   ports:
@@ -401,8 +404,8 @@ MonoBehaviour:
     values:
     - _fieldName: previousNode
       _node: {fileID: 4536461042055506157}
-      _typeQualifiedName: DialogueTextNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueTextNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: nextNodes
         node: {fileID: -4872764007403684664}
@@ -413,8 +416,8 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: nextNodes
       _node: {fileID: 4536461042055506157}
-      _typeQualifiedName: DialogueBaseNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueBaseNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: previousNode
         node: {fileID: 2144413468821161205}
@@ -426,8 +429,9 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 0
-  message: "On y tient \xE9norm\xE9ment, de plus elles sont tr\xE8s calines et tr\xE8s
-    sages ! \xC7a nous fait un peu de compagnie  ! T'en veux une ? "
+  keyText: Dialogue_JeanBaptiste_LeMarchand_OnYTientEnormement
+  messagePreview: "On y tient \xE9norm\xE9ment, de plus elles sont tr\xE8s calines
+    et tr\xE8s sages ! \xC7a nous fait un peu de compagnie  ! T'en veux une ?"
   singleRead: 0
   hasGameActions: 0
   showGameActions: 0
@@ -449,7 +453,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
   m_Name: 'C''est normal qu''il y ait des souris sur vos bureaux ? '
   m_EditorClassIdentifier: 
-  showGeneralProperties: 1
   graph: {fileID: 11400000}
   position: {x: 952, y: 8}
   ports:
@@ -459,8 +462,8 @@ MonoBehaviour:
     values:
     - _fieldName: previousNode
       _node: {fileID: 5226430775150328271}
-      _typeQualifiedName: DialogueTextNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueTextNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: nextNodes
         node: {fileID: 6220339796244599264}
@@ -471,8 +474,8 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: nextNodes
       _node: {fileID: 5226430775150328271}
-      _typeQualifiedName: DialogueBaseNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueBaseNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: previousNode
         node: {fileID: -4872764007403684664}
@@ -484,7 +487,8 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 1
-  message: 'C''est normal qu''il y ait des souris sur vos bureaux ? '
+  keyText: Dialogue_JeanBaptiste_LeMarchand_CEstNormalQuIlYAitDesSouris
+  messagePreview: C'est normal qu'il y ait des souris sur vos bureaux ?
   singleRead: 1
   hasGameActions: 0
   showGameActions: 0
@@ -506,7 +510,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
   m_Name: Bonjour et bienvenue chez Atelier 801 !
   m_EditorClassIdentifier: 
-  showGeneralProperties: 1
   graph: {fileID: 11400000}
   position: {x: 0, y: 0}
   ports:
@@ -516,8 +519,8 @@ MonoBehaviour:
     values:
     - _fieldName: previousNode
       _node: {fileID: 6220339796244599264}
-      _typeQualifiedName: DialogueTextNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueTextNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections: []
       _direction: 0
       _connectionType: 0
@@ -525,8 +528,8 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: nextNodes
       _node: {fileID: 6220339796244599264}
-      _typeQualifiedName: DialogueBaseNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueBaseNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: previousNode
         node: {fileID: 165797156017079086}
@@ -544,7 +547,8 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 0
-  message: Bonjour et bienvenue chez Atelier 801 !
+  keyText: Dialogue_JeanBaptiste_LeMarchand_BonjourEtBienvenue
+  messagePreview: Bonjour et bienvenue chez Atelier 801 !
   singleRead: 0
   hasGameActions: 0
   showGameActions: 0

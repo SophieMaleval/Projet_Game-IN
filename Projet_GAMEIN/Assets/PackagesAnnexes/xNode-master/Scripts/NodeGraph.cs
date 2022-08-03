@@ -33,7 +33,7 @@ namespace XNode {
 
         public void SetStartNodes()
         {
-            Debug.Log(startNodes.Count);
+            //Debug.Log(startNodes.Count);
             Debug.Log(nodes.Count);
 
             Debug.Log("Starts Nodes exists");
