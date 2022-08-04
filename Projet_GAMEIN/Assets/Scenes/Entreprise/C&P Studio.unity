@@ -8531,14 +8531,14 @@ Tilemap:
       e33: 1
   m_TileColorArray:
   - m_RefCount: 0
-    m_Data: {r: 0.00000003323217, g: 0.00000003323217, b: 0.00000003323217, a: 0.00000003323217}
+    m_Data: {r: 3.879049e+19, g: 3.879049e+19, b: 3.879049e+19, a: 3.879049e+19}
   - m_RefCount: 462
     m_Data: {r: 0.8396226, g: 0.4232839, b: 0.19406372, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Origin: {x: -17, y: -9, z: 0}
-  m_Size: {x: 34, y: 17, z: 1}
+  m_Size: {x: 45, y: 17, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
   m_TileOrientation: 0
   m_TileOrientationMatrix:
@@ -8862,6 +8862,10 @@ MonoBehaviour:
   questStep: {fileID: 0}
   questTask: {fileID: 0}
   item: {fileID: 0}
+  textTest: 
+  keyTextTest: 
+  langageTest: 0
+  PannelENTContainerTest: {fileID: 0}
 --- !u!1 &667149012
 GameObject:
   m_ObjectHideFlags: 0
@@ -10360,7 +10364,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1226449640}
   m_Layer: 0
-  m_Name: Escalier/Transition
+  m_Name: Camera_Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12418,13 +12422,13 @@ MonoBehaviour:
   m_ScreenX: 0.5
   m_ScreenY: 0.588
   m_CameraDistance: 10
-  m_DeadZoneWidth: 0.2
-  m_DeadZoneHeight: 0.2
+  m_DeadZoneWidth: 0
+  m_DeadZoneHeight: 0
   m_DeadZoneDepth: 0
   m_UnlimitedSoftZone: 0
-  m_SoftZoneWidth: 0.992
-  m_SoftZoneHeight: 1.008
-  m_BiasX: 0.000001354651
+  m_SoftZoneWidth: 0
+  m_SoftZoneHeight: 0
+  m_BiasX: 0
   m_BiasY: 0
   m_CenterOnActivate: 1
   m_GroupFramingMode: 2
@@ -17920,7 +17924,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 3
+  orthographic size: 4
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -18381,6 +18385,7 @@ GameObject:
   - component: {fileID: 1727281199}
   - component: {fileID: 1727281200}
   - component: {fileID: 1727281198}
+  - component: {fileID: 1727281201}
   m_Layer: 0
   m_Name: CM vcam1 RDC
   m_TagString: Untagged
@@ -18410,7 +18415,7 @@ MonoBehaviour:
   m_Follow: {fileID: 0}
   m_Lens:
     FieldOfView: 60
-    OrthographicSize: 3
+    OrthographicSize: 4
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -18448,6 +18453,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 624f58854b7c92b4e94459d065f8045a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1727281201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1727281197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fb86854f6b5f8146ad716f4191a4a56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1774214458
@@ -19819,7 +19836,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1804188438}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.84, y: -0.89897037, z: 0}
+  m_LocalPosition: {x: -11.17, y: -0.89897037, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 882675296}
