@@ -52,7 +52,7 @@ namespace AllosiusDev.DialogSystem
             {
                 if (GameManager.Instance.player.PlayerAsInterract && !GameManager.Instance.player.InDiscussion)
                 {
-                    //Debug.Log("Launch Discussion");
+                    Debug.Log("Launch Discussion " + npcDialogue.displayName);
                     StartDialog();
                 }
             }
@@ -75,6 +75,7 @@ namespace AllosiusDev.DialogSystem
                 return;
             }
 
+            Debug.Log("Player Start Dialogue");
             GameManager.Instance.player.GetComponent<PlayerConversant>().StartDialog(this, npcDialogue);
 
             PNJTalkAnimation(true);

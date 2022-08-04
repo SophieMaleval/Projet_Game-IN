@@ -86,7 +86,7 @@ namespace AllosiusDev.DialogSystem
 
         public void StartDialog(NpcConversant conversant, DialogueGraph dialogue)
         {
-            //Debug.LogError("Start Dialog");
+            Debug.Log("Start Dialog");
 
             dialogue.SetStartNodes();
 
@@ -96,9 +96,9 @@ namespace AllosiusDev.DialogSystem
             playerScript.InDiscussion = true;
 
             currentConversant = conversant;
-            //Debug.Log(currentConversant.name);
+            Debug.Log(currentConversant.name);
             currentDialog = dialogue;
-            //Debug.Log(currentDialog.name);
+            Debug.Log(currentDialog.name);
             //currentNode = (DialogueTextNode)currentDialog.GetRootNode();
 
             SetNewCurrentNode();
@@ -115,7 +115,7 @@ namespace AllosiusDev.DialogSystem
 
         public IEnumerator Next()
         {
-            //Debug.LogError("Next " + currentNode.name);
+            Debug.LogError("Next " + currentNode.name);
 
             if (canDialog == false)
             {
@@ -124,7 +124,7 @@ namespace AllosiusDev.DialogSystem
 
             if (currentNode.hasGameActions)
             {
-                //Debug.LogError("Execute Game Actions");
+                Debug.Log("Execute Game Actions");
                 currentNode.gameActions.ExecuteGameActions();
             }
 
@@ -136,19 +136,19 @@ namespace AllosiusDev.DialogSystem
 
             if (!HasNext())
             {
-                //Debug.LogError("Quit Dialog");
+                Debug.Log("Quit Dialog");
                 Quit();
                 yield break;
             }
 
             SetNewCurrentNode();
 
-            //Debug.LogError(currentNode.name);
+            Debug.Log(currentNode.name);
         }
 
         private void SetNewCurrentNode()
         {
-            //Debug.LogError("Set New Current Node");
+            Debug.LogError("Set New Current Node");
             int numPlayerResponses = 0;
 
             if (currentNode == null)
@@ -193,7 +193,7 @@ namespace AllosiusDev.DialogSystem
 
         public void Quit()
         {
-            //Debug.Log("Quit Dialog");
+            Debug.Log("Quit Dialog");
 
             currentDialog.ResetDialogues();
 
