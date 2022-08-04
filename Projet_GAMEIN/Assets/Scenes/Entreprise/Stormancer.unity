@@ -1544,7 +1544,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 3
+  orthographic size: 4
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -2966,6 +2966,7 @@ GameObject:
   - component: {fileID: 1585229507}
   - component: {fileID: 1585229506}
   - component: {fileID: 1585229509}
+  - component: {fileID: 1585229508}
   m_Layer: 0
   m_Name: CM vcam1 RDC
   m_TagString: Untagged
@@ -2995,7 +2996,7 @@ MonoBehaviour:
   m_Follow: {fileID: 0}
   m_Lens:
     FieldOfView: 60
-    OrthographicSize: 3
+    OrthographicSize: 4
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -3023,6 +3024,18 @@ Transform:
   m_Father: {fileID: 887040959}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1585229508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1585229505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fb86854f6b5f8146ad716f4191a4a56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1585229509
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3476,8 +3489,8 @@ MonoBehaviour:
   m_ScreenY: 0.5
   m_DeadZoneWidth: 0
   m_DeadZoneHeight: 0
-  m_SoftZoneWidth: 0.8
-  m_SoftZoneHeight: 0.8
+  m_SoftZoneWidth: 0
+  m_SoftZoneHeight: 0
   m_BiasX: 0
   m_BiasY: 0
   m_CenterOnActivate: 1

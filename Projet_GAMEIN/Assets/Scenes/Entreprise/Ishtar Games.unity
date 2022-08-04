@@ -966,6 +966,7 @@ GameObject:
   - component: {fileID: 195775963}
   - component: {fileID: 195775965}
   - component: {fileID: 195775964}
+  - component: {fileID: 195775966}
   m_Layer: 0
   m_Name: CM vcam1 Etage
   m_TagString: Untagged
@@ -1010,7 +1011,7 @@ MonoBehaviour:
   m_Follow: {fileID: 0}
   m_Lens:
     FieldOfView: 60
-    OrthographicSize: 3
+    OrthographicSize: 4
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -1033,6 +1034,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 624f58854b7c92b4e94459d065f8045a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &195775966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 195775962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fb86854f6b5f8146ad716f4191a4a56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &202929830
@@ -1855,7 +1868,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 3
+  orthographic size: 4
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1879,7 +1892,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 412355376}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.065549, y: -1.8396723, z: -10}
+  m_LocalPosition: {x: -7.416153, y: -4.0036883, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2058409890}
@@ -2758,7 +2771,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5999f595a570f924f87977bb0e82e245, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  questSys: {fileID: 0}
   PlayerScript: {fileID: 0}
   gamePrefab: {fileID: 1785675474}
   etapeDeQuete: 4
@@ -5606,13 +5618,13 @@ MonoBehaviour:
   m_ScreenX: 0.5
   m_ScreenY: 0.588
   m_CameraDistance: 10
-  m_DeadZoneWidth: 0.2
-  m_DeadZoneHeight: 0.2
+  m_DeadZoneWidth: 0
+  m_DeadZoneHeight: 0
   m_DeadZoneDepth: 0
   m_UnlimitedSoftZone: 0
-  m_SoftZoneWidth: 0.992
-  m_SoftZoneHeight: 1.008
-  m_BiasX: 0.000001354651
+  m_SoftZoneWidth: 0
+  m_SoftZoneHeight: 0
+  m_BiasX: 0
   m_BiasY: 0
   m_CenterOnActivate: 1
   m_GroupFramingMode: 2
@@ -8080,7 +8092,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1879633821}
   m_Layer: 0
-  m_Name: Camera Container
+  m_Name: Camera_Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8329,7 +8341,7 @@ MonoBehaviour:
   m_Follow: {fileID: 0}
   m_Lens:
     FieldOfView: 60
-    OrthographicSize: 3
+    OrthographicSize: 4
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -8783,13 +8795,13 @@ MonoBehaviour:
   m_ScreenX: 0.5
   m_ScreenY: 0.588
   m_CameraDistance: 10
-  m_DeadZoneWidth: 0.2
-  m_DeadZoneHeight: 0.2
+  m_DeadZoneWidth: 0
+  m_DeadZoneHeight: 0
   m_DeadZoneDepth: 0
   m_UnlimitedSoftZone: 0
-  m_SoftZoneWidth: 0.992
-  m_SoftZoneHeight: 1.008
-  m_BiasX: 0.000001354651
+  m_SoftZoneWidth: 0
+  m_SoftZoneHeight: 0
+  m_BiasX: 0
   m_BiasY: 0
   m_CenterOnActivate: 1
   m_GroupFramingMode: 2
