@@ -120,6 +120,7 @@ namespace AllosiusDev.DialogSystem
         {
             //Debug.LogError("Update UI");
 
+
             UpdateButtonsListeners();
             updateButtons = false;
 
@@ -128,6 +129,8 @@ namespace AllosiusDev.DialogSystem
             {
                 return;
             }
+
+            GameManager.Instance.player.textDebug2.text = "Update UI";
 
             ThisRect.sizeDelta = new Vector2(ThisRect.sizeDelta.x, 96f);
 

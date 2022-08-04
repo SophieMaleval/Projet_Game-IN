@@ -108,7 +108,7 @@ public class PetiteAnnonceManager : MonoBehaviour
 
     private void Update() 
     {
-        if ((int)(object)LocalisationManager.currentLangage != ValueLangageOnDisplay) ; SetAnnonce();
+        if ((int)(object)LocalisationManager.currentLangage != ValueLangageOnDisplay) SetAnnonce();
     }
 
 

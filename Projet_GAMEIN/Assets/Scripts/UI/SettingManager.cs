@@ -13,7 +13,7 @@ public class SettingManager : MonoBehaviour
 
     private CSVReader TextUILocation ;
 
-    private bool CanCheckLanguage = false ;
+    //private bool CanCheckLanguage = false ;
 
     #endregion
 
@@ -92,7 +92,7 @@ public class SettingManager : MonoBehaviour
     {
         yield return new WaitForSeconds(0.25f);
         SetSettingsTextLangue();
-        CanCheckLanguage = true ;        
+        //CanCheckLanguage = true ;        
     }
 
     private void  Update() 

@@ -24,7 +24,7 @@ public class Customizer : MonoBehaviour
     ///*5*/ "Camille", "Dominique",
     //};
 
-    private string WhoIsIt = "§ est ¤ !";
+    //private string WhoIsIt = "§ est ¤ !";
 
     private bool avatarIsInit;
 

@@ -40,7 +40,7 @@ public class ActiveAsProg : MonoBehaviour
 
     public PannelAnnonceScript PannelAnnonceGestion;
 
-    [SerializeField] private bool canIsDestroyed = true;
+    //[SerializeField] private bool canIsDestroyed = true;
 
     #endregion
 

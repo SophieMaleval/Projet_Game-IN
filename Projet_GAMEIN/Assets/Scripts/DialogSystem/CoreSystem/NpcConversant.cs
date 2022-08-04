@@ -53,6 +53,7 @@ namespace AllosiusDev.DialogSystem
                 if (GameManager.Instance.player.PlayerAsInterract && !GameManager.Instance.player.InDiscussion)
                 {
                     Debug.Log("Launch Discussion " + npcDialogue.displayName);
+                    GameManager.Instance.player.debug.color = Color.blue;
                     StartDialog();
                 }
             }

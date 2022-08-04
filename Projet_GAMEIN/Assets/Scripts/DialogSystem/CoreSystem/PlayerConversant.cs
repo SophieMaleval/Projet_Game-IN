@@ -88,6 +88,8 @@ namespace AllosiusDev.DialogSystem
         {
             Debug.Log("Start Dialog");
 
+            GameManager.Instance.player.debug.transform.localScale = Vector3.one;
+
             dialogue.SetStartNodes();
 
             playerScript.GetComponent<PlayerMovement>().StartActivity();
@@ -100,6 +102,8 @@ namespace AllosiusDev.DialogSystem
             currentDialog = dialogue;
             Debug.Log(currentDialog.name);
             //currentNode = (DialogueTextNode)currentDialog.GetRootNode();
+
+            GameManager.Instance.player.textDebug1.text = currentConversant.name + " " + currentDialog.name;
 
             SetNewCurrentNode();
         }
@@ -151,6 +155,8 @@ namespace AllosiusDev.DialogSystem
             Debug.LogError("Set New Current Node");
             int numPlayerResponses = 0;
 
+            GameManager.Instance.player.debug.color = Color.green;
+
             if (currentNode == null)
             {
                 numPlayerResponses = currentDialog.GetPlayerChoisingChildren().Count();
@@ -165,8 +171,9 @@ namespace AllosiusDev.DialogSystem
             if (numPlayerResponses > 0)
             {
                 Debug.Log("Player Choice");
+                GameManager.Instance.player.debug.transform.localScale = new Vector3(3, 3, 1);
                 isChoosing = true;
-                onConversationUpdated();
+                onConversationUpdated.Invoke();
                 return;
             }
 
@@ -188,12 +195,17 @@ namespace AllosiusDev.DialogSystem
             int randomIndex = UnityEngine.Random.Range(0, children.Count());
             Debug.Log(randomIndex);
             currentNode = children[randomIndex];
-            onConversationUpdated();
+            onConversationUpdated.Invoke();
         }
 
         public void Quit()
         {
             Debug.Log("Quit Dialog");
+
+            GameManager.Instance.player.debug.color = Color.red;
+            GameManager.Instance.player.debug.transform.localScale = new Vector3(6.6f, 3.23f, 1f);
+            GameManager.Instance.player.textDebug1.text = "None";
+            GameManager.Instance.player.textDebug2.text = "None";
 
             currentDialog.ResetDialogues();
 
@@ -209,7 +221,7 @@ namespace AllosiusDev.DialogSystem
             currentNode = null;
             isChoosing = false;
             currentConversant = null;
-            onConversationUpdated();
+            onConversationUpdated.Invoke();
 
 
         }

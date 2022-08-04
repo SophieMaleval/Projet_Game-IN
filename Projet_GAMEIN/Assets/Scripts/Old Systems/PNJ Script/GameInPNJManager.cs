@@ -10,7 +10,7 @@ public class GameInPNJManager : MonoBehaviour
     private Transform Player ;
 
     private bool LaurentSayHello;
-    private bool PopUpScoot;
+    //private bool PopUpScoot;
 
     #endregion
 
@@ -45,7 +45,7 @@ public class GameInPNJManager : MonoBehaviour
         if(PlayerPrefs.GetInt("LaurentSayHello") == 0)    PlayerPrefs.SetInt("LaurentSayHello", 1);
         else    SwitchLaurentPNJ();
 
-        StartCoroutine(CanSwitchShowPopUpScoot());
+        //StartCoroutine(CanSwitchShowPopUpScoot());
     }
 
     void SwitchLaurentPNJ()
@@ -78,11 +78,11 @@ public class GameInPNJManager : MonoBehaviour
         }    
     }
 
-    IEnumerator CanSwitchShowPopUpScoot()
+    /*IEnumerator CanSwitchShowPopUpScoot()
     {
         yield return new WaitForSeconds(1f);
-        PopUpScoot = true ;
-    }
+        //PopUpScoot = true ;
+    }*/
 
     #endregion
 }

@@ -28,7 +28,7 @@ public class SceneEntManager : MonoBehaviour
     
     [SerializeField] private Vector2 SetPosition ;
     
-    [SerializeField] private bool LightAutoGenerateInThisScene = false ;
+    //[SerializeField] private bool LightAutoGenerateInThisScene = false ;
 
     #endregion
 

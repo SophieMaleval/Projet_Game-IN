@@ -34,6 +34,9 @@ public class PlayerScript : MonoBehaviour
 
     #region UnityInspector
 
+    public SpriteRenderer debug;
+    public TextMesh textDebug1, textDebug2;
+
     [Header ("Information")]
     public int PlayerSexualGenre ;
 

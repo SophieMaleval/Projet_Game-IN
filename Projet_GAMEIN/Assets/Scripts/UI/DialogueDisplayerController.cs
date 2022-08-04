@@ -28,10 +28,10 @@ public class DialogueDisplayerController : MonoBehaviour
 
     private bool PNJSpeak = false;
 
-    private int CurrentDialogueLength = 0;
+    //private int CurrentDialogueLength = 0;
 
     private int CurrentDialoguePlayerChoice = 0;
-    private bool ChoiceValidation = false;
+    //private bool ChoiceValidation = false;
     private string CurrentDialogue;
     private bool CanChangeCurrentDialogue = false;
 
@@ -41,7 +41,7 @@ public class DialogueDisplayerController : MonoBehaviour
     private bool TextOppeningDisplayCompletely = false;
     private bool TextCloseDisplayCompletely = true;
 
-    private bool CanPass = true;
+    //private bool CanPass = true;
 
     #endregion
 
@@ -101,10 +101,10 @@ public class DialogueDisplayerController : MonoBehaviour
     {
         PNJSpeak = false ;
         CurrentDialogueDisplay = 0 ;
-        CurrentDialogueLength = 0 ; 
+        //CurrentDialogueLength = 0 ; 
         CurrentDialogueState = 0 ;
         CurrentDialoguePlayerChoice = 0 ;
-        ChoiceValidation = false ;
+        //ChoiceValidation = false ;
         WeAreInChoice = false ;
         TextAsCompletelyDisplay = true ;
         TextOppeningDisplayCompletely = false ;

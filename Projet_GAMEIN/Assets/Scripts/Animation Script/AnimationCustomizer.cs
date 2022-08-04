@@ -13,24 +13,24 @@ public class AnimationCustomizer : MonoBehaviour
 
     private int RotationState = 0 ;
 
-    private float SkinPanelHeight = 130f;
-    private float SkinPanelFondHeight = 80f;
+    //private float SkinPanelHeight = 130f;
+    //private float SkinPanelFondHeight = 80f;
 
 
 
 
-    private float OpenSkinGroupHeight = 165f;
-    private float OpenChoiceGroupHeight = 195f;
-    private float CloseGroupHeight = 70f;
+    //private float OpenSkinGroupHeight = 165f;
+    //private float OpenChoiceGroupHeight = 195f;
+    //private float CloseGroupHeight = 70f;
 
-    private float ChoicePanelHeight = 160f;
-    private float ChoicePanelFondHeight = 111f;
+    //private float ChoicePanelHeight = 160f;
+    //private float ChoicePanelFondHeight = 111f;
 
     private float PanelAnimationSpeed = 1f;
-    private float ClosePanelSpeed = 0.5f;
-    private float OpenPanelSpeed = 1.5f;
+    //private float ClosePanelSpeed = 0.5f;
+    //private float OpenPanelSpeed = 1.5f;
 
-    private float PanelWidth = 445f;
+    //private float PanelWidth = 445f;
 
     private int CurrentCategorie;
 

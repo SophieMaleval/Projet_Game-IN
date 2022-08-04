@@ -15,7 +15,7 @@ public class PannelAnnonceScript : MonoBehaviour
     private PlayerScript PlayerScript;
     private PlayerMovement PlayerMovement;
 
-    private bool PannelSetUp = false ;
+    //private bool PannelSetUp = false ;
     private bool PlayerArroundPannel = false;
 
     private bool hasExecuted;

@@ -16,7 +16,7 @@ public class LeverController : MonoBehaviour
 {
     [Header ("Lever Gestion")]
     [SerializeField] private List<SpriteRenderer> LeverRender = new List<SpriteRenderer>();
-    private bool LeverIsActivate = false ;
+    //private bool LeverIsActivate = false ;
     [SerializeField] private Sprite LeverDisable ;
     [SerializeField] private Sprite LeverDisableHighlight ;
     [SerializeField] private Sprite LeverEnable ;

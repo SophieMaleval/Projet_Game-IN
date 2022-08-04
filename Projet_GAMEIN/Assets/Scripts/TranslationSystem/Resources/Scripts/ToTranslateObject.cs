@@ -50,26 +50,6 @@ public class ToTranslateObject : MonoBehaviour
     public string GetCorrectText()
     {
         string text = LangueManager.Instance.Translate(translationKey);
-        /*for (int i = 0; i < text.Length; i++)
-        {
-            if (textToTranslate.font.HasCharacter(text[i], false) == false)
-            {
-                int _val = text[i];
-                Debug.Log(_val);
-                Debug.Log(text[i]);
-
-                if (_val == 65533)
-                {
-                    text = text.Replace(text[i], 'ç');
-                    //Debug.Log(text[i]);
-                }
-
-
-            }
-        }
-        //int value = 'ç';
-        //Debug.Log(value);
-        */
         Debug.Log(text);
         return text;
     }

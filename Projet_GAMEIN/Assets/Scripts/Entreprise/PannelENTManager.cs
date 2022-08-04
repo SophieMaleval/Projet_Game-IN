@@ -447,56 +447,67 @@ public class PannelENTManager : MonoBehaviour
 
     #region URL
 
+    [System.Obsolete]
     public void OpenWebSite()
     {
         if(InformationENT.URLSiteWeb != "") OpenURLLink(InformationENT.URLSiteWeb) ;
     }
 
+    [System.Obsolete]
     public void OpenMailContact()
     {
         if(InformationENT.ContactEmail != "") OpenURLLink(InformationENT.ContactEmail) ;
     }
 
+    [System.Obsolete]
     public void OpenFacebook()
     {
         if(InformationENT.URLFacebook != "") OpenURLLink(InformationENT.URLFacebook) ;
     }
 
+    [System.Obsolete]
     public void OpenInstagram()
     {
         if(InformationENT.URLInstagram != "") OpenURLLink(InformationENT.URLInstagram) ;
     }
 
+    [System.Obsolete]
     public void OpenTwitter()
     {
         if(InformationENT.URLTwitter != "") OpenURLLink(InformationENT.URLTwitter) ;
     }
 
+    [System.Obsolete]
     public void OpenLinkedIn()
     {
         if(InformationENT.URLLinkedIn != "") OpenURLLink(InformationENT.URLLinkedIn) ;
     }
 
+    [System.Obsolete]
     public void OpenDiscord()
     {
         if(InformationENT.URLDiscord != "") OpenURLLink(InformationENT.URLDiscord) ;
     }
 
+    [System.Obsolete]
     public void OpenSteam()
     {
         if(InformationENT.URLSteam != "") OpenURLLink(InformationENT.URLSteam) ;
     }
 
+    [System.Obsolete]
     public void OpenTwitch()
     {
         if(InformationENT.URLTwitch != "") OpenURLLink(InformationENT.URLTwitch) ;
     }
 
+    [System.Obsolete]
     public void OpenYoutube()
     {
         if(InformationENT.URLYoutube != "") OpenURLLink(InformationENT.URLYoutube) ;
     }
 
+    [System.Obsolete]
     public void OpenURLLink(string URLLink)
     {
         Application.ExternalEval("window.open('" + URLLink + "', '_blank')");      

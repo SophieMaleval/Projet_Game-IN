@@ -38,6 +38,12 @@ public class LangueManager : Singleton<LangueManager>
     public string Translate(string key)
     {
         string translatedText = LocalisationManager.GetLocalisedValue(key);
+
+        if(translatedText.Contains("[PLAYER]"))
+        {
+            translatedText = translatedText.Replace("[PLAYER]", GameManager.Instance.player.PlayerName);
+        }
+
         return translatedText;
     }
 
