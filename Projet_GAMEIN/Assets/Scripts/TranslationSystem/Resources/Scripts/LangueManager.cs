@@ -13,13 +13,19 @@ public class LangueManager : Singleton<LangueManager>
 
     #endregion
 
+    #region UnityInspector
+
+    [SerializeField] private LocalisationManager.Langage startLangage;
+
+    #endregion
+
     #region Behaviour
 
     protected override void Awake()
     {
         base.Awake();
 
-        ChangeLangage(LocalisationManager.currentLangage);
+        ChangeLangage(startLangage);
     }
 
     public LocalisationManager.Langage GetCurrentLangage()

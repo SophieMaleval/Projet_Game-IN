@@ -119,7 +119,7 @@ namespace AllosiusDev.DialogSystem
 
         public IEnumerator Next()
         {
-            Debug.LogError("Next " + currentNode.name);
+            //Debug.LogError("Next " + currentNode.name);
 
             if (canDialog == false)
             {
@@ -128,7 +128,7 @@ namespace AllosiusDev.DialogSystem
 
             if (currentNode.hasGameActions)
             {
-                Debug.Log("Execute Game Actions");
+                //Debug.Log("Execute Game Actions");
                 currentNode.gameActions.ExecuteGameActions();
             }
 
@@ -140,19 +140,19 @@ namespace AllosiusDev.DialogSystem
 
             if (!HasNext())
             {
-                Debug.Log("Quit Dialog");
+                //Debug.Log("Quit Dialog");
                 Quit();
                 yield break;
             }
 
             SetNewCurrentNode();
 
-            Debug.Log(currentNode.name);
+            //Debug.Log(currentNode.name);
         }
 
         private void SetNewCurrentNode()
         {
-            Debug.LogError("Set New Current Node");
+            //Debug.LogError("Set New Current Node");
             int numPlayerResponses = 0;
 
             GameManager.Instance.player.debug.color = Color.green;
@@ -170,8 +170,8 @@ namespace AllosiusDev.DialogSystem
 
             if (numPlayerResponses > 0)
             {
-                Debug.Log("Player Choice");
-                GameManager.Instance.player.debug.transform.localScale = new Vector3(3, 3, 1);
+                //Debug.Log("Player Choice");
+                //GameManager.Instance.player.debug.transform.localScale = new Vector3(3, 3, 1);
                 isChoosing = true;
                 onConversationUpdated.Invoke();
                 return;
@@ -181,13 +181,13 @@ namespace AllosiusDev.DialogSystem
 
             if (currentNode == null)
             {
-                Debug.Log("Init Node");
+                //Debug.Log("Init Node");
                 children = currentDialog.GetAiChildren().ToArray();
                 Debug.Log(children[0].name);
             }
             else
             {
-                Debug.Log("New Current Node");
+                //Debug.Log("New Current Node");
                 children = currentDialog.GetAiChildren(currentNode).ToArray();
                 Debug.Log(children[0].name);
             }
