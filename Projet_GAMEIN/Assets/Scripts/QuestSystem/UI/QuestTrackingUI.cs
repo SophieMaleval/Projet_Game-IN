@@ -96,7 +96,7 @@ namespace AllosiusDev.QuestSystem
                 FadeInUI(animContent);
             }
 
-            questTrackingDescription.SetTranslationKey(text);
+            questTrackingDescription.SetTranslationKey(text, TypeDictionary.Quests);
         }
 
         private void FadeOutUI(CanvasGroup canvasGroup)

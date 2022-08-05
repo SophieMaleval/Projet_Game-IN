@@ -190,7 +190,7 @@ namespace AllosiusDev.DialogSystem
                 var _textComp = _choiceInstance.GetComponentInChildren<TextMeshProUGUI>();
                 //_textComp.text = choice.message;
                 var _textTranslate = _choiceInstance.GetComponentInChildren<ToTranslateObject>();
-                _textTranslate.SetTranslationKey(choice.keyText);
+                _textTranslate.SetTranslationKey(choice.keyText, TypeDictionary.Dialogues);
 
                 if (choice.hasRequirements)
                 {

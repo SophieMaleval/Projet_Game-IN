@@ -16,15 +16,6 @@ namespace AllosiusDev.TranslationSystem
             Anglais,
         }
 
-        public enum TypeDictionary
-        {
-            GeneralsUI,
-            InformationPanelTexts,
-            PopUps,
-            Dialogues,
-            Quests,
-        }
-
         public static Langage currentLangage = Langage.Anglais;
 
         /// <summary>
@@ -40,20 +31,20 @@ namespace AllosiusDev.TranslationSystem
         /// <summary>
         /// Fonction permettant de charger le dictionnaire en fonction de la langue de l'utilisateur
         /// </summary>
-        public static void Init()
+        public static void Init(TypeDictionary typeDictionary)
         {
             JSONLoader json;
 
             switch (currentLangage)
             {
                 case Langage.Francais:
-                    json = JSONLoader.LoadJSON("fr");
+                    json = JSONLoader.LoadJSON("fr", typeDictionary);
                     break;
                 case Langage.Anglais:
-                    json = JSONLoader.LoadJSON("en");
+                    json = JSONLoader.LoadJSON("en", typeDictionary);
                     break;
                 default:
-                    json = JSONLoader.LoadJSON("en");
+                    json = JSONLoader.LoadJSON("en", typeDictionary);
                     break;
             }
 
@@ -73,18 +64,18 @@ namespace AllosiusDev.TranslationSystem
         /// </summary>
         /// <param name="key">Clé de recherche du texte à récupérer</param>
         /// <returns>texte traduit</returns>
-        public static string GetLocalisedValue(string key, bool mustInitialized = true)
+        public static string GetLocalisedValue(string key, TypeDictionary typeDictionary, bool mustInitialized = true)
         {
             if (mustInitialized)
             {
                 if (!isInit)
                 {
-                    Init();
+                    Init(typeDictionary);
                 }
             }
             else
             {
-                Init();
+                Init(typeDictionary);
             }
 
             string value;
@@ -99,6 +90,17 @@ namespace AllosiusDev.TranslationSystem
             return value;
         }
 		
-		//A appeler de cette manière partout dans votre jeu LocalisationManager.GetLocalisedValue("ma_clé")
+		//A appeler de cette manière partout dans le jeu LocalisationManager.GetLocalisedValue("ma_clé")
+    }
+
+    public enum TypeDictionary
+    {
+        Default,
+        GeneralsUI,
+        InformationsPanelsTexts,
+        PopUps,
+        InventoryItems,
+        Dialogues,
+        Quests,
     }
 }

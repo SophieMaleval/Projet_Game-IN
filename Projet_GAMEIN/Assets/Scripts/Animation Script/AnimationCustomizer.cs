@@ -288,19 +288,19 @@ public class AnimationCustomizer : MonoBehaviour
             .OnComplete(() => 
             {
                 if (NextCat == 0)
-                { TitleCategories.SetTranslationKey(chooseSectionKey); ; }
+                { TitleCategories.SetTranslationKey(chooseSectionKey, TypeDictionary.GeneralsUI); ; }
                 if (NextCat == 1)
-                { TitleCategories.SetTranslationKey(colorSkinKey); ; }
+                { TitleCategories.SetTranslationKey(colorSkinKey, TypeDictionary.GeneralsUI); ; }
                 if (NextCat == 2)
-                { TitleCategories.SetTranslationKey(hairKey); ; }
+                { TitleCategories.SetTranslationKey(hairKey, TypeDictionary.GeneralsUI); ; }
                 if (NextCat == 3)
-                { TitleCategories.SetTranslationKey(topKey); ; }
+                { TitleCategories.SetTranslationKey(topKey, TypeDictionary.GeneralsUI); ; }
                 if (NextCat == 4)
-                { TitleCategories.SetTranslationKey(pantsKey); ; }
+                { TitleCategories.SetTranslationKey(pantsKey, TypeDictionary.GeneralsUI); ; }
                 if (NextCat == 5)
-                { TitleCategories.SetTranslationKey(shoesKey); ; }
+                { TitleCategories.SetTranslationKey(shoesKey, TypeDictionary.GeneralsUI); ; }
                 if (NextCat == 6)
-                { TitleCategories.SetTranslationKey(goodbyeKey); ; }
+                { TitleCategories.SetTranslationKey(goodbyeKey, TypeDictionary.GeneralsUI); ; }
 
 
                 TitleCategories.GetComponent<RectTransform>().DOScaleY(0.75f, PanelAnimationSpeed/4);
@@ -309,7 +309,7 @@ public class AnimationCustomizer : MonoBehaviour
 
     void SetCustomTextLangue()
     {
-        TitleCategories.SetTranslationKey(chooseSectionKey);
+        TitleCategories.SetTranslationKey(chooseSectionKey, TypeDictionary.GeneralsUI);
 
         BtnCategorieSkin.Translation();
         BtnCategorieHair.Translation();

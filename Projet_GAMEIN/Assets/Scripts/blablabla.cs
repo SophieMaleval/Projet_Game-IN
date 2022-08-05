@@ -19,6 +19,7 @@ public class blablabla : MonoBehaviour
 
     public string textTest;
     public string keyTextTest;
+    public TypeDictionary typeDictionaryTest;
 
     public LocalisationManager.Langage langageTest;
 
@@ -116,7 +117,7 @@ public class blablabla : MonoBehaviour
     [ContextMenu("TestTranslate")]
     public void TestTranslate()
     {
-        textTest = LangueManager.Instance.Translate(keyTextTest);
+        textTest = LangueManager.Instance.Translate(keyTextTest, typeDictionaryTest);
     }
 
     [ContextMenu("TestChangeLangage")]

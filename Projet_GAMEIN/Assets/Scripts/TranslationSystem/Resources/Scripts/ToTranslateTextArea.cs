@@ -19,6 +19,8 @@ namespace AllosiusDev.TranslationSystem
 
         [TextArea(5, 10)] [SerializeField] private string translationKey;
 
+        [SerializeField] public TypeDictionary typeDictionary;
+
         #endregion
 
         #region Behaviour
@@ -28,9 +30,10 @@ namespace AllosiusDev.TranslationSystem
             LangueManager.Instance.onLangageUpdated += Translation;
         }
 
-        public void SetTranslationKey(string value, bool automaticTranslation = true)
+        public void SetTranslationKey(string value, TypeDictionary newTypeDictionary, bool automaticTranslation = true)
         {
             translationKey = value;
+            typeDictionary = newTypeDictionary;
 
             if (automaticTranslation)
                 Translation();
@@ -82,7 +85,7 @@ namespace AllosiusDev.TranslationSystem
             for (int i = 0; i < keys.Count; i++)
             {
                 //Debug.Log(keys[i]);
-                string translation = LangueManager.Instance.Translate(keys[i]);
+                string translation = LangueManager.Instance.Translate(keys[i], typeDictionary);
                 //Debug.Log(translation);
                 text = text.Replace(keys[i], translation);
             }

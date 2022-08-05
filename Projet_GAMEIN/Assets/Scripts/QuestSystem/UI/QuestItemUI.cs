@@ -66,7 +66,7 @@ namespace AllosiusDev.QuestSystem
         public void Setup(QuestStatus status)
         {
             this.statuts = status;
-            title.SetTranslationKey(status.GetQuest()._nameTranslateKey);
+            title.SetTranslationKey(status.GetQuest()._nameTranslateKey, TypeDictionary.Quests);
 
         }
 

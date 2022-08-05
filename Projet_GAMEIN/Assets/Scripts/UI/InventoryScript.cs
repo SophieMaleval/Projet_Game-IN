@@ -284,7 +284,7 @@ public class InventoryScript : MonoBehaviour
 
     void SetNameLangueObj(InventorySlot inventorySlotToSet, InteractibleObject NameTarget)
     {
-        inventorySlotToSet.NameObject.SetTranslationKey(NameTarget.translationKey);
+        inventorySlotToSet.NameObject.SetTranslationKey(NameTarget.translationKey, TypeDictionary.InventoryItems);
     }
 
     void SetImgSlotInventaire(RectTransform ContourImg, Image ImgSlot, Sprite SpriteDisplay)

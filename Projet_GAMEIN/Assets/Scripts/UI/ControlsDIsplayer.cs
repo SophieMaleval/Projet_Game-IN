@@ -83,7 +83,7 @@ public class ControlsDIsplayer : MonoBehaviour
             if(CC == CurrentControls)
             {
                 controlsGroup[CC].gameObject.SetActive(true);
-                titleControls.SetTranslationKey(controlsGroup[CC].keyObject);
+                titleControls.SetTranslationKey(controlsGroup[CC].keyObject, TypeDictionary.GeneralsUI);
                 ControlsParent.GetChild(CC).GetComponent<Button>().interactable = false ;
                 ControlsParent.GetChild(CC).GetComponent<Image>().color = SelectedColor ;
                 ControlsParent.GetChild(CC).localScale = new Vector3(0.75f, 0.75f, 0.75f) ;

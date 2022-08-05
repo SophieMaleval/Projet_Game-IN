@@ -42,9 +42,9 @@ namespace AllosiusDev.TranslationSystem
                 onLangageUpdated();
         }
 
-        public string Translate(string key)
+        public string Translate(string key, TypeDictionary typeDictionary)
         {
-            string translatedText = LocalisationManager.GetLocalisedValue(key);
+            string translatedText = LocalisationManager.GetLocalisedValue(key, typeDictionary);
 
             if (translatedText.Contains("[PLAYER]"))
             {

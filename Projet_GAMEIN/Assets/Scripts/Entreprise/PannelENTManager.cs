@@ -224,8 +224,8 @@ public class PannelENTManager : MonoBehaviour
             {
                 FeuilleActi[ActivityInt].gameObject.SetActive(true);
 
-                ListContenuPage[ActivityInt].titleActivity.SetTranslationKey(InformationENT.ListActivité[ActivityInt].nameActivityTranslationKey);
-                ListContenuPage[ActivityInt].descriptionActivity.SetTranslationKey(InformationENT.ListActivité[ActivityInt].textsActivitiesTranslationKeys);
+                ListContenuPage[ActivityInt].titleActivity.SetTranslationKey(InformationENT.ListActivité[ActivityInt].nameActivityTranslationKey, TypeDictionary.InformationsPanelsTexts);
+                ListContenuPage[ActivityInt].descriptionActivity.SetTranslationKey(InformationENT.ListActivité[ActivityInt].textsActivitiesTranslationKeys, TypeDictionary.InformationsPanelsTexts);
 
                 if (InformationENT.ListActivité[ActivityInt].IllustrationActivité != null)
                 {
@@ -308,7 +308,7 @@ public class PannelENTManager : MonoBehaviour
         }
 
 
-        descriptionEntreprise.SetTranslationKey(InformationENT.descriptionsENTTranslationKeys);
+        descriptionEntreprise.SetTranslationKey(InformationENT.descriptionsENTTranslationKeys, TypeDictionary.InformationsPanelsTexts);
 
         descriptionEntreprise.GetComponent<RectTransform>().sizeDelta = new Vector2(descriptionEntreprise.GetComponent<RectTransform>().sizeDelta.x, InformationENT.HeightDescription);
 

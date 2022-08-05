@@ -70,7 +70,7 @@ namespace AllosiusDev.DialogSystem
                 return "";
             }
 
-            string playerMessage = LangueManager.Instance.Translate(currentNode.keyText);
+            string playerMessage = LangueManager.Instance.Translate(currentNode.keyText, TypeDictionary.Dialogues);
 
             return playerMessage;
         }

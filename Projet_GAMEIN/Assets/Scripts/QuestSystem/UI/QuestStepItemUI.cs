@@ -37,7 +37,7 @@ namespace AllosiusDev.QuestSystem
             this.statuts = statuts;
 
             //description.text = statuts.GetQuestStep().descriptionTranslateKey;
-            description.SetTranslationKey(statuts.GetQuestStep().descriptionTranslateKey);
+            description.SetTranslationKey(statuts.GetQuestStep().descriptionTranslateKey, TypeDictionary.Quests);
 
             if (statuts.IsComplete())
             {

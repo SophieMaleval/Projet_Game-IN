@@ -42,12 +42,45 @@ namespace AllosiusDev.TranslationSystem
         /// </summary>
         /// <param name="codeLangue">Code de la langue, correspond au nom du fichier sans le type (.json)</param>
         /// <returns>Returne un objet JSONLoader chargé avec la liste présente dans le fichier JSON correspondant au code langue</returns>
-        public static JSONLoader LoadJSON(string codeLangue)
+        public static JSONLoader LoadJSON(string codeLangue, TypeDictionary typeDictionary)
         {
             //string path = Application.streamingAssetsPath + "/" + codeLangue + ".json";
             //string json = File.ReadAllText(path, Encoding.UTF8);
 
-            string json = Resources.Load<TextAsset>(string.Format("Traduction/{0}", codeLangue)).text;
+            string json = "";
+            json = Resources.Load<TextAsset>(string.Format("Traduction/{0}", codeLangue)).text;
+
+            /*if (typeDictionary == TypeDictionary.Default)
+            {
+                
+                json = Resources.Load<TextAsset>(string.Format("Traduction/{0}", codeLangue)).text;
+            }
+            else if(typeDictionary == TypeDictionary.GeneralsUI)
+            {
+                codeLangue += "GeneralsUI";
+                json = Resources.Load<TextAsset>(string.Format("Traduction/GeneralsUI/{0}", codeLangue)).text;
+            }
+            else if (typeDictionary == TypeDictionary.InformationsPanelsTexts)
+            {
+                codeLangue += "InformationsPanelsTexts";
+                json = Resources.Load<TextAsset>(string.Format("Traduction/InformationsPanelsTexts/{0}", codeLangue)).text;
+            }
+            else if (typeDictionary == TypeDictionary.InventoryItems)
+            {
+                codeLangue += "InventoryItems";
+                json = Resources.Load<TextAsset>(string.Format("Traduction/InventoryItems/{0}", codeLangue)).text;
+            }
+            else if (typeDictionary == TypeDictionary.PopUps)
+            {
+                codeLangue += "PopUps";
+                json = Resources.Load<TextAsset>(string.Format("Traduction/PopUps/{0}", codeLangue)).text;
+            }
+            else if (typeDictionary == TypeDictionary.Quests)
+            {
+                codeLangue += "Quests";
+                json = Resources.Load<TextAsset>(string.Format("Traduction/Quests/{0}", codeLangue)).text;
+            }*/
+
 
             return JsonUtility.FromJson<JSONLoader>(json);
         }

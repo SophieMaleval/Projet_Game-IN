@@ -26,20 +26,20 @@ public class PopUpManager : MonoBehaviour
 
         if(!IsAdded)
         {
-            string itemName = LangueManager.Instance.Translate(ItemModify.translationKey);
-            string removeInventory = LangueManager.Instance.Translate(removeInventoryTranslationKey);
+            string itemName = LangueManager.Instance.Translate(ItemModify.translationKey, TypeDictionary.PopUps);
+            string removeInventory = LangueManager.Instance.Translate(removeInventoryTranslationKey, TypeDictionary.PopUps);
             ScriptPopUP.titlePopUp = itemName + " " + removeInventory;
 
-            string descriptionItemRemove = LangueManager.Instance.Translate(ItemModify.descriptionItemRemoveTranslationKey);
+            string descriptionItemRemove = LangueManager.Instance.Translate(ItemModify.descriptionItemRemoveTranslationKey, TypeDictionary.PopUps);
             ScriptPopUP.descriptionPopUp = descriptionItemRemove;
         } 
         else 
         {
-            string itemName = LangueManager.Instance.Translate(ItemModify.translationKey);
-            string addInventory = LangueManager.Instance.Translate(addInventoryTranslationKey);
+            string itemName = LangueManager.Instance.Translate(ItemModify.translationKey, TypeDictionary.PopUps);
+            string addInventory = LangueManager.Instance.Translate(addInventoryTranslationKey, TypeDictionary.PopUps);
             ScriptPopUP.titlePopUp = itemName + " " + addInventory;
 
-            string descriptionItemAdd = LangueManager.Instance.Translate(ItemModify.descriptionItemAddTranslationKey);
+            string descriptionItemAdd = LangueManager.Instance.Translate(ItemModify.descriptionItemAddTranslationKey, TypeDictionary.PopUps);
             ScriptPopUP.descriptionPopUp = descriptionItemAdd;
         }
 
@@ -53,10 +53,10 @@ public class PopUpManager : MonoBehaviour
 
         ScriptPopUP.ImgDisplay = popUpData.spriteToDisplay ;
 
-        string title = LangueManager.Instance.Translate(popUpData.titleTranslationKey);
+        string title = LangueManager.Instance.Translate(popUpData.titleTranslationKey, TypeDictionary.PopUps);
         ScriptPopUP.titlePopUp = title;
 
-        string description = LangueManager.Instance.Translate(popUpData.descriptionTranslationKey);
+        string description = LangueManager.Instance.Translate(popUpData.descriptionTranslationKey, TypeDictionary.PopUps);
         ScriptPopUP.descriptionPopUp = description;
 
         SetHeightPopUpDisplayer();
