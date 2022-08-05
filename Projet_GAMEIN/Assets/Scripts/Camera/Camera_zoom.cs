@@ -49,25 +49,27 @@ public class Camera_zoom : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        vcam.Priority = 11;
         shrink = false;
         grow = true;
 
         if ( HasTarget == true)
         {
-            vcam.Follow = null;
-            vcam.transform.DOMove(new Vector3 (Target.transform.position.x, Target.transform.position.y,vcam.transform.position.z), 1);
+            //vcam.Follow = null;
+            vcam.Follow = Target.transform;
         }
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
+        vcam.Priority = 7;
         grow = false;
         shrink = true;
 
         if (HasTarget == true)
         {
-            vcam.transform.DOMove(new Vector3(GameManager.Instance.player.transform.position.x, GameManager.Instance.player.transform.transform.position.y, vcam.transform.position.z), 1);
-            vcam.Follow = GameManager.Instance.player.transform;
+            //vcam.transform.DOMove(new Vector3(GameManager.Instance.player.transform.position.x, GameManager.Instance.player.transform.transform.position.y, vcam.transform.position.z), 1);
+            //vcam.Follow = GameManager.Instance.player.transform;
         }
     }
   
