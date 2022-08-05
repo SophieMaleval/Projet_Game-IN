@@ -1,6 +1,6 @@
 ﻿using AllosiusDev.DialogSystem;
 using AllosiusDev.QuestSystem;
-using HeXa;
+using AllosiusDev.TranslationSystem;
 using System;
 using System.Collections;
 using System.Collections.Generic;

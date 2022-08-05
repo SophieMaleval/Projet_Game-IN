@@ -6,6 +6,7 @@ using TMPro ;
 using DG.Tweening;
 using AllosiusDev.QuestSystem;
 using AllosiusDev.DialogSystem;
+using AllosiusDev.TranslationSystem;
 
 public class InventoryScript : MonoBehaviour
 {

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 
-namespace HeXa
+namespace AllosiusDev.TranslationSystem
 {
     /// <summary>
     /// Classe permettant de charger une liste d'objet facilement transférable dans un objet de type Dictionary pour s'affranchr de la limitation du serializer d'unity

@@ -2,56 +2,58 @@
 using System.Collections.Generic;
 using UnityEngine;
 using AllosiusDev;
-using HeXa;
 using System;
 
-public class LangueManager : Singleton<LangueManager>
+namespace AllosiusDev.TranslationSystem
 {
-    #region Events
-
-    public event Action onLangageUpdated;
-
-    #endregion
-
-    #region UnityInspector
-
-    [SerializeField] private LocalisationManager.Langage startLangage;
-
-    #endregion
-
-    #region Behaviour
-
-    protected override void Awake()
+    public class LangueManager : Singleton<LangueManager>
     {
-        base.Awake();
+        #region Events
 
-        ChangeLangage(startLangage);
-    }
+        public event Action onLangageUpdated;
 
-    public LocalisationManager.Langage GetCurrentLangage()
-    {
-        return LocalisationManager.currentLangage;
-    }
+        #endregion
 
-    public void ChangeLangage(LocalisationManager.Langage newLangage)
-    {
-        LocalisationManager.SetCurrentLangage(newLangage);
-        Debug.Log(LocalisationManager.currentLangage);
-        if(onLangageUpdated != null)
-            onLangageUpdated();
-    }
+        #region UnityInspector
 
-    public string Translate(string key)
-    {
-        string translatedText = LocalisationManager.GetLocalisedValue(key);
+        [SerializeField] private LocalisationManager.Langage startLangage;
 
-        if(translatedText.Contains("[PLAYER]"))
+        #endregion
+
+        #region Behaviour
+
+        protected override void Awake()
         {
-            translatedText = translatedText.Replace("[PLAYER]", GameManager.Instance.player.PlayerName);
+            base.Awake();
+
+            ChangeLangage(startLangage);
         }
 
-        return translatedText;
-    }
+        public LocalisationManager.Langage GetCurrentLangage()
+        {
+            return LocalisationManager.currentLangage;
+        }
 
-    #endregion
+        public void ChangeLangage(LocalisationManager.Langage newLangage)
+        {
+            LocalisationManager.SetCurrentLangage(newLangage);
+            Debug.Log(LocalisationManager.currentLangage);
+            if (onLangageUpdated != null)
+                onLangageUpdated();
+        }
+
+        public string Translate(string key)
+        {
+            string translatedText = LocalisationManager.GetLocalisedValue(key);
+
+            if (translatedText.Contains("[PLAYER]"))
+            {
+                translatedText = translatedText.Replace("[PLAYER]", GameManager.Instance.player.PlayerName);
+            }
+
+            return translatedText;
+        }
+
+        #endregion
+    }
 }

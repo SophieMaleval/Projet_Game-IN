@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using DG.Tweening;
+using AllosiusDev.TranslationSystem;
 
 namespace AllosiusDev.QuestSystem
 {

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.Audio;
 using TMPro ;
 using DG.Tweening ;
-using HeXa;
+using AllosiusDev.TranslationSystem;
 
 public class SettingManager : MonoBehaviour
 {
@@ -77,12 +77,12 @@ public class SettingManager : MonoBehaviour
 
     private void OnEnable() 
     {
-        if(LangueManager.Instance.GetCurrentLangage() == HeXa.LocalisationManager.Langage.Francais)
+        if(LangueManager.Instance.GetCurrentLangage() == AllosiusDev.TranslationSystem.LocalisationManager.Langage.Francais)
         {
             SetFrenchLanguage();
         }
 
-        if (LangueManager.Instance.GetCurrentLangage() == HeXa.LocalisationManager.Langage.Anglais)
+        if (LangueManager.Instance.GetCurrentLangage() == AllosiusDev.TranslationSystem.LocalisationManager.Langage.Anglais)
         {
             SetEnglishLanguage();
         }
