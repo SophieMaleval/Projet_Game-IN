@@ -7,6 +7,7 @@ using DG.Tweening ;
 using UnityEngine.SceneManagement;
 using AllosiusDev.Audio;
 using Core.Session;
+using AllosiusDev.TranslationSystem;
 
 public class MenuManager : MonoBehaviour
 {

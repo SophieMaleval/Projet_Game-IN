@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using TMPro;
 using DG.Tweening;
 using UnityEngine.SceneManagement;
+using AllosiusDev.TranslationSystem;
 
 public class AnimationCustomizer : MonoBehaviour
 {

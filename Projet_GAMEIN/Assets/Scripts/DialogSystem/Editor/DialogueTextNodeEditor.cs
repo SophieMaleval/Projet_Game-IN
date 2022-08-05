@@ -8,7 +8,7 @@ using XNode;
 using UnityEditor.SceneManagement;
 using AllosiusDev.Core;
 using AllosiusDev.QuestSystem;
-using HeXa;
+using AllosiusDev.TranslationSystem;
 
 namespace AllosiusDev.DialogSystem
 {

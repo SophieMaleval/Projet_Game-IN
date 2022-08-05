@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI ;
+using AllosiusDev.TranslationSystem;
 
 [System.Serializable]
 public class UIPanelENTContainer

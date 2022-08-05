@@ -3,61 +3,64 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class ToTranslateObject : MonoBehaviour
+namespace AllosiusDev.TranslationSystem
 {
-    #region Properties
-
-    public TextMeshProUGUI TextToTranslate => textToTranslate;
-
-    public string TranslationKey => translationKey;
-
-    #endregion
-
-    #region UnityInspector
-
-    [SerializeField] private TextMeshProUGUI textToTranslate;
-
-    [SerializeField] private string translationKey;
-
-    #endregion
-
-    #region Behaviour
-
-    void Start()
+    public class ToTranslateObject : MonoBehaviour
     {
-        LangueManager.Instance.onLangageUpdated += Translation;
-    }
+        #region Properties
 
-    public void SetTranslationKey(string value, bool automaticTranslation = true)
-    {
-        translationKey = value;
+        public TextMeshProUGUI TextToTranslate => textToTranslate;
 
-        if(automaticTranslation)
-            Translation();
-    }
+        public string TranslationKey => translationKey;
 
-    public void Translation()
-    {
-        if(translationKey == null)
+        #endregion
+
+        #region UnityInspector
+
+        [SerializeField] private TextMeshProUGUI textToTranslate;
+
+        [SerializeField] private string translationKey;
+
+        #endregion
+
+        #region Behaviour
+
+        void Start()
         {
-            Debug.LogWarning("translation key is null");
-            return;
+            LangueManager.Instance.onLangageUpdated += Translation;
         }
-        string text = GetCorrectText();
-        textToTranslate.text = text;
-    }
 
-    public string GetCorrectText()
-    {
-        string text = LangueManager.Instance.Translate(translationKey);
-        Debug.Log(text);
-        return text;
-    }
+        public void SetTranslationKey(string value, bool automaticTranslation = true)
+        {
+            translationKey = value;
 
-    private void OnDestroy()
-    {
-        LangueManager.Instance.onLangageUpdated -= Translation;
-    }
+            if (automaticTranslation)
+                Translation();
+        }
 
-    #endregion
+        public void Translation()
+        {
+            if (translationKey == null)
+            {
+                Debug.LogWarning("translation key is null");
+                return;
+            }
+            string text = GetCorrectText();
+            textToTranslate.text = text;
+        }
+
+        public string GetCorrectText()
+        {
+            string text = LangueManager.Instance.Translate(translationKey);
+            Debug.Log(text);
+            return text;
+        }
+
+        private void OnDestroy()
+        {
+            LangueManager.Instance.onLangageUpdated -= Translation;
+        }
+
+        #endregion
+    }
 }

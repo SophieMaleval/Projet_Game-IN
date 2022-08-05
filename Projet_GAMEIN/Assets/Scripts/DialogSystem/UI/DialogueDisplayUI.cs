@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using AllosiusDev.Audio;
 using AllosiusDev.Core;
+using AllosiusDev.TranslationSystem;
 
 namespace AllosiusDev.DialogSystem
 {

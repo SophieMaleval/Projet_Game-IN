@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AllosiusDev.TranslationSystem;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -89,13 +90,7 @@ namespace AllosiusDev.DialogSystem
             Debug.Log("Start Dialog");
 
             GameManager.Instance.player.debug.transform.localScale = Vector3.one;
-
-            dialogue.SetStartNodes();
-
-            playerScript.GetComponent<PlayerMovement>().StartActivity();
-
-            playerScript.PlayerAsInterract = false;
-            playerScript.InDiscussion = true;
+            GameManager.Instance.player.debug.color = Color.magenta;
 
             currentConversant = conversant;
             Debug.Log(currentConversant.name);
@@ -105,7 +100,45 @@ namespace AllosiusDev.DialogSystem
 
             GameManager.Instance.player.textDebug1.text = currentConversant.name + " " + currentDialog.name;
 
+            GameManager.Instance.player.textDebug1.text = currentDialog.name + " " + currentDialog.startNodes.Count + "Before Start Nodes";
+
+            currentDialog.SetStartNodes();
+            List<Node> _startNodes = new List<Node>();
+
+            for (int i = 0; i < currentDialog.nodes.Count; i++)
+            {
+                Debug.Log(currentDialog.nodes[i].name);
+                if (currentDialog.nodes[i].GetInputsPorts().Count == 0)
+                {
+                    _startNodes.Add(currentDialog.nodes[i]);
+                    Debug.Log("Start Nodes Add " + currentDialog.nodes[i].name);
+                }
+            }
+
+            if (_startNodes.Count > 0)
+            {
+                GameManager.Instance.player.textDebug1.text = currentDialog.name + " " + _startNodes.Count + " " + _startNodes[0].name;
+            }
+            else
+            {
+                GameManager.Instance.player.debug.color = Color.yellow;
+                GameManager.Instance.player.textDebug1.text = currentDialog.name + " " + _startNodes.Count + "After Start Nodes";
+               
+            }
+
             SetNewCurrentNode();
+
+            if(currentDialog.startNodes.Count <= 0)
+            {
+                currentNode = (DialogueTextNode)currentDialog.GetRootNode();
+                GameManager.Instance.player.textDebug1.text = "Force Init Node " + currentNode.name;
+                GameManager.Instance.player.textDebug2.text = "Force Init Node " + currentNode.name ;
+            }
+
+            playerScript.GetComponent<PlayerMovement>().StartActivity();
+
+            playerScript.PlayerAsInterract = false;
+            playerScript.InDiscussion = true;
         }
 
 
@@ -173,6 +206,7 @@ namespace AllosiusDev.DialogSystem
                 //Debug.Log("Player Choice");
                 //GameManager.Instance.player.debug.transform.localScale = new Vector3(3, 3, 1);
                 isChoosing = true;
+                GameManager.Instance.player.textDebug2.text = "Player Choices " + numPlayerResponses;
                 onConversationUpdated.Invoke();
                 return;
             }
@@ -195,6 +229,7 @@ namespace AllosiusDev.DialogSystem
             int randomIndex = UnityEngine.Random.Range(0, children.Count());
             Debug.Log(randomIndex);
             currentNode = children[randomIndex];
+            GameManager.Instance.player.textDebug2.text = currentNode.name;
             onConversationUpdated.Invoke();
         }
 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using AllosiusDev.TranslationSystem;
 
 public class PopUpManager : MonoBehaviour
 {

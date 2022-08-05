@@ -31,7 +31,7 @@ namespace XNode {
             SetStartNodes();
         }
 
-        public void SetStartNodes()
+        public virtual void SetStartNodes()
         {
             //Debug.Log(startNodes.Count);
             Debug.Log(nodes.Count);

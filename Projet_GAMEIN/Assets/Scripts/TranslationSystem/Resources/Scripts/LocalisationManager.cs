@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace HeXa
+namespace AllosiusDev.TranslationSystem
 {
     /// <summary>
     /// Point d'entrée vers les traductions
@@ -14,6 +14,15 @@ namespace HeXa
         {
             Francais,
             Anglais,
+        }
+
+        public enum TypeDictionary
+        {
+            GeneralsUI,
+            InformationPanelTexts,
+            PopUps,
+            Dialogues,
+            Quests,
         }
 
         public static Langage currentLangage = Langage.Anglais;

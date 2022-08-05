@@ -1,4 +1,5 @@
 ﻿using AllosiusDev.Audio;
+using AllosiusDev.TranslationSystem;
 using Core;
 using Core.Session;
 using System.Collections;

@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class KeyContainerObject : MonoBehaviour
+namespace AllosiusDev.TranslationSystem
 {
-    [SerializeField] public string keyObject;
+    public class KeyContainerObject : MonoBehaviour
+    {
+        [SerializeField] public string keyObject;
+    }
 }
