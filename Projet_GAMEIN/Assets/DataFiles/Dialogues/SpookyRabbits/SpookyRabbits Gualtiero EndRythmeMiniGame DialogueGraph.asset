@@ -1,0 +1,143 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-7691865899412359714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
+  m_Name: "J'ai d\xE9j\xE0 entendu mieux..."
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 0, y: 0}
+  ports:
+    keys:
+    - previousNode
+    - nextNodes
+    values:
+    - _fieldName: previousNode
+      _node: {fileID: -7691865899412359714}
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueTextNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: nextNodes
+      _node: {fileID: -7691865899412359714}
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueBaseNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: previousNode
+        node: {fileID: -14668862205172734}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  previousNode: {fileID: 0}
+  nextNodes: {fileID: 0}
+  identityType: 0
+  keyText: Dialogue_Gualtiero_JAiDejaEntenduMieux
+  messagePreview: Dialogue_Gualtiero_JAiDejaEntenduMieux
+  singleRead: 0
+  hasGameActions: 0
+  showGameActions: 0
+  gameActions:
+    actionsList: []
+  hasRequirements: 0
+  showGameRequirements: 0
+  gameRequirements:
+    requirementsList: []
+--- !u!114 &-14668862205172734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
+  m_Name: "Mais bon, j'ai d\xE9j\xE0 entendu pire aussi."
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 712, y: 8}
+  ports:
+    keys:
+    - previousNode
+    - nextNodes
+    values:
+    - _fieldName: previousNode
+      _node: {fileID: -14668862205172734}
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueTextNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: nextNodes
+        node: {fileID: -7691865899412359714}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: nextNodes
+      _node: {fileID: -14668862205172734}
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueBaseNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  previousNode: {fileID: 0}
+  nextNodes: {fileID: 0}
+  identityType: 0
+  keyText: Dialogue_Gualtiero_MaisJAiDejaEntenduPire
+  messagePreview: Dialogue_Gualtiero_MaisJAiDejaEntenduPire
+  singleRead: 0
+  hasGameActions: 1
+  showGameActions: 1
+  gameActions:
+    actionsList:
+    - actionType: 8
+      hasCondition: 0
+      nodesRequiredToRead: []
+      questToAdd: {fileID: 0}
+      questAssociated: {fileID: 0}
+      questStepToComplete: {fileID: 0}
+      ScooterPopUpData: {fileID: 0}
+      itemToAdd: {fileID: 0}
+      itemToRemove: {fileID: 0}
+      fadeDuration: 0.5
+      fadeOutSwitchDuration: 1
+      newConversantToCall: {fileID: 0}
+      dialogueToLaunch: {fileID: 11400000, guid: 8ad5992d384a2c146a1b70958fd7981c,
+        type: 2}
+      launchDialogueToMainNode: 1
+  hasRequirements: 0
+  showGameRequirements: 0
+  gameRequirements:
+    requirementsList: []
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c135d5abc97ad74e959ab5b6aa5d6eb, type: 3}
+  m_Name: SpookyRabbits Gualtiero EndRythmeMiniGame DialogueGraph
+  m_EditorClassIdentifier: 
+  nodes:
+  - {fileID: -7691865899412359714}
+  - {fileID: -14668862205172734}
+  displayName: Gualtiero EndRythmeMiniGame Dialogue
+  description: Dialogue Commentaire Fin de mini jeu de rythme Gualtiero Spooky Rabbits
+  mainNodeParent: {fileID: 0}

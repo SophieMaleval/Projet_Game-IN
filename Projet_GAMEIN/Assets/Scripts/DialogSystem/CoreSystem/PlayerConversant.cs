@@ -20,6 +20,8 @@ namespace AllosiusDev.DialogSystem
 
         private bool isChoosing = false;
 
+        private List<Node> _currentStartNodes = new List<Node>();
+
         #endregion
 
         #region Properties
@@ -92,43 +94,50 @@ namespace AllosiusDev.DialogSystem
             GameManager.Instance.player.debug.transform.localScale = Vector3.one;
             GameManager.Instance.player.debug.color = Color.magenta;
 
-            currentConversant = conversant;
-            Debug.Log(currentConversant.name);
             currentDialog = dialogue;
             Debug.Log(currentDialog.name);
+
+            if (conversant != null)
+            {
+                currentConversant = conversant;
+                Debug.Log(currentConversant.name);
+                currentConversant.PNJTalkAnimation(true);
+
+                GameManager.Instance.player.textDebug1.text = currentConversant.name + " " + currentDialog.name;
+            }
+
             //currentNode = (DialogueTextNode)currentDialog.GetRootNode();
 
-            GameManager.Instance.player.textDebug1.text = currentConversant.name + " " + currentDialog.name;
 
-            GameManager.Instance.player.textDebug1.text = currentDialog.name + " " + currentDialog.startNodes.Count + "Before Start Nodes";
+            //GameManager.Instance.player.textDebug1.text = currentDialog.name + " " + currentDialog.startNodes.Count + "Before Start Nodes";
 
-            currentDialog.SetStartNodes();
-            List<Node> _startNodes = new List<Node>();
+            //currentDialog.SetStartNodes();
+            _currentStartNodes.Clear();
 
             for (int i = 0; i < currentDialog.nodes.Count; i++)
             {
                 Debug.Log(currentDialog.nodes[i].name);
                 if (currentDialog.nodes[i].GetInputsPorts().Count == 0)
                 {
-                    _startNodes.Add(currentDialog.nodes[i]);
+                    _currentStartNodes.Add(currentDialog.nodes[i]);
                     Debug.Log("Start Nodes Add " + currentDialog.nodes[i].name);
                 }
             }
 
-            if (_startNodes.Count > 0)
+            if (_currentStartNodes.Count > 0)
             {
-                GameManager.Instance.player.textDebug1.text = currentDialog.name + " " + _startNodes.Count + " " + _startNodes[0].name;
+                GameManager.Instance.player.textDebug1.text = currentDialog.name + " " + _currentStartNodes.Count + " " + _currentStartNodes[0].name;
             }
             else
             {
                 GameManager.Instance.player.debug.color = Color.yellow;
-                GameManager.Instance.player.textDebug1.text = currentDialog.name + " " + _startNodes.Count + "After Start Nodes";
+                GameManager.Instance.player.textDebug1.text = currentDialog.name + " " + _currentStartNodes.Count + "After Start Nodes";
                
             }
 
             SetNewCurrentNode();
 
-            if(currentDialog.startNodes.Count <= 0)
+            if(_currentStartNodes.Count <= 0)
             {
                 currentNode = (DialogueTextNode)currentDialog.GetRootNode();
                 GameManager.Instance.player.textDebug1.text = "Force Init Node " + currentNode.name;
@@ -141,16 +150,70 @@ namespace AllosiusDev.DialogSystem
             playerScript.InDiscussion = true;
         }
 
+        public IEnumerable<DialogueTextNode> GetPlayerChoisingChildren()
+        {
+            //Debug.Log("Get Player Choicsing Children");
+
+            foreach (DialogueTextNode node in _currentStartNodes)
+            {
+                //Debug.Log(node.name);
+
+                if (node.identityType == DialogueTextNode.IdentityType.Player)
+                {
+                    if (node.singleRead == false)
+                    {
+                        yield return node;
+                    }
+                    else if (node.singleRead && node.GetAlreadyRead() == false)
+                    {
+                        yield return node;
+                    }
+
+                }
+            }
+        }
+
+        public IEnumerable<DialogueTextNode> GetAiChildren()
+        {
+            //Debug.Log("Get AI Children");
+
+            foreach (DialogueTextNode node in _currentStartNodes)
+            {
+                //Debug.Log(node.name);
+
+                DialogueTextNode nodeChecked = currentDialog.GetRequiredNodes(node);
+                if (nodeChecked != null)
+                {
+                    if (node.identityType == DialogueTextNode.IdentityType.NPC)
+                    {
+                        if (node.singleRead == false)
+                        {
+                            yield return node;
+                        }
+                        else if (node.singleRead && node.GetAlreadyRead() == false)
+                        {
+                            yield return node;
+                        }
+                    }
+                }
+
+            }
+        }
 
         public void SelectChoice(DialogueTextNode chosenNode)
         {
             //Debug.Log("SelectChoice");
             currentNode = chosenNode;
             isChoosing = false;
-            StartCoroutine(Next());
+            Next();
         }
 
-        public IEnumerator Next()
+        public void Next()
+        {
+            StartCoroutine(NextCoroutine());
+        }
+
+        public IEnumerator NextCoroutine()
         {
             //Debug.LogError("Next " + currentNode.name);
 
@@ -192,7 +255,7 @@ namespace AllosiusDev.DialogSystem
 
             if (currentNode == null)
             {
-                numPlayerResponses = currentDialog.GetPlayerChoisingChildren().Count();
+                numPlayerResponses = GetPlayerChoisingChildren().Count();
                 Debug.Log(numPlayerResponses);
             }
             else
@@ -216,7 +279,7 @@ namespace AllosiusDev.DialogSystem
             if (currentNode == null)
             {
                 //Debug.Log("Init Node");
-                children = currentDialog.GetAiChildren().ToArray();
+                children = GetAiChildren().ToArray();
                 Debug.Log(children[0].name);
             }
             else
@@ -242,14 +305,16 @@ namespace AllosiusDev.DialogSystem
             GameManager.Instance.player.textDebug1.text = "None";
             GameManager.Instance.player.textDebug2.text = "None";
 
-            currentDialog.ResetDialogues();
+            if(currentDialog != null)
+                currentDialog.ResetDialogues();
 
             playerScript.PlayerAsInterract = false;
             playerScript.InDiscussion = false;
 
             playerScript.GetComponent<PlayerMovement>().EndActivity();
 
-            currentConversant.PNJTalkAnimation(false);
+            if(currentConversant != null)
+                currentConversant.PNJTalkAnimation(false);
 
             currentDialog = null;
 

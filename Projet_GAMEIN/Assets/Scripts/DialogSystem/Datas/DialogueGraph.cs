@@ -75,7 +75,7 @@ namespace AllosiusDev.DialogSystem
             }
         }
 
-        public IEnumerable<DialogueTextNode> GetPlayerChoisingChildren()
+        /*public IEnumerable<DialogueTextNode> GetPlayerChoisingChildren()
         {
             //Debug.Log("Get Player Choicsing Children");
 
@@ -96,7 +96,7 @@ namespace AllosiusDev.DialogSystem
 
                 }
             }
-        }
+        }*/
 
         public IEnumerable<DialogueTextNode> GetPlayerChoisingChildren(DialogueTextNode currentNode)
         {
@@ -121,7 +121,7 @@ namespace AllosiusDev.DialogSystem
             }
         }
 
-        public IEnumerable<DialogueTextNode> GetAiChildren()
+        /*public IEnumerable<DialogueTextNode> GetAiChildren()
         {
             //Debug.Log("Get AI Children");
 
@@ -146,7 +146,7 @@ namespace AllosiusDev.DialogSystem
                 }
 
             }
-        }
+        }*/
 
         public IEnumerable<DialogueTextNode> GetAiChildren(DialogueTextNode currentNode)
         {

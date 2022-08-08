@@ -47,8 +47,8 @@ MonoBehaviour:
   nextNodes: {fileID: 0}
   identityType: 0
   keyText: Dialogue_Gualtiero_AhahMerciDAvoirPrisLeTemps
-  messagePreview: Ahah. Merci d'avoir pris le temps de nous ramener un nouvel ampli,
-    on va pouvoir tester la nouvelle structure de ce morceau.
+  messagePreview: Ahah. Thanks for taking the time to bring us a new amp, we'll be
+    able to test the new structure of this piece.
   singleRead: 0
   hasGameActions: 0
   showGameActions: 0
@@ -108,8 +108,7 @@ MonoBehaviour:
   nextNodes: {fileID: 0}
   identityType: 0
   keyText: Dialogue_Gualtiero_AhSalut
-  messagePreview: "Ah salut, tu dois \xEAtre le gars dont Fran\xE7ois m'a parl\xE9
-    tout a l'heure !"
+  messagePreview: "Oh hi, you must be the guy Fran\xE7ois told me about earlier !"
   singleRead: 0
   hasGameActions: 0
   showGameActions: 0
@@ -166,7 +165,7 @@ MonoBehaviour:
   nextNodes: {fileID: 0}
   identityType: 1
   keyText: Dialogue_Gualtiero_CEstSuperSympaIci
-  messagePreview: C'est super sympa ici.
+  messagePreview: The ambience is really great.
   singleRead: 1
   hasGameActions: 0
   showGameActions: 0
@@ -248,7 +247,7 @@ MonoBehaviour:
   nextNodes: {fileID: 0}
   identityType: 1
   keyText: Dialogue_Gualtiero_JeDoisYAller
-  messagePreview: Je dois y aller.
+  messagePreview: I have to go.
   singleRead: 1
   hasGameActions: 0
   showGameActions: 0
@@ -305,7 +304,7 @@ MonoBehaviour:
   nextNodes: {fileID: 0}
   identityType: 1
   keyText: Dialogue_Gualtiero_DonnerLAmpli
-  messagePreview: '*Donner l''ampli.*'
+  messagePreview: '*Give the amplifier*'
   singleRead: 0
   hasGameActions: 0
   showGameActions: 0
@@ -317,11 +316,14 @@ MonoBehaviour:
       questToAdd: {fileID: 0}
       questAssociated: {fileID: 0}
       questStepToComplete: {fileID: 0}
-      ScooterPopUpImg: {fileID: 0}
+      ScooterPopUpData: {fileID: 0}
       itemToAdd: {fileID: 0}
       itemToRemove: {fileID: 11400000, guid: 476c6f5960426de4db209e16f5e628b7, type: 2}
       fadeDuration: 0.5
       fadeOutSwitchDuration: 1
+      newConversantToCall: {fileID: 0}
+      dialogueToLaunch: {fileID: 0}
+      launchDialogueToMainNode: 0
     - actionType: 2
       hasCondition: 0
       nodesRequiredToRead: []
@@ -330,11 +332,14 @@ MonoBehaviour:
         type: 2}
       questStepToComplete: {fileID: 11400000, guid: 516daa7b7d89e2d4db9d2b078c82bbf4,
         type: 2}
-      ScooterPopUpImg: {fileID: 0}
+      ScooterPopUpData: {fileID: 0}
       itemToAdd: {fileID: 0}
       itemToRemove: {fileID: 11400000, guid: 476c6f5960426de4db209e16f5e628b7, type: 2}
       fadeDuration: 0.5
       fadeOutSwitchDuration: 1
+      newConversantToCall: {fileID: 0}
+      dialogueToLaunch: {fileID: 0}
+      launchDialogueToMainNode: 0
   hasRequirements: 1
   showGameRequirements: 1
   gameRequirements:
@@ -406,7 +411,7 @@ MonoBehaviour:
   nextNodes: {fileID: 0}
   identityType: 0
   keyText: Dialogue_Gualtiero_MontreMoiCeQueTuSaisFaire
-  messagePreview: Montre-moi ce que tu sais faire !
+  messagePreview: Show me what you got !
   singleRead: 0
   hasGameActions: 0
   showGameActions: 0
@@ -460,7 +465,7 @@ MonoBehaviour:
   nextNodes: {fileID: 0}
   identityType: 0
   keyText: Dialogue_Gualtiero_AttentionSuisBienLeRythme
-  messagePreview: 'Attention suis bien le rythme : 3,2, 1..'
+  messagePreview: "Careful, follow the rythm : 3,2,1\u2026"
   singleRead: 0
   hasGameActions: 1
   showGameActions: 1
@@ -472,24 +477,14 @@ MonoBehaviour:
       questToAdd: {fileID: 0}
       questAssociated: {fileID: 0}
       questStepToComplete: {fileID: 0}
-      ScooterPopUpImg: {fileID: 0}
+      ScooterPopUpData: {fileID: 0}
       itemToAdd: {fileID: 0}
       itemToRemove: {fileID: 0}
       fadeDuration: 0.5
       fadeOutSwitchDuration: 1
-    - actionType: 2
-      hasCondition: 0
-      nodesRequiredToRead: []
-      questToAdd: {fileID: 0}
-      questAssociated: {fileID: 11400000, guid: e62da928601dc8545b2e1b2042a10cbb,
-        type: 2}
-      questStepToComplete: {fileID: 11400000, guid: 516daa7b7d89e2d4db9d2b078c82bbf4,
-        type: 2}
-      ScooterPopUpImg: {fileID: 0}
-      itemToAdd: {fileID: 0}
-      itemToRemove: {fileID: 0}
-      fadeDuration: 0.5
-      fadeOutSwitchDuration: 1
+      newConversantToCall: {fileID: 0}
+      dialogueToLaunch: {fileID: 0}
+      launchDialogueToMainNode: 0
   hasRequirements: 0
   showGameRequirements: 0
   gameRequirements:
@@ -538,7 +533,7 @@ MonoBehaviour:
   nextNodes: {fileID: 0}
   identityType: 0
   keyText: Dialogue_Gualtiero_PasDeSouci
-  messagePreview: Pas de souci !
+  messagePreview: No problem.
   singleRead: 0
   hasGameActions: 0
   showGameActions: 0
@@ -592,8 +587,8 @@ MonoBehaviour:
   nextNodes: {fileID: 0}
   identityType: 0
   keyText: Dialogue_Gualtiero_MerciOnABeaucoupTravaillePourObtenir
-  messagePreview: "Merci ! On a beaucoup travaill\xE9 pour obtenir le traitement
-    acoustique parfait sans sacrifier la qualit\xE9 du cadre."
+  messagePreview: Thank you! A lot of work went into getting the perfect acoustic
+    treatment without sacrificing the quality of the frame.
   singleRead: 0
   hasGameActions: 1
   showGameActions: 1
@@ -605,11 +600,14 @@ MonoBehaviour:
       questToAdd: {fileID: 0}
       questAssociated: {fileID: 0}
       questStepToComplete: {fileID: 0}
-      ScooterPopUpImg: {fileID: 0}
+      ScooterPopUpData: {fileID: 0}
       itemToAdd: {fileID: 0}
       itemToRemove: {fileID: 0}
       fadeDuration: 0.5
       fadeOutSwitchDuration: 1
+      newConversantToCall: {fileID: 0}
+      dialogueToLaunch: {fileID: 0}
+      launchDialogueToMainNode: 0
   hasRequirements: 0
   showGameRequirements: 0
   gameRequirements:

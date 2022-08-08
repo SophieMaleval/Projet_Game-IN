@@ -164,6 +164,12 @@ namespace AllosiusDev.DialogSystem
                                 action.fadeOutSwitchDuration = EditorGUILayout.FloatField("Fade Out Switch Duration", action.fadeOutSwitchDuration);
                                 break;
                             }
+                        case ActionType.LaunchDialogue:
+                            {
+                                action.dialogueToLaunch = (DialogueGraph)EditorGUILayout.ObjectField("Dialogue To Launch", action.dialogueToLaunch, typeof(DialogueGraph), true);
+                                action.launchDialogueToMainNode = EditorGUILayout.Toggle("Launch Dialogue To Main Node", action.launchDialogueToMainNode);
+                                break;
+                            }
 
                     }
 

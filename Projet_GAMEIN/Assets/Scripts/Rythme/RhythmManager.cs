@@ -56,6 +56,7 @@ public class RhythmManager : MonoBehaviour
 
     public PNJDialogue PNJCurrent ;
     public NpcConversant npcCurrent;
+    [SerializeField] private DialogueGraph dialogueToLaunchAtDisableGame;
 
     public PlayerMovement player;
     private Vector2 OldPlayerPosition ;
@@ -279,6 +280,8 @@ public class RhythmManager : MonoBehaviour
         if(npcCurrent != null)
         {
             npcCurrent.gameObject.SetActive(true);
+
+            GameManager.Instance.player.GetComponent<PlayerConversant>().StartDialog(npcCurrent, dialogueToLaunchAtDisableGame);
         }
         player.GetComponent<PlayerScript>().InventoryUIIndestructible.SetActive(true);
         resultScreen.SetActive(false);

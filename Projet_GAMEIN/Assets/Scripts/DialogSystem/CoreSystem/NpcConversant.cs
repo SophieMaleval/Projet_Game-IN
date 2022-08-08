@@ -78,8 +78,6 @@ namespace AllosiusDev.DialogSystem
 
             Debug.Log("Player Start Dialogue");
             GameManager.Instance.player.GetComponent<PlayerConversant>().StartDialog(this, npcDialogue);
-
-            PNJTalkAnimation(true);
         }
 
 

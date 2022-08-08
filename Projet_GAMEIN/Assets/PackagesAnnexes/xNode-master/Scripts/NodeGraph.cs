@@ -12,7 +12,7 @@ namespace XNode {
         [SerializeField] public List<Node> nodes = new List<Node>();
 
 
-        public List<Node> startNodes { get; set; }
+        //public List<Node> startNodes { get; set; }
 
         public Node GetRootNode()
         {
@@ -28,10 +28,10 @@ namespace XNode {
         {
             Debug.Log("Open Graph");
 
-            SetStartNodes();
+            //SetStartNodes();
         }
 
-        public virtual void SetStartNodes()
+        /*public virtual void SetStartNodes()
         {
             //Debug.Log(startNodes.Count);
             Debug.Log(nodes.Count);
@@ -48,7 +48,7 @@ namespace XNode {
                     Debug.Log("Start Nodes Add " + nodes[i].name);
                 }
             }
-        }
+        }*/
 
         /// <summary> Add a node to the graph by type </summary>
         public virtual Node AddNode(Type type) {

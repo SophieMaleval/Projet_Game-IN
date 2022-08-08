@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-7796151102178194960
+--- !u!114 &-2214175066720202134
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
-  m_Name: 'Bonjours je n''ai pas de dialogue '
+  m_Name: Bonjour Je n'ai pas de dialogue
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 0, y: 0}
+  position: {x: -408, y: -88}
   ports:
     keys:
     - previousNode
     - nextNodes
     values:
     - _fieldName: previousNode
-      _node: {fileID: -7796151102178194960}
+      _node: {fileID: -2214175066720202134}
       _typeQualifiedName: AllosiusDev.DialogSystem.DialogueTextNode, Assembly-CSharp,
         Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections: []
@@ -29,7 +29,7 @@ MonoBehaviour:
       _typeConstraint: 0
       _dynamic: 0
     - _fieldName: nextNodes
-      _node: {fileID: -7796151102178194960}
+      _node: {fileID: -2214175066720202134}
       _typeQualifiedName: AllosiusDev.DialogSystem.DialogueBaseNode, Assembly-CSharp,
         Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections: []
@@ -40,8 +40,8 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 0
-  keyText: Dialogue_Kam_Bonjour
-  messagePreview: Hello I don't have a dialogue.
+  keyText: Dialogue_Super_Nacon_Texte
+  messagePreview: Dialogue_Super_Nacon_Texte
   singleRead: 0
   hasGameActions: 0
   showGameActions: 0
@@ -61,10 +61,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4c135d5abc97ad74e959ab5b6aa5d6eb, type: 3}
-  m_Name: Ankama Kam DialogueGraph
+  m_Name: Nacon Super Nacon DialogueGraph
   m_EditorClassIdentifier: 
   nodes:
-  - {fileID: -7796151102178194960}
-  displayName: Kam Dialogue
-  description: "Dialogue Pr\xE9sentation Kam Ankama"
-  mainNodeParent: {fileID: -7796151102178194960}
+  - {fileID: -2214175066720202134}
+  displayName: Super Nacon Dialogue
+  description: "Dialogue Pr\xE9sentation Super Nacon Nacon"
+  mainNodeParent: {fileID: 0}

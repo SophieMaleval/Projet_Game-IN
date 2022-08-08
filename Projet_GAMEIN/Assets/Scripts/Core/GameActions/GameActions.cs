@@ -61,6 +61,10 @@ namespace AllosiusDev.Core
                         {
                             item.ExecuteLaunchFade();
                         }
+                        else if (item.actionType == ActionType.LaunchDialogue)
+                        {
+                            item.ExecuteLaunchDialogue();
+                        }
                     }
                 }
 
@@ -119,6 +123,14 @@ namespace AllosiusDev.Core
         [Header("Launch Fade Properties")]
         [SerializeField] public float fadeDuration = 0.5f;
         [SerializeField] public float fadeOutSwitchDuration = 1f;
+
+        [Space]
+
+        [Space]
+        [Header("Launch Dialogue Properties")]
+        [SerializeField] public NpcConversant newConversantToCall;
+        [SerializeField] public DialogueGraph dialogueToLaunch;
+        [SerializeField] public bool launchDialogueToMainNode;
 
         #endregion
 
@@ -192,6 +204,36 @@ namespace AllosiusDev.Core
             GameManager.Instance.player.GetComponent<PlayerConversant>().canDialog = false;
         }
 
+        public void ExecuteLaunchDialogue()
+        {
+            NpcConversant conversant = null;
+            if (newConversantToCall != null)
+            {
+                conversant = newConversantToCall;
+            }
+            if (conversant == null)
+            {
+                conversant = GameManager.Instance.player.GetComponent<PlayerConversant>().CurrentConversant;
+            }
+
+            if (GameManager.Instance.player.GetComponent<PlayerConversant>().CurrentDialog != null)
+            {
+                GameManager.Instance.player.GetComponent<PlayerConversant>().Quit();
+            }
+            GameManager.Instance.player.GetComponent<PlayerConversant>().StartDialog(conversant, dialogueToLaunch);
+
+            if(launchDialogueToMainNode)
+            {
+                DialogueTextNode newNode = (DialogueTextNode)ExecuteReturnMainNodeDialogueAction(GameManager.Instance.player.GetComponent<PlayerConversant>().CurrentDialog);
+
+                if (newNode != null)
+                {
+                    GameManager.Instance.player.GetComponent<PlayerConversant>().currentNode = newNode;
+                    GameManager.Instance.player.GetComponent<PlayerConversant>().Next();
+                }
+            }
+        }
+
         #endregion
     }
 }
@@ -208,5 +250,6 @@ namespace AllosiusDev.Core
         RemoveItemToInventory,
         LaunchMiniGame,
         LaunchFade,
+        LaunchDialogue,
     }
 }

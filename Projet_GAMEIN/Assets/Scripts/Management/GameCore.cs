@@ -60,8 +60,14 @@ public class GameCore : Singleton<GameCore>
         {
             return;
         }
+
         OldLastMovePlayer = GameManager.Instance.player.GetComponent<PlayerMovement>().GetLastMovePlayer();
-        MiniGame.GetComponent<InstantiationPrefabGame>().npcScript = GameManager.Instance.player.GetComponent<PlayerConversant>().CurrentConversant;
+
+        if(GameManager.Instance.player.GetComponent<PlayerConversant>().CurrentConversant != null)
+        {
+            MiniGame.GetComponent<InstantiationPrefabGame>().npcScript = GameManager.Instance.player.GetComponent<PlayerConversant>().CurrentConversant;
+        }
+        
         MiniGame.SetActive(true);
     }
 

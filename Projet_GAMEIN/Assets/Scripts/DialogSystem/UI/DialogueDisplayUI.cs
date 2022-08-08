@@ -256,7 +256,7 @@ namespace AllosiusDev.DialogSystem
             if (canTurnNext)
             {
                 AudioController.Instance.PlayAudio(sfxValidate);
-                StartCoroutine(playerConversant.Next());
+                playerConversant.Next();
 
                 if (animationPassTouchCoroutine != null)
                 {
@@ -294,7 +294,10 @@ namespace AllosiusDev.DialogSystem
             dialogueDisplayerText.text = "";
             //Debug.Log(dialogueDisplayerText.text);
 
-            playerConversant.CurrentConversant.PNJTalkAnimation(true);
+            if (playerConversant.CurrentConversant != null)
+            {
+                playerConversant.CurrentConversant.PNJTalkAnimation(true);
+            }
 
             for (int i = 0; i < text.Length; i++)
             {
@@ -319,7 +322,10 @@ namespace AllosiusDev.DialogSystem
             dialogueDisplayerText.text = text;
             //Debug.Log(dialogueDisplayerText.text);
 
-            playerConversant.CurrentConversant.PNJTalkAnimation(false);
+            if (playerConversant.CurrentConversant != null)
+            {
+                playerConversant.CurrentConversant.PNJTalkAnimation(false);
+            }
 
             canTurnNext = true;
 
