@@ -120,7 +120,7 @@ namespace AllosiusDev.DialogSystem
                 if (currentDialog.nodes[i].GetInputsPorts().Count == 0)
                 {
                     _currentStartNodes.Add(currentDialog.nodes[i]);
-                    Debug.Log("Start Nodes Add " + currentDialog.nodes[i].name);
+                    //Debug.Log("Start Nodes Add " + currentDialog.nodes[i].name);
                 }
             }
 

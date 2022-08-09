@@ -1,4 +1,9 @@
 ﻿using System.Collections.Generic;
+using System;
+using System.IO;
+using System.Linq;
+using System.Text;
+using UnityEngine;
 
 namespace AllosiusDev.TranslationSystem
 {
@@ -22,7 +27,9 @@ namespace AllosiusDev.TranslationSystem
         /// Dictionnaire chargé en mémoire avec la langue utilisée
         /// </summary>
         private static Dictionary<string, string> localDico;
-        
+
+        //private static Dictionary<string, string> inventoryItemsDico;
+
         /// <summary>
         /// Booléen permettant de savoir si la langue est chargée
         /// </summary>
@@ -32,6 +39,24 @@ namespace AllosiusDev.TranslationSystem
         /// Fonction permettant de charger le dictionnaire en fonction de la langue de l'utilisateur
         /// </summary>
         public static void Init(TypeDictionary typeDictionary)
+        {
+            localDico = new Dictionary<string, string>();
+
+            //LoadJSONDictionary(typeDictionary);
+
+            //LoadJSONDictionary(TypeDictionary.Default);
+
+            LoadJSONDictionary(TypeDictionary.Dialogues);
+            LoadJSONDictionary(TypeDictionary.GeneralsUI);
+            LoadJSONDictionary(TypeDictionary.InformationsPanelsTexts);
+            LoadJSONDictionary(TypeDictionary.InventoryItems);
+            LoadJSONDictionary(TypeDictionary.PopUps);
+            LoadJSONDictionary(TypeDictionary.Quests);
+
+            isInit = true;
+        }
+
+        private static void LoadJSONDictionary(TypeDictionary typeDictionary)
         {
             JSONLoader json;
 
@@ -48,9 +73,7 @@ namespace AllosiusDev.TranslationSystem
                     break;
             }
 
-            localDico = json.GetDictionaryValues();
-
-            isInit = true;
+            localDico = json.GetDictionaryValues(localDico);
         }
 
         public static void SetCurrentLangage(Langage newLangage)
@@ -77,6 +100,8 @@ namespace AllosiusDev.TranslationSystem
             {
                 Init(typeDictionary);
             }
+
+            //Init(typeDictionary);
 
             string value;
 

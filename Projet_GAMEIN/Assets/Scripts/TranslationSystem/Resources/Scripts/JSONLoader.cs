@@ -48,40 +48,47 @@ namespace AllosiusDev.TranslationSystem
             //string json = File.ReadAllText(path, Encoding.UTF8);
 
             string json = "";
-            json = Resources.Load<TextAsset>(string.Format("Traduction/{0}", codeLangue)).text;
+            
+            //json = Resources.Load<TextAsset>(string.Format("Traduction/{0}", codeLangue)).text;
 
-            /*if (typeDictionary == TypeDictionary.Default)
+            if (typeDictionary == TypeDictionary.Default)
             {
                 
                 json = Resources.Load<TextAsset>(string.Format("Traduction/{0}", codeLangue)).text;
             }
+            else if (typeDictionary == TypeDictionary.Dialogues)
+            {
+                codeLangue += "_Dialogues";
+                json = Resources.Load<TextAsset>(string.Format("Traduction/Dialogues/{0}", codeLangue)).text;
+            }
             else if(typeDictionary == TypeDictionary.GeneralsUI)
             {
-                codeLangue += "GeneralsUI";
+                codeLangue += "_GeneralsUI";
                 json = Resources.Load<TextAsset>(string.Format("Traduction/GeneralsUI/{0}", codeLangue)).text;
             }
             else if (typeDictionary == TypeDictionary.InformationsPanelsTexts)
             {
-                codeLangue += "InformationsPanelsTexts";
+                codeLangue += "_InformationsPanelsTexts";
                 json = Resources.Load<TextAsset>(string.Format("Traduction/InformationsPanelsTexts/{0}", codeLangue)).text;
             }
             else if (typeDictionary == TypeDictionary.InventoryItems)
             {
-                codeLangue += "InventoryItems";
+                codeLangue += "_InventoryItems";
                 json = Resources.Load<TextAsset>(string.Format("Traduction/InventoryItems/{0}", codeLangue)).text;
             }
             else if (typeDictionary == TypeDictionary.PopUps)
             {
-                codeLangue += "PopUps";
+                codeLangue += "_PopUps";
                 json = Resources.Load<TextAsset>(string.Format("Traduction/PopUps/{0}", codeLangue)).text;
             }
             else if (typeDictionary == TypeDictionary.Quests)
             {
-                codeLangue += "Quests";
+                codeLangue += "_Quests";
                 json = Resources.Load<TextAsset>(string.Format("Traduction/Quests/{0}", codeLangue)).text;
-            }*/
+            }
 
-
+            //Debug.Log(codeLangue);
+            //Debug.Log(json);
             return JsonUtility.FromJson<JSONLoader>(json);
         }
 
@@ -89,14 +96,20 @@ namespace AllosiusDev.TranslationSystem
         /// Permet si la liste est bien chargée de récupérer la liste dictionnaire dans le format optimisé pour ce type de tâche : Dictionary
         /// </summary>
         /// <returns>Objet de type dictionary</returns>
-        public Dictionary<string, string> GetDictionaryValues()
+        public Dictionary<string, string> GetDictionaryValues(Dictionary<string, string> oldDictionary)
         {
             Dictionary<string, string> dictionary = new Dictionary<string, string>();
+            dictionary = oldDictionary;
 
             foreach(Dico dico in dictionnaire)
             {
                 dictionary.Add(dico.key, dico.value);
             }
+
+            /*foreach(var item in dictionary)
+            {
+                Debug.Log(item.Key + " " + item.Value);
+            }*/
 
             return dictionary;
         }

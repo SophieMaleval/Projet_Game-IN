@@ -120,6 +120,12 @@ public class blablabla : MonoBehaviour
         textTest = LangueManager.Instance.Translate(keyTextTest, typeDictionaryTest);
     }
 
+    [ContextMenu("TestInitLanguage")]
+    public void TestInitLanguage()
+    {
+        LocalisationManager.GetLocalisedValue(keyTextTest, typeDictionaryTest);
+    }
+
     [ContextMenu("TestChangeLangage")]
     public void TestChangeLangage()
     {

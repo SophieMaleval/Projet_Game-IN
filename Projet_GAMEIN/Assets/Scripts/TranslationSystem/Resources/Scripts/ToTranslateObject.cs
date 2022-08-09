@@ -23,13 +23,31 @@ namespace AllosiusDev.TranslationSystem
 
         [SerializeField] public TypeDictionary typeDictionary;
 
+
+        [SerializeField] private TranslationData translationData;
+
         #endregion
 
         #region Behaviour
 
+        private void Awake()
+        {
+            LoadTranslationData();
+        }
+
+        public void LoadTranslationData()
+        {
+            if (translationData != null)
+            {
+                translationKey = translationData.translationKey;
+                typeDictionary = translationData.typeDictionary;
+            }
+        }
+
         void Start()
         {
             LangueManager.Instance.onLangageUpdated += Translation;
+            //Translation();
         }
 
         public void SetTranslationKey(string value, TypeDictionary newTypeDictionary, bool automaticTranslation = true)
@@ -41,6 +59,7 @@ namespace AllosiusDev.TranslationSystem
                 Translation();
         }
 
+        [ContextMenu("Translation")]
         public void Translation()
         {
             if (translationKey == null)

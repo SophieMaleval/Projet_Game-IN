@@ -55,6 +55,8 @@ public class InventoryScript : MonoBehaviour
     //public TextMeshProUGUI TextInventoryEmpty ;
     [SerializeField] private ToTranslateObject textInventoryEmpty;
 
+    [SerializeField] private ToTranslateObject mapUnavailable;
+
     [Header("Quests")]
 
     [SerializeField] private QuestUI questUi;
@@ -201,6 +203,7 @@ public class InventoryScript : MonoBehaviour
         inventoryTitle.Translation();
         mapTitle.Translation();
         textInventoryEmpty.Translation();
+        mapUnavailable.Translation();
 
         for (int ISI = 0; ISI < InventorySlotInstantiate.Count; ISI++)
         {
