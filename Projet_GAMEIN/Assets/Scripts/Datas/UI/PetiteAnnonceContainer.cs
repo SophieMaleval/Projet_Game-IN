@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using AllosiusDev.TranslationSystem;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI ;
@@ -20,8 +21,11 @@ public class Annonce
     public Sprite FondAnnonceFR ;
     public Sprite FondAnnonceEN ;
 
-    [TextArea(5,10)] public string TextAnnonceFR ;
-    [TextArea(5,10)] public string TextAnnonceEN ;
+    //[TextArea(5,10)] public string TextAnnonceFR ;
+    //[TextArea(5,10)] public string TextAnnonceEN ;
+
+    [TextArea(5, 10)] public string annonceTranslationKeys;
+    public TypeDictionary typeDictionaryAnnonceTranslation = TypeDictionary.InformationsPanelsTexts;
 
     public Color BackgroundColorAnnonce ;
 

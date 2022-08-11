@@ -74,10 +74,9 @@ public class PetiteAnnonceManager : MonoBehaviour
             Annonce.transform.GetChild(1).gameObject.SetActive(false);            
         } else { // Affiche un texte d'annonce
                 Annonce.transform.GetChild(0).gameObject.SetActive(true);                    
-                if(LocalisationManager.currentLangage == LocalisationManager.Langage.Francais) Annonce.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = AnnonceNum.TextAnnonceFR ;
-                if(LocalisationManager.currentLangage == LocalisationManager.Langage.Anglais) Annonce.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = AnnonceNum.TextAnnonceEN ;
+                Annonce.transform.GetChild(0).GetComponent<ToTranslateTextArea>().SetTranslationKey(AnnonceNum.annonceTranslationKeys, AnnonceNum.typeDictionaryAnnonceTranslation);
 
-            if(AnnonceNum.FondAnnonceFR != null || AnnonceNum.FondAnnonceEN != null) // Avec un fond spéciale
+            if (AnnonceNum.FondAnnonceFR != null || AnnonceNum.FondAnnonceEN != null) // Avec un fond spéciale
             {
                 Annonce.GetComponent<Image>().color = Color.white ;
                 if(AnnonceNum.FondAnnonceFR != null && AnnonceNum.FondAnnonceEN == null) AnnonceNum.FondAnnonceEN = AnnonceNum.FondAnnonceFR ;

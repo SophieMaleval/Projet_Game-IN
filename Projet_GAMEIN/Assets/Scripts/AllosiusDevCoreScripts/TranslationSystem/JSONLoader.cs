@@ -47,44 +47,52 @@ namespace AllosiusDev.TranslationSystem
             //string path = Application.streamingAssetsPath + "/" + codeLangue + ".json";
             //string json = File.ReadAllText(path, Encoding.UTF8);
 
+            string path = "";
             string json = "";
             
             //json = Resources.Load<TextAsset>(string.Format("Traduction/{0}", codeLangue)).text;
 
-            if (typeDictionary == TypeDictionary.Default)
-            {
-                
-                json = Resources.Load<TextAsset>(string.Format("Traduction/{0}", codeLangue)).text;
-            }
-            else if (typeDictionary == TypeDictionary.Dialogues)
+            if (typeDictionary == TypeDictionary.Dialogues)
             {
                 codeLangue += "_Dialogues";
-                json = Resources.Load<TextAsset>(string.Format("Traduction/Dialogues/{0}", codeLangue)).text;
+                path = Application.streamingAssetsPath + "/Traduction/Dialogues/" + codeLangue + ".json";
+                json = File.ReadAllText(path, Encoding.UTF8);
+                //json = Resources.Load<TextAsset>(string.Format("Traduction/Dialogues/{0}", codeLangue)).text;
             }
             else if(typeDictionary == TypeDictionary.GeneralsUI)
             {
                 codeLangue += "_GeneralsUI";
-                json = Resources.Load<TextAsset>(string.Format("Traduction/GeneralsUI/{0}", codeLangue)).text;
+                path = Application.streamingAssetsPath + "/Traduction/GeneralsUI/" + codeLangue + ".json";
+                json = File.ReadAllText(path, Encoding.UTF8);
+                //json = Resources.Load<TextAsset>(string.Format("Traduction/GeneralsUI/{0}", codeLangue)).text;
             }
             else if (typeDictionary == TypeDictionary.InformationsPanelsTexts)
             {
                 codeLangue += "_InformationsPanelsTexts";
-                json = Resources.Load<TextAsset>(string.Format("Traduction/InformationsPanelsTexts/{0}", codeLangue)).text;
+                path = Application.streamingAssetsPath + "/Traduction/InformationsPanelsTexts/" + codeLangue + ".json";
+                json = File.ReadAllText(path, Encoding.UTF8);
+                //json = Resources.Load<TextAsset>(string.Format("Traduction/InformationsPanelsTexts/{0}", codeLangue)).text;
             }
             else if (typeDictionary == TypeDictionary.InventoryItems)
             {
                 codeLangue += "_InventoryItems";
-                json = Resources.Load<TextAsset>(string.Format("Traduction/InventoryItems/{0}", codeLangue)).text;
+                path = Application.streamingAssetsPath + "/Traduction/InventoryItems/" + codeLangue + ".json";
+                json = File.ReadAllText(path, Encoding.UTF8);
+                //json = Resources.Load<TextAsset>(string.Format("Traduction/InventoryItems/{0}", codeLangue)).text;
             }
             else if (typeDictionary == TypeDictionary.PopUps)
             {
                 codeLangue += "_PopUps";
-                json = Resources.Load<TextAsset>(string.Format("Traduction/PopUps/{0}", codeLangue)).text;
+                path = Application.streamingAssetsPath + "/Traduction/PopUps/" + codeLangue + ".json";
+                json = File.ReadAllText(path, Encoding.UTF8);
+                //json = Resources.Load<TextAsset>(string.Format("Traduction/PopUps/{0}", codeLangue)).text;
             }
             else if (typeDictionary == TypeDictionary.Quests)
             {
                 codeLangue += "_Quests";
-                json = Resources.Load<TextAsset>(string.Format("Traduction/Quests/{0}", codeLangue)).text;
+                path = Application.streamingAssetsPath + "/Traduction/Quests/" + codeLangue + ".json";
+                json = File.ReadAllText(path, Encoding.UTF8);
+                //json = Resources.Load<TextAsset>(string.Format("Traduction/Quests/{0}", codeLangue)).text;
             }
 
             //Debug.Log(codeLangue);
