@@ -6,8 +6,8 @@ using DG.Tweening;
 
 public class Camera_zoom : MonoBehaviour
 {
-    bool grow;
-    bool shrink;
+    internal bool grow;
+    internal bool shrink;
     public bool HasTarget;
 
     [SerializeField] private GameObject Target;
@@ -16,7 +16,10 @@ public class Camera_zoom : MonoBehaviour
     public float ZoomSpeed = 1;
     public CinemachineVirtualCamera vcam;
 
-     void Start()
+    public List<GameObject> objectsToSpawn = new List<GameObject>();
+
+
+    void Start()
     {
         OldOrthographicSize = vcam.m_Lens.OrthographicSize;
     }
@@ -53,6 +56,12 @@ public class Camera_zoom : MonoBehaviour
         shrink = false;
         grow = true;
 
+
+        for (int i = 0; i < objectsToSpawn.Count; i++)
+        {
+            objectsToSpawn[i].SetActive(true);
+        }
+
         if ( HasTarget == true)
         {
             //vcam.Follow = null;
@@ -65,6 +74,11 @@ public class Camera_zoom : MonoBehaviour
         vcam.Priority = 7;
         grow = false;
         shrink = true;
+
+        for (int i = 0; i < objectsToSpawn.Count; i++)
+        {
+            objectsToSpawn[i].SetActive(false);
+        }
 
         if (HasTarget == true)
         {
