@@ -11,10 +11,6 @@ public class SettingManager : MonoBehaviour
 {
     #region Fields
 
-    private CSVReader TextUILocation ;
-
-    //private bool CanCheckLanguage = false ;
-
     #endregion
 
     #region UnityInspector
@@ -46,27 +42,7 @@ public class SettingManager : MonoBehaviour
 
     private void Start() 
     {
-        if(gameObject.GetComponent<CSVReader>() != null) // Récupère les Textes lorsque l'on est sur le menu
-            TextUILocation = GetComponent<CSVReader>() ;
-
-        if (gameObject.GetComponent<CSVReader>() == null)
-        {
-            if(GameManager.Instance.player != null)
-            {
-                TextUILocation = GameManager.Instance.player.playerBackpack.GetComponent<CSVReader>();
-            }
-            else
-            {
-                Debug.LogWarning("Player is null");
-            }
-            
-        }
-
-        if(TextUILocation != null)
-        {
-            StartCoroutine(WaitAndSetSettingsText());
-        }
-
+        StartCoroutine(WaitAndSetSettingsText());
         //Debug.Log(PlayerPrefs.GetFloat("VolumeGlobal"));
         //Debug.Log(PlayerPrefs.GetFloat("Musique"));
         //Debug.Log(PlayerPrefs.GetFloat("SFX"));
@@ -91,51 +67,8 @@ public class SettingManager : MonoBehaviour
     IEnumerator WaitAndSetSettingsText()
     {
         yield return new WaitForSeconds(0.25f);
-        SetSettingsTextLangue();
-        //CanCheckLanguage = true ;        
+        SetSettingsTextLangue();     
     }
-
-    private void  Update() 
-    {
-        //if(CanCheckLanguage && TextUILocation != null)
-        //{
-            //if (PlayerPrefs.GetInt("Langue") == 0 && SettingTitle.text != TextUILocation.UIText.SettingFR[0]) ;    //SetSettingsTextLangue(0);
-            //if (PlayerPrefs.GetInt("Langue") == 1 && SettingTitle.text != TextUILocation.UIText.SettingEN[0]) ;    //SetSettingsTextLangue(1);
-        //}
-    }
-
-
-    /*public void SetVolumeMusique(float sliderValue)
-    {
-        float newSliderValue = Mathf.Log10(sliderValue) * 40;
-        MyAudioMixer.SetFloat("Musique", newSliderValue);
-
-        PlayerPrefs.SetFloat("Musique", sliderValue);
-        Debug.Log(PlayerPrefs.GetFloat("Musique"));
-    }
-    
-    public void SetVolumeSFX(float sliderValue)
-    {
-        float newSliderValue = Mathf.Log10(sliderValue) * 40;
-        MyAudioMixer.SetFloat("SFX", newSliderValue);
-
-        PlayerPrefs.SetFloat("SFX", sliderValue);
-        Debug.Log(PlayerPrefs.GetFloat("SFX"));
-    }
-
-    public void SetVolumeGlobal(float sliderValue)
-    {
-        float newSliderValue = Mathf.Log10(sliderValue) * 40;
-        MyAudioMixer.SetFloat("SFX", newSliderValue);
-        MyAudioMixer.SetFloat("Ambient_Menu", newSliderValue);
-        MyAudioMixer.SetFloat("Musique", newSliderValue);
-
-        PlayerPrefs.SetFloat("VolumeGlobal", sliderValue);
-        Debug.Log(PlayerPrefs.GetFloat("VolumeGlobal"));
-    }*/
-
-
-
 
     public void SetFrenchLanguage() // PlayerPrefs("Langue") == 0 -> FR
     {

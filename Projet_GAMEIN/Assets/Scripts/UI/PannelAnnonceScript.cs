@@ -15,7 +15,6 @@ public class PannelAnnonceScript : MonoBehaviour
     private PlayerScript PlayerScript;
     private PlayerMovement PlayerMovement;
 
-    //private bool PannelSetUp = false ;
     private bool PlayerArroundPannel = false;
 
     private bool hasExecuted;
@@ -26,7 +25,6 @@ public class PannelAnnonceScript : MonoBehaviour
 
     [Header ("Information ENT")]
     public PetiteAnnonceContainer InformationsAnnonces ;
-    [HideInInspector] public CSVReader RefTextENT ;  
     
     public Sprite TableauPANormal;
     public Sprite TableauPAHighlighted;
@@ -70,16 +68,6 @@ public class PannelAnnonceScript : MonoBehaviour
                 PlayerScript.PlayerAsInterract = false;
                 BoardAnnonce.InfoTableau = InformationsAnnonces ;
                 BoardAnnonce.SwitchTogglePannelDisplay();
-
-                if (CanProgress)
-                {
-                   /* if (GameManager.Instance.gameCanvasManager.questManager != null)
-                    {
-                        GameManager.Instance.gameCanvasManager.questManager.Progression();
-                    }*/
-
-                    
-                }
 
                 if (!hasExecuted)
                 {

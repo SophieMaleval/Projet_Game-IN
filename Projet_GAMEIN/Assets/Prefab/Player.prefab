@@ -200,8 +200,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2833699217548194170}
   - component: {fileID: 3426247479449806438}
-  - component: {fileID: 9139788266500565582}
-  - component: {fileID: 6101403331850239422}
   m_Layer: 0
   m_Name: Player Backpack
   m_TagString: Player
@@ -284,68 +282,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &9139788266500565582
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1319679889576047112}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1dc0f6b06f72cdb4496fc386ddbbacbf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DialogDataFR: {fileID: 4900000, guid: f920a8082d6ae7e4b94f024848ade240, type: 3}
-  DialogDataEN: {fileID: 4900000, guid: 2f4e1a6f4471983439c15d2a7303074c, type: 3}
-  QCMData: {fileID: 4900000, guid: 260d5808084909f4093d11e76d4fedf7, type: 3}
-  UIDataText: {fileID: 4900000, guid: 4e6d07e5db27ac941b9168d7c7daccda, type: 3}
-  QuestText: {fileID: 4900000, guid: 58cb92868ad3558459e8fec5ce0448ca, type: 3}
-  PannelENTText: {fileID: 4900000, guid: f234fb5315119b846b57e2c74542fc94, type: 3}
-  UIText:
-    MenuFR: []
-    MenuEN: []
-    PauseFR: []
-    PauseEN: []
-    SettingFR: []
-    SettingEN: []
-    CustomisationFR: []
-    CustomisationEN: []
-    PanelENTFR: []
-    PanelENTEN: []
-    ControlFR: []
-    ControlEN: []
-    PopUpFR: []
-    PopUpEN: []
-  QCMCont:
-    QCMEnigmeFR1: []
-    QCMEnigmeEN1: []
-    QCMPresFR1: []
-    QCMPresEN1: []
-    QCMEnigmeFR2: []
-    QCMEnigmeEN2: []
-  TextUIPanneauxENT: []
---- !u!114 &6101403331850239422
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1319679889576047112}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b93113804958f740af06a5176152003, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  "myDialogueAdh\xE9rentFR": []
-  "myDialogueAdh\xE9rentEN": []
-  PlayerAsRead: 0
-  CurrentSelectQuestion: 0
-  CanPassDialogue: 1
-  sfxSelectingQuestion: {fileID: 11400000, guid: 67b4358aa4e40e047a54743f158d8820,
-    type: 2}
-  sfxValidatingChoiceSound: {fileID: 11400000, guid: 8f2f25501882ca1419e45e79946c8df4,
-    type: 2}
 --- !u!1 &1321418917422301378
 GameObject:
   m_ObjectHideFlags: 0
@@ -6873,12 +6809,6 @@ MonoBehaviour:
   MoveSpeed: 150
   ScooterSpeed: 2.5
   PlayOneShotClip: 1
-  PlayerChangeScene: 0
-  MakePlayerInGoodSens: 0
-  PlayerNeedInitialePosition: 0
-  PlayerNeedLookUp: 0
-  PlayerNeedLookRight: 0
-  PlayerNeedLookLeft: 0
   PlayerRenderers:
   - {fileID: 7705379444423092921}
   - {fileID: 7705379444181384879}
@@ -6939,7 +6869,6 @@ MonoBehaviour:
   InAnimationFade: 0
   FadeMake: 0
   AnimationBeMake: 0
-  playerBackpack: {fileID: 6101403331850239422}
   FadeAnimation: {fileID: 0}
   selectedSound: {fileID: 11400000, guid: 218e063646d07fb4c975a9b02f34b029, type: 2}
 --- !u!50 &7965349286853053022

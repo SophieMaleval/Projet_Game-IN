@@ -22,9 +22,7 @@ public class GameCanvasManager : MonoBehaviour
     //public QuestSys questManager { get; set; }
     public QuestTrackingUI questTrackingUi { get; set; }
     public QuestUI questUi { get; set; }
-    public DialogueDisplayerController dialogCanvas { get; set; }
-    public DialogueDisplayUI newDialogCanvas { get; set; }
-    public QCMManager qcmPanel { get; set; }
+    public DialogueDisplayUI dialogCanvas { get; set; }
 
     public EventSystem eventSystem { get; set; }
 
@@ -32,7 +30,6 @@ public class GameCanvasManager : MonoBehaviour
 
     #region UnityInspector
 
-    //[SerializeField] private GameObject fade;
     [SerializeField] private CutoutAnim cutoutMask;
 
     #endregion
@@ -58,9 +55,6 @@ public class GameCanvasManager : MonoBehaviour
                 eventSystem.SetSelectedGameObject(eventSystemCurrentObjectSelected);
             }
         }
-
-        /*if(eventSystem.currentSelectedGameObject != null)
-            Debug.Log(eventSystem.currentSelectedGameObject.name);*/
     }
 
     #endregion

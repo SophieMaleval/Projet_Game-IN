@@ -14,8 +14,6 @@ public class InventoryScript : MonoBehaviour
 
     private int CarrousselSlotCurrentValue = 1 ;
 
-    private CSVReader TextUILocation;
-
     #endregion
 
     #region Properties
@@ -32,7 +30,6 @@ public class InventoryScript : MonoBehaviour
     #region UnityInspector
 
     public GameObject InventoryPanel ;
-    public GameObject DialogueCanvas ;
     public GameObject PannelENTCanvas ;
 
     public GameObject InventorySlotPannel ;
@@ -43,16 +40,10 @@ public class InventoryScript : MonoBehaviour
     public GameObject ButtonPreviousSlot ;
     public GameObject ButtonNextSlot ;
 
-    //[SerializeField] private TextMeshProUGUI QuestTitle ;
-    //[SerializeField] private TextMeshProUGUI InventoryTitle ;
-    //[SerializeField] private TextMeshProUGUI MapTitle ;
-    //public List<Image> InventoryDisplayer ;
-
     [SerializeField] private ToTranslateObject questTitle;
     [SerializeField] private ToTranslateObject inventoryTitle;
     [SerializeField] private ToTranslateObject mapTitle;
 
-    //public TextMeshProUGUI TextInventoryEmpty ;
     [SerializeField] private ToTranslateObject textInventoryEmpty;
 
     [SerializeField] private ToTranslateObject mapUnavailable;
@@ -79,7 +70,6 @@ public class InventoryScript : MonoBehaviour
         if (GameManager.Instance.player != null)   // Récupère le player au lancement de la scène
         {
             PlayerScript = GameManager.Instance.player;
-            TextUILocation = PlayerScript.GetComponentInChildren<CSVReader>();
         }
         else
         {
@@ -87,15 +77,8 @@ public class InventoryScript : MonoBehaviour
         }
     }
 
-    void Update()
-    {
-        //if (PlayerPrefs.GetInt("Langue") == 0 && InventoryTitle.text != TextUILocation.UIText.PauseFR[1]) ; //SetUIText();
-        //if (PlayerPrefs.GetInt("Langue") == 1 && InventoryTitle.text != TextUILocation.UIText.PauseEN[1]) ; //SetUIText();
-    }
-
     public void SwitchToggleInventoryDisplay()
-    {
-        //SetDisplayInventory();        
+    {      
         SetInventoryCount();
         SetUIText();
         InventoryPanel.SetActive(!InventoryPanel.activeSelf);
@@ -103,19 +86,17 @@ public class InventoryScript : MonoBehaviour
         {
             transform.SetSiblingIndex(transform.parent.childCount - 2);
 
-            if (DialogueCanvas.activeSelf == true) PlayerScript.playerBackpack.ResumeDialogue();
-
-            if (DialogueCanvas.activeSelf == false && PannelENTCanvas.activeSelf == false && GameManager.Instance.gameCanvasManager.newDialogCanvas.gameObject.activeSelf == false) PlayerScript.GetComponent<PlayerMovement>().EndActivity();
+            if (PannelENTCanvas.activeSelf == false && GameManager.Instance.gameCanvasManager.dialogCanvas.gameObject.activeSelf == false) PlayerScript.GetComponent<PlayerMovement>().EndActivity();
 
             if(GameManager.Instance.player.InDiscussion)
             {
                 if(GameManager.Instance.player.GetComponent<PlayerConversant>().IsChoosing() == false)
                 {
-                    GameManager.Instance.gameCanvasManager.eventSystem.SetSelectedGameObject(GameManager.Instance.gameCanvasManager.newDialogCanvas.NextButton.gameObject);
+                    GameManager.Instance.gameCanvasManager.eventSystem.SetSelectedGameObject(GameManager.Instance.gameCanvasManager.dialogCanvas.NextButton.gameObject);
                 }
-                else if (GameManager.Instance.player.GetComponent<PlayerConversant>().IsChoosing() && GameManager.Instance.gameCanvasManager.newDialogCanvas.CurrentChoices.Count > 0)
+                else if (GameManager.Instance.player.GetComponent<PlayerConversant>().IsChoosing() && GameManager.Instance.gameCanvasManager.dialogCanvas.CurrentChoices.Count > 0)
                 {
-                    GameManager.Instance.gameCanvasManager.eventSystem.SetSelectedGameObject(GameManager.Instance.gameCanvasManager.newDialogCanvas.CurrentChoices[0]);
+                    GameManager.Instance.gameCanvasManager.eventSystem.SetSelectedGameObject(GameManager.Instance.gameCanvasManager.dialogCanvas.CurrentChoices[0]);
                 }
             }
 
@@ -128,7 +109,6 @@ public class InventoryScript : MonoBehaviour
             transform.SetSiblingIndex(transform.parent.childCount - 2);
 
             PlayerScript.GetComponent<PlayerMovement>().StartActivity();
-            PlayerScript.playerBackpack.PausedInDialogue();
             
         }
     }
@@ -184,21 +164,6 @@ public class InventoryScript : MonoBehaviour
 
     void SetUIText()
     {
-        //if (PlayerPrefs.GetInt("Langue") == 0)
-        //{
-        //QuestTitle.text = TextUILocation.UIText.PauseFR[0];
-        //InventoryTitle.text = TextUILocation.UIText.PauseFR[1];
-        //TextInventoryEmpty.text = TextUILocation.UIText.PauseFR[2];
-        //MapTitle.text = TextUILocation.UIText.PauseFR[3];
-        //}
-        //if (PlayerPrefs.GetInt("Langue") == 1)
-        //{
-        //QuestTitle.text = TextUILocation.UIText.PauseEN[0];
-        //InventoryTitle.text = TextUILocation.UIText.PauseEN[1];
-        //TextInventoryEmpty.text = TextUILocation.UIText.PauseEN[2];
-        //MapTitle.text = TextUILocation.UIText.PauseEN[3];
-        //}
-
         questTitle.Translation();
         inventoryTitle.Translation();
         mapTitle.Translation();
@@ -214,17 +179,6 @@ public class InventoryScript : MonoBehaviour
 
     public void SetInventoryCount()
     {
-        /*InventoryDisplayer.Clear();
-        for (int Id = 0; Id < InventorySlotPannel.transform.childCount; Id++)
-        {
-            InventoryDisplayer.Add(null);            
-        }        
-
-        if(PlayerScript != null && PlayerScript.Inventaire.Length != InventoryDisplayer.Count)
-        {
-            PlayerScript.Inventaire = new InteractibleObject[InventorySlotPannel.transform.childCount] ;
-        }*/
-
         InventorySlotInstantiate.Clear();
         ButtonPreviousSlot.SetActive(false);
         ButtonNextSlot.SetActive(false);

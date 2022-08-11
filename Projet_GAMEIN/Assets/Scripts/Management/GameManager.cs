@@ -65,11 +65,9 @@ public class GameManager : Singleton<GameManager>
     [Header("Canvas")]
     [SerializeField] private GameObject CanvasPrefab;
     [SerializeField] private GameObject DialogueUIPrefab;
-    [SerializeField] private GameObject NewDialogueUIPrefab;
     [SerializeField] private GameObject InventoryUIPrefab;
     [SerializeField] private GameObject PannelENTUIPrefab;
     [SerializeField] private GameObject PannelAnnonceUIPrefab;
-    [SerializeField] private GameObject QCMPanelPrefab;
     [SerializeField] private GameObject EventSystemPrefab;
 
     #endregion
@@ -159,7 +157,7 @@ public class GameManager : Singleton<GameManager>
         SetAvatarColor();
 
 
-        SetupDialogues();
+        //SetupDialogues();
 
         PlayerApparance.enabled = true;
 
@@ -185,21 +183,15 @@ public class GameManager : Singleton<GameManager>
 
 
             GameObject CanvasInstatiate = Instantiate(CanvasPrefab);
-            GameObject DialogueUIInstatiate = Instantiate(DialogueUIPrefab);
-            GameObject NewDialogueUIInstantiate = Instantiate(NewDialogueUIPrefab);
+            GameObject DialogueUIInstantiate = Instantiate(DialogueUIPrefab);
             GameObject InventoryUIInstatiate = Instantiate(InventoryUIPrefab);
             GameObject PannelENTUIInstatiate = Instantiate(PannelENTUIPrefab);
             GameObject PannelAnnonceUIInstatiate = Instantiate(PannelAnnonceUIPrefab);
-            GameObject QCMPanelInstantiate = Instantiate(QCMPanelPrefab);
             GameObject EventSystemInstantiate = Instantiate(EventSystemPrefab);
 
-            DialogueUIInstatiate.transform.SetParent(CanvasInstatiate.transform);
-            DialogueUIInstatiate.transform.SetSiblingIndex(0);
-            DialogueUIInstatiate.name = "Dialogue Canvas";
-
-            NewDialogueUIInstantiate.transform.SetParent(CanvasInstatiate.transform);
-            NewDialogueUIInstantiate.transform.SetSiblingIndex(0);
-            NewDialogueUIInstantiate.name = "New Dialogue Canvas";
+            DialogueUIInstantiate.transform.SetParent(CanvasInstatiate.transform);
+            DialogueUIInstantiate.transform.SetSiblingIndex(0);
+            DialogueUIInstantiate.name = "Dialogue Canvas";
 
             PannelENTUIInstatiate.transform.SetParent(CanvasInstatiate.transform);
             PannelENTUIInstatiate.transform.SetSiblingIndex(1);
@@ -209,57 +201,36 @@ public class GameManager : Singleton<GameManager>
             PannelAnnonceUIInstatiate.transform.SetSiblingIndex(1);
             PannelAnnonceUIInstatiate.name = "Pannel Annonce";
 
-
-            QCMPanelInstantiate.transform.SetParent(CanvasInstatiate.transform);
-            QCMPanelInstantiate.transform.SetSiblingIndex(3);
-            QCMPanelInstantiate.name = "QCM Panel";
-
             InventoryUIInstatiate.transform.SetParent(CanvasInstatiate.transform);
             InventoryUIInstatiate.transform.SetSiblingIndex(4);
             InventoryUIInstatiate.name = "Inventory";
-
-            //player.playerBackpack.GetComponent<CSVReader>().QuestManager = InventoryUIInstatiate.GetComponentInChildren<QuestSys>();
-
 
             GameCanvasManager _gameCanvasManager = CanvasInstatiate.GetComponent<GameCanvasManager>();
 
             gameCanvasManager = _gameCanvasManager;
 
             gameCanvasManager.inventory = InventoryUIInstatiate.GetComponent<InventoryScript>();
-            //gameCanvasManager.questManager = InventoryUIInstatiate.GetComponentInChildren<QuestSys>();
             gameCanvasManager.questTrackingUi = gameCanvasManager.inventory.QuestTrackingUi;
             gameCanvasManager.questUi = gameCanvasManager.inventory.QuestUi;
 
-            gameCanvasManager.dialogCanvas = DialogueUIInstatiate.GetComponent<DialogueDisplayerController>();
-            gameCanvasManager.newDialogCanvas = NewDialogueUIInstantiate.GetComponent<DialogueDisplayUI>();
-
-            gameCanvasManager.qcmPanel = QCMPanelInstantiate.GetComponent<QCMManager>();
+            gameCanvasManager.dialogCanvas = DialogueUIInstantiate.GetComponent<DialogueDisplayUI>();
 
             gameCanvasManager.eventSystem = EventSystemInstantiate.GetComponent<EventSystem>();
 
             DontDestroyOnLoad(PlayerApparance.gameObject);
             DontDestroyOnLoad(CanvasInstatiate.gameObject);
-            //DontDestroyOnLoad(DialogueUIInstatiate.gameObject);
-            //DontDestroyOnLoad(NewDialogueUIInstantiate.gameObject);
-            //DontDestroyOnLoad(InventoryUIInstatiate.gameObject);
-            //DontDestroyOnLoad(PannelENTUIInstatiate.gameObject);
-            //DontDestroyOnLoad(PannelAnnonceUIInstatiate.gameObject);
-            //DontDestroyOnLoad(QCMPanelInstantiate.gameObject);
             DontDestroyOnLoad(EventSystemInstantiate);
 
             player.CanvasIndestrucitble = CanvasInstatiate;
-            player.DialogueUIIndestructible = DialogueUIInstatiate;
             player.InventoryUIIndestructible = InventoryUIInstatiate;
             player.PannelENTUIIndestructible = PannelENTUIInstatiate;
             player.PannelAnnonceUIIndestructible = PannelAnnonceUIInstatiate;
-            player.QCMPanelUIIndestructible = QCMPanelInstantiate;
 
             CanvasInstatiate.SetActive(false);
-            DialogueUIInstatiate.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, 15f, 0);
-            DialogueUIInstatiate.GetComponent<RectTransform>().localScale = new Vector3(2f, 2f, 2f);
 
-            NewDialogueUIInstantiate.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, 15f, 0);
-            NewDialogueUIInstantiate.GetComponent<RectTransform>().localScale = new Vector3(2f, 2f, 2f);
+
+            DialogueUIInstantiate.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, 15f, 0);
+            DialogueUIInstantiate.GetComponent<RectTransform>().localScale = new Vector3(2f, 2f, 2f);
 
             InventoryUIInstatiate.GetComponent<RectTransform>().offsetMin = new Vector2(0, 0); // Left & Bottom
             InventoryUIInstatiate.GetComponent<RectTransform>().offsetMax = new Vector2(0, 0); // Right & Top
@@ -273,13 +244,8 @@ public class GameManager : Singleton<GameManager>
             PannelAnnonceUIInstatiate.GetComponent<RectTransform>().offsetMax = new Vector2(-350f, -200f);
             PannelAnnonceUIInstatiate.GetComponent<RectTransform>().localScale = Vector3.one;
 
-            QCMPanelInstantiate.GetComponent<RectTransform>().anchoredPosition = new Vector2(0f, -600f);
-            QCMPanelInstantiate.GetComponent<RectTransform>().sizeDelta = new Vector2(992f, 415f);
-            QCMPanelInstantiate.GetComponent<RectTransform>().localScale = Vector3.one;
-
 
             InventoryUIInstatiate.GetComponent<InventoryScript>().PlayerScript = player;
-            InventoryUIInstatiate.GetComponent<InventoryScript>().DialogueCanvas = DialogueUIInstatiate;
             InventoryUIInstatiate.GetComponent<InventoryScript>().PannelENTCanvas = PannelENTUIInstatiate;
 
             player.FadeAnimation = CanvasInstatiate.transform.GetChild(CanvasInstatiate.transform.childCount - 1).GetComponent<Image>();
@@ -408,10 +374,10 @@ public class GameManager : Singleton<GameManager>
         PlayerApparance.ColorsDisplay[4] = ColorCustomList[(int)PlayerApparance.ValueColorDisplay[4]];
     }
 
-    public void SetupDialogues()
+    /*public void SetupDialogues()
     {
         player.playerBackpack.GetComponent<CSVReader>().SetUpDialogueAdhérent();
-    }
+    }*/
 
     private void OnDestroy()
     {
