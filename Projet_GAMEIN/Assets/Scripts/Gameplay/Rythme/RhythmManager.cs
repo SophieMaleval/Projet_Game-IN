@@ -25,6 +25,7 @@ public class RhythmManager : MonoBehaviour
 
     public BeatScroller beatScroller;
 
+    public NoteObject[] notes;
 
     [Header("Score")]
     public int currentScore;
