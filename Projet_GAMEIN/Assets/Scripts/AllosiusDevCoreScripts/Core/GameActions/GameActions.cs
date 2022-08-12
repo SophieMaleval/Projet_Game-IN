@@ -174,7 +174,7 @@ namespace AllosiusDev.Core
 
         public void ExecuteCreatePopUpScooter()
         {
-            GameManager.Instance.gameCanvasManager.inventory.PopUpManager.CreatePopUpForScooter(ScooterPopUpData);
+            GameManager.Instance.gameCanvasManager.PopUpManager.CreatePopUpForScooter(ScooterPopUpData);
         }
 
 
@@ -182,14 +182,14 @@ namespace AllosiusDev.Core
         {
             if (!GameManager.Instance.player.ItemChecker(itemToAdd))
                 GameManager.Instance.player.AjoutInventaire(itemToAdd);
-            if (GameManager.Instance.gameCanvasManager.inventory.PopUpManager != null) GameManager.Instance.gameCanvasManager.inventory.PopUpManager.CreatePopUpItem(itemToAdd, true);
+            if (GameManager.Instance.gameCanvasManager.PopUpManager != null) GameManager.Instance.gameCanvasManager.PopUpManager.CreatePopUpItem(itemToAdd, true);
         }
 
         public void ExecuteRemoveItem()
         {
             if (GameManager.Instance.player.ItemChecker(itemToRemove))
                 GameManager.Instance.player.RemoveObject(itemToRemove);
-            if (GameManager.Instance.gameCanvasManager.inventory.PopUpManager != null) GameManager.Instance.gameCanvasManager.inventory.PopUpManager.CreatePopUpItem(itemToRemove, false);
+            if (GameManager.Instance.gameCanvasManager.PopUpManager != null) GameManager.Instance.gameCanvasManager.PopUpManager.CreatePopUpItem(itemToRemove, false);
         }
 
         public void ExecuteLaunchMiniGame()

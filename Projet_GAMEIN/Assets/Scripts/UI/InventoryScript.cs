@@ -23,7 +23,7 @@ public class InventoryScript : MonoBehaviour
     public QuestUI QuestUi => questUi;
     public QuestTrackingUI QuestTrackingUi => questTrackingUi;
 
-    public PopUpManager PopUpManager => popUpManager;
+    //public PopUpManager PopUpManager => popUpManager;
 
     #endregion
 
@@ -59,7 +59,7 @@ public class InventoryScript : MonoBehaviour
     [SerializeField] private RectTransform ControlsPanel;
     [SerializeField] private RectTransform CreditsPanel;
 
-    [SerializeField] private PopUpManager popUpManager;
+    //[SerializeField] private PopUpManager popUpManager;
 
     #endregion
 

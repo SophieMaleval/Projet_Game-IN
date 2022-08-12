@@ -61,6 +61,7 @@ public class GameCore : Singleton<GameCore>
         
     }
 
+    [ContextMenu("OpenMinigame")]
     public void OpenMinigame()
     {
         if(MiniGame == null)

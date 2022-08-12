@@ -102,7 +102,7 @@ public class blablabla : MonoBehaviour
     {
         if (!GameManager.Instance.player.ItemChecker(item))
             GameManager.Instance.player.AjoutInventaire(item);
-        if (GameManager.Instance.gameCanvasManager.inventory.PopUpManager != null) GameManager.Instance.gameCanvasManager.inventory.PopUpManager.CreatePopUpItem(item, true);
+        if (GameManager.Instance.gameCanvasManager.PopUpManager != null) GameManager.Instance.gameCanvasManager.PopUpManager.CreatePopUpItem(item, true);
     }
 
     [ContextMenu("TestRemoveItem")]
@@ -110,7 +110,7 @@ public class blablabla : MonoBehaviour
     {
         if (GameManager.Instance.player.ItemChecker(item))
             GameManager.Instance.player.RemoveObject(item);
-        if (GameManager.Instance.gameCanvasManager.inventory.PopUpManager != null) GameManager.Instance.gameCanvasManager.inventory.PopUpManager.CreatePopUpItem(item, false);
+        if (GameManager.Instance.gameCanvasManager.PopUpManager != null) GameManager.Instance.gameCanvasManager.PopUpManager.CreatePopUpItem(item, false);
     }
 
 

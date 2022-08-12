@@ -254,7 +254,8 @@ public class GameManager : Singleton<GameManager>
             InventoryUIInstatiate.GetComponent<InventoryScript>().PlayerScript = player;
             InventoryUIInstatiate.GetComponent<InventoryScript>().PannelENTCanvas = PannelENTUIInstatiate;
 
-            player.FadeAnimation = CanvasInstatiate.transform.GetChild(CanvasInstatiate.transform.childCount - 1).GetComponent<Image>();
+            //player.FadeAnimation = CanvasInstatiate.transform.GetChild(CanvasInstatiate.transform.childCount - 1).GetComponent<Image>();
+            player.FadeAnimation = gameCanvasManager.FadeAnimation;
         }
         else
         {

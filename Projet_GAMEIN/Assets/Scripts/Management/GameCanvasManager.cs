@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class GameCanvasManager : MonoBehaviour
 {
@@ -18,6 +19,10 @@ public class GameCanvasManager : MonoBehaviour
     //public GameObject Fade => fade;
     public CutoutAnim CutoutMask => cutoutMask;
 
+    public PopUpManager PopUpManager => popUpManager;
+
+    public Image FadeAnimation => fadeAnimation;
+
     public InventoryScript inventory { get; set; }
     //public QuestSys questManager { get; set; }
     public QuestTrackingUI questTrackingUi { get; set; }
@@ -31,6 +36,10 @@ public class GameCanvasManager : MonoBehaviour
     #region UnityInspector
 
     [SerializeField] private CutoutAnim cutoutMask;
+
+    [SerializeField] private PopUpManager popUpManager;
+
+    [SerializeField] private Image fadeAnimation;
 
     #endregion
 

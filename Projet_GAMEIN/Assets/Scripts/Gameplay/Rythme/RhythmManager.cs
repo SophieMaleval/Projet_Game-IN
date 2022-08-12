@@ -61,6 +61,7 @@ public class RhythmManager : MonoBehaviour
 
     [Space]
 
+    [SerializeField] private GameRequirements gameRequirements;
     [SerializeField] private GameActions gameActions;
 
     #endregion
@@ -266,7 +267,15 @@ public class RhythmManager : MonoBehaviour
 
         if(gameActions.actionsList.Count > 0)
         {
-            gameActions.ExecuteGameActions();
+            if(gameRequirements.requirementsList.Count > 0)
+            {
+                if(gameRequirements.ExecuteGameRequirements())
+                    gameActions.ExecuteGameActions();
+            }
+            else
+            {
+                gameActions.ExecuteGameActions();
+            }
         }
 
     }

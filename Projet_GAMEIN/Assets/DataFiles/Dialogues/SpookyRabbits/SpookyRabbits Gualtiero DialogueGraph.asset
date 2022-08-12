@@ -92,6 +92,9 @@ MonoBehaviour:
         Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: previousNode
+        node: {fileID: 1908560130924283759}
+        reroutePoints: []
+      - fieldName: previousNode
         node: {fileID: 1651009807151080977}
         reroutePoints: []
       - fieldName: previousNode
@@ -197,9 +200,68 @@ MonoBehaviour:
   - {fileID: -8987655422176391741}
   - {fileID: 2731291292029470256}
   - {fileID: 2898290403095339554}
+  - {fileID: 1908560130924283759}
+  - {fileID: 443481731184307388}
   displayName: Gualtiero Dialogue
   description: "Dialogue Pr\xE9sentation Gualtiero Spooky Rabbits"
   mainNodeParent: {fileID: -7221414822225601504}
+--- !u!114 &443481731184307388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
+  m_Name: Bien Sur Pas De Soucis
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 1736, y: -696}
+  ports:
+    keys:
+    - previousNode
+    - nextNodes
+    values:
+    - _fieldName: previousNode
+      _node: {fileID: 443481731184307388}
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueTextNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: nextNodes
+        node: {fileID: 1908560130924283759}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: nextNodes
+      _node: {fileID: 443481731184307388}
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueBaseNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: previousNode
+        node: {fileID: 2898290403095339554}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  previousNode: {fileID: 0}
+  nextNodes: {fileID: 0}
+  identityType: 0
+  keyText: Dialogue_Gualtiero_BienSurPasDeSoucis
+  messagePreview: Of course no worries, go ahead.
+  singleRead: 0
+  hasGameActions: 0
+  showGameActions: 0
+  gameActions:
+    actionsList: []
+  hasRequirements: 0
+  showGameRequirements: 0
+  gameRequirements:
+    requirementsList: []
 --- !u!114 &739595734663279748
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -364,6 +426,74 @@ MonoBehaviour:
       questStepCheckedValueWanted: 0
       questStepToCheckState: 0
       itemToCheck: {fileID: 11400000, guid: 476c6f5960426de4db209e16f5e628b7, type: 2}
+--- !u!114 &1908560130924283759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
+  m_Name: Retenter Sa Chance
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 936, y: -712}
+  ports:
+    keys:
+    - previousNode
+    - nextNodes
+    values:
+    - _fieldName: previousNode
+      _node: {fileID: 1908560130924283759}
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueTextNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: nextNodes
+        node: {fileID: -7221414822225601504}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: nextNodes
+      _node: {fileID: 1908560130924283759}
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueBaseNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: previousNode
+        node: {fileID: 443481731184307388}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  previousNode: {fileID: 0}
+  nextNodes: {fileID: 0}
+  identityType: 1
+  keyText: Dialogue_Gualtiero_RetenterSaChance
+  messagePreview: Can I take my chance again ?
+  singleRead: 0
+  hasGameActions: 0
+  showGameActions: 0
+  gameActions:
+    actionsList: []
+  hasRequirements: 1
+  showGameRequirements: 1
+  gameRequirements:
+    requirementsList:
+    - requirementType: 1
+      questToCheck: {fileID: 0}
+      questCheckedValueWanted: 0
+      questToCheckState: 0
+      questAssociatedToCheck: {fileID: 11400000, guid: e62da928601dc8545b2e1b2042a10cbb,
+        type: 2}
+      questStepToCheck: {fileID: 11400000, guid: 516daa7b7d89e2d4db9d2b078c82bbf4,
+        type: 2}
+      questStepCheckedValueWanted: 1
+      questStepToCheckState: 2
+      itemToCheck: {fileID: 0}
 --- !u!114 &2731291292029470256
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -434,7 +564,7 @@ MonoBehaviour:
   m_Name: 'Attention suis bien le rythme : 3,2, 1..'
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 3352, y: -376}
+  position: {x: 3336, y: -664}
   ports:
     keys:
     - previousNode
@@ -447,6 +577,9 @@ MonoBehaviour:
       connections:
       - fieldName: nextNodes
         node: {fileID: 2731291292029470256}
+        reroutePoints: []
+      - fieldName: nextNodes
+        node: {fileID: 443481731184307388}
         reroutePoints: []
       _direction: 0
       _connectionType: 0

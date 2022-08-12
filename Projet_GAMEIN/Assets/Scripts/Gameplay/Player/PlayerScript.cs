@@ -48,11 +48,11 @@ public class PlayerScript : MonoBehaviour
     public TLManager TimeLineManager ;
 
     public Vector2 MainSceneLoadPos ;
-    [HideInInspector] public bool InAnimationFade = false ;
-    [HideInInspector] public bool FadeMake = false ;
-    [HideInInspector] public bool AnimationBeMake = false ;
+    public bool InAnimationFade { get; set; }
+    public bool FadeMake { get; set; }
+    public bool AnimationBeMake { get; set; }
 
-    [HideInInspector] public Image FadeAnimation ;
+    public Image FadeAnimation { get; set; }
 
     [Header("Sounds")]
     [SerializeField] private AudioData selectedSound;

@@ -113,7 +113,7 @@ public class Interactible : MonoBehaviour
                 }
                 
                 
-                if(GameManager.Instance.gameCanvasManager.inventory.PopUpManager != null) GameManager.Instance.gameCanvasManager.inventory.PopUpManager.CreatePopUpItem(Object, true);
+                if(GameManager.Instance.gameCanvasManager.PopUpManager != null) GameManager.Instance.gameCanvasManager.PopUpManager.CreatePopUpItem(Object, true);
             }
             else 
             {              
