@@ -55,43 +55,49 @@ namespace AllosiusDev.TranslationSystem
             if (typeDictionary == TypeDictionary.Dialogues)
             {
                 codeLangue += "_Dialogues";
-                path = Application.streamingAssetsPath + "/Traduction/Dialogues/" + codeLangue + ".json";
-                json = File.ReadAllText(path, Encoding.UTF8);
+                //path = Application.streamingAssetsPath + "/Traduction/Dialogues/" + codeLangue + ".json";
+                //json = File.ReadAllText(path, Encoding.UTF8);
+                json = Resources.Load<TextAsset>("Traduction/Dialogues/" + codeLangue).text;
                 //json = Resources.Load<TextAsset>(string.Format("Traduction/Dialogues/{0}", codeLangue)).text;
             }
             else if(typeDictionary == TypeDictionary.GeneralsUI)
             {
                 codeLangue += "_GeneralsUI";
-                path = Application.streamingAssetsPath + "/Traduction/GeneralsUI/" + codeLangue + ".json";
-                json = File.ReadAllText(path, Encoding.UTF8);
+                //path = Application.streamingAssetsPath + "/Traduction/GeneralsUI/" + codeLangue + ".json";
+                //json = File.ReadAllText(path, Encoding.UTF8);
+                json = Resources.Load<TextAsset>("Traduction/GeneralsUI/" + codeLangue).text;
                 //json = Resources.Load<TextAsset>(string.Format("Traduction/GeneralsUI/{0}", codeLangue)).text;
             }
             else if (typeDictionary == TypeDictionary.InformationsPanelsTexts)
             {
                 codeLangue += "_InformationsPanelsTexts";
-                path = Application.streamingAssetsPath + "/Traduction/InformationsPanelsTexts/" + codeLangue + ".json";
-                json = File.ReadAllText(path, Encoding.UTF8);
+                //path = Application.streamingAssetsPath + "/Traduction/InformationsPanelsTexts/" + codeLangue + ".json";
+                //json = File.ReadAllText(path, Encoding.UTF8);
+                json = Resources.Load<TextAsset>("Traduction/InformationsPanelsTexts/" + codeLangue).text;
                 //json = Resources.Load<TextAsset>(string.Format("Traduction/InformationsPanelsTexts/{0}", codeLangue)).text;
             }
             else if (typeDictionary == TypeDictionary.InventoryItems)
             {
                 codeLangue += "_InventoryItems";
-                path = Application.streamingAssetsPath + "/Traduction/InventoryItems/" + codeLangue + ".json";
-                json = File.ReadAllText(path, Encoding.UTF8);
+                //path = Application.streamingAssetsPath + "/Traduction/InventoryItems/" + codeLangue + ".json";
+                //json = File.ReadAllText(path, Encoding.UTF8);
+                json = Resources.Load<TextAsset>("Traduction/InventoryItems/" + codeLangue).text;
                 //json = Resources.Load<TextAsset>(string.Format("Traduction/InventoryItems/{0}", codeLangue)).text;
             }
             else if (typeDictionary == TypeDictionary.PopUps)
             {
                 codeLangue += "_PopUps";
-                path = Application.streamingAssetsPath + "/Traduction/PopUps/" + codeLangue + ".json";
-                json = File.ReadAllText(path, Encoding.UTF8);
+                //path = Application.streamingAssetsPath + "/Traduction/PopUps/" + codeLangue + ".json";
+                //json = File.ReadAllText(path, Encoding.UTF8);
+                json = Resources.Load<TextAsset>("Traduction/PopUps/" + codeLangue).text;
                 //json = Resources.Load<TextAsset>(string.Format("Traduction/PopUps/{0}", codeLangue)).text;
             }
             else if (typeDictionary == TypeDictionary.Quests)
             {
                 codeLangue += "_Quests";
-                path = Application.streamingAssetsPath + "/Traduction/Quests/" + codeLangue + ".json";
-                json = File.ReadAllText(path, Encoding.UTF8);
+                //path = Application.streamingAssetsPath + "/Traduction/Quests/" + codeLangue + ".json";
+                //json = File.ReadAllText(path, Encoding.UTF8);
+                json = Resources.Load<TextAsset>("Traduction/Quests/" + codeLangue).text;
                 //json = Resources.Load<TextAsset>(string.Format("Traduction/Quests/{0}", codeLangue)).text;
             }
 

@@ -69,9 +69,10 @@ public class SceneEntManager : MonoBehaviour
         else 
         {
             //if(PM.GetComponent<PlayerScript>().PreviousSceneName == "Character Customer")
-            if (PM.GetComponent<PlayerScript>().PreviousSceneName.isGameScene == false)
+            if (PM.GetComponent<PlayerScript>().PreviousSceneName == SessionController.Instance.Game.CharacterCustomerScene)
             {
-                PM.transform.position = new Vector2(-5.5f, 2.65f);  
+                //PM.transform.position = new Vector2(-5.5f, 2.65f);  
+                PM.transform.position = GameManager.Instance.InitMenuExitPlayerSpawnPos;
                 PM.GiveGoodAnimation(new Vector2(0f, -1f));
                 ChangePartScene(1);
             } 

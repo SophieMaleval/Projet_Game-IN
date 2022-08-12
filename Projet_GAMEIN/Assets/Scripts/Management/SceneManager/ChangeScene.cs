@@ -70,12 +70,14 @@ public class ChangeScene : MonoBehaviour
             //if(SceneManager.GetActiveScene().name == "Tilemaps test" || SceneManager.GetActiveScene().name == "Main") PM.GetComponent<PlayerScript>().MainSceneLoadPos = GiveNewPos();
             if(GameCore.Instance.CurrentScene.sceneOutside && GameCore.Instance.CurrentScene.isGameScene)
             {
+                Debug.Log("Give Pos");
                 PM.GetComponent<PlayerScript>().MainSceneLoadPos = GiveNewPos();
             }
             //if(SceneManager.GetActiveScene().name == "Game In") PM.GetComponent<PlayerScript>().MainSceneLoadPos = new Vector2(-3.75f, -1.25f);
             if(GameCore.Instance.CurrentScene == SessionController.Instance.Game.StartLevelScene)
             {
-                PM.GetComponent<PlayerScript>().MainSceneLoadPos = GameManager.Instance.InitStartLevelPlayerSpawnPos;
+                Debug.Log("InitStartLevelPlayerSpawnPos");
+                PM.GetComponent<PlayerScript>().MainSceneLoadPos = GameManager.Instance.InitExteriorMapPlayerSpawnPos;
             }
             //PM.GetComponent<PlayerScript>().PreviousSceneName = SceneManager.GetActiveScene().name;
             PM.GetComponent<PlayerScript>().PreviousSceneName = GameCore.Instance.CurrentScene;

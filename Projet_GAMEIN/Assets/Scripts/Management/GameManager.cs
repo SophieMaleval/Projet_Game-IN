@@ -26,7 +26,8 @@ public class GameManager : Singleton<GameManager>
 
     public QuestList questManager { get; protected set; }
 
-    public Vector2 InitStartLevelPlayerSpawnPos => initStartLevelPlayerSpawnPos;
+    public Vector2 InitMenuExitPlayerSpawnPos => initMenuExitPlayerSpawnPos;
+    public Vector2 InitExteriorMapPlayerSpawnPos => initExteriorMapPlayerSpawnPos;
 
     #endregion
 
@@ -38,8 +39,13 @@ public class GameManager : Singleton<GameManager>
 
     [Space]
 
+    [Header("Player Positions Init Offsets")]
+
+    [Tooltip("Position where the player will appear when leaving the Customer Menu or at the initialization directly on Game In for the first time")]
+    [SerializeField] private Vector2 initMenuExitPlayerSpawnPos;
+
     [Tooltip("Position where the player will appear when leaving the Game In building for the first time to arrive on the outdoor map")]
-    [SerializeField] private Vector2 initStartLevelPlayerSpawnPos;
+    [SerializeField] private Vector2 initExteriorMapPlayerSpawnPos;
 
     [Space]
 

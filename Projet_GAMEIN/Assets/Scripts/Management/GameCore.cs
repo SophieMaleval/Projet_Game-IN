@@ -39,7 +39,14 @@ public class GameCore : Singleton<GameCore>
 
         if (GameManager.Instance.player != null && GameManager.Instance.player.PreviousSceneName == null)
         {
-            GameManager.Instance.player.PreviousSceneName = SessionController.Instance.Game.CharacterCustomerScene;
+            if (currentScene == SessionController.Instance.Game.StartLevelScene)
+            {
+                GameManager.Instance.player.PreviousSceneName = SessionController.Instance.Game.CharacterCustomerScene;
+            }
+            else if(currentScene.isGameScene && currentScene.sceneOutside)
+            {
+                GameManager.Instance.player.MainSceneLoadPos = GameManager.Instance.InitExteriorMapPlayerSpawnPos;
+            }
         }
 
         //GameManager.Instance.gameCanvasManager.CutoutMask.ResetMask();
