@@ -30,6 +30,8 @@ namespace AllosiusDev.DialogSystem
 
         [SerializeField] private DialogueGraph npcDialogue;
 
+        [SerializeField] private float timeBeforeRelaunchDialogue = 0.5f;
+
         #endregion
 
         #region Behaviour
@@ -57,6 +59,20 @@ namespace AllosiusDev.DialogSystem
                     StartDialog();
                 }
             }
+        }
+
+        public void SetCanTalk(bool value)
+        {
+            canTalk = value;
+        }
+
+        public IEnumerator ResetCanTalk()
+        {
+            canTalk = false;
+
+            yield return new WaitForSeconds(timeBeforeRelaunchDialogue);
+
+            canTalk = true;
         }
 
         public void InitAnimator()

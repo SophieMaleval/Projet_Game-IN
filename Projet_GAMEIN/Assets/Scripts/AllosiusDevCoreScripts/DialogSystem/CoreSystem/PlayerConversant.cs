@@ -313,8 +313,11 @@ namespace AllosiusDev.DialogSystem
 
             playerScript.GetComponent<PlayerMovement>().EndActivity();
 
-            if(currentConversant != null)
+            if (currentConversant != null)
+            {
                 currentConversant.PNJTalkAnimation(false);
+                StartCoroutine(currentConversant.ResetCanTalk());
+            }
 
             currentDialog = null;
 
