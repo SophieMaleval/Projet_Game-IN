@@ -127,8 +127,10 @@ MonoBehaviour:
   "qt\xE9": 0
   DisplayerInventory: {fileID: 0}
   Object: {fileID: 11400000, guid: 476c6f5960426de4db209e16f5e628b7, type: 2}
-  questSys: {fileID: 0}
   PlayerScript: {fileID: 0}
+  interactableElement:
+    interactableSpritePosOffset: {x: 0, y: 0.56, z: 0}
+    collisionRadius: 0.25
   gameRequirements:
     requirementsList:
     - requirementType: 1
@@ -142,6 +144,7 @@ MonoBehaviour:
       questStepCheckedValueWanted: 1
       questStepToCheckState: 1
       itemToCheck: {fileID: 0}
+      rythmeGameRankRequired: 0
   gameActions:
     actionsList:
     - actionType: 2
@@ -152,9 +155,14 @@ MonoBehaviour:
         type: 2}
       questStepToComplete: {fileID: 11400000, guid: 2b0405ef8a3dbe744aafe2df63483c5c,
         type: 2}
-      ScooterPopUpImg: {fileID: 0}
+      ScooterPopUpData: {fileID: 0}
       itemToAdd: {fileID: 0}
       itemToRemove: {fileID: 0}
+      fadeDuration: 0.5
+      fadeOutSwitchDuration: 1
+      newConversantToCall: {fileID: 0}
+      dialogueToLaunch: {fileID: 0}
+      launchDialogueToMainNode: 0
 --- !u!61 &8421963092378958069
 BoxCollider2D:
   m_ObjectHideFlags: 0

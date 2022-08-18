@@ -7,6 +7,7 @@ public class PannelAnnonceScript : MonoBehaviour
 {
     #region Fields
 
+
     private SpriteRenderer TableauSpriteRenderer ;
 
     private PetiteAnnonceManager BoardAnnonce;
@@ -32,6 +33,7 @@ public class PannelAnnonceScript : MonoBehaviour
     [Header ("Gestion Code")]
     [HideInInspector] public bool CanProgress = false ;
 
+    [SerializeField] private InteractableElement interactableElement;
     [Space]
 
     [SerializeField] GameActions gameActions;
@@ -56,8 +58,8 @@ public class PannelAnnonceScript : MonoBehaviour
 
     void Update()
     {
-        if(PlayerScript.gameObject.transform.position.x < transform.position.x) PlayerScript.InputSpritePos(false);
-        if(PlayerScript.gameObject.transform.position.x > transform.position.x) PlayerScript.InputSpritePos(true);
+        //if(PlayerScript.gameObject.transform.position.x < transform.position.x) PlayerScript.InputSpritePos(false);
+        //if(PlayerScript.gameObject.transform.position.x > transform.position.x) PlayerScript.InputSpritePos(true);
                     
         if (PlayerArroundPannel == true)
         {
@@ -94,7 +96,7 @@ public class PannelAnnonceScript : MonoBehaviour
         if (player != null)
         {
             PlayerArroundPannel = true;
-            PlayerScript.SwitchInputSprite();
+            PlayerScript.SwitchInputSprite(transform, interactableElement.interactableSpritePosOffset);
         }
     }
 
@@ -104,13 +106,24 @@ public class PannelAnnonceScript : MonoBehaviour
         if (player != null)
         {
             PlayerArroundPannel = false;
-            PlayerScript.SwitchInputSprite();
+            PlayerScript.SwitchInputSprite(transform, interactableElement.interactableSpritePosOffset);
         }
     }
 
     private void OnDestroy()
     {
         //Debug.Log(gameObject.name + "is Destroy");
+    }
+
+    #endregion
+
+    #region Gizmos
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+
+        Gizmos.DrawWireSphere(transform.position + interactableElement.interactableSpritePosOffset, interactableElement.collisionRadius);
     }
 
     #endregion

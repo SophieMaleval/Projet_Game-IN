@@ -4,11 +4,10 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 
-
-
 public class TableauController : MonoBehaviour
 {
     #region Fields
+
 
     private PannelENTManager Board;
     private GameObject InventoryPanel ;
@@ -30,6 +29,7 @@ public class TableauController : MonoBehaviour
     public Sprite TableauENTNormal;
     public Sprite TableauENTHighlighted;
 
+    [SerializeField] private InteractableElement interactableElement;
     #endregion
 
     #region Behaviour
@@ -55,8 +55,8 @@ public class TableauController : MonoBehaviour
     {
         if(PannelSetUp)
         {
-            if(PlayerScript.gameObject.transform.position.x < transform.position.x) PlayerScript.InputSpritePos(false);
-            if(PlayerScript.gameObject.transform.position.x > transform.position.x) PlayerScript.InputSpritePos(true);
+            //if(PlayerScript.gameObject.transform.position.x < transform.position.x) PlayerScript.InputSpritePos(false);
+            //if(PlayerScript.gameObject.transform.position.x > transform.position.x) PlayerScript.InputSpritePos(true);
                     
             if (PlayerArroundPannel == true)
             {
@@ -88,7 +88,7 @@ public class TableauController : MonoBehaviour
         if (player != null)
         {
             PlayerArroundPannel = true;
-            PlayerScript.SwitchInputSprite();
+            PlayerScript.SwitchInputSprite(transform, interactableElement.interactableSpritePosOffset);
         }
     }
 
@@ -98,8 +98,19 @@ public class TableauController : MonoBehaviour
         if (player != null)
         {
             PlayerArroundPannel = false;
-            PlayerScript.SwitchInputSprite();
+            PlayerScript.SwitchInputSprite(transform, interactableElement.interactableSpritePosOffset);
         }
+    }
+
+    #endregion
+
+    #region Gizmos
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+
+        Gizmos.DrawWireSphere(transform.position + interactableElement.interactableSpritePosOffset, interactableElement.collisionRadius);
     }
 
     #endregion

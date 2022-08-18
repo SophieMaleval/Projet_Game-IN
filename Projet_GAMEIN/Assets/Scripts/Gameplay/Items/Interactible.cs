@@ -10,6 +10,8 @@ public enum Quantité
     Single,
     Multiple
 }
+
+[RequireComponent(typeof(InteractableElement))]
 public class Interactible : MonoBehaviour
 {
     #region Fields
@@ -37,6 +39,7 @@ public class Interactible : MonoBehaviour
 
     [SerializeField] private PlayerScript PlayerScript;
 
+    [SerializeField] private InteractableElement interactableElement;
     //public int code;
     //public int stepCode;
 
@@ -69,7 +72,7 @@ public class Interactible : MonoBehaviour
         if (playerScript != null && !hasCollected)
         {
             PlayerCanCollectThisObject(true);
-            PlayerScript.SwitchInputSprite();
+            PlayerScript.SwitchInputSprite(transform, interactableElement.interactableSpritePosOffset);
         }      
     }
 
@@ -96,8 +99,8 @@ public class Interactible : MonoBehaviour
             }
         }
 
-        if (PlayerScript.gameObject.transform.position.x < transform.position.x) PlayerScript.InputSpritePos(false);
-        if(PlayerScript.gameObject.transform.position.x > transform.position.x) PlayerScript.InputSpritePos(true);
+        //if (PlayerScript.gameObject.transform.position.x < transform.position.x) PlayerScript.InputSpritePos(false);
+        //if(PlayerScript.gameObject.transform.position.x > transform.position.x) PlayerScript.InputSpritePos(true);
         
         if (PlayerAround)
         {
@@ -136,7 +139,7 @@ public class Interactible : MonoBehaviour
         if (qté == Quantité.Single)
         {
             PlayerScript.AjoutInventaire(Object);
-            PlayerScript.SwitchInputSprite();     
+            PlayerScript.SwitchInputSprite(transform, interactableElement.interactableSpritePosOffset);     
             /*if(questSys != null)
                 questSys.Progression();*/
             //AaP.StrikeThrough();
@@ -148,21 +151,21 @@ public class Interactible : MonoBehaviour
             {
                 PlayerScript.AjoutInventaire(Object);
                 Object.AddEntry();
-                PlayerScript.SwitchInputSprite();
+                PlayerScript.SwitchInputSprite(transform, interactableElement.interactableSpritePosOffset);
                 Destroy(this.gameObject, 0.05f);
             }
             else                                    //Si l'item existe déjà
             {
                 if(Object.unité < Object.valeurMax)
                 {
-                    PlayerScript.SwitchInputSprite();
+                    PlayerScript.SwitchInputSprite(transform, interactableElement.interactableSpritePosOffset);
                     Object.AddEntry();
                     Debug.Log("encore un effort " + "U: " + Object.unité + "VM:" + Object.valeurMax);
                     Destroy(this.gameObject, 0.05f);
                 }
                 else if (Object.unité == Object.valeurMax)        //mdr ça marche mais ça atteint d'abord la valeur max, puis ça progresse
                 {
-                    PlayerScript.SwitchInputSprite();
+                    PlayerScript.SwitchInputSprite(transform, interactableElement.interactableSpritePosOffset);
                     Object.AddEntry();
                     /*if(questSys != null)
                         questSys.Progression();*/
@@ -184,7 +187,7 @@ public class Interactible : MonoBehaviour
         if (playerScript != null && !hasCollected)
         {
             PlayerCanCollectThisObject(false);
-            PlayerScript.SwitchInputSprite();
+            PlayerScript.SwitchInputSprite(transform, interactableElement.interactableSpritePosOffset);
         }
     }
  
@@ -200,6 +203,17 @@ public class Interactible : MonoBehaviour
             PlayerAround = true ;
             SpriteRend.sprite = Object.HighlightSprite;            
         }      
+    }
+
+    #endregion
+
+    #region Gizmos
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+
+        Gizmos.DrawWireSphere(transform.position + interactableElement.interactableSpritePosOffset, interactableElement.collisionRadius);
     }
 
     #endregion

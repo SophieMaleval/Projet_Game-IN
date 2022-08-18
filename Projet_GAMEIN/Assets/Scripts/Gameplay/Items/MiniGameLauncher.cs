@@ -4,9 +4,11 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+[RequireComponent(typeof(InteractableElement))]
 public class MiniGameLauncher : MonoBehaviour
 {
     #region Fields
+
 
     private SpriteRenderer SpriteRend;
 
@@ -29,6 +31,8 @@ public class MiniGameLauncher : MonoBehaviour
 
     public int etapeDeQuete, numeroDeQuete;
     //public int stepCode;
+
+    [SerializeField] private InteractableElement interactableElement;
 
     #endregion
 
@@ -54,14 +58,14 @@ public class MiniGameLauncher : MonoBehaviour
         if (player != null)
         {
             CanStartThisMiniGame(true);
-            PlayerScript.SwitchInputSprite();
+            PlayerScript.SwitchInputSprite(transform, interactableElement.interactableSpritePosOffset);
         }
     }
 
     private void Update()
     {
-        if (PlayerScript.gameObject.transform.position.x < transform.position.x) PlayerScript.InputSpritePos(false);
-        if (PlayerScript.gameObject.transform.position.x > transform.position.x) PlayerScript.InputSpritePos(true);
+        //if (PlayerScript.gameObject.transform.position.x < transform.position.x) PlayerScript.InputSpritePos(false);
+        //if (PlayerScript.gameObject.transform.position.x > transform.position.x) PlayerScript.InputSpritePos(true);
         /*if (numeroDeQuete == questSys.niveau && etapeDeQuete == questSys.etape)
         {
             ZoneInteractible();
@@ -114,7 +118,7 @@ public class MiniGameLauncher : MonoBehaviour
         if (player != null)
         {
             CanStartThisMiniGame(false);
-            PlayerScript.SwitchInputSprite();
+            PlayerScript.SwitchInputSprite(transform, interactableElement.interactableSpritePosOffset);
         }
     }
 
@@ -129,6 +133,17 @@ public class MiniGameLauncher : MonoBehaviour
             PlayerAround = true;
             //SpriteRend.sprite = Object.HighlightSprite;
         }
+    }
+
+    #endregion
+
+    #region Gizmos
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+
+        Gizmos.DrawWireSphere(transform.position + interactableElement.interactableSpritePosOffset, interactableElement.collisionRadius);
     }
 
     #endregion

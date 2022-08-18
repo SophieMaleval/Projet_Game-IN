@@ -14,6 +14,7 @@ public enum PlayerLookAffterMove
 
 [RequireComponent (typeof(BoxCollider2D))]
 [RequireComponent (typeof(Rigidbody2D))]
+[RequireComponent(typeof(InteractableElement))]
 public class CameraTriggerVolume : MonoBehaviour
 {
     #region Fields
@@ -41,6 +42,8 @@ public class CameraTriggerVolume : MonoBehaviour
     [SerializeField] private PlayerLookAffterMove PlayerOrientation ;
 
     [SerializeField] private PlayerScript ScriptPlayer ;
+    
+    [SerializeField] private InteractableElement interactableElement;
 
     #endregion
 
@@ -50,6 +53,7 @@ public class CameraTriggerVolume : MonoBehaviour
     {
         BoxCol = GetComponent<BoxCollider2D>();
         Rb2D = GetComponent<Rigidbody2D>();
+
         BoxCol.isTrigger = true ;
         //BoxCol.size = BoxSize ;
 
@@ -93,7 +97,7 @@ public class CameraTriggerVolume : MonoBehaviour
                 ManagerENT.ChangePartScene(PartSceneValue) ;  
             } else {
                 PlayerAround = true ;          
-                ScriptPlayer.SwitchInputSprite();          
+                ScriptPlayer.SwitchInputSprite(transform, interactableElement.interactableSpritePosOffset);          
             }
         }
     }
@@ -107,7 +111,7 @@ public class CameraTriggerVolume : MonoBehaviour
             if(ThisIsScale)
             {
                 PlayerAround = false ;
-                ScriptPlayer.SwitchInputSprite();
+                ScriptPlayer.SwitchInputSprite(transform, interactableElement.interactableSpritePosOffset);
             }
         }
     }
@@ -156,6 +160,10 @@ public class CameraTriggerVolume : MonoBehaviour
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireCube(transform.position, BoxSize);
+
+        Gizmos.color = Color.red;
+
+        Gizmos.DrawWireSphere(transform.position + interactableElement.interactableSpritePosOffset, interactableElement.collisionRadius);
     }
 
     #endregion

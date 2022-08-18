@@ -90,10 +90,10 @@ public class RhythmManager : MonoBehaviour
     IEnumerator MiniGameEnable()
     {
         yield return new WaitForSeconds(0.025f);
-        if(npcCurrent != null)
+        /*if(npcCurrent != null)
         {
             npcCurrent.gameObject.SetActive(false);
-        }
+        }*/
         player.StartActivity();          
 
         OldPlayerPosition = player.transform.position ;   

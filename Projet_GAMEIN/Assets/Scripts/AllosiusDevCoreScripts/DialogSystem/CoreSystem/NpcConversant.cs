@@ -4,10 +4,12 @@ using UnityEngine;
 
 namespace AllosiusDev.DialogSystem
 {
+    [RequireComponent(typeof(InteractableElement))]
     public class NpcConversant : MonoBehaviour
     {
 
         #region Fields
+
 
         private bool canTalk = true;
 
@@ -32,6 +34,7 @@ namespace AllosiusDev.DialogSystem
 
         [SerializeField] private float timeBeforeRelaunchDialogue = 0.5f;
 
+        [SerializeField] private InteractableElement interactableElement;
         #endregion
 
         #region Behaviour
@@ -103,7 +106,7 @@ namespace AllosiusDev.DialogSystem
             if (player != null)
             {
                 PlayerAround = true;
-                GameManager.Instance.player.SwitchInputSprite();
+                GameManager.Instance.player.SwitchInputSprite(transform, interactableElement.interactableSpritePosOffset);
             }
         }
 
@@ -113,8 +116,19 @@ namespace AllosiusDev.DialogSystem
             if (player != null)
             {
                 PlayerAround = false;
-                GameManager.Instance.player.SwitchInputSprite();
+                GameManager.Instance.player.SwitchInputSprite(transform, interactableElement.interactableSpritePosOffset);
             }
+        }
+
+        #endregion
+
+        #region Gizmos
+
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.red;
+
+            Gizmos.DrawWireSphere(transform.position + interactableElement.interactableSpritePosOffset, interactableElement.collisionRadius);
         }
 
         #endregion

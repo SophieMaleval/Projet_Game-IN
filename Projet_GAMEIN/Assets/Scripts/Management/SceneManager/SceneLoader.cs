@@ -21,6 +21,9 @@ public class SceneLoader : Singleton<SceneLoader>
         AllosiusDev.Audio.AudioController.Instance.StopAllAmbients();
         AllosiusDev.Audio.AudioController.Instance.StopAllMusics();
 
+        if(GameManager.Instance != null && GameManager.Instance.player != null)
+            GameManager.Instance.player.ResetInterractInputSprite();
+
         if(GameCore.Instance != null)
             GameCore.ResetInstance();
 

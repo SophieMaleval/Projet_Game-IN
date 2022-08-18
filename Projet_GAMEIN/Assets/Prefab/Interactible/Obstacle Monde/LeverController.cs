@@ -12,6 +12,7 @@ public enum LeverGroup
     LeverGroup5
 }
 
+[RequireComponent(typeof(InteractableElement))]
 public class LeverController : MonoBehaviour
 {
     [Header ("Lever Gestion")]
@@ -27,7 +28,9 @@ public class LeverController : MonoBehaviour
 
     [SerializeField] private LeverGroup GroupOfLever;
     private PlayerScript Player ;
-    private bool PlayerAround = false;    
+    private bool PlayerAround = false;
+
+    [SerializeField] private InteractableElement interactableElement;
 
     private void Awake() {
         if(GameObject.Find("Player") != null)   // Récupère le player au lancement de la scène
@@ -103,7 +106,7 @@ public class LeverController : MonoBehaviour
         {
             PlayerAround = true ;
             ShowHighlightLever(true);
-            Player.SwitchInputSprite();
+            Player.SwitchInputSprite(transform, interactableElement.interactableSpritePosOffset);
         }      
     }
 
@@ -113,7 +116,7 @@ public class LeverController : MonoBehaviour
         {
             PlayerAround = false ;
             ShowHighlightLever(false);
-            Player.SwitchInputSprite();
+            Player.SwitchInputSprite(transform, interactableElement.interactableSpritePosOffset);
         }
     }
 
@@ -134,4 +137,15 @@ public class LeverController : MonoBehaviour
             }
         }
     }
+
+    #region Gizmos
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+
+        Gizmos.DrawWireSphere(transform.position + interactableElement.interactableSpritePosOffset, interactableElement.collisionRadius);
+    }
+
+    #endregion
 }

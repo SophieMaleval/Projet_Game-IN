@@ -37,6 +37,8 @@ public class PlayerScript : MonoBehaviour
     [Header ("Information")]
     public int PlayerSexualGenre ;
 
+    [SerializeField] private GameObject playerBackpack;
+
     public GameObject InterractInputSprite;
 
 
@@ -125,18 +127,31 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
-    public void SwitchInputSprite()
+    public void SwitchInputSprite(Transform parentObject, Vector3 posOffset)
     {
+        InterractInputSprite.transform.parent = parentObject;
+        InterractInputSprite.transform.localPosition = posOffset;
         InterractInputSprite.SetActive(!InterractInputSprite.activeSelf);
+
+        if (InterractInputSprite.activeSelf == false)
+        {
+            ResetInterractInputSprite();
+        }
     }
 
-    public void InputSpritePos(bool StatePositif)
+    public void ResetInterractInputSprite()
+    {
+        InterractInputSprite.transform.parent = playerBackpack.transform;
+        InterractInputSprite.transform.localPosition = Vector3.zero;
+    }
+
+    /*public void InputSpritePos(bool StatePositif)
     {
         if(StatePositif) // La touche se positionne à droite du joueur
             InterractInputSprite.transform.localPosition = new Vector3(0.25f, InterractInputSprite.transform.localPosition.y, InterractInputSprite.transform.localPosition.z) ;
         else // Latouche se positionne à gauche du joueur
             InterractInputSprite.transform.localPosition = new Vector3(-0.25f, InterractInputSprite.transform.localPosition.y, InterractInputSprite.transform.localPosition.z) ;
-    }
+    }*/
 
 
     public void AjoutInventaire(InteractibleObject ObjetAjouter)

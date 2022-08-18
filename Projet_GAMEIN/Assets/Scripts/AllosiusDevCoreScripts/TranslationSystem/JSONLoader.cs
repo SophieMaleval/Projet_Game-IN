@@ -47,7 +47,7 @@ namespace AllosiusDev.TranslationSystem
             //string path = Application.streamingAssetsPath + "/" + codeLangue + ".json";
             //string json = File.ReadAllText(path, Encoding.UTF8);
 
-            string path = "";
+            //string path = "";
             string json = "";
             
             //json = Resources.Load<TextAsset>(string.Format("Traduction/{0}", codeLangue)).text;
