@@ -7,22 +7,25 @@ namespace AllosiusDev.TranslationSystem
 {
     public class ToTranslateObject : MonoBehaviour
     {
+        #region Fields
+
+        private string translationKey;
+
+        #endregion
+
         #region Properties
 
         public TextMeshProUGUI TextToTranslate => textToTranslate;
 
         public string TranslationKey => translationKey;
 
+        public TypeDictionary typeDictionary { get; set; }
+
         #endregion
 
         #region UnityInspector
 
         [SerializeField] private TextMeshProUGUI textToTranslate;
-
-        [SerializeField] private string translationKey;
-
-        [SerializeField] public TypeDictionary typeDictionary;
-
 
         [SerializeField] private TranslationData translationData;
 
