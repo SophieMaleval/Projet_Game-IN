@@ -36,13 +36,21 @@ namespace AllosiusDev.Core
                     {
                         if (item.CheckQuestState(GameManager.Instance.questManager) == false)
                         {
-                            Debug.Log("false");
+                            //Debug.Log("false");
                             return false;
                         }
                     }
                     else if (item.requirementType == RequirementType.HasItem)
                     {
                         if (item.CheckHasItem(GameManager.Instance.player) == false)
+                        {
+                            //Debug.Log("false");
+                            return false;
+                        }
+                    }
+                    else if (item.requirementType == RequirementType.HasRequiredRythmeGameRank)
+                    {
+                        if (item.CheckRythmeGameRank() == false)
                         {
                             //Debug.Log("false");
                             return false;
@@ -89,6 +97,10 @@ namespace AllosiusDev.Core
         [Header("Has Item Properties")]
         [SerializeField] public InteractibleObject itemToCheck;
 
+        [Space]
+        [Header("Has Required Rythme Game Rank Properties")]
+        [SerializeField] public RythmeGameRank rythmeGameRankRequired;
+
 
         #endregion
 
@@ -127,6 +139,19 @@ namespace AllosiusDev.Core
             return false;
         }
 
+        public bool CheckRythmeGameRank()
+        {
+            bool hasRequiredRank = false;
+
+            if (GameCore.Instance != null)
+            {
+                hasRequiredRank = GameCore.Instance.CheckRythmeGameRank(rythmeGameRankRequired);
+            }
+
+            return hasRequiredRank;
+            
+        }
+
         #endregion
     }
 }
@@ -138,6 +163,7 @@ namespace AllosiusDev.Core
         HasQuest,
         QuestState,
         HasItem,
+        HasRequiredRythmeGameRank,
     }
 }
 

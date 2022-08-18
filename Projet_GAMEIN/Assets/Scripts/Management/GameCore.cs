@@ -17,6 +17,8 @@ public class GameCore : Singleton<GameCore>
 
     public Vector2 OldLastMovePlayer { get; set; }
 
+    public RythmeGameRank currentRythmeGameRank { get; set; }
+
     #endregion
 
     #region UnityInspector
@@ -79,5 +81,17 @@ public class GameCore : Singleton<GameCore>
         MiniGame.SetActive(true);
     }
 
+    public bool CheckRythmeGameRank(RythmeGameRank rythmeGameRank)
+    {
+        if(currentRythmeGameRank == rythmeGameRank)
+        {
+            return true;
+        }
+
+        return false;
+    }
+
     #endregion
 }
+
+

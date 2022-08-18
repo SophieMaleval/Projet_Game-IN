@@ -11,6 +11,9 @@ public class RhythmManager : MonoBehaviour
 {
     #region Fields
 
+    private string rankVal;
+    private RythmeGameRank rythmeGameRank;
+
     #endregion
 
     #region Properties
@@ -195,23 +198,29 @@ public class RhythmManager : MonoBehaviour
 
             percentHitText.text = percentHit.ToString("F1") + "%"; //F1= 1 float après la virgule
 
-            string rankVal = "F";
+            rankVal = "F";
+            rythmeGameRank = RythmeGameRank.F;
 
             if(percentHit > 40)
             {
                 rankVal = "D";
-                if(percentHit > 55)
+                rythmeGameRank = RythmeGameRank.D;
+                if (percentHit > 55)
                 {
                     rankVal = "C";
-                    if(percentHit > 70)
+                    rythmeGameRank = RythmeGameRank.C;
+                    if (percentHit > 70)
                     {
                         rankVal = "B";
-                        if(percentHit > 85)
+                        rythmeGameRank = RythmeGameRank.B;
+                        if (percentHit > 85)
                         {
                             rankVal = "A";
-                            if(percentHit > 95)
+                            rythmeGameRank = RythmeGameRank.A;
+                            if (percentHit > 95)
                             {
                                 rankVal = "S";
+                                rythmeGameRank = RythmeGameRank.S;
                             }
                         }
                     }
@@ -219,6 +228,8 @@ public class RhythmManager : MonoBehaviour
             }
 
             rankText.text = rankVal;
+
+            GameCore.Instance.currentRythmeGameRank = rythmeGameRank;
 
             finalScoreText.text = currentScore.ToString();
             //Invoke("DestroyGame", 5f);
@@ -298,6 +309,16 @@ public class RhythmManager : MonoBehaviour
      }
     #endregion
 
+}
+
+public enum RythmeGameRank
+{
+    F,
+    D,
+    C,
+    B,
+    A,
+    S,
 }
 
 

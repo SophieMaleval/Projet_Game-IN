@@ -253,6 +253,11 @@ namespace AllosiusDev.DialogSystem
                                 requirement.itemToCheck = (InteractibleObject)EditorGUILayout.ObjectField("Item To Check", requirement.itemToCheck, typeof(InteractibleObject), true);
                                 break;
                             }
+                        case RequirementType.HasRequiredRythmeGameRank:
+                            {
+                                requirement.rythmeGameRankRequired = (RythmeGameRank)EditorGUILayout.EnumPopup("Rythme Game Rank Required ", requirement.rythmeGameRankRequired);
+                                break;
+                            }
 
                     }
 
