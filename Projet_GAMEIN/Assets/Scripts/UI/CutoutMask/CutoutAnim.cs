@@ -27,7 +27,7 @@ public class CutoutAnim : MonoBehaviour
 
     private void Awake()
     {
-        FadeIn();
+        //FadeIn();
     }
 
     public void ResetMask()

@@ -50,7 +50,7 @@ namespace AllosiusDev.TranslationSystem
         void Start()
         {
             LangueManager.Instance.onLangageUpdated += Translation;
-            //Translation();
+            Translation();
         }
 
         public void SetTranslationKey(string value, TypeDictionary newTypeDictionary, bool automaticTranslation = true)

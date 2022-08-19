@@ -141,17 +141,17 @@ namespace AllosiusDev.DialogSystem
             dialogueDisplayerText.gameObject.SetActive(!playerConversant.IsChoosing());
             choicesRoot.gameObject.SetActive(playerConversant.IsChoosing());
 
+            if (writeTextCoroutine != null)
+            {
+                StopCoroutine(writeTextCoroutine);
+            }
+
             if (playerConversant.IsChoosing())
             {
                 BuildChoiceList();
             }
             else
             {
-                if (writeTextCoroutine != null)
-                {
-                    StopCoroutine(writeTextCoroutine);
-                }
-
                 writeTextCoroutine = StartCoroutine(WriteText(playerConversant.GetKeyText()));
 
                 GameManager.Instance.gameCanvasManager.eventSystem.SetSelectedGameObject(nextButton.gameObject);
@@ -287,7 +287,7 @@ namespace AllosiusDev.DialogSystem
 
         private IEnumerator WriteText(string text)
         {
-            //Debug.Log("Write Text Coroutine");
+            Debug.Log("Write Text Coroutine");
 
             canTurnNext = false;
 
