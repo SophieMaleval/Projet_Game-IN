@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI ;
 using AllosiusDev.TranslationSystem;
+using AllosiusDev.Audio;
 
 [System.Serializable]
 public class UIPanelENTContainer
@@ -87,6 +88,10 @@ public class PannelENTManager : MonoBehaviour
     [Header ("List de Données")]/*
     [HideInInspector]*/ public PannelENTContainer InformationENT ;
 
+    [Header("Sounds")]
+
+    [SerializeField] private AudioData sfxOpenPanel;
+    [SerializeField] private AudioData sfxClosePanel;
 
     #endregion
 
@@ -438,10 +443,16 @@ public class PannelENTManager : MonoBehaviour
 
             gameObject.SetActive(!gameObject.activeSelf);
             GameManager.Instance.player.GetComponent<PlayerMovement>().StartActivity();
+
+            AudioController.Instance.PlayAudio(sfxOpenPanel);
+
             StartShow();            
         } else {
             gameObject.SetActive(!gameObject.activeSelf);
-            GameManager.Instance.player.GetComponent<PlayerMovement>().EndActivity(); 
+            GameManager.Instance.player.GetComponent<PlayerMovement>().EndActivity();
+
+            AudioController.Instance.PlayAudio(sfxClosePanel);
+
             NewPanel = false ;
         }
     }

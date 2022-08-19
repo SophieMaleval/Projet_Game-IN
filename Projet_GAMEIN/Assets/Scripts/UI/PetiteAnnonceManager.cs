@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI ;
 using AllosiusDev.TranslationSystem;
+using AllosiusDev.Audio;
 
 public class PetiteAnnonceManager : MonoBehaviour
 {
@@ -17,6 +18,11 @@ public class PetiteAnnonceManager : MonoBehaviour
 
     [SerializeField] private GameObject PrefabAnnonce ;
     [HideInInspector] public PetiteAnnonceContainer InfoTableau ;
+
+    [Header("Sounds")]
+
+    [SerializeField] private AudioData sfxOpenPanel;
+    [SerializeField] private AudioData sfxClosePanel;
 
     #endregion
 
@@ -122,10 +128,12 @@ public class PetiteAnnonceManager : MonoBehaviour
         {
             gameObject.SetActive(!gameObject.activeSelf);
             GameManager.Instance.player.GetComponent<PlayerMovement>().StartActivity();
+            AudioController.Instance.PlayAudio(sfxOpenPanel);
             SetAnnonce();
         } else {
             gameObject.SetActive(!gameObject.activeSelf);
-            GameManager.Instance.player.GetComponent<PlayerMovement>().EndActivity(); 
+            GameManager.Instance.player.GetComponent<PlayerMovement>().EndActivity();
+            AudioController.Instance.PlayAudio(sfxClosePanel);
         }
     }
 

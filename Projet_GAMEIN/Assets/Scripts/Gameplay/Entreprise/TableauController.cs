@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using AllosiusDev.Audio;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -30,6 +31,7 @@ public class TableauController : MonoBehaviour
     public Sprite TableauENTHighlighted;
 
     [SerializeField] private InteractableElement interactableElement;
+
     #endregion
 
     #region Behaviour

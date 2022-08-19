@@ -7,6 +7,7 @@ using DG.Tweening;
 using AllosiusDev.QuestSystem;
 using AllosiusDev.DialogSystem;
 using AllosiusDev.TranslationSystem;
+using AllosiusDev.Audio;
 
 public class InventoryScript : MonoBehaviour
 {
@@ -61,6 +62,11 @@ public class InventoryScript : MonoBehaviour
 
     //[SerializeField] private PopUpManager popUpManager;
 
+    [Header("Sounds")]
+
+    [SerializeField] private AudioData sfxOpenInventory;
+    [SerializeField] private AudioData sfxCloseInventory;
+
     #endregion
 
     #region Behaviour
@@ -82,6 +88,16 @@ public class InventoryScript : MonoBehaviour
         SetInventoryCount();
         SetUIText();
         InventoryPanel.SetActive(!InventoryPanel.activeSelf);
+
+        if(InventoryPanel.activeSelf)
+        {
+            AudioController.Instance.PlayAudio(sfxOpenInventory);
+        }
+        else
+        {
+            AudioController.Instance.PlayAudio(sfxCloseInventory);
+        }
+
         if (!InventoryPanel.activeSelf)
         {
             transform.SetSiblingIndex(transform.parent.childCount - 2);

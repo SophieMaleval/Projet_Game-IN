@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: "Ah, tu arrives juste \xE0 temps, formidable !"
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 2152, y: 840}
+  position: {x: 2136, y: 152}
   ports:
     keys:
     - previousNode
@@ -70,7 +70,7 @@ MonoBehaviour:
   m_Name: "Tous nos r\xE9seaux sont en pannes"
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 2056, y: 360}
+  position: {x: 2040, y: -328}
   ports:
     keys:
     - previousNode
@@ -130,7 +130,7 @@ MonoBehaviour:
   m_Name: J'imagine que tu parles de l'afterwork de ce soir ?
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 2088, y: -40}
+  position: {x: 2072, y: -744}
   ports:
     keys:
     - previousNode
@@ -179,6 +179,9 @@ MonoBehaviour:
       itemToRemove: {fileID: 0}
       fadeDuration: 0.5
       fadeOutSwitchDuration: 1
+      newConversantToCall: {fileID: 0}
+      dialogueToLaunch: {fileID: 0}
+      launchDialogueToMainNode: 0
   hasRequirements: 0
   showGameRequirements: 0
   gameRequirements:
@@ -196,7 +199,7 @@ MonoBehaviour:
   m_Name: Maintenant que j'y pense,
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 2728, y: 344}
+  position: {x: 2712, y: -360}
   ports:
     keys:
     - previousNode
@@ -312,7 +315,7 @@ MonoBehaviour:
   m_Name: "Je crois que \xE7a fonctionne ! Tout le monde"
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 2952, y: 840}
+  position: {x: 2936, y: 152}
   ports:
     keys:
     - previousNode
@@ -362,6 +365,9 @@ MonoBehaviour:
       itemToRemove: {fileID: 0}
       fadeDuration: 0.5
       fadeOutSwitchDuration: 1
+      newConversantToCall: {fileID: 0}
+      dialogueToLaunch: {fileID: 0}
+      launchDialogueToMainNode: 0
   hasRequirements: 0
   showGameRequirements: 0
   gameRequirements:
@@ -379,7 +385,7 @@ MonoBehaviour:
   m_Name: "J'ai vu que vous organisiez un \xE9v\xE9nement !"
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 1368, y: -56}
+  position: {x: 1352, y: -744}
   ports:
     keys:
     - previousNode
@@ -434,6 +440,7 @@ MonoBehaviour:
       questStepCheckedValueWanted: 1
       questStepToCheckState: 1
       itemToCheck: {fileID: 0}
+      rythmeGameRankRequired: 0
 --- !u!114 &-3528913489138850852
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -447,7 +454,7 @@ MonoBehaviour:
   m_Name: La Plaine Images, c'est le site d'excellence
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 2328, y: -408}
+  position: {x: 2248, y: 856}
   ports:
     keys:
     - previousNode
@@ -498,6 +505,9 @@ MonoBehaviour:
       itemToRemove: {fileID: 0}
       fadeDuration: 0.5
       fadeOutSwitchDuration: 1
+      newConversantToCall: {fileID: 0}
+      dialogueToLaunch: {fileID: 0}
+      launchDialogueToMainNode: 0
   hasRequirements: 0
   showGameRequirements: 0
   gameRequirements:
@@ -515,7 +525,7 @@ MonoBehaviour:
   m_Name: Qu'est ce que la Plaine Image ?
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 1368, y: -424}
+  position: {x: 1288, y: 840}
   ports:
     keys:
     - previousNode
@@ -573,7 +583,7 @@ MonoBehaviour:
     !'
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 1320, y: 856}
+  position: {x: 1304, y: 152}
   ports:
     keys:
     - previousNode
@@ -629,6 +639,7 @@ MonoBehaviour:
       questStepCheckedValueWanted: 1
       questStepToCheckState: 1
       itemToCheck: {fileID: 0}
+      rythmeGameRankRequired: 0
     - requirementType: 2
       questToCheck: {fileID: 0}
       questCheckedValueWanted: 0
@@ -638,6 +649,7 @@ MonoBehaviour:
       questStepCheckedValueWanted: 0
       questStepToCheckState: 0
       itemToCheck: {fileID: 11400000, guid: bab35fb751967bc42bdb42b46e19fa76, type: 2}
+      rythmeGameRankRequired: 0
 --- !u!114 &-737703275199554694
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -651,7 +663,7 @@ MonoBehaviour:
   m_Name: "Qui \xEAtes-vous ? "
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 1368, y: -744}
+  position: {x: 1288, y: 520}
   ports:
     keys:
     - previousNode
@@ -740,7 +752,7 @@ MonoBehaviour:
   m_Name: "J'y serais bien all\xE9 mais "
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 3496, y: 360}
+  position: {x: 3480, y: -328}
   ports:
     keys:
     - previousNode
@@ -789,6 +801,9 @@ MonoBehaviour:
       itemToRemove: {fileID: 0}
       fadeDuration: 0.5
       fadeOutSwitchDuration: 1
+      newConversantToCall: {fileID: 0}
+      dialogueToLaunch: {fileID: 0}
+      launchDialogueToMainNode: 0
   hasRequirements: 0
   showGameRequirements: 0
   gameRequirements:
@@ -806,7 +821,7 @@ MonoBehaviour:
   m_Name: Je suis PIX
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 2328, y: -728}
+  position: {x: 2248, y: 536}
   ports:
     keys:
     - previousNode
@@ -855,6 +870,9 @@ MonoBehaviour:
       itemToRemove: {fileID: 0}
       fadeDuration: 0.5
       fadeOutSwitchDuration: 1
+      newConversantToCall: {fileID: 0}
+      dialogueToLaunch: {fileID: 0}
+      launchDialogueToMainNode: 0
   hasRequirements: 0
   showGameRequirements: 0
   gameRequirements:
@@ -924,6 +942,9 @@ MonoBehaviour:
       itemToRemove: {fileID: 0}
       fadeDuration: 0.5
       fadeOutSwitchDuration: 1
+      newConversantToCall: {fileID: 0}
+      dialogueToLaunch: {fileID: 0}
+      launchDialogueToMainNode: 0
     - actionType: 2
       hasCondition: 1
       nodesRequiredToRead:
@@ -938,6 +959,9 @@ MonoBehaviour:
       itemToRemove: {fileID: 0}
       fadeDuration: 0.5
       fadeOutSwitchDuration: 1
+      newConversantToCall: {fileID: 0}
+      dialogueToLaunch: {fileID: 0}
+      launchDialogueToMainNode: 0
     - actionType: 5
       hasCondition: 1
       nodesRequiredToRead:
@@ -950,6 +974,9 @@ MonoBehaviour:
       itemToRemove: {fileID: 11400000, guid: bab35fb751967bc42bdb42b46e19fa76, type: 2}
       fadeDuration: 0.5
       fadeOutSwitchDuration: 1
+      newConversantToCall: {fileID: 0}
+      dialogueToLaunch: {fileID: 0}
+      launchDialogueToMainNode: 0
   hasRequirements: 0
   showGameRequirements: 0
   gameRequirements:
@@ -967,7 +994,7 @@ MonoBehaviour:
   m_Name: Que se passe t'il ?!
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 1384, y: 376}
+  position: {x: 1368, y: -328}
   ports:
     keys:
     - previousNode
@@ -1022,6 +1049,7 @@ MonoBehaviour:
       questStepCheckedValueWanted: 1
       questStepToCheckState: 1
       itemToCheck: {fileID: 0}
+      rythmeGameRankRequired: 0
 --- !u!114 &9197923390815994889
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1056,12 +1084,6 @@ MonoBehaviour:
         Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: previousNode
-        node: {fileID: -737703275199554694}
-        reroutePoints: []
-      - fieldName: previousNode
-        node: {fileID: -3338507370859227563}
-        reroutePoints: []
-      - fieldName: previousNode
         node: {fileID: -6309653750551691130}
         reroutePoints: []
       - fieldName: previousNode
@@ -1069,6 +1091,12 @@ MonoBehaviour:
         reroutePoints: []
       - fieldName: previousNode
         node: {fileID: -1534926111420869802}
+        reroutePoints: []
+      - fieldName: previousNode
+        node: {fileID: -737703275199554694}
+        reroutePoints: []
+      - fieldName: previousNode
+        node: {fileID: -3338507370859227563}
         reroutePoints: []
       - fieldName: previousNode
         node: {fileID: -6888946049721797171}

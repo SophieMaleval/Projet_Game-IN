@@ -1,4 +1,5 @@
-﻿using AllosiusDev.Core;
+﻿using AllosiusDev.Audio;
+using AllosiusDev.Core;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -14,11 +15,20 @@ namespace AllosiusDev.QuestSystem
 
         #endregion
 
+        #region UnityInspector
+
+        [SerializeField] private AudioData sfxAddQuest;
+        [SerializeField] private AudioData sfxQuestStepCompleted;
+        [SerializeField] private AudioData sfxQuestCompleted;
+
+        #endregion
+
         #region Events
 
         public event Action OnUpdate;
 
         #endregion
+
 
         #region Behaviour
 
@@ -107,10 +117,14 @@ namespace AllosiusDev.QuestSystem
             QuestStatus newStatus = new QuestStatus(quest);
             newStatus.SetQuestStepUnlocked(newStatus.GetQuestStepStatuses()[0], true);
             statuses.Add(newStatus);
+
             if (GameManager.Instance.gameCanvasManager.questTrackingUi.gameObject.activeSelf == false)
             {
                 GameManager.Instance.gameCanvasManager.questUi.Redraw();
             }
+
+            AudioController.Instance.PlayAudio(sfxAddQuest);
+
             if (OnUpdate != null)
             {
                 OnUpdate();
@@ -120,7 +134,7 @@ namespace AllosiusDev.QuestSystem
         public void CompleteQuestStep(QuestData quest, QuestStepData step)
         {
             QuestStatus status = GetQuestStatus(quest);
-            if (status != null)
+            if (status != null && status.IsComplete() == false && status.IsQuestStepComplete(step) == false)
             {
                 Debug.Log(status);
                 status.CompleteQuestStep(step);
@@ -133,7 +147,19 @@ namespace AllosiusDev.QuestSystem
                 {
                     Debug.LogWarning("OnUpdate is null");
                 }
+
+                if(status.IsQuestStepComplete(step))
+                {
+                    AudioController.Instance.PlayAudio(sfxQuestStepCompleted);
+                }
+
+                if (status.GetQuestCompleted())
+                {
+                    AudioController.Instance.PlayAudio(sfxQuestCompleted);
+                }
             }
+
+            
         }
 
         public void CompleteQuestTask(QuestData quest, QuestStepData step, QuestTaskData task)

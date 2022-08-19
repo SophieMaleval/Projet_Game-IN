@@ -6,6 +6,7 @@ using TMPro;
 using UnityEngine.SceneManagement;
 using AllosiusDev.DialogSystem;
 using AllosiusDev.Core;
+using AllosiusDev.Audio;
 
 public class RhythmManager : MonoBehaviour
 {
@@ -62,6 +63,13 @@ public class RhythmManager : MonoBehaviour
     public Vector2 PlayerPosition ;
 
     public GameObject minigameCam;
+
+    [Space]
+
+    [Header("Sounds")]
+
+    [SerializeField] private AudioData sfxSuccessTouch;
+    [SerializeField] private AudioData sfxEndParty;
 
     [Space]
 
@@ -149,7 +157,9 @@ public class RhythmManager : MonoBehaviour
         multiText.text = "x" + currentMultiplier;
 
         currentScore += scorePerNote * currentMultiplier;
-        scoreText.text = /*"Score: " +*/ ""+ currentScore; 
+        scoreText.text = /*"Score: " +*/ ""+ currentScore;
+
+        AudioController.Instance.PlayAudio(sfxSuccessTouch);
     }
     
     public void NormalHit()
@@ -232,6 +242,9 @@ public class RhythmManager : MonoBehaviour
             GameCore.Instance.currentRythmeGameRank = rythmeGameRank;
 
             finalScoreText.text = currentScore.ToString();
+
+            AudioController.Instance.PlayAudio(sfxEndParty);
+
             //Invoke("DestroyGame", 5f);
             StartCoroutine(WaitAndDisableGame());            
         }
