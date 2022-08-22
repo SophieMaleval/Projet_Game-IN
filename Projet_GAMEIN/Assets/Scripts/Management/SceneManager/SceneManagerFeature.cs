@@ -18,6 +18,8 @@ public class SceneManagerFeature : MonoBehaviour
 
     public CinemachineVirtualCamera CMVirtualCam ;
 
+    [SerializeField] private float timeBeforeLaunchOpenFade = 0.5f;
+
     #endregion
 
     #region Behaviour
@@ -46,8 +48,12 @@ public class SceneManagerFeature : MonoBehaviour
         PM.transform.position = PM.GetComponent<PlayerScript>().MainSceneLoadPos ;
     }
 
-    private void Start() 
+    private IEnumerator Start() 
     {
+        GameManager.Instance.gameCanvasManager.CutoutMask.ResetMask();
+
+        yield return new WaitForSeconds(timeBeforeLaunchOpenFade);
+
         //FadeImage.GetComponent<AnimationTransitionScene>().OpenningScene();
         if (GameManager.Instance.gameCanvasManager.CutoutMask != null)
             GameManager.Instance.gameCanvasManager.CutoutMask.FadeIn();

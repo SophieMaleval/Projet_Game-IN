@@ -21,6 +21,11 @@ public class Camera_zoom : MonoBehaviour
 
     void Start()
     {
+        if(vcam == null)
+        {
+            vcam = GameCore.Instance.Vcam;
+        }
+
         OldOrthographicSize = vcam.m_Lens.OrthographicSize;
     }
 

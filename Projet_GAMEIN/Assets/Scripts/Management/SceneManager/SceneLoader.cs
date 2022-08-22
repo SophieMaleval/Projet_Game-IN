@@ -18,14 +18,7 @@ public class SceneLoader : Singleton<SceneLoader>
     {
         OnSceneChanged?.Invoke();
 
-        AllosiusDev.Audio.AudioController.Instance.StopAllAmbients();
-        AllosiusDev.Audio.AudioController.Instance.StopAllMusics();
-
-        if(GameManager.Instance != null && GameManager.Instance.player != null)
-            GameManager.Instance.player.ResetInterractInputSprite();
-
-        if(GameCore.Instance != null)
-            GameCore.ResetInstance();
+        ChangementSceneEffects();
 
         SceneManager.LoadScene((int)(object)sceneData.sceneToLoad);
     }
@@ -39,7 +32,22 @@ public class SceneLoader : Singleton<SceneLoader>
 
     public void UnloadSceneAsync(SceneData sceneData)
     {
+        if (GameManager.Instance != null && GameManager.Instance.player != null)
+            GameManager.Instance.player.ResetInterractInputSprite();
+
         SceneManager.UnloadSceneAsync((int)(object)sceneData.sceneToLoad);
+    }
+
+    private void ChangementSceneEffects()
+    {
+        AllosiusDev.Audio.AudioController.Instance.StopAllAmbients();
+        AllosiusDev.Audio.AudioController.Instance.StopAllMusics();
+
+        if (GameManager.Instance != null && GameManager.Instance.player != null)
+            GameManager.Instance.player.ResetInterractInputSprite();
+
+        if (GameCore.Instance != null)
+            GameCore.ResetInstance();
     }
 
     #endregion

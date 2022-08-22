@@ -1,6 +1,7 @@
 ﻿using AllosiusDev;
 using AllosiusDev.Audio;
 using AllosiusDev.DialogSystem;
+using Cinemachine;
 using Core.Session;
 using System.Collections;
 using System.Collections.Generic;
@@ -19,6 +20,9 @@ public class GameCore : Singleton<GameCore>
 
     public RythmeGameRank currentRythmeGameRank { get; set; }
 
+
+    public CinemachineVirtualCamera Vcam => vcam;
+
     #endregion
 
     #region UnityInspector
@@ -29,6 +33,8 @@ public class GameCore : Singleton<GameCore>
 
 
     [SerializeField] private GameObject MiniGame;
+
+    [SerializeField] private CinemachineVirtualCamera vcam;
 
 
     #endregion

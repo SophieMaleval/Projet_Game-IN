@@ -16,13 +16,14 @@ public class DynamicLoad : MonoBehaviour
     bool isLoaded; //eviter de charger 2x
     bool shouldLoad; //pour la méthode en trigger
 
+    private Transform player;
+
     #endregion
 
     #region UnityInspector
 
     [SerializeField] private SceneData sceneToLoad;
 
-    public Transform player;
     public CheckMethod checkMethod;
     public float loadRange;
 
