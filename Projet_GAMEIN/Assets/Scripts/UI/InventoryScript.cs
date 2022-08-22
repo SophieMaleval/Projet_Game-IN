@@ -129,6 +129,12 @@ public class InventoryScript : MonoBehaviour
         }
     }
 
+    public void SwitchScooterState()
+    {
+        PlayerMovement playerMovement = GameManager.Instance.player.GetComponent<PlayerMovement>();
+        playerMovement.ChangeScootState(!playerMovement.OnScooter);
+    }
+
     public void OpenSetting()
     {
         StartCoroutine(AnimationPanels(true, SettingPanel));

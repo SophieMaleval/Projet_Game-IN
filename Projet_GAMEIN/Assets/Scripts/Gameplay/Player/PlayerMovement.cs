@@ -139,24 +139,39 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnEnterScoot (InputAction.CallbackContext ctx )
     {      
-        if(ctx.performed && /*(MoveDirection.magnitude >= -AmplitudeToSwitchScoot) && (MoveDirection.magnitude <= AmplitudeToSwitchScoot) &&*/ InExterior)
+        if(ctx.performed)
         {
-            PlayerActionControllers.PlayerInLand.Disable();
-            PlayerActionControllers.PlayerInScoot.Enable();
-            switchScootState(true);
+            ChangeScootState(true);
         }    
     }
     public void OnExitScoot (InputAction.CallbackContext ctx )
     {
-        if(ctx.performed && /*(MoveDirection.magnitude >= -AmplitudeToSwitchScoot) && (MoveDirection.magnitude <= AmplitudeToSwitchScoot) &&*/ InExterior)
-        {        
-            if(OnScooter)
-            {
-                PlayerActionControllers.PlayerInScoot.Disable() ;                
-                PlayerActionControllers.PlayerInLand.Enable() ;
-                switchScootState(false);  
-            }
+        if(ctx.performed)
+        {
+            ChangeScootState(false);
         }
+    }
+
+    public void ChangeScootState(bool value)
+    {
+        if(InExterior)
+        {
+            if (value)
+            {
+                PlayerActionControllers.PlayerInLand.Disable();
+                PlayerActionControllers.PlayerInScoot.Enable();
+                switchScootState(true);
+            }
+            else
+            {
+                if (OnScooter)
+                {
+                    PlayerActionControllers.PlayerInScoot.Disable();
+                    PlayerActionControllers.PlayerInLand.Enable();
+                    switchScootState(false);
+                }
+            }
+        }   
     }
 
 
