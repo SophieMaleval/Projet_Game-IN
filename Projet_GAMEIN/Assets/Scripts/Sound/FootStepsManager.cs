@@ -11,6 +11,8 @@ public class FootStepsManager : MonoBehaviour
     //Scene scene;
     //private AudioSource audioSource;
 
+    private GroundType currentGroundType = GroundType.Street;
+
     #endregion
 
     #region UnityInspector
@@ -20,7 +22,10 @@ public class FootStepsManager : MonoBehaviour
     //public AudioClip[] clipsOutside;
 
     [SerializeField] AudioData[] sfxInsides;
-    [SerializeField] AudioData[] sfxOutsides;
+
+    [SerializeField] AudioData[] sfxOutsidesGrass;
+    [SerializeField] AudioData[] sfxOutsidesStreet;
+    [SerializeField] AudioData[] sfxOutsidesSand;
 
     #endregion
 
@@ -35,6 +40,7 @@ public class FootStepsManager : MonoBehaviour
     void Update() {
         //scene = SceneManager.GetActiveScene();
         //         Debug.Log(scene.name);
+
     }
 
     void Step() 
@@ -50,11 +56,37 @@ public class FootStepsManager : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Ground ground = collision.GetComponent<Ground>();
+
+        Debug.Log(ground);
+
+        if(ground != null)
+        {
+            currentGroundType = ground.GroundType;
+        }
+    }
+
     AudioData[] GetRandomClip ()
     {
         if (GameCore.Instance.CurrentScene.sceneOutside)
         {
-            return sfxOutsides;
+            if(currentGroundType == GroundType.Grass)
+            {
+                return sfxOutsidesGrass;
+            }
+            else if (currentGroundType == GroundType.Street)
+            {
+                return sfxOutsidesStreet;
+            }
+            else if (currentGroundType == GroundType.Sand)
+            {
+                return sfxOutsidesSand;
+            }
+
+            return sfxOutsidesGrass;
+
         }
         else 
         {
@@ -66,5 +98,11 @@ public class FootStepsManager : MonoBehaviour
 
     #endregion
 
+}
 
+public enum GroundType
+{
+    Grass,
+    Street,
+    Sand,
 }
