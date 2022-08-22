@@ -25,6 +25,8 @@ public class blablabla : MonoBehaviour
 
     public PannelENTContainer PannelENTContainerTest;
 
+    public float boxSizeTest;
+
 
     private void Start()
     {
@@ -130,5 +132,11 @@ public class blablabla : MonoBehaviour
     public void TestChangeLangage()
     {
         LangueManager.Instance.ChangeLangage(langageTest);
+    }
+
+    [ContextMenu("TestCreateBoxMessage")]
+    public void TestCreateBoxMessage()
+    {
+        GameManager.Instance.gameCanvasManager.CreateMessageBox(keyTextTest, boxSizeTest);
     }
 }

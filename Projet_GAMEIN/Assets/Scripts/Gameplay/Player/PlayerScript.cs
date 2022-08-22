@@ -27,6 +27,9 @@ public class PlayerScript : MonoBehaviour
 
     public SceneData PreviousSceneName { get; set; }
 
+
+    public bool CanSwitchState { get; set; }
+
     #endregion
 
     #region UnityInspector
@@ -76,6 +79,8 @@ public class PlayerScript : MonoBehaviour
         {
             GameManager.Instance.player = this;
         }
+
+        CanSwitchState = true;
     }
 
     public void OnInteract(InputAction.CallbackContext ctx)
@@ -111,7 +116,7 @@ public class PlayerScript : MonoBehaviour
 
     void InventoryInteract()
     {
-        if(InventoryUIIndestructible != null && InventoryUIIndestructible.activeInHierarchy)
+        if(InventoryUIIndestructible != null && InventoryUIIndestructible.activeInHierarchy && CanSwitchState)
         {
             InventoryUIIndestructible.GetComponent<InventoryScript>().SwitchToggleInventoryDisplay();
         }

@@ -9,6 +9,8 @@ public class PlayerMovement : MonoBehaviour
 {
     #region Fields
 
+    private PlayerScript playerScript;
+
     [Header("Inputs")]
     private PlayerActionControls PlayerActionControllers;
     private bool canMove;
@@ -49,6 +51,9 @@ public class PlayerMovement : MonoBehaviour
     public bool PlayerNeedLookUp { get; set; }
     public bool PlayerNeedLookRight { get; set; }
     public bool PlayerNeedLookLeft { get; set; }
+
+
+    public bool CanSwitchState { get; set; }
 
     #endregion
 
@@ -113,7 +118,9 @@ public class PlayerMovement : MonoBehaviour
     }
 
     private void Awake() 
-    {  
+    {
+        playerScript = GetComponent<PlayerScript>();
+
         PlayerActionControllers = new PlayerActionControls();
         PlayerActionControllers.PlayerInLand.EnterScoot.performed += OnEnterScoot;
         PlayerActionControllers.PlayerInScoot.ExitScoot.performed += OnExitScoot;
@@ -154,7 +161,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void ChangeScootState(bool value)
     {
-        if(InExterior)
+        if(InExterior && playerScript.CanSwitchState)
         {
             if (value)
             {

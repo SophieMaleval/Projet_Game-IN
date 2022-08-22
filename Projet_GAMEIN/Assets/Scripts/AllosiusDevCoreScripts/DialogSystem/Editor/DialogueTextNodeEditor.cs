@@ -170,6 +170,12 @@ namespace AllosiusDev.DialogSystem
                                 action.launchDialogueToMainNode = EditorGUILayout.Toggle("Launch Dialogue To Main Node", action.launchDialogueToMainNode);
                                 break;
                             }
+                        case ActionType.CreateBoxMessage:
+                            {
+                                action.boxMessageTextToDisplay = EditorGUILayout.TextField("Box Message Text To Display", action.boxMessageTextToDisplay);
+                                action.boxMessageSize = EditorGUILayout.FloatField("Box Message Size", action.boxMessageSize);
+                                break;
+                            }
 
                     }
 

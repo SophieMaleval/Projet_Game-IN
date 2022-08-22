@@ -386,6 +386,21 @@ public class GameManager : Singleton<GameManager>
         player.playerBackpack.GetComponent<CSVReader>().SetUpDialogueAdhérent();
     }*/
 
+    public void CheckEventSystemState()
+    {
+        if (player.InDiscussion)
+        {
+            if (player.GetComponent<PlayerConversant>().IsChoosing() == false)
+            {
+               gameCanvasManager.eventSystem.SetSelectedGameObject(gameCanvasManager.dialogCanvas.NextButton.gameObject);
+            }
+            else if (player.GetComponent<PlayerConversant>().IsChoosing() && gameCanvasManager.dialogCanvas.CurrentChoices.Count > 0)
+            {
+                gameCanvasManager.eventSystem.SetSelectedGameObject(gameCanvasManager.dialogCanvas.CurrentChoices[0]);
+            }
+        }
+    }
+
     private void OnDestroy()
     {
         ResetDialogues();

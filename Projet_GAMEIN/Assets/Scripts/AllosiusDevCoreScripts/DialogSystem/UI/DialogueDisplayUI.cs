@@ -36,6 +36,8 @@ namespace AllosiusDev.DialogSystem
 
         public Button NextButton => nextButton;
 
+        public bool canInteract { get; set; }
+
         #endregion
 
         #region UnityInspector
@@ -66,6 +68,8 @@ namespace AllosiusDev.DialogSystem
         private void Awake()
         {
             ThisRect = gameObject.GetComponent<RectTransform>();
+
+            canInteract = true;
         }
 
         private void Start()
@@ -252,31 +256,31 @@ namespace AllosiusDev.DialogSystem
         private void ButtonNext()
         {
             //Debug.LogError("Button Next");
-
-            if (canTurnNext)
+            if(canInteract)
             {
-                AudioController.Instance.PlayAudio(sfxValidate);
-                playerConversant.Next();
-
-                if (animationPassTouchCoroutine != null)
+                if (canTurnNext)
                 {
-                    StopCoroutine(animationPassTouchCoroutine);
-                }
-                passTouch.gameObject.SetActive(false);
-            }
-            else
-            {
-                canTurnNext = true;
+                    AudioController.Instance.PlayAudio(sfxValidate);
+                    playerConversant.Next();
 
-                if (writeTextCoroutine != null)
+                    if (animationPassTouchCoroutine != null)
+                    {
+                        StopCoroutine(animationPassTouchCoroutine);
+                    }
+                    passTouch.gameObject.SetActive(false);
+                }
+                else
                 {
-                    StopCoroutine(writeTextCoroutine);
+                    canTurnNext = true;
 
-                    EndTextWrite(playerConversant.GetKeyText());
+                    if (writeTextCoroutine != null)
+                    {
+                        StopCoroutine(writeTextCoroutine);
+
+                        EndTextWrite(playerConversant.GetKeyText());
+                    }
                 }
             }
-
-
         }
 
         private void ButtonSelectChoice(DialogueTextNode choice)

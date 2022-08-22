@@ -41,6 +41,8 @@ public class GameCanvasManager : MonoBehaviour
 
     [SerializeField] private Image fadeAnimation;
 
+    [SerializeField] private MessageBox messageBox;
+
     #endregion
 
     #region Behaviour
@@ -64,6 +66,17 @@ public class GameCanvasManager : MonoBehaviour
                 eventSystem.SetSelectedGameObject(eventSystemCurrentObjectSelected);
             }
         }
+    }
+
+    public void CreateMessageBox(string message, float boxSize)
+    {
+        MessageBox box = Instantiate(messageBox, inventory.transform);
+        box.messageKey = message;
+        if(boxSize > 0)
+        {
+            box.SetBoxSize(boxSize);
+        }
+        box.UpdateMessage();
     }
 
     #endregion

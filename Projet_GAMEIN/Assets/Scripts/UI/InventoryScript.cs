@@ -26,6 +26,10 @@ public class InventoryScript : MonoBehaviour
 
     //public PopUpManager PopUpManager => popUpManager;
 
+    public bool canInteract { get; set; }
+
+    public Image DarkScreen => darkScreen;
+
     #endregion
 
     #region UnityInspector
@@ -48,6 +52,8 @@ public class InventoryScript : MonoBehaviour
     [SerializeField] private ToTranslateObject textInventoryEmpty;
 
     [SerializeField] private ToTranslateObject mapUnavailable;
+
+    [SerializeField] private Image darkScreen;
 
     [Header("Quests")]
 
@@ -81,10 +87,16 @@ public class InventoryScript : MonoBehaviour
         {
             Debug.LogWarning("Player is null");
         }
+
+        darkScreen.gameObject.SetActive(false);
+        canInteract = true;
     }
 
     public void SwitchToggleInventoryDisplay()
-    {      
+    {
+        if (!canInteract)
+            return;
+
         SetInventoryCount();
         SetUIText();
         InventoryPanel.SetActive(!InventoryPanel.activeSelf);
@@ -104,17 +116,7 @@ public class InventoryScript : MonoBehaviour
 
             if (PannelENTCanvas.activeSelf == false && GameManager.Instance.gameCanvasManager.dialogCanvas.gameObject.activeSelf == false) PlayerScript.GetComponent<PlayerMovement>().EndActivity();
 
-            if(GameManager.Instance.player.InDiscussion)
-            {
-                if(GameManager.Instance.player.GetComponent<PlayerConversant>().IsChoosing() == false)
-                {
-                    GameManager.Instance.gameCanvasManager.eventSystem.SetSelectedGameObject(GameManager.Instance.gameCanvasManager.dialogCanvas.NextButton.gameObject);
-                }
-                else if (GameManager.Instance.player.GetComponent<PlayerConversant>().IsChoosing() && GameManager.Instance.gameCanvasManager.dialogCanvas.CurrentChoices.Count > 0)
-                {
-                    GameManager.Instance.gameCanvasManager.eventSystem.SetSelectedGameObject(GameManager.Instance.gameCanvasManager.dialogCanvas.CurrentChoices[0]);
-                }
-            }
+            GameManager.Instance.CheckEventSystemState();
 
             GameManager.Instance.gameCanvasManager.questUi.UpdateQuestsItemsUI();
            

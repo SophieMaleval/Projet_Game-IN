@@ -65,6 +65,10 @@ namespace AllosiusDev.Core
                         {
                             item.ExecuteLaunchDialogue();
                         }
+                        else if (item.actionType == ActionType.CreateBoxMessage)
+                        {
+                            item.ExecuteCreateBoxMessage();
+                        }
                     }
                 }
 
@@ -131,6 +135,12 @@ namespace AllosiusDev.Core
         [SerializeField] public NpcConversant newConversantToCall;
         [SerializeField] public DialogueGraph dialogueToLaunch;
         [SerializeField] public bool launchDialogueToMainNode;
+
+        [Space]
+        [Header("Create Box Message Properties")]
+        [SerializeField] public string boxMessageTextToDisplay;
+        [SerializeField] public float boxMessageSize;
+
 
         #endregion
 
@@ -234,6 +244,11 @@ namespace AllosiusDev.Core
             }
         }
 
+        public void ExecuteCreateBoxMessage()
+        {
+            GameManager.Instance.gameCanvasManager.CreateMessageBox(boxMessageTextToDisplay, boxMessageSize);
+        }
+
         #endregion
     }
 }
@@ -251,5 +266,6 @@ namespace AllosiusDev.Core
         LaunchMiniGame,
         LaunchFade,
         LaunchDialogue,
+        CreateBoxMessage,
     }
 }
