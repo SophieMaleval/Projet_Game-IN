@@ -9,13 +9,24 @@ public class BeatScroller : MonoBehaviour
 
     //private NotesSpawner notesSpawner; 
 
+
+    #endregion
+
+    #region Properties
+
+    public AudioSource musicSource { get; protected set; }
+
+    public bool canPlay { get; set; }
+
+    public float tempDureeMusique { get; set; }
+
     #endregion
 
     #region UnityInspector
 
     //public AudioSource music;
 
-    [SerializeField] private AudioData music;
+    public AudioData music;
 
     public float beatTempo;
     public float dureeMusique;
@@ -28,13 +39,14 @@ public class BeatScroller : MonoBehaviour
     void Awake()
     {
         beatTempo = beatTempo / 60f;
+        canPlay = true;
         /*notesSpawner = GameObject.Find("NoteHolder").GetComponent<NotesSpawner>();*/
     }
 
     private void OnEnable()
     {
         StartCoroutine(GuyterHiro());
-        AudioController.Instance.PlayAudio(music);
+        musicSource = AudioController.Instance.PlayAudio(music);
         InvokeRepeating("DecreaseTime", 1.0f, 1.0f);
     }
 
@@ -44,7 +56,7 @@ public class BeatScroller : MonoBehaviour
         
     }
 
-    IEnumerator GuyterHiro()
+    public IEnumerator GuyterHiro()
     {
         while(dureeMusique > 0)
         {
@@ -53,9 +65,15 @@ public class BeatScroller : MonoBehaviour
         }
         
         yield return new WaitForSeconds(0.5f);
-        //notesSpawner.stopProcess = true;
-        RhythmManager.instance.Results();        
-        Debug.Log("Finito pipo");
+
+        if(canPlay)
+        {
+            //notesSpawner.stopProcess = true;
+            RhythmManager.instance.Results();
+            Debug.Log("Finito pipo");
+        }
+
+       
     }
 
     void DecreaseTime()

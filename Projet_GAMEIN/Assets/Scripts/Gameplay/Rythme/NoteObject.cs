@@ -11,14 +11,20 @@ public enum Stade{
 }
 public class NoteObject : MonoBehaviour
 {
+    #region Fields
+
+    private Transform noteHolder, detector;
+
+    private Vector3 laPos;
+
+    #endregion
+
     #region UnityInspector
 
-    public Stade stade;
+    //public Stade stade;
     public bool canBePressed;
     public InputAction keyToPress;
     public GameObject hitEffect, goodEffect, perfectEffect, missEffect;
-    public Transform noteHolder, detector;
-    public Vector3 laPos;
 
     #endregion
 
@@ -40,7 +46,7 @@ public class NoteObject : MonoBehaviour
     {
         if (ctx.performed)
         {
-            if (canBePressed)
+            if (canBePressed && RhythmManager.instance.gameExit == false)
             {
                 gameObject.SetActive(false);
                 
@@ -48,21 +54,21 @@ public class NoteObject : MonoBehaviour
                 {
                     //Debug.Log("Hit");
                     RhythmManager.instance.NormalHit();
-                    PlaySound();
+                    //PlaySound();
                     Instantiate(hitEffect, transform.position, hitEffect.transform.rotation);
                 }
                 else if(Mathf.Abs(noteHolder.localPosition.y + transform.localPosition.y) > 0.05f)
                 {
                     //Debug.Log("Good");
                     RhythmManager.instance.GoodHit();
-                    PlaySound();
+                    //PlaySound();
                     Instantiate(goodEffect, transform.position, goodEffect.transform.rotation);
                 }
                 else
                 {
                     //Debug.Log("Perfect");
                     RhythmManager.instance.PerfectHit();
-                    PlaySound();
+                    //PlaySound();
                     Instantiate(perfectEffect, transform.position, perfectEffect.transform.rotation);
                 }
             }
@@ -97,12 +103,12 @@ public class NoteObject : MonoBehaviour
         }
     }
 
-    public void PlaySound()
+    /*public void PlaySound()
     {
         if (stade == Stade.Preparation) RhythmManager.instance.PrepSound();
         if (stade == Stade.Cuisson) RhythmManager.instance.FrySound();
         if (stade == Stade.Dressage) RhythmManager.instance.DressSound();
-    }
+    }*/
 
     #endregion
 }

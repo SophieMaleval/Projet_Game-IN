@@ -28,7 +28,7 @@ public class InventoryScript : MonoBehaviour
 
     public bool canInteract { get; set; }
 
-    public Image DarkScreen => darkScreen;
+    //public Image DarkScreen => darkScreen;
 
     #endregion
 
@@ -53,7 +53,7 @@ public class InventoryScript : MonoBehaviour
 
     [SerializeField] private ToTranslateObject mapUnavailable;
 
-    [SerializeField] private Image darkScreen;
+    //[SerializeField] private Image darkScreen;
 
     [Header("Quests")]
 
@@ -88,7 +88,7 @@ public class InventoryScript : MonoBehaviour
             Debug.LogWarning("Player is null");
         }
 
-        darkScreen.gameObject.SetActive(false);
+        //darkScreen.gameObject.SetActive(false);
         canInteract = true;
     }
 

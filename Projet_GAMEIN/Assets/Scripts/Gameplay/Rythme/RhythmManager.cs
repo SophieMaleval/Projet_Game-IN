@@ -15,11 +15,30 @@ public class RhythmManager : MonoBehaviour
     private string rankVal;
     private RythmeGameRank rythmeGameRank;
 
+    private float baseMaxScore;
+
+    private int currentScore;
+    private int currentMultiplier;
+    private int multiplierTracker;
+
+    private float normalHits, goodHits, perfectHits, missedHits;
+
+    private Vector2 OldPlayerPosition ;
+
+    private bool gameEnded;
+
     #endregion
 
     #region Properties
 
     public static RhythmManager instance;
+
+    public GameObject DadMaster { get; set; }
+
+    public NpcConversant npcCurrent { get; set; }
+
+    public PlayerMovement player { get; set; }
+    public bool gameExit { get; protected set; }
 
     #endregion
 
@@ -32,19 +51,16 @@ public class RhythmManager : MonoBehaviour
     public NoteObject[] notes;
 
     [Header("Score")]
-    public int currentScore;
     public int scorePerNote = 100;
     public int scorePerGoodNote = 125;
     public int scorePerPerfectNote = 150;
-    public int currentMultiplier;
-    public int multiplierTracker;
     public int[] multiplierThresholds;
-    public float totalNotes, normalHits, goodHits, perfectHits, missedHits;
+    public float totalNotes;
 
-    [Header("SFX")]
+    /*[Header("SFX")]
     public AudioSource[] prep;
     public AudioSource[] cuisson;
-    public AudioSource[] dressage;
+    public AudioSource[] dressage;*/
 
     
     [Header("UI texts")]
@@ -53,16 +69,16 @@ public class RhythmManager : MonoBehaviour
     public TextMeshProUGUI percentHitText, normalsText, goodsText, perfectsText, missesText, rankText, finalScoreText;
 
     public GameObject resultScreen;
-    public GameObject DadMaster, dad, gameLauncher, NoteHold;
+    public GameObject dad, NoteHold;
 
-    public NpcConversant npcCurrent;
     [SerializeField] private DialogueGraph dialogueToLaunchAtDisableGame;
 
-    public PlayerMovement player;
-    private Vector2 OldPlayerPosition ;
     public Vector2 PlayerPosition ;
 
     public GameObject minigameCam;
+
+    [SerializeField] private string exitGameBoxMessage;
+    [SerializeField] private float exitGameBoxMessageSize;
 
     [Space]
 
@@ -87,6 +103,16 @@ public class RhythmManager : MonoBehaviour
         currentMultiplier = 1;
         resultScreen.SetActive(false);
 
+        baseMaxScore = totalNotes * scorePerPerfectNote;
+
+    }
+
+    private void Update()
+    {
+        if(Input.GetButtonDown("Pause"))
+        {
+            ExitGameMenu();
+        }
     }
 
     void OnEnable()
@@ -195,6 +221,8 @@ public class RhythmManager : MonoBehaviour
     {
         if (!resultScreen.activeInHierarchy)
         {
+            gameEnded = true;
+
             resultScreen.SetActive(true);
 
             normalsText.text = "" + normalHits;
@@ -202,16 +230,16 @@ public class RhythmManager : MonoBehaviour
             perfectsText.text = "" + perfectHits;
             missesText.text = "" + missedHits;
 
-            float totalHits = normalHits + goodHits + perfectHits;
+            float totalHits = normalHits * scorePerNote + goodHits * scorePerGoodNote + perfectHits * scorePerPerfectNote;
            
-            float percentHit = (totalHits / totalNotes) * 100f ;
+            float percentHit = (totalHits / baseMaxScore) * 100f ;
 
             percentHitText.text = percentHit.ToString("F1") + "%"; //F1= 1 float après la virgule
 
             rankVal = "F";
             rythmeGameRank = RythmeGameRank.F;
 
-            if(percentHit > 40)
+            if(percentHit > 30)
             {
                 rankVal = "D";
                 rythmeGameRank = RythmeGameRank.D;
@@ -246,15 +274,14 @@ public class RhythmManager : MonoBehaviour
             AudioController.Instance.PlayAudio(sfxEndParty);
 
             //Invoke("DestroyGame", 5f);
-            StartCoroutine(WaitAndDisableGame());            
+            StartCoroutine(WaitAndDisableGame(5f));            
         }
 
     }
 
-
-    IEnumerator WaitAndDisableGame()
+    IEnumerator WaitAndDisableGame(float timeToWait)
     {
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(timeToWait);
         SwitchBackCam();
 
 
@@ -290,36 +317,75 @@ public class RhythmManager : MonoBehaviour
             player.EndActivity();             
         }
 
-        if(gameActions.actionsList.Count > 0)
+        if (gameEnded)
         {
-            if(gameRequirements.requirementsList.Count > 0)
+            if (gameActions.actionsList.Count > 0)
             {
-                if(gameRequirements.ExecuteGameRequirements())
+                if (gameRequirements.requirementsList.Count > 0)
+                {
+                    if (gameRequirements.ExecuteGameRequirements())
+                        gameActions.ExecuteGameActions();
+                }
+                else
+                {
                     gameActions.ExecuteGameActions();
-            }
-            else
-            {
-                gameActions.ExecuteGameActions();
+                }
             }
         }
 
     }
 
+    public void ExitGameMenu()
+    {
+        if(gameExit == false && gameEnded == false)
+        {
+            //AudioController.Instance.PauseAudio(beatScroller.music, true);
+            //beatScroller.musicSource.Pause();
+            AudioController.Instance.PauseSpecificAudio(beatScroller.musicSource);
+            beatScroller.canPlay = false;
+            beatScroller.tempDureeMusique = beatScroller.dureeMusique;
+            beatScroller.dureeMusique = 0;
+
+            MessageBox messageBox = GameManager.Instance.gameCanvasManager.CreateMessageBox(exitGameBoxMessage, exitGameBoxMessageSize, true);
+            messageBox.YesButton.onClick.AddListener(() => ExitGame());
+            messageBox.NoButton.onClick.AddListener(() => ReturnToTheGame());
+
+            gameExit = true;
+        }
+    }
+
+    public void ExitGame()
+    {
+        StartCoroutine(WaitAndDisableGame(0.1f));
+    }
+
+    public void ReturnToTheGame()
+    {
+        player.StartActivity();
+
+        //AudioController.Instance.PauseAudio(beatScroller.music, false);
+        //beatScroller.musicSource.UnPause();
+        AudioController.Instance.ResumeSpecificAudio(beatScroller.musicSource);
+        beatScroller.canPlay = true;
+        beatScroller.dureeMusique = beatScroller.tempDureeMusique;
+        StartCoroutine(beatScroller.GuyterHiro());
+        gameExit = false;
+    }
 
     #region Sound effects
 
-    public void PrepSound()
+    /*public void PrepSound()
     {
         prep[Random.Range(0, prep.Length)].Play();
-    }
-    public void FrySound()
+    }*/
+    /*public void FrySound()
     {
         cuisson[Random.Range(0, cuisson.Length)].Play();
-    }
-     public void DressSound()
+    }*/
+     /*public void DressSound()
      {
         prep[Random.Range(0, prep.Length)].Play();
-     }
+     }*/
     #endregion
 
 }

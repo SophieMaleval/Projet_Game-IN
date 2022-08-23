@@ -23,6 +23,11 @@ public class MessageBox : MonoBehaviour
 
     public string messageKey { get; set; }
 
+    public Button NextButton => nextButton;
+
+    public Button YesButton => yesButton;
+    public Button NoButton => noButton;
+
     #endregion
 
     #region UnityInspector
@@ -35,7 +40,18 @@ public class MessageBox : MonoBehaviour
 
     [SerializeField] private float delayAnimationText = 0.025f;
 
+    [Space]
+
+    [SerializeField] private GameObject informations;
     [SerializeField] private Button nextButton;
+
+    [Space]
+
+    [SerializeField] private GameObject choices;
+    [SerializeField] private Button yesButton;
+    [SerializeField] private Button noButton;
+
+    [Space]
 
     [Header("Sounds")]
     [SerializeField] private AudioData sfxTextWrite;
@@ -50,6 +66,8 @@ public class MessageBox : MonoBehaviour
         ThisRect = gameObject.GetComponent<RectTransform>();
 
         nextButton.gameObject.SetActive(false);
+        yesButton.gameObject.SetActive(false);
+        noButton.gameObject.SetActive(false);
     }
 
     public void SetBoxSize(float value)
@@ -57,14 +75,17 @@ public class MessageBox : MonoBehaviour
         boxSize = value;
     }
 
-    public void UpdateMessage()
+    public void UpdateMessage(bool isChoiceBox = false)
     {
+        informations.SetActive(!isChoiceBox);
+        choices.SetActive(isChoiceBox);
+
         GameManager.Instance.player.GetComponent<PlayerMovement>().StartActivity();
         GameManager.Instance.player.CanSwitchState = false;
         GameManager.Instance.gameCanvasManager.dialogCanvas.canInteract = false;
         GameManager.Instance.gameCanvasManager.inventory.canInteract = false;
 
-        GameManager.Instance.gameCanvasManager.inventory.DarkScreen.gameObject.SetActive(true);
+        GameManager.Instance.gameCanvasManager.DarkScreen.gameObject.SetActive(true);
 
         ThisRect.sizeDelta = new Vector2(ThisRect.sizeDelta.x, boxSize);
 
@@ -107,9 +128,19 @@ public class MessageBox : MonoBehaviour
             StopCoroutine(animationPassTouchCoroutine);
         }
 
-        nextButton.gameObject.SetActive(true);
+        if (informations.activeSelf)
+        {
+            nextButton.gameObject.SetActive(true);
+            GameManager.Instance.gameCanvasManager.eventSystem.SetSelectedGameObject(nextButton.gameObject);
+        }
+        else if(choices.activeSelf)
+        {
+            yesButton.gameObject.SetActive(true);
+            noButton.gameObject.SetActive(true);
+            GameManager.Instance.gameCanvasManager.eventSystem.SetSelectedGameObject(yesButton.gameObject);
+        }
+
         GetComponent<Button>().enabled = false;
-        GameManager.Instance.gameCanvasManager.eventSystem.SetSelectedGameObject(nextButton.gameObject);
     }
 
     public void ClickUIBox()
@@ -140,7 +171,7 @@ public class MessageBox : MonoBehaviour
             GameManager.Instance.gameCanvasManager.dialogCanvas.canInteract = true;
             GameManager.Instance.gameCanvasManager.inventory.canInteract = true;
 
-            GameManager.Instance.gameCanvasManager.inventory.DarkScreen.gameObject.SetActive(false);
+            GameManager.Instance.gameCanvasManager.DarkScreen.gameObject.SetActive(false);
 
             GameManager.Instance.CheckEventSystemState();
 

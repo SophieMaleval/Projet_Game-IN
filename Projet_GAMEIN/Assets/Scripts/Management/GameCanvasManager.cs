@@ -21,6 +21,10 @@ public class GameCanvasManager : MonoBehaviour
 
     public PopUpManager PopUpManager => popUpManager;
 
+    public Transform MessageParent => messageParent;
+
+    public Image DarkScreen => darkScreen;
+
     public Image FadeAnimation => fadeAnimation;
 
     public InventoryScript inventory { get; set; }
@@ -39,7 +43,11 @@ public class GameCanvasManager : MonoBehaviour
 
     [SerializeField] private PopUpManager popUpManager;
 
+    [SerializeField] private Transform messageParent;
+
     [SerializeField] private Image fadeAnimation;
+
+    [SerializeField] private Image darkScreen;
 
     [SerializeField] private MessageBox messageBox;
 
@@ -50,6 +58,8 @@ public class GameCanvasManager : MonoBehaviour
     private void Awake()
     {
         GameManager.Instance.gameCanvasManager = this;
+
+        darkScreen.gameObject.SetActive(false);
     }
 
     private void Update()
@@ -68,15 +78,17 @@ public class GameCanvasManager : MonoBehaviour
         }
     }
 
-    public void CreateMessageBox(string message, float boxSize)
+    public MessageBox CreateMessageBox(string message, float boxSize, bool isChoiceBox = false)
     {
-        MessageBox box = Instantiate(messageBox, inventory.transform);
+        MessageBox box = Instantiate(messageBox, messageParent.transform);
         box.messageKey = message;
         if(boxSize > 0)
         {
             box.SetBoxSize(boxSize);
         }
-        box.UpdateMessage();
+        box.UpdateMessage(isChoiceBox);
+
+        return box;
     }
 
     #endregion
