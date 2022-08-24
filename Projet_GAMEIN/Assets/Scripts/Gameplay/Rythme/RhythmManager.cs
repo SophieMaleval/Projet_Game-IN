@@ -57,12 +57,18 @@ public class RhythmManager : MonoBehaviour
     public int[] multiplierThresholds;
     public float totalNotes;
 
+    [SerializeField] private int rankDPercentValue = 30;
+    [SerializeField] private int rankCPercentValue = 55;
+    [SerializeField] private int rankBPercentValue = 70;
+    [SerializeField] private int rankAPercentValue = 85;
+    [SerializeField] private int rankSPercentValue = 95;
+
     /*[Header("SFX")]
     public AudioSource[] prep;
     public AudioSource[] cuisson;
     public AudioSource[] dressage;*/
 
-    
+
     [Header("UI texts")]
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI multiText;
@@ -239,23 +245,23 @@ public class RhythmManager : MonoBehaviour
             rankVal = "F";
             rythmeGameRank = RythmeGameRank.F;
 
-            if(percentHit > 30)
+            if(percentHit > rankDPercentValue)
             {
                 rankVal = "D";
                 rythmeGameRank = RythmeGameRank.D;
-                if (percentHit > 55)
+                if (percentHit > rankCPercentValue)
                 {
                     rankVal = "C";
                     rythmeGameRank = RythmeGameRank.C;
-                    if (percentHit > 70)
+                    if (percentHit > rankBPercentValue)
                     {
                         rankVal = "B";
                         rythmeGameRank = RythmeGameRank.B;
-                        if (percentHit > 85)
+                        if (percentHit > rankAPercentValue)
                         {
                             rankVal = "A";
                             rythmeGameRank = RythmeGameRank.A;
-                            if (percentHit > 95)
+                            if (percentHit > rankSPercentValue)
                             {
                                 rankVal = "S";
                                 rythmeGameRank = RythmeGameRank.S;
