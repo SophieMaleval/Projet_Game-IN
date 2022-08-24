@@ -291,8 +291,22 @@ namespace AllosiusDev.DialogSystem
 
             int randomIndex = UnityEngine.Random.Range(0, children.Count());
             Debug.Log(randomIndex);
+
             currentNode = children[randomIndex];
             GameManager.Instance.player.textDebug2.text = currentNode.name;
+
+            StartCoroutine(CoroutineEnterNodeActions());
+        }
+
+        private IEnumerator CoroutineEnterNodeActions()
+        {
+            if (currentNode.hasEnterNodeActions)
+            {
+                currentNode.enterNodeActions.ExecuteGameActions();
+            }
+
+            yield return new WaitForSeconds(currentNode.timerBeforeNextNode);
+
             onConversationUpdated.Invoke();
         }
 

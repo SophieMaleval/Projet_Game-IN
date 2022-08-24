@@ -29,6 +29,8 @@ public class GameManager : Singleton<GameManager>
     public Vector2 InitMenuExitPlayerSpawnPos => initMenuExitPlayerSpawnPos;
     public Vector2 InitExteriorMapPlayerSpawnPos => initExteriorMapPlayerSpawnPos;
 
+    public bool zoomActive { get; set; }
+
     #endregion
 
     #region UnityInspector

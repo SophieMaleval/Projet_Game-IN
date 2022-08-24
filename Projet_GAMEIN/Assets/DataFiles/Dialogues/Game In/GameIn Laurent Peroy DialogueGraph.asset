@@ -43,10 +43,15 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 0
+  texteType: 0
   keyText: Dialogue_Laurent_Peroy_TuPeuxVerifierLesQuetes
   messagePreview: You can check the quests available to you by pressing the R key,
     there are certainly members who need your help !
   singleRead: 0
+  hasEnterNodeActions: 0
+  showEnterNodeActions: 0
+  enterNodeActions:
+    actionsList: []
   hasGameActions: 1
   showGameActions: 1
   gameActions:
@@ -62,6 +67,14 @@ MonoBehaviour:
       itemToRemove: {fileID: 0}
       fadeDuration: 0.5
       fadeOutSwitchDuration: 1
+      newConversantToCall: {fileID: 0}
+      dialogueToLaunch: {fileID: 0}
+      launchDialogueToMainNode: 0
+      boxMessageTextToDisplay: 
+      boxMessageSize: 0
+      iconDataToAdd: {fileID: 0}
+      shakeCameraIntensity: 0
+      shakeCameraDuration: 0
     - actionType: 3
       hasCondition: 0
       nodesRequiredToRead: []
@@ -74,6 +87,14 @@ MonoBehaviour:
       itemToRemove: {fileID: 0}
       fadeDuration: 0.5
       fadeOutSwitchDuration: 1
+      newConversantToCall: {fileID: 0}
+      dialogueToLaunch: {fileID: 0}
+      launchDialogueToMainNode: 0
+      boxMessageTextToDisplay: 
+      boxMessageSize: 0
+      iconDataToAdd: {fileID: 0}
+      shakeCameraIntensity: 0
+      shakeCameraDuration: 0
   hasRequirements: 1
   showGameRequirements: 1
   gameRequirements:
@@ -87,6 +108,7 @@ MonoBehaviour:
       questStepCheckedValueWanted: 0
       questStepToCheckState: 0
       itemToCheck: {fileID: 0}
+      rythmeGameRankRequired: 0
 --- !u!114 &-4601967397657579344
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -130,9 +152,52 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 0
+  texteType: 2
   keyText: Dialogue_Laurent_Peroy_BienLeBonjour
-  messagePreview: Good morning young artist! I didn't see you coming !
+  messagePreview: Bien le bonjour ! Je ne t'avais pas vu arriver !
   singleRead: 0
+  hasEnterNodeActions: 1
+  showEnterNodeActions: 1
+  enterNodeActions:
+    actionsList:
+    - actionType: 11
+      hasCondition: 0
+      nodesRequiredToRead: []
+      questToAdd: {fileID: 0}
+      questAssociated: {fileID: 0}
+      questStepToComplete: {fileID: 0}
+      ScooterPopUpData: {fileID: 0}
+      itemToAdd: {fileID: 0}
+      itemToRemove: {fileID: 0}
+      fadeDuration: 0.5
+      fadeOutSwitchDuration: 1
+      newConversantToCall: {fileID: 0}
+      dialogueToLaunch: {fileID: 0}
+      launchDialogueToMainNode: 0
+      boxMessageTextToDisplay: 
+      boxMessageSize: 0
+      iconDataToAdd: {fileID: 0}
+      shakeCameraIntensity: 6
+      shakeCameraDuration: 0.5
+    - actionType: 10
+      hasCondition: 0
+      nodesRequiredToRead: []
+      questToAdd: {fileID: 0}
+      questAssociated: {fileID: 0}
+      questStepToComplete: {fileID: 0}
+      ScooterPopUpData: {fileID: 0}
+      itemToAdd: {fileID: 0}
+      itemToRemove: {fileID: 0}
+      fadeDuration: 0.5
+      fadeOutSwitchDuration: 1
+      newConversantToCall: {fileID: 0}
+      dialogueToLaunch: {fileID: 0}
+      launchDialogueToMainNode: 0
+      boxMessageTextToDisplay: 
+      boxMessageSize: 0
+      iconDataToAdd: {fileID: 11400000, guid: c5597681e86d9c24d82a824333f66acc, type: 2}
+      shakeCameraIntensity: 0
+      shakeCameraDuration: 0
   hasGameActions: 0
   showGameActions: 0
   gameActions:
@@ -150,6 +215,7 @@ MonoBehaviour:
       questStepCheckedValueWanted: 0
       questStepToCheckState: 0
       itemToCheck: {fileID: 0}
+      rythmeGameRankRequired: 0
 --- !u!114 &-4502136979778286970
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -196,9 +262,14 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 1
+  texteType: 0
   keyText: Dialogue_Laurent_Peroy_QuEstCeQueGameIn
   messagePreview: Qu'est-ce que Game In ?
   singleRead: 1
+  hasEnterNodeActions: 0
+  showEnterNodeActions: 0
+  enterNodeActions:
+    actionsList: []
   hasGameActions: 0
   showGameActions: 0
   gameActions:
@@ -253,10 +324,15 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 0
+  texteType: 0
   keyText: Dialogue_Laurent_Peroy_TuDoisSurementEtre[PLAYER]
   messagePreview: You must be [PLAYER]! I've heard of you before, everyone talks
     to each other a lot within the ecosystem.
   singleRead: 0
+  hasEnterNodeActions: 0
+  showEnterNodeActions: 0
+  enterNodeActions:
+    actionsList: []
   hasGameActions: 0
   showGameActions: 0
   gameActions:
@@ -314,12 +390,17 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 0
+  texteType: 0
   keyText: Dialogue_Laurent_Peroy_BienvenueDansLeVillage
   messagePreview: "Bienvenue dans le village Game In ! Un espace parall\xE8le qui
     regroupe toutes les entreprises de l'industrie vid\xE9oludiques implant\xE9s
     dans le nord de la France ! Notre r\xE9seau se r\xE9parti sur toute la R\xE9gion
     Hauts-de-France, avec une forte implantation en m\xE9tropole lilloise."
   singleRead: 0
+  hasEnterNodeActions: 0
+  showEnterNodeActions: 0
+  enterNodeActions:
+    actionsList: []
   hasGameActions: 0
   showGameActions: 0
   gameActions:
@@ -374,10 +455,15 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 0
+  texteType: 0
   keyText: Dialogue_Laurent_Peroy_IciTuEsDansUneZone
   messagePreview: "Ici, tu es dans une zone dans laquelle tu pourras rencontrer divers
     repr\xE9sentants de l'association."
   singleRead: 0
+  hasEnterNodeActions: 0
+  showEnterNodeActions: 0
+  enterNodeActions:
+    actionsList: []
   hasGameActions: 0
   showGameActions: 0
   gameActions:
@@ -432,16 +518,21 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 0
+  texteType: 0
   keyText: Dialogue_Laurent_Peroy_GameInEstLAssociationQui
   messagePreview: "Game IN est l'association qui incarne l'industrie du jeu vid\xE9o
     sur tout le nord de la France."
   singleRead: 0
+  hasEnterNodeActions: 0
+  showEnterNodeActions: 1
+  enterNodeActions:
+    actionsList: []
   hasGameActions: 0
-  showGameActions: 0
+  showGameActions: 1
   gameActions:
     actionsList: []
   hasRequirements: 0
-  showGameRequirements: 0
+  showGameRequirements: 1
   gameRequirements:
     requirementsList: []
 --- !u!114 &-1421191217058410309
@@ -490,10 +581,15 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 0
+  texteType: 0
   keyText: Dialogue_Laurent_Peroy_BeaucoupDeNosAdherents
   messagePreview: Many of our members are away on game jams, they should be back
     soon.
   singleRead: 0
+  hasEnterNodeActions: 0
+  showEnterNodeActions: 0
+  enterNodeActions:
+    actionsList: []
   hasGameActions: 0
   showGameActions: 0
   gameActions:
@@ -511,6 +607,7 @@ MonoBehaviour:
       questStepCheckedValueWanted: 0
       questStepToCheckState: 0
       itemToCheck: {fileID: 0}
+      rythmeGameRankRequired: 0
 --- !u!114 &-878895454420717927
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -554,9 +651,14 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 0
+  texteType: 0
   keyText: Dialogue_Laurent_Peroy_ReviensDansQuelquesSemaines
   messagePreview: "Reviens dans quelques semaines pour commencer \xE0 les rencontrer."
   singleRead: 0
+  hasEnterNodeActions: 0
+  showEnterNodeActions: 0
+  enterNodeActions:
+    actionsList: []
   hasGameActions: 1
   showGameActions: 1
   gameActions:
@@ -572,6 +674,14 @@ MonoBehaviour:
       itemToRemove: {fileID: 0}
       fadeDuration: 0.5
       fadeOutSwitchDuration: 1
+      newConversantToCall: {fileID: 0}
+      dialogueToLaunch: {fileID: 0}
+      launchDialogueToMainNode: 0
+      boxMessageTextToDisplay: 
+      boxMessageSize: 0
+      iconDataToAdd: {fileID: 0}
+      shakeCameraIntensity: 0
+      shakeCameraDuration: 0
   hasRequirements: 0
   showGameRequirements: 0
   gameRequirements:
@@ -657,10 +767,15 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 0
+  texteType: 0
   keyText: Dialogue_Laurent_Peroy_NousAvonsAVocationARepresenter
   messagePreview: "Nous avons \xE0 vocation \xE0 repr\xE9senter, animer, renforcer,
     d\xE9velopper notre \xE9cosyst\xE8me."
   singleRead: 0
+  hasEnterNodeActions: 0
+  showEnterNodeActions: 0
+  enterNodeActions:
+    actionsList: []
   hasGameActions: 0
   showGameActions: 0
   gameActions:
@@ -718,11 +833,16 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 0
+  texteType: 0
   keyText: Dialogue_Laurent_Peroy_SorsEtExploreLesEnvirons
   messagePreview: "Sors et explore les environs ! Tu y rencontreras celles et ceux
     qui peuplent le village, et donc notre \xE9cosyst\xE8me jeu vid\xE9o professionnel
     !"
   singleRead: 0
+  hasEnterNodeActions: 0
+  showEnterNodeActions: 0
+  enterNodeActions:
+    actionsList: []
   hasGameActions: 0
   showGameActions: 0
   gameActions:
@@ -744,7 +864,7 @@ MonoBehaviour:
   m_Name: Pas de soucis, on se voit plus tard.
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 2600, y: 1032}
+  position: {x: 2536, y: 1128}
   ports:
     keys:
     - previousNode
@@ -774,9 +894,14 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 0
+  texteType: 0
   keyText: Dialogue_Laurent_Peroy_PasDeSoucisOnSeVoitPlusTard
-  messagePreview: Pas de soucis, on se voit plus tard.
+  messagePreview: No problem, see you later !
   singleRead: 0
+  hasEnterNodeActions: 0
+  showEnterNodeActions: 0
+  enterNodeActions:
+    actionsList: []
   hasGameActions: 0
   showGameActions: 0
   gameActions:
@@ -831,9 +956,14 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 1
+  texteType: 0
   keyText: Dialogue_Laurent_Peroy_QuiEtesVous
   messagePreview: "Qui \xEAtes vous ?"
   singleRead: 1
+  hasEnterNodeActions: 0
+  showEnterNodeActions: 0
+  enterNodeActions:
+    actionsList: []
   hasGameActions: 0
   showGameActions: 0
   gameActions:
@@ -888,9 +1018,14 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 1
+  texteType: 0
   keyText: Dialogue_Laurent_Peroy_OuSommesNous
   messagePreview: "O\xF9 sommes-nous ?"
   singleRead: 1
+  hasEnterNodeActions: 0
+  showEnterNodeActions: 0
+  enterNodeActions:
+    actionsList: []
   hasGameActions: 0
   showGameActions: 0
   gameActions:
@@ -942,10 +1077,15 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 0
+  texteType: 0
   keyText: Dialogue_Laurent_Peroy_NotreEcosystemeNeCesseDeSeDevelopper
   messagePreview: "Notre \xE9cosyst\xE8me ne cesse de se d\xE9velopper et notre mission
     est d'accompagner tout le monde au quotidien."
   singleRead: 0
+  hasEnterNodeActions: 0
+  showEnterNodeActions: 0
+  enterNodeActions:
+    actionsList: []
   hasGameActions: 1
   showGameActions: 1
   gameActions:
@@ -961,6 +1101,14 @@ MonoBehaviour:
       itemToRemove: {fileID: 0}
       fadeDuration: 0.5
       fadeOutSwitchDuration: 1
+      newConversantToCall: {fileID: 0}
+      dialogueToLaunch: {fileID: 0}
+      launchDialogueToMainNode: 0
+      boxMessageTextToDisplay: 
+      boxMessageSize: 0
+      iconDataToAdd: {fileID: 0}
+      shakeCameraIntensity: 0
+      shakeCameraDuration: 0
   hasRequirements: 0
   showGameRequirements: 0
   gameRequirements:
@@ -1011,9 +1159,14 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 1
+  texteType: 0
   keyText: Dialogue_Laurent_Peroy_JeDoisYAller
   messagePreview: Je dois y aller.
   singleRead: 0
+  hasEnterNodeActions: 0
+  showEnterNodeActions: 0
+  enterNodeActions:
+    actionsList: []
   hasGameActions: 0
   showGameActions: 0
   gameActions:
@@ -1068,9 +1221,14 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 0
+  texteType: 0
   keyText: Dialogue_Laurent_Peroy_JeSuisLaurentPeroy
   messagePreview: Je suis Laurent Peroy !
   singleRead: 0
+  hasEnterNodeActions: 0
+  showEnterNodeActions: 0
+  enterNodeActions:
+    actionsList: []
   hasGameActions: 0
   showGameActions: 0
   gameActions:
@@ -1122,11 +1280,16 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 0
+  texteType: 0
   keyText: Dialogue_Laurent_Peroy_LeDelegueGeneralDeGameIn
-  messagePreview: "Le d\xE9l\xE9gu\xE9 g\xE9n\xE9ral de Game In."
+  messagePreview: The general delegate of Game In.
   singleRead: 0
+  hasEnterNodeActions: 0
+  showEnterNodeActions: 0
+  enterNodeActions:
+    actionsList: []
   hasGameActions: 1
-  showGameActions: 0
+  showGameActions: 1
   gameActions:
     actionsList:
     - actionType: 0
@@ -1140,6 +1303,14 @@ MonoBehaviour:
       itemToRemove: {fileID: 0}
       fadeDuration: 0.5
       fadeOutSwitchDuration: 1
+      newConversantToCall: {fileID: 0}
+      dialogueToLaunch: {fileID: 0}
+      launchDialogueToMainNode: 0
+      boxMessageTextToDisplay: 
+      boxMessageSize: 0
+      iconDataToAdd: {fileID: 0}
+      shakeCameraIntensity: 0
+      shakeCameraDuration: 0
   hasRequirements: 0
   showGameRequirements: 0
   gameRequirements:
@@ -1196,9 +1367,14 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 0
+  texteType: 0
   keyText: Dialogue_Laurent_Peroy_CommentVasTu
   messagePreview: How are you ?
   singleRead: 0
+  hasEnterNodeActions: 0
+  showEnterNodeActions: 0
+  enterNodeActions:
+    actionsList: []
   hasGameActions: 0
   showGameActions: 0
   gameActions:
@@ -1216,3 +1392,4 @@ MonoBehaviour:
       questStepCheckedValueWanted: 0
       questStepToCheckState: 0
       itemToCheck: {fileID: 0}
+      rythmeGameRankRequired: 0

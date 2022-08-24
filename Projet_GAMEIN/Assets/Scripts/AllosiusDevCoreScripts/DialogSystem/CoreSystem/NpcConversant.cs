@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace AllosiusDev.DialogSystem
 {
@@ -35,6 +36,9 @@ namespace AllosiusDev.DialogSystem
         [SerializeField] private float timeBeforeRelaunchDialogue = 0.5f;
 
         [SerializeField] private InteractableElement interactableElement;
+
+        [SerializeField] private GameObject canvasNpc;
+
         #endregion
 
         #region Behaviour
@@ -117,6 +121,22 @@ namespace AllosiusDev.DialogSystem
             {
                 PlayerAround = false;
                 GameManager.Instance.player.SwitchInputSprite(transform, interactableElement.interactableSpritePosOffset);
+            }
+        }
+
+        private void OnMouseOver()
+        {
+            if(GameManager.Instance.zoomActive == false)
+            {
+                canvasNpc.SetActive(true);
+            }
+        }
+
+        private void OnMouseExit()
+        {
+            if (GameManager.Instance.zoomActive == false)
+            {
+                canvasNpc.SetActive(false);
             }
         }
 

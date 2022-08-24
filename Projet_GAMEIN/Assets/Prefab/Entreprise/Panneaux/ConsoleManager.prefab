@@ -106,7 +106,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.109375, y: 0.859375}
+  m_Size: {x: 1.171875, y: 2.046875}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -251,6 +251,7 @@ GameObject:
   - component: {fileID: 2290793966238194857}
   - component: {fileID: 4650618578784150868}
   - component: {fileID: 6738557281326918696}
+  - component: {fileID: 1218666871847232656}
   m_Layer: 0
   m_Name: cm
   m_TagString: Untagged
@@ -327,6 +328,23 @@ MonoBehaviour:
   m_MaximumFOV: 60
   m_MinimumOrthoSize: 1
   m_MaximumOrthoSize: 5000
+--- !u!114 &1218666871847232656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3475228561798245123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68bb026fafb42b14791938953eaace77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_NoiseProfile: {fileID: 11400000, guid: 69ce8388f6785dd4c8c39915efece2f4, type: 2}
+  m_PivotOffset: {x: 0, y: 0, z: 0}
+  m_AmplitudeGain: 0
+  m_FrequencyGain: 2.56
+  mNoiseOffsets: {x: 0, y: 0, z: 0}
 --- !u!1 &3679486809925934681
 GameObject:
   m_ObjectHideFlags: 0
@@ -425,6 +443,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fb86854f6b5f8146ad716f4191a4a56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  camShakeFrequencyGain: 2.56
 --- !u!1 &6500861323380658773
 GameObject:
   m_ObjectHideFlags: 0

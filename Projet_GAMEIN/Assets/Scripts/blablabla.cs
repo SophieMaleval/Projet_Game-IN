@@ -1,6 +1,7 @@
 ﻿using AllosiusDev.DialogSystem;
 using AllosiusDev.QuestSystem;
 using AllosiusDev.TranslationSystem;
+using Cinemachine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -27,6 +28,8 @@ public class blablabla : MonoBehaviour
 
     public float boxSizeTest;
 
+    public float shakeCameraIntensityTest = 3f;
+    public float shakeCameraDurationTest = 1f;
 
     private void Start()
     {
@@ -138,5 +141,21 @@ public class blablabla : MonoBehaviour
     public void TestCreateBoxMessage()
     {
         GameManager.Instance.gameCanvasManager.CreateMessageBox(keyTextTest, boxSizeTest);
+    }
+
+    [ContextMenu("TestShakeCamera")]
+    public void TestShakeCamera()
+    {
+        //Debug.Log(Camera.main.GetComponent<CinemachineBrain>().ActiveVirtualCamera.Name);
+        CinemachineGetPlayer cinemachineGetPlayer = Camera.main.GetComponent<CinemachineBrain>().ActiveVirtualCamera.VirtualCameraGameObject.GetComponent<CinemachineGetPlayer>();
+        if(cinemachineGetPlayer != null)
+        {
+            cinemachineGetPlayer.ShakeCamera(shakeCameraIntensityTest, shakeCameraDurationTest);
+        }
+        else
+        {
+            Debug.Log("cinemachineGetPlayer is null");
+        }
+
     }
 }

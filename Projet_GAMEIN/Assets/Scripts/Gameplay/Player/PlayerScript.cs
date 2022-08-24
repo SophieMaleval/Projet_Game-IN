@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.UI ;
 using DG.Tweening;
 using AllosiusDev.Audio;
+using Cinemachine;
 
 public class PlayerScript : MonoBehaviour
 {
@@ -29,6 +30,13 @@ public class PlayerScript : MonoBehaviour
 
 
     public bool CanSwitchState { get; set; }
+    public bool InAnimationFade { get; set; }
+    public bool FadeMake { get; set; }
+    public bool AnimationBeMake { get; set; }
+
+    public Image FadeAnimation { get; set; }
+
+    public GameObject PlayerIcon => playerIcon;
 
     #endregion
 
@@ -53,11 +61,8 @@ public class PlayerScript : MonoBehaviour
     public TLManager TimeLineManager ;
 
     public Vector2 MainSceneLoadPos ;
-    public bool InAnimationFade { get; set; }
-    public bool FadeMake { get; set; }
-    public bool AnimationBeMake { get; set; }
 
-    public Image FadeAnimation { get; set; }
+    [SerializeField] private GameObject playerIcon;
 
     [Header("Sounds")]
     [SerializeField] private AudioData selectedSound;

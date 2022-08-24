@@ -72,6 +72,8 @@ public class Camera_zoom : MonoBehaviour
             //vcam.Follow = null;
             vcam.Follow = Target.transform;
         }
+
+        GameManager.Instance.zoomActive = true;
     }
 
     private void OnTriggerExit2D(Collider2D other)
@@ -90,6 +92,8 @@ public class Camera_zoom : MonoBehaviour
             //vcam.transform.DOMove(new Vector3(GameManager.Instance.player.transform.position.x, GameManager.Instance.player.transform.transform.position.y, vcam.transform.position.z), 1);
             //vcam.Follow = GameManager.Instance.player.transform;
         }
+
+        GameManager.Instance.zoomActive = false;
     }
   
 }

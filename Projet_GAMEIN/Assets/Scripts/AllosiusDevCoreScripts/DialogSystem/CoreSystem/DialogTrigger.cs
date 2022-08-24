@@ -27,6 +27,7 @@ namespace AllosiusDev.DialogSystem
 
         [Header("Animation Talk")]
         [SerializeField] private CinemachineVirtualCamera CineVCam;
+        [SerializeField] private float timeBeforeSwitchCam = 0.4f;
 
         #endregion
 
@@ -41,6 +42,12 @@ namespace AllosiusDev.DialogSystem
 
             CineVCam.Follow = GameManager.Instance.player.transform;
             resetCam = false;
+        }
+
+        IEnumerator SetCineVCamNpcConversant()
+        {
+            yield return new WaitForSeconds(timeBeforeSwitchCam);
+            CineVCam.Follow = npcConversant.transform;
         }
 
         void Update()
@@ -69,7 +76,7 @@ namespace AllosiusDev.DialogSystem
                 resetCam = true;
                 if (CineVCam != null)
                 {
-                    CineVCam.Follow = npcConversant.transform;
+                    StartCoroutine(SetCineVCamNpcConversant());
                 }
                 npcConversant.StartDialog();
             }

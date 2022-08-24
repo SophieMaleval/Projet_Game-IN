@@ -194,7 +194,7 @@ namespace AllosiusDev.DialogSystem
                 var _textComp = _choiceInstance.GetComponentInChildren<TextMeshProUGUI>();
                 //_textComp.text = choice.message;
                 var _textTranslate = _choiceInstance.GetComponentInChildren<ToTranslateObject>();
-                _textTranslate.SetTranslationKey(choice.keyText, TypeDictionary.Dialogues);
+                _textTranslate.SetTranslationKey(choice.keyText, TypeDictionary.Dialogues, true, choice.texteType);
 
                 if (choice.hasRequirements)
                 {
@@ -295,6 +295,16 @@ namespace AllosiusDev.DialogSystem
 
             canTurnNext = false;
 
+            string _text = text;
+            if(playerConversant.currentNode.texteType == TexteType.Lower)
+            {
+                _text = text.ToLower();
+            }
+            else if (playerConversant.currentNode.texteType == TexteType.Upper)
+            {
+                _text = text.ToUpper();
+            }
+
             dialogueDisplayerText.text = "";
             //Debug.Log(dialogueDisplayerText.text);
 
@@ -303,12 +313,12 @@ namespace AllosiusDev.DialogSystem
                 playerConversant.CurrentConversant.PNJTalkAnimation(true);
             }
 
-            for (int i = 0; i < text.Length; i++)
+            for (int i = 0; i < _text.Length; i++)
             {
-                dialogueDisplayerText.text += text[i];
+                dialogueDisplayerText.text += _text[i];
                 //Debug.Log(dialogueDisplayerText.text);
 
-                if (text[i] != ' ')
+                if (_text[i] != ' ')
                 {
                     AudioController.Instance.PlayAudio(sfxTextWrite);
                 }
@@ -316,7 +326,7 @@ namespace AllosiusDev.DialogSystem
                 yield return new WaitForSeconds(delayAnimationText);
             }
 
-            EndTextWrite(text);
+            EndTextWrite(_text);
         }
 
         private void EndTextWrite(string text)

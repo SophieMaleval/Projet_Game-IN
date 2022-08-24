@@ -15,4 +15,10 @@ public class Ground : MonoBehaviour
     [SerializeField] private GroundType groundType;
 
     #endregion
+
+    #region Behaviour
+
+    
+
+    #endregion
 }

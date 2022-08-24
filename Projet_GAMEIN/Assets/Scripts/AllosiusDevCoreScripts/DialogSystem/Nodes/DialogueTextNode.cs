@@ -33,12 +33,19 @@ namespace AllosiusDev.DialogSystem
         public enum IdentityType { NPC, Player }
         [NodeEnum] [SerializeField] public IdentityType identityType;
 
+        
+        [NodeEnum] [SerializeField] public TexteType texteType;
+
         [SerializeField] public string keyText = "";
 
         [TextArea]
         [SerializeField] public string messagePreview = "";
 
         [SerializeField] public bool singleRead;
+
+        [SerializeField] public bool hasEnterNodeActions;
+        [SerializeField] public bool showEnterNodeActions;
+        [SerializeField] public GameActions enterNodeActions;
 
         [SerializeField] public bool hasGameActions;
         [SerializeField] public bool showGameActions;

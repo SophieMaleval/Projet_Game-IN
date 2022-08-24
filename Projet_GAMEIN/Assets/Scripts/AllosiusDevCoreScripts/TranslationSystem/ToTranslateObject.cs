@@ -11,6 +11,8 @@ namespace AllosiusDev.TranslationSystem
 
         private string translationKey;
 
+        private TexteType texteType;
+
         #endregion
 
         #region Properties
@@ -53,10 +55,11 @@ namespace AllosiusDev.TranslationSystem
             Translation();
         }
 
-        public void SetTranslationKey(string value, TypeDictionary newTypeDictionary, bool automaticTranslation = true)
+        public void SetTranslationKey(string value, TypeDictionary newTypeDictionary, bool automaticTranslation = true, TexteType newTextType = TexteType.Default)
         {
             translationKey = value;
             typeDictionary = newTypeDictionary;
+            texteType = newTextType;
 
             if (automaticTranslation)
                 Translation();
@@ -72,6 +75,15 @@ namespace AllosiusDev.TranslationSystem
             }
             string text = GetCorrectText();
             textToTranslate.text = text;
+
+            if(texteType == TexteType.Lower)
+            {
+                textToTranslate.text = textToTranslate.text.ToLower();
+            }
+            else if (texteType == TexteType.Upper)
+            {
+                textToTranslate.text = textToTranslate.text.ToUpper();
+            }
         }
 
         public string GetCorrectText()
@@ -89,3 +101,5 @@ namespace AllosiusDev.TranslationSystem
         #endregion
     }
 }
+
+public enum TexteType { Default, Lower, Upper }

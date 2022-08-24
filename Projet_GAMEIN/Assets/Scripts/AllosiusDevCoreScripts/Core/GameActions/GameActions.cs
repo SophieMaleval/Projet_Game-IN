@@ -1,5 +1,6 @@
 ﻿using AllosiusDev.DialogSystem;
 using AllosiusDev.QuestSystem;
+using Cinemachine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -68,6 +69,14 @@ namespace AllosiusDev.Core
                         else if (item.actionType == ActionType.CreateBoxMessage)
                         {
                             item.ExecuteCreateBoxMessage();
+                        }
+                        else if (item.actionType == ActionType.AddPlayerIcon)
+                        {
+                            item.ExecuteAddPlayerIcon();
+                        }
+                        else if (item.actionType == ActionType.LaunchShakeCamera)
+                        {
+                            item.ExecuteLaunchShakeCamera();
                         }
                     }
                 }
@@ -140,6 +149,15 @@ namespace AllosiusDev.Core
         [Header("Create Box Message Properties")]
         [SerializeField] public string boxMessageTextToDisplay;
         [SerializeField] public float boxMessageSize;
+
+        [Space]
+        [Header("Add Player Icon Properties")]
+        [SerializeField] public IconData iconDataToAdd;
+
+        [Space]
+        [Header("Launch Shake Camera Properties")]
+        [SerializeField] public float shakeCameraIntensity;
+        [SerializeField] public float shakeCameraDuration;
 
 
         #endregion
@@ -249,6 +267,33 @@ namespace AllosiusDev.Core
             GameManager.Instance.gameCanvasManager.CreateMessageBox(boxMessageTextToDisplay, boxMessageSize);
         }
 
+        public void ExecuteAddPlayerIcon()
+        {
+            CharacterIconCtrl characterIconCtrl = GameManager.Instance.player.PlayerIcon.GetComponent<CharacterIconCtrl>();
+            if(characterIconCtrl != null)
+            {
+                characterIconCtrl.moveUpOffset = iconDataToAdd.iconMoveUpOffset;
+                characterIconCtrl.moveDownOffset = iconDataToAdd.iconMoveDownOffset;
+                characterIconCtrl.moveDuration = iconDataToAdd.iconMoveDuration;
+                characterIconCtrl.lifeDuration = iconDataToAdd.iconLifeDuration;
+
+                characterIconCtrl.InitIcon(iconDataToAdd.iconSprite);
+            }
+        }
+
+        public void ExecuteLaunchShakeCamera()
+        {
+            CinemachineGetPlayer cinemachineGetPlayer = Camera.main.GetComponent<CinemachineBrain>().ActiveVirtualCamera.VirtualCameraGameObject.GetComponent<CinemachineGetPlayer>();
+            if (cinemachineGetPlayer != null)
+            {
+                cinemachineGetPlayer.ShakeCamera(shakeCameraIntensity, shakeCameraDuration);
+            }
+            else
+            {
+                Debug.Log("cinemachineGetPlayer is null");
+            }
+        }
+
         #endregion
     }
 }
@@ -267,5 +312,7 @@ namespace AllosiusDev.Core
         LaunchFade,
         LaunchDialogue,
         CreateBoxMessage,
+        AddPlayerIcon,
+        LaunchShakeCamera,
     }
 }
