@@ -3,12 +3,17 @@ using AllosiusDev.Audio;
 using AllosiusDev.DialogSystem;
 using Cinemachine;
 using Core.Session;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class GameCore : Singleton<GameCore>
 {
+    #region Fields
+
+    #endregion
+
     #region Properties
 
     public SceneData CurrentScene => currentScene;
@@ -23,6 +28,9 @@ public class GameCore : Singleton<GameCore>
 
     public CinemachineVirtualCamera Vcam => vcam;
 
+    public CinemachineVirtualCamera VCamDezoom => vCamDezoom;
+    public bool dezoomTouchActive { get; set; }
+
     #endregion
 
     #region UnityInspector
@@ -34,8 +42,19 @@ public class GameCore : Singleton<GameCore>
 
     [SerializeField] private GameObject MiniGame;
 
+    [Space]
+
     [SerializeField] private CinemachineVirtualCamera vcam;
 
+    [SerializeField] private CinemachineVirtualCamera vCamDezoom;
+
+
+    #endregion
+
+    #region Events
+
+    public event Action onDezoomActive;
+    public event Action onDezoomDeactive;
 
     #endregion
 
@@ -65,8 +84,16 @@ public class GameCore : Singleton<GameCore>
     {
         AudioController.Instance.PlayAudio(mainMusic);
 
-        
-        
+        if(vCamDezoom != null)
+            vCamDezoom.gameObject.SetActive(false);
+    }
+
+    private void Update()
+    {
+        if(Input.GetButtonDown("Dezoom") && GameManager.Instance.zoomActive == false)
+        {
+            Zoom(dezoomTouchActive);
+        }
     }
 
     [ContextMenu("OpenMinigame")]
@@ -95,6 +122,24 @@ public class GameCore : Singleton<GameCore>
         }
 
         return false;
+    }
+
+    public void Zoom(bool value)
+    {
+        if(currentScene.isGameScene && currentScene.sceneOutside)
+        {
+            VCamDezoom.gameObject.SetActive(!value);
+            dezoomTouchActive = !value;
+
+            if(value)
+            {
+                onDezoomDeactive.Invoke();
+            }
+            else
+            {
+                onDezoomActive.Invoke();
+            }
+        }
     }
 
     #endregion

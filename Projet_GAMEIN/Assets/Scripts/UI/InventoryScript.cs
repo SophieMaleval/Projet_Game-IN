@@ -137,6 +137,14 @@ public class InventoryScript : MonoBehaviour
         playerMovement.ChangeScootState(!playerMovement.OnScooter);
     }
 
+    public void SwitchDezoomState()
+    {
+        if (GameCore.Instance != null && GameManager.Instance.zoomActive == false)
+        {
+            GameCore.Instance.Zoom(GameCore.Instance.dezoomTouchActive);
+        }
+    }
+
     public void OpenSetting()
     {
         StartCoroutine(AnimationPanels(true, SettingPanel));

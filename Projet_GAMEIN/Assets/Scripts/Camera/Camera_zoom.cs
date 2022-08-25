@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
 using DG.Tweening;
+using AllosiusDev.DialogSystem;
 
 public class Camera_zoom : MonoBehaviour
 {
@@ -17,6 +18,8 @@ public class Camera_zoom : MonoBehaviour
     public CinemachineVirtualCamera vcam;
 
     public List<GameObject> objectsToSpawn = new List<GameObject>();
+
+    public NpcConversant npcAssociated;
 
 
     void Start()
@@ -55,45 +58,79 @@ public class Camera_zoom : MonoBehaviour
         }
     }
 
+    private void OnMouseOver()
+    {
+        Debug.Log("OnMouseOver");
+
+        if (GameManager.Instance.zoomActive == false && npcAssociated != null)
+        {
+            npcAssociated.ActiveLocalCanvasObj();
+        }
+    }
+
+    private void OnMouseExit()
+    {
+        if (GameManager.Instance.zoomActive == false && npcAssociated != null)
+        {
+            npcAssociated.DeactiveLocalCanvasObj();
+        }
+    }
+
+
+
     private void OnTriggerEnter2D(Collider2D other)
     {
-        vcam.Priority = 11;
-        shrink = false;
-        grow = true;
-
-
-        for (int i = 0; i < objectsToSpawn.Count; i++)
+        PlayerScript player = other.gameObject.GetComponent<PlayerScript>();
+        if(player != null)
         {
-            objectsToSpawn[i].SetActive(true);
-        }
+            if (GameCore.Instance != null && GameCore.Instance.dezoomTouchActive)
+            {
+                GameCore.Instance.Zoom(true);
+            }
 
-        if ( HasTarget == true)
-        {
-            //vcam.Follow = null;
-            vcam.Follow = Target.transform;
-        }
+            GameManager.Instance.zoomActive = true;
 
-        GameManager.Instance.zoomActive = true;
+            vcam.Priority = 11;
+            shrink = false;
+            grow = true;
+
+
+            for (int i = 0; i < objectsToSpawn.Count; i++)
+            {
+                objectsToSpawn[i].SetActive(true);
+            }
+
+            if (HasTarget == true)
+            {
+                //vcam.Follow = null;
+                vcam.Follow = Target.transform;
+            }
+        }
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        vcam.Priority = 7;
-        grow = false;
-        shrink = true;
-
-        for (int i = 0; i < objectsToSpawn.Count; i++)
+        PlayerScript player = other.gameObject.GetComponent<PlayerScript>();
+        if (player != null)
         {
-            objectsToSpawn[i].SetActive(false);
-        }
+            vcam.Priority = 7;
+            grow = false;
+            shrink = true;
 
-        if (HasTarget == true)
-        {
-            //vcam.transform.DOMove(new Vector3(GameManager.Instance.player.transform.position.x, GameManager.Instance.player.transform.transform.position.y, vcam.transform.position.z), 1);
-            //vcam.Follow = GameManager.Instance.player.transform;
-        }
+            for (int i = 0; i < objectsToSpawn.Count; i++)
+            {
+                objectsToSpawn[i].SetActive(false);
+            }
 
-        GameManager.Instance.zoomActive = false;
+            if (HasTarget == true)
+            {
+                //vcam.transform.DOMove(new Vector3(GameManager.Instance.player.transform.position.x, GameManager.Instance.player.transform.transform.position.y, vcam.transform.position.z), 1);
+                //vcam.Follow = GameManager.Instance.player.transform;
+            }
+
+            GameManager.Instance.zoomActive = false;
+        }
+            
     }
   
 }

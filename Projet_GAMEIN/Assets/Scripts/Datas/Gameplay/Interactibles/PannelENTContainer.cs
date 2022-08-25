@@ -57,6 +57,9 @@ public class ActivitéENT
     public string nameActivityTranslationKey;
 
     public Sprite IllustrationActivité ;
+
+    public string URLSteam;
+
     [TextArea(5, 10)] public string textsActivitiesTranslationKeys;
 
     public float HeightArticle = 200f;

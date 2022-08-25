@@ -46,6 +46,24 @@ namespace AllosiusDev.DialogSystem
         private void Awake()
         {
             InitAnimator();
+
+            if (GameCore.Instance != null)
+            {
+                GameCore.Instance.onDezoomActive += ActiveLocalCanvasObj;
+                GameCore.Instance.onDezoomDeactive += DeactiveLocalCanvasObj;
+            }
+        }
+
+        public void ActiveLocalCanvasObj()
+        {
+            if(canvasNpc != null)
+                canvasNpc.SetActive(true);
+        }
+
+        public void DeactiveLocalCanvasObj()
+        {
+            if(canvasNpc != null)
+                canvasNpc.SetActive(false);
         }
 
         void OnEnable()
@@ -126,6 +144,8 @@ namespace AllosiusDev.DialogSystem
 
         private void OnMouseOver()
         {
+            Debug.Log("OnMouseOver");
+
             if(GameManager.Instance.zoomActive == false)
             {
                 canvasNpc.SetActive(true);

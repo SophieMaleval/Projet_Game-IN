@@ -8,6 +8,7 @@ public class CinemachineGetPlayer : MonoBehaviour
     #region Fields
 
     private CinemachineVirtualCamera cinemachineVirtualCamera;
+    private float baseCameraSize;
 
     private bool shake;
     private float shakeTimer;
@@ -27,6 +28,7 @@ public class CinemachineGetPlayer : MonoBehaviour
     private void Awake() 
     {
         cinemachineVirtualCamera = GetComponent<CinemachineVirtualCamera>();
+        baseCameraSize = cinemachineVirtualCamera.m_Lens.OrthographicSize;
 
         if (GameManager.Instance.player != null)   // Récupère le player au lancement de la scène
         { 
@@ -47,6 +49,20 @@ public class CinemachineGetPlayer : MonoBehaviour
             cinemachineVirtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
 
         return cinemachineBasicMultiChannelPerlin;
+    }
+
+    public void FocusCamera(bool focusOn, float value)
+    {
+        if(focusOn)
+        {
+            baseCameraSize = cinemachineVirtualCamera.m_Lens.OrthographicSize;
+            cinemachineVirtualCamera.m_Lens.OrthographicSize = value;
+        }
+        else
+        {
+            cinemachineVirtualCamera.m_Lens.OrthographicSize = baseCameraSize;
+        }
+        
     }
 
     public void ShakeCamera(float intensity, float time)

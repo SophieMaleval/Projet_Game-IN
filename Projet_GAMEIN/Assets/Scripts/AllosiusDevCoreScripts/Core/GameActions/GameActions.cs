@@ -24,6 +24,9 @@ namespace AllosiusDev.Core
         {
             if (actionsList.Count > 0)
             {
+                if(GameManager.Instance.player.GetComponent<PlayerConversant>().currentNode != null)
+                    GameManager.Instance.player.GetComponent<PlayerConversant>().currentNode.timerBeforeNextNode = 0.0f;
+                
                 DialogueTextNode newNode = null;
 
                 foreach (var item in actionsList)
@@ -77,6 +80,10 @@ namespace AllosiusDev.Core
                         else if (item.actionType == ActionType.LaunchShakeCamera)
                         {
                             item.ExecuteLaunchShakeCamera();
+                        }
+                        else if (item.actionType == ActionType.FocusCamera)
+                        {
+                            item.ExecuteFocusCamera();
                         }
                     }
                 }
@@ -159,6 +166,10 @@ namespace AllosiusDev.Core
         [SerializeField] public float shakeCameraIntensity;
         [SerializeField] public float shakeCameraDuration;
 
+        [Header("Focus Camera Properties")]
+        [SerializeField] public bool focusOn;
+        [SerializeField] public float focusValue = 1.4f;
+
 
         #endregion
 
@@ -228,7 +239,7 @@ namespace AllosiusDev.Core
         public void ExecuteLaunchFade()
         {
             GameManager.Instance.player.LaunchFade(fadeDuration, fadeOutSwitchDuration);
-            GameManager.Instance.player.GetComponent<PlayerConversant>().currentNode.timerBeforeNextNode = fadeDuration * 2 + fadeOutSwitchDuration;
+            GameManager.Instance.player.GetComponent<PlayerConversant>().currentNode.timerBeforeNextNode += fadeDuration * 2 + fadeOutSwitchDuration;
             GameManager.Instance.player.GetComponent<PlayerConversant>().canDialog = false;
         }
 
@@ -278,6 +289,8 @@ namespace AllosiusDev.Core
                 characterIconCtrl.lifeDuration = iconDataToAdd.iconLifeDuration;
 
                 characterIconCtrl.InitIcon(iconDataToAdd.iconSprite);
+
+                GameManager.Instance.player.GetComponent<PlayerConversant>().currentNode.timerBeforeNextNode += characterIconCtrl.lifeDuration;
             }
         }
 
@@ -287,6 +300,19 @@ namespace AllosiusDev.Core
             if (cinemachineGetPlayer != null)
             {
                 cinemachineGetPlayer.ShakeCamera(shakeCameraIntensity, shakeCameraDuration);
+            }
+            else
+            {
+                Debug.Log("cinemachineGetPlayer is null");
+            }
+        }
+
+        public void ExecuteFocusCamera()
+        {
+            CinemachineGetPlayer cinemachineGetPlayer = Camera.main.GetComponent<CinemachineBrain>().ActiveVirtualCamera.VirtualCameraGameObject.GetComponent<CinemachineGetPlayer>();
+            if (cinemachineGetPlayer != null)
+            {
+                cinemachineGetPlayer.FocusCamera(focusOn, focusValue);
             }
             else
             {
@@ -314,5 +340,6 @@ namespace AllosiusDev.Core
         CreateBoxMessage,
         AddPlayerIcon,
         LaunchShakeCamera,
+        FocusCamera,
     }
 }

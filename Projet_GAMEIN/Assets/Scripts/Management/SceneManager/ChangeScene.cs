@@ -14,6 +14,12 @@ public class ChangeScene : MonoBehaviour
 
     #endregion
 
+    #region Properties
+
+    public GameObject LocalCanvasObj => localCanvasObj;
+
+    #endregion
+
     #region UnityInspector
 
     //public string NameScene;
@@ -22,6 +28,8 @@ public class ChangeScene : MonoBehaviour
     [SerializeField] private AudioData sfxDoorOpening;
     
     [HideInInspector] public bool PlayerChangeScene = false ;
+
+    [SerializeField] private GameObject localCanvasObj;
 
     #endregion
 
@@ -38,6 +46,17 @@ public class ChangeScene : MonoBehaviour
         {
             Debug.LogWarning("Player is null");
         }
+
+        if(localCanvasObj != null)
+        {
+            localCanvasObj.SetActive(false);
+        }
+
+        if(GameCore.Instance != null)
+        {
+            GameCore.Instance.onDezoomActive += ActiveLocalCanvasObj;
+            GameCore.Instance.onDezoomDeactive += DeactiveLocalCanvasObj;
+        }
     }
 
     void Start() 
@@ -45,6 +64,17 @@ public class ChangeScene : MonoBehaviour
         PM.EndActivity();
     }
 
+    public void ActiveLocalCanvasObj()
+    {
+        if(localCanvasObj != null)
+            localCanvasObj.SetActive(true);
+    }
+
+    public void DeactiveLocalCanvasObj()
+    {
+        if(localCanvasObj != null)
+            localCanvasObj.SetActive(false);
+    }
 
     private void OnTriggerEnter2D(Collider2D other) 
     {

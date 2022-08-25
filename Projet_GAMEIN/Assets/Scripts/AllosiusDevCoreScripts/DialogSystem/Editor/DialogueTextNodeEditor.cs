@@ -302,6 +302,15 @@ namespace AllosiusDev.DialogSystem
                             action.shakeCameraDuration = EditorGUILayout.FloatField("Shake Camera Duration", action.shakeCameraDuration);
                             break;
                         }
+                    case ActionType.FocusCamera:
+                        {
+                            action.focusOn = EditorGUILayout.Toggle("Focus On", action.focusOn);
+                            if(action.focusOn)
+                            {
+                                action.focusValue = EditorGUILayout.FloatField("Focus Value", action.focusValue);
+                            }
+                            break;
+                        }
 
                 }
 

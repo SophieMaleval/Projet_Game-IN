@@ -19,6 +19,7 @@ namespace AllosiusDev.DialogSystem
         NpcConversant currentConversant = null;
 
         private bool isChoosing = false;
+        private bool canNext = true;
 
         private List<Node> _currentStartNodes = new List<Node>();
 
@@ -90,6 +91,8 @@ namespace AllosiusDev.DialogSystem
         public void StartDialog(NpcConversant conversant, DialogueGraph dialogue)
         {
             Debug.Log("Start Dialog");
+
+            canNext = true;
 
             GameManager.Instance.player.debug.transform.localScale = Vector3.one;
             GameManager.Instance.player.debug.color = Color.magenta;
@@ -210,12 +213,15 @@ namespace AllosiusDev.DialogSystem
 
         public void Next()
         {
-            StartCoroutine(NextCoroutine());
+            if(canNext)
+                StartCoroutine(NextCoroutine());
         }
 
         public IEnumerator NextCoroutine()
         {
-            //Debug.LogError("Next " + currentNode.name);
+            Debug.Log("Next " + currentNode.name);
+
+            canNext = false;
 
             if (canDialog == false)
             {
@@ -230,6 +236,7 @@ namespace AllosiusDev.DialogSystem
 
             yield return new WaitForSeconds(currentNode.timerBeforeNextNode);
 
+
             canDialog = true;
 
             currentNode.SetAlreadyReadValue(true);
@@ -242,6 +249,7 @@ namespace AllosiusDev.DialogSystem
             }
 
             SetNewCurrentNode();
+            canNext = true;
 
             //Debug.Log(currentNode.name);
         }
