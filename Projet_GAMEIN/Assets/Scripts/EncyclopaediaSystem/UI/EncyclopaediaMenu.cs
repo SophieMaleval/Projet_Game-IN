@@ -8,12 +8,25 @@ namespace Village.EncyclopaediaMenu
 {
     public class EncyclopaediaMenu : MonoBehaviour
     {
+        #region Fields
+
+        #endregion
+
         #region Properties
 
 
         #endregion
 
         #region UnityInspector
+
+        [SerializeField] private Image titleDropdownBorder;
+        [SerializeField] private Image panelBorder;
+
+        [Space]
+
+        [SerializeField] private ZoneButtonCtrl[] zonesButtons;
+
+        [Space]
 
         [SerializeField] public LocationData currentLocation;
 
@@ -28,6 +41,14 @@ namespace Village.EncyclopaediaMenu
         #endregion
 
         #region Behaviour
+
+        private void Awake()
+        {
+            for (int i = 0; i < zonesButtons.Length; i++)
+            {
+                zonesButtons[i].SetSelectedButton(false);
+            }
+        }
 
         public void UpdateMenu()
         {
@@ -72,6 +93,17 @@ namespace Village.EncyclopaediaMenu
                     encyclopaediaNpc.NpcImg.color = colorToApply;
                 }
             }
+
+            for (int i = 0; i < zonesButtons.Length; i++)
+            {
+                if(zonesButtons[i].ZoneAssociated.zoneType == currentLocation.zone.zoneType)
+                {
+                    zonesButtons[i].SetSelectedButton(true);
+                }
+            }
+
+            panelBorder.color = currentLocation.zone.zoneColor;
+            titleDropdownBorder.color = currentLocation.zone.zoneColor;
         }
 
         #endregion

@@ -296,28 +296,35 @@ namespace AllosiusDev.Core
 
         public void ExecuteLaunchShakeCamera()
         {
-            CinemachineGetPlayer cinemachineGetPlayer = Camera.main.GetComponent<CinemachineBrain>().ActiveVirtualCamera.VirtualCameraGameObject.GetComponent<CinemachineGetPlayer>();
-            if (cinemachineGetPlayer != null)
+            if (Camera.main.GetComponent<CinemachineBrain>().ActiveVirtualCamera != null)
             {
-                cinemachineGetPlayer.ShakeCamera(shakeCameraIntensity, shakeCameraDuration);
-            }
-            else
-            {
-                Debug.Log("cinemachineGetPlayer is null");
+                CinemachineGetPlayer cinemachineGetPlayer = Camera.main.GetComponent<CinemachineBrain>().ActiveVirtualCamera.VirtualCameraGameObject.GetComponent<CinemachineGetPlayer>();
+                if (cinemachineGetPlayer != null)
+                {
+                    cinemachineGetPlayer.ShakeCamera(shakeCameraIntensity, shakeCameraDuration);
+                }
+                else
+                {
+                    Debug.Log("cinemachineGetPlayer is null");
+                }
             }
         }
 
         public void ExecuteFocusCamera()
         {
-            CinemachineGetPlayer cinemachineGetPlayer = Camera.main.GetComponent<CinemachineBrain>().ActiveVirtualCamera.VirtualCameraGameObject.GetComponent<CinemachineGetPlayer>();
-            if (cinemachineGetPlayer != null)
+            if(Camera.main.GetComponent<CinemachineBrain>().ActiveVirtualCamera != null)
             {
-                cinemachineGetPlayer.FocusCamera(focusOn, focusValue);
+                CinemachineGetPlayer cinemachineGetPlayer = Camera.main.GetComponent<CinemachineBrain>().ActiveVirtualCamera.VirtualCameraGameObject.GetComponent<CinemachineGetPlayer>();
+                if (cinemachineGetPlayer != null)
+                {
+                    cinemachineGetPlayer.FocusCamera(focusOn, focusValue);
+                }
+                else
+                {
+                    Debug.Log("cinemachineGetPlayer is null");
+                }
             }
-            else
-            {
-                Debug.Log("cinemachineGetPlayer is null");
-            }
+            
         }
 
         #endregion

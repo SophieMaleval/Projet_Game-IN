@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Village.EncyclopaediaMenu
 {
-    [CreateAssetMenu(fileName = "New LocationData", menuName = "Village/Location Data")]
+    [CreateAssetMenu(fileName = "New LocationData", menuName = "Village/Locations/Location Data")]
     public class LocationData : ScriptableObject
     {
         #region UnityInspector
@@ -13,6 +13,12 @@ namespace Village.EncyclopaediaMenu
 
         public Sprite[] spritesLocationNpc;
 
+        [SerializeField] public LocationZone zone;
+
         #endregion
     }
+
+    
+
+    
 }
