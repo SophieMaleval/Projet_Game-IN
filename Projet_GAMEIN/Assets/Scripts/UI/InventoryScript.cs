@@ -26,6 +26,9 @@ public class InventoryScript : MonoBehaviour
 
     //public PopUpManager PopUpManager => popUpManager;
 
+    public InventoryButtonCtrl InventoryButton => inventoryButton;
+    public InventoryButtonCtrl ScooterButton => scooterButton;
+    public InventoryButtonCtrl DezoomButton => dezoomButton;
     public bool canInteract { get; set; }
 
     //public Image DarkScreen => darkScreen;
@@ -67,6 +70,10 @@ public class InventoryScript : MonoBehaviour
     [SerializeField] private RectTransform CreditsPanel;
 
     //[SerializeField] private PopUpManager popUpManager;
+
+    [SerializeField] private InventoryButtonCtrl inventoryButton;
+    [SerializeField] private InventoryButtonCtrl scooterButton;
+    [SerializeField] private InventoryButtonCtrl dezoomButton;
 
     [Header("Sounds")]
 

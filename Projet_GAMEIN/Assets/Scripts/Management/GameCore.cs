@@ -86,6 +86,9 @@ public class GameCore : Singleton<GameCore>
 
         if(vCamDezoom != null)
             vCamDezoom.gameObject.SetActive(false);
+
+        GameManager.Instance.gameCanvasManager.inventory.ScooterButton.SetLockedState(!currentScene.sceneOutside);
+        GameManager.Instance.gameCanvasManager.inventory.DezoomButton.SetLockedState(!currentScene.sceneOutside);
     }
 
     private void Update()

@@ -47,6 +47,11 @@ namespace AllosiusDev.DialogSystem
         {
             InitAnimator();
 
+            if (canvasNpc != null)
+            {
+                canvasNpc.SetActive(false);
+            }
+
             if (GameCore.Instance != null)
             {
                 GameCore.Instance.onDezoomActive += ActiveLocalCanvasObj;

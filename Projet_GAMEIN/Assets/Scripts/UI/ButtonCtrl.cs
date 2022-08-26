@@ -9,6 +9,7 @@ public class ButtonCtrl : MonoBehaviour, IPointerEnterHandler, IPointerDownHandl
 {
     #region Properties
 
+    public Image image { get; protected set; }
     public Button button { get; protected set; }
 
     public AudioData SfxButtonHighlightedObject => sfxButtonHighlightedObject;
@@ -50,6 +51,7 @@ public class ButtonCtrl : MonoBehaviour, IPointerEnterHandler, IPointerDownHandl
     private void Awake()
     {
         button = GetComponent<Button>();
+        image = GetComponent<Image>();
     }
 
     public virtual void Start()
