@@ -57,11 +57,11 @@ public class RhythmManager : MonoBehaviour
     public int[] multiplierThresholds;
     public float totalNotes;
 
-    [SerializeField] private int rankDPercentValue = 30;
-    [SerializeField] private int rankCPercentValue = 55;
-    [SerializeField] private int rankBPercentValue = 70;
-    [SerializeField] private int rankAPercentValue = 85;
-    [SerializeField] private int rankSPercentValue = 95;
+    [SerializeField] private int rankDLevelValue = 50000;
+    [SerializeField] private int rankCLevelValue = 65000;
+    [SerializeField] private int rankBLevelValue = 80000;
+    [SerializeField] private int rankALevelValue = 100000;
+    [SerializeField] private int rankSLevelValue = 125000;
 
     /*[Header("SFX")]
     public AudioSource[] prep;
@@ -245,23 +245,23 @@ public class RhythmManager : MonoBehaviour
             rankVal = "F";
             rythmeGameRank = RythmeGameRank.F;
 
-            if(percentHit > rankDPercentValue)
+            if(currentScore > rankDLevelValue)
             {
                 rankVal = "D";
                 rythmeGameRank = RythmeGameRank.D;
-                if (percentHit > rankCPercentValue)
+                if (currentScore > rankCLevelValue)
                 {
                     rankVal = "C";
                     rythmeGameRank = RythmeGameRank.C;
-                    if (percentHit > rankBPercentValue)
+                    if (currentScore > rankBLevelValue)
                     {
                         rankVal = "B";
                         rythmeGameRank = RythmeGameRank.B;
-                        if (percentHit > rankAPercentValue)
+                        if (currentScore > rankALevelValue)
                         {
                             rankVal = "A";
                             rythmeGameRank = RythmeGameRank.A;
-                            if (percentHit > rankSPercentValue)
+                            if (percentHit > rankSLevelValue)
                             {
                                 rankVal = "S";
                                 rythmeGameRank = RythmeGameRank.S;

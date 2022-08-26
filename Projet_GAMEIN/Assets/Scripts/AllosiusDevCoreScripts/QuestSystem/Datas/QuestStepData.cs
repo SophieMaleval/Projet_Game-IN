@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Village.EncyclopaediaMenu;
 
 namespace AllosiusDev.QuestSystem
 {
@@ -22,6 +23,8 @@ namespace AllosiusDev.QuestSystem
         public string _name;
 
         public string descriptionTranslateKey;
+
+        public LocationData questLocationData;
 
         public QuestObjectiveType objectiveType;
 

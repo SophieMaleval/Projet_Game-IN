@@ -8,6 +8,7 @@ using AllosiusDev.QuestSystem;
 using AllosiusDev.DialogSystem;
 using AllosiusDev.TranslationSystem;
 using AllosiusDev.Audio;
+using Village.EncyclopaediaMenu;
 
 public class InventoryScript : MonoBehaviour
 {
@@ -39,6 +40,8 @@ public class InventoryScript : MonoBehaviour
 
     public GameObject InventoryPanel ;
     public GameObject PannelENTCanvas ;
+
+    public EncyclopaediaMenu encyclopaediaMenu;
 
     public GameObject InventorySlotPannel ;
     public GameObject SlotInventoryPrefab ;
@@ -97,6 +100,9 @@ public class InventoryScript : MonoBehaviour
 
         //darkScreen.gameObject.SetActive(false);
         canInteract = true;
+
+        GameManager.Instance.locationsList.OnUpdate += encyclopaediaMenu.UpdateMenu;
+        GameManager.Instance.questManager.OnUpdate += encyclopaediaMenu.UpdateMenu;
     }
 
     public void SwitchToggleInventoryDisplay()
@@ -111,14 +117,17 @@ public class InventoryScript : MonoBehaviour
         if(InventoryPanel.activeSelf)
         {
             AudioController.Instance.PlayAudio(sfxOpenInventory);
+
+            transform.SetSiblingIndex(transform.parent.childCount - 2);
+
+            PlayerScript.GetComponent<PlayerMovement>().StartActivity();
+
+            encyclopaediaMenu.UpdateMenu();
         }
         else
         {
             AudioController.Instance.PlayAudio(sfxCloseInventory);
-        }
 
-        if (!InventoryPanel.activeSelf)
-        {
             transform.SetSiblingIndex(transform.parent.childCount - 2);
 
             if (PannelENTCanvas.activeSelf == false && GameManager.Instance.gameCanvasManager.dialogCanvas.gameObject.activeSelf == false) PlayerScript.GetComponent<PlayerMovement>().EndActivity();
@@ -126,15 +135,6 @@ public class InventoryScript : MonoBehaviour
             GameManager.Instance.CheckEventSystemState();
 
             GameManager.Instance.gameCanvasManager.questUi.UpdateQuestsItemsUI();
-           
-
-        }
-        else
-        {
-            transform.SetSiblingIndex(transform.parent.childCount - 2);
-
-            PlayerScript.GetComponent<PlayerMovement>().StartActivity();
-            
         }
     }
 

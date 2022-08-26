@@ -89,6 +89,11 @@ public class GameCore : Singleton<GameCore>
 
         GameManager.Instance.gameCanvasManager.inventory.ScooterButton.SetLockedState(!currentScene.sceneOutside);
         GameManager.Instance.gameCanvasManager.inventory.DezoomButton.SetLockedState(!currentScene.sceneOutside);
+
+        if(currentScene.sceneLocation != null)
+        {
+            GameManager.Instance.locationsList.CompleteLocationExploration(currentScene.sceneLocation);
+        }
     }
 
     private void Update()

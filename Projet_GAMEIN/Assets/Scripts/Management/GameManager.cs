@@ -7,6 +7,7 @@ using Core.Session;
 using UnityEngine.EventSystems;
 using AllosiusDev.QuestSystem;
 using AllosiusDev.DialogSystem;
+using Village.EncyclopaediaMenu;
 
 public class GameManager : Singleton<GameManager>
 {
@@ -25,6 +26,7 @@ public class GameManager : Singleton<GameManager>
     public GameCanvasManager gameCanvasManager { get; set; }
 
     public QuestList questManager { get; protected set; }
+    public LocationsList locationsList { get; protected set; }
 
     public Vector2 InitMenuExitPlayerSpawnPos => initMenuExitPlayerSpawnPos;
     public Vector2 InitExteriorMapPlayerSpawnPos => initExteriorMapPlayerSpawnPos;
@@ -38,6 +40,7 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] private SamplableLibrary dialoguesLibrary;
 
     [SerializeField] private QuestList questManagerPrefab;
+    [SerializeField] private LocationsList locationsListPrefab;
 
     [Space]
 
@@ -117,6 +120,9 @@ public class GameManager : Singleton<GameManager>
 
         QuestList questList = Instantiate(questManagerPrefab, transform);
         questManager = questList;
+
+        LocationsList _locationsList = Instantiate(locationsListPrefab, transform);
+        locationsList = _locationsList;
 
         ResetPlayerPrefsValues();
 

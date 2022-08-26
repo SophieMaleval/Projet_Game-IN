@@ -12,6 +12,7 @@ namespace AllosiusDev.QuestSystem
         #region Properties
 
         public QuestStatus currentQuestStatusActive { get; set; }
+        public QuestStepStatus currentQuestStepStatusActive { get; protected set; }
 
         public TextMeshProUGUI QuestTrackingTitleText => questTrackingTitleText;
 
@@ -64,7 +65,8 @@ namespace AllosiusDev.QuestSystem
                         steps.Add(step);
                     }
                 }
-                StartCoroutine(SetQuestTrackingDescription(steps[steps.Count - 1].GetQuestStep().descriptionTranslateKey));
+                currentQuestStepStatusActive = steps[steps.Count - 1];
+                StartCoroutine(SetQuestTrackingDescription(currentQuestStepStatusActive.GetQuestStep().descriptionTranslateKey));
 
             }
 

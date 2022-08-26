@@ -58,6 +58,7 @@ namespace AllosiusDev.QuestSystem
         {
             return questCompleted;
         }
+
         public bool IsComplete()
         {
             foreach (var item in quest.questSteps)
