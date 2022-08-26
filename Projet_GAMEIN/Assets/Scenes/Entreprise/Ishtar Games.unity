@@ -219,7 +219,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.02201745, y: -0.082616985}
+  m_Offset: {x: -0.57645893, y: -0.082616985}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -230,7 +230,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.9971599, y: 0.5180603}
+  m_Size: {x: 2.1941128, y: 0.5180603}
   m_EdgeRadius: 0
 --- !u!224 &38074371 stripped
 RectTransform:
@@ -821,6 +821,9 @@ MonoBehaviour:
   NewScalePos: {x: 0, y: 0}
   PlayerOrientation: 0
   ScriptPlayer: {fileID: 0}
+  interactableElement:
+    interactableSpritePosOffset: {x: 0, y: 0, z: 0}
+    collisionRadius: 0.25
 --- !u!50 &103448360
 Rigidbody2D:
   serializedVersion: 4
@@ -1339,6 +1342,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fb86854f6b5f8146ad716f4191a4a56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  camShakeFrequencyGain: 2.56
 --- !u!1 &202929830
 GameObject:
   m_ObjectHideFlags: 0
@@ -5646,6 +5650,9 @@ MonoBehaviour:
   gamePrefab: {fileID: 1785675474}
   etapeDeQuete: 4
   numeroDeQuete: 4
+  interactableElement:
+    interactableSpritePosOffset: {x: 0, y: 0, z: 0}
+    collisionRadius: 0.25
 --- !u!1 &652854739
 GameObject:
   m_ObjectHideFlags: 0
@@ -25366,6 +25373,9 @@ MonoBehaviour:
   NewScalePos: {x: 0, y: 0}
   PlayerOrientation: 0
   ScriptPlayer: {fileID: 0}
+  interactableElement:
+    interactableSpritePosOffset: {x: 0, y: 0, z: 0}
+    collisionRadius: 0.25
 --- !u!50 &1474909555
 Rigidbody2D:
   serializedVersion: 4
@@ -33601,6 +33611,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fb86854f6b5f8146ad716f4191a4a56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  camShakeFrequencyGain: 2.56
 --- !u!1 &1973215360
 GameObject:
   m_ObjectHideFlags: 0
@@ -37539,7 +37550,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.03302622, y: -0.07706118}
+  m_Offset: {x: -0.03302622, y: -0.15752852}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -37550,7 +37561,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.76917744, y: 0.85013294}
+  m_Size: {x: 0.76917744, y: 2.39913}
   m_EdgeRadius: 0
 --- !u!1001 &2132798367
 PrefabInstance:
