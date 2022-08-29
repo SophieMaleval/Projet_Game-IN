@@ -10,11 +10,12 @@ namespace Village.EncyclopaediaMenu
     {
         #region Fields
 
-        public List<LocationStatus> statuses = new List<LocationStatus>();
 
         #endregion
 
         #region UnityInspector
+
+        public List<LocationStatus> statuses = new List<LocationStatus>();
 
         [SerializeField] private SamplableLibrary locationsLibrary;
 
@@ -69,6 +70,7 @@ namespace Village.EncyclopaediaMenu
         {
             if (HasLocation(location)) return;
             LocationStatus newStatus = new LocationStatus(location);
+            newStatus.SetLocationName(location.locationName);
             statuses.Add(newStatus);
 
             if (OnUpdate != null)

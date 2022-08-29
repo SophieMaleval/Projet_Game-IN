@@ -71,6 +71,9 @@ namespace AllosiusDev.QuestSystem
             }
 
             currentQuestStatusActive = questStatus;
+
+            if(GameManager.Instance.gameCanvasManager.inventory != null)
+                GameManager.Instance.gameCanvasManager.inventory.encyclopaediaMenu.InitEncyclopaediaMenu();
         }
 
         public IEnumerator SetQuestTrackingTitle(string text)

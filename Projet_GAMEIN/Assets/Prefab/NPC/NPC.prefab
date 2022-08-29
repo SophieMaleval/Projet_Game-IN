@@ -140,7 +140,7 @@ GameObject:
   - component: {fileID: 5437542290871946396}
   - component: {fileID: 5437542290871946370}
   - component: {fileID: 1496133665165010204}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: NPC
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -280,6 +280,23 @@ MonoBehaviour:
     interactableSpritePosOffset: {x: 0, y: 0.94, z: 0}
     collisionRadius: 0.25
   canvasNpc: {fileID: 8973628923108671578}
+  layerMouseSelectables:
+    serializedVersion: 2
+    m_Bits: 16384
+  filter:
+    useTriggers: 0
+    useLayerMask: 1
+    useDepth: 0
+    useOutsideDepth: 0
+    useNormalAngle: 0
+    useOutsideNormalAngle: 0
+    layerMask:
+      serializedVersion: 2
+      m_Bits: 16384
+    minDepth: 0
+    maxDepth: 0
+    minNormalAngle: 0
+    maxNormalAngle: 0
 --- !u!61 &1496133665165010204
 BoxCollider2D:
   m_ObjectHideFlags: 0

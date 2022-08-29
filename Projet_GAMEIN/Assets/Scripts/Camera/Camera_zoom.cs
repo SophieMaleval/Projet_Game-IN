@@ -19,7 +19,7 @@ public class Camera_zoom : MonoBehaviour
 
     public List<GameObject> objectsToSpawn = new List<GameObject>();
 
-    public NpcConversant npcAssociated;
+    //public NpcConversant npcAssociated;
 
 
     void Start()
@@ -58,7 +58,7 @@ public class Camera_zoom : MonoBehaviour
         }
     }
 
-    private void OnMouseOver()
+    /*private void OnMouseOver()
     {
         Debug.Log("OnMouseOver");
 
@@ -74,7 +74,7 @@ public class Camera_zoom : MonoBehaviour
         {
             npcAssociated.DeactiveLocalCanvasObj();
         }
-    }
+    }*/
 
 
 

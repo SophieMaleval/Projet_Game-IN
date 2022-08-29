@@ -11,6 +11,7 @@ namespace AllosiusDev.DialogSystem
 
         #region Fields
 
+        private bool mouseOver;
 
         private bool canTalk = true;
 
@@ -38,6 +39,8 @@ namespace AllosiusDev.DialogSystem
         [SerializeField] private InteractableElement interactableElement;
 
         [SerializeField] private GameObject canvasNpc;
+
+        [SerializeField] private LayerMask layerMouseSelectables;
 
         #endregion
 
@@ -89,6 +92,8 @@ namespace AllosiusDev.DialogSystem
                     StartDialog();
                 }
             }
+
+            MouseOverDetection();
         }
 
         public void SetCanTalk(bool value)
@@ -147,21 +152,47 @@ namespace AllosiusDev.DialogSystem
             }
         }
 
-        private void OnMouseOver()
+        private void MouseOverDetection()
         {
-            Debug.Log("OnMouseOver");
-
-            if(GameManager.Instance.zoomActive == false)
+            RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, 1f, layerMouseSelectables);
+            if (hit.collider != null)
             {
-                canvasNpc.SetActive(true);
+                //Debug.Log(hit.collider.gameObject.name);
+
+                NpcConversant npcConversant = hit.collider.gameObject.GetComponent<NpcConversant>();
+                if (npcConversant != null && npcConversant == this)
+                {
+
+                    SetCanvasNpcActive(true);
+                }
+                else
+                {
+                    SetCanvasNpcActive(false);
+                }
+            }
+            else
+            {
+                SetCanvasNpcActive(false);
             }
         }
 
-        private void OnMouseExit()
+        private void SetCanvasNpcActive(bool value)
         {
-            if (GameManager.Instance.zoomActive == false)
+            if(GameManager.Instance.zoomActive == false)
             {
-                canvasNpc.SetActive(false);
+                if (mouseOver == !value)
+                {
+                    if (value)
+                    {
+                        Debug.Log("Mouse Over");
+                    }
+                    else
+                    {
+                        Debug.Log("Mouse Exit");
+                    }
+                    canvasNpc.SetActive(value);
+                    mouseOver = value;
+                }
             }
         }
 

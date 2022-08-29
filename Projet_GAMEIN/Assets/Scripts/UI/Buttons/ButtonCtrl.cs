@@ -26,7 +26,7 @@ public class ButtonCtrl : MonoBehaviour, IPointerEnterHandler, IPointerDownHandl
 
     #region Behaviour
 
-    public void OnPointerEnter(PointerEventData eventData)
+    public virtual void OnPointerEnter(PointerEventData eventData)
     {
         //Debug.Log("Mouse enter");
         AudioController.Instance.PlayAudio(sfxButtonHighlightedObject);
@@ -38,12 +38,12 @@ public class ButtonCtrl : MonoBehaviour, IPointerEnterHandler, IPointerDownHandl
         AudioController.Instance.PlayAudio(sfxButtonClickedObject);
     }
 
-    public void OnPointerUp(PointerEventData eventData)
+    public virtual void OnPointerUp(PointerEventData eventData)
     {
         //Debug.Log("Mouse Up");
     }
 
-    public void OnPointerExit(PointerEventData eventData)
+    public virtual void OnPointerExit(PointerEventData eventData)
     {
         //Debug.Log("Mouse exit");
     }

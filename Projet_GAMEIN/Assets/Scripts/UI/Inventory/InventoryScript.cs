@@ -101,8 +101,8 @@ public class InventoryScript : MonoBehaviour
         //darkScreen.gameObject.SetActive(false);
         canInteract = true;
 
-        GameManager.Instance.locationsList.OnUpdate += encyclopaediaMenu.UpdateMenu;
-        GameManager.Instance.questManager.OnUpdate += encyclopaediaMenu.UpdateMenu;
+        GameManager.Instance.locationsList.OnUpdate += encyclopaediaMenu.InitEncyclopaediaMenu;
+        GameManager.Instance.questManager.OnUpdate += encyclopaediaMenu.InitEncyclopaediaMenu;
     }
 
     public void SwitchToggleInventoryDisplay()
@@ -122,7 +122,7 @@ public class InventoryScript : MonoBehaviour
 
             PlayerScript.GetComponent<PlayerMovement>().StartActivity();
 
-            encyclopaediaMenu.UpdateMenu();
+            encyclopaediaMenu.InitEncyclopaediaMenu();
         }
         else
         {

@@ -75,7 +75,17 @@ namespace AllosiusDev.DialogSystem
 
             string playerMessage = LangueManager.Instance.Translate(currentNode.keyText, TypeDictionary.Dialogues);
 
-            return playerMessage;
+            string _text = playerMessage;
+            if (currentNode.texteType == TexteType.Lower)
+            {
+                _text = playerMessage.ToLower();
+            }
+            else if (currentNode.texteType == TexteType.Upper)
+            {
+                _text = playerMessage.ToUpper();
+            }
+
+            return _text;
         }
 
         public IEnumerable<DialogueTextNode> GetChoices()

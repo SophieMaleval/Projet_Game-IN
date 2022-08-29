@@ -48,6 +48,8 @@ public class GameCore : Singleton<GameCore>
 
     [SerializeField] private CinemachineVirtualCamera vCamDezoom;
 
+    [SerializeField] private LayerMask mainCameraCullingMask;
+
 
     #endregion
 
@@ -75,6 +77,15 @@ public class GameCore : Singleton<GameCore>
                 GameManager.Instance.player.MainSceneLoadPos = GameManager.Instance.InitExteriorMapPlayerSpawnPos;
             }
         }
+
+        GameManager.Instance.zoomActive = false;
+
+        if(currentScene.isGameScene)
+        {
+            Debug.Log("Init Camera Properties");
+            Camera.main.cullingMask = mainCameraCullingMask;
+        }
+        
 
         //GameManager.Instance.gameCanvasManager.CutoutMask.ResetMask();
     }

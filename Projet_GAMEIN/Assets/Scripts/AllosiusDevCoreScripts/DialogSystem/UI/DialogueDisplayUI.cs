@@ -296,14 +296,14 @@ namespace AllosiusDev.DialogSystem
             canTurnNext = false;
 
             string _text = text;
-            if(playerConversant.currentNode.texteType == TexteType.Lower)
+            /*if(playerConversant.currentNode.texteType == TexteType.Lower)
             {
                 _text = text.ToLower();
             }
             else if (playerConversant.currentNode.texteType == TexteType.Upper)
             {
                 _text = text.ToUpper();
-            }
+            }*/
 
             dialogueDisplayerText.text = "";
             //Debug.Log(dialogueDisplayerText.text);

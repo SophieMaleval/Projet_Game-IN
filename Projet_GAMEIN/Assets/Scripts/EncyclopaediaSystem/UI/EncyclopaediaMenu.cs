@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using static TMPro.TMP_Dropdown;
 
 namespace Village.EncyclopaediaMenu
 {
@@ -10,10 +11,18 @@ namespace Village.EncyclopaediaMenu
     {
         #region Fields
 
+
         #endregion
 
         #region Properties
 
+
+        public TMP_Dropdown LocationsDropdown => locationsDropdown;
+        public ScrollRect dropdownScrollRect { get; set; }
+
+
+        public Color NormalLocationTextColor => normalLocationTextColor;
+        public Color QuestLocationTextColor => questLocationTextColor;
 
         #endregion
 
@@ -22,13 +31,27 @@ namespace Village.EncyclopaediaMenu
         [SerializeField] private Image titleDropdownBorder;
         [SerializeField] private Image panelBorder;
 
+        [SerializeField] private GameObject[] titleLabelQuestIcons;
+
         [Space]
 
         [SerializeField] private ZoneButtonCtrl[] zonesButtons;
 
         [Space]
 
+        [SerializeField] private LocationData[] locations;
+        [SerializeField] private TMP_Dropdown locationsDropdown;
+        [SerializeField] private TextMeshProUGUI locationDropdownLabel;
+        [SerializeField] private string locationUnknownName = "???????";
+
+        [SerializeField] private Color normalLocationTextColor;
+        [SerializeField] private Color questLocationTextColor;
+
+        [Space]
+
         [SerializeField] public LocationData currentLocation;
+
+        [Space]
 
         [SerializeField] private Image placeImg;
 
@@ -44,22 +67,106 @@ namespace Village.EncyclopaediaMenu
 
         private void Awake()
         {
-            for (int i = 0; i < zonesButtons.Length; i++)
-            {
-                zonesButtons[i].SetSelectedButton(false);
-            }
+            
         }
 
-        public void UpdateMenu()
+        private bool CheckQuestActive()
+        {
+            if (GameManager.Instance.gameCanvasManager.inventory.QuestTrackingUi.currentQuestStatusActive != null &&
+                GameManager.Instance.gameCanvasManager.inventory.QuestTrackingUi.currentQuestStepStatusActive != null)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        public void InitEncyclopaediaMenu()
         {
             Debug.Log("Redraw");
 
-            if(GameManager.Instance.gameCanvasManager.inventory.QuestTrackingUi.currentQuestStepStatusActive != null)
+            if(CheckQuestActive())
                 currentLocation = GameManager.Instance.gameCanvasManager.inventory.QuestTrackingUi.currentQuestStepStatusActive.GetQuestStep().questLocationData;
 
-            if(currentLocation == null)
+            InitLocationsDropdown();
+
+            UpdateMenu();
+        }
+
+        private void InitLocationsDropdown()
+        {
+            locationsDropdown.ClearOptions();
+
+            List<OptionData> options = new List<OptionData>();
+            for (int i = 0; i < locations.Length; i++)
+            {
+                LocationStatus locationStatus = GameManager.Instance.locationsList.GetLocationStatus(locations[i]);
+                if (locationStatus != null)
+                {
+                    LocationData questLocation = null;
+                    if (CheckQuestActive())
+                    {
+                        questLocation = GameManager.Instance.gameCanvasManager.inventory.QuestTrackingUi.currentQuestStepStatusActive.GetQuestStep().questLocationData;
+                    }
+
+                    if (locationStatus.GetLocationAlreadyVisited() || (questLocation != null && locations[i] == questLocation))
+                    {
+                        EncyclopaediaOptionData optionData = new EncyclopaediaOptionData(locations[i].locationName);
+                        optionData.location = locations[i];
+                        options.Add(optionData);
+                    }
+                    else
+                    {
+                        EncyclopaediaOptionData optionData = new EncyclopaediaOptionData(locationUnknownName);
+                        optionData.location = locations[i];
+                        options.Add(optionData);
+                    }
+                }
+            }
+
+            locationsDropdown.AddOptions(options);
+
+
+            for (int i = 0; i < locationsDropdown.options.Count; i++)
+            {
+                EncyclopaediaOptionData optionData = (EncyclopaediaOptionData)locationsDropdown.options[i];
+                if (optionData.location == currentLocation)
+                {
+                    locationsDropdown.value = i;
+                    SetTitleLabelQuestIcons();
+                    break;
+                }
+            }
+        }
+
+        public void SetCurrentLocationUI()
+        {
+            EncyclopaediaOptionData optionData = (EncyclopaediaOptionData)locationsDropdown.options[locationsDropdown.value];
+            if(optionData != null)
+            {
+                currentLocation = optionData.location;
+
+                SetTitleLabelQuestIcons();
+            }
+
+            UpdateMenu();
+        }
+
+        private void UpdateMenu()
+        {
+            if (currentLocation == null)
             {
                 return;
+            }
+
+            UpdatePanelInformations();
+        }
+
+        private void UpdatePanelInformations()
+        {
+            for (int i = 0; i < zonesButtons.Length; i++)
+            {
+                zonesButtons[i].SetSelectedButton(false);
             }
 
             for (int i = 0; i < npcSpawnPoints.Length; i++)
@@ -69,7 +176,7 @@ namespace Village.EncyclopaediaMenu
                     Destroy(item.gameObject);
                 }
             }
-            
+
 
             Color colorToApply = Color.black;
             if (GameManager.Instance.locationsList.GetLocationStatus(currentLocation).GetLocationAlreadyVisited())
@@ -86,7 +193,7 @@ namespace Village.EncyclopaediaMenu
 
             for (int i = 0; i < currentLocation.spritesLocationNpc.Length; i++)
             {
-                if(i < npcSpawnPoints.Length)
+                if (i < npcSpawnPoints.Length)
                 {
                     EncyclopaediaNpcUI encyclopaediaNpc = Instantiate(prefabEncyclopaediaNpcUi, npcSpawnPoints[i].transform);
                     encyclopaediaNpc.NpcImg.sprite = currentLocation.spritesLocationNpc[i];
@@ -96,7 +203,7 @@ namespace Village.EncyclopaediaMenu
 
             for (int i = 0; i < zonesButtons.Length; i++)
             {
-                if(zonesButtons[i].ZoneAssociated.zoneType == currentLocation.zone.zoneType)
+                if (zonesButtons[i].ZoneAssociated.zoneType == currentLocation.zone.zoneType)
                 {
                     zonesButtons[i].SetSelectedButton(true);
                 }
@@ -104,6 +211,47 @@ namespace Village.EncyclopaediaMenu
 
             panelBorder.color = currentLocation.zone.zoneColor;
             titleDropdownBorder.color = currentLocation.zone.zoneColor;
+        }
+        
+        private void SetTitleLabelQuestIcons()
+        {
+            LocationData questLocation = null;
+            if (CheckQuestActive())
+            {
+                questLocation = GameManager.Instance.gameCanvasManager.inventory.QuestTrackingUi.currentQuestStepStatusActive.GetQuestStep().questLocationData;
+            }
+
+            if (questLocation != null && currentLocation == questLocation)
+            {
+                locationDropdownLabel.color = questLocationTextColor;
+
+                for (int i = 0; i < titleLabelQuestIcons.Length; i++)
+                {
+                    titleLabelQuestIcons[i].SetActive(true);
+                }
+            }
+            else
+            {
+                locationDropdownLabel.color = normalLocationTextColor;
+
+                for (int i = 0; i < titleLabelQuestIcons.Length; i++)
+                {
+                    titleLabelQuestIcons[i].SetActive(false);
+                }
+            }
+        }
+
+        #endregion
+    }
+
+    [System.Serializable]
+    public class EncyclopaediaOptionData : OptionData
+    {
+        #region Properties
+
+        public LocationData location { get; set; }
+        public EncyclopaediaOptionData(string text) : base(text)
+        {
         }
 
         #endregion

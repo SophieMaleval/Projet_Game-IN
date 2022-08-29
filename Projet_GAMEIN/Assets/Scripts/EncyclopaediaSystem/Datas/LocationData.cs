@@ -9,6 +9,8 @@ namespace Village.EncyclopaediaMenu
     {
         #region UnityInspector
 
+        public string locationName;
+
         public Sprite spriteLocation;
 
         public Sprite[] spritesLocationNpc;
