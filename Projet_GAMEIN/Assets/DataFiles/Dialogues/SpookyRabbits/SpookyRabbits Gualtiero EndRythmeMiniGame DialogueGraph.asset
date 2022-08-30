@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Jamais rien entendu d'aussi nul
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 24, y: -584}
+  position: {x: 24, y: -632}
   ports:
     keys:
     - previousNode
@@ -43,9 +43,14 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 0
+  texteType: 0
   keyText: Dialogue_Gualtiero_JamaisRienEntenduDAussiNul
-  messagePreview: I never heard anything so bad...
+  messagePreview: Je n'ai jamais rien entendu d'aussi nul...
   singleRead: 0
+  hasEnterNodeActions: 0
+  showEnterNodeActions: 0
+  enterNodeActions:
+    actionsList: []
   hasGameActions: 0
   showGameActions: 0
   gameActions:
@@ -107,9 +112,14 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 0
+  texteType: 0
   keyText: Dialogue_Gualtiero_JAiDejaEntenduMieux
   messagePreview: I've heard better...
   singleRead: 0
+  hasEnterNodeActions: 0
+  showEnterNodeActions: 0
+  enterNodeActions:
+    actionsList: []
   hasGameActions: 0
   showGameActions: 0
   gameActions:
@@ -171,9 +181,14 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 0
+  texteType: 0
   keyText: Dialogue_Gualtiero_TuTEnSorsPlutotBien
   messagePreview: You're doing pretty well !
   singleRead: 0
+  hasEnterNodeActions: 0
+  showEnterNodeActions: 0
+  enterNodeActions:
+    actionsList: []
   hasGameActions: 0
   showGameActions: 0
   gameActions:
@@ -235,9 +250,14 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 0
+  texteType: 0
   keyText: Dialogue_Gualtiero_PasTerrible
   messagePreview: Not terrible...
   singleRead: 0
+  hasEnterNodeActions: 0
+  showEnterNodeActions: 0
+  enterNodeActions:
+    actionsList: []
   hasGameActions: 0
   showGameActions: 0
   gameActions:
@@ -256,6 +276,87 @@ MonoBehaviour:
       questStepToCheckState: 0
       itemToCheck: {fileID: 0}
       rythmeGameRankRequired: 1
+--- !u!114 &-3066700359365585448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
+  m_Name: Bon Tant Pis
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 856, y: -952}
+  ports:
+    keys:
+    - previousNode
+    - nextNodes
+    values:
+    - _fieldName: previousNode
+      _node: {fileID: -3066700359365585448}
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueTextNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: nextNodes
+        node: {fileID: -683452005132160621}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: nextNodes
+      _node: {fileID: -3066700359365585448}
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueBaseNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  previousNode: {fileID: 0}
+  nextNodes: {fileID: 0}
+  identityType: 0
+  texteType: 0
+  keyText: Dialogue_Gualtiero_BonTantPis
+  messagePreview: Well, come back when you want !
+  singleRead: 0
+  hasEnterNodeActions: 0
+  showEnterNodeActions: 0
+  enterNodeActions:
+    actionsList: []
+  hasGameActions: 1
+  showGameActions: 1
+  gameActions:
+    actionsList:
+    - actionType: 8
+      hasCondition: 0
+      nodesRequiredToRead: []
+      questToAdd: {fileID: 0}
+      questAssociated: {fileID: 0}
+      questStepToComplete: {fileID: 0}
+      ScooterPopUpData: {fileID: 0}
+      itemToAdd: {fileID: 0}
+      itemToRemove: {fileID: 0}
+      fadeDuration: 0.5
+      fadeOutSwitchDuration: 1
+      newConversantToCall: {fileID: 0}
+      dialogueToLaunch: {fileID: 11400000, guid: 8ad5992d384a2c146a1b70958fd7981c,
+        type: 2}
+      launchDialogueToMainNode: 1
+      boxMessageTextToDisplay: 
+      boxMessageSize: 0
+      iconDataToAdd: {fileID: 0}
+      shakeCameraIntensity: 0
+      shakeCameraDuration: 0
+      focusOn: 0
+      focusValue: 1.4
+  hasRequirements: 0
+  showGameRequirements: 0
+  gameRequirements:
+    requirementsList: []
 --- !u!114 &-2637248066924428221
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -299,9 +400,14 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 0
+  texteType: 0
   keyText: Dialogue_Gualtiero_SuperbeOnDevraitTEngager
   messagePreview: Great, we should hire you !
   singleRead: 0
+  hasEnterNodeActions: 0
+  showEnterNodeActions: 0
+  enterNodeActions:
+    actionsList: []
   hasGameActions: 0
   showGameActions: 0
   gameActions:
@@ -363,9 +469,14 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 0
+  texteType: 0
   keyText: Dialogue_Gualtiero_IncroyableTuAsUnVeritableTalent
   messagePreview: Incredible, you have a real talent !
   singleRead: 0
+  hasEnterNodeActions: 0
+  showEnterNodeActions: 0
+  enterNodeActions:
+    actionsList: []
   hasGameActions: 0
   showGameActions: 0
   gameActions:
@@ -384,6 +495,75 @@ MonoBehaviour:
       questStepToCheckState: 0
       itemToCheck: {fileID: 0}
       rythmeGameRankRequired: 5
+--- !u!114 &-683452005132160621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
+  m_Name: Ah Tu T'En Vas
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 24, y: -952}
+  ports:
+    keys:
+    - previousNode
+    - nextNodes
+    values:
+    - _fieldName: previousNode
+      _node: {fileID: -683452005132160621}
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueTextNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: nextNodes
+      _node: {fileID: -683452005132160621}
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueBaseNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: previousNode
+        node: {fileID: -3066700359365585448}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  previousNode: {fileID: 0}
+  nextNodes: {fileID: 0}
+  identityType: 0
+  texteType: 0
+  keyText: Dialogue_Gualtiero_AhTuTEnVas
+  messagePreview: Oh, you're leaving already ?
+  singleRead: 0
+  hasEnterNodeActions: 0
+  showEnterNodeActions: 0
+  enterNodeActions:
+    actionsList: []
+  hasGameActions: 0
+  showGameActions: 0
+  gameActions:
+    actionsList: []
+  hasRequirements: 1
+  showGameRequirements: 1
+  gameRequirements:
+    requirementsList:
+    - requirementType: 3
+      questToCheck: {fileID: 0}
+      questCheckedValueWanted: 0
+      questToCheckState: 0
+      questAssociatedToCheck: {fileID: 0}
+      questStepToCheck: {fileID: 0}
+      questStepCheckedValueWanted: 0
+      questStepToCheckState: 0
+      itemToCheck: {fileID: 0}
+      rythmeGameRankRequired: 6
 --- !u!114 &-356205251583289732
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -427,9 +607,14 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 0
+  texteType: 0
   keyText: Dialogue_Gualtiero_CEtaitVraimentPasMal
   messagePreview: It was really not bad, unfortunate there were not many people today.
   singleRead: 0
+  hasEnterNodeActions: 0
+  showEnterNodeActions: 0
+  enterNodeActions:
+    actionsList: []
   hasGameActions: 1
   showGameActions: 1
   gameActions:
@@ -451,6 +636,11 @@ MonoBehaviour:
       launchDialogueToMainNode: 1
       boxMessageTextToDisplay: 
       boxMessageSize: 0
+      iconDataToAdd: {fileID: 0}
+      shakeCameraIntensity: 0
+      shakeCameraDuration: 0
+      focusOn: 0
+      focusValue: 1.4
   hasRequirements: 0
   showGameRequirements: 0
   gameRequirements:
@@ -498,9 +688,14 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 0
+  texteType: 0
   keyText: Dialogue_Gualtiero_MaisJAiDejaEntenduPire
   messagePreview: But hey, I've heard worse too.
   singleRead: 0
+  hasEnterNodeActions: 0
+  showEnterNodeActions: 0
+  enterNodeActions:
+    actionsList: []
   hasGameActions: 1
   showGameActions: 1
   gameActions:
@@ -522,6 +717,11 @@ MonoBehaviour:
       launchDialogueToMainNode: 1
       boxMessageTextToDisplay: 
       boxMessageSize: 0
+      iconDataToAdd: {fileID: 0}
+      shakeCameraIntensity: 0
+      shakeCameraDuration: 0
+      focusOn: 0
+      focusValue: 1.4
   hasRequirements: 0
   showGameRequirements: 0
   gameRequirements:
@@ -551,6 +751,8 @@ MonoBehaviour:
   - {fileID: -356205251583289732}
   - {fileID: 669433423073909395}
   - {fileID: 5741979036197310600}
+  - {fileID: -683452005132160621}
+  - {fileID: -3066700359365585448}
   displayName: Gualtiero EndRythmeMiniGame Dialogue
   description: Dialogue Commentaire Fin de mini jeu de rythme Gualtiero Spooky Rabbits
   mainNodeParent: {fileID: 0}
@@ -597,9 +799,14 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 0
+  texteType: 0
   keyText: Dialogue_Gualtiero_TuTEsVraimentSurpasse
   messagePreview: You really outdid yourself, can't wait to see you on scene again.
   singleRead: 0
+  hasEnterNodeActions: 0
+  showEnterNodeActions: 0
+  enterNodeActions:
+    actionsList: []
   hasGameActions: 1
   showGameActions: 1
   gameActions:
@@ -621,6 +828,11 @@ MonoBehaviour:
       launchDialogueToMainNode: 1
       boxMessageTextToDisplay: 
       boxMessageSize: 0
+      iconDataToAdd: {fileID: 0}
+      shakeCameraIntensity: 0
+      shakeCameraDuration: 0
+      focusOn: 0
+      focusValue: 1.4
   hasRequirements: 0
   showGameRequirements: 0
   gameRequirements:
@@ -668,10 +880,15 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 0
+  texteType: 0
   keyText: Dialogue_Gualtiero_MalheureusementIlNYAvaitPasGrandMonde
   messagePreview: Unfortunately, there weren't many people today, unfortunate, come
     back whenever you want anyway.
   singleRead: 0
+  hasEnterNodeActions: 0
+  showEnterNodeActions: 0
+  enterNodeActions:
+    actionsList: []
   hasGameActions: 1
   showGameActions: 1
   gameActions:
@@ -693,6 +910,11 @@ MonoBehaviour:
       launchDialogueToMainNode: 1
       boxMessageTextToDisplay: 
       boxMessageSize: 0
+      iconDataToAdd: {fileID: 0}
+      shakeCameraIntensity: 0
+      shakeCameraDuration: 0
+      focusOn: 0
+      focusValue: 1.4
   hasRequirements: 0
   showGameRequirements: 0
   gameRequirements:
@@ -710,7 +932,7 @@ MonoBehaviour:
   m_Name: Entraines Toi Bien
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 888, y: -584}
+  position: {x: 856, y: -632}
   ports:
     keys:
     - previousNode
@@ -740,9 +962,14 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 0
+  texteType: 0
   keyText: Dialogue_Gualtiero_EntrainesToiBien
-  messagePreview: "Entra\xEEnes-toi bien pour faire mieux la prochaine fois."
+  messagePreview: Train well to do better next time.
   singleRead: 0
+  hasEnterNodeActions: 0
+  showEnterNodeActions: 0
+  enterNodeActions:
+    actionsList: []
   hasGameActions: 1
   showGameActions: 1
   gameActions:
@@ -764,6 +991,11 @@ MonoBehaviour:
       launchDialogueToMainNode: 1
       boxMessageTextToDisplay: 
       boxMessageSize: 0
+      iconDataToAdd: {fileID: 0}
+      shakeCameraIntensity: 0
+      shakeCameraDuration: 0
+      focusOn: 0
+      focusValue: 1.4
   hasRequirements: 0
   showGameRequirements: 0
   gameRequirements:
@@ -811,9 +1043,14 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 0
+  texteType: 0
   keyText: Dialogue_Gualtiero_JeMAttendaisAMieux
   messagePreview: I expected better, fortunately there are not many people today.
   singleRead: 0
+  hasEnterNodeActions: 0
+  showEnterNodeActions: 0
+  enterNodeActions:
+    actionsList: []
   hasGameActions: 1
   showGameActions: 1
   gameActions:
@@ -835,6 +1072,11 @@ MonoBehaviour:
       launchDialogueToMainNode: 1
       boxMessageTextToDisplay: 
       boxMessageSize: 0
+      iconDataToAdd: {fileID: 0}
+      shakeCameraIntensity: 0
+      shakeCameraDuration: 0
+      focusOn: 0
+      focusValue: 1.4
   hasRequirements: 0
   showGameRequirements: 0
   gameRequirements:

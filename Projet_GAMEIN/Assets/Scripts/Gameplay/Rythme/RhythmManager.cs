@@ -134,6 +134,8 @@ public class RhythmManager : MonoBehaviour
         {
             npcCurrent.gameObject.SetActive(false);
         }*/
+
+        Debug.Log("MiniGame Enable");
         player.StartActivity();          
 
         OldPlayerPosition = player.transform.position ;   
@@ -317,25 +319,19 @@ public class RhythmManager : MonoBehaviour
 
         //player.GetComponent<PlayerScript>().LunchFadeOut();
         player.enabled = true ;        
-   
-        if(npcCurrent == null)
-        {
-            player.EndActivity();             
-        }
+        
+        player.EndActivity();             
 
-        if (gameEnded)
+        if (gameActions.actionsList.Count > 0)
         {
-            if (gameActions.actionsList.Count > 0)
+            if (gameRequirements.requirementsList.Count > 0)
             {
-                if (gameRequirements.requirementsList.Count > 0)
-                {
-                    if (gameRequirements.ExecuteGameRequirements())
-                        gameActions.ExecuteGameActions();
-                }
-                else
-                {
+                if (gameRequirements.ExecuteGameRequirements())
                     gameActions.ExecuteGameActions();
-                }
+            }
+            else
+            {
+                gameActions.ExecuteGameActions();
             }
         }
 
@@ -362,6 +358,8 @@ public class RhythmManager : MonoBehaviour
 
     public void ExitGame()
     {
+        rythmeGameRank = RythmeGameRank.Abort;
+        GameCore.Instance.currentRythmeGameRank = rythmeGameRank;
         StartCoroutine(WaitAndDisableGame(0.1f));
     }
 
@@ -404,6 +402,7 @@ public enum RythmeGameRank
     B,
     A,
     S,
+    Abort,
 }
 
 
