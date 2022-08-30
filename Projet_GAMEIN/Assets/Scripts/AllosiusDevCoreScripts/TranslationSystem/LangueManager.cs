@@ -44,7 +44,7 @@ namespace AllosiusDev.TranslationSystem
                 onLangageUpdated();
         }
 
-        public string Translate(string key, TypeDictionary typeDictionary)
+        public string Translate(string key, TypeDictionary typeDictionary, bool colorCode = true)
         {
             string translatedText = LocalisationManager.GetLocalisedValue(key, typeDictionary);
 
@@ -53,17 +53,20 @@ namespace AllosiusDev.TranslationSystem
                 translatedText = translatedText.Replace("[PLAYER]", GameManager.Instance.player.PlayerName);
             }
 
-            List<LocationStatus> locationStatuses = GameManager.Instance.locationsList.GetStatuses();
-            if(locationStatuses.Count > 0)
+            if(colorCode)
             {
-                for (int i = 0; i < locationStatuses.Count; i++)
+                List<LocationStatus> locationStatuses = GameManager.Instance.locationsList.GetStatuses();
+                if (locationStatuses.Count > 0)
                 {
-                    if (locationStatuses[i].GetLocation().locationName != "" && translatedText.Contains(locationStatuses[i].GetLocation().locationName))
+                    for (int i = 0; i < locationStatuses.Count; i++)
                     {
-                        Debug.Log("Replace : " + locationStatuses[i].GetLocation().locationName);
-                        string locationHexColor = "#" + AllosiusDevUtilities.GetStringFromColor(locationStatuses[i].GetLocation().zone.zoneColor);
-                        string textReplace = "<color=" + locationHexColor + ">" + locationStatuses[i].GetLocation().locationName + "</color>";
-                        translatedText = translatedText.Replace(locationStatuses[i].GetLocation().locationName, textReplace);
+                        if (locationStatuses[i].GetLocation().locationName != "" && translatedText.Contains(locationStatuses[i].GetLocation().locationName))
+                        {
+                            Debug.Log("Replace : " + locationStatuses[i].GetLocation().locationName);
+                            string locationHexColor = "#" + AllosiusDevUtilities.GetStringFromColor(locationStatuses[i].GetLocation().zone.zoneColor);
+                            string textReplace = "<color=" + locationHexColor + ">" + locationStatuses[i].GetLocation().locationName + "</color>";
+                            translatedText = translatedText.Replace(locationStatuses[i].GetLocation().locationName, textReplace);
+                        }
                     }
                 }
             }

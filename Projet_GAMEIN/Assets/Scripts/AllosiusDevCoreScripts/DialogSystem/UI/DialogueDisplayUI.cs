@@ -156,7 +156,7 @@ namespace AllosiusDev.DialogSystem
             }
             else
             {
-                writeTextCoroutine = StartCoroutine(WriteText(playerConversant.GetKeyText()));
+                writeTextCoroutine = StartCoroutine(WriteText(playerConversant.GetKeyText(false)));
 
                 GameManager.Instance.gameCanvasManager.eventSystem.SetSelectedGameObject(nextButton.gameObject);
             }
@@ -326,7 +326,7 @@ namespace AllosiusDev.DialogSystem
                 yield return new WaitForSeconds(delayAnimationText);
             }
 
-            EndTextWrite(_text);
+            EndTextWrite(playerConversant.GetKeyText());
         }
 
         private void EndTextWrite(string text)

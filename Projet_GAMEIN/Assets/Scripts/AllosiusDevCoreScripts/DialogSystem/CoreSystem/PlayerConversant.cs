@@ -66,14 +66,14 @@ namespace AllosiusDev.DialogSystem
             return isChoosing;
         }
 
-        public string GetKeyText()
+        public string GetKeyText(bool colorCode = true)
         {
             if (currentNode == null)
             {
                 return "";
             }
 
-            string playerMessage = LangueManager.Instance.Translate(currentNode.keyText, TypeDictionary.Dialogues);
+            string playerMessage = LangueManager.Instance.Translate(currentNode.keyText, TypeDictionary.Dialogues, colorCode);
 
             string _text = playerMessage;
             if (currentNode.texteType == TexteType.Lower)
