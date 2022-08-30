@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using AllosiusDev;
 using System;
+using Village.EncyclopaediaMenu;
+using AllosiusDev.Utils;
 
 namespace AllosiusDev.TranslationSystem
 {
@@ -50,6 +52,22 @@ namespace AllosiusDev.TranslationSystem
             {
                 translatedText = translatedText.Replace("[PLAYER]", GameManager.Instance.player.PlayerName);
             }
+
+            List<LocationStatus> locationStatuses = GameManager.Instance.locationsList.GetStatuses();
+            if(locationStatuses.Count > 0)
+            {
+                for (int i = 0; i < locationStatuses.Count; i++)
+                {
+                    if (locationStatuses[i].GetLocation().locationName != "" && translatedText.Contains(locationStatuses[i].GetLocation().locationName))
+                    {
+                        Debug.Log("Replace : " + locationStatuses[i].GetLocation().locationName);
+                        string locationHexColor = "#" + AllosiusDevUtilities.GetStringFromColor(locationStatuses[i].GetLocation().zone.zoneColor);
+                        string textReplace = "<color=" + locationHexColor + ">" + locationStatuses[i].GetLocation().locationName + "</color>";
+                        translatedText = translatedText.Replace(locationStatuses[i].GetLocation().locationName, textReplace);
+                    }
+                }
+            }
+            
 
             return translatedText;
         }

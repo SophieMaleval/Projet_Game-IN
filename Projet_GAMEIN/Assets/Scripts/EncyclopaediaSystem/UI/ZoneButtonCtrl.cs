@@ -31,6 +31,8 @@ namespace Village.EncyclopaediaMenu
         private void Awake()
         {
             selectionCursorBorder.color = zoneAssociated.zoneColor;
+
+            
         }
 
         public void SetSelectedButton(bool value)

@@ -21,7 +21,7 @@ namespace AllosiusDev.DialogSystem
 
         #region Properties
 
-        public string NamePnj => namePNJ;
+        public NpcData NpcData => npcData;
 
         #endregion
 
@@ -29,8 +29,7 @@ namespace AllosiusDev.DialogSystem
 
         [Header("PNJ Information")]
 
-        [SerializeField] private string namePNJ;
-        [SerializeField] private int pnjInENT;
+        [SerializeField] private NpcData npcData;
 
         [SerializeField] private DialogueGraph npcDialogue;
 
@@ -112,7 +111,7 @@ namespace AllosiusDev.DialogSystem
 
         public void InitAnimator()
         {
-            GetComponent<Animator>().SetInteger("PNJ Need", pnjInENT);
+            GetComponent<Animator>().SetInteger("PNJ Need", npcData.npcInENT);
         }
 
         public void PNJTalkAnimation(bool IsTalking)
@@ -129,6 +128,11 @@ namespace AllosiusDev.DialogSystem
 
             Debug.Log("Player Start Dialogue");
             GameManager.Instance.player.GetComponent<PlayerConversant>().StartDialog(this, npcDialogue);
+
+            if(npcData != null)
+            {
+                GameManager.Instance.npcList.NpcTalked(npcData);
+            }
         }
 
 

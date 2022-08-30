@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,14 +14,25 @@ namespace Village.EncyclopaediaMenu
 
         public Sprite spriteLocation;
 
-        public Sprite[] spritesLocationNpc;
+        public LocationNpc[] locationNpc;
 
         [SerializeField] public LocationZone zone;
 
         #endregion
+
+        #region Structs
+
+        [Serializable]
+        public struct LocationNpc
+        {
+            public Sprite spriteLocationNpc;
+            public NpcData dataLocationNpc;
+        }
+
+        #endregion
     }
 
-    
 
-    
+
+
 }

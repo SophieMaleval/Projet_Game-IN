@@ -10,12 +10,12 @@ namespace Village.EncyclopaediaMenu
     {
         #region Fields
 
+        private List<LocationStatus> statuses = new List<LocationStatus>();
 
         #endregion
 
         #region UnityInspector
 
-        public List<LocationStatus> statuses = new List<LocationStatus>();
 
         [SerializeField] private SamplableLibrary locationsLibrary;
 
@@ -41,9 +41,18 @@ namespace Village.EncyclopaediaMenu
                 LocationData location = (LocationData)locationsLibrary.library[i];
                 AddLocation(location);
             }
+
+            if (OnUpdate != null)
+            {
+                OnUpdate();
+            }
+            else
+            {
+                Debug.LogWarning("OnUpdate is null");
+            }
         }
 
-        public IEnumerable<LocationStatus> GetStatuses()
+        public List<LocationStatus> GetStatuses()
         {
             return statuses;
         }
@@ -72,15 +81,6 @@ namespace Village.EncyclopaediaMenu
             LocationStatus newStatus = new LocationStatus(location);
             newStatus.SetLocationName(location.locationName);
             statuses.Add(newStatus);
-
-            if (OnUpdate != null)
-            {
-                OnUpdate();
-            }
-            else
-            {
-                Debug.LogWarning("OnUpdate is null");
-            }
         }
 
         public void CompleteLocationExploration(LocationData location)

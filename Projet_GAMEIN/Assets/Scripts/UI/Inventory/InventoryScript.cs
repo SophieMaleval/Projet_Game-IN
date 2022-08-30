@@ -41,6 +41,7 @@ public class InventoryScript : MonoBehaviour
     public GameObject InventoryPanel ;
     public GameObject PannelENTCanvas ;
 
+    public GameObject encyclopaediaMenuPreview;
     public EncyclopaediaMenu encyclopaediaMenu;
 
     public GameObject InventorySlotPannel ;
@@ -101,8 +102,9 @@ public class InventoryScript : MonoBehaviour
         //darkScreen.gameObject.SetActive(false);
         canInteract = true;
 
-        GameManager.Instance.locationsList.OnUpdate += encyclopaediaMenu.InitEncyclopaediaMenu;
-        GameManager.Instance.questManager.OnUpdate += encyclopaediaMenu.InitEncyclopaediaMenu;
+        GameManager.Instance.locationsList.OnUpdate += encyclopaediaMenu.RedrawEncyclopaediaMenu;
+        GameManager.Instance.questManager.OnUpdate += encyclopaediaMenu.RedrawEncyclopaediaMenu;
+        GameManager.Instance.npcList.OnUpdate += encyclopaediaMenu.RedrawEncyclopaediaMenu;
     }
 
     public void SwitchToggleInventoryDisplay()
@@ -114,15 +116,15 @@ public class InventoryScript : MonoBehaviour
         SetUIText();
         InventoryPanel.SetActive(!InventoryPanel.activeSelf);
 
-        if(InventoryPanel.activeSelf)
+        encyclopaediaMenu.RedrawEncyclopaediaMenu();
+
+        if (InventoryPanel.activeSelf)
         {
             AudioController.Instance.PlayAudio(sfxOpenInventory);
 
             transform.SetSiblingIndex(transform.parent.childCount - 2);
 
             PlayerScript.GetComponent<PlayerMovement>().StartActivity();
-
-            encyclopaediaMenu.InitEncyclopaediaMenu();
         }
         else
         {
