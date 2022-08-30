@@ -11,7 +11,6 @@ namespace Village.EncyclopaediaMenu
     {
         #region Fields
 
-
         #endregion
 
         #region Properties
@@ -32,6 +31,8 @@ namespace Village.EncyclopaediaMenu
         [SerializeField] private Image panelBorder;
 
         [SerializeField] private GameObject[] titleLabelQuestIcons;
+
+        [SerializeField] private TextMeshProUGUI titleLabel;
 
         [Space]
 
@@ -55,8 +56,9 @@ namespace Village.EncyclopaediaMenu
 
         [SerializeField] private Image placeImg;
 
-        [SerializeField] private RectTransform[] npcSpawnPoints;
-        [SerializeField] private EncyclopaediaNpcUI prefabEncyclopaediaNpcUi;
+        //[SerializeField] private RectTransform[] npcSpawnPoints;
+        [SerializeField] private EncyclopaediaNpcUI[] npcUi;
+        //[SerializeField] private EncyclopaediaNpcUI prefabEncyclopaediaNpcUi;
 
         [SerializeField] private Color unlockedPlaceColor;
         [SerializeField] private Color lockedPlaceColor;
@@ -81,16 +83,54 @@ namespace Village.EncyclopaediaMenu
             return false;
         }
 
-        public void InitEncyclopaediaMenu()
+        [ContextMenu("ResetEncyclopaediaMenuPreview")]
+        public void ResetEncyclopaediaMenuPreview()
+        {
+            foreach (Transform child in GameManager.Instance.gameCanvasManager.inventory.encyclopaediaMenuPreview.transform)
+            {
+                Destroy(child.gameObject);
+            }
+        }
+
+        [ContextMenu("UpdateEncyclopaediaMenuPreview")]
+        public void UpdateEncyclopaediaMenuPreview()
+        {
+            ResetEncyclopaediaMenuPreview();
+
+            GameObject menuPreview = Instantiate(GameManager.Instance.gameCanvasManager.inventory.encyclopaediaMenu.gameObject, GameManager.Instance.gameCanvasManager.inventory.encyclopaediaMenuPreview.transform);
+            menuPreview.transform.localScale = Vector3.one;
+
+            EncyclopaediaMenu encyclopaediaMenu = menuPreview.GetComponent<EncyclopaediaMenu>();
+            encyclopaediaMenu.titleLabel.gameObject.SetActive(true);
+            encyclopaediaMenu.titleLabel.text = encyclopaediaMenu.locationDropdownLabel.text;
+            encyclopaediaMenu.titleLabel.color = encyclopaediaMenu.locationDropdownLabel.color;
+            encyclopaediaMenu.LocationsDropdown.gameObject.SetActive(false);
+
+            for (int i = 0; i < encyclopaediaMenu.zonesButtons.Length; i++)
+            {
+                Destroy(encyclopaediaMenu.zonesButtons[i]);
+            }
+
+            Destroy(encyclopaediaMenu);
+        }
+
+        public void RedrawEncyclopaediaMenu()
         {
             Debug.Log("Redraw");
 
-            if(CheckQuestActive())
-                currentLocation = GameManager.Instance.gameCanvasManager.inventory.QuestTrackingUi.currentQuestStepStatusActive.GetQuestStep().questLocationData;
+            InitEncyclopaediaMenu();
 
             InitLocationsDropdown();
 
             UpdateMenu();
+
+            UpdateEncyclopaediaMenuPreview();
+        }
+
+        private void InitEncyclopaediaMenu()
+        {
+            if (CheckQuestActive())
+                currentLocation = GameManager.Instance.gameCanvasManager.inventory.QuestTrackingUi.currentQuestStepStatusActive.GetQuestStep().questLocationData;
         }
 
         private void InitLocationsDropdown()
@@ -169,12 +209,9 @@ namespace Village.EncyclopaediaMenu
                 zonesButtons[i].SetSelectedButton(false);
             }
 
-            for (int i = 0; i < npcSpawnPoints.Length; i++)
+            for (int i = 0; i < npcUi.Length; i++)
             {
-                foreach (Transform item in npcSpawnPoints[i])
-                {
-                    Destroy(item.gameObject);
-                }
+                npcUi[i].gameObject.SetActive(false);
             }
 
 
@@ -191,13 +228,27 @@ namespace Village.EncyclopaediaMenu
             placeImg.sprite = currentLocation.spriteLocation;
             placeImg.color = colorToApply;
 
-            for (int i = 0; i < currentLocation.spritesLocationNpc.Length; i++)
+            for (int i = 0; i < currentLocation.locationNpc.Length; i++)
             {
-                if (i < npcSpawnPoints.Length)
+                if (i < npcUi.Length)
                 {
-                    EncyclopaediaNpcUI encyclopaediaNpc = Instantiate(prefabEncyclopaediaNpcUi, npcSpawnPoints[i].transform);
-                    encyclopaediaNpc.NpcImg.sprite = currentLocation.spritesLocationNpc[i];
-                    encyclopaediaNpc.NpcImg.color = colorToApply;
+                    Debug.Log("Set NPC UI");
+                    //EncyclopaediaNpcUI encyclopaediaNpc = Instantiate(prefabEncyclopaediaNpcUi, npcSpawnPoints[i].transform);
+                    npcUi[i].gameObject.SetActive(true);
+                    npcUi[i].NpcImg.sprite = currentLocation.locationNpc[i].spriteLocationNpc;
+                    npcUi[i].NpcNameLabel.text = currentLocation.locationNpc[i].dataLocationNpc.nameNpc;
+
+                    if(GameManager.Instance.npcList.GetNpcStatus(currentLocation.locationNpc[i].dataLocationNpc).GetNpcAlreadyTalked())
+                    {
+                        npcUi[i].NpcNameObj.SetActive(true);
+                        npcUi[i].NpcImg.color = unlockedPlaceColor;
+                    }
+                    else
+                    {
+                        npcUi[i].NpcNameObj.SetActive(false);
+                        npcUi[i].NpcImg.color = lockedPlaceColor;
+                    }
+                    
                 }
             }
 

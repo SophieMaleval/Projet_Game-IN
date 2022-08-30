@@ -58,7 +58,7 @@ namespace AllosiusDev.DialogSystem
 
         public string GetCurrentConversantName()
         {
-            return currentConversant.NamePnj;
+            return currentConversant.NpcData.nameNpc;
         }
 
         public bool IsChoosing()

@@ -27,6 +27,7 @@ public class GameManager : Singleton<GameManager>
 
     public QuestList questManager { get; protected set; }
     public LocationsList locationsList { get; protected set; }
+    public NpcList npcList { get; protected set; }
 
     public Vector2 InitMenuExitPlayerSpawnPos => initMenuExitPlayerSpawnPos;
     public Vector2 InitExteriorMapPlayerSpawnPos => initExteriorMapPlayerSpawnPos;
@@ -41,6 +42,7 @@ public class GameManager : Singleton<GameManager>
 
     [SerializeField] private QuestList questManagerPrefab;
     [SerializeField] private LocationsList locationsListPrefab;
+    [SerializeField] private NpcList npcListPrefab;
 
     [Space]
 
@@ -123,6 +125,9 @@ public class GameManager : Singleton<GameManager>
 
         LocationsList _locationsList = Instantiate(locationsListPrefab, transform);
         locationsList = _locationsList;
+
+        NpcList _npcList = Instantiate(npcListPrefab, transform);
+        npcList = _npcList;
 
         ResetPlayerPrefsValues();
 

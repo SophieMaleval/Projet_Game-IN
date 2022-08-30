@@ -25,7 +25,7 @@ public class Pnj_ui_Name : MonoBehaviour
     void Start()
     {
         NameTxt = this.GetComponent<TextMeshProUGUI>();
-        NameValue = Npc.NamePnj;
+        NameValue = Npc.NpcData.nameNpc;
         NameTxt.text = NameValue.ToString();
     }
 

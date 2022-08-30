@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace AllosiusDev.QuestSystem
+namespace AllosiusDev
 {
     [AttributeUsage(AttributeTargets.Field)]
 
