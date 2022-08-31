@@ -74,8 +74,6 @@ namespace AllosiusDev.DialogSystem
 
         private void Start()
         {
-            //Debug.LogError("Init Dialogue UI");
-
             playerConversant = GameManager.Instance.player.GetComponent<PlayerConversant>();
             playerConversant.onConversationUpdated += UpdateUI;
 
@@ -87,10 +85,9 @@ namespace AllosiusDev.DialogSystem
             UpdateDialogueChoicesButtons();
         }
 
+
         private void UpdateDialogueChoicesButtons()
         {
-            //Debug.Log("Update DIalogue Choices Buttons");
-
             if (currentChoicesButtons.Count > 0 && updateButtons)
             {
                 float HeightFinalBox = 30f;
@@ -98,34 +95,23 @@ namespace AllosiusDev.DialogSystem
                 foreach (Button button in currentChoicesButtons)
                 {
                     RectTransform hoverElementRect = button.GetComponentInChildren<TextMeshProUGUI>().GetComponent<RectTransform>();
-                    //Debug.Log(hoverElementRect.gameObject.name);
-                    //Debug.Log(hoverElementRect.sizeDelta);
 
                     button.GetComponent<RectTransform>().sizeDelta += hoverElementRect.sizeDelta;
-
-                    //Debug.Log(button.GetComponent<RectTransform>().sizeDelta.y);
 
                     HeightFinalBox += button.GetComponent<RectTransform>().sizeDelta.y;
                     ThisRect.sizeDelta = new Vector2(ThisRect.sizeDelta.x, HeightFinalBox);
                 }
-
-                //Debug.Log(HeightFinalBox);
             }
         }
 
         private void UpdateButtonsListeners()
         {
-            //Debug.Log("Clear Next and Exit Dialogue Buttons");
-
             nextButton.onClick.RemoveAllListeners();
             nextButton.onClick.AddListener(() => ButtonNext());
         }
 
         private void UpdateUI()
         {
-            //Debug.LogError("Update UI");
-
-
             UpdateButtonsListeners();
             updateButtons = false;
 
@@ -135,7 +121,7 @@ namespace AllosiusDev.DialogSystem
                 return;
             }
 
-            GameManager.Instance.player.textDebug2.text = "Update UI";
+            //GameManager.Instance.player.textDebug2.text = "Update UI";
 
             ThisRect.sizeDelta = new Vector2(ThisRect.sizeDelta.x, 96f);
 
@@ -173,8 +159,6 @@ namespace AllosiusDev.DialogSystem
 
         private void BuildChoiceList()
         {
-            //Debug.LogError("Build Choice List");
-
             foreach (Transform item in choicesRoot)
             {
                 Destroy(item.gameObject);
@@ -187,12 +171,11 @@ namespace AllosiusDev.DialogSystem
 
             foreach (DialogueTextNode choice in playerConversant.GetChoices())
             {
-                //Debug.Log("Instantiate");
                 GameObject _choiceInstance = Instantiate(choicePrefab, choicesRoot);
                 currentChoices.Add(_choiceInstance);
 
                 var _textComp = _choiceInstance.GetComponentInChildren<TextMeshProUGUI>();
-                //_textComp.text = choice.message;
+
                 var _textTranslate = _choiceInstance.GetComponentInChildren<ToTranslateObject>();
                 _textTranslate.SetTranslationKey(choice.keyText, TypeDictionary.Dialogues, true, choice.texteType);
 
@@ -248,14 +231,11 @@ namespace AllosiusDev.DialogSystem
 
             }
 
-            //Debug.Log(GameManager.Instance.gameCanvasManager.eventSystem.currentSelectedGameObject.name);
             GameManager.Instance.gameCanvasManager.eventSystem.SetSelectedGameObject(currentChoices[0]);
-            //Debug.Log(GameManager.Instance.gameCanvasManager.eventSystem.currentSelectedGameObject.name);
         }
 
         private void ButtonNext()
         {
-            //Debug.LogError("Button Next");
             if(canInteract)
             {
                 if (canTurnNext)
@@ -291,22 +271,11 @@ namespace AllosiusDev.DialogSystem
 
         private IEnumerator WriteText(string text)
         {
-            Debug.Log("Write Text Coroutine");
-
             canTurnNext = false;
 
             string _text = text;
-            /*if(playerConversant.currentNode.texteType == TexteType.Lower)
-            {
-                _text = text.ToLower();
-            }
-            else if (playerConversant.currentNode.texteType == TexteType.Upper)
-            {
-                _text = text.ToUpper();
-            }*/
 
             dialogueDisplayerText.text = "";
-            //Debug.Log(dialogueDisplayerText.text);
 
             if (playerConversant.CurrentConversant != null)
             {
@@ -316,7 +285,6 @@ namespace AllosiusDev.DialogSystem
             for (int i = 0; i < _text.Length; i++)
             {
                 dialogueDisplayerText.text += _text[i];
-                //Debug.Log(dialogueDisplayerText.text);
 
                 if (_text[i] != ' ')
                 {
@@ -331,10 +299,7 @@ namespace AllosiusDev.DialogSystem
 
         private void EndTextWrite(string text)
         {
-            //Debug.Log("End Text Write");
-
             dialogueDisplayerText.text = text;
-            //Debug.Log(dialogueDisplayerText.text);
 
             if (playerConversant.CurrentConversant != null)
             {

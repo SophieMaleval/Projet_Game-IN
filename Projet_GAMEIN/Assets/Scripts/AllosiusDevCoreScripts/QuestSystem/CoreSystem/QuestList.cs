@@ -11,7 +11,7 @@ namespace AllosiusDev.QuestSystem
     {
         #region Fields
 
-        public List<QuestStatus> statuses = new List<QuestStatus>();
+        private List<QuestStatus> statuses = new List<QuestStatus>();
 
         #endregion
 

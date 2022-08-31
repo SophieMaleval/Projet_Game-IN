@@ -8,12 +8,15 @@ using UnityEngine.SceneManagement;
 using AllosiusDev.Audio;
 using Core.Session;
 using AllosiusDev.TranslationSystem;
+using UnityEngine.EventSystems;
 
 public class MenuManager : MonoBehaviour
 {
     #region Fields
 
     private bool SettingOpen = false ;
+
+    private bool isHoverUi;
 
     #endregion
 
@@ -57,13 +60,33 @@ public class MenuManager : MonoBehaviour
 
     void Update()
     {
-        if (!SettingOpen && (Input.anyKeyDown && !(Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1) || Input.GetMouseButtonDown(2))) && FadeImage.activeSelf == false)
+        isHoverUi = IsHoverUI(Input.mousePosition);
+
+        if (!SettingOpen && FadeImage.activeSelf == false && !(Input.GetMouseButtonDown(1)) && !(Input.GetMouseButtonDown(2)))
         {
-            FadeImage.SetActive(true);
-            StopAllCoroutines();
-            StartCoroutine(Fade());
+            if((Input.anyKeyDown && !isHoverUi) || (isHoverUi && Input.anyKeyDown && !(Input.GetMouseButtonDown(0))))
+            {
+                FadeImage.SetActive(true);
+                StopAllCoroutines();
+                StartCoroutine(Fade());
+            }
         }
 
+    }
+
+    private bool IsHoverUI(Vector3 position)
+    {
+        PointerEventData pointer = new PointerEventData(EventSystem.current);
+        pointer.position = position;
+        List<RaycastResult> raycastResults = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(pointer, raycastResults);
+
+        /*foreach (RaycastResult result in raycastResults)
+        {
+            Debug.Log("Hit " + result.gameObject.name);
+        }*/
+
+        return raycastResults.Count > 0;
     }
 
     IEnumerator WaitTransitionAnim()
