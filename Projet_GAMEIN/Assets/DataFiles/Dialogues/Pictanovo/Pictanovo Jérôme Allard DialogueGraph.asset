@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
-  m_Name: Dialogue Text
+  m_Name: Pictanovo Fonds Hauts de France
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 1704, y: -264}
+  position: {x: 1704, y: -312}
   ports:
     keys:
     - previousNode
@@ -35,7 +35,10 @@ MonoBehaviour:
       _node: {fileID: -8663742651700156648}
       _typeQualifiedName: AllosiusDev.DialogSystem.DialogueBaseNode, Assembly-CSharp,
         Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      connections: []
+      connections:
+      - fieldName: previousNode
+        node: {fileID: -1098410386939735472}
+        reroutePoints: []
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
@@ -43,24 +46,19 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 0
-  keyText: "Dialogue_J\xE9r\xF4me_Allard_Texte"
-  messagePreview: 
+  texteType: 0
+  keyText: "Dialogue_J\xE9r\xF4me_Allard_PictanovoFondsHautsdeFrance"
+  messagePreview: Yes, Pictanovo is the branch of the Hauts-de-France Region in charge
+    of funding video game projects, but not only !
   singleRead: 0
-  hasGameActions: 1
-  showGameActions: 1
+  hasEnterNodeActions: 0
+  showEnterNodeActions: 0
+  enterNodeActions:
+    actionsList: []
+  hasGameActions: 0
+  showGameActions: 0
   gameActions:
-    actionsList:
-    - actionType: 0
-      hasCondition: 0
-      nodesRequiredToRead: []
-      questToAdd: {fileID: 0}
-      questAssociated: {fileID: 0}
-      questStepToComplete: {fileID: 0}
-      ScooterPopUpData: {fileID: 0}
-      itemToAdd: {fileID: 0}
-      itemToRemove: {fileID: 0}
-      fadeDuration: 0.5
-      fadeOutSwitchDuration: 1
+    actionsList: []
   hasRequirements: 0
   showGameRequirements: 0
   gameRequirements:
@@ -75,10 +73,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
-  m_Name: Dialogue Text
+  m_Name: Tout a Fait Proto Et Prod
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 1720, y: 40}
+  position: {x: 3384, y: -312}
   ports:
     keys:
     - previousNode
@@ -100,7 +98,10 @@ MonoBehaviour:
       _node: {fileID: -6299099496634024400}
       _typeQualifiedName: AllosiusDev.DialogSystem.DialogueBaseNode, Assembly-CSharp,
         Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      connections: []
+      connections:
+      - fieldName: previousNode
+        node: {fileID: 2093621495698929886}
+        reroutePoints: []
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
@@ -108,10 +109,17 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 0
-  keyText: "Dialogue_J\xE9r\xF4me_Allard_Texte2"
-  messagePreview: 
+  texteType: 0
+  keyText: "Dialogue_J\xE9r\xF4me_Allard_ToutaFaitProtoEtProd"
+  messagePreview: "Absolutely ! Since 2017 and with the expertise of Game IN, 2 committees
+    per year distributes \u20AC500,000 each year! We co-produce at the prototype
+    or production level."
   singleRead: 0
-  hasGameActions: 1
+  hasEnterNodeActions: 0
+  showEnterNodeActions: 0
+  enterNodeActions:
+    actionsList: []
+  hasGameActions: 0
   showGameActions: 1
   gameActions:
     actionsList:
@@ -126,6 +134,79 @@ MonoBehaviour:
       itemToRemove: {fileID: 0}
       fadeDuration: 0.5
       fadeOutSwitchDuration: 1
+      newConversantToCall: {fileID: 0}
+      dialogueToLaunch: {fileID: 0}
+      launchDialogueToMainNode: 0
+      boxMessageTextToDisplay: 
+      boxMessageSize: 0
+      iconDataToAdd: {fileID: 0}
+      shakeCameraIntensity: 0
+      shakeCameraDuration: 0
+      focusOn: 0
+      focusValue: 1.4
+  hasRequirements: 0
+  showGameRequirements: 0
+  gameRequirements:
+    requirementsList: []
+--- !u!114 &-2807663935610468674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
+  m_Name: Je Dois Y Aller
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 904, y: 232}
+  ports:
+    keys:
+    - previousNode
+    - nextNodes
+    values:
+    - _fieldName: previousNode
+      _node: {fileID: -2807663935610468674}
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueTextNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: nextNodes
+        node: {fileID: 4666201163969464176}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: nextNodes
+      _node: {fileID: -2807663935610468674}
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueBaseNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: previousNode
+        node: {fileID: 7604329264345081362}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  previousNode: {fileID: 0}
+  nextNodes: {fileID: 0}
+  identityType: 1
+  texteType: 0
+  keyText: "Dialogue_J\xE9r\xF4me_Allard_JeDoisYAller"
+  messagePreview: Great! I'm going to tell all the studios about it. See you soon
+    !
+  singleRead: 1
+  hasEnterNodeActions: 0
+  showEnterNodeActions: 0
+  enterNodeActions:
+    actionsList: []
+  hasGameActions: 0
+  showGameActions: 0
+  gameActions:
+    actionsList: []
   hasRequirements: 0
   showGameRequirements: 0
   gameRequirements:
@@ -140,10 +221,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
-  m_Name: "Mauvaise pr\xE9sentation"
+  m_Name: Region Aide Production Jeux
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 888, y: 24}
+  position: {x: 2552, y: -328}
   ports:
     keys:
     - previousNode
@@ -155,7 +236,7 @@ MonoBehaviour:
         Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: nextNodes
-        node: {fileID: 4666201163969464176}
+        node: {fileID: -8663742651700156648}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
@@ -176,9 +257,14 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 1
-  keyText: "Dialogue_J\xE9r\xF4me_Allard_MauvaisePresentation"
-  messagePreview: Bad presentation.
+  texteType: 0
+  keyText: "Dialogue_J\xE9r\xF4me_Allard_RegionAideProductionJeux"
+  messagePreview: So the Region helps with the production of games ?
   singleRead: 1
+  hasEnterNodeActions: 0
+  showEnterNodeActions: 0
+  enterNodeActions:
+    actionsList: []
   hasGameActions: 0
   showGameActions: 0
   gameActions:
@@ -207,6 +293,8 @@ MonoBehaviour:
   - {fileID: -8663742651700156648}
   - {fileID: -6299099496634024400}
   - {fileID: 7872482975917269930}
+  - {fileID: -2807663935610468674}
+  - {fileID: 7604329264345081362}
   displayName: "J\xE9r\xF4me Allard Dialogue"
   description: "Dialogue Pr\xE9sentation J\xE9r\xF4me Pictanovo"
   mainNodeParent: {fileID: 4666201163969464176}
@@ -220,10 +308,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
-  m_Name: "Salut, \xE7a va ?"
+  m_Name: Financer La Production
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 904, y: -280}
+  position: {x: 904, y: -312}
   ports:
     keys:
     - previousNode
@@ -256,9 +344,14 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 1
-  keyText: "Dialogue_J\xE9r\xF4me_Allard_SalutCaVa"
-  messagePreview: Hi, how are you ?
+  texteType: 0
+  keyText: "Dialogue_J\xE9r\xF4me_Allard_FinancerLaProduction"
+  messagePreview: Financing the production ...?
   singleRead: 1
+  hasEnterNodeActions: 0
+  showEnterNodeActions: 0
+  enterNodeActions:
+    actionsList: []
   hasGameActions: 0
   showGameActions: 0
   gameActions:
@@ -277,10 +370,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
-  m_Name: Je dois y aller.
+  m_Name: Nimporte Qui
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 904, y: 376}
+  position: {x: 4296, y: -328}
   ports:
     keys:
     - previousNode
@@ -292,7 +385,7 @@ MonoBehaviour:
         Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: nextNodes
-        node: {fileID: 4666201163969464176}
+        node: {fileID: -6299099496634024400}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
@@ -313,9 +406,14 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 1
-  keyText: "Dialogue_J\xE9r\xF4me_Allard_JeDoisYAller"
-  messagePreview: I have to go.
+  texteType: 0
+  keyText: "Dialogue_J\xE9r\xF4me_Allard_NimporteQui"
+  messagePreview: Anyone can submit a project ?
   singleRead: 1
+  hasEnterNodeActions: 0
+  showEnterNodeActions: 0
+  enterNodeActions:
+    actionsList: []
   hasGameActions: 0
   showGameActions: 0
   gameActions:
@@ -334,10 +432,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
-  m_Name: Comment puis-je t'aider ?
+  m_Name: Bienvenue Chez Pictanovo
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 0, y: 0}
+  position: {x: -136, y: 56}
   ports:
     keys:
     - previousNode
@@ -361,10 +459,7 @@ MonoBehaviour:
         node: {fileID: 905285112200420247}
         reroutePoints: []
       - fieldName: previousNode
-        node: {fileID: -1098410386939735472}
-        reroutePoints: []
-      - fieldName: previousNode
-        node: {fileID: 2093621495698929886}
+        node: {fileID: -2807663935610468674}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -373,9 +468,74 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 0
-  keyText: "Dialogue_J\xE9r\xF4me_Allard_CommentPuisJeTAider"
-  messagePreview: How can I help you ?
+  texteType: 0
+  keyText: "Dialogue_J\xE9r\xF4me_Allard_BienvenueChezPictanovo"
+  messagePreview: Hello ! Welcome to Pictanovo! Are you looking to finance the production
+    of a video game ?
   singleRead: 0
+  hasEnterNodeActions: 0
+  showEnterNodeActions: 0
+  enterNodeActions:
+    actionsList: []
+  hasGameActions: 0
+  showGameActions: 0
+  gameActions:
+    actionsList: []
+  hasRequirements: 0
+  showGameRequirements: 0
+  gameRequirements:
+    requirementsList: []
+--- !u!114 &7604329264345081362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
+  m_Name: Je Reste A Disposition
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 1736, y: 248}
+  ports:
+    keys:
+    - previousNode
+    - nextNodes
+    values:
+    - _fieldName: previousNode
+      _node: {fileID: 7604329264345081362}
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueTextNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: nextNodes
+        node: {fileID: -2807663935610468674}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: nextNodes
+      _node: {fileID: 7604329264345081362}
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueBaseNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  previousNode: {fileID: 0}
+  nextNodes: {fileID: 0}
+  identityType: 0
+  texteType: 0
+  keyText: "Dialogue_J\xE9r\xF4me_Allard_JeResteADisposition"
+  messagePreview: I remain at your disposal ! See you soon !
+  singleRead: 0
+  hasEnterNodeActions: 0
+  showEnterNodeActions: 0
+  enterNodeActions:
+    actionsList: []
   hasGameActions: 0
   showGameActions: 0
   gameActions:
@@ -394,10 +554,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
-  m_Name: "Bonne journ\xE9e !"
+  m_Name: "Entreprise Cr\xE9\xE9e Dans La Region"
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 1720, y: 392}
+  position: {x: 5112, y: -312}
   ports:
     keys:
     - previousNode
@@ -427,13 +587,40 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 0
-  keyText: "Dialogue_J\xE9r\xF4me_Allard_BonneJournee"
-  messagePreview: Have a nice day !
+  texteType: 0
+  keyText: "Dialogue_J\xE9r\xF4me_Allard_EntrepriseCr\xE9\xE9eDansLaRegion"
+  messagePreview: Any company with a solid game project, established in Hauts-de-France
+    or wishing to invest in the territory.
   singleRead: 0
-  hasGameActions: 0
-  showGameActions: 0
-  gameActions:
+  hasEnterNodeActions: 0
+  showEnterNodeActions: 0
+  enterNodeActions:
     actionsList: []
+  hasGameActions: 1
+  showGameActions: 1
+  gameActions:
+    actionsList:
+    - actionType: 0
+      hasCondition: 0
+      nodesRequiredToRead: []
+      questToAdd: {fileID: 0}
+      questAssociated: {fileID: 0}
+      questStepToComplete: {fileID: 0}
+      ScooterPopUpData: {fileID: 0}
+      itemToAdd: {fileID: 0}
+      itemToRemove: {fileID: 0}
+      fadeDuration: 0.5
+      fadeOutSwitchDuration: 1
+      newConversantToCall: {fileID: 0}
+      dialogueToLaunch: {fileID: 0}
+      launchDialogueToMainNode: 0
+      boxMessageTextToDisplay: 
+      boxMessageSize: 0
+      iconDataToAdd: {fileID: 0}
+      shakeCameraIntensity: 0
+      shakeCameraDuration: 0
+      focusOn: 0
+      focusValue: 1.4
   hasRequirements: 0
   showGameRequirements: 0
   gameRequirements:
