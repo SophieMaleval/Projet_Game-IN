@@ -1,0 +1,663 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-7473681781276582679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
+  m_Name: "Je suis Fran\xE7ois Dervaux,"
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 1832, y: -264}
+  ports:
+    keys:
+    - previousNode
+    - nextNodes
+    values:
+    - _fieldName: previousNode
+      _node: {fileID: -7473681781276582679}
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueTextNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: nextNodes
+        node: {fileID: 8692507302123382572}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: nextNodes
+      _node: {fileID: -7473681781276582679}
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueBaseNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: previousNode
+        node: {fileID: -3024362567230942257}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  previousNode: {fileID: 0}
+  nextNodes: {fileID: 0}
+  identityType: 0
+  texteType: 0
+  keyText: "Dialogue_Fran\xE7ois_Dervaux_JeSuisFran\xE7oisDervaux"
+  messagePreview: "Je suis Fran\xE7ois Dervaux, j'ai cofond\xE9 le studio Spooky
+    Rabbit avec mon fr\xE8re Mathieu !"
+  singleRead: 0
+  hasEnterNodeActions: 0
+  showEnterNodeActions: 0
+  enterNodeActions:
+    actionsList: []
+  hasGameActions: 0
+  showGameActions: 0
+  gameActions:
+    actionsList: []
+  hasRequirements: 0
+  showGameRequirements: 0
+  gameRequirements:
+    requirementsList: []
+--- !u!114 &-3024362567230942257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
+  m_Name: Nous travaillons en ce moment sur
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 2808, y: -264}
+  ports:
+    keys:
+    - previousNode
+    - nextNodes
+    values:
+    - _fieldName: previousNode
+      _node: {fileID: -3024362567230942257}
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueTextNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: nextNodes
+        node: {fileID: -7473681781276582679}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: nextNodes
+      _node: {fileID: -3024362567230942257}
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueBaseNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  previousNode: {fileID: 0}
+  nextNodes: {fileID: 0}
+  identityType: 0
+  texteType: 0
+  keyText: "Dialogue_Fran\xE7ois_Dervaux_NousTravaillonsEnCeMoment"
+  messagePreview: "Nous travaillons en ce moment sur un projet nomm\xE9 Dogend avec
+    notre associ\xE9, L\xE9o Capou !"
+  singleRead: 0
+  hasEnterNodeActions: 0
+  showEnterNodeActions: 0
+  enterNodeActions:
+    actionsList: []
+  hasGameActions: 1
+  showGameActions: 1
+  gameActions:
+    actionsList:
+    - actionType: 0
+      hasCondition: 0
+      nodesRequiredToRead: []
+      questToAdd: {fileID: 0}
+      questAssociated: {fileID: 0}
+      questStepToComplete: {fileID: 0}
+      ScooterPopUpData: {fileID: 0}
+      itemToAdd: {fileID: 0}
+      itemToRemove: {fileID: 0}
+      fadeDuration: 0.5
+      fadeOutSwitchDuration: 1
+      newConversantToCall: {fileID: 0}
+      dialogueToLaunch: {fileID: 0}
+      launchDialogueToMainNode: 0
+      boxMessageTextToDisplay: 
+      boxMessageSize: 0
+      iconDataToAdd: {fileID: 0}
+      shakeCameraIntensity: 0
+      shakeCameraDuration: 0
+      focusOn: 0
+      focusValue: 1.4
+  hasRequirements: 0
+  showGameRequirements: 0
+  gameRequirements:
+    requirementsList: []
+--- !u!114 &-627037138826635667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
+  m_Name: Installe toi !
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 1832, y: 344}
+  ports:
+    keys:
+    - previousNode
+    - nextNodes
+    values:
+    - _fieldName: previousNode
+      _node: {fileID: -627037138826635667}
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueTextNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: nextNodes
+        node: {fileID: 7639924187425463628}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: nextNodes
+      _node: {fileID: -627037138826635667}
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueBaseNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  previousNode: {fileID: 0}
+  nextNodes: {fileID: 0}
+  identityType: 0
+  texteType: 0
+  keyText: "Dialogue_Fran\xE7ois_Dervaux_InstalleToi"
+  messagePreview: Installe toi !
+  singleRead: 0
+  hasEnterNodeActions: 0
+  showEnterNodeActions: 0
+  enterNodeActions:
+    actionsList: []
+  hasGameActions: 1
+  showGameActions: 1
+  gameActions:
+    actionsList:
+    - actionType: 2
+      hasCondition: 1
+      nodesRequiredToRead:
+      - {fileID: 3949031678284559005}
+      questToAdd: {fileID: 0}
+      questAssociated: {fileID: 11400000, guid: e62da928601dc8545b2e1b2042a10cbb,
+        type: 2}
+      questStepToComplete: {fileID: 11400000, guid: b2ef848b0e0e0d84290a73e6dbf4930b,
+        type: 2}
+      ScooterPopUpData: {fileID: 0}
+      itemToAdd: {fileID: 0}
+      itemToRemove: {fileID: 0}
+      fadeDuration: 0.5
+      fadeOutSwitchDuration: 1
+      newConversantToCall: {fileID: 0}
+      dialogueToLaunch: {fileID: 0}
+      launchDialogueToMainNode: 0
+      boxMessageTextToDisplay: 
+      boxMessageSize: 0
+      iconDataToAdd: {fileID: 0}
+      shakeCameraIntensity: 0
+      shakeCameraDuration: 0
+      focusOn: 0
+      focusValue: 1.4
+  hasRequirements: 0
+  showGameRequirements: 0
+  gameRequirements:
+    requirementsList: []
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c135d5abc97ad74e959ab5b6aa5d6eb, type: 3}
+  m_Name: "SpookyRabbits Fran\xE7ois Dervaux DialogueGraph"
+  m_EditorClassIdentifier: 
+  nodes:
+  - {fileID: 410351848926416507}
+  - {fileID: 8692507302123382572}
+  - {fileID: 7639924187425463628}
+  - {fileID: -7473681781276582679}
+  - {fileID: -3024362567230942257}
+  - {fileID: -627037138826635667}
+  - {fileID: 5795113161418385337}
+  - {fileID: 2348771242085467068}
+  - {fileID: 3949031678284559005}
+  displayName: "Fran\xE7ois Dervaux Dialogue"
+  description: "Dialogue Pr\xE9sentation Fran\xE7ois Dervaux Quete SpookyRabbits"
+  mainNodeParent: {fileID: 410351848926416507}
+--- !u!114 &410351848926416507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
+  m_Name: Bonjour tu es ? Ah ! {PLAYER} ?
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -40, y: -8}
+  ports:
+    keys:
+    - previousNode
+    - nextNodes
+    values:
+    - _fieldName: previousNode
+      _node: {fileID: 410351848926416507}
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueTextNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: nextNodes
+      _node: {fileID: 410351848926416507}
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueBaseNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: previousNode
+        node: {fileID: 8692507302123382572}
+        reroutePoints: []
+      - fieldName: previousNode
+        node: {fileID: 5795113161418385337}
+        reroutePoints: []
+      - fieldName: previousNode
+        node: {fileID: 7639924187425463628}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  previousNode: {fileID: 0}
+  nextNodes: {fileID: 0}
+  identityType: 0
+  texteType: 0
+  keyText: Dialogue_Francois_Dervaux_BonjourTuEs
+  messagePreview: Hello you are ? Ah ! [PLAYER] ?
+  singleRead: 0
+  hasEnterNodeActions: 0
+  showEnterNodeActions: 0
+  enterNodeActions:
+    actionsList: []
+  hasGameActions: 0
+  showGameActions: 0
+  gameActions:
+    actionsList: []
+  hasRequirements: 0
+  showGameRequirements: 0
+  gameRequirements:
+    requirementsList: []
+--- !u!114 &2348771242085467068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
+  m_Name: Ouais j'avoue qu'on en est content,
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 1832, y: 40}
+  ports:
+    keys:
+    - previousNode
+    - nextNodes
+    values:
+    - _fieldName: previousNode
+      _node: {fileID: 2348771242085467068}
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueTextNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: nextNodes
+        node: {fileID: 5795113161418385337}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: nextNodes
+      _node: {fileID: 2348771242085467068}
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueBaseNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: previousNode
+        node: {fileID: 3949031678284559005}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  previousNode: {fileID: 0}
+  nextNodes: {fileID: 0}
+  identityType: 0
+  texteType: 0
+  keyText: "Dialogue_Fran\xE7ois_Dervaux_OuaisJAvoueQuOnEnEstContent"
+  messagePreview: "Ouais j'avoue qu'on en est content, mais \xE7a sonnerait encore
+    mieux si on avait un ampli adapt\xE9 !"
+  singleRead: 0
+  hasEnterNodeActions: 0
+  showEnterNodeActions: 0
+  enterNodeActions:
+    actionsList: []
+  hasGameActions: 0
+  showGameActions: 0
+  gameActions:
+    actionsList: []
+  hasRequirements: 0
+  showGameRequirements: 0
+  gameRequirements:
+    requirementsList: []
+--- !u!114 &3949031678284559005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
+  m_Name: Celui qu'on a ne nous convient pas,
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 2760, y: 40}
+  ports:
+    keys:
+    - previousNode
+    - nextNodes
+    values:
+    - _fieldName: previousNode
+      _node: {fileID: 3949031678284559005}
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueTextNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: nextNodes
+        node: {fileID: 2348771242085467068}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: nextNodes
+      _node: {fileID: 3949031678284559005}
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueBaseNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  previousNode: {fileID: 0}
+  nextNodes: {fileID: 0}
+  identityType: 0
+  texteType: 0
+  keyText: "Dialogue_Fran\xE7ois_Dervaux_CeluiQuOnANeNousConvientPas"
+  messagePreview: "Celui qu'on a ne nous convient pas, et le rendu n'est pas tout
+    \xE0 fait comme on voudrait. Fred du studio C&P est toujours de bon conseil.
+    Si jamais tu passes l\xE0-bas, tu pourrais lui demander de nous en pr\xEAter
+    un, en lui disant que tu viens de ma part ?"
+  singleRead: 0
+  hasEnterNodeActions: 0
+  showEnterNodeActions: 0
+  enterNodeActions:
+    actionsList: []
+  hasGameActions: 1
+  showGameActions: 1
+  gameActions:
+    actionsList:
+    - actionType: 0
+      hasCondition: 0
+      nodesRequiredToRead: []
+      questToAdd: {fileID: 0}
+      questAssociated: {fileID: 0}
+      questStepToComplete: {fileID: 0}
+      ScooterPopUpData: {fileID: 0}
+      itemToAdd: {fileID: 0}
+      itemToRemove: {fileID: 0}
+      fadeDuration: 0.5
+      fadeOutSwitchDuration: 1
+      newConversantToCall: {fileID: 0}
+      dialogueToLaunch: {fileID: 0}
+      launchDialogueToMainNode: 0
+      boxMessageTextToDisplay: 
+      boxMessageSize: 0
+      iconDataToAdd: {fileID: 0}
+      shakeCameraIntensity: 0
+      shakeCameraDuration: 0
+      focusOn: 0
+      focusValue: 1.4
+  hasRequirements: 0
+  showGameRequirements: 0
+  gameRequirements:
+    requirementsList: []
+--- !u!114 &5795113161418385337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
+  m_Name: Sympa la musique !
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 904, y: 8}
+  ports:
+    keys:
+    - previousNode
+    - nextNodes
+    values:
+    - _fieldName: previousNode
+      _node: {fileID: 5795113161418385337}
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueTextNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: nextNodes
+        node: {fileID: 410351848926416507}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: nextNodes
+      _node: {fileID: 5795113161418385337}
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueBaseNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: previousNode
+        node: {fileID: 2348771242085467068}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  previousNode: {fileID: 0}
+  nextNodes: {fileID: 0}
+  identityType: 1
+  texteType: 0
+  keyText: "Dialogue_Fran\xE7ois_Dervaux_SympaLaMusique"
+  messagePreview: The music sounds good !
+  singleRead: 1
+  hasEnterNodeActions: 0
+  showEnterNodeActions: 0
+  enterNodeActions:
+    actionsList: []
+  hasGameActions: 0
+  showGameActions: 0
+  gameActions:
+    actionsList: []
+  hasRequirements: 1
+  showGameRequirements: 1
+  gameRequirements:
+    requirementsList:
+    - requirementType: 1
+      questToCheck: {fileID: 0}
+      questCheckedValueWanted: 0
+      questToCheckState: 0
+      questAssociatedToCheck: {fileID: 11400000, guid: e62da928601dc8545b2e1b2042a10cbb,
+        type: 2}
+      questStepToCheck: {fileID: 11400000, guid: b2ef848b0e0e0d84290a73e6dbf4930b,
+        type: 2}
+      questStepCheckedValueWanted: 1
+      questStepToCheckState: 1
+      itemToCheck: {fileID: 0}
+      rythmeGameRankRequired: 0
+--- !u!114 &7639924187425463628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
+  m_Name: Je dois y aller.
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 888, y: 344}
+  ports:
+    keys:
+    - previousNode
+    - nextNodes
+    values:
+    - _fieldName: previousNode
+      _node: {fileID: 7639924187425463628}
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueTextNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: nextNodes
+        node: {fileID: 410351848926416507}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: nextNodes
+      _node: {fileID: 7639924187425463628}
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueBaseNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: previousNode
+        node: {fileID: -627037138826635667}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  previousNode: {fileID: 0}
+  nextNodes: {fileID: 0}
+  identityType: 1
+  texteType: 0
+  keyText: "Dialogue_Fran\xE7ois_Dervaux_JeDoisYAller"
+  messagePreview: Je dois y aller.
+  singleRead: 1
+  hasEnterNodeActions: 0
+  showEnterNodeActions: 0
+  enterNodeActions:
+    actionsList: []
+  hasGameActions: 0
+  showGameActions: 0
+  gameActions:
+    actionsList: []
+  hasRequirements: 0
+  showGameRequirements: 0
+  gameRequirements:
+    requirementsList: []
+--- !u!114 &8692507302123382572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
+  m_Name: "Qui \xEAtes-vous ?"
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 936, y: -264}
+  ports:
+    keys:
+    - previousNode
+    - nextNodes
+    values:
+    - _fieldName: previousNode
+      _node: {fileID: 8692507302123382572}
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueTextNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: nextNodes
+        node: {fileID: 410351848926416507}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: nextNodes
+      _node: {fileID: 8692507302123382572}
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueBaseNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: previousNode
+        node: {fileID: -7473681781276582679}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  previousNode: {fileID: 0}
+  nextNodes: {fileID: 0}
+  identityType: 1
+  texteType: 0
+  keyText: "Dialogue_Fran\xE7ois_Dervaux_QuiEtesVous"
+  messagePreview: Who are you ?
+  singleRead: 1
+  hasEnterNodeActions: 0
+  showEnterNodeActions: 0
+  enterNodeActions:
+    actionsList: []
+  hasGameActions: 0
+  showGameActions: 0
+  gameActions:
+    actionsList: []
+  hasRequirements: 0
+  showGameRequirements: 0
+  gameRequirements:
+    requirementsList: []

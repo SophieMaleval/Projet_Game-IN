@@ -46,29 +46,27 @@ namespace AllosiusDev.QuestSystem
 
             foreach (QuestStatus status in GameManager.Instance.questManager.GetStatuses())
             {
-                if (status.GetQuestCompleted() == false)
+                QuestItemUI uiInstance = Instantiate<QuestItemUI>(questPrefab, contentQuests);
+
+                foreach (QuestStepStatus step in status.GetQuestStepStatuses())
                 {
-                    QuestItemUI uiInstance = Instantiate<QuestItemUI>(questPrefab, contentQuests);
-
-                    foreach (QuestStepStatus step in status.GetQuestStepStatuses())
+                    if (step.isUnlocked)
                     {
-                        if (step.isUnlocked)
-                        {
-                            QuestStepItemUI stepUiInstance = Instantiate<QuestStepItemUI>(questStepPrefab, contentQuests);
-                            stepUiInstance.Setup(step);
-                            uiInstance.AddStepsUi(stepUiInstance);
-                        }
+                        QuestStepItemUI stepUiInstance = Instantiate<QuestStepItemUI>(questStepPrefab, contentQuests);
+                        stepUiInstance.Setup(step);
+                        uiInstance.AddStepsUi(stepUiInstance);
                     }
-
-                    Debug.Log("Seup Ui Instance");
-                    uiInstance.Setup(status);
-                    if (GameManager.Instance.gameCanvasManager.questTrackingUi.currentQuestStatusActive == null || GameManager.Instance.gameCanvasManager.questTrackingUi.currentQuestStatusActive == uiInstance.Statuts)
-                    {
-                        GameManager.Instance.gameCanvasManager.questTrackingUi.SetQuestTrackingState(true, uiInstance.Statuts);
-                    }
-                    questsUi.Add(uiInstance);
                 }
-                else
+
+                Debug.Log("Seup Ui Instance");
+                uiInstance.Setup(status);
+                if (GameManager.Instance.gameCanvasManager.questTrackingUi.currentQuestStatusActive == null || GameManager.Instance.gameCanvasManager.questTrackingUi.currentQuestStatusActive == uiInstance.Statuts)
+                {
+                    GameManager.Instance.gameCanvasManager.questTrackingUi.SetQuestTrackingState(true, uiInstance.Statuts);
+                }
+                questsUi.Add(uiInstance);
+
+                if (status.GetQuestCompleted())
                 {
                     if (GameManager.Instance.gameCanvasManager.questTrackingUi.currentQuestStatusActive != null)
                     {

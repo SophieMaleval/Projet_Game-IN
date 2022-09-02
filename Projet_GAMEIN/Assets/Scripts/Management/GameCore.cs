@@ -20,6 +20,9 @@ public class GameCore : Singleton<GameCore>
 
     public AudioData MainMusic => mainMusic;
 
+    public LocationZone currentZone { get; set; }
+
+    public AudioData currentZoneAmbient { get; set; }
 
     public Vector2 OldLastMovePlayer { get; set; }
 
@@ -158,6 +161,22 @@ public class GameCore : Singleton<GameCore>
             {
                 onDezoomActive.Invoke();
             }
+        }
+    }
+
+    public void SetCurrentZone(LocationZone newZone, AudioData newAmbientZone)
+    {
+        if(currentZoneAmbient != null)
+        {
+            AudioController.Instance.StopAudio(currentZoneAmbient);
+        }
+
+        currentZone = newZone;
+        currentZoneAmbient = newAmbientZone;
+
+        if (currentZoneAmbient != null)
+        {
+            AudioController.Instance.PlayAudio(currentZoneAmbient);
         }
     }
 

@@ -129,12 +129,13 @@ public class PlayerScript : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.I))
+        //Fonction Debug :
+        /*if(Input.GetKeyDown(KeyCode.I))
         {
             debug.gameObject.SetActive(!debug.gameObject.activeSelf);
             textDebug1.gameObject.SetActive(!textDebug1.gameObject.activeSelf);
             textDebug2.gameObject.SetActive(!textDebug2.gameObject.activeSelf);
-        }
+        }*/
     }
 
     public void SwitchInputSprite(Transform parentObject, Vector3 posOffset)

@@ -102,7 +102,8 @@ namespace AllosiusDev.QuestSystem
         {
             if (isOpen)
             {
-                GameManager.Instance.gameCanvasManager.questTrackingUi.SetQuestTrackingState(true, this.statuts);
+                if(this.statuts.GetQuestCompleted() == false)
+                    GameManager.Instance.gameCanvasManager.questTrackingUi.SetQuestTrackingState(true, this.statuts);
 
                 listArrow.GetComponent<RectTransform>().localEulerAngles = new Vector3(0, 0, 0);
                 listArrow.sprite = listOpenIcon;

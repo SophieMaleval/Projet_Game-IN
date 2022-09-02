@@ -454,7 +454,7 @@ namespace AllosiusDev
 
             private IEnumerator CoroutineResetAudio(AudioSource source, AudioClip _clip)
             {
-                if(source.clip != null)
+                if(source.clip != null && source.loop == false)
                 {
                     Debug.Log(source.clip.name);
                     yield return new WaitForSeconds(source.clip.length + 0.1f);
@@ -465,7 +465,13 @@ namespace AllosiusDev
                         {
                             if (pauseStates[source] == false)
                             {
-                                source.clip = null;
+                                yield return new WaitForSeconds(source.clip.length + 0.1f);
+
+                                if (source.clip == _clip && source.isPlaying == false)
+                                {
+                                    source.clip = null;
+                                }
+
                             }
                         }
                     }

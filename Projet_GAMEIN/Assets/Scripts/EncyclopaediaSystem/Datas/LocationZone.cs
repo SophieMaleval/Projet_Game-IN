@@ -16,4 +16,6 @@ public class LocationZone : ScriptableObject
     public ZoneType zoneType;
 
     public Color zoneColor;
+
+    public string zoneName;
 }

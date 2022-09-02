@@ -5,6 +5,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using TMPro;
+using AllosiusDev.TranslationSystem;
+using DG.Tweening;
 
 public class GameCanvasManager : MonoBehaviour
 {
@@ -35,6 +38,9 @@ public class GameCanvasManager : MonoBehaviour
 
     public EventSystem eventSystem { get; set; }
 
+    public CanvasGroup TitleBanner => titleBanner;
+    public ToTranslateObject TitleBannerText => titleBannerText;
+
     #endregion
 
     #region UnityInspector
@@ -51,6 +57,9 @@ public class GameCanvasManager : MonoBehaviour
 
     [SerializeField] private MessageBox messageBox;
 
+    [SerializeField] private CanvasGroup titleBanner;
+    [SerializeField] private ToTranslateObject titleBannerText;
+
     #endregion
 
     #region Behaviour
@@ -60,6 +69,8 @@ public class GameCanvasManager : MonoBehaviour
         GameManager.Instance.gameCanvasManager = this;
 
         darkScreen.gameObject.SetActive(false);
+
+        titleBanner.gameObject.SetActive(false);
     }
 
     private void Update()
@@ -76,6 +87,32 @@ public class GameCanvasManager : MonoBehaviour
                 eventSystem.SetSelectedGameObject(eventSystemCurrentObjectSelected);
             }
         }
+    }
+
+    public IEnumerator SetTitleBannerActivation(bool value, string keyTrad, float transitionAnimDuration)
+    {
+        titleBannerText.SetTranslationKey(keyTrad, TypeDictionary.GeneralsUI);
+        titleBanner.gameObject.SetActive(value);
+        if(value)
+        {
+            FadeInUI(titleBanner, transitionAnimDuration);
+
+            yield return new WaitForSeconds(transitionAnimDuration);
+
+            FadeOutUI(titleBanner, transitionAnimDuration);
+
+            titleBanner.gameObject.SetActive(false);
+        }
+    }
+
+    public void FadeOutUI(CanvasGroup canvasGroup, float transitionAnimDuration)
+    {
+        canvasGroup.DOFade(0, transitionAnimDuration);
+    }
+
+    public void FadeInUI(CanvasGroup canvasGroup, float transitionAnimDuration)
+    {
+        canvasGroup.DOFade(1, transitionAnimDuration);
     }
 
     public MessageBox CreateMessageBox(string message, float boxSize, bool isChoiceBox = false)

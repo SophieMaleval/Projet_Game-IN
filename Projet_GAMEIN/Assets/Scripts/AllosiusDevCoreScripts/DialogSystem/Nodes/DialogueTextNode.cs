@@ -15,6 +15,8 @@ namespace AllosiusDev.DialogSystem
     {
         #region Fields
 
+        private bool globalAlreadyRead;
+
         private bool alreadyRead;
 
         #endregion
@@ -59,9 +61,19 @@ namespace AllosiusDev.DialogSystem
 
         #region Functions
 
+        public bool GetGlobalAlreadyRead()
+        {
+            return globalAlreadyRead;
+        }
+
         public bool GetAlreadyRead()
         {
             return alreadyRead;
+        }
+
+        public void SetGlobalAlreadyRead(bool value)
+        {
+            globalAlreadyRead = value;
         }
 
         public void SetAlreadyReadValue(bool value)

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class InventoryButtonCtrl : ButtonCtrl
 {
@@ -11,6 +12,11 @@ public class InventoryButtonCtrl : ButtonCtrl
     [SerializeField] private Sprite spriteLocked;
 
     [SerializeField] private ChildrenImage[] childrenImages;
+
+    [SerializeField] private TextMeshProUGUI dezoomText;
+
+    [SerializeField] private string dezoomLabel;
+    [SerializeField] private string zoomLabel;
 
     #endregion
 
@@ -27,6 +33,19 @@ public class InventoryButtonCtrl : ButtonCtrl
     #endregion
 
     #region Behaviour
+
+    public void SetZoomText(bool isZoom)
+    {
+        if(isZoom)
+        {
+            dezoomText.text = zoomLabel;
+        }
+        else
+        {
+            dezoomText.text = dezoomLabel;
+        }
+        
+    }
 
     public void SetLockedState(bool value)
     {

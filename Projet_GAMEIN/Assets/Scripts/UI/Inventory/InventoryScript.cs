@@ -151,6 +151,8 @@ public class InventoryScript : MonoBehaviour
         if (GameCore.Instance != null && GameManager.Instance.zoomActive == false)
         {
             GameCore.Instance.Zoom(GameCore.Instance.dezoomTouchActive);
+
+            dezoomButton.SetZoomText(GameCore.Instance.dezoomTouchActive);
         }
     }
 
