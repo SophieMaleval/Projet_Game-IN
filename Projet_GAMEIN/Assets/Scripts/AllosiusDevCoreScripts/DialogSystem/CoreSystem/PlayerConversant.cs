@@ -27,6 +27,8 @@ namespace AllosiusDev.DialogSystem
 
         #region Properties
 
+        public bool canConvers { get; set; }
+
         public bool canDialog { get; set; }
 
         public DialogueTextNode currentNode { get; set; }
@@ -50,6 +52,8 @@ namespace AllosiusDev.DialogSystem
             playerScript = GetComponent<PlayerScript>();
 
             canDialog = true;
+
+            canConvers = true;
         }
 
         /// <summary>

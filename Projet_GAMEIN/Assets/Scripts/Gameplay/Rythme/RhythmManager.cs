@@ -136,7 +136,9 @@ public class RhythmManager : MonoBehaviour
         }*/
 
         Debug.Log("MiniGame Enable");
-        player.StartActivity();          
+        player.StartActivity();
+
+        player.GetComponent<PlayerConversant>().canConvers = false;
 
         OldPlayerPosition = player.transform.position ;   
         player.GiveGoodAnimation(new Vector2(0,-1f));            
@@ -320,7 +322,9 @@ public class RhythmManager : MonoBehaviour
         //player.GetComponent<PlayerScript>().LunchFadeOut();
         player.enabled = true ;        
         
-        player.EndActivity();             
+        player.EndActivity();
+
+        player.GetComponent<PlayerConversant>().canConvers = true;
 
         if (gameActions.actionsList.Count > 0)
         {

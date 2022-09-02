@@ -40,6 +40,8 @@ public class PlayerMovement : MonoBehaviour
     private bool m_isMovingVertically = false;
     private bool m_isMovingHorizontally = false;
 
+    private Vector2 move;
+
     #endregion
 
     #region Properties
@@ -141,6 +143,7 @@ public class PlayerMovement : MonoBehaviour
         scene = SceneManager.GetActiveScene();
 
         ProcessInputs();
+        CheckMoveValue();
         Animate(); 
     }
 
@@ -254,7 +257,8 @@ public class PlayerMovement : MonoBehaviour
 
     void ProcessInputs()
     {
-        Vector2 Move = Vector2.zero;
+        //Debug.Log("Process Inputs");
+        move = Vector2.zero;
 
         //Vector2 moveLand = PlayerActionControllers.PlayerInLand.Move.ReadValue<Vector2>();
 
@@ -280,7 +284,7 @@ public class PlayerMovement : MonoBehaviour
             if (vertical == 0f && horizontal == 0f)
             {
                 m_lastDirection = EDirection.NONE;
-                if ((Move.x == 0 && Move.y == 0) && MoveDirection.x != 0 || MoveDirection.y != 0)
+                if ((move.x == 0 && move.y == 0) && MoveDirection.x != 0 || MoveDirection.y != 0)
                     LastMoveDirection = MoveDirection;
                 MoveDirection = Vector2.zero;
                 return;
@@ -314,14 +318,14 @@ public class PlayerMovement : MonoBehaviour
 
 
 
-            Move = Vector2.zero;
+            move = Vector2.zero;
             switch (m_lastDirection)
             {
                 case EDirection.VERTICAL:
-                    Move = (vertical * Vector2.up).normalized;
+                    move = (vertical * Vector2.up).normalized;
                     break;
                 case EDirection.HORIZONTAL:
-                    Move = (horizontal * Vector2.right).normalized;
+                    move = (horizontal * Vector2.right).normalized;
                     break;
                 default:
                     break;
@@ -348,25 +352,25 @@ public class PlayerMovement : MonoBehaviour
                 if(PlayerNeedInitialePosition)
                 {
                     PlayerNeedInitialePosition = false ;                    
-                    Move = new Vector2(0, -1f);
+                    move = new Vector2(0, -1f);
                 } 
 
                 if(PlayerNeedLookUp)
                 {
                     PlayerNeedLookUp = false ;   
-                    Move = new Vector2(0, 1f);
+                    move = new Vector2(0, 1f);
                 } 
 
                 if(PlayerNeedLookLeft)
                 {
                     PlayerNeedLookLeft = false ;   
-                    Move = new Vector2(-1f, 0f);
+                    move = new Vector2(-1f, 0f);
                 } 
 
                 if(PlayerNeedLookRight)
                 {
                     PlayerNeedLookRight = false ;   
-                    Move = new Vector2(1f, 0f);
+                    move = new Vector2(1f, 0f);
                 } 
                 MakePlayerInGoodSens = false ;  
                 PlayerChangeScene = false ;                 
@@ -375,20 +379,12 @@ public class PlayerMovement : MonoBehaviour
 
 
 
-        if((Move.x == 0 && Move.y == 0) && MoveDirection.x != 0 || MoveDirection.y != 0)
-            LastMoveDirection = MoveDirection ;    
+        if((move.x == 0 && move.y == 0) && MoveDirection.x != 0 || MoveDirection.y != 0)
+            LastMoveDirection = MoveDirection ;
 
+        
 
-        if((Move.x != 0 || Move.y != 0) && OnScooter == true && PlayOneShotClip == false)
-        {
-            ScootMovingForward();
-        }  
-        if((Move.x == 0 && Move.y == 0) && OnScooter == true && PlayOneShotClip == true)
-        {
-            ScootNotMoving();
-        }
-
-        MoveDirection = Move;
+        MoveDirection = move;
 
         //MoveDirection = Move.normalized ;
         //if((Move.x != 0 && Move.y != 0) || (Move.x == 0 && Move.y == 0)) MoveDirection = new Vector2 (0, 0).normalized ;
@@ -404,6 +400,20 @@ public class PlayerMovement : MonoBehaviour
                 PlayerRenderers[i].flipX = true ; 
             if(MoveDirection.x > 0 || MoveDirection.y != 0)        
                 PlayerRenderers[i].flipX = false ;     
+        }
+    }
+
+    private void CheckMoveValue()
+    {
+        Debug.Log(move + " " + MoveDirection);
+
+        if ((move.x != 0 || move.y != 0) && OnScooter == true && PlayOneShotClip == false)
+        {
+            ScootMovingForward();
+        }
+        if ((move.x == 0 && move.y == 0) && OnScooter == true && PlayOneShotClip == true)
+        {
+            ScootNotMoving();
         }
     }
 
@@ -433,10 +443,11 @@ public class PlayerMovement : MonoBehaviour
     }
 
     void ScootMovingForward() {
-        PlayOneShotClip = true; 
+        PlayOneShotClip = true;
 
         //ScooterMoving.Play();
         //ScooterStop.Stop();
+        Debug.Log("Scoot Moving Forward");
         AudioController.Instance.PlayAudio(sfxScooterMoving);
         AudioController.Instance.StopAudio(sfxScooterStop);
     }

@@ -126,20 +126,24 @@ namespace AllosiusDev.DialogSystem
                 return;
             }
 
-            Debug.Log("Player Start Dialogue");
-            GameManager.Instance.player.GetComponent<PlayerConversant>().StartDialog(this, npcDialogue);
-
-            if(npcData != null)
+            if(GameManager.Instance.player.GetComponent<PlayerConversant>().canConvers)
             {
-                GameManager.Instance.npcList.NpcTalked(npcData);
+                Debug.Log("Player Start Dialogue");
+                GameManager.Instance.player.GetComponent<PlayerConversant>().StartDialog(this, npcDialogue);
+
+                if (npcData != null)
+                {
+                    GameManager.Instance.npcList.NpcTalked(npcData);
+                }
             }
+            
         }
 
 
         private void OnTriggerEnter2D(Collider2D other)
         {
             PlayerScript player = other.GetComponent<PlayerScript>();
-            if (player != null)
+            if (player != null && player.GetComponent<PlayerConversant>().canConvers)
             {
                 PlayerAround = true;
                 GameManager.Instance.player.SwitchInputSprite(transform, interactableElement.interactableSpritePosOffset);
@@ -149,7 +153,7 @@ namespace AllosiusDev.DialogSystem
         private void OnTriggerExit2D(Collider2D other)
         {
             PlayerScript player = other.GetComponent<PlayerScript>();
-            if (player != null)
+            if (player != null && player.GetComponent<PlayerConversant>().canConvers)
             {
                 PlayerAround = false;
                 GameManager.Instance.player.SwitchInputSprite(transform, interactableElement.interactableSpritePosOffset);
