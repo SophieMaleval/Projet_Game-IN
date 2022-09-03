@@ -162,6 +162,8 @@ public class GameCore : Singleton<GameCore>
                 onDezoomActive.Invoke();
             }
         }
+
+        GameManager.Instance.gameCanvasManager.inventory.DezoomButton.SetZoomText(dezoomTouchActive);
     }
 
     public void SetCurrentZone(LocationZone newZone, AudioData newAmbientZone)
