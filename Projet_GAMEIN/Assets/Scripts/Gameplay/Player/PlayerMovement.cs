@@ -42,6 +42,11 @@ public class PlayerMovement : MonoBehaviour
 
     private Vector2 move;
 
+    public ParticleSystem smokeExplosion;
+    public ParticleSystem scooterSmoke01;
+    public ParticleSystem scooterSmoke02;
+    
+
     #endregion
 
     #region Properties
@@ -134,8 +139,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start() 
     {
-        PlayerActionControllers.PlayerInScoot.Disable() ; 
+        PlayerActionControllers.PlayerInScoot.Disable() ;
         //PlayerActionControllers.PlayerInLand.Disable() ;   
+        
     }
 
     void Update()
@@ -152,6 +158,7 @@ public class PlayerMovement : MonoBehaviour
         if(ctx.performed)
         {
             ChangeScootState(true);
+            Explosion();
         }    
     }
     public void OnExitScoot (InputAction.CallbackContext ctx )
@@ -440,6 +447,10 @@ public class PlayerMovement : MonoBehaviour
         AudioController.Instance.PlayAudio(sfxScooterStop);
         //ScooterMoving.Stop();
         AudioController.Instance.StopAudio(sfxScooterMoving);
+        var smoke01 = scooterSmoke01.emission;
+        var smoke02 = scooterSmoke02.emission;
+        smoke01.rateOverTime = 2f;
+        smoke02.rateOverTime = 1f;
     }
 
     void ScootMovingForward() {
@@ -450,6 +461,10 @@ public class PlayerMovement : MonoBehaviour
         Debug.Log("Scoot Moving Forward");
         AudioController.Instance.PlayAudio(sfxScooterMoving);
         AudioController.Instance.StopAudio(sfxScooterStop);
+        var smoke01 = scooterSmoke01.emission;
+        var smoke02 = scooterSmoke02.emission;
+        smoke01.rateOverTime = 6.75f;
+        smoke02.rateOverTime = 4f;
     }
     
 
@@ -500,6 +515,11 @@ public class PlayerMovement : MonoBehaviour
     {
         for (int i = 0; i < Animators.Count; i++)
         {    Animators[i].Rebind();  }
+    }
+
+    public void Explosion()
+    {
+        smokeExplosion.Play();
     }
 
     #endregion
