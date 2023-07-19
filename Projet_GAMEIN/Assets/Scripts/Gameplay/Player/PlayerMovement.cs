@@ -54,6 +54,8 @@ public class PlayerMovement : MonoBehaviour
     public bool PlayerChangeScene { get; set; }
     public bool MakePlayerInGoodSens { get; set; }
 
+    public bool MakeSmokeInGoodSens { get; set; }
+
     public bool PlayerNeedInitialePosition { get; set; }
     public bool PlayerNeedLookUp { get; set; }
     public bool PlayerNeedLookRight { get; set; }
@@ -358,7 +360,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 if(PlayerNeedInitialePosition)
                 {
-                    PlayerNeedInitialePosition = false ;                    
+                    PlayerNeedInitialePosition = false ;             
                     move = new Vector2(0, -1f);
                 } 
 
@@ -506,8 +508,6 @@ public class PlayerMovement : MonoBehaviour
 
         MakePlayerInGoodSens = true ;
     }
-
-  
 
        
 
