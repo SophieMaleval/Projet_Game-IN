@@ -8,6 +8,8 @@
     VillagePlage,
     VillageVille,
     VillageZoneIndustrielle,
+    TestLevelArtVille,
+    TestRoom,
     Entreprise1P2P,
     Entreprise2054,
     EntrepriseAccidentalQueens,
