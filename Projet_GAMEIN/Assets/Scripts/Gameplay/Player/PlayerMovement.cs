@@ -42,12 +42,19 @@ public class PlayerMovement : MonoBehaviour
 
     private Vector2 move;
 
+    public ParticleSystem smokeExplosion;
+    public ParticleSystem scooterSmoke01;
+    public ParticleSystem scooterSmoke02;
+    
+
     #endregion
 
     #region Properties
 
     public bool PlayerChangeScene { get; set; }
     public bool MakePlayerInGoodSens { get; set; }
+
+    public bool MakeSmokeInGoodSens { get; set; }
 
     public bool PlayerNeedInitialePosition { get; set; }
     public bool PlayerNeedLookUp { get; set; }
@@ -134,8 +141,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start() 
     {
-        PlayerActionControllers.PlayerInScoot.Disable() ; 
+        PlayerActionControllers.PlayerInScoot.Disable() ;
         //PlayerActionControllers.PlayerInLand.Disable() ;   
+        
     }
 
     void Update()
@@ -152,13 +160,21 @@ public class PlayerMovement : MonoBehaviour
         if(ctx.performed)
         {
             ChangeScootState(true);
-        }    
+            
+            scooterSmoke01.Play();
+            scooterSmoke02.Play();
+            
+                
+        }
+        
     }
     public void OnExitScoot (InputAction.CallbackContext ctx )
     {
         if(ctx.performed)
         {
             ChangeScootState(false);
+            scooterSmoke01.Stop();
+            scooterSmoke02.Stop();
         }
     }
 
@@ -179,6 +195,8 @@ public class PlayerMovement : MonoBehaviour
                     PlayerActionControllers.PlayerInScoot.Disable();
                     PlayerActionControllers.PlayerInLand.Enable();
                     switchScootState(false);
+                    scooterSmoke01.Stop();
+                    scooterSmoke02.Stop();
                 }
             }
         }   
@@ -196,6 +214,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 Animators[0].SetTrigger("InScoot");
                 AudioController.Instance.PlayAudio(sfxScooterStop);
+                Explosion();
             }
             else
             {
@@ -351,7 +370,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 if(PlayerNeedInitialePosition)
                 {
-                    PlayerNeedInitialePosition = false ;                    
+                    PlayerNeedInitialePosition = false ;             
                     move = new Vector2(0, -1f);
                 } 
 
@@ -440,6 +459,10 @@ public class PlayerMovement : MonoBehaviour
         AudioController.Instance.PlayAudio(sfxScooterStop);
         //ScooterMoving.Stop();
         AudioController.Instance.StopAudio(sfxScooterMoving);
+        var smoke01 = scooterSmoke01.emission;
+        var smoke02 = scooterSmoke02.emission;
+        smoke01.rateOverTime = 2f;
+        smoke02.rateOverTime = 1f;
     }
 
     void ScootMovingForward() {
@@ -450,6 +473,10 @@ public class PlayerMovement : MonoBehaviour
         Debug.Log("Scoot Moving Forward");
         AudioController.Instance.PlayAudio(sfxScooterMoving);
         AudioController.Instance.StopAudio(sfxScooterStop);
+        var smoke01 = scooterSmoke01.emission;
+        var smoke02 = scooterSmoke02.emission;
+        smoke01.rateOverTime = 6.75f;
+        smoke02.rateOverTime = 4f;
     }
     
 
@@ -492,14 +519,17 @@ public class PlayerMovement : MonoBehaviour
         MakePlayerInGoodSens = true ;
     }
 
-  
-
        
 
     void RebindAnimation()
     {
         for (int i = 0; i < Animators.Count; i++)
         {    Animators[i].Rebind();  }
+    }
+
+    public void Explosion()
+    {
+        smokeExplosion.Play();
     }
 
     #endregion
