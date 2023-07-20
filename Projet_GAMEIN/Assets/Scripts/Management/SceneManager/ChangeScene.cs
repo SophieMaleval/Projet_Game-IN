@@ -87,6 +87,8 @@ public class ChangeScene : MonoBehaviour
             if(PM.OnScooter)
             {
                 PM.switchScootState(false);
+                PM.scooterSmoke01.Stop();
+                PM.scooterSmoke02.Stop();
             }
 
             PM.StartActivity();
