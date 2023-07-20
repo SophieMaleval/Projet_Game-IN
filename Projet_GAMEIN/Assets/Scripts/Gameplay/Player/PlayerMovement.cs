@@ -160,14 +160,21 @@ public class PlayerMovement : MonoBehaviour
         if(ctx.performed)
         {
             ChangeScootState(true);
-            Explosion();
-        }    
+            
+            scooterSmoke01.Play();
+            scooterSmoke02.Play();
+            
+                
+        }
+        
     }
     public void OnExitScoot (InputAction.CallbackContext ctx )
     {
         if(ctx.performed)
         {
             ChangeScootState(false);
+            scooterSmoke01.Stop();
+            scooterSmoke02.Stop();
         }
     }
 
@@ -188,6 +195,8 @@ public class PlayerMovement : MonoBehaviour
                     PlayerActionControllers.PlayerInScoot.Disable();
                     PlayerActionControllers.PlayerInLand.Enable();
                     switchScootState(false);
+                    scooterSmoke01.Stop();
+                    scooterSmoke02.Stop();
                 }
             }
         }   
@@ -205,6 +214,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 Animators[0].SetTrigger("InScoot");
                 AudioController.Instance.PlayAudio(sfxScooterStop);
+                Explosion();
             }
             else
             {
