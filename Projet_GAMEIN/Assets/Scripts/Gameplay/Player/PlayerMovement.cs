@@ -45,7 +45,9 @@ public class PlayerMovement : MonoBehaviour
     public ParticleSystem smokeExplosion;
     public ParticleSystem scooterSmoke01;
     public ParticleSystem scooterSmoke02;
-    
+    public ParticleSystemRenderer scooterSmoke01bis;
+    public ParticleSystemRenderer scooterSmoke02bis;
+
 
     #endregion
 
@@ -160,11 +162,8 @@ public class PlayerMovement : MonoBehaviour
         if(ctx.performed)
         {
             ChangeScootState(true);
-            
             scooterSmoke01.Play();
             scooterSmoke02.Play();
-            
-                
         }
         
     }
@@ -190,6 +189,8 @@ public class PlayerMovement : MonoBehaviour
             }
             else
             {
+                
+                
                 if (OnScooter)
                 {
                     PlayerActionControllers.PlayerInScoot.Disable();
@@ -197,7 +198,10 @@ public class PlayerMovement : MonoBehaviour
                     switchScootState(false);
                     scooterSmoke01.Stop();
                     scooterSmoke02.Stop();
+                    
                 }
+
+             
             }
         }   
     }
@@ -221,8 +225,9 @@ public class PlayerMovement : MonoBehaviour
                 Animators[0].SetTrigger("OnWalk");
                 AudioController.Instance.StopAudio(sfxScooterStop);
                 AudioController.Instance.StopAudio(sfxScooterMoving);
+                Explosion();
             }
-            
+
         }
 
         if(!OnScooter) Animators[0].GetComponent<SpriteRenderer>().color = ColorsDisplay[0];
@@ -394,11 +399,35 @@ public class PlayerMovement : MonoBehaviour
                 MakePlayerInGoodSens = false ;  
                 PlayerChangeScene = false ;                 
             }
-      //  }
+        //  }
+        if (MoveDirection == Vector2.down)
+        {
+            scooterSmoke01bis.sortingOrder = -1;
+            scooterSmoke02bis.sortingOrder = -1;
+            scooterSmoke01.transform.localPosition = new Vector2(0, 0);
+        }
+        if (MoveDirection == Vector2.up)
+        {
+
+            scooterSmoke01bis.sortingOrder = 1;
+            scooterSmoke02bis.sortingOrder = 1;
+            scooterSmoke01.transform.localPosition = new Vector2(0, -0.3f);
+        }
+        if (MoveDirection == Vector2.right)
+        {
+            scooterSmoke01bis.sortingOrder = -1;
+            scooterSmoke02bis.sortingOrder = 1;
+            scooterSmoke01.transform.localPosition = new Vector2(-0.3f, -0.2f);
+        }
+        if (MoveDirection == Vector2.left)
+        {
+            scooterSmoke01bis.sortingOrder = -1;
+            scooterSmoke02bis.sortingOrder = 1;
+            scooterSmoke01.transform.localPosition = new Vector2(0.3f, -0.2f);
+        }
 
 
-
-        if((move.x == 0 && move.y == 0) && MoveDirection.x != 0 || MoveDirection.y != 0)
+        if ((move.x == 0 && move.y == 0) && MoveDirection.x != 0 || MoveDirection.y != 0)
             LastMoveDirection = MoveDirection ;
 
         
