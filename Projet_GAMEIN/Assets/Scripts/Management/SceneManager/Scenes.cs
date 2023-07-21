@@ -8,7 +8,7 @@
     VillagePlage,
     VillageVille,
     VillageZoneIndustrielle,
-    TestLevelArtVille,
+    TestVille,
     TestRoom,
     Entreprise1P2P,
     Entreprise2054,
