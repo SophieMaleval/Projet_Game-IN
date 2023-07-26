@@ -126,7 +126,9 @@ public class ChangeScene : MonoBehaviour
     Vector2 GiveNewPos()
     {
         BoxCollider2D BCol2D = GetComponent<BoxCollider2D>() ;
-        Vector2 PositionSpawn = new Vector2(transform.position.x + BCol2D.offset.x, transform.localPosition.y + BCol2D.offset.y - 0.5f) ;
+        Debug.Log(BCol2D.name);
+        Vector2 PositionSpawn = new Vector2(transform.position.x + BCol2D.offset.x, transform.position.y + BCol2D.offset.y - 0.5f) ;
+        Debug.Log(transform.position + " " + BCol2D.offset + " " + PositionSpawn);
         return PositionSpawn ;
     }
 
