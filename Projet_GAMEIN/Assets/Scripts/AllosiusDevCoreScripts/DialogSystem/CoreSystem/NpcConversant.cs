@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 
 namespace AllosiusDev.DialogSystem
 {
-    [RequireComponent(typeof(InteractableElement))]
+    //[RequireComponent(typeof(InteractableElement))]
     public class NpcConversant : MonoBehaviour
     {
 
