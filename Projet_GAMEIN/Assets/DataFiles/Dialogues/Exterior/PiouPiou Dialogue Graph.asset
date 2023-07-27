@@ -16,7 +16,7 @@ MonoBehaviour:
   - {fileID: 8232354507905062531}
   displayName: Mme PiouPiou Dialogue
   description: 
-  mainNodeParent: {fileID: 8232354507905062531}
+  mainNodeParent: {fileID: 0}
 --- !u!114 &8232354507905062531
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27,7 +27,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
-  m_Name: Je vend des frites
+  m_Name: Piou Piou descend maintenant
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
   position: {x: -248, y: -120}
@@ -57,18 +57,81 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 0
-  texteType: 0
+  texteType: 2
   keyText: Dialogue_PiouPiou_descend_maintenant
-  messagePreview: Cui Cui! Hurry up and get down !
+  messagePreview: Piou Piou ! Descend d'ici tout de suite !
   singleRead: 0
-  hasEnterNodeActions: 0
-  showEnterNodeActions: 0
+  hasEnterNodeActions: 1
+  showEnterNodeActions: 1
   enterNodeActions:
-    actionsList: []
-  hasGameActions: 0
-  showGameActions: 0
+    actionsList:
+    - actionType: 11
+      hasCondition: 0
+      nodesRequiredToRead: []
+      questToAdd: {fileID: 0}
+      questAssociated: {fileID: 0}
+      questStepToComplete: {fileID: 0}
+      ScooterPopUpData: {fileID: 0}
+      itemToAdd: {fileID: 0}
+      itemToRemove: {fileID: 0}
+      fadeDuration: 0.5
+      fadeOutSwitchDuration: 1
+      newConversantToCall: {fileID: 0}
+      dialogueToLaunch: {fileID: 0}
+      launchDialogueToMainNode: 0
+      boxMessageTextToDisplay: 
+      boxMessageSize: 0
+      iconDataToAdd: {fileID: 0}
+      shakeCameraIntensity: 10
+      shakeCameraDuration: 1.2
+      focusOn: 0
+      focusValue: 1.4
+    - actionType: 12
+      hasCondition: 0
+      nodesRequiredToRead: []
+      questToAdd: {fileID: 0}
+      questAssociated: {fileID: 0}
+      questStepToComplete: {fileID: 0}
+      ScooterPopUpData: {fileID: 0}
+      itemToAdd: {fileID: 0}
+      itemToRemove: {fileID: 0}
+      fadeDuration: 0.5
+      fadeOutSwitchDuration: 1
+      newConversantToCall: {fileID: 0}
+      dialogueToLaunch: {fileID: 0}
+      launchDialogueToMainNode: 0
+      boxMessageTextToDisplay: 
+      boxMessageSize: 0
+      iconDataToAdd: {fileID: 0}
+      shakeCameraIntensity: 0
+      shakeCameraDuration: 0
+      focusOn: 1
+      focusValue: 1.4
+  hasGameActions: 1
+  showGameActions: 1
   gameActions:
-    actionsList: []
+    actionsList:
+    - actionType: 12
+      hasCondition: 0
+      nodesRequiredToRead: []
+      questToAdd: {fileID: 0}
+      questAssociated: {fileID: 0}
+      questStepToComplete: {fileID: 0}
+      ScooterPopUpData: {fileID: 0}
+      itemToAdd: {fileID: 0}
+      itemToRemove: {fileID: 0}
+      fadeDuration: 0.5
+      fadeOutSwitchDuration: 1
+      newConversantToCall: {fileID: 0}
+      dialogueToLaunch: {fileID: 0}
+      launchDialogueToMainNode: 0
+      boxMessageTextToDisplay: 
+      boxMessageSize: 0
+      iconDataToAdd: {fileID: 0}
+      shakeCameraIntensity: 0
+      shakeCameraDuration: 0
+      focusOn: 0
+      focusValue: 1.4
   hasRequirements: 0
   showGameRequirements: 0
   gameRequirements:
