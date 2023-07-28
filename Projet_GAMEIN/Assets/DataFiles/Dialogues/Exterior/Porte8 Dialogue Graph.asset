@@ -1,6 +1,23 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-7097372564391202750
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c135d5abc97ad74e959ab5b6aa5d6eb, type: 3}
+  m_Name: Porte8 Dialogue Graph
+  m_EditorClassIdentifier: 
+  nodes:
+  - {fileID: 7874865334238033434}
+  displayName: Porte Dialogue
+  description: 
+  mainNodeParent: {fileID: 0}
+--- !u!114 &7874865334238033434
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -13,14 +30,14 @@ MonoBehaviour:
   m_Name: Dialogue Text
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -110, y: -64.5}
+  position: {x: 144.2708, y: 498.25}
   ports:
     keys:
     - previousNode
     - nextNodes
     values:
     - _fieldName: previousNode
-      _node: {fileID: -7097372564391202750}
+      _node: {fileID: 7874865334238033434}
       _typeQualifiedName: AllosiusDev.DialogSystem.DialogueTextNode, Assembly-CSharp,
         Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections: []
@@ -29,7 +46,7 @@ MonoBehaviour:
       _typeConstraint: 0
       _dynamic: 0
     - _fieldName: nextNodes
-      _node: {fileID: -7097372564391202750}
+      _node: {fileID: 7874865334238033434}
       _typeQualifiedName: AllosiusDev.DialogSystem.DialogueBaseNode, Assembly-CSharp,
         Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections: []
@@ -41,8 +58,8 @@ MonoBehaviour:
   nextNodes: {fileID: 0}
   identityType: 0
   texteType: 0
-  keyText: Dialogue_Porte1
-  messagePreview: Dialogue_Porte1
+  keyText: Dialogue_Porte8
+  messagePreview: Dialogue_Porte8
   singleRead: 0
   hasEnterNodeActions: 0
   showEnterNodeActions: 0
@@ -56,20 +73,3 @@ MonoBehaviour:
   showGameRequirements: 0
   gameRequirements:
     requirementsList: []
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c135d5abc97ad74e959ab5b6aa5d6eb, type: 3}
-  m_Name: Porte1 Dialogue Graph
-  m_EditorClassIdentifier: 
-  nodes:
-  - {fileID: -7097372564391202750}
-  displayName: Porte Dialogue
-  description: 
-  mainNodeParent: {fileID: 0}

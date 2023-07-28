@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-3669349809944676377
+--- !u!114 &-6094704232157208745
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -10,45 +10,42 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
-  m_Name: Je vend des frites
+  m_Name: Dialogue Text
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 440, y: -120}
+  position: {x: 1704, y: 504}
   ports:
     keys:
     - previousNode
     - nextNodes
     values:
     - _fieldName: previousNode
-      _node: {fileID: -3669349809944676377}
+      _node: {fileID: -6094704232157208745}
       _typeQualifiedName: AllosiusDev.DialogSystem.DialogueTextNode, Assembly-CSharp,
         Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: nextNodes
-        node: {fileID: 8232354507905062531}
+        node: {fileID: 7636430957996584238}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
     - _fieldName: nextNodes
-      _node: {fileID: -3669349809944676377}
+      _node: {fileID: -6094704232157208745}
       _typeQualifiedName: AllosiusDev.DialogSystem.DialogueBaseNode, Assembly-CSharp,
         Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      connections:
-      - fieldName: previousNode
-        node: {fileID: 174469341349015210}
-        reroutePoints: []
+      connections: []
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
-  identityType: 1
+  identityType: 0
   texteType: 0
-  keyText: Dialogue_Frites_2
-  messagePreview: Bonjour, je suis Lammakian et je vends des frites !
+  keyText: Dialogue_Porte14_3
+  messagePreview: 
   singleRead: 0
   hasEnterNodeActions: 0
   showEnterNodeActions: 0
@@ -72,16 +69,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4c135d5abc97ad74e959ab5b6aa5d6eb, type: 3}
-  m_Name: Frites Dialogue Graph
+  m_Name: Porte14 Dialogue Graph
   m_EditorClassIdentifier: 
   nodes:
-  - {fileID: 8232354507905062531}
-  - {fileID: -3669349809944676377}
-  - {fileID: 174469341349015210}
-  displayName: Frites Dialogue
+  - {fileID: 7009276092382935782}
+  - {fileID: 7636430957996584238}
+  - {fileID: -6094704232157208745}
+  displayName: Porte Dialogue
   description: 
-  mainNodeParent: {fileID: 8232354507905062531}
---- !u!114 &174469341349015210
+  mainNodeParent: {fileID: 0}
+--- !u!114 &7009276092382935782
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -91,32 +88,32 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
-  m_Name: Je vend des frites
+  m_Name: Dialogue Text
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 1144, y: -120}
+  position: {x: 319.7208, y: 498.25}
   ports:
     keys:
     - previousNode
     - nextNodes
     values:
     - _fieldName: previousNode
-      _node: {fileID: 174469341349015210}
+      _node: {fileID: 7009276092382935782}
       _typeQualifiedName: AllosiusDev.DialogSystem.DialogueTextNode, Assembly-CSharp,
         Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      connections:
-      - fieldName: nextNodes
-        node: {fileID: -3669349809944676377}
-        reroutePoints: []
+      connections: []
       _direction: 0
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
     - _fieldName: nextNodes
-      _node: {fileID: 174469341349015210}
+      _node: {fileID: 7009276092382935782}
       _typeQualifiedName: AllosiusDev.DialogSystem.DialogueBaseNode, Assembly-CSharp,
         Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      connections: []
+      connections:
+      - fieldName: previousNode
+        node: {fileID: 7636430957996584238}
+        reroutePoints: []
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
@@ -125,8 +122,8 @@ MonoBehaviour:
   nextNodes: {fileID: 0}
   identityType: 0
   texteType: 0
-  keyText: Dialogue_Frites_3
-  messagePreview: Bonjour, je suis Lammakian et je vends des frites !
+  keyText: Dialogue_Porte14_1
+  messagePreview: Dialogue_Porte14
   singleRead: 0
   hasEnterNodeActions: 0
   showEnterNodeActions: 0
@@ -140,7 +137,7 @@ MonoBehaviour:
   showGameRequirements: 0
   gameRequirements:
     requirementsList: []
---- !u!114 &8232354507905062531
+--- !u!114 &7636430957996584238
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -150,31 +147,34 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
-  m_Name: Je vend des frites
+  m_Name: Dialogue Text
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -248, y: -120}
+  position: {x: 1016, y: 504}
   ports:
     keys:
     - previousNode
     - nextNodes
     values:
     - _fieldName: previousNode
-      _node: {fileID: 8232354507905062531}
+      _node: {fileID: 7636430957996584238}
       _typeQualifiedName: AllosiusDev.DialogSystem.DialogueTextNode, Assembly-CSharp,
         Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      connections: []
+      connections:
+      - fieldName: nextNodes
+        node: {fileID: 7009276092382935782}
+        reroutePoints: []
       _direction: 0
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
     - _fieldName: nextNodes
-      _node: {fileID: 8232354507905062531}
+      _node: {fileID: 7636430957996584238}
       _typeQualifiedName: AllosiusDev.DialogSystem.DialogueBaseNode, Assembly-CSharp,
         Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: previousNode
-        node: {fileID: -3669349809944676377}
+        node: {fileID: -6094704232157208745}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -182,10 +182,10 @@ MonoBehaviour:
       _dynamic: 0
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
-  identityType: 0
+  identityType: 1
   texteType: 0
-  keyText: Dialogue_Frites_1
-  messagePreview: Bonjour, je suis Lammakian et je vends des frites !
+  keyText: Dialogue_Porte14_2
+  messagePreview: Dialogue_Porte14_2
   singleRead: 0
   hasEnterNodeActions: 0
   showEnterNodeActions: 0
