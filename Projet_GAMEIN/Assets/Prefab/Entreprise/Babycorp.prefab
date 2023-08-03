@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3340231731943271676}
   - component: {fileID: 3340231731943271679}
   - component: {fileID: 3340231731943271674}
+  - component: {fileID: 492491934548358380}
   m_Layer: 0
   m_Name: Babycorp
   m_TagString: Untagged
@@ -26,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3340231731943271677}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.66, y: 52.69, z: 0}
+  m_LocalPosition: {x: -6.247, y: 52.69, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3926949247624786895}
@@ -77,6 +78,32 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.7032566, y: 0.1387024}
   m_EdgeRadius: 0
+--- !u!61 &492491934548358380
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3340231731943271677}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 1.2011111, y: -0.41714737}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.42554617, y: 0.092997134}
+  m_EdgeRadius: 0
 --- !u!1 &3926949247624786881
 GameObject:
   m_ObjectHideFlags: 0
@@ -89,8 +116,8 @@ GameObject:
   - component: {fileID: 3926949247624786894}
   - component: {fileID: 7347045504598873852}
   - component: {fileID: 1853301533418474999}
-  - component: {fileID: 5708016400068961133}
   - component: {fileID: 173812810490345689}
+  - component: {fileID: 6278887867792117299}
   m_Layer: 0
   m_Name: Planche_exterieur_16
   m_TagString: Untagged
@@ -205,36 +232,6 @@ CircleCollider2D:
   m_Offset: {x: 1.4685636, y: -0.70121765}
   serializedVersion: 2
   m_Radius: 0.4798088
---- !u!68 &5708016400068961133
-EdgeCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3926949247624786881}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_EdgeRadius: 0
-  m_Points:
-  - {x: 1.4594123, y: -0.23173141}
-  - {x: 1.4487705, y: 0.070301056}
-  - {x: 1.1024009, y: 0.059318542}
-  - {x: 0.7952764, y: -0.10546875}
-  - {x: 0.601598, y: -0.2937584}
-  - {x: 0.49603963, y: -0.492424}
-  - {x: 0.43834472, y: -0.6793289}
-  - {x: 0.43949378, y: -1.2180672}
-  - {x: 0.97908354, y: -1.21772}
-  - {x: 0.9935198, y: -0.75741196}
-  m_AdjacentStartPoint: {x: 0, y: 0}
-  m_AdjacentEndPoint: {x: 0, y: 0}
-  m_UseAdjacentStartPoint: 0
-  m_UseAdjacentEndPoint: 0
 --- !u!61 &173812810490345689
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -261,6 +258,44 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.27928162, y: 0.10226059}
   m_EdgeRadius: 0
+--- !u!60 &6278887867792117299
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3926949247624786881}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 5, y: 4}
+    newSize: {x: 5.71875, y: 6.78125}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.4372921, y: -1.2194138}
+      - {x: 0.44170618, y: -0.66713333}
+      - {x: 0.5150919, y: -0.46235657}
+      - {x: 0.60562706, y: -0.29662704}
+      - {x: 0.7387948, y: -0.10999298}
+      - {x: 0.9129143, y: 0.02249527}
+      - {x: 1.2152867, y: 0.06869888}
+      - {x: 1.363802, y: 0.07823181}
+      - {x: 1.3816366, y: -0.24340439}
+      - {x: 1.1069207, y: -0.39678574}
+      - {x: 0.9968095, y: -0.60567474}
+      - {x: 0.9892869, y: -0.7778168}
+      - {x: 0.9889755, y: -1.2190018}
 --- !u!1001 &182648796
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -411,7 +446,7 @@ PrefabInstance:
     - target: {fileID: 1201696743228717962, guid: dd85836dc546c9b4397c03e25fefd75d,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3063173817986260864, guid: dd85836dc546c9b4397c03e25fefd75d,
         type: 3}
