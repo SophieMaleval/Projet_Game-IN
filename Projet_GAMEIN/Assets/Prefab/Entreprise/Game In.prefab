@@ -41,6 +41,7 @@ GameObject:
   - component: {fileID: 4535657886909885374}
   - component: {fileID: 4535657886909885372}
   - component: {fileID: 2031616779251335398}
+  - component: {fileID: 6064080826632630756}
   m_Layer: 0
   m_Name: Batiments
   m_TagString: Untagged
@@ -133,6 +134,47 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!60 &6064080826632630756
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4535657886909885375}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 8, y: 8}
+    newSize: {x: 16, y: 16}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 1.9411297, y: -3.2033627}
+      - {x: 0.8601148, y: -3.205858}
+      - {x: 0.8612306, y: -3.5929277}
+      - {x: 0.48508954, y: -3.5936763}
+      - {x: 0.48576665, y: -3.609012}
+      - {x: 0.34318256, y: -3.6091383}
+      - {x: 0.34242606, y: -3.5147884}
+      - {x: -0.34559774, y: -3.514297}
+      - {x: -0.34328938, y: -3.6091735}
+      - {x: -0.48604918, y: -3.6114016}
+      - {x: -0.48513508, y: -3.5943127}
+      - {x: -0.8590865, y: -3.5983667}
+      - {x: -0.86097336, y: -3.1988356}
+      - {x: -1.938251, y: -3.1970952}
+      - {x: -1.8983209, y: -0.8004315}
+      - {x: 1.9074731, y: -0.8306966}
 --- !u!1 &4535657887139625620
 GameObject:
   m_ObjectHideFlags: 0
@@ -199,7 +241,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.004561901, y: -0.9950945}
+  m_Offset: {x: -0.004561901, y: -0.88}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -578,7 +620,7 @@ PrefabInstance:
     - target: {fileID: 1201696743228717962, guid: dd85836dc546c9b4397c03e25fefd75d,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3063173817986260864, guid: dd85836dc546c9b4397c03e25fefd75d,
         type: 3}
