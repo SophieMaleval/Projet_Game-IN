@@ -8,7 +8,7 @@
     VillagePlage,
     VillageVille,
     VillageZoneIndustrielle,
-    TestVille,
+    MainWorld,
     TestRoom,
     Entreprise1P2P,
     Entreprise2054,
