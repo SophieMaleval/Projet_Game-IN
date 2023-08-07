@@ -99,6 +99,7 @@ public class PlayerMovement : MonoBehaviour
     public List<Color> ColorsDisplay ;
     public List<RuntimeAnimatorController> SpriteDisplay ;
 
+    private float timerScooter;
     public bool OnScooter = false;
     public bool InExterior = false ;
     
@@ -144,14 +145,14 @@ public class PlayerMovement : MonoBehaviour
     private void Start() 
     {
         PlayerActionControllers.PlayerInScoot.Disable() ;
-        //PlayerActionControllers.PlayerInLand.Disable() ;   
+        PlayerActionControllers.PlayerInLand.Disable() ;   
         
     }
 
     void Update()
     {
         scene = SceneManager.GetActiveScene();
-
+        timerScooter += Time.deltaTime;
         ProcessInputs();
         CheckMoveValue();
         Animate(); 
@@ -161,9 +162,13 @@ public class PlayerMovement : MonoBehaviour
     {      
         if(ctx.performed)
         {
-            ChangeScootState(true);
-            scooterSmoke01.Play();
-            scooterSmoke02.Play();
+            if (timerScooter >= 0.1)
+            {
+                ChangeScootState(true);
+                scooterSmoke01.Play();
+                scooterSmoke02.Play();
+                timerScooter = 0;
+            }
         }
         
     }
@@ -171,9 +176,13 @@ public class PlayerMovement : MonoBehaviour
     {
         if(ctx.performed)
         {
-            ChangeScootState(false);
-            scooterSmoke01.Stop();
-            scooterSmoke02.Stop();
+            if (timerScooter >= 0.1)
+            {
+                ChangeScootState(false);
+                scooterSmoke01.Stop();
+                scooterSmoke02.Stop();
+                timerScooter = 0;
+            }
         }
     }
 
@@ -186,6 +195,7 @@ public class PlayerMovement : MonoBehaviour
                 PlayerActionControllers.PlayerInLand.Disable();
                 PlayerActionControllers.PlayerInScoot.Enable();
                 switchScootState(true);
+                Debug.Log(OnScooter);
             }
             else
             {
@@ -198,7 +208,7 @@ public class PlayerMovement : MonoBehaviour
                     switchScootState(false);
                     scooterSmoke01.Stop();
                     scooterSmoke02.Stop();
-                    
+                    Debug.Log(OnScooter);
                 }
 
              
@@ -453,7 +463,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void CheckMoveValue()
     {
-        Debug.Log(move + " " + MoveDirection);
+        //Debug.Log(move + " " + MoveDirection);
 
         if ((move.x != 0 || move.y != 0) && OnScooter == true && PlayOneShotClip == false)
         {
