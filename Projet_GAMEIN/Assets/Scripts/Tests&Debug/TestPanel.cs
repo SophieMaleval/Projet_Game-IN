@@ -42,6 +42,10 @@ public class TestPanel : MonoBehaviour
                 }
             }
         }
+        if (PlayerAround == false) 
+        {
+            active_poster.SetActive(false);
+        }
 
     }
 
@@ -86,6 +90,7 @@ public class TestPanel : MonoBehaviour
         PlayerScript player = other.GetComponent<PlayerScript>();
         PlayerAround = false;
         GameManager.Instance.player.SwitchInputSprite(transform, interactableElement.interactableSpritePosOffset);
+        
     }
 
 
