@@ -24,6 +24,8 @@ public class TestPanel : MonoBehaviour
 
     void ActivationObject()
     {
+
+
         if (PlayerAround == true)
         {
             if (Input.GetKeyDown(KeyCode.E))
@@ -31,12 +33,18 @@ public class TestPanel : MonoBehaviour
                 if (active_poster.activeSelf != true)
                 {
                     active_poster.SetActive(true);
+                    canTalk = false;
                 }
                 else
                 {
                     active_poster.SetActive(false);
+                    canTalk = true;
                 }
             }
+        }
+        if (PlayerAround == false) 
+        {
+            active_poster.SetActive(false);
         }
 
     }
@@ -47,19 +55,19 @@ public class TestPanel : MonoBehaviour
         ActivationObject();
     }
 
-   // public void ActiveLocalCanvasObj()
-   // {
-   //     if (active_poster != null)
-   //         active_poster.SetActive(true);
-  // <summary>
-  //  }
-  // </summary>
-  
+    // public void ActiveLocalCanvasObj()
+    // {
+    //     if (active_poster != null)
+    //         active_poster.SetActive(true);
+    // <summary>
+    //  }
+    // </summary>
+
     //public void DeactiveLocalCanvasObj()
-   // {
-   //     if (active_poster != null)
-   //         active_poster.SetActive(false);
-  //  }
+    // {
+    //     if (active_poster != null)
+    //         active_poster.SetActive(false);
+    //  }
 
     private void OnDrawGizmos()
     {
@@ -68,19 +76,23 @@ public class TestPanel : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position + interactableElement.interactableSpritePosOffset, interactableElement.collisionRadius);
     }
 
+
     private void OnTriggerEnter2D(Collider2D other)
     {
-       PlayerScript player = other.GetComponent<PlayerScript>();
-            PlayerAround = true;
-            GameManager.Instance.player.SwitchInputSprite(transform, interactableElement.interactableSpritePosOffset);
+        PlayerScript player = other.GetComponent<PlayerScript>();
+        PlayerAround = true;
+
+        GameManager.Instance.player.SwitchInputSprite(transform, interactableElement.interactableSpritePosOffset);
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-      PlayerScript player = other.GetComponent<PlayerScript>();
-
-            PlayerAround = false;
-            GameManager.Instance.player.SwitchInputSprite(transform, interactableElement.interactableSpritePosOffset);
+        PlayerScript player = other.GetComponent<PlayerScript>();
+        PlayerAround = false;
+        GameManager.Instance.player.SwitchInputSprite(transform, interactableElement.interactableSpritePosOffset);
+        
     }
+
+
 }
 
