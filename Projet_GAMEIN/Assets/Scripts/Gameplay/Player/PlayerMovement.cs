@@ -421,21 +421,21 @@ public class PlayerMovement : MonoBehaviour
         }
         if (MoveDirection == Vector2.up)
         {
-            beard.sortingOrder = 1;
+            beard.sortingOrder = 3;
             scooterSmoke01bis.sortingOrder = 1;
             scooterSmoke02bis.sortingOrder = 1;
             scooterSmoke01.transform.localPosition = new Vector2(0, -0.3f);
         }
         if (MoveDirection == Vector2.right)
         {
-            beard.sortingOrder = 5;
+            beard.sortingOrder = 3;
             scooterSmoke01bis.sortingOrder = -1;
             scooterSmoke02bis.sortingOrder = 1;
             scooterSmoke01.transform.localPosition = new Vector2(-0.3f, -0.2f);
         }
         if (MoveDirection == Vector2.left)
         {
-            beard.sortingOrder = 5;
+            beard.sortingOrder = 3;
             scooterSmoke01bis.sortingOrder = -1;
             scooterSmoke02bis.sortingOrder = 1;
             scooterSmoke01.transform.localPosition = new Vector2(0.3f, -0.2f);
