@@ -196,6 +196,12 @@ Transform:
   m_Father: {fileID: 857854673}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &49557026 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8973628923108671578, guid: 4a3b6f66b68759541a20dc93fecfdec4,
+    type: 3}
+  m_PrefabInstance: {fileID: 1206746622}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &98325418
 GameObject:
   m_ObjectHideFlags: 0
@@ -483,22 +489,22 @@ PrefabInstance:
     - target: {fileID: 4996901833556267677, guid: 03a6ba75661f06c43b2873bfc2464d25,
         type: 3}
       propertyPath: m_Size.x
-      value: 0.4848949
+      value: 0.4680757
       objectReference: {fileID: 0}
     - target: {fileID: 4996901833556267677, guid: 03a6ba75661f06c43b2873bfc2464d25,
         type: 3}
       propertyPath: m_Size.y
-      value: 0.11819887
+      value: 0.08119656
       objectReference: {fileID: 0}
     - target: {fileID: 4996901833556267677, guid: 03a6ba75661f06c43b2873bfc2464d25,
         type: 3}
       propertyPath: m_Offset.x
-      value: 0.049449578
+      value: 0.057859182
       objectReference: {fileID: 0}
     - target: {fileID: 4996901833556267677, guid: 03a6ba75661f06c43b2873bfc2464d25,
         type: 3}
       propertyPath: m_Offset.y
-      value: -0.07314396
+      value: -0.07482588
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 03a6ba75661f06c43b2873bfc2464d25, type: 3}
@@ -638,7 +644,7 @@ PrefabInstance:
     - target: {fileID: 5437542290871946368, guid: 4a3b6f66b68759541a20dc93fecfdec4,
         type: 3}
       propertyPath: m_Name
-      value: NPC_3
+      value: NPC_SpookyRabbit_Mathieux_Dervaux
       objectReference: {fileID: 0}
     - target: {fileID: 5437542290871946369, guid: 4a3b6f66b68759541a20dc93fecfdec4,
         type: 3}
@@ -694,6 +700,22 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5437542290871946370, guid: 4a3b6f66b68759541a20dc93fecfdec4,
+        type: 3}
+      propertyPath: npcData
+      value: 
+      objectReference: {fileID: 11400000, guid: d6a6cdb577d2ef848bb03ea0d0709949,
+        type: 2}
+    - target: {fileID: 5437542290871946370, guid: 4a3b6f66b68759541a20dc93fecfdec4,
+        type: 3}
+      propertyPath: npcDialogue
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5437542290871946370, guid: 4a3b6f66b68759541a20dc93fecfdec4,
+        type: 3}
+      propertyPath: interactableElement.interactableSpritePosOffset.y
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 5437542290871946397, guid: 4a3b6f66b68759541a20dc93fecfdec4,
         type: 3}
@@ -1408,6 +1430,7 @@ GameObject:
   m_Component:
   - component: {fileID: 724148909}
   - component: {fileID: 724148910}
+  - component: {fileID: 724148911}
   m_Layer: 0
   m_Name: SpookyRabbits_Chair_6
   m_TagString: Untagged
@@ -1481,6 +1504,32 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &724148911
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 724148908}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.016982764, y: -0.089545965}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.21261269, y: 0.2527542}
+  m_EdgeRadius: 0
 --- !u!1 &730555145
 GameObject:
   m_ObjectHideFlags: 0
@@ -1491,6 +1540,7 @@ GameObject:
   m_Component:
   - component: {fileID: 730555146}
   - component: {fileID: 730555147}
+  - component: {fileID: 730555148}
   m_Layer: 0
   m_Name: SpookyRabbits_Chair_1
   m_TagString: Untagged
@@ -1564,6 +1614,32 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &730555148
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 730555145}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.016982764, y: -0.089545965}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.21261269, y: 0.2527542}
+  m_EdgeRadius: 0
 --- !u!1 &759300252
 GameObject:
   m_ObjectHideFlags: 0
@@ -1840,6 +1916,7 @@ GameObject:
   m_Component:
   - component: {fileID: 830378148}
   - component: {fileID: 830378149}
+  - component: {fileID: 830378150}
   m_Layer: 0
   m_Name: SpookyRabbits_Table_3
   m_TagString: Untagged
@@ -1855,7 +1932,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 830378147}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.6658, y: 0.0758, z: 2.2704468}
+  m_LocalPosition: {x: -1.52, y: 0.124, z: 2.2704468}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 763530383}
@@ -1917,6 +1994,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!70 &830378150
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 830378147}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.001879392, y: 0.019127192}
+  m_Size: {x: 0.5603578, y: 0.42064798}
+  m_Direction: 1
 --- !u!1 &851854545
 GameObject:
   m_ObjectHideFlags: 0
@@ -1927,6 +2020,7 @@ GameObject:
   m_Component:
   - component: {fileID: 851854547}
   - component: {fileID: 851854546}
+  - component: {fileID: 851854548}
   m_Layer: 0
   m_Name: SpookyRabbits_Bar_Chair_1
   m_TagString: Untagged
@@ -2000,6 +2094,22 @@ Transform:
   m_Father: {fileID: 1531065632}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &851854548
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 851854545}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.055571795}
+  serializedVersion: 2
+  m_Radius: 0.09988272
 --- !u!1 &857854672
 GameObject:
   m_ObjectHideFlags: 0
@@ -2104,6 +2214,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 883f854d7b4ed5049ba4adb5f60fc0dd, type: 3}
+--- !u!1 &904875134 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8973628923108671578, guid: 4a3b6f66b68759541a20dc93fecfdec4,
+    type: 3}
+  m_PrefabInstance: {fileID: 1217729062}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &956817859
 GameObject:
   m_ObjectHideFlags: 0
@@ -2316,6 +2432,7 @@ GameObject:
   m_Component:
   - component: {fileID: 998235421}
   - component: {fileID: 998235422}
+  - component: {fileID: 998235423}
   m_Layer: 0
   m_Name: SpookyRabbits_Chair_4
   m_TagString: Untagged
@@ -2389,6 +2506,32 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &998235423
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 998235420}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.0131518245, y: -0.09394127}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.29731858, y: 0.25598443}
+  m_EdgeRadius: 0
 --- !u!1 &998621560
 GameObject:
   m_ObjectHideFlags: 0
@@ -2772,7 +2915,7 @@ PrefabInstance:
     - target: {fileID: 1267104718512802164, guid: 765da57ec812d7847ab7d7408ed91688,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.159
+      value: -2.932
       objectReference: {fileID: 0}
     - target: {fileID: 1267104718512802164, guid: 765da57ec812d7847ab7d7408ed91688,
         type: 3}
@@ -2832,23 +2975,28 @@ PrefabInstance:
     - target: {fileID: 1853014744291624986, guid: 765da57ec812d7847ab7d7408ed91688,
         type: 3}
       propertyPath: objectsToSpawn.Array.size
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1853014744291624986, guid: 765da57ec812d7847ab7d7408ed91688,
         type: 3}
       propertyPath: objectsToSpawn.Array.data[0]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 49557026}
     - target: {fileID: 1853014744291624986, guid: 765da57ec812d7847ab7d7408ed91688,
         type: 3}
       propertyPath: objectsToSpawn.Array.data[1]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1140347511}
     - target: {fileID: 1853014744291624986, guid: 765da57ec812d7847ab7d7408ed91688,
         type: 3}
       propertyPath: objectsToSpawn.Array.data[2]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1397471963}
+    - target: {fileID: 1853014744291624986, guid: 765da57ec812d7847ab7d7408ed91688,
+        type: 3}
+      propertyPath: objectsToSpawn.Array.data[3]
+      value: 
+      objectReference: {fileID: 904875134}
     - target: {fileID: 3809976249801870989, guid: 765da57ec812d7847ab7d7408ed91688,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2871,6 +3019,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1267104718512802164, guid: 765da57ec812d7847ab7d7408ed91688,
     type: 3}
   m_PrefabInstance: {fileID: 1130635544}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1140347511 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8973628923108671578, guid: 4a3b6f66b68759541a20dc93fecfdec4,
+    type: 3}
+  m_PrefabInstance: {fileID: 396034872}
   m_PrefabAsset: {fileID: 0}
 --- !u!213 &1183773071
 Sprite:
@@ -3117,7 +3271,7 @@ PrefabInstance:
     - target: {fileID: 5437542290871946368, guid: 4a3b6f66b68759541a20dc93fecfdec4,
         type: 3}
       propertyPath: m_Name
-      value: NPC_4
+      value: "NPC_SpookyRabbit_Fran\xE7ois_Dervaux"
       objectReference: {fileID: 0}
     - target: {fileID: 5437542290871946368, guid: 4a3b6f66b68759541a20dc93fecfdec4,
         type: 3}
@@ -3127,7 +3281,7 @@ PrefabInstance:
     - target: {fileID: 5437542290871946369, guid: 4a3b6f66b68759541a20dc93fecfdec4,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5437542290871946369, guid: 4a3b6f66b68759541a20dc93fecfdec4,
         type: 3}
@@ -3178,6 +3332,33 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5437542290871946370, guid: 4a3b6f66b68759541a20dc93fecfdec4,
+        type: 3}
+      propertyPath: npcData
+      value: 
+      objectReference: {fileID: 11400000, guid: e3c6b696ef21ad24fb131b3fc98e80bd,
+        type: 2}
+    - target: {fileID: 5437542290871946370, guid: 4a3b6f66b68759541a20dc93fecfdec4,
+        type: 3}
+      propertyPath: npcDialogue
+      value: 
+      objectReference: {fileID: 11400000, guid: 64bcceda2e362f24c9abacd256d77485,
+        type: 2}
+    - target: {fileID: 5437542290871946370, guid: 4a3b6f66b68759541a20dc93fecfdec4,
+        type: 3}
+      propertyPath: interactableElement.interactableSpritePosOffset.x
+      value: -0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 5437542290871946370, guid: 4a3b6f66b68759541a20dc93fecfdec4,
+        type: 3}
+      propertyPath: interactableElement.interactableSpritePosOffset.y
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5437542290871946396, guid: 4a3b6f66b68759541a20dc93fecfdec4,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: -0.84
       objectReference: {fileID: 0}
     - target: {fileID: 5437542290871946397, guid: 4a3b6f66b68759541a20dc93fecfdec4,
         type: 3}
@@ -3268,7 +3449,7 @@ PrefabInstance:
     - target: {fileID: 5437542290871946368, guid: 4a3b6f66b68759541a20dc93fecfdec4,
         type: 3}
       propertyPath: m_Name
-      value: NPC_1
+      value: NPC_SpookyRabbit_Gualtiero
       objectReference: {fileID: 0}
     - target: {fileID: 5437542290871946368, guid: 4a3b6f66b68759541a20dc93fecfdec4,
         type: 3}
@@ -3342,6 +3523,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 8ad5992d384a2c146a1b70958fd7981c,
         type: 2}
+    - target: {fileID: 5437542290871946370, guid: 4a3b6f66b68759541a20dc93fecfdec4,
+        type: 3}
+      propertyPath: interactableElement.interactableSpritePosOffset.y
+      value: 0.46
+      objectReference: {fileID: 0}
     - target: {fileID: 5437542290871946396, guid: 4a3b6f66b68759541a20dc93fecfdec4,
         type: 3}
       propertyPath: m_Size.x
@@ -3350,7 +3536,7 @@ PrefabInstance:
     - target: {fileID: 5437542290871946396, guid: 4a3b6f66b68759541a20dc93fecfdec4,
         type: 3}
       propertyPath: m_Size.y
-      value: 0.76407266
+      value: 0.6193979
       objectReference: {fileID: 0}
     - target: {fileID: 5437542290871946396, guid: 4a3b6f66b68759541a20dc93fecfdec4,
         type: 3}
@@ -3365,7 +3551,7 @@ PrefabInstance:
     - target: {fileID: 5437542290871946396, guid: 4a3b6f66b68759541a20dc93fecfdec4,
         type: 3}
       propertyPath: m_Offset.y
-      value: -0.18376672
+      value: -0.2561041
       objectReference: {fileID: 0}
     - target: {fileID: 5437542290871946396, guid: 4a3b6f66b68759541a20dc93fecfdec4,
         type: 3}
@@ -3509,6 +3695,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1288612841}
   - component: {fileID: 1288612842}
+  - component: {fileID: 1288612843}
   m_Layer: 0
   m_Name: SpookyRabbits_Chair_2
   m_TagString: Untagged
@@ -3582,6 +3769,32 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &1288612843
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1288612840}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.0131518245, y: -0.09394127}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.29731858, y: 0.25598443}
+  m_EdgeRadius: 0
 --- !u!1 &1290056663
 GameObject:
   m_ObjectHideFlags: 0
@@ -3592,6 +3805,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1290056664}
   - component: {fileID: 1290056665}
+  - component: {fileID: 1290056666}
   m_Layer: 0
   m_Name: SpookyRabbits_Table_2
   m_TagString: Untagged
@@ -3607,7 +3821,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1290056663}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.8137, y: 1.1536, z: 2.2704468}
+  m_LocalPosition: {x: -1.933, y: 1.032, z: 2.2704468}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2055962792}
@@ -3668,6 +3882,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!70 &1290056666
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1290056663}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.0018793882, y: 0.05072791}
+  m_Size: {x: 0.56035775, y: 0.35744584}
+  m_Direction: 1
 --- !u!1 &1320975642
 GameObject:
   m_ObjectHideFlags: 0
@@ -3705,6 +3935,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5437542290871946369, guid: 4a3b6f66b68759541a20dc93fecfdec4,
     type: 3}
   m_PrefabInstance: {fileID: 1206746622}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1397471963 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8973628923108671578, guid: 4a3b6f66b68759541a20dc93fecfdec4,
+    type: 3}
+  m_PrefabInstance: {fileID: 1636644686}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1410919343
 GameObject:
@@ -4027,6 +4263,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1505857376}
   - component: {fileID: 1505857377}
+  - component: {fileID: 1505857378}
   m_Layer: 0
   m_Name: SpookyRabbits_Table_1
   m_TagString: Untagged
@@ -4042,7 +4279,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1505857375}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.5869, y: 2.138, z: 2.2704468}
+  m_LocalPosition: {x: -1.53, y: 1.924, z: 2.2704468}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 730555146}
@@ -4103,6 +4340,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!70 &1505857378
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1505857375}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.0018793882, y: 0.05072791}
+  m_Size: {x: 0.56035775, y: 0.35744584}
+  m_Direction: 1
 --- !u!1 &1531065631
 GameObject:
   m_ObjectHideFlags: 0
@@ -4165,7 +4418,7 @@ PrefabInstance:
     - target: {fileID: 5958346885022422409, guid: 33a7de71cee584843b326fff36da236b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.6802483
+      value: 4.9072485
       objectReference: {fileID: 0}
     - target: {fileID: 5958346885022422409, guid: 33a7de71cee584843b326fff36da236b,
         type: 3}
@@ -4591,7 +4844,7 @@ PrefabInstance:
     - target: {fileID: 5437542290871946368, guid: 4a3b6f66b68759541a20dc93fecfdec4,
         type: 3}
       propertyPath: m_Name
-      value: NPC_2
+      value: NPC_SpookyRabbit_Leo_Capout
       objectReference: {fileID: 0}
     - target: {fileID: 5437542290871946369, guid: 4a3b6f66b68759541a20dc93fecfdec4,
         type: 3}
@@ -4647,6 +4900,22 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5437542290871946370, guid: 4a3b6f66b68759541a20dc93fecfdec4,
+        type: 3}
+      propertyPath: npcData
+      value: 
+      objectReference: {fileID: 11400000, guid: 6d0d1bd507a5a4b43a5d20dce33cc060,
+        type: 2}
+    - target: {fileID: 5437542290871946370, guid: 4a3b6f66b68759541a20dc93fecfdec4,
+        type: 3}
+      propertyPath: npcDialogue
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5437542290871946370, guid: 4a3b6f66b68759541a20dc93fecfdec4,
+        type: 3}
+      propertyPath: interactableElement.interactableSpritePosOffset.y
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 5437542290871946397, guid: 4a3b6f66b68759541a20dc93fecfdec4,
         type: 3}
@@ -4867,6 +5136,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1739920073}
+  - component: {fileID: 1739920074}
   m_Layer: 0
   m_Name: WallCollider
   m_TagString: Untagged
@@ -4882,12 +5152,53 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1739920072}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.83, y: 1, z: -0.0073699453}
+  m_LocalPosition: {x: -1.38, y: -0.01, z: -0.0073699453}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 857854673}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!60 &1739920074
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1739920072}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -1.9432492, y: -1.9686127}
+      - {x: -1.9650471, y: 1.6126505}
+      - {x: 2.0442226, y: 1.625998}
+      - {x: 2.0522277, y: -1.2874073}
+      - {x: 0.43108636, y: -1.2989618}
+      - {x: 0.4202307, y: 0.4860442}
+      - {x: 1.934222, y: 0.48948225}
+      - {x: 1.938731, y: 1.540822}
+      - {x: -1.8433473, y: 1.5363616}
+      - {x: -1.8554549, y: 1.0096881}
+      - {x: -1.8447121, y: -1.787854}
+      - {x: 1.9313085, y: -1.7870451}
+      - {x: 1.9414232, y: -1.3744121}
+      - {x: 1.9417757, y: -1.2885764}
+      - {x: 2.0521197, y: -1.2881943}
+      - {x: 2.0519977, y: -1.9833188}
 --- !u!1 &1808956647
 GameObject:
   m_ObjectHideFlags: 0
@@ -6066,6 +6377,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2055962792}
   - component: {fileID: 2055962793}
+  - component: {fileID: 2055962794}
   m_Layer: 0
   m_Name: SpookyRabbits_Chair_3
   m_TagString: Untagged
@@ -6139,6 +6451,32 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &2055962794
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2055962791}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.0131518245, y: -0.09394127}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.29731858, y: 0.25598443}
+  m_EdgeRadius: 0
 --- !u!1001 &2057103976
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6555,6 +6893,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2111354390}
   - component: {fileID: 2111354391}
+  - component: {fileID: 2111354392}
   m_Layer: 0
   m_Name: SpookyRabbits_Chair_7
   m_TagString: Untagged
@@ -6628,6 +6967,32 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &2111354392
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2111354389}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.016982764, y: -0.089545965}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.21261269, y: 0.2527542}
+  m_EdgeRadius: 0
 --- !u!1 &2118321677
 GameObject:
   m_ObjectHideFlags: 0
@@ -6710,6 +7075,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2130463572}
   - component: {fileID: 2130463571}
+  - component: {fileID: 2130463573}
   m_Layer: 0
   m_Name: SpookyRabbits_Bar_Chair_2
   m_TagString: Untagged
@@ -6783,6 +7149,22 @@ Transform:
   m_Father: {fileID: 1531065632}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &2130463573
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2130463570}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.055571795}
+  serializedVersion: 2
+  m_Radius: 0.09988272
 --- !u!1001 &1655168871024281881
 PrefabInstance:
   m_ObjectHideFlags: 0
