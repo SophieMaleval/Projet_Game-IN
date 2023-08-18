@@ -55,7 +55,7 @@ public class ButtonController : MonoBehaviour
         {
             spriteRenderer.sprite = pressedImage;
 
-            GameObject NoteInstantiate = Instantiate(NoteParticleprefab[Random.Range(0, NoteParticleprefab.Count)], new Vector2(0.36f, 2.42f), Quaternion.identity) ;
+            GameObject NoteInstantiate = Instantiate(NoteParticleprefab[Random.Range(0, NoteParticleprefab.Count)], new Vector2(0.342f, 1.017f), Quaternion.identity) ;
             Destroy(NoteInstantiate, 1f) ;
             //Debug.Log("button pressed");
         }
