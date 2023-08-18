@@ -1330,6 +1330,8 @@ GameObject:
   m_Component:
   - component: {fileID: 247810058}
   - component: {fileID: 247810057}
+  - component: {fileID: 247810060}
+  - component: {fileID: 247810059}
   m_Layer: 0
   m_Name: Carte_Son
   m_TagString: Untagged
@@ -1403,6 +1405,91 @@ Transform:
   m_Father: {fileID: 745389673}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &247810059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 247810056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98d6793d4fbe9ba4f9be12197c747a0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerCol: {fileID: 247810060}
+  "qt\xE9": 0
+  DisplayerInventory: {fileID: 0}
+  Object: {fileID: 11400000, guid: 476c6f5960426de4db209e16f5e628b7, type: 2}
+  PlayerScript: {fileID: 0}
+  interactableElement:
+    interactableSpritePosOffset: {x: 0, y: 0.56, z: 0}
+    collisionRadius: 0.25
+  gameRequirements:
+    requirementsList:
+    - requirementType: 1
+      questToCheck: {fileID: 0}
+      questCheckedValueWanted: 0
+      questToCheckState: 0
+      questAssociatedToCheck: {fileID: 11400000, guid: e62da928601dc8545b2e1b2042a10cbb,
+        type: 2}
+      questStepToCheck: {fileID: 11400000, guid: 2b0405ef8a3dbe744aafe2df63483c5c,
+        type: 2}
+      questStepCheckedValueWanted: 1
+      questStepToCheckState: 1
+      itemToCheck: {fileID: 0}
+      rythmeGameRankRequired: 0
+  gameActions:
+    actionsList:
+    - actionType: 2
+      hasCondition: 0
+      nodesRequiredToRead: []
+      questToAdd: {fileID: 0}
+      questAssociated: {fileID: 11400000, guid: e62da928601dc8545b2e1b2042a10cbb,
+        type: 2}
+      questStepToComplete: {fileID: 11400000, guid: 2b0405ef8a3dbe744aafe2df63483c5c,
+        type: 2}
+      ScooterPopUpData: {fileID: 0}
+      itemToAdd: {fileID: 0}
+      itemToRemove: {fileID: 0}
+      fadeDuration: 0.5
+      fadeOutSwitchDuration: 1
+      newConversantToCall: {fileID: 0}
+      dialogueToLaunch: {fileID: 0}
+      launchDialogueToMainNode: 0
+      boxMessageTextToDisplay: 
+      boxMessageSize: 0
+      iconDataToAdd: {fileID: 0}
+      shakeCameraIntensity: 0
+      shakeCameraDuration: 0
+      focusOn: 0
+      focusValue: 1.4
+--- !u!61 &247810060
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 247810056}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.005268216, y: 0.042144656}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.9199641, y: 0.38890147}
+  m_EdgeRadius: 0
 --- !u!4 &261066785 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3277838245327974826, guid: 017e20e71ca957b4684f4ef94a9dd756,

@@ -11,7 +11,7 @@ public enum Quantité
     Multiple
 }
 
-[RequireComponent(typeof(InteractableElement))]
+//[RequireComponent(typeof(InteractableElement))]
 public class Interactible : MonoBehaviour
 {
     #region Fields
