@@ -107,7 +107,7 @@ MonoBehaviour:
   identityType: 0
   texteType: 0
   keyText: Dialogue_Baby_1_Bienvenue
-  messagePreview: "Bienvenue \xE0 Baby Corps !"
+  messagePreview: "Bienvenue \xE0 Baby Corp !"
   singleRead: 0
   hasEnterNodeActions: 0
   showEnterNodeActions: 0
@@ -166,16 +166,37 @@ MonoBehaviour:
   identityType: 0
   texteType: 0
   keyText: Dialogue_Baby_1_JeSuisUnBebeSansDialogue
-  messagePreview: Okay, but there's a real risk of doing something stupid !
+  messagePreview: "D'accord, mais on risque vraiment de faire des b\xEAtises !"
   singleRead: 0
   hasEnterNodeActions: 0
   showEnterNodeActions: 0
   enterNodeActions:
     actionsList: []
-  hasGameActions: 0
-  showGameActions: 0
+  hasGameActions: 1
+  showGameActions: 1
   gameActions:
-    actionsList: []
+    actionsList:
+    - actionType: 1
+      hasCondition: 0
+      nodesRequiredToRead: []
+      questToAdd: {fileID: 11400000, guid: 9e9d91c2c9f671c41ae614d3d2404ea7, type: 2}
+      questAssociated: {fileID: 0}
+      questStepToComplete: {fileID: 0}
+      ScooterPopUpData: {fileID: 0}
+      itemToAdd: {fileID: 0}
+      itemToRemove: {fileID: 0}
+      fadeDuration: 0.5
+      fadeOutSwitchDuration: 1
+      newConversantToCall: {fileID: 0}
+      dialogueToLaunch: {fileID: 0}
+      launchDialogueToMainNode: 0
+      boxMessageTextToDisplay: 
+      boxMessageSize: 0
+      iconDataToAdd: {fileID: 0}
+      shakeCameraIntensity: 0
+      shakeCameraDuration: 0
+      focusOn: 0
+      focusValue: 1.4
   hasRequirements: 0
   showGameRequirements: 0
   gameRequirements:
