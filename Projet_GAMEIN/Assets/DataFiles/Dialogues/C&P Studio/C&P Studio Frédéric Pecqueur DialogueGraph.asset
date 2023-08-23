@@ -43,9 +43,14 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 0
+  texteType: 0
   keyText: "Dialogue_Fr\xE9d\xE9ric_Pecqueur_ABientot"
   messagePreview: "\xC0 bient\xF4t et prends soin de toi !"
   singleRead: 0
+  hasEnterNodeActions: 0
+  showEnterNodeActions: 0
+  enterNodeActions:
+    actionsList: []
   hasGameActions: 0
   showGameActions: 0
   gameActions:
@@ -100,11 +105,16 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 1
+  texteType: 0
   keyText: "Dialogue_Fr\xE9d\xE9ric_Pecqueur_FrancoisDervauxDeSpookyRabbits"
-  messagePreview: "Fran\xE7ois Dervaux de Spooky Rabbits m'envoie t'emprunter un
-    ampli. Leur son actuel ne convient pas. Tu pourrais me conseiller quelque chose
-    ?"
+  messagePreview: "Fran\xE7ois Dervaux de Spooky Rabbits m'envoie t'emprunter une
+    carte son. Leur mat\xE9riel actuel ne convient pas. Tu pourrais me conseiller
+    quelque chose ?"
   singleRead: 1
+  hasEnterNodeActions: 0
+  showEnterNodeActions: 0
+  enterNodeActions:
+    actionsList: []
   hasGameActions: 0
   showGameActions: 0
   gameActions:
@@ -124,6 +134,7 @@ MonoBehaviour:
       questStepCheckedValueWanted: 1
       questStepToCheckState: 1
       itemToCheck: {fileID: 0}
+      rythmeGameRankRequired: 0
 --- !u!114 &-2614908715234651720
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -170,9 +181,14 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 1
+  texteType: 0
   keyText: "Dialogue_Fr\xE9d\xE9ric_Pecqueur_JeDoisYAller"
-  messagePreview: Je dois y aller.
+  messagePreview: "Enchant\xE9, \xE0 bient\xF4t !"
   singleRead: 0
+  hasEnterNodeActions: 0
+  showEnterNodeActions: 0
+  enterNodeActions:
+    actionsList: []
   hasGameActions: 0
   showGameActions: 0
   gameActions:
@@ -227,9 +243,14 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 1
+  texteType: 0
   keyText: "Dialogue_Fr\xE9d\xE9ric_Pecqueur_QuiEtesVous"
   messagePreview: "Qui \xEAtes-vous ?"
   singleRead: 1
+  hasEnterNodeActions: 0
+  showEnterNodeActions: 0
+  enterNodeActions:
+    actionsList: []
   hasGameActions: 0
   showGameActions: 0
   gameActions:
@@ -309,9 +330,14 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 1
+  texteType: 0
   keyText: "Dialogue_Fr\xE9d\xE9ric_Pecqueur_VousEtesSuperBienEquipes"
-  messagePreview: You are super well equipped here !
+  messagePreview: "Vous \xEAtes super bien \xE9quip\xE9s ici !"
   singleRead: 1
+  hasEnterNodeActions: 0
+  showEnterNodeActions: 0
+  enterNodeActions:
+    actionsList: []
   hasGameActions: 0
   showGameActions: 0
   gameActions:
@@ -372,9 +398,14 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 0
+  texteType: 0
   keyText: "Dialogue_Fr\xE9d\xE9ric_Pecqueur_BienLeBonjourEtBienvenue"
-  messagePreview: Hello and welcome to C&P Studio !
+  messagePreview: Bien le bonjour et bienvenue au C&P Studio !
   singleRead: 0
+  hasEnterNodeActions: 0
+  showEnterNodeActions: 0
+  enterNodeActions:
+    actionsList: []
   hasGameActions: 0
   showGameActions: 0
   gameActions:
@@ -426,10 +457,15 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 0
+  texteType: 0
   keyText: "Dialogue_Fr\xE9d\xE9ric_Pecqueur_OuiBienSur"
-  messagePreview: "Oui bien s\xFBr ! Tiens prends celui-ci, juste derri\xE8re toi.
+  messagePreview: "Oui bien s\xFBr ! Tiens prends celle-ci, juste derri\xE8re toi.
     Connaissant leur style, \xE7a fera parfaitement l'affaire."
   singleRead: 0
+  hasEnterNodeActions: 0
+  showEnterNodeActions: 0
+  enterNodeActions:
+    actionsList: []
   hasGameActions: 1
   showGameActions: 1
   gameActions:
@@ -450,6 +486,13 @@ MonoBehaviour:
       newConversantToCall: {fileID: 0}
       dialogueToLaunch: {fileID: 0}
       launchDialogueToMainNode: 0
+      boxMessageTextToDisplay: 
+      boxMessageSize: 0
+      iconDataToAdd: {fileID: 0}
+      shakeCameraIntensity: 0
+      shakeCameraDuration: 0
+      focusOn: 0
+      focusValue: 1.4
     - actionType: 0
       hasCondition: 0
       nodesRequiredToRead: []
@@ -464,6 +507,13 @@ MonoBehaviour:
       newConversantToCall: {fileID: 0}
       dialogueToLaunch: {fileID: 0}
       launchDialogueToMainNode: 0
+      boxMessageTextToDisplay: 
+      boxMessageSize: 0
+      iconDataToAdd: {fileID: 0}
+      shakeCameraIntensity: 0
+      shakeCameraDuration: 0
+      focusOn: 0
+      focusValue: 1.4
   hasRequirements: 0
   showGameRequirements: 0
   gameRequirements:
@@ -511,12 +561,17 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 0
+  texteType: 0
   keyText: "Dialogue_Fr\xE9d\xE9ric_Pecqueur_JeSuisFredericPecqueur"
   messagePreview: "Je suis Fred\xE9ric Pecqueur, le fondateur du C&P Studio ! Ici
     on fait du son et de la vid\xE9o, et on a m\xEAme 2 studios de r\xE9p\xE9titions.
     Pour le jeu vid\xE9o on fait aussi bien du Sound Design que de la composition
     musicale."
   singleRead: 0
+  hasEnterNodeActions: 0
+  showEnterNodeActions: 0
+  enterNodeActions:
+    actionsList: []
   hasGameActions: 1
   showGameActions: 1
   gameActions:
@@ -535,6 +590,13 @@ MonoBehaviour:
       newConversantToCall: {fileID: 0}
       dialogueToLaunch: {fileID: 0}
       launchDialogueToMainNode: 0
+      boxMessageTextToDisplay: 
+      boxMessageSize: 0
+      iconDataToAdd: {fileID: 0}
+      shakeCameraIntensity: 0
+      shakeCameraDuration: 0
+      focusOn: 0
+      focusValue: 1.4
   hasRequirements: 0
   showGameRequirements: 0
   gameRequirements:
@@ -582,10 +644,15 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   nextNodes: {fileID: 0}
   identityType: 0
+  texteType: 0
   keyText: "Dialogue_Fr\xE9d\xE9ric_Pecqueur_TAsVuCa"
   messagePreview: "T'as vu \xE7a ? On a du mat\xE9riel de haute qualit\xE9, ce qui
     nous permet de produire des sons tout aussi cool."
   singleRead: 0
+  hasEnterNodeActions: 0
+  showEnterNodeActions: 0
+  enterNodeActions:
+    actionsList: []
   hasGameActions: 1
   showGameActions: 1
   gameActions:
@@ -604,6 +671,13 @@ MonoBehaviour:
       newConversantToCall: {fileID: 0}
       dialogueToLaunch: {fileID: 0}
       launchDialogueToMainNode: 0
+      boxMessageTextToDisplay: 
+      boxMessageSize: 0
+      iconDataToAdd: {fileID: 0}
+      shakeCameraIntensity: 0
+      shakeCameraDuration: 0
+      focusOn: 0
+      focusValue: 1.4
   hasRequirements: 0
   showGameRequirements: 0
   gameRequirements:
