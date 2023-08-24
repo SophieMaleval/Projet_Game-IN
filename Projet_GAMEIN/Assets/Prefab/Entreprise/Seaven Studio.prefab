@@ -64,7 +64,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 1.07, y: -0.285}
+  m_Offset: {x: 1.0878038, y: -0.23628998}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -75,7 +75,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.05}
+  m_Size: {x: 0.47548866, y: 0.04045105}
   m_EdgeRadius: 0
 --- !u!1 &6326414017284637515
 GameObject:
@@ -87,7 +87,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6326414017284637508}
   - component: {fileID: 6326414017284637509}
-  - component: {fileID: 832330364134447749}
+  - component: {fileID: 4090705291970967157}
+  - component: {fileID: 4362093692686188086}
   m_Layer: 0
   m_Name: Batiment Seaven
   m_TagString: Untagged
@@ -103,7 +104,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6326414017284637515}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.78, y: 1.174, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6326414017205991596}
@@ -149,7 +150,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 9129615238218037825, guid: d8bcfd684e5dba449b4f847db38d1f7d,
+  m_Sprite: {fileID: -1548705598389912455, guid: caf0df58d4fb3af4bad1bec377c7168a,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -161,8 +162,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 1
---- !u!60 &832330364134447749
-PolygonCollider2D:
+--- !u!95 &4090705291970967157
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6326414017284637515}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c61ebe3f06303634cb0157aa8409f3c3, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!61 &4362093692686188086
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -174,55 +194,19 @@ PolygonCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.23250198, y: -0.66571}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.51886904, y: 0.26214635}
-    oldSize: {x: 6.453125, y: 5.265625}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 3, y: 3}
     newSize: {x: 4.13, y: 3.7}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 1.6711226, y: -0.87355137}
-      - {x: 2.2464533, y: -0.8777971}
-      - {x: 2.2943707, y: -0.9688797}
-      - {x: 2.6379766, y: -1.0048876}
-      - {x: 3.1279697, y: -1.0092659}
-      - {x: 3.0982485, y: -0.8296633}
-      - {x: 2.9910088, y: -0.78619003}
-      - {x: 2.9281025, y: -0.6653328}
-      - {x: 2.9641733, y: -0.42723942}
-      - {x: 2.8079233, y: -0.16161442}
-      - {x: 2.5620184, y: -0.008702278}
-      - {x: 2.3860483, y: 0.010260582}
-      - {x: 2.3771944, y: 1.9253645}
-      - {x: -0.2738905, y: 1.934226}
-      - {x: -0.6953268, y: 1.6501379}
-      - {x: -2.7977304, y: 1.6796255}
-      - {x: -3.0801134, y: 0.9508238}
-      - {x: -3.3595228, y: 0.5725088}
-      - {x: -3.3483267, y: 0.47901058}
-      - {x: -3.2331629, y: 0.48479748}
-      - {x: -3.227374, y: -0.8334894}
-      - {x: -3.0940447, y: -0.8403139}
-      - {x: -3.0670767, y: -0.8178644}
-      - {x: -2.9271574, y: -0.8748522}
-      - {x: -2.2772627, y: -0.9270067}
-      - {x: -2.1608267, y: -0.8959894}
-      - {x: 0.44970417, y: -0.8802233}
-      - {x: 0.45667458, y: -1.3895683}
-      - {x: 0.6158657, y: -1.3883896}
-      - {x: 0.6087818, y: -0.26372147}
-      - {x: 1.5243244, y: -0.26325226}
-      - {x: 1.5251179, y: -1.3828812}
-      - {x: 1.6736135, y: -1.3803644}
-    - - {x: -2.5402594, y: 0.3550024}
-      - {x: -2.6860533, y: 0.32252407}
-    - - {x: -2.7379503, y: 0.95377636}
-      - {x: -2.6950312, y: 1.0464125}
+  serializedVersion: 2
+  m_Size: {x: 2.534996, y: 1.4348383}
+  m_EdgeRadius: 0
 --- !u!1001 &1467627623
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -350,6 +334,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ZoomTrigger_Seaven
       objectReference: {fileID: 0}
+    - target: {fileID: 4447159626916281428, guid: c5c76b41881f3d441badf3ef8d6690e6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5c76b41881f3d441badf3ef8d6690e6, type: 3}
 --- !u!4 &830400920604723505 stripped
@@ -463,12 +452,12 @@ PrefabInstance:
     - target: {fileID: 3152516071303604344, guid: dd85836dc546c9b4397c03e25fefd75d,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 0.53
       objectReference: {fileID: 0}
     - target: {fileID: 3152516071303604344, guid: dd85836dc546c9b4397c03e25fefd75d,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 4.85
+      value: 3.41
       objectReference: {fileID: 0}
     - target: {fileID: 3152516071303604344, guid: dd85836dc546c9b4397c03e25fefd75d,
         type: 3}

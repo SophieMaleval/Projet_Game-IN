@@ -98,6 +98,9 @@ MonoBehaviour:
       - fieldName: previousNode
         node: {fileID: 4535599833976314569}
         reroutePoints: []
+      - fieldName: previousNode
+        node: {fileID: 8551242545338155097}
+        reroutePoints: []
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
@@ -282,6 +285,7 @@ MonoBehaviour:
   - {fileID: -6756930017114944854}
   - {fileID: -2730536549698414338}
   - {fileID: 4535599833976314569}
+  - {fileID: 8551242545338155097}
   displayName: "B\xE9b\xE9 Dialogue"
   description: "Dialogue Pr\xE9sentation B\xE9b\xE9 Baby Corp"
   mainNodeParent: {fileID: -3192061452419886740}
@@ -343,7 +347,88 @@ MonoBehaviour:
   showGameActions: 0
   gameActions:
     actionsList: []
-  hasRequirements: 0
-  showGameRequirements: 0
+  hasRequirements: 1
+  showGameRequirements: 1
   gameRequirements:
-    requirementsList: []
+    requirementsList:
+    - requirementType: 0
+      questToCheck: {fileID: 11400000, guid: 9e9d91c2c9f671c41ae614d3d2404ea7, type: 2}
+      questCheckedValueWanted: 0
+      questToCheckState: 1
+      questAssociatedToCheck: {fileID: 0}
+      questStepToCheck: {fileID: 0}
+      questStepCheckedValueWanted: 0
+      questStepToCheckState: 0
+      itemToCheck: {fileID: 0}
+      rythmeGameRankRequired: 0
+--- !u!114 &8551242545338155097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
+  m_Name: "L'\xE9quipe de BabyCorp"
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 824, y: 328}
+  ports:
+    keys:
+    - previousNode
+    - nextNodes
+    values:
+    - _fieldName: previousNode
+      _node: {fileID: 8551242545338155097}
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueTextNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: nextNodes
+        node: {fileID: -3192061452419886740}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: nextNodes
+      _node: {fileID: 8551242545338155097}
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueBaseNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  previousNode: {fileID: 0}
+  nextNodes: {fileID: 0}
+  identityType: 1
+  texteType: 0
+  keyText: "Dialogue_Baby_1_L\xE9quipeDeBabyCorp"
+  messagePreview: "Dialogue_Baby_1_L\xE9quipeDeBabyCorp"
+  singleRead: 0
+  hasEnterNodeActions: 0
+  showEnterNodeActions: 0
+  enterNodeActions:
+    actionsList: []
+  hasGameActions: 0
+  showGameActions: 0
+  gameActions:
+    actionsList: []
+  hasRequirements: 1
+  showGameRequirements: 1
+  gameRequirements:
+    requirementsList:
+    - requirementType: 1
+      questToCheck: {fileID: 0}
+      questCheckedValueWanted: 0
+      questToCheckState: 0
+      questAssociatedToCheck: {fileID: 11400000, guid: 9e9d91c2c9f671c41ae614d3d2404ea7,
+        type: 2}
+      questStepToCheck: {fileID: 11400000, guid: 2813135843de96f47a93f599e52b2b55,
+        type: 2}
+      questStepCheckedValueWanted: 1
+      questStepToCheckState: 1
+      itemToCheck: {fileID: 0}
+      rythmeGameRankRequired: 0
