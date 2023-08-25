@@ -1,5 +1,129 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-9054154563936588011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
+  m_Name: Pas de soucis
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 4952, y: 1128}
+  ports:
+    keys:
+    - previousNode
+    - nextNodes
+    values:
+    - _fieldName: previousNode
+      _node: {fileID: -9054154563936588011}
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueTextNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: nextNodes
+        node: {fileID: 7817435859338497581}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: nextNodes
+      _node: {fileID: -9054154563936588011}
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueBaseNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: previousNode
+        node: {fileID: 6861027621637527595}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  previousNode: {fileID: 0}
+  nextNodes: {fileID: 0}
+  identityType: 0
+  texteType: 0
+  keyText: Dialogue_Laurent_Peroy_PasDeSoucis
+  messagePreview: Dialogue_Laurent_Peroy_PasDeSoucis
+  singleRead: 0
+  hasEnterNodeActions: 0
+  showEnterNodeActions: 0
+  enterNodeActions:
+    actionsList: []
+  hasGameActions: 0
+  showGameActions: 0
+  gameActions:
+    actionsList: []
+  hasRequirements: 0
+  showGameRequirements: 0
+  gameRequirements:
+    requirementsList: []
+--- !u!114 &-7802221608228089309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
+  m_Name: ...
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 3560, y: 1128}
+  ports:
+    keys:
+    - previousNode
+    - nextNodes
+    values:
+    - _fieldName: previousNode
+      _node: {fileID: -7802221608228089309}
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueTextNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: nextNodes
+        node: {fileID: 2569591652586611637}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: nextNodes
+      _node: {fileID: -7802221608228089309}
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueBaseNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: previousNode
+        node: {fileID: 7817435859338497581}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  previousNode: {fileID: 0}
+  nextNodes: {fileID: 0}
+  identityType: 0
+  texteType: 0
+  keyText: Dialogue_Laurent_Peroy_...
+  messagePreview: Dialogue_Laurent_Peroy_...
+  singleRead: 0
+  hasEnterNodeActions: 0
+  showEnterNodeActions: 0
+  enterNodeActions:
+    actionsList: []
+  hasGameActions: 0
+  showGameActions: 0
+  gameActions:
+    actionsList: []
+  hasRequirements: 0
+  showGameRequirements: 0
+  gameRequirements:
+    requirementsList: []
 --- !u!114 &-4943446995159110923
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -770,6 +894,13 @@ MonoBehaviour:
   - {fileID: 1403713959774537052}
   - {fileID: 5643845861732760083}
   - {fileID: 3482064786892699512}
+  - {fileID: 3970500118532708079}
+  - {fileID: 7495945016488844202}
+  - {fileID: 2569591652586611637}
+  - {fileID: -7802221608228089309}
+  - {fileID: 7817435859338497581}
+  - {fileID: -9054154563936588011}
+  - {fileID: 6861027621637527595}
   displayName: Laurent Peroy Dialogue
   description: "Dialogue Pr\xE9sentation Laurent Game In"
   mainNodeParent: {fileID: 8216100275982466525}
@@ -823,6 +954,68 @@ MonoBehaviour:
   keyText: Dialogue_Laurent_Peroy_NousAvonsAVocationARepresenter
   messagePreview: "Nous avons \xE0 vocation \xE0 repr\xE9senter, animer, renforcer,
     d\xE9velopper notre \xE9cosyst\xE8me."
+  singleRead: 0
+  hasEnterNodeActions: 0
+  showEnterNodeActions: 0
+  enterNodeActions:
+    actionsList: []
+  hasGameActions: 0
+  showGameActions: 0
+  gameActions:
+    actionsList: []
+  hasRequirements: 0
+  showGameRequirements: 0
+  gameRequirements:
+    requirementsList: []
+--- !u!114 &2569591652586611637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
+  m_Name: "Pour un b\xE9b\xE9"
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 2808, y: 1128}
+  ports:
+    keys:
+    - previousNode
+    - nextNodes
+    values:
+    - _fieldName: previousNode
+      _node: {fileID: 2569591652586611637}
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueTextNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: nextNodes
+        node: {fileID: 7495945016488844202}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: nextNodes
+      _node: {fileID: 2569591652586611637}
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueBaseNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: previousNode
+        node: {fileID: -7802221608228089309}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  previousNode: {fileID: 0}
+  nextNodes: {fileID: 0}
+  identityType: 1
+  texteType: 0
+  keyText: Dialogue_Laurent_Peroy_PourUnBebe
+  messagePreview: Dialogue_Laurent_Peroy_PourUnBebe
   singleRead: 0
   hasEnterNodeActions: 0
   showEnterNodeActions: 0
@@ -916,7 +1109,7 @@ MonoBehaviour:
   m_Name: Pas de soucis, on se voit plus tard.
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 2536, y: 1128}
+  position: {x: 2536, y: 1528}
   ports:
     keys:
     - previousNode
@@ -962,6 +1155,80 @@ MonoBehaviour:
   showGameRequirements: 0
   gameRequirements:
     requirementsList: []
+--- !u!114 &3970500118532708079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
+  m_Name: Reste de la potion
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 1400, y: 1128}
+  ports:
+    keys:
+    - previousNode
+    - nextNodes
+    values:
+    - _fieldName: previousNode
+      _node: {fileID: 3970500118532708079}
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueTextNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: nextNodes
+        node: {fileID: 8216100275982466525}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: nextNodes
+      _node: {fileID: 3970500118532708079}
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueBaseNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: previousNode
+        node: {fileID: 7495945016488844202}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  previousNode: {fileID: 0}
+  nextNodes: {fileID: 0}
+  identityType: 1
+  texteType: 0
+  keyText: Dialogue_Laurent_Peroy_ResteDeLaPotion
+  messagePreview: Dialogue_Laurent_Peroy_ResteDeLaPotion
+  singleRead: 0
+  hasEnterNodeActions: 0
+  showEnterNodeActions: 0
+  enterNodeActions:
+    actionsList: []
+  hasGameActions: 0
+  showGameActions: 0
+  gameActions:
+    actionsList: []
+  hasRequirements: 1
+  showGameRequirements: 1
+  gameRequirements:
+    requirementsList:
+    - requirementType: 1
+      questToCheck: {fileID: 0}
+      questCheckedValueWanted: 0
+      questToCheckState: 0
+      questAssociatedToCheck: {fileID: 11400000, guid: 9e9d91c2c9f671c41ae614d3d2404ea7,
+        type: 2}
+      questStepToCheck: {fileID: 11400000, guid: 05ebc57b1d6eea343865c70b3443ffff,
+        type: 2}
+      questStepCheckedValueWanted: 1
+      questStepToCheckState: 1
+      itemToCheck: {fileID: 0}
+      rythmeGameRankRequired: 0
 --- !u!114 &5285104979407355240
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1180,7 +1447,7 @@ MonoBehaviour:
   m_Name: Je dois y aller
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 1400, y: 1096}
+  position: {x: 1400, y: 1496}
   ports:
     keys:
     - previousNode
@@ -1291,6 +1558,150 @@ MonoBehaviour:
   showGameRequirements: 0
   gameRequirements:
     requirementsList: []
+--- !u!114 &6861027621637527595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
+  m_Name: Merci !
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 5624, y: 1128}
+  ports:
+    keys:
+    - previousNode
+    - nextNodes
+    values:
+    - _fieldName: previousNode
+      _node: {fileID: 6861027621637527595}
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueTextNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: nextNodes
+        node: {fileID: -9054154563936588011}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: nextNodes
+      _node: {fileID: 6861027621637527595}
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueBaseNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  previousNode: {fileID: 0}
+  nextNodes: {fileID: 0}
+  identityType: 1
+  texteType: 0
+  keyText: Dialogue_Laurent_Peroy_Merci
+  messagePreview: Merci !
+  singleRead: 0
+  hasEnterNodeActions: 0
+  showEnterNodeActions: 0
+  enterNodeActions:
+    actionsList: []
+  hasGameActions: 1
+  showGameActions: 1
+  gameActions:
+    actionsList:
+    - actionType: 2
+      hasCondition: 0
+      nodesRequiredToRead: []
+      questToAdd: {fileID: 0}
+      questAssociated: {fileID: 11400000, guid: 9e9d91c2c9f671c41ae614d3d2404ea7,
+        type: 2}
+      questStepToComplete: {fileID: 11400000, guid: 05ebc57b1d6eea343865c70b3443ffff,
+        type: 2}
+      ScooterPopUpData: {fileID: 0}
+      itemToAdd: {fileID: 0}
+      itemToRemove: {fileID: 0}
+      fadeDuration: 0.5
+      fadeOutSwitchDuration: 1
+      newConversantToCall: {fileID: 0}
+      dialogueToLaunch: {fileID: 0}
+      launchDialogueToMainNode: 0
+      boxMessageTextToDisplay: 
+      boxMessageSize: 0
+      iconDataToAdd: {fileID: 0}
+      shakeCameraIntensity: 0
+      shakeCameraDuration: 0
+      focusOn: 0
+      focusValue: 1.4
+  hasRequirements: 0
+  showGameRequirements: 0
+  gameRequirements:
+    requirementsList: []
+--- !u!114 &7495945016488844202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
+  m_Name: "Bien s\xFBr"
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 2104, y: 1128}
+  ports:
+    keys:
+    - previousNode
+    - nextNodes
+    values:
+    - _fieldName: previousNode
+      _node: {fileID: 7495945016488844202}
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueTextNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: nextNodes
+        node: {fileID: 3970500118532708079}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: nextNodes
+      _node: {fileID: 7495945016488844202}
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueBaseNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: previousNode
+        node: {fileID: 2569591652586611637}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  previousNode: {fileID: 0}
+  nextNodes: {fileID: 0}
+  identityType: 0
+  texteType: 0
+  keyText: Dialogue_Laurent_Peroy_BienSur
+  messagePreview: Dialogue_Laurent_Peroy_BienSur
+  singleRead: 0
+  hasEnterNodeActions: 0
+  showEnterNodeActions: 0
+  enterNodeActions:
+    actionsList: []
+  hasGameActions: 0
+  showGameActions: 0
+  gameActions:
+    actionsList: []
+  hasRequirements: 0
+  showGameRequirements: 0
+  gameRequirements:
+    requirementsList: []
 --- !u!114 &7799694237710190274
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1371,6 +1782,68 @@ MonoBehaviour:
   showGameRequirements: 0
   gameRequirements:
     requirementsList: []
+--- !u!114 &7817435859338497581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
+  m_Name: ...2
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 4248, y: 1128}
+  ports:
+    keys:
+    - previousNode
+    - nextNodes
+    values:
+    - _fieldName: previousNode
+      _node: {fileID: 7817435859338497581}
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueTextNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: nextNodes
+        node: {fileID: -7802221608228089309}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: nextNodes
+      _node: {fileID: 7817435859338497581}
+      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueBaseNode, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: previousNode
+        node: {fileID: -9054154563936588011}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  previousNode: {fileID: 0}
+  nextNodes: {fileID: 0}
+  identityType: 1
+  texteType: 0
+  keyText: Dialogue_Laurent_Peroy_...2
+  messagePreview: Dialogue_Laurent_Peroy_...2
+  singleRead: 0
+  hasEnterNodeActions: 0
+  showEnterNodeActions: 0
+  enterNodeActions:
+    actionsList: []
+  hasGameActions: 0
+  showGameActions: 0
+  gameActions:
+    actionsList: []
+  hasRequirements: 0
+  showGameRequirements: 0
+  gameRequirements:
+    requirementsList: []
 --- !u!114 &8216100275982466525
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1412,6 +1885,9 @@ MonoBehaviour:
         reroutePoints: []
       - fieldName: previousNode
         node: {fileID: -4502136979778286970}
+        reroutePoints: []
+      - fieldName: previousNode
+        node: {fileID: 3970500118532708079}
         reroutePoints: []
       - fieldName: previousNode
         node: {fileID: 5807107776296967619}
