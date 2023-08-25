@@ -1,67 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-8266147678332100209
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
-  m_Name: "Gr\xE2ce \xE0 toi"
-  m_EditorClassIdentifier: 
-  graph: {fileID: 11400000}
-  position: {x: 2888, y: 696}
-  ports:
-    keys:
-    - previousNode
-    - nextNodes
-    values:
-    - _fieldName: previousNode
-      _node: {fileID: -8266147678332100209}
-      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueTextNode, Assembly-CSharp,
-        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      connections:
-      - fieldName: nextNodes
-        node: {fileID: -999900583503681588}
-        reroutePoints: []
-      _direction: 0
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: nextNodes
-      _node: {fileID: -8266147678332100209}
-      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueBaseNode, Assembly-CSharp,
-        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      connections:
-      - fieldName: previousNode
-        node: {fileID: 1583834520712333296}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-  previousNode: {fileID: 0}
-  nextNodes: {fileID: 0}
-  identityType: 0
-  texteType: 0
-  keyText: Dialogue_Baby_1_GraceAToi
-  messagePreview: Dialogue_Baby_1_GraceAToi
-  singleRead: 0
-  hasEnterNodeActions: 0
-  showEnterNodeActions: 0
-  enterNodeActions:
-    actionsList: []
-  hasGameActions: 0
-  showGameActions: 0
-  gameActions:
-    actionsList: []
-  hasRequirements: 0
-  showGameRequirements: 0
-  gameRequirements:
-    requirementsList: []
 --- !u!114 &-8203406018088007111
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -111,68 +49,6 @@ MonoBehaviour:
   texteType: 0
   keyText: Dialogue_Baby_1_EtJeVaisFaireDesBetises
   messagePreview: Dialogue_Baby_1_EtJeVaisFaireDesBetises
-  singleRead: 0
-  hasEnterNodeActions: 0
-  showEnterNodeActions: 0
-  enterNodeActions:
-    actionsList: []
-  hasGameActions: 0
-  showGameActions: 0
-  gameActions:
-    actionsList: []
-  hasRequirements: 0
-  showGameRequirements: 0
-  gameRequirements:
-    requirementsList: []
---- !u!114 &-8138862733796789376
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
-  m_Name: Merci pour ton aide
-  m_EditorClassIdentifier: 
-  graph: {fileID: 11400000}
-  position: {x: 1560, y: 696}
-  ports:
-    keys:
-    - previousNode
-    - nextNodes
-    values:
-    - _fieldName: previousNode
-      _node: {fileID: -8138862733796789376}
-      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueTextNode, Assembly-CSharp,
-        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      connections:
-      - fieldName: nextNodes
-        node: {fileID: -106026305707047412}
-        reroutePoints: []
-      _direction: 0
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: nextNodes
-      _node: {fileID: -8138862733796789376}
-      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueBaseNode, Assembly-CSharp,
-        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      connections:
-      - fieldName: previousNode
-        node: {fileID: -999900583503681588}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-  previousNode: {fileID: 0}
-  nextNodes: {fileID: 0}
-  identityType: 0
-  texteType: 0
-  keyText: Dialogue_Baby_1_MerciPourTonAide
-  messagePreview: Dialogue_Baby_1_MerciPourTonAide
   singleRead: 0
   hasEnterNodeActions: 0
   showEnterNodeActions: 0
@@ -296,7 +172,7 @@ MonoBehaviour:
   identityType: 1
   texteType: 0
   keyText: Dialogue_Baby_1_AMoinsQue?
-  messagePreview: "\xC0 moins que ?"
+  messagePreview: Dialogue_Baby_1_AMoinsQue?
   singleRead: 0
   hasEnterNodeActions: 0
   showEnterNodeActions: 0
@@ -410,9 +286,6 @@ MonoBehaviour:
         reroutePoints: []
       - fieldName: previousNode
         node: {fileID: 8551242545338155097}
-        reroutePoints: []
-      - fieldName: previousNode
-        node: {fileID: -106026305707047412}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -686,7 +559,7 @@ MonoBehaviour:
   identityType: 0
   texteType: 0
   keyText: Dialogue_Baby_1_AMoinsQue...
-  messagePreview: "\xC0 moins que\u2026"
+  messagePreview: Dialogue_Baby_1_AMoinsQue...
   singleRead: 0
   hasEnterNodeActions: 0
   showEnterNodeActions: 0
@@ -763,142 +636,6 @@ MonoBehaviour:
   showGameRequirements: 0
   gameRequirements:
     requirementsList: []
---- !u!114 &-999900583503681588
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
-  m_Name: Je suis un membre de BabyCorp
-  m_EditorClassIdentifier: 
-  graph: {fileID: 11400000}
-  position: {x: 2216, y: 696}
-  ports:
-    keys:
-    - previousNode
-    - nextNodes
-    values:
-    - _fieldName: previousNode
-      _node: {fileID: -999900583503681588}
-      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueTextNode, Assembly-CSharp,
-        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      connections:
-      - fieldName: nextNodes
-        node: {fileID: -8138862733796789376}
-        reroutePoints: []
-      _direction: 0
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: nextNodes
-      _node: {fileID: -999900583503681588}
-      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueBaseNode, Assembly-CSharp,
-        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      connections:
-      - fieldName: previousNode
-        node: {fileID: -8266147678332100209}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-  previousNode: {fileID: 0}
-  nextNodes: {fileID: 0}
-  identityType: 0
-  texteType: 0
-  keyText: Dialogue_Baby_1_JeSuisUnMembreDeBabyCorp
-  messagePreview: Dialogue_Baby_1_JeSuisUnMembreDeBabyCorp
-  singleRead: 0
-  hasEnterNodeActions: 0
-  showEnterNodeActions: 0
-  enterNodeActions:
-    actionsList: []
-  hasGameActions: 0
-  showGameActions: 0
-  gameActions:
-    actionsList: []
-  hasRequirements: 0
-  showGameRequirements: 0
-  gameRequirements:
-    requirementsList: []
---- !u!114 &-106026305707047412
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
-  m_Name: Donne le pack de potion
-  m_EditorClassIdentifier: 
-  graph: {fileID: 11400000}
-  position: {x: 824, y: 696}
-  ports:
-    keys:
-    - previousNode
-    - nextNodes
-    values:
-    - _fieldName: previousNode
-      _node: {fileID: -106026305707047412}
-      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueTextNode, Assembly-CSharp,
-        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      connections:
-      - fieldName: nextNodes
-        node: {fileID: -3192061452419886740}
-        reroutePoints: []
-      _direction: 0
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: nextNodes
-      _node: {fileID: -106026305707047412}
-      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueBaseNode, Assembly-CSharp,
-        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      connections:
-      - fieldName: previousNode
-        node: {fileID: -8138862733796789376}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-  previousNode: {fileID: 0}
-  nextNodes: {fileID: 0}
-  identityType: 1
-  texteType: 0
-  keyText: Dialogue_Baby_1_DonneLePackDePotions
-  messagePreview: Dialogue_Baby_1_DonneLePackDePotions
-  singleRead: 0
-  hasEnterNodeActions: 0
-  showEnterNodeActions: 0
-  enterNodeActions:
-    actionsList: []
-  hasGameActions: 0
-  showGameActions: 0
-  gameActions:
-    actionsList: []
-  hasRequirements: 1
-  showGameRequirements: 1
-  gameRequirements:
-    requirementsList:
-    - requirementType: 1
-      questToCheck: {fileID: 0}
-      questCheckedValueWanted: 0
-      questToCheckState: 0
-      questAssociatedToCheck: {fileID: 11400000, guid: 9e9d91c2c9f671c41ae614d3d2404ea7,
-        type: 2}
-      questStepToCheck: {fileID: 11400000, guid: d356a5fc3fa63c8429350fa4655477af,
-        type: 2}
-      questStepCheckedValueWanted: 1
-      questStepToCheckState: 1
-      itemToCheck: {fileID: 0}
-      rythmeGameRankRequired: 0
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -927,159 +664,9 @@ MonoBehaviour:
   - {fileID: 2097571084499491719}
   - {fileID: 6389998515513470986}
   - {fileID: -2484765614871573065}
-  - {fileID: -106026305707047412}
-  - {fileID: -8138862733796789376}
-  - {fileID: -999900583503681588}
-  - {fileID: -8266147678332100209}
-  - {fileID: 1583834520712333296}
-  - {fileID: 853144361528179620}
   displayName: "B\xE9b\xE9 Dialogue"
   description: "Dialogue Pr\xE9sentation B\xE9b\xE9 Baby Corp"
   mainNodeParent: {fileID: -3192061452419886740}
---- !u!114 &853144361528179620
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
-  m_Name: "Le prend pas comme \xE7a"
-  m_EditorClassIdentifier: 
-  graph: {fileID: 11400000}
-  position: {x: 4216, y: 696}
-  ports:
-    keys:
-    - previousNode
-    - nextNodes
-    values:
-    - _fieldName: previousNode
-      _node: {fileID: 853144361528179620}
-      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueTextNode, Assembly-CSharp,
-        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      connections:
-      - fieldName: nextNodes
-        node: {fileID: 1583834520712333296}
-        reroutePoints: []
-      _direction: 0
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: nextNodes
-      _node: {fileID: 853144361528179620}
-      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueBaseNode, Assembly-CSharp,
-        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-  previousNode: {fileID: 0}
-  nextNodes: {fileID: 0}
-  identityType: 0
-  texteType: 0
-  keyText: Dialogue_Baby_1_LePrendPasCommeCa
-  messagePreview: Dialogue_Baby_1_LePrendPasCommeCa
-  singleRead: 0
-  hasEnterNodeActions: 0
-  showEnterNodeActions: 0
-  enterNodeActions:
-    actionsList: []
-  hasGameActions: 1
-  showGameActions: 1
-  gameActions:
-    actionsList:
-    - actionType: 2
-      hasCondition: 0
-      nodesRequiredToRead: []
-      questToAdd: {fileID: 0}
-      questAssociated: {fileID: 11400000, guid: 9e9d91c2c9f671c41ae614d3d2404ea7,
-        type: 2}
-      questStepToComplete: {fileID: 11400000, guid: d356a5fc3fa63c8429350fa4655477af,
-        type: 2}
-      ScooterPopUpData: {fileID: 0}
-      itemToAdd: {fileID: 0}
-      itemToRemove: {fileID: 0}
-      fadeDuration: 0.5
-      fadeOutSwitchDuration: 1
-      newConversantToCall: {fileID: 0}
-      dialogueToLaunch: {fileID: 0}
-      launchDialogueToMainNode: 0
-      boxMessageTextToDisplay: 
-      boxMessageSize: 0
-      iconDataToAdd: {fileID: 0}
-      shakeCameraIntensity: 0
-      shakeCameraDuration: 0
-      focusOn: 0
-      focusValue: 1.4
-  hasRequirements: 0
-  showGameRequirements: 0
-  gameRequirements:
-    requirementsList: []
---- !u!114 &1583834520712333296
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3482daf33a41b424789a150bca26817d, type: 3}
-  m_Name: Au revoir
-  m_EditorClassIdentifier: 
-  graph: {fileID: 11400000}
-  position: {x: 3544, y: 696}
-  ports:
-    keys:
-    - previousNode
-    - nextNodes
-    values:
-    - _fieldName: previousNode
-      _node: {fileID: 1583834520712333296}
-      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueTextNode, Assembly-CSharp,
-        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      connections:
-      - fieldName: nextNodes
-        node: {fileID: -8266147678332100209}
-        reroutePoints: []
-      _direction: 0
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: nextNodes
-      _node: {fileID: 1583834520712333296}
-      _typeQualifiedName: AllosiusDev.DialogSystem.DialogueBaseNode, Assembly-CSharp,
-        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      connections:
-      - fieldName: previousNode
-        node: {fileID: 853144361528179620}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-  previousNode: {fileID: 0}
-  nextNodes: {fileID: 0}
-  identityType: 1
-  texteType: 0
-  keyText: Dialogue_Baby_1_AuRevoir
-  messagePreview: Dialogue_Baby_1_AuRevoir
-  singleRead: 0
-  hasEnterNodeActions: 0
-  showEnterNodeActions: 0
-  enterNodeActions:
-    actionsList: []
-  hasGameActions: 0
-  showGameActions: 0
-  gameActions:
-    actionsList: []
-  hasRequirements: 0
-  showGameRequirements: 0
-  gameRequirements:
-    requirementsList: []
 --- !u!114 &2097571084499491719
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1386,8 +973,7 @@ MonoBehaviour:
   identityType: 1
   texteType: 0
   keyText: "Dialogue_Baby_1_L\xE9quipeDeBabyCorp"
-  messagePreview: "L\u2019\xE9quipe de Baby Corp n\u2019est toujours pas revenue
-    ?"
+  messagePreview: "Dialogue_Baby_1_L\xE9quipeDeBabyCorp"
   singleRead: 0
   hasEnterNodeActions: 0
   showEnterNodeActions: 0
