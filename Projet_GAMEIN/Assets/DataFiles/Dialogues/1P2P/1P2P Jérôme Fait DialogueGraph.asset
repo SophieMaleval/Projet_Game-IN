@@ -564,7 +564,8 @@ MonoBehaviour:
   identityType: 1
   texteType: 0
   keyText: "Dialogue_J\xE9r\xF4me_Fait_JaiApprisQueBabyCorp"
-  messagePreview: "Dialogue_J\xE9r\xF4me_Fait_JaiApprisQueBabyCorp"
+  messagePreview: "J\u2019ai appris que Baby Corp avait re\xE7u une aide financi\xE8re
+    de Pictanovo, ils sont probablement en train de f\xEAter \xE7a."
   singleRead: 0
   hasEnterNodeActions: 0
   showEnterNodeActions: 0
@@ -759,16 +760,39 @@ MonoBehaviour:
   identityType: 0
   texteType: 0
   keyText: "Dialogue_J\xE9r\xF4me_TiensVoilaLaLettre"
-  messagePreview: "Dialogue_J\xE9r\xF4me_TiensVoilaLaLettre"
+  messagePreview: "Tiens voil\xE0 la lettre."
   singleRead: 0
   hasEnterNodeActions: 0
   showEnterNodeActions: 0
   enterNodeActions:
     actionsList: []
-  hasGameActions: 0
-  showGameActions: 0
+  hasGameActions: 1
+  showGameActions: 1
   gameActions:
-    actionsList: []
+    actionsList:
+    - actionType: 2
+      hasCondition: 0
+      nodesRequiredToRead: []
+      questToAdd: {fileID: 0}
+      questAssociated: {fileID: 11400000, guid: 9e9d91c2c9f671c41ae614d3d2404ea7,
+        type: 2}
+      questStepToComplete: {fileID: 11400000, guid: 3e796f7f703943c45af446f0a371b027,
+        type: 2}
+      ScooterPopUpData: {fileID: 0}
+      itemToAdd: {fileID: 0}
+      itemToRemove: {fileID: 0}
+      fadeDuration: 0.5
+      fadeOutSwitchDuration: 1
+      newConversantToCall: {fileID: 0}
+      dialogueToLaunch: {fileID: 0}
+      launchDialogueToMainNode: 0
+      boxMessageTextToDisplay: 
+      boxMessageSize: 0
+      iconDataToAdd: {fileID: 0}
+      shakeCameraIntensity: 0
+      shakeCameraDuration: 0
+      focusOn: 0
+      focusValue: 1.4
   hasRequirements: 0
   showGameRequirements: 0
   gameRequirements:
